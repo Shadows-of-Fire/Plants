@@ -1,0 +1,21 @@
+[
+{
+  "modid": "attaineddrops",
+  "name": "Attained Drops",
+  "description": "Making mob drops more attainable",
+  "version": "2.0",
+  "mcversion": "1.10.2",
+  "url": "",
+  "updateUrl": "",
+  "authors": [
+    "Shadows_of_Fire"
+  ],
+  "credits": "VapourDrive",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
