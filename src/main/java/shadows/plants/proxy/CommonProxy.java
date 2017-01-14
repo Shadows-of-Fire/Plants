@@ -1,26 +1,29 @@
 package shadows.plants.proxy;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import shadows.modid.*;
+import shadows.plants.util.Config;
+import shadows.plants.registry.BlockRegistry;
+import shadows.plants.registry.GlobalRegistry;
+import shadows.plants.registry.ItemRegistry;
+import shadows.plants.registry.RecipeRegistry;
+
 public class CommonProxy {
 	
 	
 	
-	public static String configPath;
+	public static Configuration config;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
-		BlockRegistry.init();
-		RecipeRegistry.init();
+    	config = new Configuration(e.getSuggestedConfigurationFile());
+    	Config.syncConfig();
+		GlobalRegistry.init();
+		GlobalRegistry.initRecipes();
 	}
 	
 
