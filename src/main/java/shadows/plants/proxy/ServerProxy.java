@@ -1,4 +1,4 @@
-package shadows.attained.proxy;
+package shadows.plants.proxy;
 
 public class ServerProxy extends CommonProxy{
 

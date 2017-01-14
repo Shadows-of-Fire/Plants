@@ -1,4 +1,4 @@
-package shadows.attained.proxy;
+package shadows.plants.proxy;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.IMob;
@@ -19,7 +19,7 @@ public class CommonProxy {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
-		ModRegistry.init();
+		BlockRegistry.init();
 		RecipeRegistry.init();
 	}
 	
