@@ -37,7 +37,7 @@ public class PlantBase extends BlockBush implements IGrowable{
 	
     public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
     private static final AxisAlignedBB[] CROPS_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
-    private static String plantType;
+    private EnumModule plantType;
     
     
 	protected PlantBase(EnumModule type, String name){
@@ -50,13 +50,13 @@ public class PlantBase extends BlockBush implements IGrowable{
         setHardness(0.0F);
         setSoundType(SoundType.PLANT);
         disableStats();
-        plantType = type.toString();
+        plantType = type;
 	}
 	
 	@Override
 	 public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
 	    {
-	        return CROPS_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
+	        return CROPS_AABB[(state.getValue(this.getAgeProperty())).intValue()];
 	    }
 
 	    /**
@@ -72,15 +72,20 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    
 	    private Block getFarmland(){
     	switch(plantType){
-    	case("applied") : return AE2Module.ae_farmland;
-    	case("cosmetic") : return Blocks.FARMLAND;
-    /*	case("botanical") : return BotaniaModule.b_farmland;
-    	case("ember") : return EmbersModule.e_farmland;
+    	case APPLIED: return AE2Module.ae_farmland;
+    	case COSMETIC: return Blocks.FARMLAND;
+    	case BOTANICAL: return BotaniaModule.b_farmland;
+    /*	case("ember") : return EmbersModule.e_farmland;
     	case("rooted") : return RootsModule.r_farmland;
     	case("blood") : return BloodModule.bm_Farmland;*/
     	default : return null;
     	}}
     	
+	
+	    public static EnumModule getType(PlantBase block){
+	    	return block.plantType;
+	    }
+	    
 	    protected PropertyInteger getAgeProperty()
 	    {
 	        return AGE;
