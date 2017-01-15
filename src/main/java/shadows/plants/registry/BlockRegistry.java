@@ -30,7 +30,7 @@ public class BlockRegistry {
 	public static void init(){
 		if (Config.debug) System.out.println("BlockRegistry loaded");
 		ModuleController.moduleLoader();
-		BLOCKS.addAll(composeBlocks(BLOCKS));
+		composeBlocks(BLOCKS);
 		registerBlocks();
 		registerModels();
 	}
@@ -38,7 +38,6 @@ public class BlockRegistry {
 	
 	public static void registerBlocks(){
 		for (Block block : BLOCKS){
-			if (Config.debug) System.out.println("Tryin shit with " + block.toString());
 			Util.register(block);
 		}
 	}
