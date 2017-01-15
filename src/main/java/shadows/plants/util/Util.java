@@ -1,5 +1,7 @@
 package shadows.plants.util;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -8,6 +10,8 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants.common.EnumModule;
+import shadows.plants.registry.modules.AE2Module;
 
 public class Util {
 
@@ -30,6 +34,14 @@ public class Util {
 	
 	public static void register(Item item){
 		GameRegistry.register(item);
+	}
+	
+	@Nullable
+	public static Block getFarmlandFromSoil(EnumModule module){
+		switch(module){
+		case APPLIED : return AE2Module.ae_farmland;
+		default : return null;
+		}
 	}
 	
 	

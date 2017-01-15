@@ -24,7 +24,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import shadows.plants.common.PlantType;
+import shadows.plants.common.EnumModule;
 import shadows.plants.registry.modules.AE2Module;
 import shadows.plants.registry.modules.BloodModule;
 import shadows.plants.registry.modules.BotaniaModule;
@@ -40,7 +40,7 @@ public class PlantBase extends BlockBush implements IGrowable{
     private static String plantType;
     
     
-	protected PlantBase(PlantType type, String name){
+	protected PlantBase(EnumModule type, String name){
 		
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);

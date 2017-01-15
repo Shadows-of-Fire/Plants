@@ -1,8 +1,8 @@
 package shadows.plants.common;
 
-public enum PlantType {
+public enum EnumModule {
 	COSMETIC ("cosmetic"),
-	APPPLIED ("applied"),
+	APPLIED ("applied"),
 	BOTANICAL ("botanical"),
 	EMBER ("ember"),
 	ROOTED ("rooted"),
@@ -10,7 +10,7 @@ public enum PlantType {
 	
     private final String name;       
 
-    private PlantType(String s) {
+    private EnumModule(String s) {
         name = s;
     }
 	

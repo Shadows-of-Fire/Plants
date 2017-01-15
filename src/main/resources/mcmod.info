@@ -1,21 +1,16 @@
 [
 {
-  "modid": "attaineddrops",
-  "name": "Attained Drops",
-  "description": "Making mob drops more attainable",
-  "version": "2.0",
-  "mcversion": "1.10.2",
+  "modid": "plants",
+  "name": "Plants",
+  "description": "Various plants for various mods",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authors": [
-    "Shadows_of_Fire"
-  ],
-  "credits": "VapourDrive",
+  "authorList": ["Shadows_of_Fire"],
+  "credits": "",
   "logoFile": "",
-  "screenshots": [
-  ],
-  "parent":"",
-  "dependencies": [
-  ]
+  "screenshots": [],
+  "dependencies": []
 }
 ]
