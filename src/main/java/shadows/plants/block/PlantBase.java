@@ -74,12 +74,12 @@ public class PlantBase extends BlockBush implements IGrowable{
     	switch(plantType){
     	case("applied") : return AE2Module.ae_farmland;
     	case("cosmetic") : return Blocks.FARMLAND;
-    	case("botanical") : return BotaniaModule.b_farmland;
+    /*	case("botanical") : return BotaniaModule.b_farmland;
     	case("ember") : return EmbersModule.e_farmland;
     	case("rooted") : return RootsModule.r_farmland;
-    	case("blood") : return BloodModule.bm_Farmland;
-    	}
-	    }
+    	case("blood") : return BloodModule.bm_Farmland;*/
+    	default : return null;
+    	}}
     	
 	    protected PropertyInteger getAgeProperty()
 	    {

@@ -3,7 +3,9 @@ package shadows.plants.util;
 import shadows.plants.proxy.CommonProxy;
 
 public class Config {
-
+	
+	public static boolean AE = true;
+	public static boolean debug = true;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {

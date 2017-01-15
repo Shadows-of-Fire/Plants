@@ -11,12 +11,8 @@ public class GlobalRegistry {
 	public static void init(){
 		BlockRegistry.init();
 		ItemRegistry.init();
-		BlockRegistry.initModels();
-		ItemRegistry.initModels();
-	}
-	
-	public static void initRecipes(){
 		RecipeRegistry.init();
 	}
+	
 	
 }

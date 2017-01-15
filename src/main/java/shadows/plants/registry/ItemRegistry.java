@@ -9,8 +9,12 @@ public class ItemRegistry {
 		
 	}
 	
+	public static void register(){
+		
+	}
+	
 	@SideOnly(Side.CLIENT)
-	public static void initModels(){
+	public static void registerModels(){
 		
 	}
 	

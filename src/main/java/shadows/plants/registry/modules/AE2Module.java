@@ -14,13 +14,16 @@ public class AE2Module {
 	 * This will handle all registration which is then passed to the respective registry classes.
 	 */
 	public static List<Block> AELIST = new ArrayList<Block>();
+	
 	public static AEFarmland ae_farmland = new AEFarmland();
 	public static AESoil ae_soil = new AESoil();
-	
 	
 
 	
 	public static List<Block> getAE(){
+		AELIST.clear();
+		AELIST.add(ae_farmland);
+		AELIST.add(ae_soil);
 		return AELIST;
 	}
 	

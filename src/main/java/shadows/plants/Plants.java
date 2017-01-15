@@ -8,21 +8,21 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import shadows.plants.proxy.CommonProxy;
 import shadows.plants.util.Data;
 
-@Mod(modid = Data.MODID, version = Data.VERSION, name = Data.MODNAME)
+@Mod(modid = Data.MODID, version = Data.VERSION, name = Data.MODNAME, dependencies = "after:appliedenergistics2")
 
 
 public class Plants {
 
-    @SidedProxy(clientSide = "shadows.plants.proxy.ClientProxy", serverSide = "shadows.plants.proxy.CommonProxy")
+    @SidedProxy(clientSide = "shadows.plants.proxy.CommonProxy", serverSide = "shadows.plants.proxy.CommonProxy")
     public static CommonProxy proxy;
 	
     @Mod.Instance
     public static Plants instance;
     
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event)
+    public void preInit(FMLPreInitializationEvent e)
     {
-    	proxy.preInit(event);
+    	proxy.preInit(e);
     }
     
     @Mod.EventHandler
