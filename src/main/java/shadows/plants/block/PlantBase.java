@@ -16,13 +16,22 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import shadows.plants.common.PlantType;
+import shadows.plants.registry.modules.AE2Module;
+import shadows.plants.registry.modules.BloodModule;
+import shadows.plants.registry.modules.BotaniaModule;
+import shadows.plants.registry.modules.CosmeticModule;
+import shadows.plants.registry.modules.EmbersModule;
+import shadows.plants.registry.modules.RootsModule;
+import shadows.plants.util.Data;
 
 public class PlantBase extends BlockBush implements IGrowable{
 	
@@ -31,18 +40,20 @@ public class PlantBase extends BlockBush implements IGrowable{
     private static String plantType;
     
     
-	protected PlantBase(PlantType type){
+	protected PlantBase(PlantType type, String name){
 		
-        this.setDefaultState(this.blockState.getBaseState().withProperty(this.getAgeProperty(), Integer.valueOf(0)));
-        this.setTickRandomly(true);
-        this.setCreativeTab(null);
-        this.setHardness(0.0F);
-        this.setSoundType(SoundType.PLANT);
-        this.disableStats();
+		setRegistryName(name);
+		setUnlocalizedName(Data.MODID + "." + name);
+        setDefaultState(this.blockState.getBaseState().withProperty(this.getAgeProperty(), Integer.valueOf(0)));
+        setTickRandomly(true);
+        setCreativeTab(null);
+        setHardness(0.0F);
+        setSoundType(SoundType.PLANT);
+        disableStats();
         plantType = type.toString();
 	}
 	
-	
+	@Override
 	 public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
 	    {
 	        return CROPS_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
@@ -51,20 +62,22 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    /**
 	     * Return true if the block can sustain a Bush
 	     */
+	 
+	 	@Override
 	    protected boolean canSustainBush(IBlockState state)
 	    {
 
 	        return state.getBlock() == getFarmland();
 	    }
 	    
-	    public static Block getFarmland(){
+	    private Block getFarmland(){
     	switch(plantType){
-    	case("applied"):  AE2Module.Farmland;
-    	case("cosmetic"): CosmeticModule.Farmland;
-    	case("botanical"): BotaniaModule.Farmland;
-    	case("ember"): EmbersModule.Farmland;
-    	case("rooted"): RootsModule.Farmland;
-    	case("blood"): BloodModule.Farmland;
+    	case("applied") : return AE2Module.ae_farmland;
+    	case("cosmetic") : return Blocks.FARMLAND;
+    	case("botanical") : return BotaniaModule.b_farmland;
+    	case("ember") : return EmbersModule.e_farmland;
+    	case("rooted") : return RootsModule.r_farmland;
+    	case("blood") : return BloodModule.bm_Farmland;
     	}
 	    }
     	
@@ -77,22 +90,26 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    {
 	        return 7;
 	    }
-
+	    
+	    
 	    protected int getAge(IBlockState state)
 	    {
 	        return (state.getValue(this.getAgeProperty())).intValue();
 	    }
 
+	    
 	    public IBlockState withAge(int age)
 	    {
 	        return this.getDefaultState().withProperty(this.getAgeProperty(), age);
 	    }
 
+	    
 	    public boolean isMaxAge(IBlockState state)
 	    {
 	        return (state.getValue(this.getAgeProperty())).intValue() >= this.getMaxAge();
 	    }
-
+	    
+	    @Override
 	    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	    {
 	        super.updateTick(world, pos, state, rand);
@@ -112,7 +129,7 @@ public class PlantBase extends BlockBush implements IGrowable{
 	            }
 	        }
 	    }
-
+	    
 	    public void grow(World worldIn, BlockPos pos, IBlockState state)
 	    {
 	        int i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
@@ -168,26 +185,26 @@ public class PlantBase extends BlockBush implements IGrowable{
 	        return drops;
 	    }
 
+	    @Override
 	    @Nullable
 	    public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	    {
 	        return this.isMaxAge(state) ? this.getCrop() : this.getSeed();
 	    }
-
-
-	    /**
-	     * Whether this IGrowable can grow
-	     */
+	    
+	    @Override
 	    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient)
 	    {
 	        return !this.isMaxAge(state);
 	    }
 
+	    @Override
 	    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state)
 	    {
 	        return true;
 	    }
 
+	    @Override
 	    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
 	    {
 	        this.grow(worldIn, pos, state);
@@ -196,6 +213,7 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    /**
 	     * Convert the given metadata into a BlockState for this Block
 	     */
+	    @Override
 	    public IBlockState getStateFromMeta(int meta)
 	    {
 	        return this.withAge(meta);
@@ -204,11 +222,13 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    /**
 	     * Convert the BlockState into the correct metadata value
 	     */
+	    @Override
 	    public int getMetaFromState(IBlockState state)
 	    {
 	        return this.getAge(state);
 	    }
-
+	    
+	    @Override
 	    protected BlockStateContainer createBlockState()
 	    {
 	        return new BlockStateContainer(this, new IProperty[] {AGE});

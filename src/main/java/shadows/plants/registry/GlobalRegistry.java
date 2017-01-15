@@ -1,7 +1,5 @@
 package shadows.plants.registry;
 
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GlobalRegistry {
 	/*
@@ -13,11 +11,6 @@ public class GlobalRegistry {
 	public static void init(){
 		BlockRegistry.init();
 		ItemRegistry.init();
-	}
-	
-	
-	@SideOnly(Side.CLIENT)
-	public static void initModels(){
 		BlockRegistry.initModels();
 		ItemRegistry.initModels();
 	}
