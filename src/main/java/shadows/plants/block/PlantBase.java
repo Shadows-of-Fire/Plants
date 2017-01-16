@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
@@ -14,24 +13,16 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import shadows.plants.common.EnumModule;
-import shadows.plants.registry.modules.AE2Module;
-import shadows.plants.registry.modules.BloodModule;
-import shadows.plants.registry.modules.BotaniaModule;
-import shadows.plants.registry.modules.CosmeticModule;
-import shadows.plants.registry.modules.EmbersModule;
-import shadows.plants.registry.modules.RootsModule;
 import shadows.plants.util.Data;
+import shadows.plants.util.Util;
 
 public class PlantBase extends BlockBush implements IGrowable{
 	
@@ -71,15 +62,8 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    }
 	    
 	    private Block getFarmland(){
-    	switch(plantType){
-    	case APPLIED: return AE2Module.ae_farmland;
-    	case COSMETIC: return Blocks.FARMLAND;
-    	case BOTANICAL: return BotaniaModule.b_farmland;
-    /*	case("ember") : return EmbersModule.e_farmland;
-    	case("rooted") : return RootsModule.r_farmland;
-    	case("blood") : return BloodModule.bm_Farmland;*/
-    	default : return null;
-    	}}
+	    	return Util.getFarmlandFromModule(plantType);
+    	}
     	
 	
 	    public static EnumModule getType(PlantBase block){

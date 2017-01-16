@@ -6,6 +6,7 @@ public class Config {
 	
 	public static boolean AE = true;
 	public static boolean debug = true;
+	public static boolean Botania = true;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {

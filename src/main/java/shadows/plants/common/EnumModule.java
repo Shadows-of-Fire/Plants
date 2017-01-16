@@ -6,7 +6,8 @@ public enum EnumModule {
 	BOTANICAL,
 	EMBER,
 	ROOTED,
-	BLOOD;
+	BLOOD,
+	HOSTILE;
 	
 
     

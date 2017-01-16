@@ -31,7 +31,7 @@ public class FarmlandBase extends BlockFarmland{
 		
 	    private boolean hasWater(World worldIn, BlockPos pos)
 	    {
-	        for (BlockPos.MutableBlockPos blockpos$mutableblockpos : BlockPos.getAllInBoxMutable(pos.add(-4, 0, -4), pos.add(4, 1, 4)))
+	        for (BlockPos.MutableBlockPos blockpos$mutableblockpos : BlockPos.getAllInBoxMutable(pos.add(-4, -1, -4), pos.add(4, 1, 4)))
 	        {
 	            if (worldIn.getBlockState(blockpos$mutableblockpos).getBlock() == soilWater)
 	            {
@@ -76,6 +76,7 @@ public class FarmlandBase extends BlockFarmland{
 	        if (!worldIn.isRemote && 2.0 < fallDistance && entityIn instanceof EntityLivingBase && (entityIn instanceof EntityPlayer || worldIn.getGameRules().getBoolean("mobGriefing")) && entityIn.width * entityIn.width * entityIn.height > 0.512F)
 	        {
 	            worldIn.setBlockState(pos, soil.getDefaultState(), 3);
+	            entityIn.setPosition((double)entityIn.posX, (double)pos.getY()+1, (double)entityIn.posZ);
 	        }
 	    }
 		

@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.registry.modules.AE2Module;
+import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Config;
 import shadows.plants.util.Util;
@@ -19,11 +20,11 @@ public class BlockRegistry {
 	
 	private static List<Block> composeBlocks(List<Block> list){
 		if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
-		/*if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
+		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
 		if (!BotaniaModule.getB().isEmpty()) list.addAll(BotaniaModule.getB());
-		if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
-		if (!EmbersModule.getE().isEmpty()) list.addAll(EmbersModule.getE());
-		if (!RootsModule.getR().isEmpty()) list.addAll(RootsModule.getR());*/
+		//if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
+		//if (!EmbersModule.getE().isEmpty()) list.addAll(EmbersModule.getE());
+		//if (!RootsModule.getR().isEmpty()) list.addAll(RootsModule.getR());
 		return list;
 	}
 
