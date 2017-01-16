@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumParticleTypes;
@@ -47,6 +48,10 @@ public class Util {
 		switch(module){
 		case APPLIED : return AE2Module.ae_farmland;
 		case BOTANICAL : return BotaniaModule.b_farmland;
+		case HOSTILE : 
+		case COSMETIC :
+		case MEME : return Blocks.FARMLAND;
+		
 		default : return null;
 		}
 	}

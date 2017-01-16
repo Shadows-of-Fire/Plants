@@ -7,7 +7,8 @@ public enum EnumModule {
 	EMBER,
 	ROOTED,
 	BLOOD,
-	HOSTILE;
+	HOSTILE,
+	MEME
 	
 
     

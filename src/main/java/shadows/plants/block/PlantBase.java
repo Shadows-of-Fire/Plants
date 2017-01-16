@@ -4,7 +4,6 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -12,7 +11,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -58,14 +56,9 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    protected boolean canSustainBush(IBlockState state)
 	    {
 
-	        return state.getBlock() == getFarmland();
+	        return state.getBlock() == Util.getFarmlandFromModule(plantType);
 	    }
-	    
-	    private Block getFarmland(){
-	    	return Util.getFarmlandFromModule(plantType);
-    	}
-    	
-	
+
 	    public static EnumModule getType(PlantBase block){
 	    	return block.plantType;
 	    }

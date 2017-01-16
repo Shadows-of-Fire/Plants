@@ -6,14 +6,14 @@ import shadows.plants.util.Config;
 public class ModuleController {
 
 	public static void moduleLoader(){
-		if (!Config.AE || !Loader.isModLoaded("appliedenergistics2")) AE2Module.getAE().clear();;
+		if (!Config.AE || !Loader.isModLoaded("appliedenergistics2")) AE2Module.getAE().clear();
 		if (!Config.Botania || !Loader.isModLoaded("botania")) BotaniaModule.getB().clear();
-		/*if (!Config.Cosmetic) CosmeticModule.init();
-		if (!Config.Embers) EmbersModule.init();
-		if (!Config.Roots) RootsModule.init();
-		if (!Config.Hostile) HostileModule.init();*/
-		if (Config.AE && Config.debug) System.out.println("All modules enabled");
-		if (Config.AE && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");
+		if (!Config.Embers || !Loader.isModLoaded("embers"));
+		if (!Config.Roots || !Loader.isModLoaded("roots"));
+		if (!Config.Cosmetic);
+		if (!Config.Hostile);
+		if (!Config.Meme);
+		if (Config.AE && Config.debug && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");
 		
 	}
 	
