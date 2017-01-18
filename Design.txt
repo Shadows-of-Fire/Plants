@@ -6,15 +6,26 @@ Farmland Types - One per soil.
 
 Modules - Controlled by isLoaded()
 Types as follows:
+
+Addon Modules:
 -Applied Energistics
 -Blood Magic
 -Botania
--Cosmetic (Base Module, CFG but defaults on always)
 -Embers
 -Roots
 
+Base Modules
+-Cosmetic
+-Hostile
+-Meme (Disabled by default for obv reasons)
+
 Registry Heirarchy - For random af organizational purposes.
-All blocks are created in their respective packages. Base classes in the parent, but module classes in type.module
+All blocks are created in their respective packages. Base classes in the parent, but module classes in type.moduletype.module - ex: (blocks.addon.botania)
 Registration has to be handled through the respective module class, then through the item/block classes for handling.
 Then all is passed to the GlobalRegistry which falls into the Proxies.
 
+
+
+
+Plant Types - Listed as thought of randomly.
+Bushes that produce on right click, propertyBool true/false hasFruit, worldgen only.

@@ -21,7 +21,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.10.2-12.18.2.2151"
+    version = "1.10.2-12.18.3.2221"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -33,11 +33,21 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories {
+  maven {
+    url "http://tehnut.info/maven/"
+  }
+}
+
 dependencies {
 
     compile files('libs/')
-
+	deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.9.4-2.1.0-69"
+	deobfCompile "info.amerifrance.guideapi:Guide-API:1.9.4-2.0.0-37"
 }
+
+
+
 
 processResources
 {

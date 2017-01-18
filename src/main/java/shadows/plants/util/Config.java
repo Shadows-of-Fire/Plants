@@ -11,6 +11,7 @@ public class Config {
 	public static boolean Roots = true;
 	public static boolean Cosmetic = true;
 	public static boolean Hostile = true;
+	public static boolean Meme = false;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {

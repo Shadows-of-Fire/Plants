@@ -19,13 +19,13 @@ public class BlockRegistry {
 	public static List<Block> BLOCKS = new ArrayList<Block>();
 	
 	private static List<Block> composeBlocks(List<Block> list){
-		//if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
+		if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
-		//if (!BotaniaModule.getB().isEmpty()) list.addAll(BotaniaModule.getB());
-		if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
-		if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
-		if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
-		if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());
+		if (!BotaniaModule.getB().isEmpty()) list.addAll(BotaniaModule.getB());
+		//if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
+		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
+		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
+		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());
 		//if (!EmbersModule.getE().isEmpty()) list.addAll(EmbersModule.getE());
 		//if (!RootsModule.getR().isEmpty()) list.addAll(RootsModule.getR());
 		return list;
@@ -33,14 +33,14 @@ public class BlockRegistry {
 
 	public static void init(){
 		if (Config.debug) System.out.println("BlockRegistry loaded");
-		ModuleController.moduleLoader();
+		ModuleController.blockLoader();
 		composeBlocks(BLOCKS);
-		registerBlocks();
+		register();
 		registerModels();
 	}
 
 	
-	public static void registerBlocks(){
+	public static void register(){
 		for (Block block : BLOCKS){
 			Util.register(block);
 		}

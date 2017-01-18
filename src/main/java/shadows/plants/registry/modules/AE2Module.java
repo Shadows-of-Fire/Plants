@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import shadows.plants.block.ae2.AEFarmland;
-import shadows.plants.block.ae2.AESoil;
+import shadows.plants.block.addon.ae2.AEFarmland;
+import shadows.plants.block.addon.ae2.AESoil;
 
 public class AE2Module{
 

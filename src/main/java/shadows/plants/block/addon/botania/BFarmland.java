@@ -1,4 +1,4 @@
-package shadows.plants.block.botania;
+package shadows.plants.block.addon.botania;
 
 import net.minecraft.init.Blocks;
 import shadows.plants.block.FarmlandBase;

@@ -5,7 +5,7 @@ import shadows.plants.util.Config;
 
 public class ModuleController {
 
-	public static void moduleLoader(){
+	public static void blockLoader(){
 		if (!Config.AE || !Loader.isModLoaded("appliedenergistics2")) AE2Module.getAE().clear();
 		if (!Config.Botania || !Loader.isModLoaded("botania")) BotaniaModule.getB().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
@@ -14,6 +14,17 @@ public class ModuleController {
 		if (!Config.Hostile);
 		if (!Config.Meme);
 		if (Config.AE && Config.debug && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");
+		
+	}
+	
+	public static void itemLoader(){
+		//if (!Config.AE || !Loader.isModLoaded("appliedenergistics2")) AE2Module.getAE_I().clear();
+		if (!Config.Botania || !Loader.isModLoaded("botania")) BotaniaModule.getB_I().clear();
+		if (!Config.Embers || !Loader.isModLoaded("embers"));
+		if (!Config.Roots || !Loader.isModLoaded("roots"));
+		if (!Config.Cosmetic);
+		if (!Config.Hostile);
+		if (!Config.Meme);
 		
 	}
 	

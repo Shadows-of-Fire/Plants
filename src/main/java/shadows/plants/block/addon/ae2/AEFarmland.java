@@ -1,4 +1,4 @@
-package shadows.plants.block.ae2;
+package shadows.plants.block.addon.ae2;
 
 import net.minecraft.block.Block;
 import shadows.plants.block.FarmlandBase;

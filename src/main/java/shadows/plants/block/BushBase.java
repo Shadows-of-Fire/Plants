@@ -46,7 +46,7 @@ public class BushBase extends BlockBush{
     @Override
     public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, net.minecraftforge.common.IPlantable plantable)
     {
-    	return soil.contains(world.getBlockState(pos.down()).getBlock());
+    	return soil.contains(world.getBlockState(pos).getBlock());
     }
 
     @Override

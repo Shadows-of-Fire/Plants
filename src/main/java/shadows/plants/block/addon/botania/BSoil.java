@@ -1,4 +1,4 @@
-package shadows.plants.block.botania;
+package shadows.plants.block.addon.botania;
 
 import shadows.plants.block.SoilBase;
 import shadows.plants.common.EnumModule;
