@@ -7,8 +7,8 @@ import shadows.plants.util.Data;
 public class ModuleController {
 
 	public static void blockLoader(){
-		if (!Config.AE || !Loader.isModLoaded("appliedenergistics2")) AE2Module.getAE().clear();
-		if (!Config.Botania || !Loader.isModLoaded(Data.BOTANIA)) BotaniaModule.getB().clear();
+		if (!Config.AE) AE2Module.getAE().clear();
+		if (!Config.Botania) BotaniaModule.getB().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
 		if (!Config.Roots || !Loader.isModLoaded("roots"));
 		if (!Config.Cosmetic);

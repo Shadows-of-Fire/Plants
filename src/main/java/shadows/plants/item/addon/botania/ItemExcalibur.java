@@ -49,7 +49,6 @@ import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
-import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelSword;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
