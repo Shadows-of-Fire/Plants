@@ -67,7 +67,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public ItemExcalibur() {
 		super(toolMaterial);
 		setCreativeTab(Data.TAB);
-		setUnlocalizedName("excalibur");
+		setUnlocalizedName(Data.MODID + ".excalibur");
 		setRegistryName("excalibur");
 	}
 
