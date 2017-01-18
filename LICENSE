@@ -1,3 +1,18 @@
+All code of this mod is under the MIT license with exceptions.  Exceptions are noted in comments at the start of files.
+
+Exceptions and their licenses will be relisted here.
+
+Files marked with 
+
+ * This class was created by <Vazkii>. It's distributed as
+ * part of the Botania Mod. Get the Source Code in github:
+ * https://github.com/Vazkii/Botania
+ 
+ Are under the Botania License.
+
+All other code is under MIT License.  Art assets are under the licenses of the Authors.
+
+
 MIT License
 
 Copyright (c) 2017 Brennan Ward
@@ -19,3 +34,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+

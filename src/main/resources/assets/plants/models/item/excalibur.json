@@ -1,4 +1,5 @@
 {
+	"parent": "item/handheld",
 	"textures": { 
 		"layer0": "plants:items/excalibur"
 	}

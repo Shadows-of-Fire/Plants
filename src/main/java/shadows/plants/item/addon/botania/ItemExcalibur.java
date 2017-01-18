@@ -9,7 +9,6 @@
  * File Created @ [Mar 29, 2015, 10:12:50 PM (GMT)]
  */
 package shadows.plants.item.addon.botania;
-//Magic Theory 2 was here ~Shadows
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -37,6 +36,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.Optional;
 import shadows.plants.util.Data;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
@@ -49,9 +49,11 @@ import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
+import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelSword;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+
 
 public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingItem {
 
@@ -70,7 +72,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		setRegistryName("excalibur");
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		if(par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
@@ -85,11 +87,11 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		}
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)	
 	public boolean usesMana(ItemStack stack) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean hasEffect(ItemStack stack){
 		return true;
@@ -113,7 +115,8 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		}
 		return multimap;
 	}
-
+	
+	@Optional.Method(modid=Data.BOTANIA)	
 	public EntityManaBurst getBurst(EntityPlayer player, ItemStack stack) {
 		EntityManaBurst burst = new EntityManaBurst(player);
 
@@ -133,12 +136,17 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		return burst;
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)	
 	public void apply(ItemStack stack, BurstProperties props) {
 		// NO-OP
 	}
+	
+	@Override @Optional.Method(modid=Data.BOTANIA)
+	public boolean collideBurst(IManaBurst burst, RayTraceResult pos, boolean isManaBlock, boolean dead, ItemStack stack) {
+		return dead;
+	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public void updateBurst(IManaBurst burst, ItemStack stack) {
 		EntityThrowable entity = (EntityThrowable) burst;
 		AxisAlignedBB axis = new AxisAlignedBB(entity.posX, entity.posY, entity.posZ, entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).expand(1, 1, 1);
@@ -194,31 +202,26 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		}
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public boolean doParticles(IManaBurst burst, ItemStack stack) {
 		return true;
 	}
 
-	@Override
-	public boolean collideBurst(IManaBurst burst, RayTraceResult pos, boolean isManaBlock, boolean dead,
-			ItemStack stack) {
-		return dead;
-	}
 	
 	@Nonnull
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public String getUnlocalizedNameInefficiently(@Nonnull ItemStack par1ItemStack) {
 		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item.", "item." + LibResources.PREFIX_MOD);
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, @Nonnull EntityLivingBase par3EntityLivingBase) {
 		if(usesMana(par1ItemStack))
 			ToolCommons.damageItem(par1ItemStack, 1, par3EntityLivingBase, getManaPerDamage());
 		return true;
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public boolean onBlockDestroyed(@Nonnull ItemStack stack, @Nonnull World world, IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entity) {
 		if(usesMana(stack) && state.getBlockHardness(world, pos) != 0F)
 			ToolCommons.damageItem(stack, 1, entity, getManaPerDamage());
@@ -230,10 +233,8 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		return 60;
 	}
 
-	@Override
+	@Override @Optional.Method(modid=Data.BOTANIA)
 	public boolean getIsRepairable(ItemStack par1ItemStack, @Nonnull ItemStack par2ItemStack) {
 		return par2ItemStack.getItem() == ModItems.manaResource && par2ItemStack.getItemDamage() == 0 ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
-
-
 }
