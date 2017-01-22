@@ -45,15 +45,15 @@ public class BlockRegistry {
 	public static void register(){
 		for (Block block : BLOCKS){
 			Util.register(block);
-			if (Config.Cosmetic) CosmeticModule.registerMetaBlocks();
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void initModels(){
+		if (Config.Cosmetic) CosmeticModule.registerMetaModels();
 		for (Block block : BLOCKS){
 			Util.initModel(block);
-			if (Config.Cosmetic) CosmeticModule.registerMetaModels();
+		
 		}
 	}
 	
