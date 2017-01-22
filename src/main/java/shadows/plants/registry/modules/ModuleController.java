@@ -7,11 +7,11 @@ import shadows.plants.util.Data;
 public class ModuleController {
 
 	public static void blockLoader(){
-		if (!Config.AE) AE2Module.getAE().clear();
+		if (!Config.AE) AE2Module.getList().clear();
 		if (!Config.Botania) BotaniaModule.getB().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
 		if (!Config.Roots || !Loader.isModLoaded("roots"));
-		if (!Config.Cosmetic);
+		if (!Config.Cosmetic) CosmeticModule.getList().clear();
 		if (!Config.Hostile);
 		if (!Config.Meme);
 		if (Config.debug && Config.AE && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");

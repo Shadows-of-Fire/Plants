@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.registry.modules.AE2Module;
 import shadows.plants.registry.modules.BotaniaModule;
+import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Config;
 import shadows.plants.util.Data;
@@ -21,10 +22,10 @@ public class BlockRegistry {
 	public static List<Block> BLOCKS = new ArrayList<Block>();
 	
 	private static List<Block> composeBlocks(List<Block> list){
-		if (!AE2Module.getAE().isEmpty() && Loader.isModLoaded(Data.AE2)) list.addAll(AE2Module.getAE());
+		if (!AE2Module.getList().isEmpty() && Loader.isModLoaded(Data.AE2)) list.addAll(AE2Module.getList());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
 		if (!BotaniaModule.getB().isEmpty() && Loader.isModLoaded(Data.BOTANIA)) list.addAll(BotaniaModule.getB());
-		//if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
+		if (!CosmeticModule.getList().isEmpty()) list.addAll(CosmeticModule.getList());
 		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
 		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
 		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());

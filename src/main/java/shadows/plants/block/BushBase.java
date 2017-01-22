@@ -1,11 +1,16 @@
 package shadows.plants.block;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockDirt;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -15,9 +20,9 @@ import shadows.plants.util.Data;
 public class BushBase extends BlockBush{
 	
 		public EnumModule plantType;
-		public List<Block> soil;
+		public List<Block> soil = new ArrayList<Block>();
 		
-	public BushBase(EnumModule type, String name, List<Block> soilIn){
+	public BushBase(String name, EnumModule type, @Nullable List<Block> soilIn){
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
         setCreativeTab(Data.TAB);
@@ -25,7 +30,9 @@ public class BushBase extends BlockBush{
         setSoundType(SoundType.PLANT);
         disableStats();
         plantType = type;
-        soil = soilIn;
+        if (soilIn != null) soil.addAll(soilIn);
+        soil.add(Blocks.GRASS_PATH);
+        soil.add(Blocks.GRASS);
 	}
 	
 	public BushBase(EnumModule type, String name, Block soilIn){
@@ -46,13 +53,13 @@ public class BushBase extends BlockBush{
     @Override
     public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, net.minecraftforge.common.IPlantable plantable)
     {
-    	return soil.contains(world.getBlockState(pos).getBlock());
+    	return soil.contains(world.getBlockState(pos).getBlock()) || state.getBlock() instanceof BlockDirt;
     }
 
     @Override
     protected boolean canSustainBush(IBlockState state)
     {
-    	return soil.contains(state.getBlock());
+    	return soil.contains(state.getBlock()) || state.getBlock() instanceof BlockDirt;
     }
     
     

@@ -1,0 +1,14 @@
+public static BushBase allium_c = new BushBase("allium_c", EnumModule.COSMETIC, null);
+public static BushBase ambrosia_a = new BushBase("ambrosia_a", EnumModule.COSMETIC, null);
+public static BushBase ambrosia_t = new BushBase("ambrosia_t", EnumModule.COSMETIC, null);
+public static BushBase apocynum_c = new BushBase("apocynum_c", EnumModule.COSMETIC, null);
+public static BushBase barbarea_v = new BushBase("barbarea_v", EnumModule.COSMETIC, null);
+public static BushBase daucus_c = new BushBase("daucus_c", EnumModule.COSMETIC, null);
+public static BushBase excalibur = new BushBase("excalibur", EnumModule.COSMETIC, null);
+public static BushBase fabaceae = new BushBase("fabaceae", EnumModule.COSMETIC, null);
+public static BushBase rhanterium_e = new BushBase("rhanterium_e", EnumModule.COSMETIC, null);
+public static BushBase rubus_o = new BushBase("rubus_o", EnumModule.COSMETIC, null);
+public static BushBase rudbeckia_h = new BushBase("rudbeckia_h", EnumModule.COSMETIC, null);
+public static BushBase solanum_c = new BushBase("solanum_c", EnumModule.COSMETIC, null);
+public static BushBase solanum_d = new BushBase("solanum_d", EnumModule.COSMETIC, null);
+public static BushBase veratrum_v = new BushBase("veratrum_v", EnumModule.COSMETIC, null);
