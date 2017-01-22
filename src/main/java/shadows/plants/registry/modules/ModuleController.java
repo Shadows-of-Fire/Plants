@@ -14,7 +14,7 @@ public class ModuleController {
 		if (!Config.Cosmetic);
 		if (!Config.Hostile);
 		if (!Config.Meme);
-		if (Config.AE && Config.debug && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");
+		if (Config.debug && Config.AE && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");
 		
 	}
 	

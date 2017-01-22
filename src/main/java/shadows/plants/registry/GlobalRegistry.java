@@ -14,5 +14,10 @@ public class GlobalRegistry {
 		RecipeRegistry.init();
 	}
 	
+	public static void initModels(){
+		BlockRegistry.initModels();
+		ItemRegistry.initModels();
+	}
+	
 	
 }

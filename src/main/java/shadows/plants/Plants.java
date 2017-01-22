@@ -13,7 +13,7 @@ import shadows.plants.util.Data;
 
 public class Plants {
 
-    @SidedProxy(clientSide = "shadows.plants.proxy.CommonProxy", serverSide = "shadows.plants.proxy.CommonProxy")
+    @SidedProxy(clientSide = "shadows.plants.proxy.ClientProxy", serverSide = "shadows.plants.proxy.CommonProxy")
     public static CommonProxy proxy;
 	
     @Mod.Instance

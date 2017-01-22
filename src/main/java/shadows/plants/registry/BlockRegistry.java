@@ -38,7 +38,6 @@ public class BlockRegistry {
 		ModuleController.blockLoader();
 		composeBlocks(BLOCKS);
 		register();
-		registerModels();
 	}
 
 	
@@ -49,7 +48,7 @@ public class BlockRegistry {
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public static void registerModels(){
+	public static void initModels(){
 		for (Block block : BLOCKS){
 			Util.initModel(block);
 		}

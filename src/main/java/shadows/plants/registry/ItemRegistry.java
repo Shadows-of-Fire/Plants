@@ -36,7 +36,6 @@ public class ItemRegistry {
 		ModuleController.itemLoader();
 		composeItems(ITEMS);
 		register();
-		registerModels();
 	}
 	
 	public static void register(){
@@ -46,7 +45,7 @@ public class ItemRegistry {
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public static void registerModels(){
+	public static void initModels(){
 		for (Item item : ITEMS){
 			Util.initModel(item);
 		}
