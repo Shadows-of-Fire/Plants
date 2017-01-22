@@ -1,0 +1,91 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross"
+	},
+	"variants": {
+		"basicmeta": {
+			"0": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/rubus_p"
+				}
+			},
+			"1": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/saffron"
+				}
+			},
+			"2": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/solanum_n"
+				}
+			},
+			"3": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/trillium"
+				}
+			},
+			"4": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/veronica_a"
+				}
+			},
+			"5": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"6": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"7": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"8": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"9": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"10": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"11": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"12": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"13": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"14": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"15": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			}
+
+		}
+}
+}

@@ -52,7 +52,7 @@
 			},
 			"9": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/rudbecka_h"
+					"cross": "plants:blocks/cosmetic/rudbeckia_h"
 				}
 			},
 			"10": {
@@ -72,22 +72,20 @@
 			},
 			"13": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/allium_c"
+					"cross": "plants:blocks/cosmetic/achillea"
 				}
 			},
 			"14": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/allium_c"
+					"cross": "plants:blocks/cosmetic/alliaria_p"
 				}
 			},
 			"15": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/allium_c"
+					"cross": "plants:blocks/cosmetic/amphipappus"
 				}
 			}
 
-		},
-	"inventory": [{}]
-		
+		}
 }
 }

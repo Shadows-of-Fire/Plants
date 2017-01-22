@@ -38,7 +38,7 @@ public class Util {
 	@SideOnly(Side.CLIENT)
 	public static void initModel(Block block){
 		if (Config.debug) System.out.println("Registered Model " + block.toString());
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		if (!(block instanceof BlockMetaBush)) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -49,7 +49,7 @@ public class Util {
 	public static void register(Block block){
 		if (Config.debug) System.out.println("Registered " + block.toString());
 		GameRegistry.register(block);
-		GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+		if (!(block instanceof BlockMetaBush)) GameRegistry.register(new ItemBlock(block), block.getRegistryName());
 	}
 	
 	public static void register(Item item){

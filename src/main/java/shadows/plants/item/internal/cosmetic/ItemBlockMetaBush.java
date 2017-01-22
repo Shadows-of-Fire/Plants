@@ -10,6 +10,7 @@ public class ItemBlockMetaBush extends ItemBlock
     {
         super(block);
         setHasSubtypes(true);
+        setMaxDamage(0);
         setRegistryName(block.getRegistryName());
     }
 
