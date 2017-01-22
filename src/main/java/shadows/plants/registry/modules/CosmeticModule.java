@@ -5,9 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
-import shadows.plants.block.FlowerBase;
+import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
+import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
 
 public class CosmeticModule{
 
@@ -50,6 +56,18 @@ public class CosmeticModule{
 		COSMETIC.add(veratrum_v);
 		return COSMETIC;
 	}
+	
+	public static BlockMetaBush cosmetic_1 = new BlockMetaBush("cosmetic_1");
+	
+	public static void registerMetaBlocks(){
+		GameRegistry.register(cosmetic_1);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void registerMetaModels(){
+		for (int i = 0; i < 16; i++){
+		ModelLoader.setCustomModelResourceLocation(ItemBlockMetaBush.getItemFromBlock(cosmetic_1), i, new ModelResourceLocation(cosmetic_1.getRegistryName(), "inventory"));
+	}}
 	
 	
 	

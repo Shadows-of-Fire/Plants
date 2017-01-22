@@ -1,0 +1,93 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "blocks/cross"
+	},
+	"variants": {
+		"basicmeta": {
+			"0": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/allium_c"
+				}
+			},
+			"1": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/ambrosia_a"
+				}
+			},
+			"2": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/ambrosia_t"
+				}
+			},
+			"3": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/apocynum_c"
+				}
+			},
+			"4": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/barbarea_v"
+				}
+			},
+			"5": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/daucus_c"
+				}
+			},
+			"6": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/fabaceae"
+				}
+			},
+			"7": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/rhanterium_e"
+				}
+			},
+			"8": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/rubus_o"
+				}
+			},
+			"9": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/rudbecka_h"
+				}
+			},
+			"10": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/solanum_c"
+				}
+			},
+			"11": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/solanum_d"
+				}
+			},
+			"12": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/veratrum_v"
+				}
+			},
+			"13": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/allium_c"
+				}
+			},
+			"14": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/allium_c"
+				}
+			},
+			"15": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/allium_c"
+				}
+			}
+
+		},
+	"inventory": [{}]
+		
+}
+}

@@ -28,12 +28,13 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
 import shadows.plants.registry.modules.AE2Module;
 import shadows.plants.registry.modules.BotaniaModule;
 
 public class Util {
-
+	//normal methods
 	@SideOnly(Side.CLIENT)
 	public static void initModel(Block block){
 		if (Config.debug) System.out.println("Registered Model " + block.toString());

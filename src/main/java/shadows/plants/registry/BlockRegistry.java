@@ -45,6 +45,7 @@ public class BlockRegistry {
 	public static void register(){
 		for (Block block : BLOCKS){
 			Util.register(block);
+			if (Config.Cosmetic) CosmeticModule.registerMetaBlocks();
 		}
 	}
 	
@@ -52,6 +53,7 @@ public class BlockRegistry {
 	public static void initModels(){
 		for (Block block : BLOCKS){
 			Util.initModel(block);
+			if (Config.Cosmetic) CosmeticModule.registerMetaModels();
 		}
 	}
 	
