@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.registry.modules.BotaniaModule;
@@ -42,11 +43,13 @@ public class GlobalRegistry {
 				list.add(new ItemStack(CosmeticModule.cosmetic_3, 1, i));
 			}
 			for (int i = 0; i < 2; i++){
-				list.add(new ItemStack(CosmeticModule.cosmetic_4, 1, i));
 			}
+			if (Data.BOTANIA_ENABLED) addBot(list);
+		}};
+			
+			@Method(modid=Data.BOTANIA)
+			public static void addBot(List<ItemStack> list){
 				list.add(new ItemStack(BotaniaModule.excalibur));
-
-		}
-	};
+			}
 	
 }

@@ -8,7 +8,7 @@ public class ModuleController {
 
 	public static void blockLoader(){
 		if (!Config.AE) AE2Module.getList().clear();
-		if (!Config.Botania) BotaniaModule.getB().clear();
+		if (!Data.BOTANIA_ENABLED) BotaniaModule.getB().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
 		if (!Config.Roots || !Loader.isModLoaded("roots"));
 		if (!Config.Cosmetic) CosmeticModule.getList().clear();
