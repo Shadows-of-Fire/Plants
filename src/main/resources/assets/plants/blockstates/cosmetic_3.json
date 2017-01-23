@@ -32,57 +32,57 @@
 			},
 			"5": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/acalypha_r"
 				}
 			},
 			"6": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/argocoffeeopsis_l"
 				}
 			},
 			"7": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/aspalathus_v"
 				}
 			},
 			"8": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/brachystelma_s"
 				}
 			},
 			"9": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/cephalophyllum_p"
 				}
 			},
 			"10": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/crassula_s"
 				}
 			},
 			"11": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/disa_f"
 				}
 			},
 			"12": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/heliotropium_p"
 				}
 			},
 			"13": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/isolepis_b"
 				}
 			},
 			"14": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/nemesia_m"
 				}
 			},
 			"15": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/psoralea_c"
 				}
 			}
 

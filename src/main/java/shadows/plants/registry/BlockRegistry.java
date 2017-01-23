@@ -50,11 +50,10 @@ public class BlockRegistry {
 	
 	@SideOnly(Side.CLIENT)
 	public static void initModels(){
-		if (Config.Cosmetic) CosmeticModule.registerMetaModels();
 		for (Block block : BLOCKS){
 			Util.initModel(block);
-		
 		}
+		if (Config.Cosmetic) CosmeticModule.registerMetaModels();
 	}
 	
 	

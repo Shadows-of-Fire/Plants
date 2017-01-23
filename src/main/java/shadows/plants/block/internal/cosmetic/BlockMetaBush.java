@@ -38,11 +38,11 @@ public class BlockMetaBush extends BushBase{
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
+    public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list)
     {
         for (int i = 0; i < 16; ++i)
         {
-            list.add(new ItemStack(itemIn, 1, i));
+            list.add(new ItemStack(item, 1, i));
         }
     }
 	
@@ -66,6 +66,10 @@ public class BlockMetaBush extends BushBase{
     
     public int getMaxMeta(IBlockState state){
     	return 15;
+    }
+    
+    public static int getBlockNumber(BlockMetaBush block){
+    	return Integer.parseInt(block.getRegistryName().getResourcePath().substring(9));
     }
 	
 	

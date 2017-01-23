@@ -23,22 +23,24 @@ public class CosmeticModule{
 	public static BlockMetaBush cosmetic_1 = new BlockMetaBush("cosmetic_1");
 	public static BlockMetaBush cosmetic_2 = new BlockMetaBush("cosmetic_2");
 	public static BlockMetaBush cosmetic_3 = new BlockMetaBush("cosmetic_3");
-
+	public static BlockMetaBush cosmetic_4 = new BlockMetaBush("cosmetic_4");
+	
 	public static List<Block> getList(){
 		COSMETIC.clear();
-		COSMETIC.add(cosmetic_3);
-		COSMETIC.add(cosmetic_2);
 		COSMETIC.add(cosmetic_1);
+		COSMETIC.add(cosmetic_2);
+		COSMETIC.add(cosmetic_3);
+		COSMETIC.add(cosmetic_4);
 		return COSMETIC;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void registerMetaModels(){
+		for (Block block : getList()){
+			if (block instanceof BlockMetaBush){
 		for (int i = 0; i < 16; i++){
-		ModelLoader.setCustomModelResourceLocation(ItemBlockMetaBush.getItemFromBlock(cosmetic_1), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/1/" + "cosmetic" + "." + i), "inventory"));
-		ModelLoader.setCustomModelResourceLocation(ItemBlockMetaBush.getItemFromBlock(cosmetic_2), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/2/" + "cosmetic" + "." + i), "inventory"));
-		ModelLoader.setCustomModelResourceLocation(ItemBlockMetaBush.getItemFromBlock(cosmetic_3), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/3/" + "cosmetic" + "." + i), "inventory"));
-		}}
+		ModelLoader.setCustomModelResourceLocation(ItemBlockMetaBush.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + BlockMetaBush.getBlockNumber((BlockMetaBush) block) + "/" + "cosmetic" + "." + i), "inventory"));
+		}}}}
 	
 	
 	
