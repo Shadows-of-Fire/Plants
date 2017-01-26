@@ -12,6 +12,7 @@ public class Config {
 	public static boolean Cosmetic = true;
 	public static boolean Hostile = true;
 	public static boolean Meme = false;
+	public static boolean disableVanillaFlowers = true;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {

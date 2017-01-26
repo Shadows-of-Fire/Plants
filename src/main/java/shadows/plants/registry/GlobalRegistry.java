@@ -37,12 +37,13 @@ public class GlobalRegistry {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public void displayAllRelevantItems(List<ItemStack> list) {
-			for (int i = 0; i < 16; i++){
+			for (int i = 0; i <= 15; i++){
 				list.add(new ItemStack(CosmeticModule.cosmetic_1, 1, i));
 				list.add(new ItemStack(CosmeticModule.cosmetic_2, 1, i));
 				list.add(new ItemStack(CosmeticModule.cosmetic_3, 1, i));
 			}
-			for (int i = 0; i < 2; i++){
+			for (int i = 0; i <= 8; i++){
+				list.add(new ItemStack(CosmeticModule.cosmetic_4, 1, i));
 			}
 			if (Data.BOTANIA_ENABLED) addBot(list);
 		}};

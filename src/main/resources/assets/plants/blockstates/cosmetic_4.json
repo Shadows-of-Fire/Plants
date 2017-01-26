@@ -1,0 +1,91 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross"
+	},
+	"variants": {
+		"basicmeta": {
+			"0": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/astilbe_c"
+				}
+			},
+			"1": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/begonia_e"
+				}
+			},
+			"2": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/narthecium_a"
+				}
+			},
+			"3": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/pluchea_g"
+				}
+			},
+			"4": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/psoralea_m"
+				}
+			},
+			"5": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/streblorrhiza_s"
+				}
+			},
+			"6": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/sumatra_d"
+				}
+			},
+			"7": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/thismia_a"
+				}
+			},
+			"8": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/viola_c"
+				}
+			},
+			"9": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"10": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"11": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"12": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"13": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"14": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			},
+			"15": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/nullnull"
+				}
+			}
+
+		}
+}
+}

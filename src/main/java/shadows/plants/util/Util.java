@@ -21,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -117,6 +118,20 @@ public class Util {
     	
     	return false;
     	
+    }
+    
+    public static int getMaxMetadata(String name){
+    	int ij = 0;
+    	
+    	
+    	switch(name){
+    	case("cosmetic_1"): ij = 15; break;
+    	case("cosmetic_2"): ij = 15; break;
+    	case("cosmetic_3"): ij = 15; break;
+    	case("cosmetic_4"): ij = 8; break;
+    	}
+    	
+    	return ij;
     }
 	
 	

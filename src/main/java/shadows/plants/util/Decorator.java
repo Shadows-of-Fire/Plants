@@ -26,7 +26,6 @@ public final class Decorator {
 	@SuppressWarnings("deprecation")
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
-		if((event.getResult() == Result.ALLOW || event.getResult() == Result.DEFAULT) && event.getType() == EventType.FLOWERS) {
 			boolean genFlowers = false;
 			float temp = event.getWorld().getBiome(event.getPos()).getTemperature();
 			if(temp <= 1.5F && temp >= 0.2F)
@@ -38,11 +37,11 @@ public final class Decorator {
 			int xj = event.getRand().nextInt(Data.GENPLANTS().size());
 			Block flower = Data.GENPLANTS().get(xj);
 			int xk = 0;
-			if (flower instanceof BlockMetaBush) xk = event.getRand().nextInt(((BlockMetaBush) flower).getMaxMeta(flower.getDefaultState()));
+			if (flower instanceof BlockMetaBush) xk = event.getRand().nextInt(Util.getMaxMetadata(BlockMetaBush.getName((BlockMetaBush) flower)));
 			
-			int dist = Math.min(10, Math.max(1, 8 /*config flowerpatchsize*/));
-			for(int i = 0; i < 4/*config flowerQuantity*/; i++) {
-				if(event.getRand().nextInt(16 /*config patchchance */) == 0) {
+			int dist = 4 /*config flowerpatchsize*/;
+			for(int i = 0; i < 6/*config flowerQuantity*/; i++) {
+				if(event.getRand().nextInt(43 /*config patchchance */) == 0) {
 					int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
 					int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;
 					int y = event.getWorld().getTopSolidOrLiquidBlock(event.getPos()).getY();
@@ -53,7 +52,7 @@ public final class Decorator {
 						BlockPos pos2 = new BlockPos(x1, y1, z1);
 						if(event.getWorld().isAirBlock(pos2) && (!event.getWorld().provider.getHasNoSky() || y1 < 127) && flower.canPlaceBlockAt(event.getWorld(), pos2)) {
 							event.getWorld().setBlockState(pos2, flower.getStateFromMeta(xk), 2);
-					}
+					
 				}
 			 }
 		  }

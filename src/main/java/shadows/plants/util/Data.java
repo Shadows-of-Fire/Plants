@@ -13,7 +13,7 @@ public class Data {
 
     public static final String MODID = "plants";
     public static final String MODNAME = "Plants";
-    public static final String VERSION = "dev-0.01";
+    public static final String VERSION = "dev-0.02";
     public static final CreativeTabs TAB = GlobalRegistry.TAB;
     public static final String BOTANIA = "Botania";
     public static final String AE2 = "appliedenergistics2";
@@ -23,6 +23,7 @@ public class Data {
 		list.add(CosmeticModule.cosmetic_1);
 		list.add(CosmeticModule.cosmetic_2);
 		list.add(CosmeticModule.cosmetic_3);
+		list.add(CosmeticModule.cosmetic_4);
 		return list;
 	};
 	

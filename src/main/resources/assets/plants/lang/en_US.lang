@@ -16,6 +16,7 @@ tile.plants.cosmetic_1.12.name=Indian Hellebore
 tile.plants.cosmetic_1.13.name=Yarrow
 tile.plants.cosmetic_1.14.name=Garlic Mustard
 tile.plants.cosmetic_1.15.name=Eytelia
+
 tile.plants.cosmetic_2.0.name=Common Milkweed
 tile.plants.cosmetic_2.1.name=Orange Milkweed
 tile.plants.cosmetic_2.2.name=Cutleaf Toothwort
@@ -32,6 +33,7 @@ tile.plants.cosmetic_2.12.name=Pineapple
 tile.plants.cosmetic_2.13.name=Broadleaf Plantain
 tile.plants.cosmetic_2.14.name=Kudzu
 tile.plants.cosmetic_2.15.name=Creeping Yellowcress
+
 tile.plants.cosmetic_3.0.name=Japanese Wineberry
 tile.plants.cosmetic_3.1.name=Saffron
 tile.plants.cosmetic_3.2.name=Garden Nightshade
@@ -48,6 +50,23 @@ tile.plants.cosmetic_3.12.name=Saint Helena Heliotrope
 tile.plants.cosmetic_3.13.name=Isolepis Bulbifera
 tile.plants.cosmetic_3.14.name=Nemesia Micrantha
 tile.plants.cosmetic_3.15.name=Psoralea Cataracta
+
+tile.plants.cosmetic_4.0.name=Astilbe Crenatiloba
+tile.plants.cosmetic_4.1.name=Begonia Eiromischa
+tile.plants.cosmetic_4.2.name=Narthecium Americanum
+tile.plants.cosmetic_4.3.name=Pluchea Glutinosa
+tile.plants.cosmetic_4.4.name=Psoralea Macrophylla
+tile.plants.cosmetic_4.5.name=Streblorrhiza Speciosa
+tile.plants.cosmetic_4.6.name=Sumatra Dipterocarpus
+tile.plants.cosmetic_4.7.name=Thismia Americana
+tile.plants.cosmetic_4.8.name=Viola Cryana
+tile.plants.cosmetic_4.9.name=Null_Null
+tile.plants.cosmetic_4.10.name=Null_Null
+tile.plants.cosmetic_4.11.name=Null_Null
+tile.plants.cosmetic_4.12.name=Null_Null
+tile.plants.cosmetic_4.13.name=Null_Null
+tile.plants.cosmetic_4.14.name=Null_Null
+tile.plants.cosmetic_4.15.name=Null_Null
 
 item.botania:plants.excalibur.name=Holy Sword Excalibur
 

@@ -1,5 +1,5 @@
 package shadows.plants.block;
 
-public class MetaBlock {
+public class DoubleBushBase {
 
 }
