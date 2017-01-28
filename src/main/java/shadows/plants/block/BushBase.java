@@ -14,6 +14,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.common.EnumModule;
 import shadows.plants.util.Data;
 
@@ -46,7 +48,7 @@ public class BushBase extends BlockBush{
         soil.add(soilIn);
 	}
 	
-    public static EnumModule getType(BushBase block){
+    public EnumModule getType(BushBase block){
     	return block.plantType;
     }
     
@@ -62,6 +64,11 @@ public class BushBase extends BlockBush{
     	return soil.contains(state.getBlock()) || state.getBlock() instanceof BlockDirt;
     }
     
+    @SideOnly(Side.CLIENT) @Override
+    public Block.EnumOffsetType getOffsetType()
+    {
+        return Block.EnumOffsetType.XZ;
+    }
     
     
 }
