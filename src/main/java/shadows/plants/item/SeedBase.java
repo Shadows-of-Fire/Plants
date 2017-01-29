@@ -15,7 +15,7 @@ public class SeedBase extends ItemSeeds implements IModularThing{
 			super(crop, Blocks.FARMLAND);
 			setUnlocalizedName(Data.MODID + "." + name);
 			setRegistryName(name);
-			setCreativeTab(Data.TAB);
+			setCreativeTab(Data.TAB_I);
 			module = module_;
 		}
 		

@@ -16,6 +16,7 @@ public class Data {
     public static final String MODNAME = "Plants";
     public static final String VERSION = "dev-0.02";
     public static final CreativeTabs TAB = GlobalRegistry.TAB;
+    public static final CreativeTabs TAB_I = GlobalRegistry.TAB_I;
     public static final String BOTANIA = "Botania";
     public static final String AE2 = "appliedenergistics2";
     public static final boolean BOTANIA_ENABLED = (Loader.isModLoaded(BOTANIA) && Config.Botania);

@@ -84,7 +84,7 @@ public class CosmeticModule{
 		list.add(cosmetic_1);
 		list.add(cosmetic_2);
 		list.add(cosmetic_3);
-		//list.add(cosmetic_4);
+		list.add(cosmetic_4);
 		list.add(cosmetic_5);
 		list.add(pineapple_crop);
 		list.add(okra_crop);

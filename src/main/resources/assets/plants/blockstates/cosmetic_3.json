@@ -72,17 +72,17 @@
 			},
 			"13": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/abeliophyllum_d"
 				}
 			},
 			"14": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/abroma_a"
 				}
 			},
 			"15": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/abutilon_i"
 				}
 			}
 

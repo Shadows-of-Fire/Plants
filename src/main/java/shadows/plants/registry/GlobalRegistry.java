@@ -41,22 +41,28 @@ public class GlobalRegistry {
 		@SideOnly(Side.CLIENT)
 		public void displayAllRelevantItems(List<ItemStack> list) {
 			if(Data.COSMETIC_ENABLED){
-			for(Item item : CosmeticModule.getItemList()){ list.add(new ItemStack(item)); }
 			for(Block block : CosmeticModule.getBlockList()) {
 				int i = Util.getMaxMetadata(block.getRegistryName().getResourcePath());
 				for (int k = 0; k <= i; k++){
 					list.add(new ItemStack(block,1, k));
-				}
-				
-				}
-			}
-			
-			if (Data.BOTANIA_ENABLED) addBot(list);
-		}};
+				}}}}};
+		
+		public static final CreativeTabs TAB_I = new CreativeTabs(Data.MODID + (".items")) {
+		    @Override public Item getTabIconItem() {
+		        return  CosmeticModule.pineapple;
+		    }
+		    
+			@Override
+			@SideOnly(Side.CLIENT)
+			public void displayAllRelevantItems(List<ItemStack> list) {
+				if(Data.COSMETIC_ENABLED){
+				for(Item item : CosmeticModule.getItemList()){ list.add(new ItemStack(item)); }}
+				if (Data.BOTANIA_ENABLED) addBot(list);}};
 			
 			@Method(modid=Data.BOTANIA)
 			public static void addBot(List<ItemStack> list){
 				list.add(new ItemStack(BotaniaModule.excalibur));
 			}
+
 	
 }

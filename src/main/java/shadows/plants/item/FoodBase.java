@@ -19,7 +19,7 @@ public class FoodBase extends ItemFood implements IModularThing{
 		super(amount, saturation, false);
 		setUnlocalizedName(Data.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(Data.TAB);
+		setCreativeTab(Data.TAB_I);
 		module = module_;
 		isPoisoned = poison;
 	}

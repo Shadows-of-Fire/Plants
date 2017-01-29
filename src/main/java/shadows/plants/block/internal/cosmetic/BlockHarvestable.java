@@ -50,6 +50,7 @@ public class BlockHarvestable extends BushBase{
 			if(state.getValue(FRUIT)){
 				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));
 				world.setBlockState(pos, this.getDefaultState());
+				return true;
 			}
 		}
 		return false;
