@@ -54,7 +54,7 @@ public class PlantBase extends BlockBush implements IGrowable, IModularThing{
 	
 		@Override
 		 public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
-			if(player.getHeldItemMainhand() == Data.EMPTYSTACK) {if (getAge(world.getBlockState(pos)) == 7){ world.setBlockState(pos, world.getBlockState(pos).withProperty(AGE, 0)); Block.spawnAsEntity(world, pos, new ItemStack(getCrop())); Block.spawnAsEntity(world, pos, new ItemStack(getSeed())); return true;}}
+			if(player.getHeldItemMainhand() == Data.EMPTYSTACK) {if (getAge(world.getBlockState(pos)) == 7){ world.setBlockState(pos, world.getBlockState(pos).withProperty(AGE, 0)); Block.spawnAsEntity(world, pos, new ItemStack(getCrop())); if(world.rand.nextBoolean()){Block.spawnAsEntity(world, pos, new ItemStack(getSeed()));} return true;}}
 			return false;
 		}
 
