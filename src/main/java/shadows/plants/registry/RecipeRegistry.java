@@ -1,17 +1,15 @@
 package shadows.plants.registry;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
+import shadows.plants.registry.modules.CosmeticModule;
+import shadows.plants.util.Util;
 
 public class RecipeRegistry {
 
 	
 	public static void init(){
-	
+		Util.addSimpleShapeless(Items.STRING, 2, 0, CosmeticModule.apocynum_c_cloth, 0, CosmeticModule.apocynum_c_cloth, CosmeticModule.apocynum_c_cloth);
+		//Util.addSimpleShapeless(result, resultmeta, reagent);
 	}
 }
 

@@ -1,8 +1,11 @@
 package shadows.plants.util;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -139,7 +142,7 @@ public class Util {
     	return ij;
     }
 	
-    public static int getBlockNumber(BushBase block){
+    private static int getBlockNumber(BushBase block){
     	
     	if (block.getType() == EnumModule.COSMETIC) return Integer.parseInt(block.getRegistryName().getResourcePath().substring(9));
     	else return 0;
@@ -155,6 +158,35 @@ public class Util {
 		for (int i = 0; i < 8; i++){
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));
 		}}}
+	
+		public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Item reagent, int reagentmeta, Item reagent2, Item reagent3){
+			GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta), new ItemStack(reagent, 1, reagentmeta), new ItemStack(reagent2, 1, reagentmeta), new ItemStack(reagent3, 1, reagentmeta));
+	}
+		public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Item reagent, int reagentmeta){
+			GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta), new ItemStack(reagent, 1, reagentmeta));
+	}
+		public static void addSimpleShapeless(Item result, int resultmeta, Item reagent, int reagentmeta){
+			addSimpleShapeless(result, 1, resultmeta, reagent, reagentmeta);
+	}
+		public static void addSimpleShapeless(Item result, Item reagent, int reagentmeta){
+			addSimpleShapeless(result, 1, 0, reagent, reagentmeta);
+	}
+		public static void addSimpleShapeless(Item result, int resultmeta, Item reagent){
+			addSimpleShapeless(result, 1, resultmeta, reagent, 0);
+	}
+		public static void addSimpleShapeless(Item result, int resultmeta, Block reagent){
+			addSimpleShapeless(result, 1, resultmeta, Item.getItemFromBlock(reagent), 0);
+	}
+		public static void addSimpleShapeless(Item result, int resultmeta, Block reagent, int reagentmeta){
+			addSimpleShapeless(result, 1, resultmeta, Item.getItemFromBlock(reagent), reagentmeta);
+	}
+		public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Block reagent, int reagentmeta){
+			GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta), new ItemStack(reagent, 1, reagentmeta));
+	}
+		public static void addSimpleShapeless(Item result, Item reagent){
+			addSimpleShapeless(result, 1, 0, reagent, 0);
+	}
+	
 	
 	
 }

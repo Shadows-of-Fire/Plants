@@ -13,6 +13,7 @@ import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
 import shadows.plants.item.FoodBase;
 import shadows.plants.item.SeedBase;
+import shadows.plants.item.UselessItemBase;
 
 public class CosmeticModule{
 
@@ -20,33 +21,36 @@ public class CosmeticModule{
 	 * The control module for the Cosmetic Module of Plants.
 	 * This will handle all registration which is then passed to the respective registry classes.
 	 */
+	private static EnumModule module = EnumModule.COSMETIC;
+	
 	public static BlockMetaBush cosmetic_1 = new BlockMetaBush("cosmetic_1");
 	public static BlockMetaBush cosmetic_2 = new BlockMetaBush("cosmetic_2");
 	public static BlockMetaBush cosmetic_3 = new BlockMetaBush("cosmetic_3");
 	public static BlockMetaBush cosmetic_4 = new BlockMetaBush("cosmetic_4");
 	public static BlockDoubleMetaBush cosmetic_5 = new BlockDoubleMetaBush("cosmetic_5", null);
 	
-	public static FoodBase okra = new FoodBase("okra", EnumModule.COSMETIC, 3, 1.3f, false);
+	public static FoodBase okra = new FoodBase("okra", module, 3, 1.3f, false);
 	public static BlockCrop okra_crop = new BlockCrop("okra_crop", okra, 0);
-	public static SeedBase okra_seed = new SeedBase("okra_seed", okra_crop, EnumModule.COSMETIC);
+	public static SeedBase okra_seed = new SeedBase("okra_seed", okra_crop, module);
 	
-	public static FoodBase pineapple = new FoodBase("pineapple", EnumModule.COSMETIC, 6, 1.6f, false);
+	public static FoodBase pineapple = new FoodBase("pineapple", module, 6, 1.6f, false);
 	public static BlockCrop pineapple_crop = new BlockCrop("pineapple_crop", pineapple, 1);
-	public static SeedBase pineapple_seed = new SeedBase("pineapple_seed", pineapple_crop, EnumModule.COSMETIC);
+	public static SeedBase pineapple_seed = new SeedBase("pineapple_seed", pineapple_crop, module);
 	
-	public static FoodBase ambrosia_a = new FoodBase("ambrosia_a", EnumModule.COSMETIC, 3, 0.5f, true);
-	public static FoodBase apocynum_c = new FoodBase("apocynum_c", EnumModule.COSMETIC, 1, 1.0f, false);
-	public static FoodBase daucus_c = new FoodBase("daucus_c", EnumModule.COSMETIC, 4, 1.1f, false);
-	public static FoodBase phytolacca_a = new FoodBase("phytolacca_a", EnumModule.COSMETIC, 5, 1.0f, true);
-	public static FoodBase plantago_m = new FoodBase("plantago_m", EnumModule.COSMETIC, 3, 0.4f, false);
-	public static FoodBase rubus_o = new FoodBase("rubus_o", EnumModule.COSMETIC, 6, 0.5f, false);
-	public static FoodBase saffron = new FoodBase("saffron", EnumModule.COSMETIC, 1, 0.2f, false);
-	public static FoodBase solanum_c = new FoodBase("solanum_c", EnumModule.COSMETIC, 2, 0.5f, true);
-	public static FoodBase solanum_d = new FoodBase("solanum_d", EnumModule.COSMETIC, 3, 0.6f, true);
-	public static FoodBase solanum_n = new FoodBase("solanum_n", EnumModule.COSMETIC, 5, 1.1f, true);
+	public static FoodBase ambrosia_a = new FoodBase("ambrosia_a", module, 3, 0.5f, true);
+	public static FoodBase apocynum_c = new FoodBase("apocynum_c", module, 1, 1.0f, false);
+	public static FoodBase daucus_c = new FoodBase("daucus_c", module, 4, 1.1f, false);
+	public static FoodBase phytolacca_a = new FoodBase("phytolacca_a", module, 5, 1.0f, true);
+	public static FoodBase plantago_m = new FoodBase("plantago_m", module, 3, 0.4f, false);
+	public static FoodBase rubus_o = new FoodBase("rubus_o", module, 6, 0.5f, false);
+	public static FoodBase saffron = new FoodBase("saffron", module, 1, 0.2f, false);
+	public static FoodBase solanum_c = new FoodBase("solanum_c", module, 2, 0.5f, true);
+	public static FoodBase solanum_d = new FoodBase("solanum_d", module, 3, 0.6f, true);
+	public static FoodBase solanum_n = new FoodBase("solanum_n", module, 5, 1.1f, true);
+	public static UselessItemBase apocynum_c_cloth = new UselessItemBase("apocynum_c_cloth", module);
 	
 	public static BlockHarvestable ambrosia_a_crop = new BlockHarvestable("ambrosia_a_crop", ambrosia_a);
-	public static BlockHarvestable apocynum_c_crop = new BlockHarvestable("apocynum_c_crop", apocynum_c);
+	public static BlockHarvestable apocynum_c_crop = new BlockHarvestable("apocynum_c_crop", apocynum_c, apocynum_c_cloth);
 	public static BlockHarvestable daucus_c_crop = new BlockHarvestable("daucus_c_crop", daucus_c);
 	public static BlockHarvestable phytolacca_a_crop = new BlockHarvestable("phytolacca_a_crop", phytolacca_a);
 	public static BlockHarvestable plantago_m_crop = new BlockHarvestable("plantago_m_crop", plantago_m);
@@ -74,6 +78,7 @@ public class CosmeticModule{
 		list.add(solanum_c);
 		list.add(solanum_d);
 		list.add(solanum_n);
+		list.add(apocynum_c_cloth);
 		return list;
 	}
 	

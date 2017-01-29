@@ -88,6 +88,8 @@ tile.plants.saffron_crop.name=Saffron
 tile.plants.solanum_c_crop.name=Carolina Horsenettle
 tile.plants.solanum_d_crop.name=Climbing Nightshade
 tile.plants.solanum_n_crop.name=Black Nightshade
+tile.plants.pineapple_crop.name=Pineapple
+tile.plants.okra_crop.name=Okra
 
 item.botania:plants.excalibur.name=Holy Sword Excalibur
 

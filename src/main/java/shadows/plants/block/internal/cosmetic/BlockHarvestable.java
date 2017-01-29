@@ -21,13 +21,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
-import shadows.plants.item.FoodBase;
 import shadows.plants.util.Data;
 
 public class BlockHarvestable extends BushBase{
 	
 	public static final PropertyBool FRUIT = PropertyBool.create("fruit");
 	private Item cropItem;
+	private Item cropItem2 = null;
 	private int meta;
 	
 	public BlockHarvestable(String name, ItemStack crop){
@@ -44,11 +44,19 @@ public class BlockHarvestable extends BushBase{
 		meta = 0;
 	}
 
+	public BlockHarvestable(String name, Item crop, Item crop2) {
+		this(name, new ItemStack(crop));
+		cropItem = crop;
+		cropItem2 = crop2;
+		meta = 0;
+	}
+
 	@Override
 	 public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
 		if(player.getHeldItemMainhand() == Data.EMPTYSTACK){
 			if(state.getValue(FRUIT)){
 				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));
+				if(cropItem2 != null) Block.spawnAsEntity(world, pos, new ItemStack(cropItem2, 1, meta));
 				world.setBlockState(pos, this.getDefaultState());
 				return true;
 			}
