@@ -43,7 +43,7 @@ public class GlobalRegistry {
 				list.add(new ItemStack(CosmeticModule.cosmetic_2, 1, i));
 				list.add(new ItemStack(CosmeticModule.cosmetic_3, 1, i)); }
 			for(int i = 0; i <= 8; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_4, 1, i)); }
-			for(int i = 0; i <= 1; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_5, 1, i)); }
+			for(int i = 0; i <= 2; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_5, 1, i)); }
 			for(Item item : CosmeticModule.getItemList()){ list.add(new ItemStack(item)); }
 			}
 			if (Data.BOTANIA_ENABLED) addBot(list);

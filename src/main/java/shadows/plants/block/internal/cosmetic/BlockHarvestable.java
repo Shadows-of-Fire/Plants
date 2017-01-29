@@ -1,5 +1,7 @@
 package shadows.plants.block.internal.cosmetic;
 
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -25,6 +27,7 @@ public class BlockHarvestable extends BushBase{
 	public BlockHarvestable(String name, ItemStack crop){
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(FRUIT, false));
+		setTickRandomly(true);
 		crops = crop;
 	}
 	
@@ -59,7 +62,23 @@ public class BlockHarvestable extends BushBase{
 	        return new BlockStateContainer(this, new IProperty[] {FRUIT});
 	    }
 	
-	
+	    @Override
+	    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand){
+	        super.updateTick(world, pos, state, rand);
+
+	        if (world.getLightFromNeighbors(pos.up()) > 5)
+	        {
+	            if (!state.getValue(FRUIT))
+	            {
+
+	                if(net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt((15)) <= 2))
+	                {
+	                    world.setBlockState(pos, state.withProperty(FRUIT, true), 2);
+	                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
+	                }
+	            }
+	        }
+	    }
 	
 	
 }
