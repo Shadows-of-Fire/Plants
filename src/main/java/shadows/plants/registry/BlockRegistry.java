@@ -24,8 +24,8 @@ public class BlockRegistry {
 	private static List<Block> composeBlocks(List<Block> list){
 		if (!AE2Module.getList().isEmpty() && Loader.isModLoaded(Data.AE2)) list.addAll(AE2Module.getList());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
-		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getB());
-		if (!CosmeticModule.getList().isEmpty()) list.addAll(CosmeticModule.getList());
+		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getBlockList());
+		if (!CosmeticModule.getBlockList().isEmpty()) list.addAll(CosmeticModule.getBlockList());
 		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
 		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
 		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());

@@ -12,6 +12,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
+import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.util.Util;
@@ -28,8 +29,14 @@ public class CosmeticModule{
 	public static BlockMetaBush cosmetic_3 = new BlockMetaBush("cosmetic_3");
 	public static BlockMetaBush cosmetic_4 = new BlockMetaBush("cosmetic_4");
 	public static BlockDoubleMetaBush cosmetic_5 = new BlockDoubleMetaBush("cosmetic_5", null);
+	public static BlockCrop crop_okra = new BlockCrop("crop_okra", null, null);
 	
-	public static List<Block> getList(){
+	public static List<Item> getItemList(){
+		
+	}
+	
+	
+	public static List<Block> getBlockList(){
 		COSMETIC.clear();
 		COSMETIC.add(cosmetic_1);
 		COSMETIC.add(cosmetic_2);
@@ -41,7 +48,7 @@ public class CosmeticModule{
 	
 	@SideOnly(Side.CLIENT)
 	public static void registerMetaModels(){
-		for (Block block : getList()){
+		for (Block block : getBlockList()){
 		if (block instanceof BlockMetaBush){
 		for (int i = 0; i < 16; i++){
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));

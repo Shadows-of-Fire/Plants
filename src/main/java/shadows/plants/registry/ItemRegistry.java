@@ -21,7 +21,7 @@ public class ItemRegistry {
 	private static List<Item> composeItems(List<Item> list){
 		//if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
-		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getB_I());
+		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getItemList());
 		//if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
 		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
 		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());

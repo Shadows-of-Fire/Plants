@@ -23,8 +23,8 @@ public class AE2Module{
 	
 	public static List<Block> getList(){
 		AE.clear();
-		AE.add(ae_soil);
-		AE.add(ae_farmland);
+		//AE.add(ae_soil);
+		//AE.add(ae_farmland);
 		return AE;
 	}
 	

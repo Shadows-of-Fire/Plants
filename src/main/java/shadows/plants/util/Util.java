@@ -64,7 +64,7 @@ public class Util {
 	public static Block getFarmlandFromModule(EnumModule module){
 		switch(module){
 		case APPLIED : return AE2Module.ae_farmland;
-		case BOTANICAL : return BotaniaModule.b_farmland;
+		case BOTANICAL : 
 		case HOSTILE : 
 		case COSMETIC :
 		case MEME : return Blocks.FARMLAND;
