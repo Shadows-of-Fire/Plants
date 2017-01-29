@@ -20,10 +20,10 @@ public class ModuleController {
 	
 	public static void itemLoader(){
 		//if (!Config.AE || !Loader.isModLoaded("appliedenergistics2")) AE2Module.getAE_I().clear();
-		if (!Config.Botania || !Loader.isModLoaded("botania")) BotaniaModule.getItemList().clear();
+		if (Data.BOTANIA_ENABLED) BotaniaModule.getItemList().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
 		if (!Config.Roots || !Loader.isModLoaded("roots"));
-		if (!Config.Cosmetic);
+		if (!Config.Cosmetic) CosmeticModule.getItemList().clear();
 		if (!Config.Hostile);
 		if (!Config.Meme);
 		

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.registry.modules.BotaniaModule;
+import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Config;
 import shadows.plants.util.Data;
@@ -22,7 +22,7 @@ public class ItemRegistry {
 		//if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
 		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getItemList());
-		//if (!CosmeticModule.getC().isEmpty()) list.addAll(CosmeticModule.getC());
+		if (!CosmeticModule.getItemList().isEmpty()) list.addAll(CosmeticModule.getItemList());
 		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
 		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
 		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());
@@ -32,7 +32,7 @@ public class ItemRegistry {
 	}
 
 	public static void init(){
-		if (Config.debug) System.out.println("BlockRegistry loaded");
+		if (Config.debug) System.out.println("ItemRegistry loaded");
 		ModuleController.itemLoader();
 		composeItems(ITEMS);
 		register();
