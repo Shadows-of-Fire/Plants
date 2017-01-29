@@ -50,8 +50,10 @@ public class ItemBlockDoubleMetaBush extends ItemBlock
         if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack) && world.canBlockBePlaced(this.block, pos, false, facing, (Entity)null, stack))
         {
             BlockDoubleMetaBush block2 = (BlockDoubleMetaBush) Block.getBlockFromItem(stack.getItem());
-            IBlockState state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false).withProperty(BlockDoubleMetaBush.META, stack.getMetadata());
-
+            IBlockState state2 = null;
+            if(stack.getMetadata() < 8) state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false).withProperty(BlockDoubleMetaBush.META, stack.getMetadata());
+            else if(stack.getMetadata() >= 8) state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false).withProperty(BlockDoubleMetaBush.META, (stack.getMetadata() / 2));
+            
             if (placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, state2))
             {
             	SoundType soundtype = SoundType.PLANT;

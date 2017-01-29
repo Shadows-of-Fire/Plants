@@ -14,7 +14,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
-import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
 import shadows.plants.util.Util;
 
 public class CosmeticModule{

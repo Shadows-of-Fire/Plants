@@ -117,7 +117,7 @@ public class BlockDoubleMetaBush extends BushBase
     @Override
     public int damageDropped(IBlockState state)
     {
-    	return getActualMeta(getMetaFromState(state));
+    	return state.getValue(META);
     }
 
     public void placeAt(World world, BlockPos lowerPos, int meta, int flags)
