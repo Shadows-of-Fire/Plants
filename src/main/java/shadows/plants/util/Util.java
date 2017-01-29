@@ -31,7 +31,6 @@ import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
 import shadows.plants.registry.modules.AE2Module;
-import shadows.plants.registry.modules.BotaniaModule;
 
 public class Util {
 

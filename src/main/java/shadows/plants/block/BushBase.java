@@ -18,10 +18,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.common.EnumModule;
 import shadows.plants.util.Data;
+import shadows.plants.util.IModularThing;
 
-public class BushBase extends BlockBush{
+public class BushBase extends BlockBush implements IModularThing{
 	
-		public EnumModule plantType;
+		private EnumModule module;
 		public List<Block> soil = new ArrayList<Block>();
 		
 	public BushBase(String name, EnumModule type, @Nullable List<Block> soilIn){
@@ -31,7 +32,7 @@ public class BushBase extends BlockBush{
         setHardness(0.0F);
         setSoundType(SoundType.PLANT);
         disableStats();
-        plantType = type;
+        module = type;
         if (soilIn != null) soil.addAll(soilIn);
         soil.add(Blocks.GRASS_PATH);
         soil.add(Blocks.GRASS);
@@ -44,12 +45,13 @@ public class BushBase extends BlockBush{
         setHardness(0.0F);
         setSoundType(SoundType.PLANT);
         disableStats();
-        plantType = type;
+        module = type;
         soil.add(soilIn);
 	}
 	
-    public EnumModule getType(BushBase block){
-    	return block.plantType;
+	@Override
+    public EnumModule getType(){
+    	return module;
     }
     
     @Override

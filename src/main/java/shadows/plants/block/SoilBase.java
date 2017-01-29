@@ -5,10 +5,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import shadows.plants.common.EnumModule;
 import shadows.plants.util.Data;
+import shadows.plants.util.IModularThing;
 
-public class SoilBase extends Block{
+public class SoilBase extends Block implements IModularThing{
 
-	public EnumModule soilType;
+	private EnumModule type;
 	
 	public SoilBase(String name, EnumModule module) {
 		super(Material.GROUND);
@@ -16,11 +17,12 @@ public class SoilBase extends Block{
 		setUnlocalizedName(Data.MODID + "." + name);
 		setCreativeTab(Data.TAB);
 		setSoundType(SoundType.GROUND);
-		soilType = module;
+		type = module;
 	}
-	
-	public static EnumModule getType(SoilBase block){
-		return block.soilType;
+
+	@Override
+	public EnumModule getType() {
+		return type;
 	}
 
 }

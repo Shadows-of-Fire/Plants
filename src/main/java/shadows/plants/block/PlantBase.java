@@ -20,13 +20,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.plants.common.EnumModule;
 import shadows.plants.util.Data;
+import shadows.plants.util.IModularThing;
 import shadows.plants.util.Util;
 
-public class PlantBase extends BlockBush implements IGrowable{
+public class PlantBase extends BlockBush implements IGrowable, IModularThing{
 	
     public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
     private static final AxisAlignedBB[] CROPS_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
-    private EnumModule plantType;
+    private EnumModule module;
     
     
 	protected PlantBase(EnumModule type, String name){
@@ -39,7 +40,7 @@ public class PlantBase extends BlockBush implements IGrowable{
         setHardness(0.0F);
         setSoundType(SoundType.PLANT);
         disableStats();
-        plantType = type;
+        module = type;
 	}
 	
 	@Override
@@ -56,13 +57,9 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    protected boolean canSustainBush(IBlockState state)
 	    {
 
-	        return state.getBlock() == Util.getFarmlandFromModule(plantType);
+	        return state.getBlock() == Util.getFarmlandFromModule(module);
 	    }
 
-	    public static EnumModule getType(PlantBase block){
-	    	return block.plantType;
-	    }
-	    
 	    protected PropertyInteger getAgeProperty()
 	    {
 	        return AGE;
@@ -215,6 +212,11 @@ public class PlantBase extends BlockBush implements IGrowable{
 	    {
 	        return new BlockStateContainer(this, new IProperty[] {AGE});
 	    }
+
+		@Override
+		public EnumModule getType() {
+			return module;
+		}
 	
 	
 	

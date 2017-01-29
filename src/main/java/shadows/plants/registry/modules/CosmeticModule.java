@@ -23,7 +23,8 @@ public class CosmeticModule{
 	 * The control module for the Cosmetic Module of Plants.
 	 * This will handle all registration which is then passed to the respective registry classes.
 	 */
-	public static List<Block> COSMETIC = new ArrayList<Block>();
+	private static List<Block> COSMETIC = new ArrayList<Block>();
+	private static List<Item> COSMETIC_I = new ArrayList<Item>();
 	public static BlockMetaBush cosmetic_1 = new BlockMetaBush("cosmetic_1");
 	public static BlockMetaBush cosmetic_2 = new BlockMetaBush("cosmetic_2");
 	public static BlockMetaBush cosmetic_3 = new BlockMetaBush("cosmetic_3");
@@ -33,6 +34,8 @@ public class CosmeticModule{
 	
 	public static List<Item> getItemList(){
 		
+		
+		return COSMETIC_I;
 	}
 	
 	

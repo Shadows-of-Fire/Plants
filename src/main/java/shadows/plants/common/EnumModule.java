@@ -9,7 +9,5 @@ public enum EnumModule {
 	BLOOD,
 	HOSTILE,
 	MEME
-	
-
-    
+   
 }

@@ -13,12 +13,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import shadows.plants.common.EnumModule;
 import shadows.plants.util.Data;
+import shadows.plants.util.IModularThing;
 
-public class FarmlandBase extends BlockFarmland{
+public class FarmlandBase extends BlockFarmland implements IModularThing{
 		public Block soilWater;
 		public Block soil;
+		private EnumModule module;
 		
-		public FarmlandBase(Block fluid, String name, Block soilIn, EnumModule module){
+		public FarmlandBase(Block fluid, String name, Block soilIn, EnumModule module_){
 			setTickRandomly(true);
 			setRegistryName(name);
 			setUnlocalizedName(Data.MODID + "." + name);
@@ -26,7 +28,7 @@ public class FarmlandBase extends BlockFarmland{
 			setSoundType(SoundType.GROUND);
 			soilWater = fluid;
 			soil = soilIn;
-			
+			module = module_;
 		}
 		
 	    private boolean hasWater(World worldIn, BlockPos pos)
@@ -79,5 +81,10 @@ public class FarmlandBase extends BlockFarmland{
 	            entityIn.setPosition((double)entityIn.posX, (double)pos.getY()+1, (double)entityIn.posZ);
 	        }
 	    }
+
+		@Override
+		public EnumModule getType() {
+			return module;
+		}
 		
 }
