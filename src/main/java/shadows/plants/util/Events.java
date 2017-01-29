@@ -21,7 +21,7 @@ public class Events {
 		BlockPos pos = event.getPos();
 		if (world.getBlockState(pos).getBlock() instanceof SoilBase){
 		Block soil = world.getBlockState(pos).getBlock();
-		Block farmland = Util.getFarmlandFromModule(SoilBase.getType((SoilBase) soil));
+		Block farmland = Util.getFarmlandFromModule(((IModularThing) soil).getType());
 		world.setBlockState(pos, farmland.getDefaultState(), 3);
 		event.getEntityPlayer().playSound(SoundEvents.ITEM_HOE_TILL, 1, 1);
 		event.setResult(Result.ALLOW);

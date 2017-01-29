@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 import shadows.plants.registry.GlobalRegistry;
 import shadows.plants.registry.modules.CosmeticModule;
@@ -18,6 +19,8 @@ public class Data {
     public static final String BOTANIA = "Botania";
     public static final String AE2 = "appliedenergistics2";
     public static final boolean BOTANIA_ENABLED = (Loader.isModLoaded(BOTANIA) && Config.Botania);
+    public static final boolean COSMETIC_ENABLED = Config.Cosmetic;
+    public static final ItemStack EMPTYSTACK = null; //for 1.11 porting later
 	public static final List<Block> GENPLANTS(){
 		List<Block> list = new ArrayList<Block>();
 		list.add(CosmeticModule.cosmetic_1);

@@ -22,7 +22,7 @@ public class ItemRegistry {
 		//if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
 		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getItemList());
-		if (!CosmeticModule.getItemList().isEmpty()) list.addAll(CosmeticModule.getItemList());
+		if (Data.COSMETIC_ENABLED) list.addAll(CosmeticModule.getItemList());
 		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
 		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
 		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());

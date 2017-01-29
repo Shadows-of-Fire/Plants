@@ -11,7 +11,7 @@ public class ModuleController {
 		if (!Data.BOTANIA_ENABLED) BotaniaModule.getBlockList().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
 		if (!Config.Roots || !Loader.isModLoaded("roots"));
-		if (!Config.Cosmetic) CosmeticModule.getBlockList().clear();
+		if (!Data.COSMETIC_ENABLED) CosmeticModule.getBlockList().clear();
 		if (!Config.Hostile);
 		if (!Config.Meme);
 		if (Config.debug && Config.AE && Loader.isModLoaded("appliedenergistics2")) System.out.println("AE Loaded");
@@ -23,7 +23,7 @@ public class ModuleController {
 		if (Data.BOTANIA_ENABLED) BotaniaModule.getItemList().clear();
 		if (!Config.Embers || !Loader.isModLoaded("embers"));
 		if (!Config.Roots || !Loader.isModLoaded("roots"));
-		if (!Config.Cosmetic) CosmeticModule.getItemList().clear();
+		if (!Data.COSMETIC_ENABLED) CosmeticModule.getItemList().clear();
 		if (!Config.Hostile);
 		if (!Config.Meme);
 		

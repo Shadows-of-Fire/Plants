@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -11,8 +12,11 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -44,53 +48,51 @@ public class PlantBase extends BlockBush implements IGrowable, IModularThing{
 	}
 	
 	@Override
-	 public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-	    {
+	 public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 	        return CROPS_AABB[(state.getValue(this.getAgeProperty())).intValue()];
 	    }
+	
+		@Override
+		 public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
+			if(player.getHeldItemMainhand() == Data.EMPTYSTACK) {if (getAge(world.getBlockState(pos)) == 7){ world.setBlockState(pos, world.getBlockState(pos).withProperty(AGE, 0)); Block.spawnAsEntity(world, pos, new ItemStack(getCrop())); Block.spawnAsEntity(world, pos, new ItemStack(getSeed())); return true;}}
+			return false;
+		}
 
 	    /**
 	     * Return true if the block can sustain a Bush
 	     */
 	 
 	 	@Override
-	    protected boolean canSustainBush(IBlockState state)
-	    {
+	    protected boolean canSustainBush(IBlockState state){
 
 	        return state.getBlock() == Util.getFarmlandFromModule(module);
 	    }
 
-	    protected PropertyInteger getAgeProperty()
-	    {
+	    protected PropertyInteger getAgeProperty(){
 	        return AGE;
 	    }
 
-	    public int getMaxAge()
-	    {
+	    public int getMaxAge() {
 	        return 7;
 	    }
 	    
 	    
-	    protected int getAge(IBlockState state)
-	    {
+	    protected int getAge(IBlockState state){
 	        return (state.getValue(this.getAgeProperty())).intValue();
 	    }
 
 	    
-	    public IBlockState withAge(int age)
-	    {
+	    public IBlockState withAge(int age){
 	        return this.getDefaultState().withProperty(this.getAgeProperty(), age);
 	    }
 
 	    
-	    public boolean isMaxAge(IBlockState state)
-	    {
+	    public boolean isMaxAge(IBlockState state){
 	        return (state.getValue(this.getAgeProperty())).intValue() >= this.getMaxAge();
 	    }
 	    
 	    @Override
-	    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	    {
+	    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand){
 	        super.updateTick(world, pos, state, rand);
 
 	        if (world.getLightFromNeighbors(pos.up()) > 5)

@@ -3,16 +3,18 @@ package shadows.plants.block.internal.cosmetic;
 import net.minecraft.item.Item;
 import shadows.plants.block.PlantBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.registry.modules.CosmeticModule;
 
 public class BlockCrop extends PlantBase{
 		
 		private Item drops;
-		private Item seeds;
+		private int index;
+		private Item seed;
 	
-		public BlockCrop(String name, Item drop, Item seed){
+		public BlockCrop(String name, Item drop, int seedIndex){
 			super(EnumModule.COSMETIC, name);
 			drops = drop;
-			seeds = seed;
+			index = seedIndex;
 		}
 		
 		@Override
@@ -22,7 +24,13 @@ public class BlockCrop extends PlantBase{
 		
 		@Override
 		public Item getSeed(){
-			return seeds;
+			assignSeed();
+			return seed;
 		}
-	
+		
+		private void assignSeed(){
+		switch(index){
+		case(0): seed = CosmeticModule.okra_seed; break;
+		case(1): seed = CosmeticModule.pineapple_seed; break;
+		}}
 }

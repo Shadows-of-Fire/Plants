@@ -53,7 +53,6 @@ public class BlockRegistry {
 		for (Block block : BLOCKS){
 			Util.initModel(block);
 		}
-		if (Config.Cosmetic) CosmeticModule.registerMetaModels();
 	}
 	
 	

@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -42,6 +43,7 @@ public class Util {
 	public static void initModel(Block block){
 		if (Config.debug) System.out.println("Registered Model " + block.toString());
 		if (!isException(block)) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		else if (isException(block)) handleExceptionRenders(block);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -138,9 +140,20 @@ public class Util {
 	
     public static int getBlockNumber(BushBase block){
     	
-    	if (block.getType(block) == EnumModule.COSMETIC) return Integer.parseInt(block.getRegistryName().getResourcePath().substring(9));
+    	if (block.getType() == EnumModule.COSMETIC) return Integer.parseInt(block.getRegistryName().getResourcePath().substring(9));
     	else return 0;
     }
+    
+	@SideOnly(Side.CLIENT)
+	public static void handleExceptionRenders(Block block){
+		if (block instanceof BlockMetaBush){
+		for (int i = 0; i < 16; i++){
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));
+		}}
+		if (block instanceof BlockDoubleMetaBush){
+		for (int i = 0; i < 8; i++){
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));
+		}}}
 	
 	
 }

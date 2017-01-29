@@ -13,7 +13,8 @@ public class VineBase extends BlockVine implements IModularThing{
 	
 	
 	public VineBase(String name, EnumModule module){
-		
+		setRegistryName(name);
+		setUnlocalizedName(Data.MODID + "." + name);
 		setCreativeTab(Data.TAB);
 		type = module;
 	}
