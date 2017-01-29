@@ -9,7 +9,68 @@ public class RecipeRegistry {
 	
 	public static void init(){
 		Util.addSimpleShapeless(Items.STRING, 2, 0, CosmeticModule.apocynum_c_cloth, 0, CosmeticModule.apocynum_c_cloth, CosmeticModule.apocynum_c_cloth);
-		//Util.addSimpleShapeless(result, resultmeta, reagent);
+		
+		Util.addSimpleShapeless(Items.DYE, 6, CosmeticModule.cosmetic_1, 0);
+		Util.addSimpleShapeless(Items.DYE, 9, CosmeticModule.cosmetic_1, 1);
+		Util.addSimpleShapeless(Items.DYE, 11, CosmeticModule.cosmetic_1, 2);
+		Util.addSimpleShapeless(Items.DYE, 14, CosmeticModule.cosmetic_1, 3);
+		Util.addSimpleShapeless(Items.DYE, 2, 11, CosmeticModule.cosmetic_1, 4);
+		Util.addSimpleShapeless(Items.DYE, 2, CosmeticModule.cosmetic_1, 5);
+		Util.addSimpleShapeless(Items.DYE, 5, CosmeticModule.cosmetic_1, 6);
+		Util.addSimpleShapeless(Items.DYE, 10, CosmeticModule.cosmetic_1, 7);
+		Util.addSimpleShapeless(Items.DYE, 8, CosmeticModule.cosmetic_1, 8);
+		Util.addSimpleShapeless(Items.DYE, 11, CosmeticModule.cosmetic_1, 9);
+		Util.addSimpleShapeless(Items.DYE, 13, CosmeticModule.cosmetic_1, 10);
+		Util.addSimpleShapeless(Items.DYE, 9, CosmeticModule.cosmetic_1, 11);
+		Util.addSimpleShapeless(Items.DYE, 3, 2, CosmeticModule.cosmetic_1, 12);
+		Util.addSimpleShapeless(Items.DYE, 1, CosmeticModule.cosmetic_1, 13);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_1, 14);
+		Util.addSimpleShapeless(Items.DYE, 11, CosmeticModule.cosmetic_1, 15);
+		
+		Util.addSimpleShapeless(Items.DYE, 9, CosmeticModule.cosmetic_2, 0);
+		Util.addSimpleShapeless(Items.DYE, 14, CosmeticModule.cosmetic_2, 1);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_2, 2);
+		Util.addSimpleShapeless(Items.DYE, 2, 9, CosmeticModule.cosmetic_2, 3);
+		Util.addSimpleShapeless(Items.DYE, 3, CosmeticModule.cosmetic_2, 4);
+		Util.addSimpleShapeless(Items.DYE, 5, CosmeticModule.cosmetic_2, 5);
+		Util.addSimpleShapeless(Items.DYE, 11, CosmeticModule.cosmetic_2, 6);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_2, 7);
+		Util.addSimpleShapeless(Items.DYE, 5, CosmeticModule.cosmetic_2, 8);
+		Util.addSimpleShapeless(Items.DYE, 4, CosmeticModule.cosmetic_2, 9);
+		Util.addSimpleShapeless(Items.DYE, 14, CosmeticModule.cosmetic_2, 10);
+		Util.addSimpleShapeless(Items.DYE, 11, CosmeticModule.cosmetic_2, 11);
+		Util.addSimpleShapeless(Items.DYE, 3, 1, CosmeticModule.cosmetic_2, 12);
+		Util.addSimpleShapeless(Items.DYE, 3, 6, CosmeticModule.cosmetic_2, 13);
+		Util.addSimpleShapeless(Items.DYE, 12, CosmeticModule.cosmetic_2, 14);
+		Util.addSimpleShapeless(Items.DYE, 11, CosmeticModule.cosmetic_2, 15);
+		
+		Util.addSimpleShapeless(Items.DYE, 13, CosmeticModule.cosmetic_3, 0);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_3, 1);
+		Util.addSimpleShapeless(Items.DYE, 2, 1, CosmeticModule.cosmetic_3, 2);
+		Util.addSimpleShapeless(Items.DYE, 2, 15, CosmeticModule.cosmetic_3, 3);
+		Util.addSimpleShapeless(Items.DYE, 2, 9, CosmeticModule.cosmetic_3, 4);
+		Util.addSimpleShapeless(Items.DYE, 0, CosmeticModule.cosmetic_3, 5);
+		Util.addSimpleShapeless(Items.DYE, 1, CosmeticModule.cosmetic_3, 6);
+		Util.addSimpleShapeless(Items.DYE, 14, CosmeticModule.cosmetic_3, 7);
+		Util.addSimpleShapeless(Items.DYE, 3, 0, CosmeticModule.cosmetic_3, 8);
+		Util.addSimpleShapeless(Items.DYE, 1, CosmeticModule.cosmetic_3, 9);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_3, 10);
+		Util.addSimpleShapeless(Items.DYE, 1, CosmeticModule.cosmetic_3, 11);
+		Util.addSimpleShapeless(Items.DYE, 3, 15, CosmeticModule.cosmetic_3, 12);
+		Util.addSimpleShapeless(Items.DYE, 4, 15, CosmeticModule.cosmetic_3, 13);
+		Util.addSimpleShapeless(Items.DYE, 1, CosmeticModule.cosmetic_3, 14);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_3, 15);
+		
+		Util.addSimpleShapeless(Items.DYE, 1, CosmeticModule.cosmetic_4, 0);
+		Util.addSimpleShapeless(Items.DYE, 9, CosmeticModule.cosmetic_4, 1);
+		Util.addSimpleShapeless(Items.DYE, 2, 9, CosmeticModule.cosmetic_4, 2);
+		Util.addSimpleShapeless(Items.DYE, 2, 1, CosmeticModule.cosmetic_4, 3);
+		Util.addSimpleShapeless(Items.DYE, 2, 4, CosmeticModule.cosmetic_4, 4);
+		Util.addSimpleShapeless(Items.DYE, 15, CosmeticModule.cosmetic_4, 5);
+		
+		Util.addSimpleShapeless(Items.DYE, 6, 15, CosmeticModule.cosmetic_5, 0);
+		Util.addSimpleShapeless(Items.DYE, 6, 9, CosmeticModule.cosmetic_5, 1);
+		Util.addSimpleShapeless(Items.DYE, 6, 4, CosmeticModule.cosmetic_5, 2);
 	}
 }
 
