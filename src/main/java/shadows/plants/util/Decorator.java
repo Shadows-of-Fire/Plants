@@ -27,8 +27,8 @@ public final class Decorator {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
 			boolean genFlowers = false;
-			float temp = event.getWorld().getBiome(event.getPos()).getTemperature();
-			if(temp <= 1.5F && temp >= 0.2F)
+			//float temp = event.getWorld().getBiome(event.getPos()).getTemperature();
+			//if(temp <= 1.5F && temp >= 0.2F)
 				genFlowers = true;
 
 			if(!genFlowers)
@@ -43,7 +43,7 @@ public final class Decorator {
 			if (flower instanceof BlockCrop) xk = 7;
 			
 			int dist = 2 /*config flowerpatchsize*/;
-			for(int i = 0; i < 6/*config flowerQuantity*/; i++) {
+			for(int i = 0; i < 3/*config flowerQuantity*/; i++) {
 				if(event.getRand().nextInt(43 /*config patchchance */) == 0) {
 					int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
 					int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;

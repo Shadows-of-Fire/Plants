@@ -71,13 +71,13 @@ public class BushBase extends BlockBush implements IModularThing{
     @SideOnly(Side.CLIENT) @Override
     public Block.EnumOffsetType getOffsetType()
     {
-        return Block.EnumOffsetType.XZ;
+        return Block.EnumOffsetType.NONE;
     }
     
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return new AxisAlignedBB(0.125, 0, 0.125, 0.875, 0.5, 0.875);
+        return new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
     }
     
     
