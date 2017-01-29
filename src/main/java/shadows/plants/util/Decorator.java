@@ -37,7 +37,7 @@ public final class Decorator {
 			int xj = event.getRand().nextInt(Data.GENPLANTS().size());
 			Block flower = Data.GENPLANTS().get(xj);
 			int xk = 0;
-			if (flower instanceof BlockMetaBush) xk = event.getRand().nextInt(Util.getMaxMetadata(BlockMetaBush.getName((BlockMetaBush) flower)));
+			if (flower instanceof BlockMetaBush) xk = event.getRand().nextInt(Util.getMaxMetadata(flower.getRegistryName().getResourcePath()));
 			
 			int dist = 4 /*config flowerpatchsize*/;
 			for(int i = 0; i < 6/*config flowerQuantity*/; i++) {

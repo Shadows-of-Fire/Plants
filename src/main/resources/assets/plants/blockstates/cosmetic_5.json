@@ -1,0 +1,29 @@
+{
+  "variants": {
+
+    "upper=true,meta=0": { "model": "plants:cosmetic/metadouble1/0"},
+    "upper=false,meta=0": { "model": "plants:cosmetic/metadouble1/1"},
+	
+    "upper=true,meta=1": { "model": "plants:cosmetic/metadouble1/2"},
+    "upper=false,meta=1": { "model": "plants:cosmetic/metadouble1/3"},
+	
+    "upper=true,meta=2": { "model": "plants:cosmetic/metadouble1/1"},
+	"upper=false,meta=2": { "model": "plants:cosmetic/metadouble1/2"},
+	
+    "upper=true,meta=3": { "model": "plants:cosmetic/metadouble1/1"},
+    "upper=false,meta=3": { "model": "plants:cosmetic/metadouble1/2"},
+	
+    "upper=true,meta=4": { "model": "plants:cosmetic/metadouble1/1"},
+	"upper=false,meta=4": { "model": "plants:cosmetic/metadouble1/2"},
+	
+    "upper=true,meta=5": { "model": "plants:cosmetic/metadouble1/1"},
+    "upper=false,meta=5": { "model": "plants:cosmetic/metadouble1/2"},
+	
+    "upper=true,meta=6": { "model": "plants:cosmetic/metadouble1/1"},
+	"upper=false,meta=6": { "model": "plants:cosmetic/metadouble1/2"},
+	
+    "upper=true,meta=7": { "model": "plants:cosmetic/metadouble1/1"},
+    "upper=false,meta=7": { "model": "plants:cosmetic/metadouble1/2"}
+	
+  }
+}

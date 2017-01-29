@@ -21,13 +21,11 @@ import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
 public class BlockMetaBush extends BushBase{
 
 	public static final PropertyInteger BASICMETA = PropertyInteger.create("basicmeta", 0, 15);
-	public static String name2;
 	
 	public BlockMetaBush(String name) {
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
 		GameRegistry.register(new ItemBlockMetaBush(this));
-		name2 = name;
 	}
 	
 	@Override
@@ -63,15 +61,5 @@ public class BlockMetaBush extends BushBase{
     {
         return new BlockStateContainer(this, new IProperty[] {BASICMETA});
     }
-    
-    public static String getName(BlockMetaBush bush){
-    	return BlockMetaBush.name2;
-    }
-    
-    public static int getBlockNumber(BlockMetaBush block){
-    	return Integer.parseInt(block.getRegistryName().getResourcePath().substring(9));
-    }
 	
-	
-
 }

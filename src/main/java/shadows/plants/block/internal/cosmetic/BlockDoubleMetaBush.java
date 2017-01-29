@@ -22,20 +22,24 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
 
-public class DoubleMetaBushBase extends BushBase
+public class BlockDoubleMetaBush extends BushBase
 {
-    public static final PropertyBool UPPER = PropertyBool.create("upper");
-    public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
 
-    public DoubleMetaBushBase(String name, EnumModule type, @Nullable List<Block> soil)
+    public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
+    public static final PropertyBool UPPER = PropertyBool.create("upper");
+    
+    public BlockDoubleMetaBush(String name, @Nullable List<Block> soil)
     {
-        super(name, type, soil);
+        super(name, EnumModule.COSMETIC, soil);
         this.setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
+		GameRegistry.register(new ItemBlockDoubleMetaBush(this));
     }
 
     @Override
@@ -76,17 +80,17 @@ public class DoubleMetaBushBase extends BushBase
     }
     
     @Override
-    public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state)
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
     {
-        if (state.getBlock() != this) return super.canBlockStay(worldIn, pos, state); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
+        if (state.getBlock() != this) return super.canBlockStay(world, pos, state); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
         if (state.getValue(UPPER))
         {
-            return worldIn.getBlockState(pos.down()).getBlock() == this;
+            return world.getBlockState(pos.down()).getBlock() == this;
         }
         else
         {
-            IBlockState iblockstate = worldIn.getBlockState(pos.up());
-            return iblockstate.getBlock() == this && super.canBlockStay(worldIn, pos, iblockstate);
+            IBlockState iblockstate = world.getBlockState(pos.up());
+            return iblockstate.getBlock() == this && super.canBlockStay(world, pos, iblockstate);
         }
     }
 
@@ -113,8 +117,7 @@ public class DoubleMetaBushBase extends BushBase
     @Override
     public int damageDropped(IBlockState state)
     {
-        if (state.getValue(UPPER)) return 0;
-        else return state.getValue(META);
+    	return getActualMeta(getMetaFromState(state));
     }
 
     public void placeAt(World world, BlockPos lowerPos, int meta, int flags)
@@ -129,7 +132,7 @@ public class DoubleMetaBushBase extends BushBase
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
-        worldIn.setBlockState(pos.up(), this.getDefaultState().withProperty(UPPER, true), 2);
+        worldIn.setBlockState(pos.up(), state.withProperty(UPPER, true), 2);
     }
 
     public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack)
@@ -152,8 +155,6 @@ public class DoubleMetaBushBase extends BushBase
                 }
                 else
                 {
-                    IBlockState state2 = world.getBlockState(pos.down());
-                    
                     world.destroyBlock(pos.down(), true);
                     
                     if (world.isRemote)
@@ -206,7 +207,7 @@ public class DoubleMetaBushBase extends BushBase
     }
 
     
-    public int getActualMeta(int meta){ //evens are upper half, odds are lower half
+    public static int getActualMeta(int meta){ //evens are upper half, odds are lower half
     	//needs to return the Actual (IProperty) meta (0-7) for the block from state meta (0-15)
     	int k = meta % 2; //if == 1 this is a lower
     	float j = meta / 2; //if k = 1 this will have a .5 
@@ -232,16 +233,7 @@ public class DoubleMetaBushBase extends BushBase
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {UPPER, META});
-    }
-
-    /**
-     * Get the OffsetType for this Block. Determines if the model is rendered slightly offset.
-     */
-    @SideOnly(Side.CLIENT) @Override
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.XZ;
+        return new BlockStateContainer(this, new IProperty[] {META, UPPER});
     }
 
     @Override

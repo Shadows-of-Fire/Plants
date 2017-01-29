@@ -3,8 +3,6 @@ package shadows.plants.util;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
-
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -21,7 +19,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -29,17 +26,23 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants.block.BushBase;
+import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
 import shadows.plants.registry.modules.AE2Module;
 import shadows.plants.registry.modules.BotaniaModule;
 
 public class Util {
-	//normal methods
+
+	public static boolean isException(Block block){
+		return (block instanceof BlockMetaBush || block instanceof BlockDoubleMetaBush);
+	}
+	
 	@SideOnly(Side.CLIENT)
 	public static void initModel(Block block){
 		if (Config.debug) System.out.println("Registered Model " + block.toString());
-		if (!(block instanceof BlockMetaBush)) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		if (!isException(block)) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -50,7 +53,7 @@ public class Util {
 	public static void register(Block block){
 		if (Config.debug) System.out.println("Registered " + block.toString());
 		GameRegistry.register(block);
-		if (!(block instanceof BlockMetaBush)) GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+		if (!isException(block)) GameRegistry.register(new ItemBlock(block), block.getRegistryName());
 	}
 	
 	public static void register(Item item){
@@ -132,6 +135,12 @@ public class Util {
     	}
     	
     	return ij;
+    }
+	
+    public static int getBlockNumber(BushBase block){
+    	
+    	if (block.getType(block) == EnumModule.COSMETIC) return Integer.parseInt(block.getRegistryName().getResourcePath().substring(9));
+    	else return 0;
     }
 	
 	
