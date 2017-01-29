@@ -2,12 +2,14 @@ package shadows.plants.registry;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants.block.internal.cosmetic.BlockHarvestable;
 import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.util.Data;
@@ -45,7 +47,10 @@ public class GlobalRegistry {
 			for(int i = 0; i <= 8; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_4, 1, i)); }
 			for(int i = 0; i <= 2; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_5, 1, i)); }
 			for(Item item : CosmeticModule.getItemList()){ list.add(new ItemStack(item)); }
+			for(Block block : CosmeticModule.getBlockList()) {
+				if (block instanceof BlockHarvestable){ list.add(new ItemStack(block));}}
 			}
+			
 			if (Data.BOTANIA_ENABLED) addBot(list);
 		}};
 			

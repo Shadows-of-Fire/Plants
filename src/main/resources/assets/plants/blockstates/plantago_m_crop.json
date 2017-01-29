@@ -1,0 +1,20 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross"
+	},
+	"variants": {
+		"fruit": {
+			"true": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/plantago_m/fruit"
+				}
+			},
+			"false": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/plantago_m/none"
+				}
+			}
+			}
+		}
+}

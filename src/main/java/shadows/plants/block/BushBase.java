@@ -3,6 +3,7 @@ package shadows.plants.block;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -38,7 +39,7 @@ public class BushBase extends BlockBush implements IModularThing{
         soil.add(Blocks.GRASS);
 	}
 	
-	public BushBase(EnumModule type, String name, Block soilIn){
+	public BushBase(EnumModule type, String name, @Nonnull Block soilIn){
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
         setCreativeTab(Data.TAB);

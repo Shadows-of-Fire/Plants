@@ -1,5 +1,7 @@
 package shadows.plants.block.internal.cosmetic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -14,9 +16,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.item.FoodBase;
 import shadows.plants.util.Data;
 
 public class BlockHarvestable extends BushBase{
@@ -31,6 +35,10 @@ public class BlockHarvestable extends BushBase{
 		crops = crop;
 	}
 	
+	public BlockHarvestable(String name, FoodBase crop) {
+		this(name, new ItemStack(crop));
+	}
+
 	@Override
 	 public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
 		if(player.getHeldItemMainhand() == Data.EMPTYSTACK){
@@ -78,6 +86,17 @@ public class BlockHarvestable extends BushBase{
 	                }
 	            }
 	        }
+	    }
+	    
+	    @Override
+	    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	    {
+	        List<ItemStack> ret = new ArrayList<ItemStack>();
+	        if(state.getValue(FRUIT)){
+	                ret.add(crops);
+	        }
+	        ret.add(new ItemStack(this));
+	        return ret;
 	    }
 	
 	

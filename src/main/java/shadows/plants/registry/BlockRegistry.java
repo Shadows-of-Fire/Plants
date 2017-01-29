@@ -19,13 +19,14 @@ import shadows.plants.util.Util;
 
 public class BlockRegistry {
 	
-	public static List<Block> BLOCKS = new ArrayList<Block>();
 	
-	private static List<Block> composeBlocks(List<Block> list){
+	private static List<Block> BLOCKS(){
+		List<Block> list = new ArrayList<Block>();
+		list.clear();
 		if (!AE2Module.getList().isEmpty() && Loader.isModLoaded(Data.AE2)) list.addAll(AE2Module.getList());
 		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
 		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getBlockList());
-		if (!CosmeticModule.getBlockList().isEmpty()) list.addAll(CosmeticModule.getBlockList());
+		if (Data.COSMETIC_ENABLED) list.addAll(CosmeticModule.getBlockList());
 		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
 		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
 		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());
@@ -37,20 +38,19 @@ public class BlockRegistry {
 	public static void init(){
 		if (Config.debug) System.out.println("BlockRegistry loaded");
 		ModuleController.blockLoader();
-		composeBlocks(BLOCKS);
 		register();
 	}
 
 	
 	public static void register(){
-		for (Block block : BLOCKS){
+		for (Block block : BLOCKS()){
 			Util.register(block);
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void initModels(){
-		for (Block block : BLOCKS){
+		for (Block block : BLOCKS()){
 			Util.initModel(block);
 		}
 	}
