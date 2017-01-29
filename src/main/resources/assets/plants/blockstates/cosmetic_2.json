@@ -62,17 +62,17 @@
 			},
 			"11": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/phytolacca_a"
+					"cross": "plants:blocks/cosmetic/narthecium_a"
 				}
 			},
 			"12": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/pineapple"
+					"cross": "plants:blocks/cosmetic/begonia_e"
 				}
 			},
 			"13": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/plantago_m"
+					"cross": "plants:blocks/cosmetic/astilbe_c"
 				}
 			},
 			"14": {

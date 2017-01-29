@@ -7,17 +7,17 @@
 		"basicmeta": {
 			"0": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/rubus_p"
+					"cross": "plants:blocks/cosmetic/psoralea_c"
 				}
 			},
 			"1": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/saffron"
+					"cross": "plants:blocks/cosmetic/nemesia_m"
 				}
 			},
 			"2": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/solanum_n"
+					"cross": "plants:blocks/cosmetic/isolepis_b"
 				}
 			},
 			"3": {
@@ -72,17 +72,17 @@
 			},
 			"13": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/isolepis_b"
+					"cross": "plants:blocks/cosmetic/nullnull"
 				}
 			},
 			"14": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nemesia_m"
+					"cross": "plants:blocks/cosmetic/nullnull"
 				}
 			},
 			"15": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/psoralea_c"
+					"cross": "plants:blocks/cosmetic/nullnull"
 				}
 			}
 

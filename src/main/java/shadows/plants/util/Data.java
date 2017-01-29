@@ -23,10 +23,7 @@ public class Data {
     public static final ItemStack EMPTYSTACK = null; //for 1.11 porting later
 	public static final List<Block> GENPLANTS(){
 		List<Block> list = new ArrayList<Block>();
-		list.add(CosmeticModule.cosmetic_1);
-		list.add(CosmeticModule.cosmetic_2);
-		list.add(CosmeticModule.cosmetic_3);
-		list.add(CosmeticModule.cosmetic_4);
+		list.addAll(CosmeticModule.getBlockList());
 		return list;
 	};
 	

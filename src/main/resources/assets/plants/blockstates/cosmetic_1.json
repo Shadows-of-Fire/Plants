@@ -12,7 +12,7 @@
 			},
 			"1": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/ambrosia_a"
+					"cross": "plants:blocks/cosmetic/viola_c"
 				}
 			},
 			"2": {
@@ -22,7 +22,7 @@
 			},
 			"3": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/apocynum_c"
+					"cross": "plants:blocks/cosmetic/thismia_a"
 				}
 			},
 			"4": {
@@ -32,7 +32,7 @@
 			},
 			"5": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/daucus_c"
+					"cross": "plants:blocks/cosmetic/sumatra_d"
 				}
 			},
 			"6": {
@@ -47,7 +47,7 @@
 			},
 			"8": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/rubus_o"
+					"cross": "plants:blocks/cosmetic/streblorrhiza_s"
 				}
 			},
 			"9": {
@@ -57,12 +57,12 @@
 			},
 			"10": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/solanum_c"
+					"cross": "plants:blocks/cosmetic/psoralea_m"
 				}
 			},
 			"11": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/solanum_d"
+					"cross": "plants:blocks/cosmetic/pluchea_g"
 				}
 			},
 			"12": {

@@ -12,6 +12,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -26,24 +27,28 @@ import shadows.plants.util.Data;
 public class BlockHarvestable extends BushBase{
 	
 	public static final PropertyBool FRUIT = PropertyBool.create("fruit");
-	public static ItemStack crops;
+	private Item cropItem;
+	private int meta;
 	
 	public BlockHarvestable(String name, ItemStack crop){
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(FRUIT, false));
 		setTickRandomly(true);
-		crops = crop;
+		cropItem = crop.getItem();
+		meta = crop.getMetadata();
 	}
 	
-	public BlockHarvestable(String name, FoodBase crop) {
+	public BlockHarvestable(String name, Item crop) {
 		this(name, new ItemStack(crop));
+		cropItem = crop;
+		meta = 0;
 	}
 
 	@Override
 	 public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
 		if(player.getHeldItemMainhand() == Data.EMPTYSTACK){
 			if(state.getValue(FRUIT)){
-				Block.spawnAsEntity(world, pos, crops);
+				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));
 				world.setBlockState(pos, this.getDefaultState());
 			}
 		}
@@ -93,7 +98,7 @@ public class BlockHarvestable extends BushBase{
 	    {
 	        List<ItemStack> ret = new ArrayList<ItemStack>();
 	        if(state.getValue(FRUIT)){
-	                ret.add(crops);
+	                ret.add(new ItemStack(cropItem, 1, meta));
 	        }
 	        ret.add(new ItemStack(this));
 	        return ret;

@@ -35,11 +35,11 @@ public class FoodBase extends ItemFood implements IModularThing{
         if (!worldIn.isRemote && isPoisoned)
         {
         	int dur = (int) (this.getHealAmount(stack) + this.getSaturationModifier(stack));
-        	boolean amped = (dur > 6);
+        	boolean amped = (dur >= 5);
         	int amp = 0;
         	if (amped) amp = 1;
         	if (dur > 20) amp = 4;
-            player.addPotionEffect(new PotionEffect(Potion.getPotionById(20), dur * 2, amp));
+            player.addPotionEffect(new PotionEffect(Potion.getPotionById(20), (20 * (dur * 2)), amp));
         }
     }
 

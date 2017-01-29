@@ -13,6 +13,7 @@ import shadows.plants.block.internal.cosmetic.BlockHarvestable;
 import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.util.Data;
+import shadows.plants.util.Util;
 
 public class GlobalRegistry {
 	/*
@@ -22,8 +23,8 @@ public class GlobalRegistry {
 	*/
 	
 	public static void init(){
-		BlockRegistry.init();
 		ItemRegistry.init();
+		BlockRegistry.init();
 		RecipeRegistry.init();
 	}
 	
@@ -40,15 +41,14 @@ public class GlobalRegistry {
 		@SideOnly(Side.CLIENT)
 		public void displayAllRelevantItems(List<ItemStack> list) {
 			if(Data.COSMETIC_ENABLED){
-			for(int i = 0; i <= 15; i++){
-				list.add(new ItemStack(CosmeticModule.cosmetic_1, 1, i));
-				list.add(new ItemStack(CosmeticModule.cosmetic_2, 1, i));
-				list.add(new ItemStack(CosmeticModule.cosmetic_3, 1, i)); }
-			for(int i = 0; i <= 8; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_4, 1, i)); }
-			for(int i = 0; i <= 2; i++){ list.add(new ItemStack(CosmeticModule.cosmetic_5, 1, i)); }
 			for(Item item : CosmeticModule.getItemList()){ list.add(new ItemStack(item)); }
 			for(Block block : CosmeticModule.getBlockList()) {
-				if (block instanceof BlockHarvestable){ list.add(new ItemStack(block));}}
+				int i = Util.getMaxMetadata(block.getRegistryName().getResourcePath());
+				for (int k = 0; k <= i; k++){
+					list.add(new ItemStack(block,1, k));
+				}
+				
+				}
 			}
 			
 			if (Data.BOTANIA_ENABLED) addBot(list);

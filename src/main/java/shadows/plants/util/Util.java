@@ -131,8 +131,9 @@ public class Util {
     	switch(name){
     	case("cosmetic_1"): ij = 15; break;
     	case("cosmetic_2"): ij = 15; break;
-    	case("cosmetic_3"): ij = 15; break;
-    	case("cosmetic_4"): ij = 8; break;
+    	case("cosmetic_3"): ij = 12; break;
+    	//case("cosmetic_4"): ij = 8; break;
+    	case("cosmetic_5"): ij = 2; break; //this one is 0-7 bc anywhere I need it, it will be assigning the PropertyInteger
     	}
     	
     	return ij;
