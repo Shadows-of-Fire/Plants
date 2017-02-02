@@ -38,6 +38,7 @@ public class BushBase extends BlockBush implements IModularThing{
         if (soilIn != null) soil.addAll(soilIn);
         soil.add(Blocks.GRASS_PATH);
         soil.add(Blocks.GRASS);
+        soil.add(Blocks.DIRT);
 	}
 	
 	public BushBase(EnumModule type, String name, @Nonnull Block soilIn){
@@ -59,13 +60,13 @@ public class BushBase extends BlockBush implements IModularThing{
     @Override
     public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, net.minecraftforge.common.IPlantable plantable)
     {
-    	return soil.contains(world.getBlockState(pos).getBlock()) || state.getBlock() instanceof BlockDirt;
+    	return soil.contains(state.getBlock());
     }
 
     @Override
     protected boolean canSustainBush(IBlockState state)
     {
-    	return soil.contains(state.getBlock()) || state.getBlock() instanceof BlockDirt;
+    	return soil.contains(state.getBlock());
     }
     
     @SideOnly(Side.CLIENT) @Override
