@@ -4,8 +4,8 @@ import net.minecraft.block.BlockVine;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
-import shadows.plants.util.IModularThing;
 
 public class VineBase extends BlockVine implements IModularThing{
 	

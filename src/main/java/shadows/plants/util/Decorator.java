@@ -11,6 +11,7 @@
 package shadows.plants.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -18,30 +19,28 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
+import shadows.plants.common.ITemperaturePlant;
 
 public final class Decorator {
 
 	private Decorator() {}
 
-	@SuppressWarnings("deprecation")
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
-			boolean genFlowers = false;
-			//float temp = event.getWorld().getBiome(event.getPos()).getTemperature();
-			//if(temp <= 1.5F && temp >= 0.2F)
-				genFlowers = true;
-
-			if(!genFlowers)
-				return;
-
 			int xj = event.getRand().nextInt(Data.GENPLANTS().size());
 			Block flower = Data.GENPLANTS().get(xj);
 			int xk = 0;
+			IBlockState state = null;
 			int maxdata = Util.getMaxMetadata(flower.getRegistryName().getResourcePath());
-			if (flower instanceof BlockMetaBush) xk = event.getRand().nextInt(maxdata);
-			if (flower instanceof BlockDoubleMetaBush) xk = event.getRand().nextInt(maxdata);
-			if (flower instanceof BlockCrop) xk = 7;
-			
+			if (flower instanceof BlockMetaBush){ xk = event.getRand().nextInt(maxdata); state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);}
+			if (flower instanceof BlockDoubleMetaBush){ xk = event.getRand().nextInt(maxdata); state = flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk));}
+			if (flower instanceof BlockCrop){ xk = 7; state = flower.getDefaultState().withProperty(BlockCrop.AGE, (xk));}
+			if(flower instanceof ITemperaturePlant){
+			if(state != null){
+			float max = ((ITemperaturePlant) flower).getTempMax(state);
+			float min = ((ITemperaturePlant) flower).getTempMin(state);
+			float temp = event.getWorld().getBiome(event.getPos()).getTemperature();
+			if(temp >= min && temp <= max){
 			int dist = 2 /*config flowerpatchsize*/;
 			for(int i = 0; i < 3/*config flowerQuantity*/; i++) {
 				if(event.getRand().nextInt(43 /*config patchchance */) == 0) {
@@ -55,16 +54,11 @@ public final class Decorator {
 						BlockPos pos2 = new BlockPos(x1, y1, z1);
 						if(!(flower instanceof BlockDoubleMetaBush)){
 						if(event.getWorld().isAirBlock(pos2) && (!event.getWorld().provider.getHasNoSky() || y1 < 127) && flower.canPlaceBlockAt(event.getWorld(), pos2)) {
-							event.getWorld().setBlockState(pos2, flower.getStateFromMeta(xk), 2);
+							event.getWorld().setBlockState(pos2, state, 2);
 					}}
 						else if (flower instanceof BlockDoubleMetaBush){
 						if(event.getWorld().isAirBlock(pos2) && event.getWorld().isAirBlock(pos2.up()) && (!event.getWorld().provider.getHasNoSky() || y1 < 127) && flower.canPlaceBlockAt(event.getWorld(), pos2)) {
-						event.getWorld().setBlockState(pos2, flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk)).withProperty(BlockDoubleMetaBush.UPPER,  false), 2);
-						event.getWorld().setBlockState(pos2.up(), flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk)).withProperty(BlockDoubleMetaBush.UPPER,  true), 2);
-						}
-						}
-			 }
-		  }
-	   }
-	}
+						event.getWorld().setBlockState(pos2, state.withProperty(BlockDoubleMetaBush.UPPER,  false), 2);
+						event.getWorld().setBlockState(pos2.up(), state.withProperty(BlockDoubleMetaBush.UPPER,  true), 2);
+						}}}}}}}}}
 }

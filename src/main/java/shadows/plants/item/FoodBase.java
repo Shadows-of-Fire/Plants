@@ -7,8 +7,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
-import shadows.plants.util.IModularThing;
 
 public class FoodBase extends ItemFood implements IModularThing{
 

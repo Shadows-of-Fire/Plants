@@ -24,8 +24,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
-import shadows.plants.util.IModularThing;
 import shadows.plants.util.Util;
 
 public class PlantBase extends BlockBush implements IGrowable, IModularThing{

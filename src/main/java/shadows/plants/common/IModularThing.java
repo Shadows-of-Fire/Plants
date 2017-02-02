@@ -1,8 +1,6 @@
-package shadows.plants.util;
+package shadows.plants.common;
 
 import javax.annotation.Nonnull;
-
-import shadows.plants.common.EnumModule;
 
 public interface IModularThing {
 	@Nonnull EnumModule getType();

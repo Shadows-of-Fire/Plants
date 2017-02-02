@@ -19,21 +19,14 @@ public class ItemRegistry {
 	public static List<Item> ITEMS = new ArrayList<Item>();
 	
 	private static List<Item> composeItems(List<Item> list){
-		//if (!AE2Module.getAE().isEmpty()) list.addAll(AE2Module.getAE());
-		//if (!BloodModule.getBM().isEmpty()) list.addAll(BloodModule.getBM());
 		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getItemList());
 		if (Data.COSMETIC_ENABLED) list.addAll(CosmeticModule.getItemList());
-		//if (!HostileModule.getH().isEmpty()) list.addAll(CosmeticModule.getH());
-		//if (!MemeModule.getM().isEmpty()) list.addAll(CosmeticModule.getM());
-		//if (!ChiselModule.getCM().isEmpty()) list.addAll(ChiselModule.getCM());
-		//if (!EmbersModule.getE().isEmpty()) list.addAll(EmbersModule.getE());
-		//if (!RootsModule.getR().isEmpty()) list.addAll(RootsModule.getR());
 		return list;
 	}
 
 	public static void init(){
 		if (Config.debug) System.out.println("ItemRegistry loaded");
-		ModuleController.itemLoader();
+		ModuleController.modularItemLoader();
 		composeItems(ITEMS);
 		register();
 	}

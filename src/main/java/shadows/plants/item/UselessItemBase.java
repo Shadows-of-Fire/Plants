@@ -2,8 +2,8 @@ package shadows.plants.item;
 
 import net.minecraft.item.Item;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
-import shadows.plants.util.IModularThing;
 
 public class UselessItemBase extends Item implements IModularThing{
 	

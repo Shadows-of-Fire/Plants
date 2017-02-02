@@ -4,8 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
-import shadows.plants.util.IModularThing;
 
 public class SoilBase extends Block implements IModularThing{
 

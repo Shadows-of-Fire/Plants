@@ -12,8 +12,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
-import shadows.plants.util.IModularThing;
 
 public class FarmlandBase extends BlockFarmland implements IModularThing{
 		public Block soilWater;
