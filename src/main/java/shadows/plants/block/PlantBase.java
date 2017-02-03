@@ -27,7 +27,6 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.IModularThing;
 import shadows.plants.common.ITemperaturePlant;
 import shadows.plants.util.Data;
-import shadows.plants.util.Util;
 
 public abstract class PlantBase extends BlockBush implements IGrowable, IModularThing, ITemperaturePlant{
 	

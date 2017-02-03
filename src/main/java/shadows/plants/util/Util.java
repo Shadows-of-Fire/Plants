@@ -28,6 +28,7 @@ import shadows.plants.block.BushBase;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
+import shadows.plants.registry.modules.CosmeticModule;
 
 public class Util {
 
@@ -165,6 +166,29 @@ public class Util {
 	}
 		public static void addSimpleShapeless(Item result, Item reagent){
 			addSimpleShapeless(result, 1, 0, reagent, 0);
+	}
+		
+	public static Block getFlowerByChance(int x){
+		
+		if(x > 0 && x < 10) return CosmeticModule.cosmetic_1;
+		if(x > 10 && x < 20) return CosmeticModule.cosmetic_2;
+		if(x > 20 && x < 30) return CosmeticModule.cosmetic_3;
+		if(x > 30 && x < 40) return CosmeticModule.cosmetic_4;
+		if(x > 40 && x < 50) return CosmeticModule.cosmetic_5;
+		if(x > 50 && x < 53) return CosmeticModule.ambrosia_a_crop;
+		if(x > 53 && x < 56) return CosmeticModule.apocynum_c_crop;
+		if(x > 56 && x < 59) return CosmeticModule.daucus_c_crop;
+		if(x > 59 && x < 62) return CosmeticModule.okra_crop;
+		if(x > 62 && x < 65) return CosmeticModule.phytolacca_a_crop;
+		if(x > 65 && x < 68) return CosmeticModule.pineapple_crop;
+		if(x > 68 && x < 71) return CosmeticModule.plantago_m_crop;
+		if(x > 71 && x < 74) return CosmeticModule.rubus_o_crop;
+		if(x > 74 && x < 77) return CosmeticModule.saffron_crop;
+		if(x > 77 && x < 80) return CosmeticModule.solanum_c_crop;
+		if(x > 80 && x < 83) return CosmeticModule.solanum_d_crop;
+		if(x > 83 && x < 86) return CosmeticModule.solanum_n_crop;
+		else return null;
+		
 	}
 	
 	

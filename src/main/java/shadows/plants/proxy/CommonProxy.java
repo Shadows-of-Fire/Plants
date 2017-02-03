@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import shadows.plants.util.Config;
 import shadows.plants.util.Decorator;
-import vazkii.botania.common.core.handler.BiomeDecorationHandler;
 import shadows.plants.registry.GlobalRegistry;
 
 public class CommonProxy {

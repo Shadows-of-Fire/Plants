@@ -27,8 +27,8 @@ public final class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
-			int xj = event.getRand().nextInt(Data.GENPLANTS().size());
-			Block flower = Data.GENPLANTS().get(xj);
+			int xj = event.getRand().nextInt(86);
+			Block flower = Util.getFlowerByChance(xj);
 			int xk = 0;
 			IBlockState state = null;
 			int maxdata = Util.getMaxMetadata(flower.getRegistryName().getResourcePath());

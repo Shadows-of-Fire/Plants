@@ -22,10 +22,5 @@ public class Data {
     public static final boolean BOTANIA_ENABLED = (Loader.isModLoaded(BOTANIA) && Config.Botania);
     public static final boolean COSMETIC_ENABLED = Config.Cosmetic;
     public static final ItemStack EMPTYSTACK = null; //for 1.11 porting later
-	public static final List<Block> GENPLANTS(){
-		List<Block> list = new ArrayList<Block>();
-		list.addAll(CosmeticModule.getBlockList());
-		return list;
-	};
 	
 }
