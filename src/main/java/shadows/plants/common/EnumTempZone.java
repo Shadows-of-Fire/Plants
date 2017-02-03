@@ -1,35 +1,14 @@
 package shadows.plants.common;
 
-import java.util.Collections;
-
-import net.minecraft.init.Biomes;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeBeach;
-import net.minecraft.world.biome.BiomeDesert;
-import net.minecraft.world.biome.BiomeEnd;
-import net.minecraft.world.biome.BiomeForest;
-import net.minecraft.world.biome.BiomeForestMutated;
-import net.minecraft.world.biome.BiomeHell;
-import net.minecraft.world.biome.BiomeHills;
-import net.minecraft.world.biome.BiomeJungle;
-import net.minecraft.world.biome.BiomeMesa;
-import net.minecraft.world.biome.BiomeMushroomIsland;
-import net.minecraft.world.biome.BiomeOcean;
-import net.minecraft.world.biome.BiomePlains;
-import net.minecraft.world.biome.BiomeRiver;
-import net.minecraft.world.biome.BiomeSavanna;
-import net.minecraft.world.biome.BiomeSavannaMutated;
-import net.minecraft.world.biome.BiomeSnow;
-import net.minecraft.world.biome.BiomeStoneBeach;
-import net.minecraft.world.biome.BiomeSwamp;
-import net.minecraft.world.biome.BiomeTaiga;
-import net.minecraft.world.biome.BiomeVoid;
-
 public enum EnumTempZone {
-	TROPICAL(1.2f, 1.6f),
+	TROPICAL(0.8f, 1.2f),
 	TEMPERATE(0.5f, 1.5f),
+	COLD(-0.5f, 0.3f),
 	COOL(0.0f, 0.8f),
+	FROZEN(-0.5f, 0.0f),
 	HOT(1.5f, 2.0f),
+	BURNING(2.0f, 5.0f),
+	ALL(-5.0f, 5.0f),
 	;
 	
 	private float tempmax;

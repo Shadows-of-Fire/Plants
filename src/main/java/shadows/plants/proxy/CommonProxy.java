@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import shadows.plants.util.Config;
 import shadows.plants.util.Decorator;
-import shadows.plants.util.Events;
 import vazkii.botania.common.core.handler.BiomeDecorationHandler;
 import shadows.plants.registry.GlobalRegistry;
 
@@ -28,7 +27,6 @@ public class CommonProxy {
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
-		MinecraftForge.EVENT_BUS.register(new Events());
 		MinecraftForge.TERRAIN_GEN_BUS.register(Decorator.class);
 	}
 	

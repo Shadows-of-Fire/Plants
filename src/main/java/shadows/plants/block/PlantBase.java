@@ -67,7 +67,7 @@ public abstract class PlantBase extends BlockBush implements IGrowable, IModular
 	 	@Override
 	    protected boolean canSustainBush(IBlockState state){
 
-	        return (state.getBlock() == Util.getFarmlandFromModule(module) || state.getBlock() == Blocks.GRASS);
+	        return (state.getBlock() == Blocks.FARMLAND || state.getBlock() == Blocks.GRASS);
 	    }
 
 	    protected PropertyInteger getAgeProperty(){

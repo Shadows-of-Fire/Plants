@@ -39,6 +39,7 @@ public final class Decorator {
 			if(state != null){
 			float max = ((ITemperaturePlant) flower).getTempMax(state);
 			float min = ((ITemperaturePlant) flower).getTempMin(state);
+			float temp = event.getWorld().getBiome(event.getPos()).getTemperature();
 			event.getWorld().getBiome(event.getPos()).getTempCategory();
 			if(temp >= min && temp <= max){
 			int dist = 2 /*config flowerpatchsize*/;

@@ -1,7 +1,5 @@
 package shadows.plants.block.internal.cosmetic;
 
-import java.util.Map;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import shadows.plants.block.PlantBase;
