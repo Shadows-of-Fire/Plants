@@ -7,7 +7,7 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
 
-public class VineBase extends BlockVine implements IModularThing{
+public abstract class VineBase extends BlockVine implements IModularThing{
 	
     private EnumModule type;
 	

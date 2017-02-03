@@ -1,6 +1,7 @@
 package shadows.plants.block.internal.cosmetic;
 
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.EnumTempZone;
 import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
 
 
@@ -21,10 +23,12 @@ import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
 public class BlockMetaBush extends BushBase{
 
 	public static final PropertyInteger BASICMETA = PropertyInteger.create("basicmeta", 0, 15);
+    public Map<Integer, EnumTempZone> tempmap;
 	
-	public BlockMetaBush(String name) {
+	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map) {
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
+        tempmap = map;
 		GameRegistry.register(new ItemBlockMetaBush(this));
 	}
 	
@@ -44,6 +48,7 @@ public class BlockMetaBush extends BushBase{
         }
     }
 	
+	@Override
 	public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(BASICMETA, meta);
@@ -52,14 +57,28 @@ public class BlockMetaBush extends BushBase{
     /**
      * Convert the BlockState into the correct metadata value
      */
+	@Override
     public int getMetaFromState(IBlockState state)
     {
         return state.getValue(BASICMETA);
     }
-
+    
+    @Override
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, new IProperty[] {BASICMETA});
     }
+    
+	@Override
+	public float getTempMax(IBlockState state) {
+		int k = state.getValue(BASICMETA);
+		return tempmap.get(k).getMax();
+	}
+
+	@Override
+	public float getTempMin(IBlockState state) {
+		int k = state.getValue(BASICMETA);
+		return tempmap.get(k).getMin();
+	}
 	
 }

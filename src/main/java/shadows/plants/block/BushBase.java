@@ -19,9 +19,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.common.EnumModule;
 import shadows.plants.common.IModularThing;
+import shadows.plants.common.ITemperaturePlant;
 import shadows.plants.util.Data;
 
-public class BushBase extends BlockBush implements IModularThing{
+public abstract class BushBase extends BlockBush implements IModularThing, ITemperaturePlant{
 	
 		private EnumModule module;
 		public List<Block> soil = new ArrayList<Block>();

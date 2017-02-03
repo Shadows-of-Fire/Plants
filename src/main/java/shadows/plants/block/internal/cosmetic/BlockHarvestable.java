@@ -21,6 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.EnumTempZone;
 import shadows.plants.util.Data;
 
 public class BlockHarvestable extends BushBase{
@@ -29,23 +30,27 @@ public class BlockHarvestable extends BushBase{
 	private Item cropItem;
 	private Item cropItem2 = null;
 	private int meta;
+	private float tempmax;
+	private float tempmin;
 	
-	public BlockHarvestable(String name, ItemStack crop){
+	public BlockHarvestable(String name, ItemStack crop, EnumTempZone zone){
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(FRUIT, false));
 		setTickRandomly(true);
 		cropItem = crop.getItem();
 		meta = crop.getMetadata();
+		tempmax = zone.getMax();
+		tempmin = zone.getMin();
 	}
 	
-	public BlockHarvestable(String name, Item crop) {
-		this(name, new ItemStack(crop));
+	public BlockHarvestable(String name, Item crop, EnumTempZone zone) {
+		this(name, new ItemStack(crop), zone);
 		cropItem = crop;
 		meta = 0;
 	}
 
-	public BlockHarvestable(String name, Item crop, Item crop2) {
-		this(name, new ItemStack(crop));
+	public BlockHarvestable(String name, Item crop, Item crop2, EnumTempZone zone) {
+		this(name, new ItemStack(crop), zone);
 		cropItem = crop;
 		cropItem2 = crop2;
 		meta = 0;
@@ -112,6 +117,16 @@ public class BlockHarvestable extends BushBase{
 	        ret.add(new ItemStack(this));
 	        return ret;
 	    }
+
+		@Override
+		public float getTempMax(IBlockState state) {
+			return tempmax;
+		}
+
+		@Override
+		public float getTempMin(IBlockState state) {
+			return tempmin;
+		}
 	
 	
 }

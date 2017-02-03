@@ -1,6 +1,7 @@
 package shadows.plants.block.internal.cosmetic;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import javax.annotation.Nullable;
 
@@ -27,6 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.EnumTempZone;
 import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
 
 public class BlockDoubleMetaBush extends BushBase
@@ -34,11 +36,13 @@ public class BlockDoubleMetaBush extends BushBase
 
     public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
     public static final PropertyBool UPPER = PropertyBool.create("upper");
+    public Map<Integer, EnumTempZone> tempmap;
     
-    public BlockDoubleMetaBush(String name, @Nullable List<Block> soil)
+    public BlockDoubleMetaBush(String name, @Nullable List<Block> soil, Map<Integer, EnumTempZone> map)
     {
         super(name, EnumModule.COSMETIC, soil);
         this.setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
+        tempmap = map;
 		GameRegistry.register(new ItemBlockDoubleMetaBush(this));
     }
 
@@ -244,4 +248,16 @@ public class BlockDoubleMetaBush extends BushBase
             world.setBlockToAir(pos.up());
         return world.setBlockToAir(pos);
     }
+
+	@Override
+	public float getTempMax(IBlockState state) {
+		int k = state.getValue(META);
+		return tempmap.get(k).getMax();
+	}
+
+	@Override
+	public float getTempMin(IBlockState state) {
+		int k = state.getValue(META);
+		return tempmap.get(k).getMin();
+	}
 }
