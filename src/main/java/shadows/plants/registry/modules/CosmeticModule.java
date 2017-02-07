@@ -36,12 +36,12 @@ public class CosmeticModule{
 	public static BlockCrop okra_crop = new BlockCrop("okra_crop", okra, 0, all);
 	public static SeedBase okra_seed = new SeedBase("okra_seed", okra_crop, module);
 	
-	public static FoodBase pineapple = new FoodBase("pineapple", module, 6, 1.6f, false);
+	public static FoodBase pineapple = new FoodBase("pineapple", module, 6, 0.6f, false);
 	public static BlockCrop pineapple_crop = new BlockCrop("pineapple_crop", pineapple, 1, all);
 	public static SeedBase pineapple_seed = new SeedBase("pineapple_seed", pineapple_crop, module);
 	
 	public static FoodBase ambrosia_a = new FoodBase("ambrosia_a", module, 3, 0.5f, true);
-	public static FoodBase apocynum_c = new FoodBase("apocynum_c", module, 1, 1.0f, false);
+	public static FoodBase apocynum_c = new FoodBase("apocynum_c", module, 1, 2.0f, false);
 	public static FoodBase daucus_c = new FoodBase("daucus_c", module, 4, 1.1f, false);
 	public static FoodBase phytolacca_a = new FoodBase("phytolacca_a", module, 5, 1.0f, true);
 	public static FoodBase plantago_m = new FoodBase("plantago_m", module, 3, 0.4f, false);

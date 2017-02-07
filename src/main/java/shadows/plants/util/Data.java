@@ -14,7 +14,7 @@ public class Data {
 
     public static final String MODID = "plants";
     public static final String MODNAME = "Plants";
-    public static final String VERSION = "dev-0.02";
+    public static final String VERSION = "beta-0.4.0";
     public static final CreativeTabs TAB = GlobalRegistry.TAB;
     public static final CreativeTabs TAB_I = GlobalRegistry.TAB_I;
     public static final String BOTANIA = "Botania";

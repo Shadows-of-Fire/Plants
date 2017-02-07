@@ -37,7 +37,7 @@
 			},
 			"6": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "blocks/flower_paeonia"
 				}
 			},
 			"7": {
