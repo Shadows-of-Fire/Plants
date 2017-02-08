@@ -41,7 +41,7 @@ public class BlockDoubleMetaBush extends BushBase
     public BlockDoubleMetaBush(String name, @Nullable List<Block> soil, Map<Integer, EnumTempZone> map)
     {
         super(name, EnumModule.COSMETIC, soil);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
+        setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
         tempmap = map;
 		GameRegistry.register(new ItemBlockDoubleMetaBush(this));
     }
@@ -124,12 +124,6 @@ public class BlockDoubleMetaBush extends BushBase
     	return state.getValue(META);
     }
 
-    public void placeAt(World world, BlockPos lowerPos, int meta, int flags)
-    {
-    	world.setBlockState(lowerPos, this.getDefaultState().withProperty(UPPER, false).withProperty(META, meta), flags);
-    	world.setBlockState(lowerPos.up(), this.getDefaultState().withProperty(UPPER, true), flags);
-    }
-
     /**
      * Called by ItemBlocks after a block is set in the world, to allow post-place logic
      */
@@ -137,13 +131,6 @@ public class BlockDoubleMetaBush extends BushBase
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
         worldIn.setBlockState(pos.up(), state.withProperty(UPPER, true), 2);
-    }
-
-    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack)
-    {
-        {
-            super.harvestBlock(worldIn, player, pos, state, te, stack);
-        }
     }
 
     @Override

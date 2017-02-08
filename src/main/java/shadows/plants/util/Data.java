@@ -1,14 +1,11 @@
 package shadows.plants.util;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 import shadows.plants.registry.GlobalRegistry;
-import shadows.plants.registry.modules.CosmeticModule;
+
 
 public class Data {
 

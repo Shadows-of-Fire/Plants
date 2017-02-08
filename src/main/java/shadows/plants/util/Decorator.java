@@ -17,6 +17,7 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
+import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.ITemperaturePlant;
@@ -27,7 +28,7 @@ public final class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
-			int xj = event.getRand().nextInt(86);
+			int xj = event.getRand().nextInt(96);
 			Block flower = Util.getFlowerByChance(xj);
 			int xk = 0;
 			IBlockState state = null;
@@ -35,6 +36,7 @@ public final class Decorator {
 			if (flower instanceof BlockMetaBush){ xk = event.getRand().nextInt(maxdata); state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);}
 			if (flower instanceof BlockDoubleMetaBush){ xk = event.getRand().nextInt(maxdata); state = flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk));}
 			if (flower instanceof BlockCrop){ xk = 7; state = flower.getDefaultState().withProperty(BlockCrop.AGE, (xk));}
+			if (flower instanceof BlockDoubleHarvestable){ xk = 0; state = flower.getDefaultState().withProperty(BlockDoubleHarvestable.UPPER, false);}
 			if(flower instanceof ITemperaturePlant){
 			if(state != null){
 			float max = ((ITemperaturePlant) flower).getTempMax(state);
@@ -61,5 +63,10 @@ public final class Decorator {
 						if(event.getWorld().isAirBlock(pos2) && event.getWorld().isAirBlock(pos2.up()) && (!event.getWorld().provider.getHasNoSky() || y1 < 127) && flower.canPlaceBlockAt(event.getWorld(), pos2)) {
 						event.getWorld().setBlockState(pos2, state.withProperty(BlockDoubleMetaBush.UPPER,  false), 2);
 						event.getWorld().setBlockState(pos2.up(), state.withProperty(BlockDoubleMetaBush.UPPER,  true), 2);
+						}}
+						else if (flower instanceof BlockDoubleHarvestable){
+						if(event.getWorld().isAirBlock(pos2) && event.getWorld().isAirBlock(pos2.up()) && (!event.getWorld().provider.getHasNoSky() || y1 < 127) && flower.canPlaceBlockAt(event.getWorld(), pos2)) {
+						event.getWorld().setBlockState(pos2, state.withProperty(BlockDoubleHarvestable.UPPER,  false), 2);
+						event.getWorld().setBlockState(pos2.up(), state.withProperty(BlockDoubleHarvestable.UPPER,  true), 2);
 						}}}}}}}}}
 }

@@ -42,47 +42,47 @@
 			},
 			"7": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/adenophora_t"
 				}
 			},
 			"8": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/adonis_a"
 				}
 			},
 			"9": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/aechmea_a"
 				}
 			},
 			"10": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/aeschynanthus_s"
 				}
 			},
 			"11": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/aethionema_s"
 				}
 			},
 			"12": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/agapanthus_a"
 				}
 			},
 			"13": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/ageratum_c"
 				}
 			},
 			"14": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/agrostemma_g"
 				}
 			},
 			"15": {
 				"textures": {
-					"cross": "plants:blocks/cosmetic/nullnull"
+					"cross": "plants:blocks/cosmetic/aira_c"
 				}
 			}
 

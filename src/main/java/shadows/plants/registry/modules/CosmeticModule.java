@@ -7,6 +7,7 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
+import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
@@ -31,6 +32,7 @@ public class CosmeticModule{
 	public static BlockMetaBush cosmetic_3 = new BlockMetaBush("cosmetic_3", TempMap.cosmetic_3());
 	public static BlockMetaBush cosmetic_4 = new BlockMetaBush("cosmetic_4", TempMap.cosmetic_4());
 	public static BlockDoubleMetaBush cosmetic_5 = new BlockDoubleMetaBush("cosmetic_5", null, TempMap.cosmetic_5());
+	public static BlockMetaBush cosmetic_6 = new BlockMetaBush("cosmetic_6", TempMap.cosmetic_6());
 	
 	public static FoodBase okra = new FoodBase("okra", module, 3, 1.3f, false);
 	public static BlockCrop okra_crop = new BlockCrop("okra_crop", okra, 0, all);
@@ -50,6 +52,7 @@ public class CosmeticModule{
 	public static FoodBase solanum_c = new FoodBase("solanum_c", module, 2, 0.5f, true);
 	public static FoodBase solanum_d = new FoodBase("solanum_d", module, 3, 0.6f, true);
 	public static FoodBase solanum_n = new FoodBase("solanum_n", module, 5, 1.1f, true);
+	public static FoodBase alyxia_b = new FoodBase("alyxia_b", module, 2, 1.4f, false);
 	public static UselessItemBase apocynum_c_cloth = new UselessItemBase("apocynum_c_cloth", module);
 	
 	public static BlockHarvestable ambrosia_a_crop = new BlockHarvestable("ambrosia_a_crop", ambrosia_a, all);
@@ -62,6 +65,7 @@ public class CosmeticModule{
 	public static BlockHarvestable solanum_c_crop = new BlockHarvestable("solanum_c_crop", solanum_c, all);
 	public static BlockHarvestable solanum_d_crop = new BlockHarvestable("solanum_d_crop", solanum_d, all);
 	public static BlockHarvestable solanum_n_crop = new BlockHarvestable("solanum_n_crop", solanum_n, all);
+	public static BlockDoubleHarvestable alyxia_b_crop = new BlockDoubleHarvestable("alyxia_b_crop", alyxia_b, all);
 	
 	
 	public static List<Item> getItemList(){
@@ -82,6 +86,7 @@ public class CosmeticModule{
 		list.add(solanum_d);
 		list.add(solanum_n);
 		list.add(apocynum_c_cloth);
+		list.add(alyxia_b);
 		return list;
 	}
 	
@@ -94,6 +99,7 @@ public class CosmeticModule{
 		list.add(cosmetic_3);
 		list.add(cosmetic_4);
 		list.add(cosmetic_5);
+		list.add(cosmetic_6);
 		list.add(pineapple_crop);
 		list.add(okra_crop);
 		list.add(ambrosia_a_crop);
@@ -106,6 +112,7 @@ public class CosmeticModule{
 		list.add(solanum_c_crop);
 		list.add(solanum_d_crop);
 		list.add(solanum_n_crop);
+		list.add(alyxia_b_crop);
 		return list;
 	}
 	

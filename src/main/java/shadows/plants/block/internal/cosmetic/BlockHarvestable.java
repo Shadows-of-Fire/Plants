@@ -27,11 +27,11 @@ import shadows.plants.util.Data;
 public class BlockHarvestable extends BushBase{
 	
 	public static final PropertyBool FRUIT = PropertyBool.create("fruit");
-	private Item cropItem;
-	private Item cropItem2 = null;
-	private int meta;
-	private float tempmax;
-	private float tempmin;
+	protected Item cropItem;
+	protected Item cropItem2 = null;
+	protected int meta;
+	protected float tempmax;
+	protected float tempmin;
 	
 	public BlockHarvestable(String name, ItemStack crop, EnumTempZone zone){
 		super(name, EnumModule.COSMETIC, null);
@@ -45,15 +45,11 @@ public class BlockHarvestable extends BushBase{
 	
 	public BlockHarvestable(String name, Item crop, EnumTempZone zone) {
 		this(name, new ItemStack(crop), zone);
-		cropItem = crop;
-		meta = 0;
 	}
 
 	public BlockHarvestable(String name, Item crop, Item crop2, EnumTempZone zone) {
 		this(name, new ItemStack(crop), zone);
-		cropItem = crop;
 		cropItem2 = crop2;
-		meta = 0;
 	}
 
 	@Override

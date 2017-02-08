@@ -25,6 +25,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
+import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
@@ -33,7 +34,7 @@ import shadows.plants.registry.modules.CosmeticModule;
 public class Util {
 
 	public static boolean isException(Block block){
-		return (block instanceof BlockMetaBush || block instanceof BlockDoubleMetaBush);
+		return (block instanceof BlockMetaBush || block instanceof BlockDoubleMetaBush || block instanceof BlockDoubleHarvestable);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -116,8 +117,9 @@ public class Util {
     	case("cosmetic_1"): ij = 15; break;
     	case("cosmetic_2"): ij = 15; break;
     	case("cosmetic_3"): ij = 15; break;
-    	case("cosmetic_4"): ij = 5; break;
-    	case("cosmetic_5"): ij = 2; break; //this one is 0-7 bc anywhere I need it, it will be assigning the PropertyInteger
+    	case("cosmetic_4"): ij = 15; break;
+    	case("cosmetic_5"): ij = 5; break; //this one is 0-7 bc anywhere I need it, it will be assigning the PropertyInteger
+    	case("cosmetic_6"): ij = 15; break;
     	}
     	
     	return ij;
@@ -135,10 +137,13 @@ public class Util {
 		for (int i = 0; i < 16; i++){
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));
 		}}
-		if (block instanceof BlockDoubleMetaBush){
+		else if (block instanceof BlockDoubleMetaBush){
 		for (int i = 0; i < 8; i++){
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));
-		}}}
+		}}
+		else if (block instanceof BlockDoubleHarvestable){
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		}}
 	
 		public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Item reagent, int reagentmeta, Item reagent2, Item reagent3){
 			GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta), new ItemStack(reagent, 1, reagentmeta), new ItemStack(reagent2, 1, reagentmeta), new ItemStack(reagent3, 1, reagentmeta));
@@ -187,6 +192,7 @@ public class Util {
 		if(x > 77 && x < 80) return CosmeticModule.solanum_c_crop;
 		if(x > 80 && x < 83) return CosmeticModule.solanum_d_crop;
 		if(x > 83 && x < 86) return CosmeticModule.solanum_n_crop;
+		if(x > 86 && x < 96) return CosmeticModule.cosmetic_6;
 		else return null;
 		
 	}

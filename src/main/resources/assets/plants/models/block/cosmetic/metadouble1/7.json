@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "plants:blocks/cosmetic/abelia_c_bot"
+        "cross": "plants:blocks/cosmetic/adenocarpus_f_bot"
     }
 }
