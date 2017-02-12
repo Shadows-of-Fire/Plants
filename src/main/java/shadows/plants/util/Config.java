@@ -17,6 +17,7 @@ public class Config {
 	public static int quantity = 3;
 	public static int numtries = 1;
 	public static boolean literallyTakeoverFlowerForests = true;
+	public static boolean allBushes = true;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {
@@ -85,6 +86,12 @@ public class Config {
 	                "true",
 	                "Whether or not I make flower forests great again.",
 	                Property.Type.BOOLEAN);
+	        
+	        Property PAllBushes = CommonProxy.config.get(Configuration.CATEGORY_GENERAL,
+	                "AllBushes",
+	                "true",
+	                "Whether or not Coagulated Plant Balls work on every single BlockBush that doesn't have a TileEntity.",
+	                Property.Type.BOOLEAN);
 	    	
 	    debug = PDebug.getBoolean();	
 	    Botania = PBotania.getBoolean();
@@ -96,6 +103,7 @@ public class Config {
 	    quantity = PQuantity.getInt();
 	    numtries = PTries.getInt();
 	    literallyTakeoverFlowerForests = PFlowerForests.getBoolean();
+	    allBushes = PAllBushes.getBoolean();
 	    	
 	    } catch (Exception e) {
 	        // Failed reading/writing, just continue

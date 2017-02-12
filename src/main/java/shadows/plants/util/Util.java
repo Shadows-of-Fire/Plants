@@ -208,7 +208,7 @@ public class Util {
 	
 	public static IBlockState getStateByChance(Random rand, Block flower){
 		int xk = 0;
-		IBlockState state = null;
+		IBlockState state = flower.getDefaultState();
 		int maxdata = 0;
 		if(flower instanceof IMetaPlant) maxdata = ((IMetaPlant) flower).getMaxData();
 		if (flower instanceof BlockMetaBush){ xk = rand.nextInt(maxdata + 1); if(xk == 2 && flower == CosmeticModule.cosmetic_1) ++xk; if(xk == 3 && flower == CosmeticModule.cosmetic_1) ++xk; if(xk == 13 && flower == CosmeticModule.cosmetic_2) ++xk; state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);}

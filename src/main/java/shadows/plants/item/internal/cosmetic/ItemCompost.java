@@ -1,6 +1,9 @@
 package shadows.plants.item.internal.cosmetic;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +15,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.internal.cosmetic.BlockFruitVine;
 import shadows.plants.common.EnumModule;
 import shadows.plants.item.common.DummyItem;
@@ -26,11 +31,12 @@ public class ItemCompost extends DummyItem{
 	
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
-    	
         if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack)){
     	if(Config.debug) System.out.println("Using Compost Item");
     	IBlockState state = world.getBlockState(pos);
 		SoundType soundtype = SoundType.PLANT;
+       	Block flower = Util.getFlowerByChance(world.rand);
+       	
     	if(state.getBlock() == Blocks.MOSSY_COBBLESTONE){
     		BlockFruitVine block = (BlockFruitVine) Util.getRandomVine(world.rand);
     		Util.placeVine(world, block, pos, facing);
@@ -38,22 +44,50 @@ public class ItemCompost extends DummyItem{
     		--stack.stackSize;
             return EnumActionResult.SUCCESS;
         }
-    		findAndGenFlowers(world, pos);
-    		if(world.rand.nextInt(10) == 0) findAndGenFlowers(world, pos);
+    	
+
+    	else if(flower.canPlaceBlockAt(world, pos.up())){
+    		genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
+    		if(world.rand.nextInt(10) == 0) genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
             world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
     		--stack.stackSize;
             return EnumActionResult.SUCCESS;
         }
+        
+    	else if(state.getBlock() instanceof BlockBush && !(state.getBlock().hasTileEntity(state))){
+    		if(state.getBlock().getRegistryName().getResourceDomain().equals("plants")){
+    		genFlowers(world, pos, state.getBlock(), state);
+            world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+
+    		--stack.stackSize;
+            return EnumActionResult.SUCCESS;
+            }
+    		else if(Config.allBushes){
+    		genFlowers(world, pos, state.getBlock(), state);
+            world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+
+    		--stack.stackSize;
+            return EnumActionResult.SUCCESS;
+            }
+        }}
+        
+        
      return EnumActionResult.FAIL;
     }
     
-    private static void findAndGenFlowers(World world, BlockPos pos){
-    	Block flower = Util.getFlowerByChance(world.rand);
+    private static void genFlowers(World world, BlockPos pos, Block flower, IBlockState state){
     	if(Config.debug) System.out.println(flower.toString());
-    	if(flower.canPlaceBlockAt(world, pos.up())){
     		if(Config.debug) System.out.println("Attempting to place " + flower.toString());
-    		Util.genSmallFlowerPatchNearby(world, pos.up(), world.rand, Util.getStateByChance(world.rand, flower), flower);
-    }}
+    		Util.genSmallFlowerPatchNearby(world, pos.up(), world.rand, state, flower);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced){
+    	tooltip.add("Use on Grass for Plants");
+    	tooltip.add("Use on Moss Stone for Vines");
+    	tooltip.add("Use on Plants for more");
+    }
 
 }
