@@ -56,7 +56,7 @@ public class ItemCompost extends DummyItem{
         }
         
     	else if(state.getBlock() instanceof BlockBush && !(state.getBlock().hasTileEntity(state))){
-    		if(state.getBlock().getRegistryName().getResourceDomain().equals("plants")){
+    		if(state.getBlock().getRegistryName().getResourceDomain().equals("plants") || state.getBlock().getRegistryName().getResourceDomain().equals("minecraft")){
     		genFlowers(world, pos, state.getBlock(), state);
             world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
@@ -66,7 +66,7 @@ public class ItemCompost extends DummyItem{
     		else if(Config.allBushes){
     		genFlowers(world, pos, state.getBlock(), state);
             world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-
+            
     		--stack.stackSize;
             return EnumActionResult.SUCCESS;
             }
@@ -85,9 +85,9 @@ public class ItemCompost extends DummyItem{
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced){
-    	tooltip.add("Use on Grass for Plants");
-    	tooltip.add("Use on Moss Stone for Vines");
-    	tooltip.add("Use on Plants for more");
+    	tooltip.add("Use on grass for plants");
+    	tooltip.add("Use on moss stone for vines");
+    	tooltip.add("Use on plants for copies");
     }
 
 }

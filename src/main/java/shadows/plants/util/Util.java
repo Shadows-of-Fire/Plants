@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockMushroom;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -240,13 +241,13 @@ public class Util {
 		if(!world.isRemote){
 		int dist = Config.patchsize;//Spread of the flowers, a radius of sorts.
 		for(int i = 0; i < Config.quantity; i++) {//number of positions selected per event.
-				int x = pos.getX() + rand.nextInt(10) - 5;
-				int z = pos.getZ() + rand.nextInt(10) - 5;
+			int x = pos.getX() + MathHelper.getRandomIntegerInRange(rand, -5, 5);
+			int z = pos.getZ() + MathHelper.getRandomIntegerInRange(rand, -5, 5);
 				int y = world.getTopSolidOrLiquidBlock(pos).getY();
 				for(int j = 0; j < Config.density; j++) { //number of placements that occur.
-					int x1 = x + rand.nextInt(dist * 2) - dist;
+					int x1 = x + MathHelper.getRandomIntegerInRange(rand, -1*dist, dist);
 					int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-					int z1 = z + rand.nextInt(dist * 2) - dist;
+					int z1 = z + MathHelper.getRandomIntegerInRange(rand, -1*dist, dist);
 					BlockPos pos2 = new BlockPos(x1, y1, z1);
 					Util.placeFlower(world, state, pos2, flower);
 					}}
@@ -256,13 +257,13 @@ public class Util {
 		if(!world.isRemote){
 		int dist = 2;//Spread of the flowers, a radius of sorts.
 		for(int i = 0; i < 2; i++) {//number of positions selected per event.
-				int x = pos.getX() + rand.nextInt(4) - 2;
-				int z = pos.getZ() + rand.nextInt(4) - 2;
+				int x = pos.getX() + MathHelper.getRandomIntegerInRange(rand, -2, 2);
+				int z = pos.getZ() + MathHelper.getRandomIntegerInRange(rand, -2, 2);
 				int y = world.getTopSolidOrLiquidBlock(pos).getY();
 				for(int j = 0; j < 3; j++) { //number of placements that occur.
-					int x1 = x + rand.nextInt(dist * 2) - dist;
+					int x1 = x + MathHelper.getRandomIntegerInRange(rand, -1*dist, dist);
 					int y1 = y;
-					int z1 = z + rand.nextInt(dist * 2) - dist;
+					int z1 = z + MathHelper.getRandomIntegerInRange(rand, -1*dist, dist);
 					BlockPos pos2 = new BlockPos(x1, y1, z1);
 					Util.placeFlower(world, state, pos2, flower);
 					}}
