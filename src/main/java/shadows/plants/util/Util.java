@@ -222,16 +222,16 @@ public class Util {
 	public static void placeFlower(World world, IBlockState state, BlockPos pos, Block flower){
 		if(state != null && flower != null){
 		if(!(flower instanceof BlockDoubleMetaBush || flower instanceof BlockDoubleHarvestable || flower instanceof BlockFruitVine)){
-		if(world.isAirBlock(pos) && (!world.provider.getHasNoSky() || pos.getY() < 127) && flower.canPlaceBlockAt(world, pos)) {
+		if(world.isAirBlock(pos) && !world.provider.getHasNoSky() && flower.canPlaceBlockAt(world, pos)) {
 			world.setBlockState(pos, state, 2);
 	}}
 		else if (flower instanceof BlockDoubleMetaBush){
-		if(world.isAirBlock(pos) && world.isAirBlock(pos.up()) && (!world.provider.getHasNoSky() || pos.getY() < 127) && flower.canPlaceBlockAt(world, pos)) {
+		if(world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.getHasNoSky() && flower.canPlaceBlockAt(world, pos)) {
 		world.setBlockState(pos, state.withProperty(BlockDoubleMetaBush.UPPER,  false), 2);
 		world.setBlockState(pos.up(), state.withProperty(BlockDoubleMetaBush.UPPER,  true), 2);
 		}}
 		else if (flower instanceof BlockDoubleHarvestable){
-		if(world.isAirBlock(pos) && world.isAirBlock(pos.up()) && (!world.provider.getHasNoSky() || pos.getY() < 127) && flower.canPlaceBlockAt(world, pos)) {
+		if(world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.getHasNoSky() && flower.canPlaceBlockAt(world, pos)) {
 		world.setBlockState(pos, state.withProperty(BlockDoubleHarvestable.UPPER,  false), 2);
 		world.setBlockState(pos.up(), state.withProperty(BlockDoubleHarvestable.UPPER,  true), 2);
 		}}
