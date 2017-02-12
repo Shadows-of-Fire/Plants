@@ -1,6 +1,7 @@
 package shadows.plants.block;
 
 import net.minecraft.block.BlockVine;
+import net.minecraft.block.SoundType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import shadows.plants.common.EnumModule;
@@ -16,6 +17,7 @@ public abstract class VineBase extends BlockVine implements IModularThing{
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
 		setCreativeTab(Data.TAB);
+		setSoundType(SoundType.PLANT);
 		type = module;
 	}
     

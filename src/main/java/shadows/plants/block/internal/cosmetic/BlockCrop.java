@@ -36,6 +36,7 @@ public class BlockCrop extends PlantBase{
 		switch(index){
 		case(0): seed = CosmeticModule.okra_seed; break;
 		case(1): seed = CosmeticModule.pineapple_seed; break;
+		case(2): seed = CosmeticModule.amaranthus_h_seed; break;
 		}}
 
 		@Override

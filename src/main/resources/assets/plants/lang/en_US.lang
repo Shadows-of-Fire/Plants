@@ -78,6 +78,29 @@ tile.plants.cosmetic_5.5.name=Null_Null
 tile.plants.cosmetic_5.6.name=Null_Null
 tile.plants.cosmetic_5.7.name=Null_Null
 
+tile.plants.cosmetic_6.0.name=Null_Null
+tile.plants.cosmetic_6.1.name=Null_Null
+tile.plants.cosmetic_6.2.name=Null_Null
+tile.plants.cosmetic_6.3.name=Null_Null
+tile.plants.cosmetic_6.4.name=Null_Null
+tile.plants.cosmetic_6.5.name=Null_Null
+tile.plants.cosmetic_6.6.name=Null_Null
+tile.plants.cosmetic_6.7.name=Null_Null
+tile.plants.cosmetic_6.8.name=Null_Null
+tile.plants.cosmetic_6.9.name=Null_Null
+tile.plants.cosmetic_6.10.name=Null_Null
+tile.plants.cosmetic_6.11.name=Null_Null
+tile.plants.cosmetic_6.12.name=Null_Null
+tile.plants.cosmetic_6.13.name=Null_Null
+tile.plants.cosmetic_6.14.name=Null_Null
+tile.plants.cosmetic_6.15.name=Null_Null
+
+tile.plants.adlumia_f.name=Null_Null
+tile.plants.afgekia_m.name=Null_Null
+tile.plants.androsace_a.name=Null_Null
+tile.plants.akebia_q_crop.name=Null_Null
+tile.plants.ampelopsis_a_crop.name=Null_Null
+
 tile.plants.ambrosia_a_crop.name=Annual Ragweed
 tile.plants.apocynum_c_crop.name=Wild Cotton
 tile.plants.daucus_c_crop.name=Wild Carrot
@@ -90,6 +113,10 @@ tile.plants.solanum_d_crop.name=Climbing Nightshade
 tile.plants.solanum_n_crop.name=Black Nightshade
 tile.plants.pineapple_crop.name=Pineapple
 tile.plants.okra_crop.name=Okra
+tile.plants.alyxia_b_crop.name=Null_Null
+tile.plants.amaranthus_h_crop.name=Null_Null
+tile.plants.actaea_p_crop.name=Null_Null
+tile.plants.alternanthera_f_crop.name=Null_Null
 
 item.botania:plants.excalibur.name=Holy Sword Excalibur
 

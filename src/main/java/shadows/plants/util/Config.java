@@ -4,15 +4,11 @@ import shadows.plants.proxy.CommonProxy;
 
 public class Config {
 	
-	public static boolean AE = true;
 	public static boolean debug = true;
 	public static boolean Botania = true;
-	public static boolean Embers = true;
-	public static boolean Roots = true;
 	public static boolean Cosmetic = true;
-	public static boolean Hostile = true;
-	public static boolean Meme = false;
 	public static boolean disableVanillaFlowers = true;
+	public static int vineFruitChance = 5;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {
