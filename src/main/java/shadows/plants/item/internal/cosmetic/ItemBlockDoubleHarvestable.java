@@ -15,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
+import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 
 public class ItemBlockDoubleHarvestable extends ItemBlock{
@@ -36,6 +37,7 @@ public class ItemBlockDoubleHarvestable extends ItemBlock{
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
+    	if(Config.debug) System.out.println(this.getBlock().toString());
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
 

@@ -59,47 +59,47 @@ tile.plants.cosmetic_4.3.name=Magic Flower
 tile.plants.cosmetic_4.4.name=Rock Thyme
 tile.plants.cosmetic_4.5.name=Snow Aciphyll
 tile.plants.cosmetic_4.6.name=Peony
-tile.plants.cosmetic_4.7.name=Null_Null
-tile.plants.cosmetic_4.8.name=Null_Null
-tile.plants.cosmetic_4.9.name=Null_Null
-tile.plants.cosmetic_4.10.name=Null_Null
-tile.plants.cosmetic_4.11.name=Null_Null
-tile.plants.cosmetic_4.12.name=Null_Null
-tile.plants.cosmetic_4.13.name=Null_Null
-tile.plants.cosmetic_4.14.name=Null_Null
-tile.plants.cosmetic_4.15.name=Null_Null
+tile.plants.cosmetic_4.7.name=Japanese Lady Bell
+tile.plants.cosmetic_4.8.name=Summer Pheasant's Eye
+tile.plants.cosmetic_4.9.name=Aechmea Amicorum
+tile.plants.cosmetic_4.10.name=Basket Plant
+tile.plants.cosmetic_4.11.name=Burnt Candytuft
+tile.plants.cosmetic_4.12.name=African Lily
+tile.plants.cosmetic_4.13.name=Goatweed
+tile.plants.cosmetic_4.14.name=Corncockle
+tile.plants.cosmetic_4.15.name=Silver Hairgrass
 
 tile.plants.cosmetic_5.0.name=Chinese Honeysuckle 
 tile.plants.cosmetic_5.1.name=Balcanicus Bear's Breeches
 tile.plants.cosmetic_5.2.name=Heart's Delight
-tile.plants.cosmetic_5.3.name=Null_Null
-tile.plants.cosmetic_5.4.name=Null_Null
-tile.plants.cosmetic_5.5.name=Null_Null
+tile.plants.cosmetic_5.3.name=Canary Island Flatpod
+tile.plants.cosmetic_5.4.name=Summer Snowflakes
+tile.plants.cosmetic_5.5.name=Alonsoa Meridionalis
 tile.plants.cosmetic_5.6.name=Null_Null
 tile.plants.cosmetic_5.7.name=Null_Null
 
-tile.plants.cosmetic_6.0.name=Null_Null
-tile.plants.cosmetic_6.1.name=Null_Null
-tile.plants.cosmetic_6.2.name=Null_Null
-tile.plants.cosmetic_6.3.name=Null_Null
-tile.plants.cosmetic_6.4.name=Null_Null
-tile.plants.cosmetic_6.5.name=Null_Null
-tile.plants.cosmetic_6.6.name=Null_Null
-tile.plants.cosmetic_6.7.name=Null_Null
-tile.plants.cosmetic_6.8.name=Null_Null
-tile.plants.cosmetic_6.9.name=Null_Null
-tile.plants.cosmetic_6.10.name=Null_Null
-tile.plants.cosmetic_6.11.name=Null_Null
-tile.plants.cosmetic_6.12.name=Null_Null
-tile.plants.cosmetic_6.13.name=Null_Null
-tile.plants.cosmetic_6.14.name=Null_Null
-tile.plants.cosmetic_6.15.name=Null_Null
+tile.plants.cosmetic_6.0.name=Austral Bugle
+tile.plants.cosmetic_6.1.name=Albuca Fastigiata
+tile.plants.cosmetic_6.2.name=Biennial Hollyhock
+tile.plants.cosmetic_6.3.name=Dyer's Alkanet
+tile.plants.cosmetic_6.4.name=Aloe Ballii
+tile.plants.cosmetic_6.5.name=Marsh Foxtail
+tile.plants.cosmetic_6.6.name=Lace Flower
+tile.plants.cosmetic_6.7.name=Parrot Flower
+tile.plants.cosmetic_6.8.name=Red Centred Hibiscus
+tile.plants.cosmetic_6.9.name=March Lily
+tile.plants.cosmetic_6.10.name=Philippine Amesiella
+tile.plants.cosmetic_6.11.name=Winged Everlasting
+tile.plants.cosmetic_6.12.name=Magarza
+tile.plants.cosmetic_6.13.name=Scarlet Pimpernel
+tile.plants.cosmetic_6.14.name=Italian Bugloss
+tile.plants.cosmetic_6.15.name=Ghost Orchid
 
-tile.plants.adlumia_f.name=Null_Null
-tile.plants.afgekia_m.name=Null_Null
-tile.plants.androsace_a.name=Null_Null
-tile.plants.akebia_q_crop.name=Null_Null
-tile.plants.ampelopsis_a_crop.name=Null_Null
+tile.plants.adlumia_f.name=Mountain Fringe
+tile.plants.afgekia_m.name=Kan Pai Mahidol
+tile.plants.androsace_a.name=Alpine Rock Jasmine
+tile.plants.akebia_q_crop.name=Chocolate Vine
+tile.plants.ampelopsis_a_crop.name=Pepper Vine
 
 tile.plants.ambrosia_a_crop.name=Annual Ragweed
 tile.plants.apocynum_c_crop.name=Wild Cotton
@@ -113,10 +113,10 @@ tile.plants.solanum_d_crop.name=Climbing Nightshade
 tile.plants.solanum_n_crop.name=Black Nightshade
 tile.plants.pineapple_crop.name=Pineapple
 tile.plants.okra_crop.name=Okra
-tile.plants.alyxia_b_crop.name=Null_Null
-tile.plants.amaranthus_h_crop.name=Null_Null
-tile.plants.actaea_p_crop.name=Null_Null
-tile.plants.alternanthera_f_crop.name=Null_Null
+tile.plants.alyxia_b_crop.name=Dysentery Bush
+tile.plants.amaranthus_h_crop.name=Prince's Feather
+tile.plants.actaea_p_crop.name=Doll's Eyes
+tile.plants.alternanthera_f_crop.name=Galapagos Flower
 
 item.botania:plants.excalibur.name=Holy Sword Excalibur
 
@@ -135,9 +135,20 @@ item.plants.saffron.name=Saffron
 item.plants.solanum_c.name=Horsenettle Fruit
 item.plants.solanum_d.name=Climbing Nightshade Berries
 item.plants.solanum_n.name=Black Nightshade Berries
+item.plants.alyxia_b.name=Dysentery Bush Berries
+item.plants.actaea_p.name=Baneberries
+item.plants.alternanthera_f.name=Galapagos Leaf
+item.plants.amaranthus_h.name=Prince's Feather Leaf
+item.plants.amaranthus_h_seed.name=Prince's Feather Seeds
+item.plants.ampelopsis_a.name=Pepper Vine Fruit
+item.plants.akebia_q.name=Chocolate Vine Seed Pod
 
+item.plants.dye_black.name=Black Dye
+item.plants.dye_blue.name=Blue Dye
+item.plants.dye_brown.name=Brown Dye
+item.plants.dye_white.name=White Dye
 
-
+item.plants.compost.name=Coagulated Plant Ball
 
 
 

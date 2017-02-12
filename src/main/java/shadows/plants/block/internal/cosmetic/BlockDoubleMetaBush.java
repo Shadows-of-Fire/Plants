@@ -18,7 +18,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -29,20 +28,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
+import shadows.plants.common.IMetaPlant;
 import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
 
-public class BlockDoubleMetaBush extends BushBase
-{
+public class BlockDoubleMetaBush extends BushBase implements IMetaPlant{
 
     public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
     public static final PropertyBool UPPER = PropertyBool.create("upper");
     public Map<Integer, EnumTempZone> tempmap;
+    private int max;
     
-    public BlockDoubleMetaBush(String name, @Nullable List<Block> soil, Map<Integer, EnumTempZone> map)
+    public BlockDoubleMetaBush(String name, @Nullable List<Block> soil, Map<Integer, EnumTempZone> map, int maxdata)
     {
         super(name, EnumModule.COSMETIC, soil);
         setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
         tempmap = map;
+		max = maxdata;
 		GameRegistry.register(new ItemBlockDoubleMetaBush(this));
     }
 
@@ -246,5 +247,15 @@ public class BlockDoubleMetaBush extends BushBase
 	public float getTempMin(IBlockState state) {
 		int k = state.getValue(META);
 		return tempmap.get(k).getMin();
+	}
+	
+	@Override
+	public int getMaxData() {
+		return max;
+	}
+
+	@Override
+	public int getMetaPropValue(IBlockState state) {
+		return state.getValue(META);
 	}
 }

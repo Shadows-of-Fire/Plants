@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -15,6 +16,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -25,10 +27,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
+import shadows.plants.block.VineBase;
+import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
+import shadows.plants.block.internal.cosmetic.BlockFruitVine;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.IMetaPlant;
 import shadows.plants.registry.modules.CosmeticModule;
 
 public class Util {
@@ -98,31 +104,15 @@ public class Util {
     	while (iterator.hasNext()){
     		EntityItem item = iterator.next();
     		if (item.getEntityItem().getItem() == stack.getItem()) {
-        		//System.out.println("item is " + item.getEntityItem().toString() + " while target = " + stack.toString() + " result: true");
+    			if(Config.debug) System.out.println("item is " + item.getEntityItem().toString() + " while target = " + stack.toString() + " result: true");
     			return true;
 
     		}
-    		//System.out.println("item is " + item.getEntityItem().toString() + " while target = " + stack.toString() + " result: false");
+    		if(Config.debug) System.out.println("item is " + item.getEntityItem().toString() + " while target = " + stack.toString() + " result: false");
     	}
     	
     	return false;
     	
-    }
-    
-    public static int getMaxMetadata(String name){//This should return the max used value of a block's PropertyInteger(META)
-    	int ij = 0;
-    	
-    	
-    	switch(name){
-    	case("cosmetic_1"): ij = 15; break;
-    	case("cosmetic_2"): ij = 15; break;
-    	case("cosmetic_3"): ij = 15; break;
-    	case("cosmetic_4"): ij = 15; break;
-    	case("cosmetic_5"): ij = 5; break; //this one is 0-7 bc anywhere I need it, it will be assigning the PropertyInteger
-    	case("cosmetic_6"): ij = 15; break;
-    	}
-    	
-    	return ij;
     }
 	
     private static int getBlockNumber(BushBase block){
@@ -157,6 +147,9 @@ public class Util {
 		public static void addSimpleShapeless(Item result, Item reagent, int reagentmeta){
 			addSimpleShapeless(result, 1, 0, reagent, reagentmeta);
 	}
+		public static void addSimpleShapeless(Item result, Block reagent, int reagentmeta){
+			addSimpleShapeless(result, 1, 0, reagent, reagentmeta);
+	}
 		public static void addSimpleShapeless(Item result, int resultmeta, Item reagent){
 			addSimpleShapeless(result, 1, resultmeta, reagent, 0);
 	}
@@ -173,30 +166,112 @@ public class Util {
 			addSimpleShapeless(result, 1, 0, reagent, 0);
 	}
 		
-	public static Block getFlowerByChance(int x){
-		
-		if(x > 0 && x < 10) return CosmeticModule.cosmetic_1;
-		if(x > 10 && x < 20) return CosmeticModule.cosmetic_2;
-		if(x > 20 && x < 30) return CosmeticModule.cosmetic_3;
-		if(x > 30 && x < 40) return CosmeticModule.cosmetic_4;
-		if(x > 40 && x < 50) return CosmeticModule.cosmetic_5;
-		if(x > 50 && x < 53) return CosmeticModule.ambrosia_a_crop;
-		if(x > 53 && x < 56) return CosmeticModule.apocynum_c_crop;
-		if(x > 56 && x < 59) return CosmeticModule.daucus_c_crop;
-		if(x > 59 && x < 62) return CosmeticModule.okra_crop;
-		if(x > 62 && x < 65) return CosmeticModule.phytolacca_a_crop;
-		if(x > 65 && x < 68) return CosmeticModule.pineapple_crop;
-		if(x > 68 && x < 71) return CosmeticModule.plantago_m_crop;
-		if(x > 71 && x < 74) return CosmeticModule.rubus_o_crop;
-		if(x > 74 && x < 77) return CosmeticModule.saffron_crop;
-		if(x > 77 && x < 80) return CosmeticModule.solanum_c_crop;
-		if(x > 80 && x < 83) return CosmeticModule.solanum_d_crop;
-		if(x > 83 && x < 86) return CosmeticModule.solanum_n_crop;
-		if(x > 86 && x < 96) return CosmeticModule.cosmetic_6;
-		else return null;
-		
+	public static Block getFlowerByChance(Random rand){
+		int x = rand.nextInt(86);
+		if(x >= 0 && x < 16) return CosmeticModule.cosmetic_1;
+		if(x >= 16 && x < 32) return CosmeticModule.cosmetic_2;
+		if(x >= 32 && x < 48) return CosmeticModule.cosmetic_3;
+		if(x >= 48 && x < 64) return CosmeticModule.cosmetic_4;
+		if(x >= 64 && x < 69) return CosmeticModule.cosmetic_5;
+		if(x == 69) return CosmeticModule.ambrosia_a_crop;
+		if(x == 70) return CosmeticModule.apocynum_c_crop;
+		if(x == 71) return CosmeticModule.daucus_c_crop;
+		if(x == 72) return CosmeticModule.okra_crop;
+		if(x == 73) return CosmeticModule.phytolacca_a_crop;
+		if(x == 74) return CosmeticModule.pineapple_crop;
+		if(x == 75) return CosmeticModule.plantago_m_crop;
+		if(x == 76) return CosmeticModule.rubus_o_crop;
+		if(x == 77) return CosmeticModule.saffron_crop;
+		if(x == 78) return CosmeticModule.solanum_c_crop;
+		if(x == 79) return CosmeticModule.solanum_d_crop;
+		if(x == 80) return CosmeticModule.solanum_n_crop;
+		if(x == 81) return CosmeticModule.cosmetic_6;
+		if(x == 82) return CosmeticModule.alyxia_b_crop;
+		if(x == 83) return CosmeticModule.amaranthus_h_crop;
+		if(x == 84) return CosmeticModule.actaea_p_crop;
+		if(x == 85) return CosmeticModule.alternanthera_f_crop;
+		else{
+			System.out.println("PLANTS HAS RETURNED A NULL VALUE (X = " + x + ") FOR getFlowerByChance. THIS IS VERY BAD!");
+			return null;
+		}
 	}
 	
+	public static Block getRandomVine(Random rand){
+		int x = rand.nextInt(5);
+		if(x == 0) return CosmeticModule.adlumia_f;
+		if(x == 1) return CosmeticModule.afgekia_m;
+		if(x == 2) return CosmeticModule.androsace_a;
+		if(x == 3) return CosmeticModule.akebia_q_crop;
+		if(x == 4) return CosmeticModule.ampelopsis_a_crop;
+		else return null;
+	}
 	
+	public static IBlockState getStateByChance(Random rand, Block flower){
+		int xk = 0;
+		IBlockState state = null;
+		int maxdata = 0;
+		if(flower instanceof IMetaPlant) maxdata = ((IMetaPlant) flower).getMaxData();
+		if (flower instanceof BlockMetaBush){ xk = rand.nextInt(maxdata + 1); if(xk == 2 && flower == CosmeticModule.cosmetic_1) ++xk; if(xk == 3 && flower == CosmeticModule.cosmetic_1) ++xk; if(xk == 13 && flower == CosmeticModule.cosmetic_2) ++xk; state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);}
+		if (flower instanceof BlockDoubleMetaBush){ xk = rand.nextInt(maxdata + 1); state = flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk));}
+		if (flower instanceof BlockCrop) state = flower.getDefaultState().withProperty(BlockCrop.AGE, 7);
+		if (flower instanceof BlockDoubleHarvestable) state = flower.getDefaultState().withProperty(BlockDoubleHarvestable.UPPER, false);
+		return state;
+	}
+	
+	public static void placeFlower(World world, IBlockState state, BlockPos pos, Block flower){
+		if(state != null && flower != null){
+		if(!(flower instanceof BlockDoubleMetaBush || flower instanceof BlockDoubleHarvestable || flower instanceof BlockFruitVine)){
+		if(world.isAirBlock(pos) && (!world.provider.getHasNoSky() || pos.getY() < 127) && flower.canPlaceBlockAt(world, pos)) {
+			world.setBlockState(pos, state, 2);
+	}}
+		else if (flower instanceof BlockDoubleMetaBush){
+		if(world.isAirBlock(pos) && world.isAirBlock(pos.up()) && (!world.provider.getHasNoSky() || pos.getY() < 127) && flower.canPlaceBlockAt(world, pos)) {
+		world.setBlockState(pos, state.withProperty(BlockDoubleMetaBush.UPPER,  false), 2);
+		world.setBlockState(pos.up(), state.withProperty(BlockDoubleMetaBush.UPPER,  true), 2);
+		}}
+		else if (flower instanceof BlockDoubleHarvestable){
+		if(world.isAirBlock(pos) && world.isAirBlock(pos.up()) && (!world.provider.getHasNoSky() || pos.getY() < 127) && flower.canPlaceBlockAt(world, pos)) {
+		world.setBlockState(pos, state.withProperty(BlockDoubleHarvestable.UPPER,  false), 2);
+		world.setBlockState(pos.up(), state.withProperty(BlockDoubleHarvestable.UPPER,  true), 2);
+		}}
+	}}
+	
+	public static void genFlowerPatch(World world, BlockPos pos, Random rand, IBlockState state, Block flower){
+		if(!world.isRemote){
+		int dist = Config.patchsize;//Spread of the flowers, a radius of sorts.
+		for(int i = 0; i < Config.quantity; i++) {//number of positions selected per event.
+				int x = pos.getX() + rand.nextInt(10) - 5;
+				int z = pos.getZ() + rand.nextInt(10) - 5;
+				int y = world.getTopSolidOrLiquidBlock(pos).getY();
+				for(int j = 0; j < Config.density; j++) { //number of placements that occur.
+					int x1 = x + rand.nextInt(dist * 2) - dist;
+					int y1 = y + rand.nextInt(4) - rand.nextInt(4);
+					int z1 = z + rand.nextInt(dist * 2) - dist;
+					BlockPos pos2 = new BlockPos(x1, y1, z1);
+					Util.placeFlower(world, state, pos2, flower);
+					}}
+	}}
+	
+	public static void genSmallFlowerPatchNearby(World world, BlockPos pos, Random rand, IBlockState state, Block flower){
+		if(!world.isRemote){
+		int dist = 2;//Spread of the flowers, a radius of sorts.
+		for(int i = 0; i < 2; i++) {//number of positions selected per event.
+				int x = pos.getX() + rand.nextInt(4) - 2;
+				int z = pos.getZ() + rand.nextInt(4) - 2;
+				int y = world.getTopSolidOrLiquidBlock(pos).getY();
+				for(int j = 0; j < 3; j++) { //number of placements that occur.
+					int x1 = x + rand.nextInt(dist * 2) - dist;
+					int y1 = y;
+					int z1 = z + rand.nextInt(dist * 2) - dist;
+					BlockPos pos2 = new BlockPos(x1, y1, z1);
+					Util.placeFlower(world, state, pos2, flower);
+					}}
+	}}
+	
+	public static void placeVine(World world, VineBase vine, BlockPos pos, EnumFacing facing){
+		if(!world.isRemote && vine.canPlaceBlockOnSide(world, pos.offset(facing), facing)){
+			if(Config.debug) System.out.println(vine.toString());
+			world.setBlockState(pos.offset(facing), vine.onBlockPlaced(world, pos.offset(facing), facing, 0, 0, 0, 0, null));		
+		}}
 	
 }

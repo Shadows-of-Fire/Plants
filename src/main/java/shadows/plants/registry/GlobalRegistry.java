@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.internal.cosmetic.BlockHarvestable;
+import shadows.plants.common.IMetaPlant;
 import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.util.Data;
@@ -25,6 +26,7 @@ public class GlobalRegistry {
 	public static void init(){
 		ItemRegistry.init();
 		BlockRegistry.init();
+		OredictRegistry.init();
 		RecipeRegistry.init();
 	}
 	
@@ -42,7 +44,8 @@ public class GlobalRegistry {
 		public void displayAllRelevantItems(List<ItemStack> list) {
 			if(Data.COSMETIC_ENABLED){
 			for(Block block : CosmeticModule.getBlockList()) {
-				int i = Util.getMaxMetadata(block.getRegistryName().getResourcePath());
+				int i = 0;
+				if(block instanceof IMetaPlant) i = ((IMetaPlant) block).getMaxData();
 				for (int k = 0; k <= i; k++){
 					list.add(new ItemStack(block,1, k));
 				}}}}};

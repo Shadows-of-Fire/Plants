@@ -14,6 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.plants.block.VineBase;
 import shadows.plants.common.EnumModule;
+import shadows.plants.common.EnumTempZone;
 import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 
@@ -21,8 +22,8 @@ public class BlockFruitVine extends VineBase{
 
 	ItemStack fruit;
 	
-	public BlockFruitVine(String name, ItemStack fruit_){
-		super(name, EnumModule.COSMETIC);
+	public BlockFruitVine(String name, ItemStack fruit_, EnumTempZone zone){
+		super(name, EnumModule.COSMETIC, zone);
 		fruit = fruit_;
 	}
 

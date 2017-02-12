@@ -16,20 +16,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
+import shadows.plants.common.IMetaPlant;
 import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
 
 
 
-public class BlockMetaBush extends BushBase{
+public class BlockMetaBush extends BushBase implements IMetaPlant{
 
 	public static final PropertyInteger BASICMETA = PropertyInteger.create("basicmeta", 0, 15);
     public Map<Integer, EnumTempZone> tempmap;
+	private int max;
 	
-	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map) {
+	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map, int maxmeta) {
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
         tempmap = map;
 		GameRegistry.register(new ItemBlockMetaBush(this));
+		max = maxmeta;
 	}
 	
 	@Override
@@ -79,6 +82,16 @@ public class BlockMetaBush extends BushBase{
 	public float getTempMin(IBlockState state) {
 		int k = state.getValue(BASICMETA);
 		return tempmap.get(k).getMin();
+	}
+
+	@Override
+	public int getMaxData() {
+		return max;
+	}
+
+	@Override
+	public int getMetaPropValue(IBlockState state) {
+		return state.getValue(BASICMETA);
 	}
 	
 }
