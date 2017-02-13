@@ -2,13 +2,13 @@
 {
   "modid": "plants",
   "name": "Plants",
-  "description": "Various plants for various mods",
+  "description": "Every plant known to man.  Well, almost.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["Shadows_of_Fire"],
-  "credits": "",
+  "credits": "Kat",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
