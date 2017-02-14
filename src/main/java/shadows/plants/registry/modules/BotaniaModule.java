@@ -10,27 +10,26 @@ import net.minecraftforge.fml.common.Optional;
 import shadows.plants.item.addon.botania.ItemExcalibur;
 import shadows.plants.util.Data;
 
-public class BotaniaModule {
+public class BotaniaModule{
 
 	/*
 	 * The control module for the Botania Module of Plants.
 	 * This will handle all registration which is then passed to the respective registry classes.
 	 */
-	public static List<Block> BOTANIA = new ArrayList<Block>();
-
-	public static List<Item> BOTANIA_I = new ArrayList<Item>();
 	public static ItemExcalibur excalibur;
 	
 	public static List<Block> getBlockList(){
-		BOTANIA.clear();
-		return BOTANIA;
+		List<Block> list = new ArrayList<Block>();
+		list.clear();
+		return list;
 	}
 		
 	public static List<Item> getItemList(){
+		List<Item> list = new ArrayList<Item>();
 		if (Loader.isModLoaded(Data.BOTANIA)) assignStrippable();
-		BOTANIA_I.clear();
-		BOTANIA_I.add(excalibur);
-		return BOTANIA_I;
+		list.clear();
+		list.add(excalibur);
+		return list;
 	}
 	
 	@Optional.Method(modid=Data.BOTANIA)

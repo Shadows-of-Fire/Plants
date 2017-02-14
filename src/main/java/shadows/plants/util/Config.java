@@ -9,6 +9,7 @@ public class Config {
 	public static boolean debug = false;
 	public static boolean Botania = true;
 	public static boolean Cosmetic = true;
+	public static boolean Tool = true;
 	public static boolean disableVanillaFlowers = false;
 	public static int vineFruitChance = 5;
 	public static int patchchance = 16;

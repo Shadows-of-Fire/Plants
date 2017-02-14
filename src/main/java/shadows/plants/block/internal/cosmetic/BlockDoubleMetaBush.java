@@ -3,6 +3,7 @@ package shadows.plants.block.internal.cosmetic;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
@@ -30,7 +31,6 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.common.IMetaPlant;
 import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
-import shadows.plants.util.Config;
 
 public class BlockDoubleMetaBush extends BushBase implements IMetaPlant{
 

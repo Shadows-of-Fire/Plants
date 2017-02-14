@@ -9,12 +9,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants.block.internal.cosmetic.BlockHarvestable;
 import shadows.plants.common.IMetaPlant;
 import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.CosmeticModule;
+import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Data;
-import shadows.plants.util.Util;
 
 public class GlobalRegistry {
 	/*
@@ -31,8 +30,8 @@ public class GlobalRegistry {
 	}
 	
 	public static void initModels(){
-		BlockRegistry.initModels();
-		ItemRegistry.initModels();
+		BlockRegistry.initModels(ModuleController.getAllBlocks());
+		ItemRegistry.initModels(ModuleController.getAllItems());
 	}
 	
 	public static final CreativeTabs TAB = new CreativeTabs(Data.MODID) {

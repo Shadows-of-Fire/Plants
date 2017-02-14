@@ -38,6 +38,7 @@ public abstract class PlantBase extends BlockBush implements IGrowable, IModular
 	protected PlantBase(EnumModule type, String name){
 		//This sets up for a nice little growable crop.  Needs getCrop and getSeed overridden to work properly.
 		setRegistryName(name);
+		setResistance(150F);
 		setUnlocalizedName(Data.MODID + "." + name);
         setDefaultState(this.blockState.getBaseState().withProperty(this.getAgeProperty(), Integer.valueOf(0)));
         setTickRandomly(true);

@@ -14,7 +14,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
-import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 

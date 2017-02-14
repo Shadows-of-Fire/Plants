@@ -40,6 +40,7 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
         setHardness(0.0F);
         setSoundType(SoundType.PLANT);
         disableStats();
+        setResistance(150F);
         module = type;
         if (soilIn != null) soil.addAll(soilIn);
         soil.add(Blocks.GRASS_PATH);
