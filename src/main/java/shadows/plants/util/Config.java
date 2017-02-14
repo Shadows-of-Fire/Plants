@@ -18,6 +18,7 @@ public class Config {
 	public static int numtries = 1;
 	public static boolean literallyTakeoverFlowerForests = true;
 	public static boolean allBushes = true;
+	public static boolean needShears = false;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {
@@ -92,6 +93,12 @@ public class Config {
 	                "true",
 	                "Whether or not Coagulated Plant Balls work on every single BlockBush that doesn't have a TileEntity.",
 	                Property.Type.BOOLEAN);
+	        
+	        Property PShears = CommonProxy.config.get(Configuration.CATEGORY_GENERAL,
+	                "Shears",
+	                "false",
+	                "Whether or not non-crops require shears to harvest.",
+	                Property.Type.BOOLEAN);
 	    	
 	    debug = PDebug.getBoolean();	
 	    Botania = PBotania.getBoolean();
@@ -104,6 +111,7 @@ public class Config {
 	    numtries = PTries.getInt();
 	    literallyTakeoverFlowerForests = PFlowerForests.getBoolean();
 	    allBushes = PAllBushes.getBoolean();
+	    needShears = PShears.getBoolean();
 	    	
 	    } catch (Exception e) {
 	        // Failed reading/writing, just continue

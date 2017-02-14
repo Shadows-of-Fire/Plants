@@ -9,6 +9,7 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.common.IModularThing;
 import shadows.plants.common.ITemperaturePlant;
+import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 
 public abstract class VineBase extends BlockVine implements IModularThing, ITemperaturePlant{

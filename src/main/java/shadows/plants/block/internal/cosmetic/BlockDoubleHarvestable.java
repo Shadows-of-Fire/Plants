@@ -1,6 +1,7 @@
 package shadows.plants.block.internal.cosmetic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -257,19 +258,25 @@ public class BlockDoubleHarvestable extends BlockHarvestable{
 	             }
 	         }
 	  }
+	 
+	 @Override
+	 public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune){
+	 	if(world.getBlockState(pos).getBlock() == this){
+	 	if(world.getBlockState(pos).getValue(UPPER)) return getActualDrops(world, pos, world.getBlockState(pos).withProperty(UPPER, false), fortune);
+	 	if(!world.getBlockState(pos).getValue(UPPER)) return getActualDrops(world, pos, world.getBlockState(pos), fortune);
+	 	}
+	  System.out.println("Oh something is very very wrong"); 
+	 	return getDrops(world, pos, getDefaultState(), fortune);
+	 }
 	    
 	 @Override
-	 public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-	 {
-	     List<ItemStack> ret = new ArrayList<ItemStack>();
-	     if(state.getValue(FRUIT) && !state.getValue(UPPER)){
-	             ret.add(new ItemStack(cropItem, 1, 0));
-	     }
-	     if(!state.getValue(UPPER)){
-	     ret.add(new ItemStack(Item.getItemFromBlock(this)));
-	     }
-	     return ret;
-	 }
+	 public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune){
+		 List<ItemStack> list = getActualDrops(world, pos, state, fortune);
+		 if(!Config.needShears && state.getValue(FRUIT) && !state.getValue(UPPER)) list.add(new ItemStack(cropItem, 1, meta));
+		 if(!Config.needShears) return list;
+		 else if (Config.needShears && state.getValue(FRUIT) && !state.getValue(UPPER)) return Arrays.asList(new ItemStack(cropItem, 1, meta));
+		 else return new ArrayList<ItemStack>();
+	    }
 	
 	
 }

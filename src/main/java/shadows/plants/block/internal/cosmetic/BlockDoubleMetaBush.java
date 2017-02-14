@@ -30,6 +30,7 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.common.IMetaPlant;
 import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
+import shadows.plants.util.Config;
 
 public class BlockDoubleMetaBush extends BushBase implements IMetaPlant{
 
@@ -258,4 +259,12 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant{
 	public int getMetaPropValue(IBlockState state) {
 		return state.getValue(META);
 	}
+	
+    @Override
+    public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune){
+    	if(world.getBlockState(pos).getValue(UPPER)) return getActualDrops(world, pos, world.getBlockState(pos).withProperty(UPPER, false), fortune);
+    	if(!world.getBlockState(pos).getValue(UPPER)) return getActualDrops(world, pos, world.getBlockState(pos), fortune);
+    	else {System.out.println("Oh something is very very wrong"); return getDrops(world, pos, getDefaultState(), fortune);}
+    }
+	
 }

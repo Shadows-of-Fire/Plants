@@ -1,6 +1,7 @@
 package shadows.plants.block.internal.cosmetic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -22,6 +23,7 @@ import net.minecraft.world.World;
 import shadows.plants.block.BushBase;
 import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
+import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 
 public class BlockHarvestable extends BushBase{
@@ -103,16 +105,14 @@ public class BlockHarvestable extends BushBase{
 	        }
 	    }
 	    
-	    @Override
-	    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-	    {
-	        List<ItemStack> ret = new ArrayList<ItemStack>();
-	        if(state.getValue(FRUIT)){
-	                ret.add(new ItemStack(cropItem, 1, meta));
-	        }
-	        ret.add(new ItemStack(this));
-	        return ret;
-	    }
+		 @Override
+		 public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune){
+			 List<ItemStack> list = getActualDrops(world, pos, state, fortune);
+			 if(!Config.needShears && state.getValue(FRUIT)) list.add(new ItemStack(cropItem, 1, meta));
+			 if(!Config.needShears) return list;
+			 else if (Config.needShears && state.getValue(FRUIT)) return Arrays.asList(new ItemStack(cropItem, 1, meta));
+			 else return new ArrayList<ItemStack>();
+		    }
 
 		@Override
 		public float getTempMax(IBlockState state) {
