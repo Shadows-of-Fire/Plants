@@ -1,6 +1,7 @@
 package shadows.plants.registry;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
@@ -29,7 +30,16 @@ public class OredictRegistry {
 			else OreDictionary.registerOre("plant", block);
 		}
 		
-		
+		for(int k = 0; k <= 9; k++){
+		OreDictionary.registerOre("plant", new ItemStack(Blocks.RED_FLOWER, 1, k));
+		}
+		OreDictionary.registerOre("plant", new ItemStack(Blocks.YELLOW_FLOWER, 1, 1));
+		for(int k = 0; k <= 6; k++){
+		OreDictionary.registerOre("plant", new ItemStack(Blocks.DOUBLE_PLANT, 1, k));
+		}
+		for(int k = 1; k <= 3; k++){
+		OreDictionary.registerOre("plant", new ItemStack(Blocks.TALLGRASS, 1, k));
+		}
 	}
 	
 	

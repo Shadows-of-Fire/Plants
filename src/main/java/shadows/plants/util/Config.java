@@ -20,6 +20,8 @@ public class Config {
 	public static boolean literallyTakeoverFlowerForests = true;
 	public static boolean allBushes = true;
 	public static boolean needShears = false;
+	public static int catapultPower = 43;
+	public static boolean generation = true;
 	
 	public static void syncConfig() { // Gets called from preInit
 	    try {
@@ -39,6 +41,12 @@ public class Config {
 	                "Cosmetic",
 	                "true",
 	                "Enable the Cosmetic (main) module.",
+	                Property.Type.BOOLEAN);
+	        
+	        Property PTool = CommonProxy.config.get(Configuration.CATEGORY_GENERAL,
+	                "Tool",
+	                "false",
+	                "(WIP: NOT CURRENTLY ACTIVE, SOME FEATURES MAY WORK) Enable the Tool (utility) module.",
 	                Property.Type.BOOLEAN);
 	        
 	        Property PDisableVanilla = CommonProxy.config.get(Configuration.CATEGORY_GENERAL,
@@ -100,6 +108,12 @@ public class Config {
 	                "false",
 	                "Whether or not non-crops require shears to harvest.",
 	                Property.Type.BOOLEAN);
+	        
+	        Property PGeneration = CommonProxy.config.get("Generator Options",
+	                "EnableGeneration",
+	                "true",
+	                "Toggle for worldgen.",
+	                Property.Type.BOOLEAN);
 	    	
 	    debug = PDebug.getBoolean();	
 	    Botania = PBotania.getBoolean();
@@ -113,6 +127,8 @@ public class Config {
 	    literallyTakeoverFlowerForests = PFlowerForests.getBoolean();
 	    allBushes = PAllBushes.getBoolean();
 	    needShears = PShears.getBoolean();
+	    Tool = PTool.getBoolean();
+	    generation = PGeneration.getBoolean();
 	    	
 	    } catch (Exception e) {
 	        // Failed reading/writing, just continue

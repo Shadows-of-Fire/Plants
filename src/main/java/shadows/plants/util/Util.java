@@ -23,6 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -212,9 +213,9 @@ public class Util {
 		int maxdata = 0;
 		if(flower instanceof IMetaPlant) maxdata = ((IMetaPlant) flower).getMaxData();
 		if (flower instanceof BlockMetaBush){ xk = rand.nextInt(maxdata + 1); if(xk == 2 && flower == CosmeticModule.cosmetic_1) ++xk; if(xk == 3 && flower == CosmeticModule.cosmetic_1) ++xk; if(xk == 13 && flower == CosmeticModule.cosmetic_2) ++xk; state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);}
-		if (flower instanceof BlockDoubleMetaBush){ xk = rand.nextInt(maxdata + 1); state = flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk));}
-		if (flower instanceof BlockCrop) state = flower.getDefaultState().withProperty(BlockCrop.AGE, 7);
-		if (flower instanceof BlockDoubleHarvestable) state = flower.getDefaultState().withProperty(BlockDoubleHarvestable.UPPER, false);
+		else if (flower instanceof BlockDoubleMetaBush){ xk = rand.nextInt(maxdata + 1); state = flower.getDefaultState().withProperty(BlockDoubleMetaBush.META, (xk));}
+		else if (flower instanceof BlockCrop) state = flower.getDefaultState().withProperty(BlockCrop.AGE, 7);
+		else if (flower instanceof BlockDoubleHarvestable) state = flower.getDefaultState().withProperty(BlockDoubleHarvestable.UPPER, false);
 		return state;
 	}
 	
@@ -237,7 +238,6 @@ public class Util {
 	}}
 	
 	public static void genFlowerPatch(World world, BlockPos pos, Random rand, IBlockState state, Block flower){
-		if(!world.isRemote){
 		int dist = Config.patchsize;//Spread of the flowers, a radius of sorts.
 		for(int i = 0; i < Config.quantity; i++) {//number of positions selected per event.
 			int x = pos.getX() + MathHelper.getRandomIntegerInRange(rand, -5, 5);
@@ -249,11 +249,26 @@ public class Util {
 					int z1 = z + MathHelper.getRandomIntegerInRange(rand, -1*dist, dist);
 					BlockPos pos2 = new BlockPos(x1, y1, z1);
 					Util.placeFlower(world, state, pos2, flower);
-					}}
-	}}
+					}
+					}
+	}
+	
+	public static void genMegaPatch(World world, BlockPos pos, Random rand, IBlockState state, Block flower){
+			int dist = 14;//Spread of the flowers, a radius of sorts.
+			for(int i = 0; i < 5; i++) {//number of positions selected per event.
+					int x = pos.getX() + rand.nextInt(16) + 8;
+					int z = pos.getZ() + rand.nextInt(16) + 8;
+					int y = world.getTopSolidOrLiquidBlock(pos).getY();
+					for(int j = 0; j < 48; j++) { //number of placements that occur.
+						int x1 = x + rand.nextInt(dist * 2) - dist;
+						int y1 = y + rand.nextInt(4) - rand.nextInt(4);
+						int z1 = z + rand.nextInt(dist * 2) - dist;
+						BlockPos pos2 = new BlockPos(x1, y1, z1);
+						Util.placeFlower(world, state, pos2, flower);
+						}}
+	}
 	
 	public static void genSmallFlowerPatchNearby(World world, BlockPos pos, Random rand, IBlockState state, Block flower){
-		if(!world.isRemote){
 		int dist = 2;//Spread of the flowers, a radius of sorts.
 		for(int i = 0; i < 2; i++) {//number of positions selected per event.
 				int x = pos.getX() + MathHelper.getRandomIntegerInRange(rand, -2, 2);
@@ -266,7 +281,13 @@ public class Util {
 					BlockPos pos2 = new BlockPos(x1, y1, z1);
 					Util.placeFlower(world, state, pos2, flower);
 					}}
-	}}
+	}
+	
+	public static boolean isEventTypeAcceptable(EventType type){
+		return (type == EventType.CACTUS || type ==  EventType.DEAD_BUSH || type == EventType.LILYPAD || type == EventType.FLOWERS || type == EventType.GRASS || type == EventType.PUMPKIN || type == EventType.REED || type == EventType.TREE);
+
+		
+	}
 	
 	public static void placeVine(World world, VineBase vine, BlockPos pos, EnumFacing facing){
 		if(!world.isRemote && vine.canPlaceBlockOnSide(world, pos.offset(facing), facing)){
