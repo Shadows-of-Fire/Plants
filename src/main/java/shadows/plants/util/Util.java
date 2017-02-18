@@ -41,28 +41,30 @@ import shadows.plants.registry.modules.CosmeticModule;
 public class Util {
 
 	public static boolean isException(Block block){
-		return (block instanceof BlockMetaBush || block instanceof BlockDoubleMetaBush || block instanceof BlockDoubleHarvestable);
+		return (block instanceof BlockMetaBush || block instanceof BlockDoubleMetaBush);
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void initModel(Block block){
-		if (Config.debug) System.out.println("Registered Model " + block.toString());
+		if (Config.debug) System.out.println("Registered model for " + block.toString());
 		if (!isException(block)) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 		else if (isException(block)) handleExceptionRenders(block);
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void initModel(Item item){
+		if (Config.debug) System.out.println("Registered model for " + item.toString());
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 	
 	public static void register(Block block){
 		if (Config.debug) System.out.println("Registered " + block.toString());
 		GameRegistry.register(block);
-		if (!isException(block)) GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+		if (!isException(block) && !(block instanceof BlockDoubleHarvestable)) GameRegistry.register(new ItemBlock(block), block.getRegistryName());
 	}
 	
 	public static void register(Item item){
+		if (Config.debug) System.out.println("Registered " + item.toString());
 		GameRegistry.register(item);
 	}
 	
@@ -131,10 +133,7 @@ public class Util {
 		else if (block instanceof BlockDoubleMetaBush){
 		for (int i = 0; i < 8; i++){
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(new ResourceLocation("plants:cosmetic/" + Util.getBlockNumber((BushBase) block) + "/" + "cosmetic" + "." + i), "inventory"));
-		}}
-		else if (block instanceof BlockDoubleHarvestable){
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
-		}}
+		}}}
 	
 		public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Item reagent, int reagentmeta, Item reagent2, Item reagent3){
 			GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta), new ItemStack(reagent, 1, reagentmeta), new ItemStack(reagent2, 1, reagentmeta), new ItemStack(reagent3, 1, reagentmeta));

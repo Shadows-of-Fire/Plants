@@ -31,7 +31,7 @@ public class ItemCompost extends DummyItem{
 	
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
-        if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack)){
+        if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack) && !world.isRemote){
     	if(Config.debug) System.out.println("Using Compost Item");
     	IBlockState state = world.getBlockState(pos);
 		SoundType soundtype = SoundType.PLANT;

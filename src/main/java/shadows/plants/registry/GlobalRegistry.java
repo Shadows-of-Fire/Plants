@@ -39,13 +39,12 @@ public class GlobalRegistry {
 	    @Override
 		@SideOnly(Side.CLIENT)
 		public void displayAllRelevantItems(List<ItemStack> list) {
-			if(Data.COSMETIC_ENABLED){
 			for(Block block : ModuleController.getAllBlocks()) {
 				int i = 0;
 				if(block instanceof IMetaPlant) i = ((IMetaPlant) block).getMaxData();
 				for (int k = 0; k <= i; k++){
 					list.add(new ItemStack(block,1, k));
-				}}}}};
+				}}}};
 		
 				
 		public static final CreativeTabs TAB_I = new CreativeTabs(Data.MODID + (".items")) {
@@ -57,9 +56,8 @@ public class GlobalRegistry {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public void displayAllRelevantItems(List<ItemStack> list) {
-			if(Data.COSMETIC_ENABLED){
 			for(Item item : ModuleController.getAllItems()){ list.add(new ItemStack(item)); }
-			}}};
+			}};
 
 	
 }

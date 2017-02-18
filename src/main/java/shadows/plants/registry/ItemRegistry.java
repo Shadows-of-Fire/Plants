@@ -5,14 +5,17 @@ import java.util.List;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Config;
+import shadows.plants.util.Data;
 import shadows.plants.util.Util;
 
 public class ItemRegistry {
 	
 
 	public static void init(){
+		if (Data.BOTANIA_ENABLED) BotaniaModule.assignStrippable();
 		if (Config.debug) System.out.println("ItemRegistry loaded");
 		register(ModuleController.getAllItems());
 	}

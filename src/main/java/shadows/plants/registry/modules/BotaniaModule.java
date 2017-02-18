@@ -26,7 +26,6 @@ public class BotaniaModule{
 		
 	public static List<Item> getItemList(){
 		List<Item> list = new ArrayList<Item>();
-		if (Loader.isModLoaded(Data.BOTANIA)) assignStrippable();
 		list.clear();
 		list.add(excalibur);
 		return list;

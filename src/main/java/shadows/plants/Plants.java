@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import shadows.plants.proxy.CommonProxy;
 import shadows.plants.util.Data;
 
-@Mod(modid = Data.MODID, version = Data.VERSION, name = Data.MODNAME, dependencies = "after:appliedenergistics2;after:embers;after:botania")
+@Mod(modid = Data.MODID, version = Data.VERSION, name = Data.MODNAME, dependencies = "after:appliedenergistics2;after:embers;after:Botania")
 
 
 public class Plants {
