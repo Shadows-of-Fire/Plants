@@ -37,7 +37,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 import shadows.plants.util.Data;
 import vazkii.botania.api.BotaniaAPI;
@@ -227,6 +226,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		return 60;
 	}
 
+	@Override @Method(modid=Data.BOTANIA)
 	public boolean getIsRepairable(ItemStack par1ItemStack, @Nonnull ItemStack par2ItemStack) {
 		return par2ItemStack.getItem() == ModItems.manaResource && par2ItemStack.getItemDamage() == 0 ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}

@@ -9,7 +9,6 @@ import shadows.plants.registry.modules.BotaniaModule;
 import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.util.Data;
 import shadows.plants.util.Util;
-import vazkii.botania.common.item.ModItems;
 
 public class RecipeRegistry {
 		public static final Item dye = Items.DYE;
@@ -112,7 +111,6 @@ public class RecipeRegistry {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(CosmeticModule.compost, 5), "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant"));;
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(CosmeticModule.compost, 2), "plant", "plant", "plant", "plant"));;
 
-			if(Data.BOTANIA_ENABLED) Util.addSimpleShapeless(BotaniaModule.excalibur, ModItems.kingKey);
 	}
 }
 
