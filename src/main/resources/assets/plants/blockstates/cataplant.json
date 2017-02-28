@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "plants:tool/cataplant" },
+        "facing=south": { "model": "plants:tool/cataplant", "y": 180 },
+        "facing=west":  { "model": "plants:tool/cataplant", "y": 270 },
+        "facing=east":  { "model": "plants:tool/cataplant", "y": 90 }
+    }
+}

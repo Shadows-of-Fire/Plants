@@ -20,7 +20,7 @@ public class Config {
 	public static boolean literallyTakeoverFlowerForests = true;
 	public static boolean allBushes = true;
 	public static boolean needShears = false;
-	public static int catapultPower = 43;
+	public static int catapultPower = 5;
 	public static boolean generation = true;
 	
 	public static void syncConfig() { // Gets called from preInit

@@ -1,0 +1,14 @@
+{
+	"parent": "plants:block/tool/cataplant",
+	 "display": {
+        "firstperson_lefthand": {
+            "rotation": [ 0, 0, 0 ]
+        },
+		"firstperson_righthand": {
+            "rotation": [ 0, 0, 0 ]
+        },
+		"gui": {
+            "rotation": [ 0, 45, 0 ]
+        }
+	}
+}
