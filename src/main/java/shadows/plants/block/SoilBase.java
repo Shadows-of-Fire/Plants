@@ -7,10 +7,10 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.IModularThing;
 import shadows.plants.util.Data;
 
-public class SoilBase extends Block implements IModularThing{
+public class SoilBase extends Block implements IModularThing {
 
 	private EnumModule type;
-	
+
 	public SoilBase(String name, EnumModule module) {
 		super(Material.GROUND);
 		setRegistryName(name);

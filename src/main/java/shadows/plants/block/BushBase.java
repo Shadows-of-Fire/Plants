@@ -28,100 +28,96 @@ import shadows.plants.common.ITemperaturePlant;
 import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 
-public abstract class BushBase extends BlockBush implements IModularThing, ITemperaturePlant, IShearable{
-	
-		private EnumModule module;
-		public List<Block> soil = new ArrayList<Block>();
-		
-	public BushBase(String name, EnumModule type, @Nullable List<Block> soilIn){
+public abstract class BushBase extends BlockBush implements IModularThing, ITemperaturePlant, IShearable {
+
+	private EnumModule module;
+	public List<Block> soil = new ArrayList<Block>();
+
+	public BushBase(String name, EnumModule type, @Nullable List<Block> soilIn) {
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
-        setCreativeTab(Data.TAB);
-        setHardness(0.0F);
-        setSoundType(SoundType.PLANT);
-        disableStats();
-        setResistance(150F);
-        module = type;
-        if (soilIn != null) soil.addAll(soilIn);
-        soil.add(Blocks.GRASS_PATH);
-        soil.add(Blocks.GRASS);
-        soil.add(Blocks.DIRT);
+		setCreativeTab(Data.TAB);
+		setHardness(0.0F);
+		setSoundType(SoundType.PLANT);
+		disableStats();
+		setResistance(150F);
+		module = type;
+		if (soilIn != null)
+			soil.addAll(soilIn);
+		soil.add(Blocks.GRASS_PATH);
+		soil.add(Blocks.GRASS);
+		soil.add(Blocks.DIRT);
 	}
-	
-	public BushBase(EnumModule type, String name, @Nonnull Block soilIn){
+
+	public BushBase(EnumModule type, String name, @Nonnull Block soilIn) {
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
-        setCreativeTab(Data.TAB);
-        setHardness(0.0F);
-        setSoundType(SoundType.PLANT);
-        disableStats();
-        module = type;
-        soil.add(soilIn);
+		setCreativeTab(Data.TAB);
+		setHardness(0.0F);
+		setSoundType(SoundType.PLANT);
+		disableStats();
+		module = type;
+		soil.add(soilIn);
 	}
-	
+
 	@Override
-    public EnumModule getType(){
-    	return module;
-    }
-    
-    @Override
-    public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, net.minecraftforge.common.IPlantable plantable)
-    {
-    	return soil.contains(state.getBlock());
-    }
+	public EnumModule getType() {
+		return module;
+	}
 
-    @Override
-    protected boolean canSustainBush(IBlockState state)
-    {
-    	return soil.contains(state.getBlock());
-    }
-    
-    @SideOnly(Side.CLIENT) @Override
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.NONE;
-    }
-    
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
-        return new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
-    }
-    
-    @Override
-    public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos){
-    	return Config.needShears;
-    }
-    
-    @Override
-    public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune){
-    	return getActualDrops(world, pos, world.getBlockState(pos), fortune);
-    }
-    
-    @Override
-    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-    {
-    	if(!Config.needShears) return getActualDrops(world, pos, state, fortune);
-    	else return new ArrayList<ItemStack>();
-    }
-    
-    public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-    {
-        List<ItemStack> ret = new ArrayList<ItemStack>();
+	@Override
+	public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction,
+			net.minecraftforge.common.IPlantable plantable) {
+		return soil.contains(state.getBlock());
+	}
 
-        Random rand = world instanceof World ? ((World)world).rand : RANDOM;
+	@Override
+	protected boolean canSustainBush(IBlockState state) {
+		return soil.contains(state.getBlock());
+	}
 
-        int count = quantityDropped(state, fortune, rand);
-        for(int i = 0; i < count; i++)
-        {
-            Item item = this.getItemDropped(state, rand, fortune);
-            if (item != null)
-            {
-                ret.add(new ItemStack(item, 1, this.damageDropped(state)));
-            }
-        }
-        return ret;
-    }
-    
-    
+	@SideOnly(Side.CLIENT)
+	@Override
+	public Block.EnumOffsetType getOffsetType() {
+		return Block.EnumOffsetType.NONE;
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
+	}
+
+	@Override
+	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos) {
+		return Config.needShears;
+	}
+
+	@Override
+	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
+		return getActualDrops(world, pos, world.getBlockState(pos), fortune);
+	}
+
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		if (!Config.needShears)
+			return getActualDrops(world, pos, state, fortune);
+		else
+			return new ArrayList<ItemStack>();
+	}
+
+	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		List<ItemStack> ret = new ArrayList<ItemStack>();
+
+		Random rand = world instanceof World ? ((World) world).rand : RANDOM;
+
+		int count = quantityDropped(state, fortune, rand);
+		for (int i = 0; i < count; i++) {
+			Item item = this.getItemDropped(state, rand, fortune);
+			if (item != null) {
+				ret.add(new ItemStack(item, 1, this.damageDropped(state)));
+			}
+		}
+		return ret;
+	}
+
 }

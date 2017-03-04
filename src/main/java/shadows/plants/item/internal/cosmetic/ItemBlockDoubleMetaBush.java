@@ -21,74 +21,74 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 
-public class ItemBlockDoubleMetaBush extends ItemBlock
-{
-	
-    public ItemBlockDoubleMetaBush(Block block)
-    {
-        super(block);
-        setHasSubtypes(true);
-        setMaxDamage(0);
-        setRegistryName(block.getRegistryName());
-    }
+public class ItemBlockDoubleMetaBush extends ItemBlock {
 
-    /**
-     * Converts the given ItemStack damage value into a metadata value to be placed in the world when this Item is
-     * placed as a Block (mostly used with ItemBlocks).
-     */
-    @Override
-    public int getMetadata(int damage)
-    {
-        return damage;
-    }
-    
-    @Override
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        IBlockState state = world.getBlockState(pos);
-        Block block = state.getBlock();
+	public ItemBlockDoubleMetaBush(Block block) {
+		super(block);
+		setHasSubtypes(true);
+		setMaxDamage(0);
+		setRegistryName(block.getRegistryName());
+	}
 
-        if (!block.isReplaceable(world, pos))
-        {
-            pos = pos.offset(facing);
-        }
+	/**
+	 * Converts the given ItemStack damage value into a metadata value to be
+	 * placed in the world when this Item is placed as a Block (mostly used with
+	 * ItemBlocks).
+	 */
+	@Override
+	public int getMetadata(int damage) {
+		return damage;
+	}
 
-        if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack) && world.canBlockBePlaced(this.block, pos, false, facing, (Entity)null, stack))
-        {
-            BlockDoubleMetaBush block2 = (BlockDoubleMetaBush) Block.getBlockFromItem(stack.getItem());
-            IBlockState state2 = null;
-            if(stack.getMetadata() < 8) state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false).withProperty(BlockDoubleMetaBush.META, stack.getMetadata());
-            else if(stack.getMetadata() >= 8) state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false).withProperty(BlockDoubleMetaBush.META, (stack.getMetadata() / 2));
-            
-            if (placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, state2))
-            {
-            	SoundType soundtype = SoundType.PLANT;
-                world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-                --stack.stackSize;
-            }
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
 
-            return EnumActionResult.SUCCESS;
-        }
-        else
-        {
-            return EnumActionResult.FAIL;
-        }
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> list)
-    {
-        for(int i=0;i<8;i++){ list.add(new ItemStack(item, 1, i));}
-    }
+		if (!block.isReplaceable(world, pos)) {
+			pos = pos.offset(facing);
+		}
 
-    /**
-     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
-     * different names based on their damage or NBT.
-     */
-    @Override
-    public String getUnlocalizedName(ItemStack stack)
-    {
-        return super.getUnlocalizedName() + "." + stack.getMetadata();
-    }
+		if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack)
+				&& world.canBlockBePlaced(this.block, pos, false, facing, (Entity) null, stack)) {
+			BlockDoubleMetaBush block2 = (BlockDoubleMetaBush) Block.getBlockFromItem(stack.getItem());
+			IBlockState state2 = null;
+			if (stack.getMetadata() < 8)
+				state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false)
+						.withProperty(BlockDoubleMetaBush.META, stack.getMetadata());
+			else if (stack.getMetadata() >= 8)
+				state2 = block2.getDefaultState().withProperty(BlockDoubleMetaBush.UPPER, false)
+						.withProperty(BlockDoubleMetaBush.META, (stack.getMetadata() / 2));
+
+			if (placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, state2)) {
+				SoundType soundtype = SoundType.PLANT;
+				world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,
+						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+				--stack.stackSize;
+			}
+
+			return EnumActionResult.SUCCESS;
+		} else {
+			return EnumActionResult.FAIL;
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> list) {
+		for (int i = 0; i < 8; i++) {
+			list.add(new ItemStack(item, 1, i));
+		}
+	}
+
+	/**
+	 * Returns the unlocalized name of this item. This version accepts an
+	 * ItemStack so different stacks can have different names based on their
+	 * damage or NBT.
+	 */
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return super.getUnlocalizedName() + "." + stack.getMetadata();
+	}
 }

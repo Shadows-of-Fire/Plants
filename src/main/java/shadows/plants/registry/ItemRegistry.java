@@ -12,25 +12,26 @@ import shadows.plants.util.Data;
 import shadows.plants.util.Util;
 
 public class ItemRegistry {
-	
 
-	public static void init(){
-		if (Data.BOTANIA_ENABLED) BotaniaModule.assignStrippable();
-		if (Config.debug) System.out.println("ItemRegistry loaded");
+	public static void init() {
+		if (Data.BOTANIA_ENABLED)
+			BotaniaModule.assignStrippable();
+		if (Config.debug)
+			System.out.println("ItemRegistry loaded");
 		register(ModuleController.getAllItems());
 	}
-	
-	public static void register(List<Item> list){
-		for (Item item : list){
+
+	public static void register(List<Item> list) {
+		for (Item item : list) {
 			Util.register(item);
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-	public static void initModels(List<Item> list){
-		for (Item item : list){
+	public static void initModels(List<Item> list) {
+		for (Item item : list) {
 			Util.initModel(item);
 		}
 	}
-	
+
 }

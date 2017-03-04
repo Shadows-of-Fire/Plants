@@ -1,6 +1,5 @@
 package shadows.plants.registry;
 
-
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -10,28 +9,25 @@ import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Config;
 import shadows.plants.util.Util;
 
-
 public class BlockRegistry {
-	
 
-	public static void init(){
-		if (Config.debug) System.out.println("BlockRegistry loaded");
+	public static void init() {
+		if (Config.debug)
+			System.out.println("BlockRegistry loaded");
 		register(ModuleController.getAllBlocks());
 	}
 
-	
-	public static void register(List<Block> list){
-		for (Block block : list){
+	public static void register(List<Block> list) {
+		for (Block block : list) {
 			Util.register(block);
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-	public static void initModels(List<Block> list){
-		for (Block block : list){
+	public static void initModels(List<Block> list) {
+		for (Block block : list) {
 			Util.initModel(block);
 		}
 	}
-	
-	
+
 }

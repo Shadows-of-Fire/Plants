@@ -9,21 +9,26 @@ import shadows.plants.util.Data;
 
 public class ModuleController {
 
-	public static List<Block> getAllBlocks(){
+	public static List<Block> getAllBlocks() {
 		List<Block> list = new ArrayList<Block>();
-		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getBlockList());
-		if (Data.COSMETIC_ENABLED) list.addAll(CosmeticModule.getBlockList());
-		if (Data.TOOL_ENABLED) list.addAll(ToolModule.getBlockList());
+		if (Data.BOTANIA_ENABLED)
+			list.addAll(BotaniaModule.getBlockList());
+		if (Data.COSMETIC_ENABLED)
+			list.addAll(CosmeticModule.getBlockList());
+		if (Data.TOOL_ENABLED)
+			list.addAll(ToolModule.getBlockList());
 		return list;
 	}
-	
-	public static List<Item> getAllItems(){
+
+	public static List<Item> getAllItems() {
 		List<Item> list = new ArrayList<Item>();
-		if (Data.BOTANIA_ENABLED) list.addAll(BotaniaModule.getItemList());
-		if (Data.COSMETIC_ENABLED) list.addAll(CosmeticModule.getItemList());
-		if (Data.TOOL_ENABLED) list.addAll(ToolModule.getItemList());
+		if (Data.BOTANIA_ENABLED)
+			list.addAll(BotaniaModule.getItemList());
+		if (Data.COSMETIC_ENABLED)
+			list.addAll(CosmeticModule.getItemList());
+		if (Data.TOOL_ENABLED)
+			list.addAll(ToolModule.getItemList());
 		return list;
 	}
-	
-	
+
 }

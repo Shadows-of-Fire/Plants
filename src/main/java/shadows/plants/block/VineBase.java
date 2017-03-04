@@ -11,12 +11,12 @@ import shadows.plants.common.IModularThing;
 import shadows.plants.common.ITemperaturePlant;
 import shadows.plants.util.Data;
 
-public abstract class VineBase extends BlockVine implements IModularThing, ITemperaturePlant{
-	
-    private EnumModule type;
+public abstract class VineBase extends BlockVine implements IModularThing, ITemperaturePlant {
+
+	private EnumModule type;
 	private EnumTempZone zone;
-    
-	public VineBase(String name, EnumModule module, EnumTempZone zone_){
+
+	public VineBase(String name, EnumModule module, EnumTempZone zone_) {
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
 		setCreativeTab(Data.TAB);
@@ -24,28 +24,24 @@ public abstract class VineBase extends BlockVine implements IModularThing, ITemp
 		type = module;
 		zone = zone_;
 	}
-    
-    @Override
-    public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos)
-    {
-        return false;
-    }
+
+	@Override
+	public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos) {
+		return false;
+	}
 
 	@Override
 	public EnumModule getType() {
 		return type;
 	}
-	
+
 	@Override
-	public
-	float getTempMax(IBlockState state){
+	public float getTempMax(IBlockState state) {
 		return zone.getMax();
 	}
-	
-	
+
 	@Override
-	public
-	float getTempMin(IBlockState state){
+	public float getTempMin(IBlockState state) {
 		return zone.getMin();
 	}
 

@@ -7,9 +7,9 @@ public class TempMap {
 
 	private static EnumTempZone temperate = EnumTempZone.TEMPERATE;
 	private static EnumTempZone all = EnumTempZone.ALL;
-	
+
 	public static Map<Integer, EnumTempZone> cosmetic_1() {
-		Map <Integer, EnumTempZone> map = new HashMap <Integer, EnumTempZone> ();
+		Map<Integer, EnumTempZone> map = new HashMap<Integer, EnumTempZone>();
 		map.put(0, all);
 		map.put(1, all);
 		map.put(2, all);
@@ -27,11 +27,11 @@ public class TempMap {
 		map.put(14, all);
 		map.put(15, all);
 		return map;
-		
+
 	}
-	
+
 	public static Map<Integer, EnumTempZone> cosmetic_2() {
-		Map <Integer, EnumTempZone> map = new HashMap <Integer, EnumTempZone> ();
+		Map<Integer, EnumTempZone> map = new HashMap<Integer, EnumTempZone>();
 		map.put(0, all);
 		map.put(1, all);
 		map.put(2, all);
@@ -49,10 +49,11 @@ public class TempMap {
 		map.put(14, all);
 		map.put(15, all);
 		return map;
-		
+
 	}
+
 	public static Map<Integer, EnumTempZone> cosmetic_3() {
-		Map <Integer, EnumTempZone> map = new HashMap <Integer, EnumTempZone> ();
+		Map<Integer, EnumTempZone> map = new HashMap<Integer, EnumTempZone>();
 		map.put(0, all);
 		map.put(1, all);
 		map.put(2, all);
@@ -70,10 +71,11 @@ public class TempMap {
 		map.put(14, all);
 		map.put(15, all);
 		return map;
-		
+
 	}
+
 	public static Map<Integer, EnumTempZone> cosmetic_4() {
-		Map <Integer, EnumTempZone> map = new HashMap <Integer, EnumTempZone> ();
+		Map<Integer, EnumTempZone> map = new HashMap<Integer, EnumTempZone>();
 		map.put(0, all);
 		map.put(1, all);
 		map.put(2, all);
@@ -91,11 +93,11 @@ public class TempMap {
 		map.put(14, all);
 		map.put(15, all);
 		return map;
-		
+
 	}
-	
+
 	public static Map<Integer, EnumTempZone> cosmetic_5() {
-		Map <Integer, EnumTempZone> map = new HashMap <Integer, EnumTempZone> ();
+		Map<Integer, EnumTempZone> map = new HashMap<Integer, EnumTempZone>();
 		map.put(0, all);
 		map.put(1, all);
 		map.put(2, all);
@@ -105,11 +107,11 @@ public class TempMap {
 		map.put(6, all);
 		map.put(7, all);
 		return map;
-		
+
 	}
-	
+
 	public static Map<Integer, EnumTempZone> cosmetic_6() {
-		Map <Integer, EnumTempZone> map = new HashMap <Integer, EnumTempZone> ();
+		Map<Integer, EnumTempZone> map = new HashMap<Integer, EnumTempZone>();
 		map.put(0, all);
 		map.put(1, all);
 		map.put(2, all);
@@ -127,8 +129,7 @@ public class TempMap {
 		map.put(14, all);
 		map.put(15, all);
 		return map;
-		
+
 	}
-	
-	
+
 }

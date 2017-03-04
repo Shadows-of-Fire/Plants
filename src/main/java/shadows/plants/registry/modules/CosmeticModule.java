@@ -1,6 +1,5 @@
 package shadows.plants.registry.modules;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,40 +15,40 @@ import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.common.TempMap;
+import shadows.plants.item.common.DummyItem;
 import shadows.plants.item.common.FoodItem;
 import shadows.plants.item.common.SeedItem;
 import shadows.plants.item.internal.cosmetic.ItemCompost;
 import shadows.plants.util.Data;
-import shadows.plants.item.common.DummyItem;
 
-public class CosmeticModule{
+public class CosmeticModule {
 
 	/*
-	 * The control module for the Cosmetic Module of Plants.
-	 * This will handle all registration which is then passed to the respective registry classes.
+	 * The control module for the Cosmetic Module of Plants. This will handle
+	 * all registration which is then passed to the respective registry classes.
 	 */
 	private static EnumModule module = EnumModule.COSMETIC;
 	private static EnumTempZone all = EnumTempZone.ALL;
-	
+
 	public static BlockMetaBush cosmetic_1 = new BlockMetaBush("cosmetic_1", TempMap.cosmetic_1(), 15);
 	public static BlockMetaBush cosmetic_2 = new BlockMetaBush("cosmetic_2", TempMap.cosmetic_2(), 15);
 	public static BlockMetaBush cosmetic_3 = new BlockMetaBush("cosmetic_3", TempMap.cosmetic_3(), 15);
 	public static BlockMetaBush cosmetic_4 = new BlockMetaBush("cosmetic_4", TempMap.cosmetic_4(), 15);
 	public static BlockDoubleMetaBush cosmetic_5 = new BlockDoubleMetaBush("cosmetic_5", null, TempMap.cosmetic_5(), 5);
 	public static BlockMetaBush cosmetic_6 = new BlockMetaBush("cosmetic_6", TempMap.cosmetic_6(), 15);
-	
+
 	public static FoodItem okra = new FoodItem("okra", module, 3, 1.3f, false);
 	public static BlockCrop okra_crop = new BlockCrop("okra_crop", okra, 0, all);
 	public static SeedItem okra_seed = new SeedItem("okra_seed", okra_crop, module);
-	
+
 	public static FoodItem pineapple = new FoodItem("pineapple", module, 6, 0.6f, false);
 	public static BlockCrop pineapple_crop = new BlockCrop("pineapple_crop", pineapple, 1, all);
 	public static SeedItem pineapple_seed = new SeedItem("pineapple_seed", pineapple_crop, module);
-	
+
 	public static FoodItem amaranthus_h = new FoodItem("amaranthus_h", module, 5, 0.3F, false);
 	public static BlockCrop amaranthus_h_crop = new BlockCrop("amaranthus_h_crop", amaranthus_h, 2, all);
 	public static SeedItem amaranthus_h_seed = new SeedItem("amaranthus_h_seed", amaranthus_h_crop, module);
-	
+
 	public static FoodItem ambrosia_a = new FoodItem("ambrosia_a", module, 3, 0.5f, true);
 	public static FoodItem apocynum_c = new FoodItem("apocynum_c", module, 1, 2.0f, false);
 	public static FoodItem daucus_c = new FoodItem("daucus_c", module, 4, 1.1f, false);
@@ -71,9 +70,10 @@ public class CosmeticModule{
 	public static DummyItem dye_brown = new DummyItem("dye_brown", module);
 	public static DummyItem dye_black = new DummyItem("dye_black", module);
 	public static ItemCompost compost = new ItemCompost("compost");
-	
+
 	public static BlockHarvestable ambrosia_a_crop = new BlockHarvestable("ambrosia_a_crop", ambrosia_a, all);
-	public static BlockHarvestable apocynum_c_crop = new BlockHarvestable("apocynum_c_crop", apocynum_c, apocynum_c_cloth, all);
+	public static BlockHarvestable apocynum_c_crop = new BlockHarvestable("apocynum_c_crop", apocynum_c,
+			apocynum_c_cloth, all);
 	public static BlockHarvestable daucus_c_crop = new BlockHarvestable("daucus_c_crop", daucus_c, all);
 	public static BlockHarvestable phytolacca_a_crop = new BlockHarvestable("phytolacca_a_crop", phytolacca_a, all);
 	public static BlockHarvestable plantago_m_crop = new BlockHarvestable("plantago_m_crop", plantago_m, all);
@@ -84,15 +84,17 @@ public class CosmeticModule{
 	public static BlockHarvestable solanum_n_crop = new BlockHarvestable("solanum_n_crop", solanum_n, all);
 	public static BlockDoubleHarvestable alyxia_b_crop = new BlockDoubleHarvestable("alyxia_b_crop", alyxia_b, all);
 	public static BlockHarvestable actaea_p_crop = new BlockHarvestable("actaea_p_crop", actaea_p, all);
-	public static BlockHarvestable alternanthera_f_crop = new BlockHarvestable("alternanthera_f_crop", alternanthera_f, all);
+	public static BlockHarvestable alternanthera_f_crop = new BlockHarvestable("alternanthera_f_crop", alternanthera_f,
+			all);
 	public static BlockFruitVine adlumia_f = new BlockFruitVine("adlumia_f", Data.EMPTYSTACK, all);
 	public static BlockFruitVine afgekia_m = new BlockFruitVine("afgekia_m", Data.EMPTYSTACK, all);
 	public static BlockFruitVine androsace_a = new BlockFruitVine("androsace_a", Data.EMPTYSTACK, all);
 	public static BlockFruitVine akebia_q_crop = new BlockFruitVine("akebia_q_crop", new ItemStack(akebia_q), all);
-	public static BlockFruitVine ampelopsis_a_crop = new BlockFruitVine("ampelopsis_a_crop", new ItemStack(ampelopsis_a), all);
-	
-	public static List<Item> getItemList(){
-	List<Item> list = new ArrayList<Item>();
+	public static BlockFruitVine ampelopsis_a_crop = new BlockFruitVine("ampelopsis_a_crop",
+			new ItemStack(ampelopsis_a), all);
+
+	public static List<Item> getItemList() {
+		List<Item> list = new ArrayList<Item>();
 		list.clear();
 		list.add(okra_seed);
 		list.add(okra);
@@ -123,9 +125,8 @@ public class CosmeticModule{
 		list.add(compost);
 		return list;
 	}
-	
-	
-	public static List<Block> getBlockList(){
+
+	public static List<Block> getBlockList() {
 		List<Block> list = new ArrayList<Block>();
 		list.clear();
 		list.add(cosmetic_1);
@@ -157,7 +158,5 @@ public class CosmeticModule{
 		list.add(ampelopsis_a_crop);
 		return list;
 	}
-	
-	
-	
+
 }

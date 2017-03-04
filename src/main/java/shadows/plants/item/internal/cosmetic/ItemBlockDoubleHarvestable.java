@@ -17,52 +17,50 @@ import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.util.Config;
 import shadows.plants.util.Data;
 
-public class ItemBlockDoubleHarvestable extends ItemBlock{
+public class ItemBlockDoubleHarvestable extends ItemBlock {
 
 	public ItemBlockDoubleHarvestable(Block block) {
 		super(block);
-        setHasSubtypes(false);
-        setMaxDamage(0);
-        setRegistryName(block.getRegistryName());
-        setUnlocalizedName(Data.MODID + "." + getRegistryName());
+		setHasSubtypes(false);
+		setMaxDamage(0);
+		setRegistryName(block.getRegistryName());
+		setUnlocalizedName(Data.MODID + "." + getRegistryName());
 	}
-	
-    @Override
-    public int getMetadata(int damage)
-    {
-        return 0;
-    }
-    
-    @Override
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-    	if(Config.debug) System.out.println(this.getBlock().toString());
-        IBlockState state = world.getBlockState(pos);
-        Block block = state.getBlock();
 
-        if (!block.isReplaceable(world, pos))
-        {
-            pos = pos.offset(facing);
-        }
+	@Override
+	public int getMetadata(int damage) {
+		return 0;
+	}
 
-        if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack) && world.canBlockBePlaced(this.block, pos, false, facing, (Entity)null, stack))
-        {
-            BlockDoubleHarvestable block2 = (BlockDoubleHarvestable) Block.getBlockFromItem(stack.getItem());
-            IBlockState state2 = block2.getBlockState().getBaseState().withProperty(BlockDoubleHarvestable.UPPER, false).withProperty(BlockDoubleHarvestable.FRUIT, false);            
-            if (placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, state2))
-            {
-            	world.setBlockState(pos.up(), block2.getDefaultState());
-            	SoundType soundtype = SoundType.PLANT;
-                world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-                --stack.stackSize;
-            }
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (Config.debug)
+			System.out.println(this.getBlock().toString());
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
 
-            return EnumActionResult.SUCCESS;
-        }
-        else
-        {
-            return EnumActionResult.FAIL;
-        }
-    }
+		if (!block.isReplaceable(world, pos)) {
+			pos = pos.offset(facing);
+		}
+
+		if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack)
+				&& world.canBlockBePlaced(this.block, pos, false, facing, (Entity) null, stack)) {
+			BlockDoubleHarvestable block2 = (BlockDoubleHarvestable) Block.getBlockFromItem(stack.getItem());
+			IBlockState state2 = block2.getBlockState().getBaseState().withProperty(BlockDoubleHarvestable.UPPER, false)
+					.withProperty(BlockDoubleHarvestable.FRUIT, false);
+			if (placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, state2)) {
+				world.setBlockState(pos.up(), block2.getDefaultState());
+				SoundType soundtype = SoundType.PLANT;
+				world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,
+						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+				--stack.stackSize;
+			}
+
+			return EnumActionResult.SUCCESS;
+		} else {
+			return EnumActionResult.FAIL;
+		}
+	}
 
 }
