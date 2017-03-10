@@ -61,7 +61,7 @@ public class BlockDoubleHarvestable extends BlockHarvestable {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			 EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player.getHeldItemMainhand() == Data.EMPTYSTACK) {
 			if (state.getValue(FRUIT) && state.getValue(UPPER)) {
 				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));

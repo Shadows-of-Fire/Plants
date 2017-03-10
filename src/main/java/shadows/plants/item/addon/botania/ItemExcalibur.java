@@ -8,7 +8,7 @@
  * 
  * File Created @ [Mar 29, 2015, 10:12:50 PM (GMT)]
  */
-package shadows.plants.item.addon.botania;
+/*package shadows.plants.item.addon.botania;
 
 import java.util.List;
 
@@ -260,4 +260,4 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public EnumRarity getRarity(ItemStack stack) {
 		return BotaniaAPI.rarityRelic;
 	}
-}
+}*/

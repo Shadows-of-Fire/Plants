@@ -63,8 +63,7 @@ public abstract class PlantBase extends BlockBush implements IGrowable, IModular
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (player.getHeldItemMainhand() == Data.EMPTYSTACK
 				&& world.getBlockState(pos.down()).getBlock() == Blocks.FARMLAND) {
 			if (getAge(world.getBlockState(pos)) == 7) {
@@ -138,7 +137,7 @@ public abstract class PlantBase extends BlockBush implements IGrowable, IModular
 	}
 
 	protected int getBonemealAgeIncrease(World worldIn) {
-		return MathHelper.getRandomIntegerInRange(worldIn.rand, 0, 2);
+		return MathHelper.getInt(worldIn.rand, 0, 2);
 	}
 
 	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {

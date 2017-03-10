@@ -94,7 +94,7 @@ public class Util {
 			EntityDragon entitydragon = new EntityDragon(world);
 			entitydragon.getPhaseManager().setPhase(PhaseList.HOLDING_PATTERN);
 			entitydragon.setPosition(x, y + 50, z);
-			world.spawnEntityInWorld(entitydragon);
+			world.spawnEntity(entitydragon);
 		}
 
 		else if (!(entity instanceof EntityDragon) && entity instanceof EntityLivingBase) {
@@ -104,7 +104,7 @@ public class Util {
 			entityliving.renderYawOffset = entityliving.rotationYaw;
 			entityliving.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(entityliving)),
 					(IEntityLivingData) null);
-			world.spawnEntityInWorld(entity);
+			world.spawnEntity(entity);
 			entityliving.playLivingSound();
 
 		}
@@ -305,17 +305,17 @@ public class Util {
 		if (state != null && flower != null) {
 			if (!(flower instanceof BlockDoubleMetaBush || flower instanceof BlockDoubleHarvestable
 					|| flower instanceof BlockFruitVine)) {
-				if (world.isAirBlock(pos) && !world.provider.getHasNoSky() && flower.canPlaceBlockAt(world, pos)) {
+				if (world.isAirBlock(pos) && !world.provider.hasNoSky() && flower.canPlaceBlockAt(world, pos)) {
 					world.setBlockState(pos, state, 2);
 				}
 			} else if (flower instanceof BlockDoubleMetaBush) {
-				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.getHasNoSky()
+				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.hasNoSky()
 						&& flower.canPlaceBlockAt(world, pos)) {
 					world.setBlockState(pos, state.withProperty(BlockDoubleMetaBush.UPPER, false), 2);
 					world.setBlockState(pos.up(), state.withProperty(BlockDoubleMetaBush.UPPER, true), 2);
 				}
 			} else if (flower instanceof BlockDoubleHarvestable) {
-				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.getHasNoSky()
+				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.hasNoSky()
 						&& flower.canPlaceBlockAt(world, pos)) {
 					world.setBlockState(pos, state.withProperty(BlockDoubleHarvestable.UPPER, false), 2);
 					world.setBlockState(pos.up(), state.withProperty(BlockDoubleHarvestable.UPPER, true), 2);
@@ -328,14 +328,14 @@ public class Util {
 		int dist = Config.patchsize;// Spread of the flowers, a radius of sorts.
 		for (int i = 0; i < Config.quantity; i++) {// number of positions
 													// selected per event.
-			int x = pos.getX() + MathHelper.getRandomIntegerInRange(rand, -5, 5);
-			int z = pos.getZ() + MathHelper.getRandomIntegerInRange(rand, -5, 5);
+			int x = pos.getX() + MathHelper.getInt(rand, -5, 5);
+			int z = pos.getZ() + MathHelper.getInt(rand, -5, 5);
 			int y = world.getTopSolidOrLiquidBlock(pos).getY();
 			for (int j = 0; j < Config.density; j++) { // number of placements
 														// that occur.
-				int x1 = x + MathHelper.getRandomIntegerInRange(rand, -1 * dist, dist);
+				int x1 = x + MathHelper.getInt(rand, -1 * dist, dist);
 				int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-				int z1 = z + MathHelper.getRandomIntegerInRange(rand, -1 * dist, dist);
+				int z1 = z + MathHelper.getInt(rand, -1 * dist, dist);
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
 			}
@@ -362,13 +362,13 @@ public class Util {
 			Block flower) {
 		int dist = 2;// Spread of the flowers, a radius of sorts.
 		for (int i = 0; i < 2; i++) {// number of positions selected per event.
-			int x = pos.getX() + MathHelper.getRandomIntegerInRange(rand, -2, 2);
-			int z = pos.getZ() + MathHelper.getRandomIntegerInRange(rand, -2, 2);
+			int x = pos.getX() + MathHelper.getInt(rand, -2, 2);
+			int z = pos.getZ() + MathHelper.getInt(rand, -2, 2);
 			int y = world.getTopSolidOrLiquidBlock(pos).getY();
 			for (int j = 0; j < 3; j++) { // number of placements that occur.
-				int x1 = x + MathHelper.getRandomIntegerInRange(rand, -1 * dist, dist);
+				int x1 = x + MathHelper.getInt(rand, -1 * dist, dist);
 				int y1 = y;
-				int z1 = z + MathHelper.getRandomIntegerInRange(rand, -1 * dist, dist);
+				int z1 = z + MathHelper.getInt(rand, -1 * dist, dist);
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
 			}
@@ -387,7 +387,7 @@ public class Util {
 			if (Config.debug)
 				System.out.println(vine.toString());
 			world.setBlockState(pos.offset(facing),
-					vine.onBlockPlaced(world, pos.offset(facing), facing, 0, 0, 0, 0, null));
+					vine.getStateForPlacement(world, pos.offset(facing), facing, 0, 0, 0, 0, null));
 		}
 	}
 

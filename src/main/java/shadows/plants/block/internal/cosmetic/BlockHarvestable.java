@@ -55,8 +55,7 @@ public class BlockHarvestable extends BushBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player.getHeldItemMainhand() == Data.EMPTYSTACK) {
 			if (state.getValue(FRUIT)) {
 				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));

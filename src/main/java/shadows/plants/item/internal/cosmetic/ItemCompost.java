@@ -30,50 +30,64 @@ public class ItemCompost extends DummyItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack) && !world.isRemote) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (!stack.isEmpty() && player.canPlayerEdit(pos, facing, stack)) {
 			if (Config.debug)
 				System.out.println("Using Compost Item");
 			IBlockState state = world.getBlockState(pos);
 			SoundType soundtype = SoundType.PLANT;
 			Block flower = Util.getFlowerByChance(world.rand);
 
-			if (state.getBlock() == Blocks.MOSSY_COBBLESTONE) {
+			if (state.getBlock() == Blocks.MOSSY_COBBLESTONE && facing.getAxis().isHorizontal()) {
 				BlockFruitVine block = (BlockFruitVine) Util.getRandomVine(world.rand);
-				Util.placeVine(world, block, pos, facing);
+				if(!world.isRemote) Util.placeVine(world, block, pos, facing);
+				
 				world.playSound(player, pos.offset(facing), soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-				--stack.stackSize;
+				
+				stack.shrink(1);
 				return EnumActionResult.SUCCESS;
 			}
 
 			else if (flower.canPlaceBlockAt(world, pos.up())) {
-				genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
+				if(!world.isRemote){
+					genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
 				if (world.rand.nextInt(10) == 0)
 					genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
+				}
+				
 				world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
-				--stack.stackSize;
+				stack.shrink(1);
 				return EnumActionResult.SUCCESS;
 			}
 
 			else if (state.getBlock() instanceof BlockBush && !(state.getBlock().hasTileEntity(state))) {
 				if (state.getBlock().getRegistryName().getResourceDomain().equals("plants")
 						|| state.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
-					genFlowers(world, pos, state.getBlock(), state);
+					
+					if(!world.isRemote) genFlowers(world, pos, state.getBlock(), state);
+					
+					
 					world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 							(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+					
 
-					--stack.stackSize;
+					stack.shrink(1);
 					return EnumActionResult.SUCCESS;
 				} else if (Config.allBushes) {
-					genFlowers(world, pos, state.getBlock(), state);
+					
+					if(!world.isRemote) genFlowers(world, pos, state.getBlock(), state);
+					
+					
 					world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 							(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+					
 
-					--stack.stackSize;
+					stack.shrink(1);
 					return EnumActionResult.SUCCESS;
 				}
 			}

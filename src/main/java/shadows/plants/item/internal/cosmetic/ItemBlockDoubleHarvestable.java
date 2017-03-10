@@ -33,8 +33,9 @@ public class ItemBlockDoubleHarvestable extends ItemBlock {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
 		if (Config.debug)
 			System.out.println(this.getBlock().toString());
 		IBlockState state = world.getBlockState(pos);
@@ -44,8 +45,8 @@ public class ItemBlockDoubleHarvestable extends ItemBlock {
 			pos = pos.offset(facing);
 		}
 
-		if (stack.stackSize != 0 && player.canPlayerEdit(pos, facing, stack)
-				&& world.canBlockBePlaced(this.block, pos, false, facing, (Entity) null, stack)) {
+		if (!stack.isEmpty() && player.canPlayerEdit(pos, facing, stack)
+				&& world.mayPlace(this.block, pos, false, facing, (Entity) null)) {
 			BlockDoubleHarvestable block2 = (BlockDoubleHarvestable) Block.getBlockFromItem(stack.getItem());
 			IBlockState state2 = block2.getBlockState().getBaseState().withProperty(BlockDoubleHarvestable.UPPER, false)
 					.withProperty(BlockDoubleHarvestable.FRUIT, false);
@@ -54,7 +55,7 @@ public class ItemBlockDoubleHarvestable extends ItemBlock {
 				SoundType soundtype = SoundType.PLANT;
 				world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS,
 						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-				--stack.stackSize;
+				stack.shrink(1);
 			}
 
 			return EnumActionResult.SUCCESS;

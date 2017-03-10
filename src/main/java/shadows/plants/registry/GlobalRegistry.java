@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.common.IMetaPlant;
@@ -34,13 +35,13 @@ public class GlobalRegistry {
 
 	public static final CreativeTabs TAB = new CreativeTabs(Data.MODID) {
 		@Override
-		public Item getTabIconItem() {
-			return Item.getItemFromBlock(CosmeticModule.cosmetic_1);
+		public ItemStack getTabIconItem() {
+			return new ItemStack(CosmeticModule.cosmetic_1);
 		}
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public void displayAllRelevantItems(List<ItemStack> list) {
+		public void displayAllRelevantItems(NonNullList<ItemStack> list) {
 			for (Block block : ModuleController.getAllBlocks()) {
 				int i = 0;
 				if (block instanceof IMetaPlant)
@@ -54,13 +55,13 @@ public class GlobalRegistry {
 
 	public static final CreativeTabs TAB_I = new CreativeTabs(Data.MODID + (".items")) {
 		@Override
-		public Item getTabIconItem() {
-			return CosmeticModule.pineapple;
+		public ItemStack getTabIconItem() {
+			return new ItemStack(CosmeticModule.pineapple);
 		}
 
 		@Override
 		@SideOnly(Side.CLIENT)
-		public void displayAllRelevantItems(List<ItemStack> list) {
+		public void displayAllRelevantItems(NonNullList<ItemStack> list) {
 			for (Item item : ModuleController.getAllItems()) {
 				list.add(new ItemStack(item));
 			}

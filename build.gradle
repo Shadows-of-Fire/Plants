@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
 
-version = "1.10.2-beta-0.5.3"
+version = "1.11.2-beta-0.7.0"
 group= "shadows.plants" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Plants"
 
@@ -21,9 +21,9 @@ compileJava {
 }
 
 minecraft {
-    version = "1.10.2-12.18.3.2221"
+    version = "1.11.2-13.20.0.2255"
     runDir = "run"
-    mappings = "snapshot_20161111"
+    mappings = "snapshot_20161220"
 }
 
 repositories {
@@ -35,8 +35,6 @@ repositories {
 dependencies {
 
     compile files('libs/')
-	deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.9.4-2.1.0-69"
-	deobfCompile "info.amerifrance.guideapi:Guide-API:1.9.4-2.0.0-37"
 }
 
 
