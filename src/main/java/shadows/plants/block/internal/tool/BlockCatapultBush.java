@@ -35,7 +35,6 @@ public class BlockCatapultBush extends FacingBush {
 				1, false);
 		EnumFacing face = state.getValue(FACING);
 		int x = face.getDirectionVec().getX();
-		int y = face.getDirectionVec().getY();
 		int z = face.getDirectionVec().getZ();
 		entity.setVelocity(x * Config.catapultPower, 0.4, z * Config.catapultPower);
 		entity.velocityChanged = true;

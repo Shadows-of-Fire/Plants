@@ -75,6 +75,10 @@ public class Config {
 
 			Property PGeneration = CommonProxy.config.get("Generator Options", "EnableGeneration", "true",
 					"Toggle for worldgen.", Property.Type.BOOLEAN);
+			
+			Property PCata = CommonProxy.config.get("Tool Module", "Catapult Power", "5",
+					"How much strength the Cataplant has.",
+					Property.Type.INTEGER);
 
 			debug = PDebug.getBoolean();
 			Botania = PBotania.getBoolean();
@@ -90,7 +94,8 @@ public class Config {
 			needShears = PShears.getBoolean();
 			Tool = PTool.getBoolean();
 			generation = PGeneration.getBoolean();
-
+			catapultPower = PCata.getInt();
+			
 		} catch (Exception e) {
 			// Failed reading/writing, just continue
 		} finally {
