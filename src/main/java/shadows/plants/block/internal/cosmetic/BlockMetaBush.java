@@ -1,6 +1,5 @@
 package shadows.plants.block.internal.cosmetic;
 
-import java.util.List;
 import java.util.Map;
 
 import net.minecraft.block.properties.IProperty;

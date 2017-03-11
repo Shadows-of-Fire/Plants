@@ -38,6 +38,7 @@ import shadows.plants.block.internal.cosmetic.BlockMetaBush;
 import shadows.plants.common.EnumModule;
 import shadows.plants.common.IMetaPlant;
 import shadows.plants.registry.modules.CosmeticModule;
+import shadows.plants.registry.modules.ToolModule;
 
 public class Util {
 
@@ -208,7 +209,7 @@ public class Util {
 	}
 
 	public static Block getFlowerByChance(Random rand) {
-		int x = rand.nextInt(86);
+		int x = rand.nextInt(87);
 		if (x >= 0 && x < 16)
 			return CosmeticModule.cosmetic_1;
 		if (x >= 16 && x < 32)
@@ -253,6 +254,8 @@ public class Util {
 			return CosmeticModule.actaea_p_crop;
 		if (x == 85)
 			return CosmeticModule.alternanthera_f_crop;
+		if (x == 86)
+			return ToolModule.catapult;
 		else {
 			System.out.println(
 					"PLANTS HAS RETURNED A NULL VALUE (X = " + x + ") FOR getFlowerByChance. THIS IS VERY BAD!");
@@ -285,10 +288,12 @@ public class Util {
 		if (flower instanceof BlockMetaBush) {
 			xk = rand.nextInt(maxdata + 1);
 			if (xk == 2 && flower == CosmeticModule.cosmetic_1)
-				++xk;
+				xk += 2;
 			if (xk == 3 && flower == CosmeticModule.cosmetic_1)
 				++xk;
 			if (xk == 13 && flower == CosmeticModule.cosmetic_2)
+				++xk;
+			if (xk == 13 && flower == CosmeticModule.cosmetic_3)
 				++xk;
 			state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);
 		} else if (flower instanceof BlockDoubleMetaBush) {

@@ -118,6 +118,8 @@ tile.plants.amaranthus_h_crop.name=Prince's Feather
 tile.plants.actaea_p_crop.name=Doll's Eyes
 tile.plants.alternanthera_f_crop.name=Galapagos Flower
 
+tile.plants.cataplant.name=Cataplant
+
 item.plants.excalibur.name=Holy Sword Excalibur
 
 item.plants.okra_seed.name=Okra Seeds

@@ -17,6 +17,7 @@ public class Data {
 	public static final boolean BOTANIA_ENABLED = (Loader.isModLoaded(BOTANIA) && Config.Botania);
 	public static final boolean COSMETIC_ENABLED = Config.Cosmetic;
 	public static final boolean TOOL_ENABLED = Config.Tool;
-	public static final ItemStack EMPTYSTACK = ItemStack.EMPTY; // for 1.11 porting later
+	public static final ItemStack EMPTYSTACK = ItemStack.EMPTY; // for 1.11
+																// porting later
 
 }

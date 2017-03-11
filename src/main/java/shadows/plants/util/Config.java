@@ -34,9 +34,8 @@ public class Config {
 			Property PCosmetic = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "Cosmetic", "true",
 					"Enable the Cosmetic (main) module.", Property.Type.BOOLEAN);
 
-			Property PTool = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "Tool", "false",
-					"(WIP: NOT CURRENTLY ACTIVE, SOME FEATURES MAY WORK) Enable the Tool (utility) module.",
-					Property.Type.BOOLEAN);
+			Property PTool = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "Tool", "true",
+					"Enable the Tool (utility) module.", Property.Type.BOOLEAN);
 
 			Property PDisableVanilla = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "DisableVanilla", "false",
 					"(NYI) Disable vanilla flower generation.", Property.Type.BOOLEAN);

@@ -63,7 +63,8 @@ public abstract class PlantBase extends BlockBush implements IGrowable, IModular
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (player.getHeldItemMainhand() == Data.EMPTYSTACK
 				&& world.getBlockState(pos.down()).getBlock() == Blocks.FARMLAND) {
 			if (getAge(world.getBlockState(pos)) == 7) {
