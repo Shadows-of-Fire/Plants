@@ -130,21 +130,14 @@ public class BlockDoubleHarvestable extends BlockHarvestable {
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		if (state.getBlock() != this) {
-			System.out.println("Case one being evaluated");
 			return super.canBlockStay(world, pos, state);
 		}
 		if (state.getValue(UPPER)) {
-			if (Config.debug)
-				System.out.println("Case two being evaluated");
 			return world.getBlockState(pos.down()).getBlock() == this;
 		} else if (!state.getValue(UPPER)) {
-			if (Config.debug)
-				System.out.println("Case three being evaluated");
 			return soil.contains(world.getBlockState(pos.down()).getBlock())
 					&& world.getBlockState(pos.up()).getBlock() == this;
 		} else {
-			if (Config.debug)
-				System.out.println("Case four being evaluated");
 			return false;
 		}
 	}

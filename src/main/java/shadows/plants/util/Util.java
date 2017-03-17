@@ -49,7 +49,7 @@ public class Util {
 	@SideOnly(Side.CLIENT)
 	public static void initModel(Block block) {
 		if (Config.debug)
-			System.out.println("Registered model for " + block.toString());
+			System.out.println("Registered model for " + block.getRegistryName());
 		if (!isException(block))
 			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
 					new ModelResourceLocation(block.getRegistryName(), "inventory"));
@@ -67,7 +67,7 @@ public class Util {
 
 	public static void register(Block block) {
 		if (Config.debug)
-			System.out.println("Registered " + block.toString());
+			System.out.println("Registered " + block.getRegistryName());
 		GameRegistry.register(block);
 		if (!isException(block) && !(block instanceof BlockDoubleHarvestable))
 			GameRegistry.register(new ItemBlock(block), block.getRegistryName());
@@ -75,7 +75,7 @@ public class Util {
 
 	public static void register(Item item) {
 		if (Config.debug)
-			System.out.println("Registered " + item.toString());
+			System.out.println("Registered " + item.getRegistryName());
 		GameRegistry.register(item);
 	}
 
@@ -335,12 +335,11 @@ public class Util {
 													// selected per event.
 			int x = pos.getX() + MathHelper.getInt(rand, -5, 5);
 			int z = pos.getZ() + MathHelper.getInt(rand, -5, 5);
-			int y = world.getTopSolidOrLiquidBlock(pos).getY();
 			for (int j = 0; j < Config.density; j++) { // number of placements
 														// that occur.
 				int x1 = x + MathHelper.getInt(rand, -1 * dist, dist);
-				int y1 = y + rand.nextInt(4) - rand.nextInt(4);
 				int z1 = z + MathHelper.getInt(rand, -1 * dist, dist);
+				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
 			}
@@ -348,15 +347,13 @@ public class Util {
 	}
 
 	public static void genMegaPatch(World world, BlockPos pos, Random rand, IBlockState state, Block flower) {
-		int dist = 14;// Spread of the flowers, a radius of sorts.
 		for (int i = 0; i < 5; i++) {// number of positions selected per event.
-			int x = pos.getX() + rand.nextInt(16) + 8;
-			int z = pos.getZ() + rand.nextInt(16) + 8;
-			int y = world.getTopSolidOrLiquidBlock(pos).getY();
+			int x = pos.getX() + MathHelper.getInt(rand, -7, 7);
+			int z = pos.getZ() + MathHelper.getInt(rand, -7, 7);
 			for (int j = 0; j < 48; j++) { // number of placements that occur.
-				int x1 = x + rand.nextInt(dist * 2) - dist;
-				int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-				int z1 = z + rand.nextInt(dist * 2) - dist;
+				int x1 = x + MathHelper.getInt(rand, -7, 7);
+				int z1 = z + MathHelper.getInt(rand, -7, 7);
+				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
 			}
@@ -365,15 +362,13 @@ public class Util {
 
 	public static void genSmallFlowerPatchNearby(World world, BlockPos pos, Random rand, IBlockState state,
 			Block flower) {
-		int dist = 2;// Spread of the flowers, a radius of sorts.
 		for (int i = 0; i < 2; i++) {// number of positions selected per event.
 			int x = pos.getX() + MathHelper.getInt(rand, -2, 2);
 			int z = pos.getZ() + MathHelper.getInt(rand, -2, 2);
-			int y = world.getTopSolidOrLiquidBlock(pos).getY();
 			for (int j = 0; j < 3; j++) { // number of placements that occur.
-				int x1 = x + MathHelper.getInt(rand, -1 * dist, dist);
-				int y1 = y;
-				int z1 = z + MathHelper.getInt(rand, -1 * dist, dist);
+				int x1 = x + MathHelper.getInt(rand, -2, 2);
+				int z1 = z + MathHelper.getInt(rand, -2, 2);
+				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
 			}

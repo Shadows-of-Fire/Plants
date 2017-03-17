@@ -32,6 +32,7 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 
 	private EnumModule module;
 	public List<Block> soil = new ArrayList<Block>();
+	public static final AxisAlignedBB BUSHBOX = new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
 
 	public BushBase(String name, EnumModule type, @Nullable List<Block> soilIn) {
 		setRegistryName(name);
@@ -84,7 +85,7 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
+		return BUSHBOX;
 	}
 
 	@Override

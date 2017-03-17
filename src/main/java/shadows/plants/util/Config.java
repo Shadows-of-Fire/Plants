@@ -12,10 +12,10 @@ public class Config {
 	public static boolean Tool = true;
 	public static boolean disableVanillaFlowers = false;
 	public static int vineFruitChance = 5;
-	public static int patchchance = 16;
-	public static int density = 32;
-	public static int patchsize = 2;
-	public static int quantity = 3;
+	public static int patchchance = 6;
+	public static int density = 8;
+	public static int patchsize = 3;
+	public static int quantity = 2;
 	public static int numtries = 1;
 	public static boolean literallyTakeoverFlowerForests = true;
 	public static boolean allBushes = true;
@@ -43,19 +43,19 @@ public class Config {
 			Property PVineFruit = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "VineFruit", "5",
 					"A (1/n) chance for vines to drop fruit when broken.", Property.Type.INTEGER);
 
-			Property PPatchChance = CommonProxy.config.get("Generator Options", "Chance", "16",
+			Property PPatchChance = CommonProxy.config.get("Generator Options", "Chance", "6",
 					"A (1/n) chance for plants to try to generate on a given occasion. Lower = More plants.",
 					Property.Type.INTEGER);
 
-			Property PDensity = CommonProxy.config.get("Generator Options", "Density", "32",
+			Property PDensity = CommonProxy.config.get("Generator Options", "Density", "8",
 					"The number of plants that try to generate on a given occasion. Higher = More plants.",
 					Property.Type.INTEGER);
 
-			Property PPatchSize = CommonProxy.config.get("Generator Options", "Size", "2",
+			Property PPatchSize = CommonProxy.config.get("Generator Options", "Size", "3",
 					"The spread of plants in a given generation attempt. Higher = More plant spread.",
 					Property.Type.INTEGER);
 
-			Property PQuantity = CommonProxy.config.get("Generator Options", "Quantity", "3",
+			Property PQuantity = CommonProxy.config.get("Generator Options", "Quantity", "2",
 					"The number of plants per generation attempt. Higher = More plants. Use sparingly.",
 					Property.Type.INTEGER);
 
@@ -75,10 +75,9 @@ public class Config {
 
 			Property PGeneration = CommonProxy.config.get("Generator Options", "EnableGeneration", "true",
 					"Toggle for worldgen.", Property.Type.BOOLEAN);
-			
+
 			Property PCata = CommonProxy.config.get("Tool Module", "Catapult Power", "5",
-					"How much strength the Cataplant has.",
-					Property.Type.INTEGER);
+					"How much strength the Cataplant has.", Property.Type.INTEGER);
 
 			debug = PDebug.getBoolean();
 			Botania = PBotania.getBoolean();
@@ -95,7 +94,7 @@ public class Config {
 			Tool = PTool.getBoolean();
 			generation = PGeneration.getBoolean();
 			catapultPower = PCata.getInt();
-			
+
 		} catch (Exception e) {
 			// Failed reading/writing, just continue
 		} finally {
