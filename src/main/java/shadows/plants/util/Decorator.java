@@ -27,7 +27,7 @@ public final class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
-		if (!event.getWorld().isRemote && Config.generation && Util.isEventTypeAcceptable(event.getType())) {
+		if (!event.getWorld().isRemote && Config.generation && event.getType() == EventType.FLOWERS) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numtries; ih > 0; ih--) {
 				if (event.getRand().nextInt(Config.patchchance) == 0) {
@@ -38,14 +38,11 @@ public final class Decorator {
 						float min = ((ITemperaturePlant) flower).getTempMin(state);
 						float temp = event.getWorld().getBiome(pos).getTemperature();
 						if (temp >= min && temp <= max) {
-							int chance = event.getRand().nextInt(100);
-							if (Config.debug)
-								System.out.println("Attempting generation with chance integer " + chance
-										+ " at coordinates " + "(" + event.getPos().getX() + "," + event.getPos().getY()
-										+ "," + event.getPos().getZ() + ")");
-							if (chance > 10)
+							int chance = event.getRand().nextInt(300);
+							//if (Config.debug) System.out.println("Attempting generation with chance integer " + chance + " at coordinates " + "(" + event.getPos().getX() + "," + event.getPos().getY() + "," + event.getPos().getZ() + ")");
+							if (chance > 50)
 								Util.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
-							else if (chance <= 10 && chance > 0)
+							else if (chance <= 50 && chance > 0)
 								Util.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(),
 										state, flower);
 							else if (chance == 0)

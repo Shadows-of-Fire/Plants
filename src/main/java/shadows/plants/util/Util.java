@@ -333,12 +333,12 @@ public class Util {
 		int dist = Config.patchsize;// Spread of the flowers, a radius of sorts.
 		for (int i = 0; i < Config.quantity; i++) {// number of positions
 													// selected per event.
-			int x = pos.getX() + MathHelper.getInt(rand, -5, 5);
-			int z = pos.getZ() + MathHelper.getInt(rand, -5, 5);
+			int x = pos.getX() + MathHelper.getInt(rand, -dist, dist);
+			int z = pos.getZ() + MathHelper.getInt(rand, -dist, dist);
 			for (int j = 0; j < Config.density; j++) { // number of placements
 														// that occur.
-				int x1 = x + MathHelper.getInt(rand, -1 * dist, dist);
-				int z1 = z + MathHelper.getInt(rand, -1 * dist, dist);
+				int x1 = x + MathHelper.getInt(rand, -dist, dist);
+				int z1 = z + MathHelper.getInt(rand, -dist, dist);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
@@ -348,11 +348,11 @@ public class Util {
 
 	public static void genMegaPatch(World world, BlockPos pos, Random rand, IBlockState state, Block flower) {
 		for (int i = 0; i < 5; i++) {// number of positions selected per event.
-			int x = pos.getX() + MathHelper.getInt(rand, -7, 7);
-			int z = pos.getZ() + MathHelper.getInt(rand, -7, 7);
+			int x = pos.getX() + MathHelper.getInt(rand, -2, 2);
+			int z = pos.getZ() + MathHelper.getInt(rand, -2, 2);
 			for (int j = 0; j < 48; j++) { // number of placements that occur.
-				int x1 = x + MathHelper.getInt(rand, -7, 7);
-				int z1 = z + MathHelper.getInt(rand, -7, 7);
+				int x1 = x + MathHelper.getInt(rand, -6, 6);
+				int z1 = z + MathHelper.getInt(rand, -6, 6);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
 				Util.placeFlower(world, state, pos2, flower);
@@ -373,13 +373,6 @@ public class Util {
 				Util.placeFlower(world, state, pos2, flower);
 			}
 		}
-	}
-
-	public static boolean isEventTypeAcceptable(EventType type) {
-		return (type == EventType.CACTUS || type == EventType.DEAD_BUSH || type == EventType.LILYPAD
-				|| type == EventType.FLOWERS || type == EventType.GRASS || type == EventType.PUMPKIN
-				|| type == EventType.REED || type == EventType.TREE);
-
 	}
 
 	public static void placeVine(World world, VineBase vine, BlockPos pos, EnumFacing facing) {
