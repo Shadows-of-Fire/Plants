@@ -38,12 +38,36 @@ public final class Decorator {
 						float min = ((ITemperaturePlant) flower).getTempMin(state);
 						float temp = event.getWorld().getBiome(pos).getTemperature();
 						if (temp >= min && temp <= max) {
-							int chance = event.getRand().nextInt(300);
-							// if (Config.debug) System.out.println("Attempting
-							// generation with chance integer " + chance + " at
-							// coordinates " + "(" + event.getPos().getX() + ","
-							// + event.getPos().getY() + "," +
-							// event.getPos().getZ() + ")");
+							int chance = event.getRand().nextInt(600);
+							if (chance > 50)
+								Util.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
+							else if (chance <= 50 && chance > 0)
+								Util.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(),
+										state, flower);
+							else if (chance == 0)
+								Util.genMegaPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public static void onDesertDecoration(DecorateBiomeEvent.Decorate event) {
+		if (!event.getWorld().isRemote && Config.generation && (event.getType() == EventType.DEAD_BUSH
+				|| event.getType() == EventType.CACTUS)) {
+			BlockPos pos = event.getPos();
+			for (int ih = Config.numtries; ih > 0; ih--) {
+				if (event.getRand().nextInt(Config.patchchance * 4) == 0) {
+					Block flower = Util.getDesertFlowerByChance(event.getRand());
+					IBlockState state = Util.getStateByChance(event.getRand(), flower);
+					if (state != null && flower instanceof ITemperaturePlant) {
+						float max = ((ITemperaturePlant) flower).getTempMax(state);
+						float min = ((ITemperaturePlant) flower).getTempMin(state);
+						float temp = event.getWorld().getBiome(pos).getTemperature();
+						if (temp >= min && temp <= max) {
+							int chance = event.getRand().nextInt(600);
 							if (chance > 50)
 								Util.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
 							else if (chance <= 50 && chance > 0)

@@ -51,6 +51,21 @@ public class ItemCompost extends DummyItem {
 				stack.shrink(1);
 				return EnumActionResult.SUCCESS;
 			}
+			
+			else if (state.getBlock() == Blocks.SAND && facing == EnumFacing.DOWN) {
+				flower = Util.getDesertFlowerByChance(world.rand);
+				if (!world.isRemote) {
+					genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
+					if (world.rand.nextInt(10) == 0)
+						genFlowers(world, pos, flower, Util.getStateByChance(world.rand, flower));
+				}
+
+				world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS,
+						(soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+
+				stack.shrink(1);
+				return EnumActionResult.SUCCESS;
+			}
 
 			else if (flower.canPlaceBlockAt(world, pos.up())) {
 				if (!world.isRemote) {

@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
 
-version = "1.11.2-beta-0.7.5"
+version = "1.11.2-beta-0.8.0"
 group= "shadows.plants" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Plants"
 
@@ -27,13 +27,14 @@ minecraft {
 }
 
 repositories {
-  maven {
-    url "http://tehnut.info/maven/"
-  }
+    maven {
+        name "JEI"
+        url "http://dvs1.progwml6.com/files/maven"
+    }
 }
 
 dependencies {
-
+    runtime "mezz.jei:jei_1.11.2:4.2.8.243"
     compile files('libs/')
 }
 

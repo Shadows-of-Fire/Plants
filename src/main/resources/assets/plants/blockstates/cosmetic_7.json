@@ -1,0 +1,91 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross"
+	},
+	"variants": {
+		"basicmeta": {
+			"0": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/apacheplume"
+				}
+			},
+			"1": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/arizonapoppy"
+				}
+			},
+			"2": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/asianmustard"
+				}
+			},
+			"3": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/bigelowsmonkeyflower"
+				}
+			},
+			"4": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/blacktackphacelia"
+				}
+			},
+			"5": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/blazingstar"
+				}
+			},
+			"6": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/blueflax"
+				}
+			},
+			"7": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/bristlyfiddleneck"
+				}
+			},
+			"8": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/browneyes"
+				}
+			},
+			"9": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/buckbrush"
+				}
+			},
+			"10": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/buttonbrittlebush"
+				}
+			},
+			"11": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/canaigre"
+				}
+			},
+			"12": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/chocolatedrops"
+				}
+			},
+			"13": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/chuparosa"
+				}
+			},
+			"14": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/clusteredbroomrape"
+				}
+			},
+			"15": {
+				"textures": {
+					"cross": "plants:blocks/cosmetic/desert/coultersjewelflower"
+				}
+			}
+
+		}
+	}
+}

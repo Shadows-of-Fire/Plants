@@ -2,6 +2,7 @@ package shadows.plants.block.internal.cosmetic;
 
 import java.util.Map;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
@@ -33,6 +34,14 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 		max = maxmeta;
 	}
 
+	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map, int maxmeta, Block[] blocks) {
+		super(name, EnumModule.COSMETIC, blocks);
+		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
+		tempmap = map;
+		GameRegistry.register(new ItemBlockMetaBush(this));
+		max = maxmeta;
+	}
+
 	@Override
 	public int damageDropped(IBlockState state) {
 		return getMetaFromState(state);
@@ -41,7 +50,7 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
-		for (int i = 0; i < 16; ++i) {
+		for (int i = 0; i <= max; ++i) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}

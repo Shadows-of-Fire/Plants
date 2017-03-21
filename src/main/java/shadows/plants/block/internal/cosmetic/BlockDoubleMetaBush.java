@@ -35,12 +35,12 @@ import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
 
 public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 
-	public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
+	public static final PropertyInteger META = PropertyInteger.create("meta", 0, 7);
 	public Map<Integer, EnumTempZone> tempmap;
 	private int max;
 
-	public BlockDoubleMetaBush(String name, @Nullable List<Block> soil, Map<Integer, EnumTempZone> map, int maxdata) {
+	public BlockDoubleMetaBush(String name, @Nullable Block[] soil, Map<Integer, EnumTempZone> map, int maxdata) {
 		super(name, EnumModule.COSMETIC, soil);
 		setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
 		tempmap = map;
@@ -166,7 +166,7 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i <= max; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}

@@ -24,7 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
+import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -209,7 +209,7 @@ public class Util {
 	}
 
 	public static Block getFlowerByChance(Random rand) {
-		int x = rand.nextInt(87);
+		int x = rand.nextInt(101);
 		if (x >= 0 && x < 16)
 			return CosmeticModule.cosmetic_1;
 		if (x >= 16 && x < 32)
@@ -245,20 +245,33 @@ public class Util {
 		if (x == 80)
 			return CosmeticModule.solanum_n_crop;
 		if (x == 81)
-			return CosmeticModule.cosmetic_6;
-		if (x == 82)
 			return CosmeticModule.alyxia_b_crop;
-		if (x == 83)
+		if (x == 82)
 			return CosmeticModule.amaranthus_h_crop;
-		if (x == 84)
+		if (x == 83)
 			return CosmeticModule.actaea_p_crop;
-		if (x == 85)
+		if (x == 84)
 			return CosmeticModule.alternanthera_f_crop;
-		if (x == 86)
+		if (x == 85)
 			return ToolModule.catapult;
+		if (x >= 86 && x < 101)
+			return CosmeticModule.cosmetic_6;
 		else {
-			System.out.println(
+			FMLLog.bigWarning(
 					"PLANTS HAS RETURNED A NULL VALUE (X = " + x + ") FOR getFlowerByChance. THIS IS VERY BAD!");
+			return null;
+		}
+	}
+
+	public static Block getDesertFlowerByChance(Random rand) {
+		int x = rand.nextInt(19);
+		if (x >= 0 && x < 16)
+			return CosmeticModule.cosmetic_7;
+		if (x >= 16 && x < 19)
+			return CosmeticModule.cosmetic_8;
+		else {
+			FMLLog.bigWarning(
+					"PLANTS HAS RETURNED A NULL VALUE (X = " + x + ") FOR getDesertFlowerByChance. THIS IS VERY BAD!");
 			return null;
 		}
 	}
@@ -289,11 +302,11 @@ public class Util {
 			xk = rand.nextInt(maxdata + 1);
 			if (xk == 2 && flower == CosmeticModule.cosmetic_1)
 				xk += 2;
-			if (xk == 3 && flower == CosmeticModule.cosmetic_1)
+			else if (xk == 3 && flower == CosmeticModule.cosmetic_1)
 				++xk;
-			if (xk == 13 && flower == CosmeticModule.cosmetic_2)
+			else if (xk == 13 && flower == CosmeticModule.cosmetic_2)
 				++xk;
-			if (xk == 13 && flower == CosmeticModule.cosmetic_3)
+			else if (xk == 13 && flower == CosmeticModule.cosmetic_3)
 				++xk;
 			state = flower.getDefaultState().withProperty(BlockMetaBush.BASICMETA, xk);
 		} else if (flower instanceof BlockDoubleMetaBush) {

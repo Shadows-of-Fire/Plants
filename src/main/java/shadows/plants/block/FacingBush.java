@@ -1,7 +1,5 @@
 package shadows.plants.block;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.properties.IProperty;
@@ -21,7 +19,7 @@ public abstract class FacingBush extends BushBase {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
-	public FacingBush(String name, EnumModule type, List<Block> soilIn) {
+	public FacingBush(String name, EnumModule type, Block[] soilIn) {
 		super(name, type, soilIn);
 		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}

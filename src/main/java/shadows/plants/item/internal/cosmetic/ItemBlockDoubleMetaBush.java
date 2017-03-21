@@ -21,12 +21,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 
 public class ItemBlockDoubleMetaBush extends ItemBlock {
+	
+	private BlockDoubleMetaBush block;
 
 	public ItemBlockDoubleMetaBush(Block block) {
 		super(block);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setRegistryName(block.getRegistryName());
+		this.block = (BlockDoubleMetaBush) block;
 	}
 
 	/**
@@ -43,6 +46,7 @@ public class ItemBlockDoubleMetaBush extends ItemBlock {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
+		if(stack.getMetadata() > this.block.getMaxData()) return EnumActionResult.FAIL;
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 
@@ -77,7 +81,7 @@ public class ItemBlockDoubleMetaBush extends ItemBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i <= this.block.getMaxData(); i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}

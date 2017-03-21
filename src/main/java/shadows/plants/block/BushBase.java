@@ -19,6 +19,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -34,7 +35,7 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 	public List<Block> soil = new ArrayList<Block>();
 	public static final AxisAlignedBB BUSHBOX = new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
 
-	public BushBase(String name, EnumModule type, @Nullable List<Block> soilIn) {
+	public BushBase(String name, EnumModule type, @Nullable Block[] blocks) {
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
 		setCreativeTab(Data.TAB);
@@ -43,11 +44,15 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 		disableStats();
 		setResistance(150F);
 		module = type;
-		if (soilIn != null)
-			soil.addAll(soilIn);
-		soil.add(Blocks.GRASS_PATH);
-		soil.add(Blocks.GRASS);
-		soil.add(Blocks.DIRT);
+		if (blocks != null) {
+			for (Block soils : blocks) {
+				soil.add(soils);
+			}
+		} else if(blocks == null) {
+			soil.add(Blocks.GRASS_PATH);
+			soil.add(Blocks.GRASS);
+			soil.add(Blocks.DIRT);
+		}
 	}
 
 	public BushBase(EnumModule type, String name, @Nonnull Block soilIn) {
@@ -65,10 +70,26 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 	public EnumModule getType() {
 		return module;
 	}
+	
+	@Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos){
+        IBlockState soil = world.getBlockState(pos.down());
+        return super.canPlaceBlockAt(world, pos) && this.canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this);
+    }
+	
+	@Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state){
+        if (state.getBlock() == this)
+        {
+            IBlockState soil = world.getBlockState(pos.down());
+            return this.canSustainPlant(soil, world, pos.down(), net.minecraft.util.EnumFacing.UP, this);
+        }
+        return this.canSustainBush(world.getBlockState(pos.down()));
+    }
 
 	@Override
 	public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction,
-			net.minecraftforge.common.IPlantable plantable) {
+			IPlantable plantable) {
 		return soil.contains(state.getBlock());
 	}
 
