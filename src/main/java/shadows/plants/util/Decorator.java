@@ -39,7 +39,11 @@ public final class Decorator {
 						float temp = event.getWorld().getBiome(pos).getTemperature();
 						if (temp >= min && temp <= max) {
 							int chance = event.getRand().nextInt(300);
-							//if (Config.debug) System.out.println("Attempting generation with chance integer " + chance + " at coordinates " + "(" + event.getPos().getX() + "," + event.getPos().getY() + "," + event.getPos().getZ() + ")");
+							// if (Config.debug) System.out.println("Attempting
+							// generation with chance integer " + chance + " at
+							// coordinates " + "(" + event.getPos().getX() + ","
+							// + event.getPos().getY() + "," +
+							// event.getPos().getZ() + ")");
 							if (chance > 50)
 								Util.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
 							else if (chance <= 50 && chance > 0)

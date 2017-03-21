@@ -1,11 +1,15 @@
 package shadows.plants.registry;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.registry.modules.CosmeticModule;
+import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Util;
 
 public class RecipeRegistry {
@@ -109,11 +113,16 @@ public class RecipeRegistry {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(CosmeticModule.compost, 5), "plant", "plant",
 				"plant", "plant", "plant", "plant", "plant", "plant", "plant"));
-		;
+
 		GameRegistry.addRecipe(
 				new ShapelessOreRecipe(new ItemStack(CosmeticModule.compost, 2), "plant", "plant", "plant", "plant"));
-		;
 
+		for(Block crop : ModuleController.getAllBlocks()){
+			if(crop instanceof BlockCrop){
+				Util.addSimpleShapeless(((BlockCrop) crop).getSeed(), ((BlockCrop) crop).getCrop());
+			}
+		}
+		
 	}
 }
 
