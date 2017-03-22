@@ -9,7 +9,7 @@ public class Data {
 
 	public static final String MODID = "plants";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "0.8.0";
+	public static final String VERSION = "0.8.2";
 	public static final CreativeTabs TAB = GlobalRegistry.TAB;
 	public static final CreativeTabs TAB_I = GlobalRegistry.TAB_I;
 	public static final String BOTANIA = "Botania";

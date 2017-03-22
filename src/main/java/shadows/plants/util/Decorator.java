@@ -38,10 +38,10 @@ public final class Decorator {
 						float min = ((ITemperaturePlant) flower).getTempMin(state);
 						float temp = event.getWorld().getBiome(pos).getTemperature();
 						if (temp >= min && temp <= max) {
-							int chance = event.getRand().nextInt(600);
-							if (chance > 50)
+							int chance = event.getRand().nextInt(100) + 1;
+							if (chance > 10)
 								Util.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
-							else if (chance <= 50 && chance > 0)
+							else if (chance <= 10 && chance > 0)
 								Util.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(),
 										state, flower);
 							else if (chance == 0)
@@ -67,10 +67,10 @@ public final class Decorator {
 						float min = ((ITemperaturePlant) flower).getTempMin(state);
 						float temp = event.getWorld().getBiome(pos).getTemperature();
 						if (temp >= min && temp <= max) {
-							int chance = event.getRand().nextInt(600);
-							if (chance > 50)
+							int chance = event.getRand().nextInt(100) + 1;
+							if (chance > 10)
 								Util.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state, flower);
-							else if (chance <= 50 && chance > 0)
+							else if (chance <= 10 && chance > 0)
 								Util.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(),
 										state, flower);
 							else if (chance == 0)
