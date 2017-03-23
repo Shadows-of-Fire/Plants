@@ -42,7 +42,7 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 		GameRegistry.register(new ItemBlockMetaBush(this));
 		max = maxmeta;
 	}
-	
+
 	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map, int maxmeta, Block[] blocks, EnumPlantType type) {
 		super(name, EnumModule.COSMETIC, blocks, type);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));

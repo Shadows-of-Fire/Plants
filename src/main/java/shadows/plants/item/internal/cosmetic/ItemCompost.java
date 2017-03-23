@@ -51,7 +51,7 @@ public class ItemCompost extends DummyItem {
 				stack.shrink(1);
 				return EnumActionResult.SUCCESS;
 			}
-			
+
 			else if (state.getBlock() == Blocks.SAND && facing == EnumFacing.DOWN) {
 				flower = Util.getDesertFlowerByChance(world.rand);
 				if (!world.isRemote) {

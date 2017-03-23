@@ -55,8 +55,8 @@ public final class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onDesertDecoration(DecorateBiomeEvent.Decorate event) {
-		if (!event.getWorld().isRemote && Config.generation && (event.getType() == EventType.DEAD_BUSH
-				|| event.getType() == EventType.CACTUS)) {
+		if (!event.getWorld().isRemote && Config.generation
+				&& (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numtries; ih > 0; ih--) {
 				if (event.getRand().nextInt(Config.patchchance * 4) == 0) {

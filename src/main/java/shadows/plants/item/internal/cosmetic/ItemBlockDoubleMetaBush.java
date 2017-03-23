@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 
 public class ItemBlockDoubleMetaBush extends ItemBlock {
-	
+
 	private BlockDoubleMetaBush block;
 
 	public ItemBlockDoubleMetaBush(Block block) {
@@ -46,7 +46,8 @@ public class ItemBlockDoubleMetaBush extends ItemBlock {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
-		if(stack.getMetadata() > this.block.getMaxData()) return EnumActionResult.FAIL;
+		if (stack.getMetadata() > this.block.getMaxData())
+			return EnumActionResult.FAIL;
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 

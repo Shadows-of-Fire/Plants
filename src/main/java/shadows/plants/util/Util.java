@@ -29,6 +29,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
+import shadows.plants.block.FacingBush;
 import shadows.plants.block.VineBase;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
@@ -316,6 +317,8 @@ public class Util {
 			state = flower.getDefaultState().withProperty(BlockCrop.AGE, 7);
 		else if (flower instanceof BlockDoubleHarvestable)
 			state = flower.getDefaultState().withProperty(BlockDoubleHarvestable.UPPER, false);
+		else if (flower instanceof FacingBush)
+			state = flower.getDefaultState().withProperty(FacingBush.FACING, EnumFacing.random(rand));
 		return state;
 	}
 

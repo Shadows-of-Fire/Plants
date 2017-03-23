@@ -50,14 +50,14 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 			for (Block soils : blocks) {
 				soil.add(soils);
 			}
-		} else if(blocks == null) {
+		} else if (blocks == null) {
 			soil.add(Blocks.GRASS_PATH);
 			soil.add(Blocks.GRASS);
 			soil.add(Blocks.DIRT);
 		}
 		plantType = EnumPlantType.Plains;
 	}
-	
+
 	public BushBase(String name, EnumModule type, @Nullable Block[] blocks, EnumPlantType plantType) {
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
@@ -71,7 +71,7 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 			for (Block soils : blocks) {
 				soil.add(soils);
 			}
-		} else if(blocks == null) {
+		} else if (blocks == null) {
 			soil.add(Blocks.GRASS_PATH);
 			soil.add(Blocks.GRASS);
 			soil.add(Blocks.DIRT);
@@ -95,12 +95,11 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 	public EnumModule getType() {
 		return module;
 	}
-	
-    @Override
-    public EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos)
-    {
-    	return this.plantType;
-    }
+
+	@Override
+	public EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
+		return this.plantType;
+	}
 
 	@Override
 	public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction,
