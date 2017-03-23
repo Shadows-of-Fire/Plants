@@ -11,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -36,6 +37,14 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 
 	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map, int maxmeta, Block[] blocks) {
 		super(name, EnumModule.COSMETIC, blocks);
+		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
+		tempmap = map;
+		GameRegistry.register(new ItemBlockMetaBush(this));
+		max = maxmeta;
+	}
+	
+	public BlockMetaBush(String name, Map<Integer, EnumTempZone> map, int maxmeta, Block[] blocks, EnumPlantType type) {
+		super(name, EnumModule.COSMETIC, blocks, type);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
 		tempmap = map;
 		GameRegistry.register(new ItemBlockMetaBush(this));

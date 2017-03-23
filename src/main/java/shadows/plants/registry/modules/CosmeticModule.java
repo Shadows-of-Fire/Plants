@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.EnumPlantType;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.block.internal.cosmetic.BlockDoubleHarvestable;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
@@ -32,6 +33,7 @@ public class CosmeticModule {
 	private static EnumTempZone all = EnumTempZone.ALL;
 	private static final Block[] DESERT = new Block[] { Blocks.SAND, Blocks.HARDENED_CLAY,
 			Blocks.STAINED_HARDENED_CLAY };
+	private static final EnumPlantType DESPLANT = EnumPlantType.Desert;
 
 	public static BlockMetaBush cosmetic_1 = new BlockMetaBush("cosmetic_1", TempMap.cosmetic_1(), 15);
 	public static BlockMetaBush cosmetic_2 = new BlockMetaBush("cosmetic_2", TempMap.cosmetic_1(), 15);
@@ -39,8 +41,8 @@ public class CosmeticModule {
 	public static BlockMetaBush cosmetic_4 = new BlockMetaBush("cosmetic_4", TempMap.cosmetic_1(), 15);
 	public static BlockDoubleMetaBush cosmetic_5 = new BlockDoubleMetaBush("cosmetic_5", null, TempMap.cosmetic_1(), 5);
 	public static BlockMetaBush cosmetic_6 = new BlockMetaBush("cosmetic_6", TempMap.cosmetic_1(), 15);
-	public static Block cosmetic_7 = new BlockMetaBush("cosmetic_7", TempMap.DESERT(), 15, DESERT);
-	public static Block cosmetic_8 = new BlockMetaBush("cosmetic_8", TempMap.DESERT(), 2, DESERT);
+	public static Block cosmetic_7 = new BlockMetaBush("cosmetic_7", TempMap.DESERT(), 15, DESERT, DESPLANT);
+	public static Block cosmetic_8 = new BlockMetaBush("cosmetic_8", TempMap.DESERT(), 2, DESERT, DESPLANT);
 
 	public static FoodItem okra = new FoodItem("okra", module, 3, 1.3f, false);
 	public static BlockCrop okra_crop = new BlockCrop("okra_crop", okra, 0, all);
