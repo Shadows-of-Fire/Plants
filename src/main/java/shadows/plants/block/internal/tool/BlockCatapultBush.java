@@ -30,13 +30,12 @@ public class BlockCatapultBush extends FacingBush {
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		entity.setVelocity(0, 0, 0);
 		world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_WATERLILY_PLACE, SoundCategory.BLOCKS, 1,
 				1, false);
 		EnumFacing face = state.getValue(FACING);
 		int x = face.getDirectionVec().getX();
 		int z = face.getDirectionVec().getZ();
-		entity.setVelocity(x * Config.catapultPower, 0.4, z * Config.catapultPower);
+		entity.addVelocity(x * Config.catapultPower, 0.4, z * Config.catapultPower);
 		entity.velocityChanged = true;
 	}
 
