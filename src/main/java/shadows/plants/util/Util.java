@@ -318,7 +318,7 @@ public class Util {
 		else if (flower instanceof BlockDoubleHarvestable)
 			state = flower.getDefaultState().withProperty(BlockDoubleHarvestable.UPPER, false);
 		else if (flower instanceof FacingBush)
-			state = flower.getDefaultState().withProperty(FacingBush.FACING, EnumFacing.random(rand));
+			state = flower.getDefaultState().withProperty(FacingBush.FACING, EnumFacing.HORIZONTALS[rand.nextInt(4)]);
 		return state;
 	}
 
