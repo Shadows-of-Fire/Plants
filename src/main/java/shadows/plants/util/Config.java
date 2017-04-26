@@ -10,6 +10,7 @@ public class Config {
 	public static boolean Botania = true;
 	public static boolean Cosmetic = true;
 	public static boolean Tool = true;
+	public static boolean Arcane = true;
 	public static boolean disableVanillaFlowers = false;
 	public static int vineFruitChance = 5;
 	public static int patchchance = 1;
@@ -36,6 +37,9 @@ public class Config {
 
 			Property PTool = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "Tool", "true",
 					"Enable the Tool (utility) module.", Property.Type.BOOLEAN);
+
+			Property PArcane = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "Arcane", "true",
+					"Enable the Arcane (magic) module.", Property.Type.BOOLEAN);
 
 			Property PDisableVanilla = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "DisableVanilla", "false",
 					"(NYI) Disable vanilla flower generation.", Property.Type.BOOLEAN);
@@ -94,6 +98,7 @@ public class Config {
 			Tool = PTool.getBoolean();
 			generation = PGeneration.getBoolean();
 			catapultPower = PCata.getInt();
+			Arcane = PArcane.getBoolean();
 
 		} catch (Exception e) {
 			// Failed reading/writing, just continue

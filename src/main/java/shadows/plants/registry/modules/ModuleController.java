@@ -17,6 +17,8 @@ public class ModuleController {
 			list.addAll(CosmeticModule.getBlockList());
 		if (Data.TOOL_ENABLED)
 			list.addAll(ToolModule.getBlockList());
+		if (Data.ARCANE_ENABLED)
+			list.addAll(ArcaneModule.getBlockList());
 		return list;
 	}
 
@@ -26,8 +28,8 @@ public class ModuleController {
 			list.addAll(BotaniaModule.getItemList());
 		if (Data.COSMETIC_ENABLED)
 			list.addAll(CosmeticModule.getItemList());
-		if (Data.TOOL_ENABLED)
-			list.addAll(ToolModule.getItemList());
+		if (Data.ARCANE_ENABLED)
+			list.addAll(ArcaneModule.getItemList());
 		return list;
 	}
 
