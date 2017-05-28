@@ -41,9 +41,6 @@ public class Config {
 			Property PArcane = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "Arcane", "true",
 					"Enable the Arcane (magic) module.", Property.Type.BOOLEAN);
 
-			Property PDisableVanilla = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "DisableVanilla", "false",
-					"(NYI) Disable vanilla flower generation.", Property.Type.BOOLEAN);
-
 			Property PVineFruit = CommonProxy.config.get(Configuration.CATEGORY_GENERAL, "VineFruit", "5",
 					"A (1/n) chance for vines to drop fruit when broken.", Property.Type.INTEGER);
 

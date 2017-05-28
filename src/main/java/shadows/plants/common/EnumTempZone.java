@@ -1,8 +1,14 @@
 package shadows.plants.common;
 
 public enum EnumTempZone {
-	TROPICAL(0.8f, 1.2f), TEMPERATE(0.5f, 1.5f), COLD(-0.5f, 0.3f), COOL(0.0f, 0.8f), FROZEN(-0.5f, 0.0f), HOT(1.5f,
-			2.0f), BURNING(2.0f, 5.0f), ALL(-5.0f, 5.0f),;
+	TROPICAL(0.8f, 1.2f),
+	TEMPERATE(0.5f, 1.5f),
+	COLD(-0.5f, 0.3f),
+	COOL(0.0f, 0.8f),
+	FROZEN(-0.5f, 0.0f),
+	HOT(1.5f, 2.0f),
+	BURNING(2.0f, 5.0f),
+	ALL(-5.0f, 5.0f),;
 
 	private float tempmax;
 	private float tempmin;
