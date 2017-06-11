@@ -1,6 +1,7 @@
 package shadows.plants.block;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -138,7 +139,7 @@ public abstract class BushBase extends BlockBush implements IModularThing, ITemp
 		if (!Config.needShears)
 			return getActualDrops(world, pos, state, fortune);
 		else
-			return new ArrayList<ItemStack>();
+			return Collections.emptyList();
 	}
 
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {

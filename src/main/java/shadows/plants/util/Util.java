@@ -164,15 +164,15 @@ public class Util {
 
 	public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Item reagent,
 			int reagentmeta, Item reagent2, Item reagent3) {
-		GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta),
-				new ItemStack(reagent, 1, reagentmeta), new ItemStack(reagent2, 1, reagentmeta),
-				new ItemStack(reagent3, 1, reagentmeta));
+		RecipeHelper.addShapeless(new ItemStack(result, resultquantity, resultmeta),
+				new Object[] { new ItemStack(reagent, 1, reagentmeta), new ItemStack(reagent2, 1, reagentmeta),
+						new ItemStack(reagent3, 1, reagentmeta) });
 	}
 
 	public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Item reagent,
 			int reagentmeta) {
-		GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta),
-				new ItemStack(reagent, 1, reagentmeta));
+		RecipeHelper.addShapeless(new ItemStack(result, resultquantity, resultmeta),
+				new Object[] { new ItemStack(reagent, 1, reagentmeta) });
 	}
 
 	public static void addSimpleShapeless(Item result, int resultmeta, Item reagent, int reagentmeta) {
@@ -201,8 +201,8 @@ public class Util {
 
 	public static void addSimpleShapeless(Item result, int resultquantity, int resultmeta, Block reagent,
 			int reagentmeta) {
-		GameRegistry.addShapelessRecipe(new ItemStack(result, resultquantity, resultmeta),
-				new ItemStack(reagent, 1, reagentmeta));
+		RecipeHelper.addShapeless(new ItemStack(result, resultquantity, resultmeta),
+				new Object[] { new ItemStack(reagent, 1, reagentmeta) });
 	}
 
 	public static void addSimpleShapeless(Item result, Item reagent) {
@@ -348,11 +348,11 @@ public class Util {
 	public static void genFlowerPatch(World world, BlockPos pos, Random rand, IBlockState state, Block flower) {
 		int dist = Config.patchsize;// Spread of the flowers, a radius of sorts.
 		for (int i = 0; i < Config.quantity; i++) {// number of positions
-													// selected per event.
+														// selected per event.
 			int x = pos.getX() + MathHelper.getInt(rand, -dist, dist);
 			int z = pos.getZ() + MathHelper.getInt(rand, -dist, dist);
 			for (int j = 0; j < Config.density; j++) { // number of placements
-														// that occur.
+															// that occur.
 				int x1 = x + MathHelper.getInt(rand, -dist, dist);
 				int z1 = z + MathHelper.getInt(rand, -dist, dist);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();

@@ -55,7 +55,7 @@ public class BlockHarvestable extends BushBase {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player.getHeldItemMainhand() == Data.EMPTYSTACK) {
+		if (!world.isRemote && player.getHeldItemMainhand() == Data.EMPTYSTACK) {
 			if (state.getValue(FRUIT)) {
 				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));
 				if (cropItem2 != null)
@@ -76,9 +76,7 @@ public class BlockHarvestable extends BushBase {
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		if (state.getValue(FRUIT))
-			return 1;
-		return 0;
+		return state.getValue(FRUIT) ? 1 : 0;
 	}
 
 	@Override
@@ -88,15 +86,9 @@ public class BlockHarvestable extends BushBase {
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		super.updateTick(world, pos, state, rand);
-
-		if (world.getLightFromNeighbors(pos.up()) > 5) {
-			if (!state.getValue(FRUIT)) {
-
-				if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt((15)) <= 2)) {
-					world.setBlockState(pos, state.withProperty(FRUIT, true), 2);
-					net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
-				}
+		if (!world.isRemote && world.getLightFromNeighbors(pos.up()) > 5) {
+			super.updateTick(world, pos, state, rand);
+			if (!state.getValue(FRUIT) && rand.nextInt((15)) <= 2) {
 			}
 		}
 	}

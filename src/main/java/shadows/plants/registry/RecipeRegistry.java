@@ -4,11 +4,10 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.registry.modules.ModuleController;
+import shadows.plants.util.RecipeHelper;
 import shadows.plants.util.Util;
 
 public class RecipeRegistry {
@@ -110,11 +109,11 @@ public class RecipeRegistry {
 		Util.addSimpleShapeless(CosmeticModule.dye_blue, 3, 0, CosmeticModule.cosmetic_6, 14);
 		Util.addSimpleShapeless(dye, 3, 7, CosmeticModule.cosmetic_6, 15);
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(CosmeticModule.compost, 5), "plant", "plant",
-				"plant", "plant", "plant", "plant", "plant", "plant", "plant"));
+		RecipeHelper.addShapeless(new ItemStack(CosmeticModule.compost, 5),
+				new Object[] { "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant" });
 
-		GameRegistry.addRecipe(
-				new ShapelessOreRecipe(new ItemStack(CosmeticModule.compost, 2), "plant", "plant", "plant", "plant"));
+		RecipeHelper.addShapeless(new ItemStack(CosmeticModule.compost, 2),
+				new Object[] { "plant", "plant", "plant", "plant" });
 
 		for (Block crop : ModuleController.getAllBlocks()) {
 			if (crop instanceof BlockCrop) {

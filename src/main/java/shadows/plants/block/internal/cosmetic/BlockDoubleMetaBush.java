@@ -84,7 +84,7 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		if (state.getBlock() != this)
 			return super.canBlockStay(world, pos, state); // Forge: This
-															// function is
+														// function is
 															// called during
 															// world gen and
 															// placement, before
@@ -165,9 +165,9 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 	 */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
 		for (int i = 0; i <= max; i++) {
-			list.add(new ItemStack(item, 1, i));
+			list.add(new ItemStack(this, 1, i));
 		}
 	}
 
@@ -191,9 +191,9 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 	}
 
 	public static int getActualMeta(int meta) { // evens are upper half, odds
-												// are lower half
-		// needs to return the Actual (IProperty) meta (0-7) for the block from
-		// state meta (0-15)
+													// are lower half
+												// needs to return the Actual (IProperty) meta (0-7) for the block from
+												// state meta (0-15)
 		int k = meta % 2; // if == 1 this is a lower
 		float j = meta / 2; // if k = 1 this will have a .5
 		if (k == 0)
