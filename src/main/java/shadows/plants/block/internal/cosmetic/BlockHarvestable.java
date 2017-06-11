@@ -89,6 +89,7 @@ public class BlockHarvestable extends BushBase {
 		if (!world.isRemote && world.getLightFromNeighbors(pos.up()) > 5) {
 			super.updateTick(world, pos, state, rand);
 			if (!state.getValue(FRUIT) && rand.nextInt((15)) <= 2) {
+				world.setBlockState(pos, state.withProperty(FRUIT, true));
 			}
 		}
 	}

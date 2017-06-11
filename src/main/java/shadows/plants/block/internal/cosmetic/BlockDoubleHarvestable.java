@@ -62,7 +62,7 @@ public class BlockDoubleHarvestable extends BlockHarvestable {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player.getHeldItemMainhand() == Data.EMPTYSTACK) {
+		if (!world.isRemote && player.getHeldItemMainhand() == Data.EMPTYSTACK) {
 			if (state.getValue(FRUIT) && state.getValue(UPPER)) {
 				Block.spawnAsEntity(world, pos, new ItemStack(cropItem, 1, meta));
 				if (cropItem2 != null)
@@ -244,7 +244,8 @@ public class BlockDoubleHarvestable extends BlockHarvestable {
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		super.updateTick(world, pos, state, rand);
 
-		if (world.getLightFromNeighbors(pos.up()) > 5 && !state.getValue(FRUIT) && state.getValue(UPPER)) {
+		if (!world.isRemote && world.getLightFromNeighbors(pos.up()) > 5 && !state.getValue(FRUIT)
+				&& state.getValue(UPPER)) {
 			if (rand.nextInt((15)) <= 2) {
 				world.setBlockState(pos, state.withProperty(FRUIT, true).withProperty(UPPER, true), 3);
 				world.setBlockState(pos.down(), state.withProperty(FRUIT, true).withProperty(UPPER, false), 3);
