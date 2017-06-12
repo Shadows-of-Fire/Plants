@@ -81,8 +81,10 @@ public class ItemBlockDoubleMetaBush extends ItemBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if(func_194125_a(tab)){
 		for (int i = 0; i <= this.block.getMaxData(); i++) {
 			list.add(new ItemStack(this, 1, i));
+		}
 		}
 	}
 

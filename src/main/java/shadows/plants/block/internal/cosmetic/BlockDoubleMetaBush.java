@@ -83,16 +83,7 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		if (state.getBlock() != this)
-			return super.canBlockStay(world, pos, state); // Forge: This
-														// function is
-															// called during
-															// world gen and
-															// placement, before
-															// this block is
-															// set, so if we are
-															// not 'here' then
-															// assume it's the
-															// pre-check.
+			return super.canBlockStay(world, pos, state); 
 		if (state.getValue(UPPER)) {
 			return world.getBlockState(pos.down()).getBlock() == this;
 		} else {
