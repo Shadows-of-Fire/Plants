@@ -117,15 +117,15 @@ public class Util {
 		Iterator<EntityItem> iterator = list.iterator();
 		while (iterator.hasNext()) {
 			EntityItem item = iterator.next();
-			if (item.getEntityItem().getItem() == stack.getItem()) {
+			if (item.getItem().getItem() == stack.getItem()) {
 				if (Config.debug)
-					System.out.println("item is " + item.getEntityItem().toString() + " while target = "
+					System.out.println("item is " + item.getItem().toString() + " while target = "
 							+ stack.toString() + " result: true");
 				return true;
 
 			}
 			if (Config.debug)
-				System.out.println("item is " + item.getEntityItem().toString() + " while target = " + stack.toString()
+				System.out.println("item is " + item.getItem().toString() + " while target = " + stack.toString()
 						+ " result: false");
 		}
 
@@ -326,17 +326,17 @@ public class Util {
 		if (state != null && flower != null) {
 			if (!(flower instanceof BlockDoubleMetaBush || flower instanceof BlockDoubleHarvestable
 					|| flower instanceof BlockFruitVine)) {
-				if (world.isAirBlock(pos) && !world.provider.hasNoSky() && flower.canPlaceBlockAt(world, pos)) {
+				if (world.isAirBlock(pos) && world.provider.hasSkyLight() && flower.canPlaceBlockAt(world, pos)) {
 					world.setBlockState(pos, state, 2);
 				}
 			} else if (flower instanceof BlockDoubleMetaBush) {
-				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.hasNoSky()
+				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && world.provider.hasSkyLight()
 						&& flower.canPlaceBlockAt(world, pos)) {
 					world.setBlockState(pos, state.withProperty(BlockDoubleMetaBush.UPPER, false), 2);
 					world.setBlockState(pos.up(), state.withProperty(BlockDoubleMetaBush.UPPER, true), 2);
 				}
 			} else if (flower instanceof BlockDoubleHarvestable) {
-				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && !world.provider.hasNoSky()
+				if (world.isAirBlock(pos) && world.isAirBlock(pos.up()) && world.provider.hasSkyLight()
 						&& flower.canPlaceBlockAt(world, pos)) {
 					world.setBlockState(pos, state.withProperty(BlockDoubleHarvestable.UPPER, false), 2);
 					world.setBlockState(pos.up(), state.withProperty(BlockDoubleHarvestable.UPPER, true), 2);
