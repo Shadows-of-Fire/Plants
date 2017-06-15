@@ -167,9 +167,9 @@ public class BlockDoubleHarvestable extends BlockHarvestable {
 	 * post-place logic
 	 */
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer,
 			ItemStack stack) {
-		worldIn.setBlockState(pos.up(), state.withProperty(UPPER, true), 2);
+		world.setBlockState(pos.up(), state.withProperty(UPPER, true), 2);
 	}
 
 	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state,

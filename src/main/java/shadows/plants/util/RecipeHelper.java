@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipes;
@@ -17,6 +16,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -30,14 +31,14 @@ public class RecipeHelper {
 	 * This adds the recipe to the list of crafting recipes.  Since who cares about names, it adds it as recipesX, where X is the current recipe you are adding.
 	 */
 	public static void addRecipe(int j, IRecipe rec) {
-		CraftingManager.register(new ResourceLocation(MODID, "recipes" + j), rec);
+		GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, "recipes" + j)));
 	}
 
 	/*
 	 * This adds the recipe to the list of crafting recipes.  Cares about names.
 	 */
 	public static void addRecipe(String name, IRecipe rec) {
-		CraftingManager.register(new ResourceLocation(MODID, name), rec);
+		GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, name)));
 	}
 
 	/*
@@ -203,7 +204,7 @@ public class RecipeHelper {
 	}
 
 	//This is ShapedOreRecipe modified to actually work until forge re-fixes it in an update.
-	public static class FixedShapedOreRecipe implements IRecipe {
+	public static class FixedShapedOreRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 		//Added in for future ease of change, but hard coded for now.
 		public static final int MAX_CRAFT_GRID_WIDTH = 3;
 		public static final int MAX_CRAFT_GRID_HEIGHT = 3;
@@ -386,7 +387,7 @@ public class RecipeHelper {
 		}
 		
 		@Override
-		public String func_193358_e() {
+		public String getGroup() {
 			return this.group.toString();
 		}
 		
