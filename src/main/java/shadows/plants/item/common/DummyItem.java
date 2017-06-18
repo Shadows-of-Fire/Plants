@@ -12,6 +12,7 @@ public class DummyItem extends Item implements IModularThing {
 	public DummyItem(String name, EnumModule module_) {
 		setRegistryName(name);
 		setUnlocalizedName(Data.MODID + "." + name);
+		setCreativeTab(Data.TAB_I);
 		module = module_;
 	}
 

@@ -24,18 +24,20 @@ public class RecipeHelper {
 	 * This adds the recipe to the list of crafting recipes.  Since who cares about names, it adds it as recipesX, where X is the current recipe you are adding.
 	 */
 	public static void addRecipe(int j, IRecipe rec) {
-	    if(rec.getRegistryName() == null)
-		GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, "recipes" + j)));
-	    else GameRegistry.register(rec);
+		if (rec.getRegistryName() == null)
+			GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, "recipes" + j)));
+		else
+			GameRegistry.register(rec);
 	}
 
 	/*
 	 * This adds the recipe to the list of crafting recipes.  Cares about names.
 	 */
 	public static void addRecipe(String name, IRecipe rec) {
-	    if(rec.getRegistryName() == null)
-		GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, name)));
-	    else GameRegistry.register(rec);
+		if (rec.getRegistryName() == null)
+			GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, name)));
+		else
+			GameRegistry.register(rec);
 	}
 
 	/*
@@ -51,13 +53,14 @@ public class RecipeHelper {
 	public static void addOldShaped(String group, ItemStack output, Object... input) {
 		addRecipe(j++, new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input));
 	}
-	
-	   /*
-     * This adds a shaped recipe to the list of crafting recipes, using the forge format, with a custom group.
-     */
-    public static void addOldShaped(String name, String group, ItemStack output, Object... input) {
-        addRecipe(j++, new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input).setRegistryName(MODID, name));
-    }
+
+	/*
+	* This adds a shaped recipe to the list of crafting recipes, using the forge format, with a custom group.
+	*/
+	public static void addOldShaped(String name, String group, ItemStack output, Object... input) {
+		addRecipe(j++,
+				new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input).setRegistryName(MODID, name));
+	}
 
 	/*
 	 * This adds a shapeless recipe to the list of crafting recipes, using the forge format.

@@ -72,10 +72,10 @@ public class CosmeticModule {
 	public static FoodItem alternanthera_f = new FoodItem("alternanthera_f", module, 7, 0.3f, false);
 	public static FoodItem ampelopsis_a = new FoodItem("ampelopsis_a", module, 1, 3.0f, false);
 	public static FoodItem akebia_q = new FoodItem("akebia_q", module, 4, 1.3f, false);
-	public static DummyItem dye_white = new DummyItem("dye_white", module);
-	public static DummyItem dye_blue = new DummyItem("dye_blue", module);
-	public static DummyItem dye_brown = new DummyItem("dye_brown", module);
-	public static DummyItem dye_black = new DummyItem("dye_black", module);
+	public static Item dye_white = new DummyItem("dye_white", module);
+	public static Item dye_blue = new DummyItem("dye_blue", module);
+	public static Item dye_brown = new DummyItem("dye_brown", module);
+	public static Item dye_black = new DummyItem("dye_black", module);
 	public static ItemCompost compost = new ItemCompost("compost");
 
 	public static BlockHarvestable ambrosia_a_crop = new BlockHarvestable("ambrosia_a_crop", ambrosia_a, all);

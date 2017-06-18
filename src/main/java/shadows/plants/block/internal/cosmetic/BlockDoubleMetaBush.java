@@ -83,7 +83,7 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		if (state.getBlock() != this)
-			return super.canBlockStay(world, pos, state); 
+			return super.canBlockStay(world, pos, state);
 		if (state.getValue(UPPER)) {
 			return world.getBlockState(pos.down()).getBlock() == this;
 		} else {

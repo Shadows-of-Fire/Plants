@@ -119,8 +119,8 @@ public class Util {
 			EntityItem item = iterator.next();
 			if (item.getItem().getItem() == stack.getItem()) {
 				if (Config.debug)
-					System.out.println("item is " + item.getItem().toString() + " while target = "
-							+ stack.toString() + " result: true");
+					System.out.println("item is " + item.getItem().toString() + " while target = " + stack.toString()
+							+ " result: true");
 				return true;
 
 			}
