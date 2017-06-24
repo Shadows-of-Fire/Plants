@@ -33,7 +33,7 @@ import shadows.plants.util.Data;
 
 public abstract class BushBase extends BlockBush implements IModularThing, ITemperaturePlant, IShearable {
 
-	private EnumModule module;
+	protected final EnumModule module;
 	public List<Block> soil = new ArrayList<Block>();
 	public static final AxisAlignedBB BUSHBOX = new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.75D, 0.875D);
 	private final EnumPlantType plantType;

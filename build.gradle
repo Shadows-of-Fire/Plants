@@ -14,26 +14,38 @@ version = "1.12-1.1.0"
 group= "shadows.plants" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Plants"
 
-sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
-    version = "1.12-14.21.0.2327"
+    version = "1.12-14.21.0.2348"
     runDir = "run"
-    mappings = "snapshot_20170614"
+    mappings = "snapshot_20170623"
 }
 
 repositories {
     maven {
-        name "JEI"
         url "http://dvs1.progwml6.com/files/maven"
     }
+    maven {
+        url "http://maven.epoxide.xyz"
+    }
+    maven {
+        url "http://maven.amadornes.com/"
+    }
+	maven {
+		url  "http://tehnut.info/maven"
+	}
 }
 
 dependencies {
     compile files('libs/')
+	deobfCompile "mezz.jei:jei_1.12:4.6.0.63:api"
+    //runtime "mezz.jei:jei_1.12:4.6.0.63"
+	deobfCompile "mcp.mobius.waila:Hwyla:1.8.18-B32_1.12:api"
+	runtime "mcp.mobius.waila:Hwyla:1.8.18-B32_1.12"
 }
 
 

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import shadows.plants.registry.GlobalRegistry;
+import shadows.plants.registry.OredictRegistry;
 import shadows.plants.util.Config;
 import shadows.plants.util.Decorator;
 
@@ -18,13 +19,15 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		config = new Configuration(e.getSuggestedConfigurationFile());
 		Config.syncConfig();
-		GlobalRegistry.init();
+		GlobalRegistry.preInit(e);
+		MinecraftForge.EVENT_BUS.register(new GlobalRegistry());
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.TERRAIN_GEN_BUS.register(Decorator.class);
+		OredictRegistry.init(e);
 	}
 
 	@EventHandler

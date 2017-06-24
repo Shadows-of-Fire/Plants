@@ -24,7 +24,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.item.internal.cosmetic.ItemBlockDoubleHarvestable;
 import shadows.plants.util.Config;
@@ -37,7 +36,8 @@ public class BlockDoubleHarvestable extends BlockHarvestable {
 	public BlockDoubleHarvestable(String name, ItemStack crop, EnumTempZone zone) {
 		super(name, crop, zone);
 		setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(FRUIT, false));
-		GameRegistry.register(new ItemBlockDoubleHarvestable(this));
+		if (this.module.isEnabled())
+			Data.ITEMS.add(new ItemBlockDoubleHarvestable(this));
 	}
 
 	public BlockDoubleHarvestable(String name, Item crop, EnumTempZone zone) {

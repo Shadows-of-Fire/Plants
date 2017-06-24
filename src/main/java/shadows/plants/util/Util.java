@@ -25,7 +25,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
@@ -69,15 +68,15 @@ public class Util {
 	public static void register(Block block) {
 		if (Config.debug)
 			System.out.println("Registered " + block.getRegistryName());
-		GameRegistry.register(block);
+		Data.BLOCKS.add(block);
 		if (!isException(block) && !(block instanceof BlockDoubleHarvestable))
-			GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+			Data.ITEMS.add(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
 	public static void register(Item item) {
 		if (Config.debug)
 			System.out.println("Registered " + item.getRegistryName());
-		GameRegistry.register(item);
+		Data.ITEMS.add(item);
 	}
 
 	public static void spawnParticlesAtBlock(World world, BlockPos pos, EnumParticleTypes particle) {

@@ -3,6 +3,7 @@ package shadows.plants.registry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants.block.internal.cosmetic.BlockDoubleMetaBush;
 import shadows.plants.block.internal.cosmetic.BlockMetaBush;
@@ -11,7 +12,7 @@ import shadows.plants.registry.modules.CosmeticModule;
 
 public class OredictRegistry {
 
-	public static void init() {
+	public static void init(FMLInitializationEvent e) {
 		OreDictionary.registerOre("dyeBlue", CosmeticModule.dye_blue);
 		OreDictionary.registerOre("dye", CosmeticModule.dye_blue);
 		OreDictionary.registerOre("dyeBlack", CosmeticModule.dye_black);

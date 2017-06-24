@@ -11,7 +11,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
@@ -19,6 +18,7 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.common.IMetaPlant;
 import shadows.plants.item.internal.cosmetic.ItemBlockMetaBush;
+import shadows.plants.util.Data;
 
 public class BlockMetaBush extends BushBase implements IMetaPlant {
 
@@ -30,7 +30,8 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 		super(name, EnumModule.COSMETIC, null);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
 		tempmap = map;
-		GameRegistry.register(new ItemBlockMetaBush(this));
+		if (this.module.isEnabled())
+			Data.ITEMS.add(new ItemBlockMetaBush(this));
 		max = maxmeta;
 	}
 
@@ -38,7 +39,8 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 		super(name, EnumModule.COSMETIC, blocks);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
 		tempmap = map;
-		GameRegistry.register(new ItemBlockMetaBush(this));
+		if (this.module.isEnabled())
+			Data.ITEMS.add(new ItemBlockMetaBush(this));
 		max = maxmeta;
 	}
 
@@ -46,7 +48,8 @@ public class BlockMetaBush extends BushBase implements IMetaPlant {
 		super(name, EnumModule.COSMETIC, blocks, type);
 		setDefaultState(this.blockState.getBaseState().withProperty(BASICMETA, 0));
 		tempmap = map;
-		GameRegistry.register(new ItemBlockMetaBush(this));
+		if (this.module.isEnabled())
+			Data.ITEMS.add(new ItemBlockMetaBush(this));
 		max = maxmeta;
 	}
 

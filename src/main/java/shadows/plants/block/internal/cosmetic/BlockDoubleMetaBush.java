@@ -24,7 +24,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants.block.BushBase;
@@ -32,6 +31,7 @@ import shadows.plants.common.EnumModule;
 import shadows.plants.common.EnumTempZone;
 import shadows.plants.common.IMetaPlant;
 import shadows.plants.item.internal.cosmetic.ItemBlockDoubleMetaBush;
+import shadows.plants.util.Data;
 
 public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 
@@ -45,7 +45,8 @@ public class BlockDoubleMetaBush extends BushBase implements IMetaPlant {
 		setDefaultState(this.blockState.getBaseState().withProperty(UPPER, true).withProperty(META, 0));
 		tempmap = map;
 		max = maxdata;
-		GameRegistry.register(new ItemBlockDoubleMetaBush(this));
+		if (this.module.isEnabled())
+			Data.ITEMS.add(new ItemBlockDoubleMetaBush(this));
 	}
 
 	@Override

@@ -1,14 +1,15 @@
 package shadows.plants.registry;
 
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants.common.IMetaPlant;
-import shadows.plants.registry.modules.CosmeticModule;
+import net.minecraftforge.registries.IForgeRegistry;
 import shadows.plants.registry.modules.ModuleController;
 import shadows.plants.util.Data;
 
@@ -19,51 +20,39 @@ public class GlobalRegistry {
 	 * here.
 	 */
 
-	public static void init() {
+	public static void preInit(FMLPreInitializationEvent e) {
 		ItemRegistry.init();
 		BlockRegistry.init();
-		OredictRegistry.init();
-		RecipeRegistry.init();
 	}
 
-	public static void initModels() {
+	@SideOnly(Side.CLIENT)
+	public static void initModels(ModelRegistryEvent e) {
 		BlockRegistry.initModels(ModuleController.getAllBlocks());
 		ItemRegistry.initModels(ModuleController.getAllItems());
 	}
 
-	public static final CreativeTabs TAB = new CreativeTabs(Data.MODID) {
-		@Override
-		public ItemStack getTabIconItem() {
-			return new ItemStack(CosmeticModule.cosmetic_1);
+	@SubscribeEvent
+	public void onBlockRegistry(RegistryEvent.Register<Block> e) {
+		IForgeRegistry<Block> reg = e.getRegistry();
+		for (Block block : Data.BLOCKS) {
+			reg.register(block);
 		}
+	}
 
-		@Override
-		@SideOnly(Side.CLIENT)
-		public void displayAllRelevantItems(NonNullList<ItemStack> list) {
-			for (Block block : ModuleController.getAllBlocks()) {
-				int i = 0;
-				if (block instanceof IMetaPlant)
-					i = ((IMetaPlant) block).getMaxData();
-				for (int k = 0; k <= i; k++) {
-					list.add(new ItemStack(block, 1, k));
-				}
-			}
+	@SubscribeEvent
+	public void onItemRegistry(RegistryEvent.Register<Item> e) {
+		IForgeRegistry<Item> reg = e.getRegistry();
+		for (Item item : Data.ITEMS) {
+			reg.register(item);
 		}
-	};
+	}
 
-	public static final CreativeTabs TAB_I = new CreativeTabs(Data.MODID + (".items")) {
-		@Override
-		public ItemStack getTabIconItem() {
-			return new ItemStack(CosmeticModule.pineapple);
+	@SubscribeEvent
+	public void onRecipeRegistry(RegistryEvent.Register<IRecipe> e) {
+		IForgeRegistry<IRecipe> reg = e.getRegistry();
+		for (IRecipe rec : Data.RECIPES) {
+			reg.register(rec);
 		}
-
-		@Override
-		@SideOnly(Side.CLIENT)
-		public void displayAllRelevantItems(NonNullList<ItemStack> list) {
-			for (Item item : ModuleController.getAllItems()) {
-				list.add(new ItemStack(item));
-			}
-		}
-	};
+	}
 
 }

@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.event.RegistryEvent;
 import shadows.plants.block.internal.cosmetic.BlockCrop;
 import shadows.plants.registry.modules.CosmeticModule;
 import shadows.plants.registry.modules.ModuleController;
@@ -13,7 +15,7 @@ import shadows.plants.util.Util;
 public class RecipeRegistry {
 	public static final Item dye = Items.DYE;
 
-	public static void init() {
+	public static void init(RegistryEvent.Register<IRecipe> e) {
 		Util.addSimpleShapeless(Items.STRING, 4, 0, CosmeticModule.apocynum_c_cloth, 0, CosmeticModule.apocynum_c_cloth,
 				CosmeticModule.apocynum_c_cloth);
 
@@ -123,11 +125,3 @@ public class RecipeRegistry {
 
 	}
 }
-
-/*
- * GameRegistry.addRecipe(new ItemStack(ModRegistry.seed16c), "222", "2K2",
- * "222", '2',
- * Item.getByNameOrId("appliedenergistics2:spatial_storage_cell_128_cubed"),
- * 'K', ModRegistry.seed2c);
- * 
- */

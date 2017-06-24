@@ -12,12 +12,17 @@ package shadows.plants.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import shadows.plants.block.internal.cosmetic.BlockFruitVine;
 import shadows.plants.common.ITemperaturePlant;
 
 public final class Decorator {
@@ -102,4 +107,18 @@ public final class Decorator {
 			}
 		}
 	}
+	
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public static void vineDecorator(DecorateBiomeEvent.Decorate event) {
+		if (!event.getWorld().isRemote && event.getRand().nextInt(30) == 0 && event.getType() == EventType.FLOWERS && Config.generation) {
+			EnumFacing facing = EnumFacing.HORIZONTALS[event.getRand().nextInt(4)];
+			World world = event.getWorld();
+			BlockFruitVine vine = (BlockFruitVine) Util.getRandomVine(world.rand);
+			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getPos().add(8, 0, 8).add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
+			for(int i = 0; i < 3; i++){
+			world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState());
+			if(vine.canPlaceBlockAt(world, pos.offset(facing).up(i))) world.setBlockState(pos.offset(facing).up(i), vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null));
+			}
+			}
+		}
 }
