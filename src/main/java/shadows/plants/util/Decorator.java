@@ -107,18 +107,22 @@ public final class Decorator {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void vineDecorator(DecorateBiomeEvent.Decorate event) {
-		if (!event.getWorld().isRemote && event.getRand().nextInt(30) == 0 && event.getType() == EventType.FLOWERS && Config.generation) {
+		if (!event.getWorld().isRemote && event.getRand().nextInt(30) == 0 && event.getType() == EventType.FLOWERS
+				&& Config.generation) {
 			EnumFacing facing = EnumFacing.HORIZONTALS[event.getRand().nextInt(4)];
 			World world = event.getWorld();
 			BlockFruitVine vine = (BlockFruitVine) Util.getRandomVine(world.rand);
-			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getPos().add(8, 0, 8).add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
-			for(int i = 0; i < 3; i++){
-			world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState());
-			if(vine.canPlaceBlockAt(world, pos.offset(facing).up(i))) world.setBlockState(pos.offset(facing).up(i), vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null));
-			}
+			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getPos().add(8, 0, 8)
+					.add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
+			for (int i = 0; i < 3; i++) {
+				world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState());
+				if (vine.canPlaceBlockAt(world, pos.offset(facing).up(i)))
+					world.setBlockState(pos.offset(facing).up(i),
+							vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null));
 			}
 		}
+	}
 }
