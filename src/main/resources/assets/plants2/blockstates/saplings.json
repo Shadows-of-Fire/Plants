@@ -1,0 +1,25 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"transform": "forge:default-item"
+	},
+	"variants": {
+		"type": {
+			"spectre": {
+				"textures": {
+					"cross": "plants2:blocks/spectre/sapling"
+				}
+			}
+		},
+		"inventory": {
+			"true": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "#cross"
+				}
+			},
+			"false": {}
+		}
+	}
+}

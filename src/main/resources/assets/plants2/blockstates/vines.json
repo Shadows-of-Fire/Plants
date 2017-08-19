@@ -1,0 +1,1099 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "builtin/generated",
+		"transform": "forge:default-item",
+		"textures": {
+			"layer0": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"zvine": {
+			"akebia_q": {
+				"textures": {
+					"layer0": "plants2:blocks/cosmetic/vines/akebia_q"
+				}
+			},
+			"afgekia_m": {
+				"textures": {
+					"layer0": "plants2:blocks/cosmetic/vines/afgekia_m"
+				}
+			},
+			"adlumia_f": {
+				"textures": {
+					"layer0": "plants2:blocks/cosmetic/vines/adlumia_f"
+				}
+			},
+			"ampelopsis_a": {
+				"textures": {
+					"layer0": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+				}
+			},
+			"androsace_a": {
+				"textures": {
+					"layer0": "plants2:blocks/cosmetic/vines/androsace_a"
+				}
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_4",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=false,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=true,zvine=akebia_q": {
+			"model": "plants2:cosmetic/vine/vine_4u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/akebia_q"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_4",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=false,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=true,zvine=afgekia_m": {
+			"model": "plants2:cosmetic/vine/vine_4u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/afgekia_m"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_4",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=false,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=true,zvine=adlumia_f": {
+			"model": "plants2:cosmetic/vine/vine_4u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/adlumia_f"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_4",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=false,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=true,zvine=ampelopsis_a": {
+			"model": "plants2:cosmetic/vine/vine_4u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/ampelopsis_a"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=false,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=true,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=false,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=false,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=true,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=true,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=false,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=true,up=false,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_4",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=false,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_1u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=false,south=true,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=false,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=false,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_2u_opposite",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=false,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=false,south=true,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 90,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=false,north=true,south=true,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 180,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=false,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_3u",
+			"y": 270,
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		},
+		"east=true,north=true,south=true,up=true,west=true,zvine=androsace_a": {
+			"model": "plants2:cosmetic/vine/vine_4u",
+			"textures": {
+				"vine": "plants2:blocks/cosmetic/vines/androsace_a"
+			}
+		}
+	}
+}

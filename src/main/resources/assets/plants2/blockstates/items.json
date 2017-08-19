@@ -1,0 +1,176 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "builtin/generated",
+		"transform": "forge:default-item"
+	},
+	"variants": {
+		"item": {
+			"actaea_p": {
+				"textures": {
+					"layer0": "plants2:items/actaea_p"
+				}
+			},
+			"akebia_q": {
+				"textures": {
+					"layer0": "plants2:items/akebia_q"
+				}
+			},
+			"alternanthera_f": {
+				"textures": {
+					"layer0": "plants2:items/alternanthera_f"
+				}
+			},
+			"alyxia_b": {
+				"textures": {
+					"layer0": "plants2:items/alyxia_b"
+				}
+			},
+			"ambrosia_a": {
+				"textures": {
+					"layer0": "plants2:items/ambrosia_a"
+				}
+			},
+			"ampelopsis_a": {
+				"textures": {
+					"layer0": "plants2:items/ampelopsis_a"
+				}
+			},
+			"apocynum_c": {
+				"textures": {
+					"layer0": "plants2:items/apocynum_c"
+				}
+			},
+			"cotton": {
+				"textures": {
+					"layer0": "plants2:items/apocynum_c_cotton"
+				}
+			},
+			"daucus_c": {
+				"textures": {
+					"layer0": "plants2:items/daucus_c"
+				}
+			},
+			"dye_black": {
+				"textures": {
+					"layer0": "plants2:items/dye_black"
+				}
+			},
+			"dye_blue": {
+				"textures": {
+					"layer0": "plants2:items/dye_blue"
+				}
+			},
+			"dye_brown": {
+				"textures": {
+					"layer0": "plants2:items/dye_brown"
+				}
+			},
+			"dye_white": {
+				"textures": {
+					"layer0": "plants2:items/dye_white"
+				}
+			},
+			"excalibur": {
+				"textures": {
+					"layer0": "plants2:items/excalibur"
+				}
+			},
+			"phytolacca_a": {
+				"textures": {
+					"layer0": "plants2:items/phytolacca_a"
+				}
+			},
+			"plantago_m": {
+				"textures": {
+					"layer0": "plants2:items/plantago_m"
+				}
+			},
+			"plantball": {
+				"textures": {
+					"layer0": "plants2:items/plantball"
+				}
+			},
+			"rubus_o": {
+				"textures": {
+					"layer0": "plants2:items/rubus_o"
+				}
+			},
+			"rubus_p": {
+				"textures": {
+					"layer0": "plants2:items/rubus_p"
+				}
+			},
+			"saffron": {
+				"textures": {
+					"layer0": "plants2:items/saffron"
+				}
+			},
+			"solanum_c": {
+				"textures": {
+					"layer0": "plants2:items/solanum_c"
+				}
+			},
+			"solanum_d": {
+				"textures": {
+					"layer0": "plants2:items/solanum_d"
+				}
+			},
+			"solanum_n": {
+				"textures": {
+					"layer0": "plants2:items/solanum_n"
+				}
+			},
+			"amaranthus_h": {
+				"textures": {
+					"layer0": "plants2:items/amaranthus_h/fruit"
+				}
+			},
+			"amaranthus_h_seeds": {
+				"textures": {
+					"layer0": "plants2:items/amaranthus_h/seed"
+				}
+			},
+			"okra": {
+				"textures": {
+					"layer0": "plants2:items/okra/fruit"
+				}
+			},
+			"okra_seeds": {
+				"textures": {
+					"layer0": "plants2:items/okra/seed"
+				}
+			},
+			"pineapple": {
+				"textures": {
+					"layer0": "plants2:items/pineapple/fruit"
+				}
+			},
+			"pineapple_seeds": {
+				"textures": {
+					"layer0": "plants2:items/pineapple/seed"
+				}
+			},
+			"blackberry": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/food/blackberry"
+				}
+			},
+			"blueberry": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/food/blueberry"
+				}
+			},
+			"raspberry": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/food/raspberry"
+				}
+			},
+			"huckleberry": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/food/huckleberry"
+				}
+			}
+		}
+	}
+}

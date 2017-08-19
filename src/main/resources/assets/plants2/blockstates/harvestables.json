@@ -1,0 +1,113 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"transform": "forge:default-item",
+		"textures": {
+			"cross": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"actaea_p": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/actaea_p/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/actaea_p/none"
+				}
+			},
+			"alternanthera_f": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/alternanthera_f/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/alternanthera_f/none"
+				}
+			},
+			"ambrosia_a": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/ambrosia_a/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/ambrosia_a/none"
+				}
+			},
+			"apocynum_c": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/apocynum_c/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/apocynum_c/none"
+				}
+			},
+			"daucus_c": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/daucus_c/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/daucus_c/none"
+				}
+			},
+			"phytolacca_a": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/phytolacca_a/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/phytolacca_a/none"
+				}
+			},
+			"plantago_m": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/plantago_m/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/plantago_m/none"
+				}
+			},
+			"rubus_o": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/rubus_o/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/rubus_o/none"
+				}
+			},
+			"rubus_p": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/rubus_p/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/rubus_p/none"
+				}
+			},
+			"saffron": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/saffron/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/saffron/none"
+				}
+			},
+			"solanum_c": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/solanum_c/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/solanum_c/none"
+				}
+			},
+			"solanum_d": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/solanum_d/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/solanum_d/none"
+				}
+			},
+			"solanum_n": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/solanum_n/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/solanum_n/none"
+				}
+			}
+		},
+		"inventory": {
+			"true": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "#cross"
+				}
+			},
+			"false": {}
+		},
+		"fruit": {
+			"true": {
+				"textures": {
+					"cross": "#fruit"
+				}
+			},
+			"false": {
+				"textures": {
+					"cross": "#none"
+				}
+			}
+		}
+	}
+}

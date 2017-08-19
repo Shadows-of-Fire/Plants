@@ -1,6 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-        "cross": "plants:blocks/cosmetic/acanthus_b_bot"
-    }
-}

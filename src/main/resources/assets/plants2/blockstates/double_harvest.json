@@ -1,0 +1,57 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"transform": "forge:default-item",
+		"textures": {
+			"cross": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"alyxia_b": {
+				"textures": {
+					"fruit_top": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/fruit_top",
+					"fruit_bot": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/fruit_bot",
+					"none_top": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/none_top",
+					"none_bot": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/none_bot"
+				}
+			}
+		},
+		"upper": {
+			"true": {
+				"textures": {
+					"fruit": "#fruit_top",
+					"none": "#none_top"
+				}
+			},
+			"false": {
+				"textures": {
+					"fruit": "#fruit_bot",
+					"none": "#none_bot"
+				}
+			}
+		},
+		"fruit": {
+			"true": {
+				"textures": {
+					"cross": "#fruit"
+				}
+			},
+			"false": {
+				"textures": {
+					"cross": "#none"
+				}
+			}
+		},
+		"zinventory": {
+			"true": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "#fruit_top"
+				}
+			},
+			"false": {}
+		}
+	}
+}

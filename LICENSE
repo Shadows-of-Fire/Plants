@@ -1,21 +1,3 @@
-All code of this mod is under the MIT license with exceptions.  Exceptions are noted in comments at the start of files.
-
-Exceptions and their licenses will be relisted here.
-
-Files marked with 
-
- * This class was created by <Vazkii>. It's distributed as
- * part of the Botania Mod. Get the Source Code in github:
- * https://github.com/Vazkii/Botania
- 
-Are under the Botania License.  Assets from Botania are also under this license.
-
-Assets created for this mod, by Kat, are Copyright (c) 2017 Kat. All Rights Reserved.
- 
-Screenshots and Video Previews are Copyright (c) 2017 Brennan Ward. All Rights Reserved.
- 
-Original code created for this mod is under the MIT License
-
 Copyright (c) 2017 Brennan Ward
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +8,8 @@ copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+copies or substantial portions of the Software. Any derivative works using
+code from this project must be open source.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -36,3 +19,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+These two files are under the Botania License.
+src\main\resources\assets\plants2\textures\items\excalibur.png
+src\main\java\shadows\plants2\item\ItemExcalibur.java
+
+Assets created for this modification are Copyright (c) 2017 Brennan Ward. All Rights Reserved.

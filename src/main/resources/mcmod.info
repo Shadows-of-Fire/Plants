@@ -1,16 +1,14 @@
-[
-{
-  "modid": "plants",
-  "name": "Plants",
-  "description": "Every plant known to man.  Well, almost.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["Shadows_of_Fire"],
-  "credits": "Kat",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
-]
+[{
+	"modid": "plants2",
+	"name": "Plants 2",
+	"description": "Every plant known to man.  Well, almost.",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "",
+	"updateUrl": "",
+	"authorList": ["Shadows_of_Fire"],
+	"credits": "Kat",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}]

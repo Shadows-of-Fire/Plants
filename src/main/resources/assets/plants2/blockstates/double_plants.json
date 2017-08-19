@@ -1,0 +1,71 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"transform": "forge:default-item",
+		"textures": {
+			"cross": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"abelia_c": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/abelia_c_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/abelia_c_top"
+				}
+			},
+			"abronia_a": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/abronia_a_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/abronia_a_top"
+				}
+			},
+			"acanthus_b": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/acanthus_b_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/acanthus_b_top"
+				}
+			},
+			"adenocarpus_f": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/adenocarpus_f_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/adenocarpus_f_top"
+				}
+			},
+			"agonis_t": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/agonis_t_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/agonis_t_top"
+				}
+			},
+			"alonsoa_m": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/alonsoa_m_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/alonsoa_m_top"
+				}
+			}
+		},
+		"inventory": {
+			"true": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "#cross"
+				}
+			},
+			"false": {}
+		},
+		"upper": {
+			"true": {
+				"textures": {
+					"cross": "#upper"
+				}
+			},
+			"false": {
+				"textures": {
+					"cross": "#lower"
+				}
+			}
+		}
+	}
+}

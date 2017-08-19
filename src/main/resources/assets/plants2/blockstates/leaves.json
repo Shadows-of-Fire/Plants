@@ -1,0 +1,23 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all"
+	},
+	"variants": {
+		"type": {
+			"spectre": {
+				"textures": {
+					"all": "plants2:blocks/spectre/leaf"
+				}
+			}
+		},
+		"decayable": {
+			"true": {},
+			"false": {}
+		},
+		"check_decay": {
+			"true": {},
+			"false": {}
+		}
+	}
+}

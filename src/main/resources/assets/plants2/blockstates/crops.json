@@ -1,0 +1,96 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"transform": "forge:default-item",
+		"textures": {
+			"cross": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"amaranthus_h": {
+				"textures": {
+					"0": "plants2:blocks/cosmetic/crops/amaranthus_h/0",
+					"1": "plants2:blocks/cosmetic/crops/amaranthus_h/1",
+					"2": "plants2:blocks/cosmetic/crops/amaranthus_h/2",
+					"3": "plants2:blocks/cosmetic/crops/amaranthus_h/3",
+					"4": "plants2:blocks/cosmetic/crops/amaranthus_h/4",
+					"5": "plants2:blocks/cosmetic/crops/amaranthus_h/5",
+					"6": "plants2:blocks/cosmetic/crops/amaranthus_h/6",
+					"7": "plants2:blocks/cosmetic/crops/amaranthus_h/7"
+				}
+			},
+			"okra": {
+				"textures": {
+					"0": "plants2:blocks/cosmetic/crops/okra/0",
+					"1": "plants2:blocks/cosmetic/crops/okra/1",
+					"2": "plants2:blocks/cosmetic/crops/okra/2",
+					"3": "plants2:blocks/cosmetic/crops/okra/3",
+					"4": "plants2:blocks/cosmetic/crops/okra/4",
+					"5": "plants2:blocks/cosmetic/crops/okra/5",
+					"6": "plants2:blocks/cosmetic/crops/okra/6",
+					"7": "plants2:blocks/cosmetic/crops/okra/7"
+				}
+			},
+			"pineapple": {
+				"textures": {
+					"0": "plants2:blocks/cosmetic/crops/pineapple/0",
+					"1": "plants2:blocks/cosmetic/crops/pineapple/1",
+					"2": "plants2:blocks/cosmetic/crops/pineapple/2",
+					"3": "plants2:blocks/cosmetic/crops/pineapple/3",
+					"4": "plants2:blocks/cosmetic/crops/pineapple/4",
+					"5": "plants2:blocks/cosmetic/crops/pineapple/5",
+					"6": "plants2:blocks/cosmetic/crops/pineapple/6",
+					"7": "plants2:blocks/cosmetic/crops/pineapple/7"
+				}
+			}
+		},
+		"inventory": {
+			"true": {},
+			"false": {}
+		},
+		"age": {
+			"0": {
+				"textures": {
+					"cross": "#0"
+				}
+			},
+			"1": {
+				"textures": {
+					"cross": "#1"
+				}
+			},
+			"2": {
+				"textures": {
+					"cross": "#2"
+				}
+			},
+			"3": {
+				"textures": {
+					"cross": "#3"
+				}
+			},
+			"4": {
+				"textures": {
+					"cross": "#4"
+				}
+			},
+			"5": {
+				"textures": {
+					"cross": "#5"
+				}
+			},
+			"6": {
+				"textures": {
+					"cross": "#6"
+				}
+			},
+			"7": {
+				"textures": {
+					"cross": "#7"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,550 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"transform": "forge:default-item",
+		"textures": {
+			"cross": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"abeliophyllum_d": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/abeliophyllum_d"
+				}
+			},
+			"abroma_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/abroma_a"
+				}
+			},
+			"abutilon_i": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/abutilon_i"
+				}
+			},
+			"acaena_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/acaena_s"
+				}
+			},
+			"acalypha_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/acalypha_a"
+				}
+			},
+			"acalypha_r": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/acalypha_r"
+				}
+			},
+			"acantholimon_g": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/acantholimon_g"
+				}
+			},
+			"achillea": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/achillea"
+				}
+			},
+			"achimenes_e": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/achimenes_e"
+				}
+			},
+			"acinos_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/acinos_a"
+				}
+			},
+			"aciphylla_g": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aciphylla_g"
+				}
+			},
+			"adenophora_t": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/adenophora_t"
+				}
+			},
+			"adonis_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/adonis_a"
+				}
+			},
+			"aechmea_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aechmea_a"
+				}
+			},
+			"aeschynanthus_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aeschynanthus_s"
+				}
+			},
+			"aethionema_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aethionema_s"
+				}
+			},
+			"agapanthus_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/agapanthus_a"
+				}
+			},
+			"ageratum_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/ageratum_c"
+				}
+			},
+			"agrostemma_g": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/agrostemma_g"
+				}
+			},
+			"aira_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aira_c"
+				}
+			},
+			"ajuga_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/ajuga_a"
+				}
+			},
+			"albuca_f": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/albuca_f"
+				}
+			},
+			"alcea_b": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alcea_b"
+				}
+			},
+			"alkanna_t": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alkanna_t"
+				}
+			},
+			"alliaria_p": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alliaria_p"
+				}
+			},
+			"allium_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/allium_c"
+				}
+			},
+			"aloe_b": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aloe_b"
+				}
+			},
+			"alopecurus_g": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alopecurus_g"
+				}
+			},
+			"alsobia_d": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alsobia_d"
+				}
+			},
+			"alstroemeria_p": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alstroemeria_p"
+				}
+			},
+			"alyogyne_h": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/alyogyne_h"
+				}
+			},
+			"amaryllis_b": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/amaryllis_b"
+				}
+			},
+			"ambrosia_t": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/ambrosia_t"
+				}
+			},
+			"amesiella_p": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/amesiella_p"
+				}
+			},
+			"ammobium_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/ammobium_a"
+				}
+			},
+			"amphipappus": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/amphipappus"
+				}
+			},
+			"anacyclus_v": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/anacyclus_v"
+				}
+			},
+			"anagallis_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/anagallis_a"
+				}
+			},
+			"anchusa_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/anchusa_a"
+				}
+			},
+			"argocoffeeopsis_l": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/argocoffeeopsis_l"
+				}
+			},
+			"asclepias_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/asclepias_s"
+				}
+			},
+			"asclepias_t": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/asclepias_t"
+				}
+			},
+			"aspalathus_v": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/aspalathus_v"
+				}
+			},
+			"astilbe_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/astilbe_c"
+				}
+			},
+			"barbarea_v": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/barbarea_v"
+				}
+			},
+			"begonia_e": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/begonia_e"
+				}
+			},
+			"brachystelma_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/brachystelma_s"
+				}
+			},
+			"cardamine_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/cardamine_c"
+				}
+			},
+			"cephalophyllum_p": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/cephalophyllum_p"
+				}
+			},
+			"chrysanthemum_m": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/chrysanthemum_m"
+				}
+			},
+			"clove": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/clove"
+				}
+			},
+			"corydalis": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/corydalis"
+				}
+			},
+			"corydalis_f": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/corydalis_f"
+				}
+			},
+			"crassula_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/crassula_s"
+				}
+			},
+			"disa_f": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/disa_f"
+				}
+			},
+			"epipogium_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/epipogium_a"
+				}
+			},
+			"fabaceae": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/fabaceae"
+				}
+			},
+			"galanthus": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/galanthus"
+				}
+			},
+			"heliotropium_p": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/heliotropium_p"
+				}
+			},
+			"hellebore": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/hellebore"
+				}
+			},
+			"hesperis_m": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/hesperis_m"
+				}
+			},
+			"impatiens_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/impatiens_c"
+				}
+			},
+			"isolepis_b": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/isolepis_b"
+				}
+			},
+			"narthecium_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/narthecium_a"
+				}
+			},
+			"nemesia_m": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/nemesia_m"
+				}
+			},
+			"peony": {
+				"textures": {
+					"cross": "blocks/flower_paeonia"
+				}
+			},
+			"pluchea_g": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/pluchea_g"
+				}
+			},
+			"psoralea_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/psoralea_c"
+				}
+			},
+			"psoralea_m": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/psoralea_m"
+				}
+			},
+			"pueraria_m": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/pueraria_m"
+				}
+			},
+			"rhanterium_e": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/rhanterium_e"
+				}
+			},
+			"rorippa_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/rorippa_s"
+				}
+			},
+			"rudbeckia_h": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/rudbeckia_h"
+				}
+			},
+			"streblorrhiza_s": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/streblorrhiza_s"
+				}
+			},
+			"sumatra_d": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/sumatra_d"
+				}
+			},
+			"thismia_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/thismia_a"
+				}
+			},
+			"trillium": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/trillium"
+				}
+			},
+			"veratrum_v": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/veratrum_v"
+				}
+			},
+			"veronica_a": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/veronica_a"
+				}
+			},
+			"viola_c": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/viola_c"
+				}
+			},
+			"apache_plume": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/apache_plume"
+				}
+			},
+			"arizona_poppy": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/arizona_poppy"
+				}
+			},
+			"asian_mustard": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/asian_mustard"
+				}
+			},
+			"bigelows_monkey_flower": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/bigelows_monkey_flower"
+				}
+			},
+			"blacktack_phacelia": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/blacktack_phacelia"
+				}
+			},
+			"blazing_star": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/blazing_star"
+				}
+			},
+			"blue_flax": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/blue_flax"
+				}
+			},
+			"bristly_fiddleneck": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/bristly_fiddleneck"
+				}
+			},
+			"brown_eyes": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/brown_eyes"
+				}
+			},
+			"buckbrush": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/buckbrush"
+				}
+			},
+			"button_brittlebush": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/button_brittlebush"
+				}
+			},
+			"canaigre": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/canaigre"
+				}
+			},
+			"chocolate_drops": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/chocolate_drops"
+				}
+			},
+			"chuparosa": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/chuparosa"
+				}
+			},
+			"clustered_broomrape": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/clustered_broomrape"
+				}
+			},
+			"coulters_jewelflower": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/coulters_jewelflower"
+				}
+			},
+			"distant_scorpionweed": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/distant_scorpionweed"
+				}
+			},
+			"neglected_scorpionweed": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/neglected_scorpionweed"
+				}
+			},
+			"sagebrush": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/sagebrush"
+				}
+			},
+			"blackberry": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/bush/sap_blackberry"
+				}
+			},
+			"blueberry": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/bush/sap_blueberry"
+				}
+			},
+			"raspberry": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/bush/sap_raspberry"
+				}
+			},
+			"deciduous": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/bush/sap_deciduous"
+				}
+			},
+			"evergreen": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/bush/sap_evergreen"
+				}
+			},
+			"huckleberry": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/bush/sap_huckleberry"
+				}
+			}
+		},
+		"inventory": {
+			"true": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "#cross"
+				}
+			},
+			"false": {
+
+			}
+		}
+	}
+}

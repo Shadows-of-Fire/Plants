@@ -1,0 +1,83 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": {
+			"all": "plants2:blocks/forgotten/bush/deciduous"
+		}
+	},
+	"variants": {
+		"fruit=false,type=blackberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/deciduous"
+			}
+		},
+		"fruit=false,type=blueberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/deciduous"
+			}
+		},
+		"fruit=false,type=huckleberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/deciduous"
+			}
+		},
+		"fruit=false,type=raspberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/deciduous"
+			}
+		},
+		"fruit=false,type=deciduous": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/deciduous"
+			}
+		},
+		"fruit=false,type=evergreen": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/evergreen"
+			}
+		},
+		"fruit=true,type=blackberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/blackberry"
+			}
+		},
+		"fruit=true,type=blueberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/blueberry"
+			}
+		},
+		"fruit=true,type=huckleberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/huckleberry"
+			}
+		},
+		"fruit=true,type=raspberry": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/raspberry"
+			}
+		},
+		"fruit=true,type=deciduous": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/deciduous"
+			}
+		},
+		"fruit=true,type=evergreen": {
+			"model": "cube_all",
+			"textures": {
+				"all": "plants2:blocks/forgotten/bush/evergreen"
+			}
+		}
+	}
+}
