@@ -17,6 +17,25 @@ public class TheBigBookOfEnums {
 
 		private WorldGenAbstractTree treeGen;
 
+		@Override
+		public void setTreeGen(WorldGenAbstractTree gen) {
+			treeGen = gen;
+		}
+
+		@Override
+		public WorldGenAbstractTree getTreeGen() {
+			return treeGen;
+		}
+
+	}
+	
+	public static enum NetherLogs implements ILogBasedPropertyEnum {
+		ASH,
+		BLAZE;
+
+		private WorldGenAbstractTree treeGen;
+
+		@Override
 		public void setTreeGen(WorldGenAbstractTree gen) {
 			treeGen = gen;
 		}

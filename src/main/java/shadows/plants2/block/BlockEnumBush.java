@@ -11,7 +11,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -160,7 +159,7 @@ public class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase i
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {
 			if (e.useForRecipes())
-				RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, e.getColor().getDyeDamage()), new ItemStack(this, 1, e.getMetadata()));
+				RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 1, e.getMetadata()));
 		}
 	}
 

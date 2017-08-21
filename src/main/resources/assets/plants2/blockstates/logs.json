@@ -5,10 +5,16 @@
 	},
 	"variants": {
 		"type": {
-			"spectre": {
+			"ash": {
 				"textures": {
-					"side": "plants2:blocks/spectre/log",
-					"end": "plants2:blocks/spectre/log_end"
+					"side": "plants2:blocks/forgotten/nether/ash_log",
+					"end": "plants2:blocks/forgotten/nether/ash_log_end"
+				}
+			},
+			"blaze": {
+				"textures": {
+					"side": "plants2:blocks/forgotten/nether/blaze_log",
+					"end": "plants2:blocks/forgotten/nether/blaze_log_end"
 				}
 			}
 		},

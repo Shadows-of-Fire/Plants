@@ -9,7 +9,10 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +27,8 @@ import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
+import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
+import shadows.plants2.init.ModRegistry;
 
 public class PlantUtil {
 
@@ -153,5 +158,18 @@ public class PlantUtil {
 	public static IBlockState getDesertFlowerState(Random rand) {
 		return DESERT.get(rand.nextInt(DESERT.size()));
 	}
+	
+	public static ItemStack getDyeForEnum(EnumDyeColor c, int size) {
+		switch(c) {
+		case BLUE: return getStackFor(Generic.DYE_BLUE, size);
+		case WHITE: return getStackFor(Generic.DYE_WHITE, size);
+		case BLACK: return getStackFor(Generic.DYE_BLACK, size);
+		case BROWN: return getStackFor(Generic.DYE_BROWN, size);
+		default: return new ItemStack(Items.DYE, size, c.getDyeDamage());
+		}
+	}
 
+	public static ItemStack getStackFor(Generic g, int size) {
+		return new ItemStack(ModRegistry.GENERIC, size, g.ordinal());
+	}
 }

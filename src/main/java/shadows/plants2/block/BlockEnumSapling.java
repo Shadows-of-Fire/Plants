@@ -42,7 +42,7 @@ public class BlockEnumSapling<E extends Enum<E> & ILogBasedPropertyEnum> extends
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0) {
+		if (!world.isRemote && world.getLightFromNeighbors(pos.up()) >= 6 && rand.nextInt(7) == 0) {
 			this.grow(world, rand, pos, state);
 		}
 	}
@@ -100,7 +100,7 @@ public class BlockEnumSapling<E extends Enum<E> & ILogBasedPropertyEnum> extends
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer.Builder(this).add(property).add(Constants.INV).build();
+		return new BlockStateContainer(this, property, Constants.INV);
 	}
 
 	@Override

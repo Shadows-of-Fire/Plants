@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
@@ -26,6 +27,9 @@ import shadows.plants2.block.BlockEnumCrop;
 import shadows.plants2.block.BlockEnumDoubleBush;
 import shadows.plants2.block.BlockEnumDoubleHarvestBush;
 import shadows.plants2.block.BlockEnumHarvestBush;
+import shadows.plants2.block.BlockEnumLeaves;
+import shadows.plants2.block.BlockEnumLog;
+import shadows.plants2.block.BlockEnumSapling;
 import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
@@ -39,8 +43,10 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Desert;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Double;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
+import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
+import shadows.plants2.gen.forgotten.NetherTreeGen;
 import shadows.plants2.item.ItemBigEnum;
 import shadows.plants2.item.ItemExcalibur;
 import shadows.plants2.item.ItemFoodBase;
@@ -62,9 +68,9 @@ public class ModRegistry {
 
 	};
 
-	//public static final BlockEnumLog<Logs> LOG_0 = new BlockEnumLog<Logs>("log_0", Logs.class, 0);
-	//public static final BlockEnumSapling<Logs> SAPLING_0 = new BlockEnumSapling<Logs>("sapling_0", Logs.class, 0);
-	//public static final BlockEnumLeaves<Logs> LEAVES_0 = new BlockEnumLeaves<Logs>("leaves_0", SAPLING_0, Logs.class, 0);
+	public static final BlockEnumLog<NetherLogs> NETHER_LOG = new BlockEnumLog<NetherLogs>("nether_log", NetherLogs.class, 0);
+	public static final BlockEnumSapling<NetherLogs> NETHER_SAP = new BlockEnumSapling<NetherLogs>("nether_sapling", NetherLogs.class, 0);
+	public static final BlockEnumLeaves<NetherLogs> NETHER_LEAF = new BlockEnumLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
 
 	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumBush<Plants>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
 	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumBush<Plants>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
@@ -124,6 +130,9 @@ public class ModRegistry {
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
+	
+	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
+	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

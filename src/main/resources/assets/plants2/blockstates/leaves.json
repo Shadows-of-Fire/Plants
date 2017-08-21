@@ -5,9 +5,14 @@
 	},
 	"variants": {
 		"type": {
-			"spectre": {
+			"ash": {
 				"textures": {
-					"all": "plants2:blocks/spectre/leaf"
+					"all": "plants2:blocks/forgotten/nether/ash_leaves"
+				}
+			},
+			"blaze": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/nether/blaze_leaves"
 				}
 			}
 		},

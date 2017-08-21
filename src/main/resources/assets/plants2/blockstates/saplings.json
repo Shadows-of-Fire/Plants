@@ -6,9 +6,14 @@
 	},
 	"variants": {
 		"type": {
-			"spectre": {
+			"ash": {
 				"textures": {
-					"cross": "plants2:blocks/spectre/sapling"
+					"cross": "plants2:blocks/forgotten/nether/ash_sapling"
+				}
+			},
+			"blaze": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/nether/blaze_sapling"
 				}
 			}
 		},
