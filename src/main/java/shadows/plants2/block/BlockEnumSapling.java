@@ -77,7 +77,8 @@ public class BlockEnumSapling<E extends Enum<E> & ILogBasedPropertyEnum> extends
 		return false;
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("saplings", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());

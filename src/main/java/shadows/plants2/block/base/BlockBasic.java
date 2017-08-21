@@ -30,7 +30,8 @@ public abstract class BlockBasic extends Block implements IHasModel {
 		this(name, material, hardness, resist, customItemBlock, true);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		PlantUtil.sMRL(this, 0, "inventory");
 	}

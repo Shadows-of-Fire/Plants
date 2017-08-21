@@ -50,7 +50,8 @@ public class BlockCustomVine extends BlockVine implements IHasModel {
 		PlantUtil.VINES.add(this);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		PlantUtil.sMRL("vines", this, 0, "zvine=" + vine.getName());
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("vines"));

@@ -54,7 +54,8 @@ public class BlockEnumLeaves<E extends Enum<E> & ILogBasedPropertyEnum> extends 
 		return this.getDefaultState().withProperty(BlockLeaves.DECAYABLE, true).withProperty(property, e);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("leaves", this, i, "check_decay=false,decayable=false," + property.getName() + "=" + types.get(i).getName());

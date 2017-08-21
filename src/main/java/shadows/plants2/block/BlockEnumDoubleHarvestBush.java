@@ -46,7 +46,8 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 		return super.canPlaceBlockAt(worldIn, pos) && worldIn.isAirBlock(pos.up());
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("double_harvest", this, i, "fruit=true," + property.getName() + "=" + types.get(i).getName() + ",upper=true,zinventory=true");

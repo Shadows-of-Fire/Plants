@@ -28,7 +28,8 @@ public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 				items.add(new ItemStack(this, 1, e.ordinal()));
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent ev) {
 		for (E e : values)
 			PlantUtil.sMRL("items", this, e.ordinal(), "item=" + e.getName());

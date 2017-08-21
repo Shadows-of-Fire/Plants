@@ -130,6 +130,16 @@ public class TheBigBookOfEnums {
 			return this.ordinal() / 16;
 		}
 
+		@Override
+		public boolean useForRecipes() {
+			return true;
+		}
+
+		@Override
+		public int getMetadata() {
+			return this.ordinal() % 16;
+		}
+
 	}
 
 	public static enum Desert implements IPropertyEnum {
@@ -173,6 +183,16 @@ public class TheBigBookOfEnums {
 			return this.ordinal() / 16;
 		}
 
+		@Override
+		public boolean useForRecipes() {
+			return true;
+		}
+
+		@Override
+		public int getMetadata() {
+			return this.ordinal() % 16;
+		}
+
 	}
 
 	public static enum Double implements IPropertyEnum {
@@ -201,6 +221,16 @@ public class TheBigBookOfEnums {
 		@Override
 		public int getPredicateIndex() {
 			return this.ordinal() / 8;
+		}
+
+		@Override
+		public boolean useForRecipes() {
+			return true;
+		}
+
+		@Override
+		public int getMetadata() {
+			return this.ordinal() % 8;
 		}
 
 	}

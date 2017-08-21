@@ -116,7 +116,8 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 		return new BlockStateContainer(this, property, getInvProperty(), AGE);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("crops"));
 	}

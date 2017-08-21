@@ -43,7 +43,8 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 			grow(world, rand, pos, state);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("harvestables", this, i, "fruit=true,inventory=true," + property.getName() + "=" + types.get(i).getName());

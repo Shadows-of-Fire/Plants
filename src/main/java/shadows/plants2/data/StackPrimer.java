@@ -26,7 +26,7 @@ public class StackPrimer {
 	public ItemStack genStack() {
 		return new ItemStack(item, size, meta);
 	}
-	
+
 	public boolean isEmpty() {
 		return item == null || size <= 0;
 	}

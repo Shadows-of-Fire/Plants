@@ -41,7 +41,8 @@ public class BlockBushling extends BlockEnum<BushSet> implements IGrowable, IPla
 		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(Constants.INV, false));
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());

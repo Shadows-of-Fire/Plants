@@ -19,4 +19,12 @@ public interface IPropertyEnum extends IStringSerializable {
 		return 0;
 	};
 
+	default public boolean useForRecipes() {
+		return false;
+	}
+
+	default public int getMetadata() {
+		return 0;
+	}
+
 }

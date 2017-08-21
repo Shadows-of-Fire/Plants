@@ -43,7 +43,8 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IPropertyEnum> extends Bloc
 		return new ItemBlockEnum<E>(this);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("double_plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName() + ",upper=true");

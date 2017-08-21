@@ -11,9 +11,11 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
@@ -22,18 +24,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BushBase;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
+import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.IPropertyEnum;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
+import shadows.plants2.util.RecipeHelper;
 
-public class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E> {
+public class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E>, IHasRecipe {
 
 	protected final List<E> types = new ArrayList<E>();
 	protected final Predicate<E> valueFilter;
@@ -69,7 +74,8 @@ public class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase i
 		return new ItemBlockEnum<E>(this);
 	}
 
-	@Override @SideOnly(Side.CLIENT)
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlantUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
@@ -148,6 +154,14 @@ public class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase i
 
 	protected int getMaxEnumValues() {
 		return 16;
+	}
+
+	@Override
+	public void initRecipes(Register<IRecipe> event) {
+		for (E e : getTypes()) {
+			if (e.useForRecipes())
+				RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, e.getColor().getDyeDamage()), new ItemStack(this, 1, e.getMetadata()));
+		}
 	}
 
 }
