@@ -16,7 +16,7 @@ public interface IPropertyEnum extends IStringSerializable {
 	};
 
 	default public int getPredicateIndex() {
-		return 0;
+		return ((Enum<?>) this).ordinal() / 16;
 	};
 
 	default public boolean useForRecipes() {
@@ -24,7 +24,7 @@ public interface IPropertyEnum extends IStringSerializable {
 	}
 
 	default public int getMetadata() {
-		return 0;
+		return ((Enum<?>) this).ordinal() % 16;
 	}
 
 }

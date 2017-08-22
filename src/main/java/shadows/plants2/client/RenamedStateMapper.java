@@ -15,9 +15,15 @@ import shadows.plants2.data.Constants;
 public class RenamedStateMapper implements IStateMapper {
 
 	final String path;
+	String append = "";
 
 	public RenamedStateMapper(String path) {
 		this.path = path;
+	}
+	
+	public RenamedStateMapper(String path, String append) {
+		this.path = path;
+		this.append = append;
 	}
 
 	@Override
@@ -25,7 +31,7 @@ public class RenamedStateMapper implements IStateMapper {
 		Map<IBlockState, ModelResourceLocation> map = new DefaultStateMapper().putStateModelLocations(block);
 		for (IBlockState state : map.keySet()) {
 			ModelResourceLocation loc = map.get(state);
-			map.put(state, new ModelResourceLocation(Constants.MODID + ":" + path, loc.getVariant()));
+			map.put(state, new ModelResourceLocation(Constants.MODID + ":" + path, loc.getVariant() + append));
 		}
 		return map;
 	}

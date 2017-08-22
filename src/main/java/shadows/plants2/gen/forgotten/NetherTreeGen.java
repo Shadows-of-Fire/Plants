@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -45,7 +46,6 @@ public class NetherTreeGen extends EnumBasedTreeGen implements IWorldGenerator {
 
 		int brightest = world.getLightFromNeighbors(m.setPos(i, j, k));
 		int next = 0;
-		setBlockAndNotifyAdequately(world, m.setPos(i, j - 2, k), Blocks.NETHERRACK.getDefaultState());
 		setBlockAndNotifyAdequately(world, m.setPos(i, j - 1, k), log);
 
 		for (int x = -1; x < 2; x++) {
@@ -282,7 +282,23 @@ public class NetherTreeGen extends EnumBasedTreeGen implements IWorldGenerator {
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		if(world.provider instanceof WorldProviderHell) generate(world, random, new BlockPos(chunkX * 16 + 8, 80, chunkZ * 16 + 8));
+		if (world.provider instanceof WorldProviderHell && random.nextFloat() < 0.15F) {
+			BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(chunkX * 16 + MathHelper.getInt(random, -2, 2) + 8, 0, chunkZ * 16 + MathHelper.getInt(random, -2, 2) + 8);
+			for(int i = 32; i <= 80; i++) {
+				pos.setPos(pos.getX(), i, pos.getZ());
+				IBlockState state = world.getBlockState(pos);
+				int y = pos.getY();
+				if(isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ()))) break;
+			}
+			if(pos.getY() >= 80) return;
+			generate(world, random, pos.toImmutable());
+		}
+	}
+
+	@Override
+	protected void setBlockAndNotifyAdequately(World world, BlockPos pos, IBlockState state) {
+		world.setBlockState(pos, state);
+		world.notifyBlockUpdate(pos, Blocks.AIR.getDefaultState(), state, 3);
 	}
 
 }

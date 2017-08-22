@@ -192,8 +192,17 @@ tile.plants2.bush.evergreen.name=Evergreen Leaves
 tile.plants2.bush.huckleberry.name=Huckleberry Leaves
 tile.plants2.bush.raspberry.name=Raspberry Leaves
 
+tile.plants2.log.ash.name=Nether Ash Wood
+tile.plants2.log.blaze.name=Nether Blaze Wood
 
+tile.plants2.sapling.ash.name=Nether Ash Sapling
+tile.plants2.sapling.blaze.name=Nether Blaze Sapling
 
+tile.plants2.leaves.ash.name=Nether Ash Leaves
+tile.plants2.leaves.blaze.name=Nether Blaze Leaves
+
+tile.plants2.planks.ash.name=Nether Ash Wood Planks
+tile.plants2.planks.blaze.name=Nether Blaze Wood Planks
 
 
 

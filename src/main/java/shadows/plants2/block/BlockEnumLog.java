@@ -50,6 +50,11 @@ public class BlockEnumLog<E extends Enum<E> & ILogBasedPropertyEnum> extends Blo
 	}
 
 	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.log";
+	}
+
+	@Override
 	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return true;
 	}

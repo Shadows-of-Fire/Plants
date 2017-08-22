@@ -1,11 +1,15 @@
 package shadows.plants2.data;
 
+
+
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class StackPrimer {
 
-	final Item item;
+	Item item;
+	Block block;
 	final int size;
 	final int meta;
 
@@ -22,9 +26,23 @@ public class StackPrimer {
 	public StackPrimer(Item item) {
 		this(item, 1, 0);
 	}
+	
+	public StackPrimer(Block block, int size, int meta) {
+		this.block = block;
+		this.size = size;
+		this.meta = meta;
+	}
+
+	public StackPrimer(Block item, int size) {
+		this(item, size, 0);
+	}
+
+	public StackPrimer(Block item) {
+		this(item, 1, 0);
+	}
 
 	public ItemStack genStack() {
-		return new ItemStack(item, size, meta);
+		return new ItemStack(item == null ? Item.getItemFromBlock(block) : item, size, meta);
 	}
 
 	public boolean isEmpty() {

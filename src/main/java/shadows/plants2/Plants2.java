@@ -2,6 +2,10 @@ package shadows.plants2;
 
 import java.io.File;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -11,12 +15,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.gen.Decorator;
-import shadows.plants2.gen.forgotten.BushGenerator;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.proxy.IProxy;
 import shadows.plants2.util.PlantUtil;
@@ -25,19 +27,21 @@ import shadows.plants2.util.PlantUtil;
 public class Plants2 {
 
 	@Instance
-	public static Plants2 INSTANCE;
+	public static Plants2 instance;
 
 	@SidedProxy(clientSide = "shadows.plants2.proxy.ClientProxy", serverSide = "shadows.plants2.proxy.ServerProxy")
-	public static IProxy PROXY;
+	public static IProxy proxy;
 
 	public static Configuration config;
+	
+	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
 		config = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
 		Config.syncConfig(config);
-		PROXY.preInit(e);
+		proxy.preInit(e);
 	}
 
 	@EventHandler
@@ -45,17 +49,19 @@ public class Plants2 {
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new Decorator());
 		ModRegistry.oreDict(e);
-		GameRegistry.registerWorldGenerator(new BushGenerator(), 25);
-		PROXY.init(e);
+		proxy.init(e);
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
-		PROXY.postInit(e);
+		ModRegistry.generators(e);
+		
 		for (IPostInitUpdate toUpdate : Constants.UPDATES) {
 			toUpdate.postInit(e);
 		}
-
+		
+		proxy.postInit(e);
+		LOGGER.log(Level.INFO, String.format("Plants is using %d block ids and %d item ids", ModRegistry.BLOCKS.size(), ModRegistry.ITEMS.size()));
 		ModRegistry.ITEMS.clear();
 		ModRegistry.BLOCKS.clear();
 		ModRegistry.RECIPES.clear();

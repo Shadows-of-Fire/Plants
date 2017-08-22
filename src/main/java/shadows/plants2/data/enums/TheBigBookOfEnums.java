@@ -2,6 +2,7 @@ package shadows.plants2.data.enums;
 
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -28,12 +29,17 @@ public class TheBigBookOfEnums {
 		}
 
 	}
-	
-	public static enum NetherLogs implements ILogBasedPropertyEnum {
-		ASH,
-		BLAZE;
+
+	public static enum NetherLogs implements ILogBasedPropertyEnum, IParticleProvider {
+		ASH(EnumParticleTypes.SMOKE_LARGE),
+		BLAZE(EnumParticleTypes.FLAME);
 
 		private WorldGenAbstractTree treeGen;
+		private EnumParticleTypes particle;
+
+		NetherLogs(EnumParticleTypes particle) {
+			this.particle = particle;
+		}
 
 		@Override
 		public void setTreeGen(WorldGenAbstractTree gen) {
@@ -43,6 +49,11 @@ public class TheBigBookOfEnums {
 		@Override
 		public WorldGenAbstractTree getTreeGen() {
 			return treeGen;
+		}
+
+		@Override
+		public EnumParticleTypes getParticle() {
+			return particle;
 		}
 
 	}
@@ -145,18 +156,8 @@ public class TheBigBookOfEnums {
 		}
 
 		@Override
-		public int getPredicateIndex() {
-			return this.ordinal() / 16;
-		}
-
-		@Override
 		public boolean useForRecipes() {
 			return true;
-		}
-
-		@Override
-		public int getMetadata() {
-			return this.ordinal() % 16;
 		}
 
 	}
@@ -198,18 +199,8 @@ public class TheBigBookOfEnums {
 		}
 
 		@Override
-		public int getPredicateIndex() {
-			return this.ordinal() / 16;
-		}
-
-		@Override
 		public boolean useForRecipes() {
 			return true;
-		}
-
-		@Override
-		public int getMetadata() {
-			return this.ordinal() % 16;
 		}
 
 	}

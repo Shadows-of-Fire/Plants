@@ -13,13 +13,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.block.BlockEnumBush;
@@ -27,17 +28,19 @@ import shadows.plants2.block.BlockEnumCrop;
 import shadows.plants2.block.BlockEnumDoubleBush;
 import shadows.plants2.block.BlockEnumDoubleHarvestBush;
 import shadows.plants2.block.BlockEnumHarvestBush;
-import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
-import shadows.plants2.block.BlockEnumSapling;
+import shadows.plants2.block.BlockEnumParticleLeaves;
+import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
+import shadows.plants2.block.forgotten.BlockNetherSapling;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.StackPrimer;
-import shadows.plants2.data.enums.HarvestEnums.DoubleHarvestable;
-import shadows.plants2.data.enums.HarvestEnums.Harvestable;
+import shadows.plants2.data.enums.LaterEnums.DoubleHarvestable;
+import shadows.plants2.data.enums.LaterEnums.Harvestable;
+import shadows.plants2.data.enums.LaterEnums.Planks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Desert;
@@ -46,6 +49,7 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
+import shadows.plants2.gen.forgotten.BushGenerator;
 import shadows.plants2.gen.forgotten.NetherTreeGen;
 import shadows.plants2.item.ItemBigEnum;
 import shadows.plants2.item.ItemExcalibur;
@@ -68,10 +72,6 @@ public class ModRegistry {
 
 	};
 
-	public static final BlockEnumLog<NetherLogs> NETHER_LOG = new BlockEnumLog<NetherLogs>("nether_log", NetherLogs.class, 0);
-	public static final BlockEnumSapling<NetherLogs> NETHER_SAP = new BlockEnumSapling<NetherLogs>("nether_sapling", NetherLogs.class, 0);
-	public static final BlockEnumLeaves<NetherLogs> NETHER_LEAF = new BlockEnumLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
-
 	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumBush<Plants>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
 	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumBush<Plants>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
 	public static final BlockEnumBush<Plants> PLANT_2 = new BlockEnumBush<Plants>("cosmetic_2", EnumPlantType.Plains, Plants.class, 2);
@@ -81,19 +81,19 @@ public class ModRegistry {
 	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumBush<Desert>("desert_0", EnumPlantType.Desert, Desert.class, 0);
 	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumBush<Desert>("desert_1", EnumPlantType.Desert, Desert.class, 1);
 
-	public static final BlockEnumDoubleBush<Double> DOUBLE_0 = new BlockEnumDoubleBush<Double>("double_0", EnumPlantType.Plains, Double.class, 0);
+	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleBush<Double>("double_0", EnumPlantType.Plains, Double.class, 0);
 
 	public static final ItemBigEnum<Generic> GENERIC = new ItemBigEnum<Generic>("generic", Generic.values());
 	public static final Item PLANTBALL = new ItemPlantball();
 
 	public static final Item OKRA = new ItemFoodBase("okra", 3, 1.3f);
-	public static final Item PINEAPPLE = new ItemFoodBase("pineapple", 7, 0.6f, new PotionEffect(MobEffects.RESISTANCE, 20, 5), 0.01F); //u just ate an entire pineapple maybe u have some luck too and be invulnerable
+	public static final Item PINEAPPLE = new ItemFoodBase("pineapple", 7, 0.6f, new PotionEffect(MobEffects.RESISTANCE, 400, 5), 0.01F); //u just ate an entire pineapple maybe u have some luck too and be invulnerable
 	public static final Item AMARANTHUS_H = new ItemFoodBase("amaranthus_h", 5, 0.3f);
-	public static final Item AMBROSIA_A = new ItemFoodBase("ambrosia_a", 3, 0.5f, new PotionEffect(MobEffects.REGENERATION, 10, 3), 0.06F); //Medicinal to certain native american tribes
+	public static final Item AMBROSIA_A = new ItemFoodBase("ambrosia_a", 3, 0.5f, new PotionEffect(MobEffects.REGENERATION, 200, 3), 0.06F); //Medicinal to certain native american tribes
 	public static final Item APOCYNUM_C = new ItemFoodBase("apocynum_c", 1, 2.0f);
-	public static final Item DAUCUS_C = new ItemFoodBase("daucus_c", 4, 1.1f, new PotionEffect(MobEffects.POISON, 10, 1), 0.24F);
-	public static final Item PHYTOLACCA_A = new ItemFoodBase("phytolacca_a", 5, 1.0f, new PotionEffect(MobEffects.WITHER, 8, 1), 0.89F); //Poisonous when uncooked, maybe get a cooked variant?
-	public static final Item PLANTAGO_M = new ItemFoodBase("plantago_m", 3, 0.4f, new PotionEffect(MobEffects.ABSORPTION, 8), 0.45F); //These things are like *really* healthy
+	public static final Item DAUCUS_C = new ItemFoodBase("daucus_c", 4, 1.1f, new PotionEffect(MobEffects.POISON, 200, 1), 0.24F);
+	public static final Item PHYTOLACCA_A = new ItemFoodBase("phytolacca_a", 5, 1.0f, new PotionEffect(MobEffects.WITHER, 160, 1), 0.89F); //Poisonous when uncooked, maybe get a cooked variant?
+	public static final Item PLANTAGO_M = new ItemFoodBase("plantago_m", 3, 0.4f, new PotionEffect(MobEffects.ABSORPTION, 160), 0.45F); //These things are like *really* healthy
 	public static final Item RUBUS_O = new ItemFoodBase("rubus_o", 6, 0.5f);
 	public static final Item RUBUS_P = new ItemFoodBase("rubus_p", 3, 0.5f);
 	public static final Item SAFFRON = new ItemFoodBase("saffron", 1, 0.2f);
@@ -114,13 +114,13 @@ public class ModRegistry {
 	public static final Item OKRA_SEEDS = new ItemSeed<Crops>("okra_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.OKRA);
 	public static final Item PINEAPPLE_SEEDS = new ItemSeed<Crops>("pineapple_seeds", EnumPlantType.Crop, "plants2:crop_1", Crops.PINEAPPLE);
 
-	public static final BlockEnumHarvestBush<Harvestable> HARVEST_0 = new BlockEnumHarvestBush<Harvestable>("harvest_0", EnumPlantType.Plains, Harvestable.class, 0);
-	public static final BlockEnumHarvestBush<Harvestable> HARVEST_1 = new BlockEnumHarvestBush<Harvestable>("harvest_1", EnumPlantType.Plains, Harvestable.class, 1);
+	public static final BlockEnumBush<Harvestable> HARVEST_0 = new BlockEnumHarvestBush<Harvestable>("harvest_0", EnumPlantType.Plains, Harvestable.class, 0);
+	public static final BlockEnumBush<Harvestable> HARVEST_1 = new BlockEnumHarvestBush<Harvestable>("harvest_1", EnumPlantType.Plains, Harvestable.class, 1);
 
-	public static final BlockEnumCrop<Crops> CROP_0 = new BlockEnumCrop<Crops>("crop_0", Crops.class, 0, new Item[] { AMARANTHUS_H, OKRA }, new Item[] { AMARANTHUS_H_SEEDS, OKRA_SEEDS });
-	public static final BlockEnumCrop<Crops> CROP_1 = new BlockEnumCrop<Crops>("crop_1", Crops.class, 1, new Item[] { PINEAPPLE, null }, new Item[] { PINEAPPLE_SEEDS, null });
+	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<Crops>("crop_0", Crops.class, 0, new Item[] { AMARANTHUS_H, OKRA }, new Item[] { AMARANTHUS_H_SEEDS, OKRA_SEEDS });
+	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<Crops>("crop_1", Crops.class, 1, new Item[] { PINEAPPLE, null }, new Item[] { PINEAPPLE_SEEDS, null });
 
-	public static final BlockEnumDoubleHarvestBush<DoubleHarvestable> DOUBLE_HARVEST_0 = new BlockEnumDoubleHarvestBush<DoubleHarvestable>("double_harvest_0", EnumPlantType.Plains, DoubleHarvestable.class, 0);
+	public static final BlockEnumBush<DoubleHarvestable> DOUBLE_HARVEST_0 = new BlockEnumDoubleHarvestBush<DoubleHarvestable>("double_harvest_0", EnumPlantType.Plains, DoubleHarvestable.class, 0);
 
 	public static final Block ADLUMIA_F = new BlockCustomVine("adlumia_f", Vines.ADLUMIA_F);
 	public static final Block AFGEKIA_M = new BlockCustomVine("afgekia_m", Vines.AFGEKIA_M);
@@ -128,11 +128,16 @@ public class ModRegistry {
 	public static final Block AKEBIA_Q_VINE = new BlockCustomVine("akebia_q_vine", Vines.AKEBIA_Q, new StackPrimer(AKEBIA_Q));
 	public static final Block AMPELOPSIS_A_VINE = new BlockCustomVine("ampelopsis_a_vine", Vines.AMPELOPSIS_A, new StackPrimer(AMPELOPSIS_A));
 
+	public static final BlockEnum<NetherLogs> NETHER_LOG = new BlockEnumLog<NetherLogs>("nether_log", NetherLogs.class, 0);
+	public static final BlockEnumBush<NetherLogs> NETHER_SAP = new BlockNetherSapling<NetherLogs>("nether_sapling", NetherLogs.class, 0);
+	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
+	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<Planks>("planks", Planks.class, 0);
+	
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
-	
-	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
-	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
+
+	public static final NetherTreeGen ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
+	public static final NetherTreeGen BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
@@ -166,6 +171,9 @@ public class ModRegistry {
 		OreDictionary.registerOre("dye", new ItemStack(GENERIC, 1, Generic.DYE_BROWN.ordinal()));
 		OreDictionary.registerOre("dyeWhite", new ItemStack(GENERIC, 1, Generic.DYE_WHITE.ordinal()));
 		OreDictionary.registerOre("dye", new ItemStack(GENERIC, 1, Generic.DYE_WHITE.ordinal()));
+		OreDictionary.registerOre("logWood", new ItemStack(NETHER_LOG, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeSapling", new ItemStack(NETHER_SAP, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(NETHER_LEAF, 1, OreDictionary.WILDCARD_VALUE));
 
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockBush && Item.getItemFromBlock(block) != Items.AIR) {
@@ -183,5 +191,11 @@ public class ModRegistry {
 			if (item instanceof IHasRecipe)
 				((IHasRecipe) item).initRecipes(e);
 		}
+	}
+
+	public static void generators(FMLPostInitializationEvent e) {
+		GameRegistry.registerWorldGenerator(new BushGenerator(), 25);
+		GameRegistry.registerWorldGenerator(ASH_TREE, 25);
+		GameRegistry.registerWorldGenerator(BLAZE_TREE, 25);
 	}
 }

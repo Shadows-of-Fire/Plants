@@ -99,7 +99,7 @@ public abstract class BlockEnum<E extends Enum<E> & IPropertyEnum> extends Block
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer.Builder(this).add(property).build();
+		return new BlockStateContainer(this, property);
 	}
 
 	@Override

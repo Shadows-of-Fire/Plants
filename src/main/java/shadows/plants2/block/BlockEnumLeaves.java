@@ -50,6 +50,11 @@ public class BlockEnumLeaves<E extends Enum<E> & ILogBasedPropertyEnum> extends 
 	}
 
 	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.leaves";
+	}
+
+	@Override
 	public IBlockState getStateFor(E e) {
 		return this.getDefaultState().withProperty(BlockLeaves.DECAYABLE, true).withProperty(property, e);
 	}

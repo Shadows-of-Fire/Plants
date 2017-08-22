@@ -1,9 +1,11 @@
 package shadows.plants2.data.enums;
 
+import net.minecraft.item.ItemStack;
 import shadows.plants2.data.StackPrimer;
+import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.init.ModRegistry;
 
-public class HarvestEnums {
+public class LaterEnums {
 
 	public static enum Harvestable implements IHarvestableEnum {
 
@@ -50,6 +52,23 @@ public class HarvestEnums {
 		@Override
 		public StackPrimer[] getDrops() {
 			return drops;
+		}
+	}
+	
+	public static enum Planks implements IPlankEnum {
+		ASH(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.ASH.getMetadata())),
+		BLAZE(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.BLAZE.getMetadata())),
+		;
+		
+		private StackPrimer primer;
+		
+		Planks(StackPrimer primer){
+			this.primer = primer;
+		}
+
+		@Override
+		public ItemStack genLogStack() {
+			return primer.genStack();
 		}
 	}
 

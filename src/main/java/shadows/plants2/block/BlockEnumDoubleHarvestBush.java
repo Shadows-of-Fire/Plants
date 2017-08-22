@@ -8,7 +8,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -119,10 +118,6 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 		}
 	}
 
-	/**
-	 * Called by ItemBlocks after a block is set in the world, to allow
-	 * post-place logic
-	 */
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		world.setBlockState(pos.up(), state.withProperty(UPPER, true), 2);
@@ -225,7 +220,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	protected int getMaxEnumValues() {
 		return 4;
 	}
-	
+
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {

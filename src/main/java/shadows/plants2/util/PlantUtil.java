@@ -158,14 +158,19 @@ public class PlantUtil {
 	public static IBlockState getDesertFlowerState(Random rand) {
 		return DESERT.get(rand.nextInt(DESERT.size()));
 	}
-	
+
 	public static ItemStack getDyeForEnum(EnumDyeColor c, int size) {
-		switch(c) {
-		case BLUE: return getStackFor(Generic.DYE_BLUE, size);
-		case WHITE: return getStackFor(Generic.DYE_WHITE, size);
-		case BLACK: return getStackFor(Generic.DYE_BLACK, size);
-		case BROWN: return getStackFor(Generic.DYE_BROWN, size);
-		default: return new ItemStack(Items.DYE, size, c.getDyeDamage());
+		switch (c) {
+		case BLUE:
+			return getStackFor(Generic.DYE_BLUE, size);
+		case WHITE:
+			return getStackFor(Generic.DYE_WHITE, size);
+		case BLACK:
+			return getStackFor(Generic.DYE_BLACK, size);
+		case BROWN:
+			return getStackFor(Generic.DYE_BROWN, size);
+		default:
+			return new ItemStack(Items.DYE, size, c.getDyeDamage());
 		}
 	}
 

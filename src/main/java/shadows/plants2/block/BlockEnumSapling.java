@@ -48,6 +48,11 @@ public class BlockEnumSapling<E extends Enum<E> & ILogBasedPropertyEnum> extends
 	}
 
 	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.sapling";
+	}
+
+	@Override
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
