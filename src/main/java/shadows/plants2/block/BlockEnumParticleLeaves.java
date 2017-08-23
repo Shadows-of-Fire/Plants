@@ -7,10 +7,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import shadows.plants2.data.enums.ILogBasedPropertyEnum;
 import shadows.plants2.data.enums.IParticleProvider;
+import shadows.plants2.data.enums.ITreeEnum;
 
-public class BlockEnumParticleLeaves<E extends Enum<E> & ILogBasedPropertyEnum & IParticleProvider> extends BlockEnumLeaves<E> {
+public class BlockEnumParticleLeaves<E extends Enum<E> & ITreeEnum & IParticleProvider> extends BlockEnumLeaves<E> {
 
 	public BlockEnumParticleLeaves(String name, Block sapling, Class<E> clazz, int predicate) {
 		super(name, sapling, clazz, predicate);

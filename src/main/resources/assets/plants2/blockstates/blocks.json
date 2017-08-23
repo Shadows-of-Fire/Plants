@@ -14,6 +14,16 @@
 				"textures": {
 					"all": "plants2:blocks/forgotten/nether/blaze_planks"
 				}
+			},
+			"black_kauri_planks": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/black_kauri_planks"
+				}
+			},
+			"brazillian_pine_planks": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/brazillian_pine_planks"
+				}
 			}
 		}
 	}

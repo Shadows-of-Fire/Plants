@@ -1,12 +1,12 @@
 package shadows.plants2.data.enums;
 
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
-public interface ILogBasedPropertyEnum extends IPropertyEnum {
+public interface ITreeEnum extends IPropertyEnum {
 
-	public WorldGenAbstractTree getTreeGen();
+	public WorldGenerator getTreeGen();
 
-	public void setTreeGen(WorldGenAbstractTree k);
+	public void setTreeGen(WorldGenerator k);
 
 	@Override
 	default public int getPredicateIndex() {

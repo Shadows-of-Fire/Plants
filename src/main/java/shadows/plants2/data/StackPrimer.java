@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class StackPrimer {
 
-	Item item;
+	Item item = null;
 	Block block;
 	final int size;
 	final int meta;
@@ -40,7 +40,7 @@ public class StackPrimer {
 	}
 
 	public ItemStack genStack() {
-		return new ItemStack(item == null ? Item.getItemFromBlock(block) : item, size, meta);
+		return new ItemStack(item == null ? item = Item.getItemFromBlock(block) : item, size, meta);
 	}
 
 	public boolean isEmpty() {

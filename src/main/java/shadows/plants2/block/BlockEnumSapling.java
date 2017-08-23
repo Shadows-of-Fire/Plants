@@ -18,10 +18,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.ILogBasedPropertyEnum;
+import shadows.plants2.data.enums.ITreeEnum;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockEnumSapling<E extends Enum<E> & ILogBasedPropertyEnum> extends BlockEnumBush<E> implements IGrowable {
+public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable {
 
 	public static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.8D, 0.9D);
 

@@ -19,10 +19,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.client.RenamedStateMapper;
-import shadows.plants2.data.enums.ILogBasedPropertyEnum;
+import shadows.plants2.data.enums.ITreeEnum;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockEnumLog<E extends Enum<E> & ILogBasedPropertyEnum> extends BlockEnum<E> {
+public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 
 	static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
 

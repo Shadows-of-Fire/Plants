@@ -6,9 +6,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import shadows.plants2.block.BlockEnumSapling;
-import shadows.plants2.data.enums.ILogBasedPropertyEnum;
+import shadows.plants2.data.enums.ITreeEnum;
 
-public class BlockNetherSapling<E extends Enum<E> & ILogBasedPropertyEnum> extends BlockEnumSapling<E> {
+public class BlockNetherSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumSapling<E> {
 
 	public BlockNetherSapling(String name, Class<E> clazz, int predicate) {
 		super(name, clazz, predicate);

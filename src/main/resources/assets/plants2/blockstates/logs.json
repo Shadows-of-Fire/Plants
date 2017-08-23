@@ -16,6 +16,18 @@
 					"side": "plants2:blocks/forgotten/nether/blaze_log",
 					"end": "plants2:blocks/forgotten/nether/blaze_log_end"
 				}
+			},
+			"black_kauri": {
+				"textures": {
+					"side": "plants2:blocks/cosmetic/tree/black_kauri_log",
+					"end": "plants2:blocks/cosmetic/tree/black_kauri_log_end"
+				}
+			},
+			"brazillian_pine": {
+				"textures": {
+					"side": "plants2:blocks/cosmetic/tree/brazillian_pine_log",
+					"end": "plants2:blocks/cosmetic/tree/brazillian_pine_log_end"
+				}
 			}
 		},
 		"axis": {

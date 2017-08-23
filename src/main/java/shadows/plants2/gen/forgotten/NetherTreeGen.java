@@ -1,5 +1,7 @@
 package shadows.plants2.gen.forgotten;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -13,19 +15,26 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import shadows.plants2.data.enums.ILogBasedPropertyEnum;
-import shadows.plants2.gen.EnumBasedTreeGen;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import shadows.plants2.data.Constants;
+import shadows.plants2.data.IPostInitUpdate;
+import shadows.plants2.data.enums.ITreeEnum;
 
-public class NetherTreeGen extends EnumBasedTreeGen implements IWorldGenerator {
+public class NetherTreeGen extends WorldGenerator implements IPostInitUpdate {
 	IBlockState leaf;
 	IBlockState log;
 	int dir = 0;
+	ITreeEnum k;
 
-	public NetherTreeGen(IBlockState log, IBlockState leaf, ILogBasedPropertyEnum enumToAssignTo) {
-		super(true, 0, log, leaf, false, enumToAssignTo);
+	public NetherTreeGen(IBlockState log, IBlockState leaf, ITreeEnum enumToAssignTo) {
+		super(true);
 		this.log = log;
 		this.leaf = leaf;
+		Constants.UPDATES.add(this);
+		k = enumToAssignTo;
+		TreeGenerator.LIST.add(this);
 	}
 
 	public boolean generate(World world, Random random, BlockPos pos) {
@@ -281,26 +290,36 @@ public class NetherTreeGen extends EnumBasedTreeGen implements IWorldGenerator {
 	}
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		if (world.provider instanceof WorldProviderHell && random.nextFloat() < 0.15F) {
-			BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(chunkX * 16 + MathHelper.getInt(random, -2, 2) + 8, 0, chunkZ * 16 + MathHelper.getInt(random, -2, 2) + 8);
-			for (int i = 32; i <= 80; i++) {
-				pos.setPos(pos.getX(), i, pos.getZ());
-				IBlockState state = world.getBlockState(pos);
-				int y = pos.getY();
-				if (isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ())))
-					break;
-			}
-			if (pos.getY() >= 80)
-				return;
-			generate(world, random, pos.toImmutable());
-		}
+	public void postInit(FMLPostInitializationEvent e) {
+		k.setTreeGen(this);
 	}
 
 	@Override
 	protected void setBlockAndNotifyAdequately(World world, BlockPos pos, IBlockState state) {
 		world.setBlockState(pos, state);
 		world.notifyBlockUpdate(pos, Blocks.AIR.getDefaultState(), state, 3);
+	}
+
+	public static class TreeGenerator implements IWorldGenerator {
+
+		public static final List<NetherTreeGen> LIST = new ArrayList<NetherTreeGen>();
+
+		@Override
+		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+			if (world.provider instanceof WorldProviderHell && random.nextFloat() < 0.15F) {
+				BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(chunkX * 16 + MathHelper.getInt(random, -2, 2) + 8, 0, chunkZ * 16 + MathHelper.getInt(random, -2, 2) + 8);
+				for (int i = 32; i <= 95; i++) {
+					pos.setPos(pos.getX(), i, pos.getZ());
+					IBlockState state = world.getBlockState(pos);
+					int y = pos.getY();
+					if (isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ())))
+						break;
+				}
+				if (pos.getY() >= 95)
+					return;
+				LIST.get(random.nextInt(LIST.size())).generate(world, random, pos.toImmutable());
+			}
+		}
 	}
 
 }

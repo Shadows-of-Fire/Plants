@@ -70,7 +70,7 @@ public class Plants2 {
 		ModRegistry.POTIONS.clear();
 		Constants.UPDATES.clear();
 		PlantUtil.mergeToDefaultLate();
-		
+
 		if (Loader.isModLoaded(Constants.FORESTRY_ID))
 			ForestryIntegration.registerFlowersToForestry();
 	}

@@ -4,7 +4,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import shadows.plants2.data.Constants;
@@ -13,28 +13,29 @@ import shadows.plants2.data.StackPrimer;
 
 public class TheBigBookOfEnums {
 
-	public static enum Logs implements ILogBasedPropertyEnum {
-		,;
+	public static enum Logs implements ITreeEnum {
+		BLACK_KAURI,
+		BRAZILLIAN_PINE,;
 
-		private WorldGenAbstractTree treeGen;
+		private WorldGenerator treeGen;
 
 		@Override
-		public void setTreeGen(WorldGenAbstractTree gen) {
+		public void setTreeGen(WorldGenerator gen) {
 			treeGen = gen;
 		}
 
 		@Override
-		public WorldGenAbstractTree getTreeGen() {
+		public WorldGenerator getTreeGen() {
 			return treeGen;
 		}
 
 	}
 
-	public static enum NetherLogs implements ILogBasedPropertyEnum, IParticleProvider {
+	public static enum NetherLogs implements ITreeEnum, IParticleProvider {
 		ASH(EnumParticleTypes.SMOKE_LARGE),
 		BLAZE(EnumParticleTypes.FLAME);
 
-		private WorldGenAbstractTree treeGen;
+		private WorldGenerator treeGen;
 		private EnumParticleTypes particle;
 
 		NetherLogs(EnumParticleTypes particle) {
@@ -42,12 +43,12 @@ public class TheBigBookOfEnums {
 		}
 
 		@Override
-		public void setTreeGen(WorldGenAbstractTree gen) {
+		public void setTreeGen(WorldGenerator gen) {
 			treeGen = gen;
 		}
 
 		@Override
-		public WorldGenAbstractTree getTreeGen() {
+		public WorldGenerator getTreeGen() {
 			return treeGen;
 		}
 
@@ -307,8 +308,6 @@ public class TheBigBookOfEnums {
 
 		BushSet(String dropName) {
 			this.dropName = dropName;
-			if (dropName.equals(""))
-				this.dropName = "minecraft:air";
 			Constants.UPDATES.add(this);
 		}
 

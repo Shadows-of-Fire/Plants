@@ -15,6 +15,16 @@
 				"textures": {
 					"cross": "plants2:blocks/forgotten/nether/blaze_sapling"
 				}
+			},
+			"black_kauri": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/tree/black_kauri_sapling"
+				}
+			},
+			"brazillian_pine": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/tree/brazillian_pine_sapling"
+				}
 			}
 		},
 		"inventory": {

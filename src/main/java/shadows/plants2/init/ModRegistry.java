@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
@@ -28,6 +29,7 @@ import shadows.plants2.block.BlockEnumDoubleBush;
 import shadows.plants2.block.BlockEnumDoubleHarvestBush;
 import shadows.plants2.block.BlockEnumFlower;
 import shadows.plants2.block.BlockEnumHarvestBush;
+import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
 import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
@@ -47,10 +49,12 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Desert;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Double;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
+import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
-import shadows.plants2.gen.forgotten.BushGenerator;
+import shadows.plants2.gen.EnumTreeGen;
+import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.gen.forgotten.NetherTreeGen;
 import shadows.plants2.item.ItemBigEnum;
 import shadows.plants2.item.ItemExcalibur;
@@ -132,13 +136,20 @@ public class ModRegistry {
 	public static final BlockEnum<NetherLogs> NETHER_LOG = new BlockEnumLog<NetherLogs>("nether_log", NetherLogs.class, 0);
 	public static final BlockEnumBush<NetherLogs> NETHER_SAP = new BlockNetherSapling<NetherLogs>("nether_sapling", NetherLogs.class, 0);
 	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
+
+	public static final BlockEnum<Logs> LOG_0 = new BlockEnumLog<Logs>("log_0", Logs.class, 0);
+	public static final BlockEnumBush<Logs> SAP_0 = new BlockNetherSapling<Logs>("sapling_0", Logs.class, 0);
+	public static final BlockEnum<Logs> LEAF_0 = new BlockEnumLeaves<Logs>("leaves_0", SAP_0, Logs.class, 0);
+
 	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<Planks>("planks", Planks.class, 0);
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
 
-	public static final NetherTreeGen ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
-	public static final NetherTreeGen BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
+	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
+	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
+	public static final WorldGenerator KAURI_TREE = new EnumTreeGen(false, 4, LOG_0.getStateFor(Logs.BLACK_KAURI), LEAF_0.getStateFor(Logs.BLACK_KAURI), Logs.BLACK_KAURI);
+	public static final WorldGenerator PINE_TREE = new EnumTreeGen(false, 4, LOG_0.getStateFor(Logs.BRAZILLIAN_PINE), LEAF_0.getStateFor(Logs.BRAZILLIAN_PINE), Logs.BRAZILLIAN_PINE);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
@@ -195,8 +206,8 @@ public class ModRegistry {
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
-		GameRegistry.registerWorldGenerator(new BushGenerator(), 25);
-		GameRegistry.registerWorldGenerator(ASH_TREE, 25);
-		GameRegistry.registerWorldGenerator(BLAZE_TREE, 25);
+		GameRegistry.registerWorldGenerator(new BushGen(), 25);
+		GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
+		GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
 	}
 }

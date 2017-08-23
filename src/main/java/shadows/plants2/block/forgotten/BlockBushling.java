@@ -26,7 +26,7 @@ import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
-import shadows.plants2.gen.forgotten.BushGenerator;
+import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.util.PlantUtil;
 
 public class BlockBushling extends BlockEnum<BushSet> implements IGrowable, IPlantable {
@@ -88,7 +88,7 @@ public class BlockBushling extends BlockEnum<BushSet> implements IGrowable, IPla
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
 		boolean[] bools = { false, false, false, false };
 		for (int i = 0; i < 4; i++) {
-			if (BushGenerator.BUSHGENS[state.getValue(getProperty()).ordinal()].isReplaceable(world, pos.offset(EnumFacing.HORIZONTALS[i])))
+			if (BushGen.BUSHGENS[state.getValue(getProperty()).ordinal()].isReplaceable(world, pos.offset(EnumFacing.HORIZONTALS[i])))
 				bools[i] = true;
 		}
 		return bools[0] && bools[1] && bools[2] && bools[3];
@@ -101,7 +101,7 @@ public class BlockBushling extends BlockEnum<BushSet> implements IGrowable, IPla
 
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
-		BushGenerator.BUSHGENS[state.getValue(getProperty()).ordinal()].generate(world, rand, pos);
+		BushGen.BUSHGENS[state.getValue(getProperty()).ordinal()].generate(world, rand, pos);
 
 	}
 

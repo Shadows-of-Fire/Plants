@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.init.ModRegistry;
 
-public class BushGenerator implements IWorldGenerator {
+public class BushGen implements IWorldGenerator {
 
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator gen, IChunkProvider prov) {
