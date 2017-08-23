@@ -58,96 +58,98 @@ public class TheBigBookOfEnums {
 
 	}
 
-	public static enum Plants implements IPropertyEnum {
-		ABELIOPHYLLUM_D,
-		ABROMA_A,
-		ABUTILON_I,
-		ACAENA_S,
-		ACALYPHA_A,
-		ACALYPHA_R,
-		ACANTHOLIMON_G,
-		ACHILLEA,
-		ACHIMENES_E,
-		ACINOS_A,
-		ACIPHYLLA_G,
-		ADENOPHORA_T,
-		ADONIS_A,
-		AECHMEA_A,
-		AESCHYNANTHUS_S,
-		AETHIONEMA_S,
-		AGAPANTHUS_A,
-		AGERATUM_C,
-		AGROSTEMMA_G,
-		AIRA_C,
-		AJUGA_A,
-		ALBUCA_F,
-		ALCEA_B,
-		ALKANNA_T,
-		ALLIARIA_P,
-		ALLIUM_C,
-		ALOE_B,
-		ALOPECURUS_G,
-		ALSOBIA_D,
-		ALSTROEMERIA_P,
-		ALYOGYNE_H,
-		AMARYLLIS_B,
-		AMBROSIA_T,
-		AMESIELLA_P,
-		AMMOBIUM_A,
-		AMPHIPAPPUS,
-		ANACYCLUS_V,
-		ANAGALLIS_A,
-		ANCHUSA_A,
-		ARGOCOFFEEOPSIS_L,
-		ASCLEPIAS_S,
-		ASCLEPIAS_T,
-		ASPALATHUS_V,
-		ASTILBE_C,
-		BARBAREA_V,
-		BEGONIA_E,
-		BRACHYSTELMA_S,
-		CARDAMINE_C,
-		CEPHALOPHYLLUM_P,
-		CHRYSANTHEMUM_M,
-		CLOVE,
-		CORYDALIS,
-		CORYDALIS_F,
-		CRASSULA_S,
-		DISA_F,
-		EPIPOGIUM_A,
-		FABACEAE,
-		GALANTHUS,
-		HELIOTROPIUM_P,
-		HELLEBORE,
-		HESPERIS_M,
-		IMPATIENS_C,
-		ISOLEPIS_B,
-		NARTHECIUM_A,
-		NEMESIA_M,
-		PEONY,
-		PLUCHEA_G,
-		PSORALEA_C,
-		PSORALEA_M,
-		PUERARIA_M,
-		RHANTERIUM_E,
-		RORIPPA_S,
-		RUDBECKIA_H,
-		STREBLORRHIZA_S,
-		SUMATRA_D,
-		THISMIA_A,
-		TRILLIUM,
-		VERATRUM_V,
-		VERONICA_A,
-		VIOLA_C,;
+	public static enum Plants implements IFlowerEnum {
+		ABELIOPHYLLUM_D(false),
+		ABROMA_A(true),
+		ABUTILON_I(true),
+		ACAENA_S(true),
+		ACALYPHA_A(true),
+		ACALYPHA_R(false),
+		ACANTHOLIMON_G(true),
+		ACHILLEA(true),
+		ACHIMENES_E(true),
+		ACINOS_A(true),
+		ACIPHYLLA_G(true),
+		ADENOPHORA_T(true),
+		ADONIS_A(true),
+		AECHMEA_A(true),
+		AESCHYNANTHUS_S(true),
+		AETHIONEMA_S(true),
+		AGAPANTHUS_A(true),
+		AGERATUM_C(true),
+		AGROSTEMMA_G(true),
+		AIRA_C(true),
+		AJUGA_A(true),
+		ALBUCA_F(true),
+		ALCEA_B(true),
+		ALKANNA_T(true),
+		ALLIARIA_P(true),
+		ALLIUM_C(true),
+		ALOE_B(false),
+		ALOPECURUS_G(false),
+		ALSOBIA_D(false),
+		ALSTROEMERIA_P(true),
+		ALYOGYNE_H(true),
+		AMARYLLIS_B(true),
+		AMBROSIA_T(true),
+		AMESIELLA_P(true),
+		AMMOBIUM_A(true),
+		AMPHIPAPPUS(true),
+		ANACYCLUS_V(true),
+		ANAGALLIS_A(true),
+		ANCHUSA_A(true),
+		ARGOCOFFEEOPSIS_L(true),
+		ASCLEPIAS_S(true),
+		ASCLEPIAS_T(true),
+		ASPALATHUS_V(true),
+		ASTILBE_C(false),
+		BARBAREA_V(true),
+		BEGONIA_E(true),
+		BRACHYSTELMA_S(true),
+		CARDAMINE_C(true),
+		CEPHALOPHYLLUM_P(true),
+		CHRYSANTHEMUM_M(true),
+		CLOVE(false),
+		CORYDALIS(true),
+		CORYDALIS_F(true),
+		CRASSULA_S(true),
+		DISA_F(true),
+		EPIPOGIUM_A(true),
+		FABACEAE(true),
+		GALANTHUS(true),
+		HELIOTROPIUM_P(true),
+		HELLEBORE(true),
+		HESPERIS_M(true),
+		IMPATIENS_C(false),
+		ISOLEPIS_B(false),
+		NARTHECIUM_A(true),
+		NEMESIA_M(false),
+		PEONY(true),
+		PLUCHEA_G(true),
+		PSORALEA_C(true),
+		PSORALEA_M(false),
+		PUERARIA_M(true),
+		RHANTERIUM_E(true),
+		RORIPPA_S(false),
+		RUDBECKIA_H(true),
+		STREBLORRHIZA_S(false),
+		SUMATRA_D(false),
+		THISMIA_A(false),
+		TRILLIUM(true),
+		VERATRUM_V(false),
+		VERONICA_A(true),
+		VIOLA_C(true),;
 
 		EnumDyeColor color;
+		boolean flowers;
 
-		Plants(EnumDyeColor c) {
+		Plants(boolean flowers, EnumDyeColor c) {
 			color = c;
+			this.flowers = flowers;
 		}
 
-		Plants() {
-			this(EnumDyeColor.WHITE);
+		Plants(boolean flowers) {
+			this(flowers, EnumDyeColor.WHITE);
 		}
 
 		@Override
@@ -160,37 +162,44 @@ public class TheBigBookOfEnums {
 			return true;
 		}
 
-	}
-
-	public static enum Desert implements IPropertyEnum {
-		APACHE_PLUME,
-		ARIZONA_POPPY,
-		ASIAN_MUSTARD,
-		BIGELOWS_MONKEY_FLOWER,
-		BLACKTACK_PHACELIA,
-		BLAZING_STAR,
-		BLUE_FLAX,
-		BRISTLY_FIDDLENECK,
-		BROWN_EYES,
-		BUCKBRUSH,
-		BUTTON_BRITTLEBUSH,
-		CANAIGRE,
-		CHOCOLATE_DROPS,
-		CHUPAROSA,
-		CLUSTERED_BROOMRAPE,
-		COULTERS_JEWELFLOWER,
-		DISTANT_SCORPIONWEED,
-		NEGLECTED_SCORPIONWEED,
-		SAGEBRUSH;
-
-		EnumDyeColor color;
-
-		Desert(EnumDyeColor c) {
-			color = c;
+		@Override
+		public boolean hasFlowers() {
+			return flowers;
 		}
 
-		Desert() {
-			this(EnumDyeColor.WHITE);
+	}
+
+	public static enum Desert implements IFlowerEnum {
+		APACHE_PLUME(true),
+		ARIZONA_POPPY(true),
+		ASIAN_MUSTARD(true),
+		BIGELOWS_MONKEY_FLOWER(true),
+		BLACKTACK_PHACELIA(true),
+		BLAZING_STAR(true),
+		BLUE_FLAX(true),
+		BRISTLY_FIDDLENECK(true),
+		BROWN_EYES(true),
+		BUCKBRUSH(true),
+		BUTTON_BRITTLEBUSH(true),
+		CANAIGRE(true),
+		CHOCOLATE_DROPS(false),
+		CHUPAROSA(false),
+		CLUSTERED_BROOMRAPE(true),
+		COULTERS_JEWELFLOWER(true),
+		DISTANT_SCORPIONWEED(true),
+		NEGLECTED_SCORPIONWEED(true),
+		SAGEBRUSH(false);
+
+		EnumDyeColor color;
+		boolean flowers;
+
+		Desert(boolean flowers, EnumDyeColor c) {
+			color = c;
+			this.flowers = flowers;
+		}
+
+		Desert(boolean flowers) {
+			this(flowers, EnumDyeColor.WHITE);
 		}
 
 		@Override
@@ -203,24 +212,31 @@ public class TheBigBookOfEnums {
 			return true;
 		}
 
-	}
-
-	public static enum Double implements IPropertyEnum {
-		ABELIA_C,
-		ABRONIA_A,
-		ACANTHUS_B,
-		ADENOCARPUS_F,
-		AGONIS_T,
-		ALONSOA_M;
-
-		EnumDyeColor color;
-
-		Double(EnumDyeColor c) {
-			color = c;
+		@Override
+		public boolean hasFlowers() {
+			return flowers;
 		}
 
-		Double() {
-			this(EnumDyeColor.WHITE);
+	}
+
+	public static enum Double implements IFlowerEnum {
+		ABELIA_C(true),
+		ABRONIA_A(true),
+		ACANTHUS_B(true),
+		ADENOCARPUS_F(true),
+		AGONIS_T(true),
+		ALONSOA_M(true);
+
+		EnumDyeColor color;
+		boolean flowers;
+
+		Double(boolean flowers, EnumDyeColor c) {
+			color = c;
+			this.flowers = flowers;
+		}
+
+		Double(boolean flowers) {
+			this(flowers, EnumDyeColor.WHITE);
 		}
 
 		@Override
@@ -241,6 +257,11 @@ public class TheBigBookOfEnums {
 		@Override
 		public int getMetadata() {
 			return this.ordinal() % 8;
+		}
+
+		@Override
+		public boolean hasFlowers() {
+			return flowers;
 		}
 
 	}

@@ -33,7 +33,8 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 
 	@Override
 	public void initRecipes(Register<IRecipe> ev) {
-		for(E e : getTypes()) RecipeHelper.addShapeless(new ItemStack(this, 4, e.getMetadata()), e.genLogStack());
+		for (E e : getTypes())
+			RecipeHelper.addShapeless(new ItemStack(this, 4, e.getMetadata()), e.genLogStack());
 	}
 
 }

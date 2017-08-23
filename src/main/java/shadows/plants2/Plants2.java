@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import shadows.plants2.compat.ForestryIntegration;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
@@ -33,7 +35,7 @@ public class Plants2 {
 	public static IProxy proxy;
 
 	public static Configuration config;
-	
+
 	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
 	@EventHandler
@@ -55,11 +57,11 @@ public class Plants2 {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
 		ModRegistry.generators(e);
-		
+
 		for (IPostInitUpdate toUpdate : Constants.UPDATES) {
 			toUpdate.postInit(e);
 		}
-		
+
 		proxy.postInit(e);
 		LOGGER.log(Level.INFO, String.format("Plants is using %d block ids and %d item ids", ModRegistry.BLOCKS.size(), ModRegistry.ITEMS.size()));
 		ModRegistry.ITEMS.clear();
@@ -68,5 +70,8 @@ public class Plants2 {
 		ModRegistry.POTIONS.clear();
 		Constants.UPDATES.clear();
 		PlantUtil.mergeToDefaultLate();
+		
+		if (Loader.isModLoaded(Constants.FORESTRY_ID))
+			ForestryIntegration.registerFlowersToForestry();
 	}
 }

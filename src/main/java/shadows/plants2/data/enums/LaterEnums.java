@@ -54,15 +54,14 @@ public class LaterEnums {
 			return drops;
 		}
 	}
-	
+
 	public static enum Planks implements IPlankEnum {
 		ASH(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.ASH.getMetadata())),
-		BLAZE(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.BLAZE.getMetadata())),
-		;
-		
+		BLAZE(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.BLAZE.getMetadata())),;
+
 		private StackPrimer primer;
-		
-		Planks(StackPrimer primer){
+
+		Planks(StackPrimer primer) {
 			this.primer = primer;
 		}
 

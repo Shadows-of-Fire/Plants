@@ -1,7 +1,5 @@
 package shadows.plants2.data;
 
-
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,7 +24,7 @@ public class StackPrimer {
 	public StackPrimer(Item item) {
 		this(item, 1, 0);
 	}
-	
+
 	public StackPrimer(Block block, int size, int meta) {
 		this.block = block;
 		this.size = size;

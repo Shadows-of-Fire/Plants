@@ -23,15 +23,16 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants2.block.BlockCustomVine;
-import shadows.plants2.block.BlockEnumBush;
 import shadows.plants2.block.BlockEnumCrop;
 import shadows.plants2.block.BlockEnumDoubleBush;
 import shadows.plants2.block.BlockEnumDoubleHarvestBush;
+import shadows.plants2.block.BlockEnumFlower;
 import shadows.plants2.block.BlockEnumHarvestBush;
 import shadows.plants2.block.BlockEnumLog;
 import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.base.BlockEnum;
+import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
@@ -72,14 +73,14 @@ public class ModRegistry {
 
 	};
 
-	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumBush<Plants>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
-	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumBush<Plants>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
-	public static final BlockEnumBush<Plants> PLANT_2 = new BlockEnumBush<Plants>("cosmetic_2", EnumPlantType.Plains, Plants.class, 2);
-	public static final BlockEnumBush<Plants> PLANT_3 = new BlockEnumBush<Plants>("cosmetic_3", EnumPlantType.Plains, Plants.class, 3);
-	public static final BlockEnumBush<Plants> PLANT_4 = new BlockEnumBush<Plants>("cosmetic_4", EnumPlantType.Plains, Plants.class, 4);
+	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumFlower<Plants>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
+	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumFlower<Plants>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
+	public static final BlockEnumBush<Plants> PLANT_2 = new BlockEnumFlower<Plants>("cosmetic_2", EnumPlantType.Plains, Plants.class, 2);
+	public static final BlockEnumBush<Plants> PLANT_3 = new BlockEnumFlower<Plants>("cosmetic_3", EnumPlantType.Plains, Plants.class, 3);
+	public static final BlockEnumBush<Plants> PLANT_4 = new BlockEnumFlower<Plants>("cosmetic_4", EnumPlantType.Plains, Plants.class, 4);
 
-	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumBush<Desert>("desert_0", EnumPlantType.Desert, Desert.class, 0);
-	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumBush<Desert>("desert_1", EnumPlantType.Desert, Desert.class, 1);
+	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumFlower<Desert>("desert_0", EnumPlantType.Desert, Desert.class, 0);
+	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumFlower<Desert>("desert_1", EnumPlantType.Desert, Desert.class, 1);
 
 	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleBush<Double>("double_0", EnumPlantType.Plains, Double.class, 0);
 
@@ -132,7 +133,7 @@ public class ModRegistry {
 	public static final BlockEnumBush<NetherLogs> NETHER_SAP = new BlockNetherSapling<NetherLogs>("nether_sapling", NetherLogs.class, 0);
 	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
 	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<Planks>("planks", Planks.class, 0);
-	
+
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
 

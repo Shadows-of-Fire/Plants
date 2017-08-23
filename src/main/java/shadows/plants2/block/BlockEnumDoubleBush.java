@@ -25,11 +25,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.IPropertyEnum;
+import shadows.plants2.data.enums.IFlowerEnum;
 import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockEnumDoubleBush<E extends Enum<E> & IPropertyEnum> extends BlockEnumBush<E> {
+public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockEnumFlower<E> {
 
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
 

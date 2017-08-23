@@ -284,13 +284,15 @@ public class NetherTreeGen extends EnumBasedTreeGen implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if (world.provider instanceof WorldProviderHell && random.nextFloat() < 0.15F) {
 			BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(chunkX * 16 + MathHelper.getInt(random, -2, 2) + 8, 0, chunkZ * 16 + MathHelper.getInt(random, -2, 2) + 8);
-			for(int i = 32; i <= 80; i++) {
+			for (int i = 32; i <= 80; i++) {
 				pos.setPos(pos.getX(), i, pos.getZ());
 				IBlockState state = world.getBlockState(pos);
 				int y = pos.getY();
-				if(isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ()))) break;
+				if (isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ())))
+					break;
 			}
-			if(pos.getY() >= 80) return;
+			if (pos.getY() >= 80)
+				return;
 			generate(world, random, pos.toImmutable());
 		}
 	}

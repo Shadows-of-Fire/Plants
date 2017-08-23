@@ -1,4 +1,4 @@
-package shadows.plants2.block;
+package shadows.plants2.block.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,6 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BushBase;
-import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
@@ -37,7 +35,7 @@ import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
 import shadows.plants2.util.RecipeHelper;
 
-public class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E>, IHasRecipe {
+public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E>, IHasRecipe {
 
 	protected final List<E> types = new ArrayList<E>();
 	protected final Predicate<E> valueFilter;

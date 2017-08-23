@@ -26,4 +26,8 @@ public interface IEnumBlock<E extends Enum<E> & IPropertyEnum> {
 
 	public boolean placeStateAt(IBlockState state, World world, BlockPos pos);
 
+	default public E getValue(IBlockState state) {
+		return state.getValue(getProperty());
+	}
+
 }

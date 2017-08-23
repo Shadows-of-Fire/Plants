@@ -13,11 +13,11 @@ public class BlockNetherSapling<E extends Enum<E> & ILogBasedPropertyEnum> exten
 	public BlockNetherSapling(String name, Class<E> clazz, int predicate) {
 		super(name, clazz, predicate);
 	}
-	
+
 	@Override
-    public boolean canPlaceBlockAt(World world, BlockPos pos){
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos.down());
-        return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (state.getBlock() instanceof BlockNetherrack || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.GRASS);
-    }
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (state.getBlock() instanceof BlockNetherrack || state.getMaterial() == Material.GROUND || state.getMaterial() == Material.GRASS);
+	}
 
 }

@@ -18,9 +18,9 @@ public class BlockEnumParticleLeaves<E extends Enum<E> & ILogBasedPropertyEnum &
 
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (rand.nextFloat() < 0.1F)
-				world.spawnParticle(state.getValue(property).getParticle(), pos.getX() + 0.5, pos.getY() - 0.8, pos.getZ() + 0.5, getDouble(rand), -0.1, getDouble(rand));
+			world.spawnParticle(state.getValue(property).getParticle(), pos.getX() + 0.5, pos.getY() - 0.8, pos.getZ() + 0.5, getDouble(rand), -0.1, getDouble(rand));
 	}
-	
+
 	public double getDouble(Random rand) {
 		return MathHelper.nextDouble(rand, -0.05, 0.05);
 	}

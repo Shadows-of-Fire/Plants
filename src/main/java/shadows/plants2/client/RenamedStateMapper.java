@@ -20,7 +20,7 @@ public class RenamedStateMapper implements IStateMapper {
 	public RenamedStateMapper(String path) {
 		this.path = path;
 	}
-	
+
 	public RenamedStateMapper(String path, String append) {
 		this.path = path;
 		this.append = append;
