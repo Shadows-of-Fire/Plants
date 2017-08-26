@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks.EnumType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -29,7 +30,7 @@ public class BushGen implements IWorldGenerator {
 		BlockPos genPos = new BlockPos(posX + MathHelper.getInt(rand, 2, 14), 0, posZ + MathHelper.getInt(rand, 2, 14));
 		genPos = world.getTopSolidOrLiquidBlock(genPos);
 		IBlockState state = world.getBlockState(genPos.down());
-		if (state.getBlock().canSustainPlant(state, world, genPos.down(), EnumFacing.DOWN, Blocks.TALLGRASS)) {
+		if (world.getBlockState(genPos).getMaterial() != Material.WATER && state.getBlock().canSustainPlant(state, world, genPos.down(), EnumFacing.DOWN, Blocks.TALLGRASS)) {
 			BUSHGENS[rand.nextInt(6)].generate(world, rand, genPos);
 		}
 	}
