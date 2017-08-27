@@ -148,7 +148,7 @@ public class ModRegistry {
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
-	
+
 	public static final Block FLOWERPOT = new BlockFlowerpot();
 
 	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
@@ -218,6 +218,6 @@ public class ModRegistry {
 
 	public static void tiles(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
-		
+
 	}
 }

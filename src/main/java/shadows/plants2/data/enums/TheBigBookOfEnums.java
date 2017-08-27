@@ -475,8 +475,7 @@ public class TheBigBookOfEnums {
 		ASH,
 		BLAZE,
 		BLACK_KAURI,
-		BRAZILLIAN_PINE,
-		;
+		BRAZILLIAN_PINE,;
 
 		EnumDyeColor color;
 		boolean flowers;
@@ -490,8 +489,8 @@ public class TheBigBookOfEnums {
 		AllPlants(boolean flowers) {
 			this(flowers, EnumDyeColor.WHITE);
 		}
-		
-		AllPlants(){
+
+		AllPlants() {
 			this(false);
 		}
 

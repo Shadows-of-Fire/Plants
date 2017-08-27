@@ -148,20 +148,20 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 			drops.add(getTileEntity(world, pos).getFlowerItemStack());
 		}
 	}
-	
+
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (rand.nextFloat() < 0.1F) {
 			AllPlants p = state.getValue(PROP);
-			if(p == AllPlants.ASH || p == AllPlants.BLAZE)
-			world.spawnParticle(p == AllPlants.ASH ? EnumParticleTypes.SMOKE_LARGE : EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, getDouble(rand), 0.05, getDouble(rand));
+			if (p == AllPlants.ASH || p == AllPlants.BLAZE)
+				world.spawnParticle(p == AllPlants.ASH ? EnumParticleTypes.SMOKE_LARGE : EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, getDouble(rand), 0.05, getDouble(rand));
 		}
 	}
 
 	public static double getDouble(Random rand) {
 		return MathHelper.nextDouble(rand, -0.05, 0.05);
 	}
-	
+
 	public boolean canTryPot(ItemStack toPlant) {
 		return toPlant.getItem() instanceof ItemBlock;
 	}

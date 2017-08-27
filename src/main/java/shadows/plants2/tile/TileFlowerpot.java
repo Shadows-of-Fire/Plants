@@ -17,10 +17,9 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.AllPlants;
 public class TileFlowerpot extends TileEntityFlowerPot {
 
 	public static final PropertyEnum<AllPlants> PROPERTY = PropertyEnum.create("type", AllPlants.class);
-	
+
 	private AllPlants flower = AllPlants.NONE;
 	private ItemStack stack = ItemStack.EMPTY;
-	
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
@@ -41,16 +40,16 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	public AllPlants getFlower() {
 		return flower;
 	}
-	
+
 	public void setFlower(AllPlants flower) {
 		this.flower = flower;
 	}
-	
+
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 		readFromNBT(pkt.getNbtCompound());
 	}
-	
+
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
 		return oldState.getBlock() != newState.getBlock();
@@ -75,7 +74,7 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	public void setItemStack(ItemStack stack) {
 		this.stack = stack.copy();
 	}
-	
+
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		return new SPacketUpdateTileEntity(this.pos, 150, this.getUpdateTag());
