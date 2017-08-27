@@ -2,6 +2,7 @@ package shadows.plants2.gen.forgotten;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.material.Material;
@@ -80,7 +81,7 @@ public class BushGen implements IWorldGenerator {
 		public boolean isReplaceable(World world, BlockPos pos) {
 			IBlockState state = world.getBlockState(pos);
 			boolean flag = state.getBlock().isReplaceable(world, pos);
-			if (flag && state.getBlock() == Blocks.DOUBLE_PLANT)
+			if (flag && state.getBlock() instanceof BlockDoublePlant)
 				world.setBlockToAir(pos.up());
 			return flag;
 		}

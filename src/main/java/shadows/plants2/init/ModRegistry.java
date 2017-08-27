@@ -13,7 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
@@ -56,6 +59,7 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
 import shadows.plants2.gen.EnumTreeGen;
+import shadows.plants2.gen.StructureGen;
 import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.gen.forgotten.NetherTreeGen;
 import shadows.plants2.item.ItemBigEnum;
@@ -153,8 +157,8 @@ public class ModRegistry {
 
 	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
 	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
-	public static final WorldGenerator KAURI_TREE = new EnumTreeGen(false, 4, LOG_0.getStateFor(Logs.BLACK_KAURI), LEAF_0.getStateFor(Logs.BLACK_KAURI), Logs.BLACK_KAURI);
-	public static final WorldGenerator PINE_TREE = new EnumTreeGen(false, 4, LOG_0.getStateFor(Logs.BRAZILLIAN_PINE), LEAF_0.getStateFor(Logs.BRAZILLIAN_PINE), Logs.BRAZILLIAN_PINE);
+	public static final WorldGenerator KAURI_TREE = new StructureGen(new ResourceLocation(Constants.MODID, "black_kauri_tree"), new BlockPos(-4, 0, -4),  Logs.BLACK_KAURI);
+	public static final WorldGenerator PINE_TREE = new StructureGen(new ResourceLocation(Constants.MODID, "brazillian_pine_tree"), new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
@@ -218,6 +222,5 @@ public class ModRegistry {
 
 	public static void tiles(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
-
 	}
 }

@@ -1,5 +1,6 @@
-itemGroup.plants2=plants2 (Cosmetic)
-itemGroup.plants2.items=plants2 (Items)
+itemGroup.plants=Plants
+
+tile.plants2.flowerpot.name=Flowerpot
 
 tile.plants2.allium_c.name=Flowering Onion
 tile.plants2.viola_c.name=Cry Violet
@@ -194,21 +195,22 @@ tile.plants2.bush.raspberry.name=Raspberry Leaves
 
 tile.plants2.log.ash.name=Nether Ash Wood
 tile.plants2.log.blaze.name=Nether Blaze Wood
+tile.plants2.log.black_kauri.name=Black Kauri Wood
+tile.plants2.log.brazillian_pine.name=Brazillian Pine Wood
 
 tile.plants2.sapling.ash.name=Nether Ash Sapling
 tile.plants2.sapling.blaze.name=Nether Blaze Sapling
+tile.plants2.sapling.black_kauri.name=Black Kauri Sapling
+tile.plants2.sapling.brazillian_pine.name=Brazillian Pine Sapling
 
 tile.plants2.leaves.ash.name=Nether Ash Leaves
 tile.plants2.leaves.blaze.name=Nether Blaze Leaves
+tile.plants2.leaves.black_kauri.name=Black Kauri Leaves
+tile.plants2.leaves.brazillian_pine.name=Brazillian Pine Leaves
 
 tile.plants2.planks.ash.name=Nether Ash Wood Planks
 tile.plants2.planks.blaze.name=Nether Blaze Wood Planks
-
-
-
-
-
-
-
+tile.plants2.planks.black_kauri.name=Black Kauri Wood Planks
+tile.plants2.planks.brazillian_pine.name=Brazillian Pine Wood Planks
 
 

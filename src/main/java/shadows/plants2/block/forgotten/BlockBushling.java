@@ -8,6 +8,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
@@ -19,6 +20,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnumBush;
@@ -52,6 +54,11 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	@Override
 	public BlockStateContainer createStateContainer() {
 		return new BlockStateContainer(this, property, Constants.INV);
+	}
+	
+	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.bushling";
 	}
 
 	@Override
@@ -152,6 +159,18 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 		IBlockState state = world.getBlockState(pos.down());
 		return super.canPlaceBlockAt(world, pos) && state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, this);
 
+	}
+	
+	@Override
+	protected void addStatesToList() {
+	}
+
+	protected int getMaxEnumValues() {
+		return 8;
+	}
+
+	@Override
+	public void initRecipes(Register<IRecipe> event) {
 	}
 
 }

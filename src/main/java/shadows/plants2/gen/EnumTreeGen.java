@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -34,6 +35,11 @@ public class EnumTreeGen extends WorldGenTrees implements IPostInitUpdate {
 	public void postInit(FMLPostInitializationEvent e) {
 		k.setTreeGen(this);
 	}
+	
+	public boolean canGen(World world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos.down());
+		return world.getBlockState(pos).getMaterial() != Material.WATER && state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.DOWN, Blocks.TALLGRASS);
+	}
 
 	public static class TreeGenerator implements IWorldGenerator {
 
@@ -47,9 +53,9 @@ public class EnumTreeGen extends WorldGenTrees implements IPostInitUpdate {
 			int posZ = chunkZ * 16;
 			BlockPos genPos = new BlockPos(posX + MathHelper.getInt(random, 6, 10), 0, posZ + MathHelper.getInt(random, 6, 10));
 			genPos = world.getTopSolidOrLiquidBlock(genPos);
-			IBlockState state = world.getBlockState(genPos.down());
-			if (state.getBlock().canSustainPlant(state, world, genPos.down(), EnumFacing.DOWN, Blocks.TALLGRASS)) {
-				LIST.get(random.nextInt(LIST.size())).generate(world, random, genPos);
+			EnumTreeGen toGen = LIST.get(random.nextInt(LIST.size()));
+			if (toGen.canGen(world, genPos)) {
+				toGen.generate(world, random, genPos);
 			}
 		}
 	}
