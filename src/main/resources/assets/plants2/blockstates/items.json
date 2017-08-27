@@ -74,7 +74,8 @@
 			"excalibur": {
 				"textures": {
 					"layer0": "plants2:items/excalibur"
-				}
+				},
+				"transform": "forge:default-tool"
 			},
 			"phytolacca_a": {
 				"textures": {

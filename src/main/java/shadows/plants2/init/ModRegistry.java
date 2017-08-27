@@ -19,6 +19,7 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -33,6 +34,7 @@ import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
 import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
+import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
@@ -61,6 +63,7 @@ import shadows.plants2.item.ItemExcalibur;
 import shadows.plants2.item.ItemFoodBase;
 import shadows.plants2.item.ItemPlantball;
 import shadows.plants2.item.ItemSeed;
+import shadows.plants2.tile.TileFlowerpot;
 
 public class ModRegistry {
 
@@ -145,6 +148,8 @@ public class ModRegistry {
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
+	
+	public static final Block FLOWERPOT = new BlockFlowerpot();
 
 	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
 	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
@@ -209,5 +214,10 @@ public class ModRegistry {
 		GameRegistry.registerWorldGenerator(new BushGen(), 25);
 		GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
 		GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
+	}
+
+	public static void tiles(FMLPreInitializationEvent e) {
+		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
+		
 	}
 }

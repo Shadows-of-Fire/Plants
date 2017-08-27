@@ -43,6 +43,7 @@ public class Plants2 {
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
 		config = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
 		Config.syncConfig(config);
+		ModRegistry.tiles(e);
 		proxy.preInit(e);
 	}
 
