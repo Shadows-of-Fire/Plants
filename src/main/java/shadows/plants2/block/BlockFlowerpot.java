@@ -2,6 +2,7 @@ package shadows.plants2.block;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -22,8 +23,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -145,7 +148,20 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 			drops.add(getTileEntity(world, pos).getFlowerItemStack());
 		}
 	}
+	
+	@Override
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (rand.nextFloat() < 0.1F) {
+			AllPlants p = state.getValue(PROP);
+			if(p == AllPlants.ASH || p == AllPlants.BLAZE)
+			world.spawnParticle(p == AllPlants.ASH ? EnumParticleTypes.SMOKE_LARGE : EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, getDouble(rand), 0.05, getDouble(rand));
+		}
+	}
 
+	public static double getDouble(Random rand) {
+		return MathHelper.nextDouble(rand, -0.05, 0.05);
+	}
+	
 	public boolean canTryPot(ItemStack toPlant) {
 		return toPlant.getItem() instanceof ItemBlock;
 	}

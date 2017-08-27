@@ -639,6 +639,91 @@
 			},
 			"none": {
 				"model": "flower_pot"
+			},
+			"actaea_p": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/actaea_p/fruit"
+				}
+			},
+			"alternanthera_f": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/alternanthera_f/fruit"
+				}
+			},
+			"ambrosia_a": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/ambrosia_a/fruit"
+				}
+			},
+			"apocynum_c": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/apocynum_c/fruit"
+				}
+			},
+			"daucus_c": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/daucus_c/fruit"
+				}
+			},
+			"phytolacca_a": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/phytolacca_a/fruit"
+				}
+			},
+			"plantago_m": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/plantago_m/fruit"
+				}
+			},
+			"rubus_o": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/rubus_o/fruit"
+				}
+			},
+			"rubus_p": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/rubus_p/fruit"
+				}
+			},
+			"saffron": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/saffron/fruit"
+				}
+			},
+			"solanum_c": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/solanum_c/fruit"
+				}
+			},
+			"solanum_d": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/solanum_d/fruit"
+				}
+			},
+			"solanum_n": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/harvestable/solanum_n/fruit"
+				}
+			},
+			"ash": {
+				"textures": {
+					"plant": "plants2:blocks/forgotten/nether/ash_sapling"
+				}
+			},
+			"blaze": {
+				"textures": {
+					"plant": "plants2:blocks/forgotten/nether/blaze_sapling"
+				}
+			},
+			"black_kauri": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/tree/black_kauri_sapling"
+				}
+			},
+			"brazillian_pine": {
+				"textures": {
+					"plant": "plants2:blocks/cosmetic/tree/brazillian_pine_sapling"
+				}
 			}
 		},
 		"inventory": {

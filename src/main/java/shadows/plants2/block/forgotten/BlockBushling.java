@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,20 +21,20 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BlockEnum;
+import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockBushling extends BlockEnum<BushSet> implements IGrowable, IPlantable {
+public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, IPlantable {
 
 	public static final AxisAlignedBB BUSH_AABB = new AxisAlignedBB(.25, 0, .25, .75, 0.5625, .75);
 	public static final AxisAlignedBB BIG_BUSH_AABB = new AxisAlignedBB(.125, 0, .125, .875, 0.625, .875);
 
 	public BlockBushling() {
-		super("bushling", Material.PLANTS, SoundType.PLANT, 0, 0, BushSet.class);
+		super("bushling", EnumPlantType.Plains, BushSet.class, 0);
 		setSoundType(SoundType.PLANT);
 		setTickRandomly(true);
 		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(Constants.INV, false));

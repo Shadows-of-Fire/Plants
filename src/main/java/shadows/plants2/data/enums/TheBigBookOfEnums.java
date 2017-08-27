@@ -458,7 +458,25 @@ public class TheBigBookOfEnums {
 		DECIDUOUS(false),
 		EVERGREEN(false),
 		HUCKLEBERRY(false),
-		RASPBERRY(false),;
+		RASPBERRY(false),
+		ACTAEA_P,
+		ALTERNANTHERA_F,
+		AMBROSIA_A,
+		APOCYNUM_C,
+		DAUCUS_C,
+		PHYTOLACCA_A,
+		PLANTAGO_M,
+		RUBUS_O,
+		RUBUS_P,
+		SAFFRON,
+		SOLANUM_C,
+		SOLANUM_D,
+		SOLANUM_N,
+		ASH,
+		BLAZE,
+		BLACK_KAURI,
+		BRAZILLIAN_PINE,
+		;
 
 		EnumDyeColor color;
 		boolean flowers;
