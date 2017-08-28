@@ -24,6 +24,16 @@
 				"textures": {
 					"all": "plants2:blocks/cosmetic/tree/brazillian_pine_leaves"
 				}
+			},
+			"incense_cedar": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/incense_cedar_leaves"
+				}
+			},
+			"murray_pine": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/murray_pine_leaves"
+				}
 			}
 		},
 		"decayable": {

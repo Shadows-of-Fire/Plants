@@ -62,10 +62,9 @@ public class Decorator {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void flowerForestDeco(DecorateBiomeEvent.Decorate event) {
 		if (!event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == Biome.getBiome(132) && Config.literallyTakeoverFlowerForests && Config.generation) {
-			for (int ih = 4; ih > 0; ih--) {
+			for (int ih = 8; ih > 0; ih--) {
 				IBlockState state = PlantUtil.getFlowerState(event.getRand());
-				if (state != null)
-					PlantUtil.genMegaPatch(event.getWorld(), event.getPos(), event.getRand(), state);
+				PlantUtil.genFlowerPatch(event.getWorld(), event.getPos(), event.getRand(), state);
 			}
 		}
 	}

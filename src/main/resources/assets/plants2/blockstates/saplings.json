@@ -25,6 +25,16 @@
 				"textures": {
 					"cross": "plants2:blocks/cosmetic/tree/brazillian_pine_sapling"
 				}
+			},
+			"incense_cedar": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/tree/incense_cedar_sapling"
+				}
+			},
+			"murray_pine": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/tree/murray_pine_sapling"
+				}
 			}
 		},
 		"inventory": {

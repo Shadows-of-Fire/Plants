@@ -159,6 +159,8 @@ public class ModRegistry {
 	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
 	public static final WorldGenerator KAURI_TREE = new StructureGen(new ResourceLocation(Constants.MODID, "black_kauri_tree"), new BlockPos(-4, 0, -4),  Logs.BLACK_KAURI);
 	public static final WorldGenerator PINE_TREE = new StructureGen(new ResourceLocation(Constants.MODID, "brazillian_pine_tree"), new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
+	public static final WorldGenerator INCENSE_TREE = new EnumTreeGen<Logs>(true, 4, LOG_0, LEAF_0, Logs.INCENSE_CEDAR);
+	public static final WorldGenerator MURRAY_TREE = new EnumTreeGen<Logs>(true, 4, LOG_0, LEAF_0, Logs.MURRAY_PINE);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

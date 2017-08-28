@@ -60,7 +60,9 @@ public class LaterEnums {
 		ASH(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.ASH.getMetadata())),
 		BLAZE(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.BLAZE.getMetadata())),
 		BLACK_KAURI(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BLACK_KAURI.getMetadata())),
-		BRAZILLIAN_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BRAZILLIAN_PINE.getMetadata())),;
+		BRAZILLIAN_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BRAZILLIAN_PINE.getMetadata())),
+		INCENSE_CEDAR(new StackPrimer(ModRegistry.LOG_0, 1, Logs.INCENSE_CEDAR.getMetadata())),
+		MURRAY_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.MURRAY_PINE.getMetadata())),;
 
 		private StackPrimer primer;
 

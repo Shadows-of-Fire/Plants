@@ -24,6 +24,16 @@
 				"textures": {
 					"all": "plants2:blocks/cosmetic/tree/brazillian_pine_planks"
 				}
+			},
+			"incense_cedar_planks": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/incense_cedar_planks"
+				}
+			},
+			"murray_pine_planks": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/murray_pine_planks"
+				}
 			}
 		}
 	}

@@ -13,15 +13,15 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import shadows.plants2.data.enums.ITreeEnum;
 
-public class StructureGen extends EnumTreeGen {
+public class StructureGen extends EnumTreeGen<ITreeEnum> {
 
 	protected TreeTemplate structure = null;
 	protected final ResourceLocation structurePath;
 	protected BlockPos offset;
 	protected Type[] allowedBiomes;
-
+	
 	public StructureGen(ResourceLocation structurePath, BlockPos offset, ITreeEnum assign, Type... allowedBiomes) {
-		super(false, 0, null, null, assign);
+		super(assign);
 		this.structurePath = structurePath;
 		this.offset = offset;
 		this.allowedBiomes = allowedBiomes;
