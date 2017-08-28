@@ -190,8 +190,7 @@ public class TheBigBookOfEnums {
 		COULTERS_JEWELFLOWER(true, EnumDyeColor.BROWN),
 		DISTANT_SCORPIONWEED(true, EnumDyeColor.PURPLE),
 		NEGLECTED_SCORPIONWEED(true, EnumDyeColor.BROWN),
-		SAGEBRUSH(false, EnumDyeColor.GREEN),
-		;
+		SAGEBRUSH(false, EnumDyeColor.GREEN),;
 
 		EnumDyeColor color;
 		boolean flowers;
@@ -220,11 +219,11 @@ public class TheBigBookOfEnums {
 
 	public static enum Double implements IFlowerEnum {
 		ABELIA_C(true, EnumDyeColor.WHITE),
-        ABRONIA_A(true, EnumDyeColor.PURPLE),
-        ACANTHUS_B(true, EnumDyeColor.PINK),
-        ADENOCARPUS_F(true, EnumDyeColor.YELLOW),
-        AGONIS_T(true, EnumDyeColor.WHITE),
-        ALONSOA_M(true, EnumDyeColor.RED),;
+		ABRONIA_A(true, EnumDyeColor.PURPLE),
+		ACANTHUS_B(true, EnumDyeColor.PINK),
+		ADENOCARPUS_F(true, EnumDyeColor.YELLOW),
+		AGONIS_T(true, EnumDyeColor.WHITE),
+		ALONSOA_M(true, EnumDyeColor.RED),;
 
 		EnumDyeColor color;
 		boolean flowers;

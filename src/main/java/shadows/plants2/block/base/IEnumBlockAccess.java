@@ -6,5 +6,5 @@ import shadows.plants2.data.enums.IPropertyEnum;
 public interface IEnumBlockAccess<E extends IPropertyEnum> {
 
 	IBlockState getStateFor(E e);
-	
+
 }

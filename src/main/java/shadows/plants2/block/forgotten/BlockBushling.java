@@ -55,7 +55,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	public BlockStateContainer createStateContainer() {
 		return new BlockStateContainer(this, property, Constants.INV);
 	}
-	
+
 	@Override
 	public String getUnlocalizedName() {
 		return "tile.plants2.bushling";
@@ -160,7 +160,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 		return super.canPlaceBlockAt(world, pos) && state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, this);
 
 	}
-	
+
 	@Override
 	protected void addStatesToList() {
 	}
