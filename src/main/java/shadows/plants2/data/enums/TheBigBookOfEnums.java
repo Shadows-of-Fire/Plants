@@ -521,17 +521,17 @@ public class TheBigBookOfEnums {
 
 		final boolean hasLight;
 		final EnumDyeColor color;
-		
-		AllPlants(boolean hasLight, EnumDyeColor color){
+
+		AllPlants(boolean hasLight, EnumDyeColor color) {
 			this.hasLight = hasLight;
 			this.color = color;
 			NAME_TO_ENUM.put(getName(), this);
 		}
-		
-		AllPlants(EnumDyeColor color){
+
+		AllPlants(EnumDyeColor color) {
 			this(false, color);
 		}
-		
+
 		AllPlants(boolean hasLight) {
 			this(hasLight, EnumDyeColor.WHITE);
 		}
@@ -539,12 +539,12 @@ public class TheBigBookOfEnums {
 		AllPlants() {
 			this(false);
 		}
-		
+
 		@Override
 		public EnumDyeColor getColor() {
 			return color;
 		}
-		
+
 		public boolean hasLight() {
 			return hasLight;
 		}

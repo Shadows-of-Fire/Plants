@@ -162,7 +162,8 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if(Loader.isModLoaded(Constants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_")) BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
+		if (Loader.isModLoaded(Constants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_"))
+			BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
 		if (rand.nextFloat() < 0.1F) {
 			AllPlants p = state.getValue(PROP);
 			if (p == AllPlants.ASH || p == AllPlants.BLAZE)

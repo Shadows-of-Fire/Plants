@@ -24,7 +24,7 @@ public class BotaniaFlowerpot {
 			return "b_sflower_" + state.getValue(BotaniaStateProps.COLOR).getName();
 		return "none";
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		int hex = state.getValue(BlockFlowerpot.PROP).getColor().getColorValue();
@@ -32,7 +32,7 @@ public class BotaniaFlowerpot {
 		int g = (hex & 0xFF00) >> 8;
 		int b = hex & 0xFF;
 
-		if(rand.nextDouble() < ConfigHandler.flowerParticleFrequency)
+		if (rand.nextDouble() < ConfigHandler.flowerParticleFrequency)
 			Botania.proxy.sparkleFX(pos.getX() + 0.3 + rand.nextFloat() * 0.5, pos.getY() + 0.5 + rand.nextFloat() * 0.5, pos.getZ() + 0.3 + rand.nextFloat() * 0.5, r / 255F, g / 255F, b / 255F, rand.nextFloat(), 5);
 	}
 
