@@ -40,6 +40,7 @@ import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.client.IHasModel;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.compat.BotaniaFlowerpot;
+import shadows.plants2.compat.ForestryIntegration.ForestryFlowerpot;
 import shadows.plants2.compat.IFlowerpotHandler;
 import shadows.plants2.compat.TFFlowerpot;
 import shadows.plants2.data.Constants;
@@ -72,6 +73,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	private void initModHandlers() {
 		if(Loader.isModLoaded(Constants.TF_ID)) HANDLERS.add(new TFFlowerpot());
 		if(Loader.isModLoaded(Constants.BOTANIA_ID)) HANDLERS.add(new BotaniaFlowerpot());
+		if(Loader.isModLoaded(Constants.FORESTRY_ID)) HANDLERS.add(new ForestryFlowerpot());
 	}
 
 	@Override
@@ -114,9 +116,6 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 		ItemStack stack = pot.getFlowerItemStack();
 
 		if (stack.isEmpty()) {
-			if (!canTryPot(held))
-				return false;
-			else {
 				Block block = Block.getBlockFromItem(held.getItem());
 				IBlockState toUse = block.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
 
@@ -128,9 +127,9 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 				} else if (block == Blocks.RED_FLOWER || block == Blocks.YELLOW_FLOWER)
 					name = toUse.getValue(((BlockFlower) block).getTypeProperty()).getName();
 				else if (block == Blocks.RED_MUSHROOM)
-					name = "red_mushroom";
+					name = "mushroom_red";
 				else if (block == Blocks.BROWN_MUSHROOM)
-					name = "brown_mushroom";
+					name = "mushroom_brown";
 				else if (block == Blocks.SAPLING)
 					name = toUse.getValue(BlockSapling.TYPE).getName() + "_sapling";
 				else if (block == Blocks.DEADBUSH)
@@ -141,8 +140,8 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 					name = "fern";
 				else
 					for (IFlowerpotHandler handler : HANDLERS) {
-						if (PlantUtil.isOwnedBy(block, handler.getModId()))
-							name = handler.getFinalName(toUse);
+						if (PlantUtil.isOwnedBy(block, handler.getModId()) || PlantUtil.isOwnedBy(held.getItem(), handler.getModId()))
+							name = handler.getFinalName(toUse, held);
 					}
 
 				plant = TheBigBookOfEnums.NAME_TO_ENUM.get(name);
@@ -150,11 +149,12 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 				if (plant == FlowerpotPlants.NONE || plant == null)
 					return false;
 				pot.setFlower(plant);
-				pot.setItemStack(new ItemStack(held.getItem(), 1, held.getMetadata()));
+				ItemStack toSet = new ItemStack(held.getItem(), 1, held.getMetadata());
+				if(held.getTagCompound() != null) toSet.setTagCompound(held.getTagCompound());
+				pot.setItemStack(toSet);
 				world.setBlockState(pos, getDefaultState().withProperty(PROP, pot.getFlower()));
 				if (!player.capabilities.isCreativeMode)
 					held.shrink(1);
-			}
 		} else {
 			if (player.addItemStackToInventory(pot.getFlowerItemStack())) {
 				pot.setFlower(FlowerpotPlants.NONE);
@@ -189,10 +189,6 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 	public static double getDouble(Random rand) {
 		return MathHelper.nextDouble(rand, -0.05, 0.05);
-	}
-
-	public boolean canTryPot(ItemStack toPlant) {
-		return toPlant.getItem() instanceof ItemBlock;
 	}
 
 	@Override

@@ -630,6 +630,7 @@
 				}
 			},
 			"fern": {
+				"model": "plants2:flowerpot/tintindex_pot",
 				"textures": {
 					"plant": "blocks/fern"
 				}
@@ -1033,6 +1034,167 @@
 				"textures": {
 					"plant": "plants2:blocks/integration/tf_mushgloom",
 					"bright": "plants2:blocks/integration/tf_mushgloom_head"
+				}
+			},
+			"tf_fiddlehead": {
+				"model": "plants2:flowerpot/tintindex_pot",
+				"textures": {
+					"plant": "plants2:blocks/integration/tf_fiddlehead"
+				}
+			},
+			"tf_waterlily": {
+				"textures": {
+					"plant": "twilightforest:blocks/huge_waterlily"
+				}
+			},
+			"f_sapling_acacia": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_acacia"
+				}
+			},
+			"f_sapling_balsa": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_balsa"
+				}
+			},
+			"f_sapling_baobab": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_baobab"
+				}
+			},
+			"f_sapling_cherry": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_cherry"
+				}
+			},
+			"f_sapling_chestnut": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_chestnut"
+				}
+			},
+			"f_sapling_cocobolo": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_cocobolo"
+				}
+			},
+			"f_sapling_date": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_date"
+				}
+			},
+			"f_sapling_ebony": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_ebony"
+				}
+			},
+			"f_sapling_gigant": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_gigant"
+				}
+			},
+			"f_sapling_ipe": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_ipe"
+				}
+			},
+			"f_sapling_kapok": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_kapok"
+				}
+			},
+			"f_sapling_larch": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_larch"
+				}
+			},
+			"f_sapling_lemon": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_lemon"
+				}
+			},
+			"f_sapling_lime": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_lime"
+				}
+			},
+			"f_sapling_mahoe": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_mahoe"
+				}
+			},
+			"f_sapling_mahogany": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_mahogany"
+				}
+			},
+			"f_sapling_maple": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_maple"
+				}
+			},
+			"f_sapling_padauk": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_padauk"
+				}
+			},
+			"f_sapling_papaya": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_papaya"
+				}
+			},
+			"f_sapling_pine": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_pine"
+				}
+			},
+			"f_sapling_plum": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_plum"
+				}
+			},
+			"f_sapling_poplar": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_poplar"
+				}
+			},
+			"f_sapling_rubber": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_rubber"
+				}
+			},
+			"f_sapling_sequoia": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_sequoia"
+				}
+			},
+			"f_sapling_sipiri": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_sipiri"
+				}
+			},
+			"f_sapling_teak": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_teak"
+				}
+			},
+			"f_sapling_walnut": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_walnut"
+				}
+			},
+			"f_sapling_wenge": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_wenge"
+				}
+			},
+			"f_sapling_willow": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_willow"
+				}
+			},
+			"f_sapling_zebrawood": {
+				"textures": {
+					"plant": "forestry:blocks/germlings/sapling.tree_zebrawood"
 				}
 			}
 		},

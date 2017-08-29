@@ -26,14 +26,16 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		super.readFromNBT(tag);
 		flower = FlowerpotPlants.values()[tag.getInteger("flower")];
 		stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
+		stack.setTagCompound(tag.getCompoundTag("stack_nbt"));
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		tag.setInteger("flower", this.flower.ordinal());
+		tag.setInteger("flower", flower.ordinal());
 		tag.setString("item", stack.getItem().getRegistryName().toString());
 		tag.setInteger("meta", stack.getMetadata());
+		tag.setTag("stack_nbt", stack.getTagCompound() == null ? new NBTTagCompound() : stack.getTagCompound());
 		return tag;
 	}
 
