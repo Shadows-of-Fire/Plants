@@ -12,19 +12,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import shadows.plants2.data.enums.TheBigBookOfEnums.AllPlants;
+import shadows.plants2.data.enums.TheBigBookOfEnums.FlowerpotPlants;
 
 public class TileFlowerpot extends TileEntityFlowerPot {
 
-	public static final PropertyEnum<AllPlants> PROPERTY = PropertyEnum.create("type", AllPlants.class);
+	public static final PropertyEnum<FlowerpotPlants> PROPERTY = PropertyEnum.create("type", FlowerpotPlants.class);
 
-	private AllPlants flower = AllPlants.NONE;
+	private FlowerpotPlants flower = FlowerpotPlants.NONE;
 	private ItemStack stack = ItemStack.EMPTY;
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		flower = AllPlants.values()[tag.getInteger("flower")];
+		flower = FlowerpotPlants.values()[tag.getInteger("flower")];
 		stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
 	}
 
@@ -37,11 +37,11 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		return tag;
 	}
 
-	public AllPlants getFlower() {
+	public FlowerpotPlants getFlower() {
 		return flower;
 	}
 
-	public void setFlower(AllPlants flower) {
+	public void setFlower(FlowerpotPlants flower) {
 		this.flower = flower;
 	}
 

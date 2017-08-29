@@ -1,0 +1,29 @@
+package shadows.plants2.compat;
+
+import net.minecraft.block.state.IBlockState;
+import shadows.plants2.data.Constants;
+import twilightforest.block.BlockTFPlant;
+import twilightforest.block.BlockTFSapling;
+import twilightforest.block.TFBlocks;
+
+public class TFFlowerpot implements IFlowerpotHandler {
+
+	@Override
+	public String handleFlowerpot(IBlockState state) {
+		if(state.getBlock() == TFBlocks.plant) return state.getValue(BlockTFPlant.VARIANT).getName();
+		if(state.getBlock() == TFBlocks.sapling) return state.getValue(BlockTFSapling.TF_TYPE).getName() + "_sapling";
+		
+		return "none";
+	}
+
+	@Override
+	public String getModId() {
+		return Constants.TF_ID;
+	}
+
+	@Override
+	public String getStatePrefix() {
+		return "tf_";
+	}
+	
+}

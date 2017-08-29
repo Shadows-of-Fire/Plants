@@ -319,9 +319,9 @@ public class TheBigBookOfEnums {
 
 	}
 
-	public static final Map<String, AllPlants> NAME_TO_ENUM = new HashMap<>();
+	public static final Map<String, FlowerpotPlants> NAME_TO_ENUM = new HashMap<>();
 
-	public static enum AllPlants implements IFlowerEnum {
+	public static enum FlowerpotPlants implements IFlowerEnum {
 		NONE,
 		ABELIOPHYLLUM_D,
 		ABROMA_A,
@@ -468,76 +468,87 @@ public class TheBigBookOfEnums {
 		BRAZILLIAN_PINE,
 		INCENSE_CEDAR,
 		MURRAY_PINE,
-		B_FLOWER_WHITE(false, EnumDyeColor.WHITE),
-		B_FLOWER_ORANGE(false, EnumDyeColor.ORANGE),
-		B_FLOWER_MAGENTA(false, EnumDyeColor.MAGENTA),
-		B_FLOWER_LIGHT_BLUE(false, EnumDyeColor.LIGHT_BLUE),
-		B_FLOWER_YELLOW(false, EnumDyeColor.YELLOW),
-		B_FLOWER_LIME(false, EnumDyeColor.LIME),
-		B_FLOWER_PINK(false, EnumDyeColor.PINK),
-		B_FLOWER_GRAY(false, EnumDyeColor.GRAY),
-		B_FLOWER_SILVER(false, EnumDyeColor.SILVER),
-		B_FLOWER_CYAN(false, EnumDyeColor.CYAN),
-		B_FLOWER_PURPLE(false, EnumDyeColor.PURPLE),
-		B_FLOWER_BLUE(false, EnumDyeColor.BLUE),
-		B_FLOWER_BROWN(false, EnumDyeColor.BROWN),
-		B_FLOWER_GREEN(false, EnumDyeColor.GREEN),
-		B_FLOWER_RED(false, EnumDyeColor.RED),
-		B_FLOWER_BLACK(false, EnumDyeColor.BLACK),
-		B_MUSHROOM_WHITE(true, EnumDyeColor.WHITE),
-		B_MUSHROOM_ORANGE(true, EnumDyeColor.ORANGE),
-		B_MUSHROOM_MAGENTA(true, EnumDyeColor.MAGENTA),
-		B_MUSHROOM_LIGHT_BLUE(true, EnumDyeColor.LIGHT_BLUE),
-		B_MUSHROOM_YELLOW(true, EnumDyeColor.YELLOW),
-		B_MUSHROOM_LIME(true, EnumDyeColor.LIME),
-		B_MUSHROOM_PINK(true, EnumDyeColor.PINK),
-		B_MUSHROOM_GRAY(true, EnumDyeColor.GRAY),
-		B_MUSHROOM_SILVER(true, EnumDyeColor.SILVER),
-		B_MUSHROOM_CYAN(true, EnumDyeColor.CYAN),
-		B_MUSHROOM_PURPLE(true, EnumDyeColor.PURPLE),
-		B_MUSHROOM_BLUE(true, EnumDyeColor.BLUE),
-		B_MUSHROOM_BROWN(true, EnumDyeColor.BROWN),
-		B_MUSHROOM_GREEN(true, EnumDyeColor.GREEN),
-		B_MUSHROOM_RED(true, EnumDyeColor.RED),
-		B_MUSHROOM_BLACK(true, EnumDyeColor.BLACK),
-		B_SFLOWER_WHITE(true, EnumDyeColor.WHITE),
-		B_SFLOWER_ORANGE(true, EnumDyeColor.ORANGE),
-		B_SFLOWER_MAGENTA(true, EnumDyeColor.MAGENTA),
-		B_SFLOWER_LIGHT_BLUE(true, EnumDyeColor.LIGHT_BLUE),
-		B_SFLOWER_YELLOW(true, EnumDyeColor.YELLOW),
-		B_SFLOWER_LIME(true, EnumDyeColor.LIME),
-		B_SFLOWER_PINK(true, EnumDyeColor.PINK),
-		B_SFLOWER_GRAY(true, EnumDyeColor.GRAY),
-		B_SFLOWER_SILVER(true, EnumDyeColor.SILVER),
-		B_SFLOWER_CYAN(true, EnumDyeColor.CYAN),
-		B_SFLOWER_PURPLE(true, EnumDyeColor.PURPLE),
-		B_SFLOWER_BLUE(true, EnumDyeColor.BLUE),
-		B_SFLOWER_BROWN(true, EnumDyeColor.BROWN),
-		B_SFLOWER_GREEN(true, EnumDyeColor.GREEN),
-		B_SFLOWER_RED(true, EnumDyeColor.RED),
-		B_SFLOWER_BLACK(true, EnumDyeColor.BLACK),
-
+		B_FLOWER_WHITE(0, EnumDyeColor.WHITE),
+		B_FLOWER_ORANGE(0, EnumDyeColor.ORANGE),
+		B_FLOWER_MAGENTA(0, EnumDyeColor.MAGENTA),
+		B_FLOWER_LIGHT_BLUE(0, EnumDyeColor.LIGHT_BLUE),
+		B_FLOWER_YELLOW(0, EnumDyeColor.YELLOW),
+		B_FLOWER_LIME(0, EnumDyeColor.LIME),
+		B_FLOWER_PINK(0, EnumDyeColor.PINK),
+		B_FLOWER_GRAY(0, EnumDyeColor.GRAY),
+		B_FLOWER_SILVER(0, EnumDyeColor.SILVER),
+		B_FLOWER_CYAN(0, EnumDyeColor.CYAN),
+		B_FLOWER_PURPLE(0, EnumDyeColor.PURPLE),
+		B_FLOWER_BLUE(0, EnumDyeColor.BLUE),
+		B_FLOWER_BROWN(0, EnumDyeColor.BROWN),
+		B_FLOWER_GREEN(0, EnumDyeColor.GREEN),
+		B_FLOWER_RED(0, EnumDyeColor.RED),
+		B_FLOWER_BLACK(0, EnumDyeColor.BLACK),
+		B_MUSHROOM_WHITE(15, EnumDyeColor.WHITE),
+		B_MUSHROOM_ORANGE(15, EnumDyeColor.ORANGE),
+		B_MUSHROOM_MAGENTA(15, EnumDyeColor.MAGENTA),
+		B_MUSHROOM_LIGHT_BLUE(15, EnumDyeColor.LIGHT_BLUE),
+		B_MUSHROOM_YELLOW(15, EnumDyeColor.YELLOW),
+		B_MUSHROOM_LIME(15, EnumDyeColor.LIME),
+		B_MUSHROOM_PINK(15, EnumDyeColor.PINK),
+		B_MUSHROOM_GRAY(15, EnumDyeColor.GRAY),
+		B_MUSHROOM_SILVER(15, EnumDyeColor.SILVER),
+		B_MUSHROOM_CYAN(15, EnumDyeColor.CYAN),
+		B_MUSHROOM_PURPLE(15, EnumDyeColor.PURPLE),
+		B_MUSHROOM_BLUE(15, EnumDyeColor.BLUE),
+		B_MUSHROOM_BROWN(15, EnumDyeColor.BROWN),
+		B_MUSHROOM_GREEN(15, EnumDyeColor.GREEN),
+		B_MUSHROOM_RED(15, EnumDyeColor.RED),
+		B_MUSHROOM_BLACK(15, EnumDyeColor.BLACK),
+		B_SFLOWER_WHITE(15, EnumDyeColor.WHITE),
+		B_SFLOWER_ORANGE(15, EnumDyeColor.ORANGE),
+		B_SFLOWER_MAGENTA(15, EnumDyeColor.MAGENTA),
+		B_SFLOWER_LIGHT_BLUE(15, EnumDyeColor.LIGHT_BLUE),
+		B_SFLOWER_YELLOW(15, EnumDyeColor.YELLOW),
+		B_SFLOWER_LIME(15, EnumDyeColor.LIME),
+		B_SFLOWER_PINK(15, EnumDyeColor.PINK),
+		B_SFLOWER_GRAY(15, EnumDyeColor.GRAY),
+		B_SFLOWER_SILVER(15, EnumDyeColor.SILVER),
+		B_SFLOWER_CYAN(15, EnumDyeColor.CYAN),
+		B_SFLOWER_PURPLE(15, EnumDyeColor.PURPLE),
+		B_SFLOWER_BLUE(15, EnumDyeColor.BLUE),
+		B_SFLOWER_BROWN(15, EnumDyeColor.BROWN),
+		B_SFLOWER_GREEN(15, EnumDyeColor.GREEN),
+		B_SFLOWER_RED(15, EnumDyeColor.RED),
+		B_SFLOWER_BLACK(15, EnumDyeColor.BLACK),
+		TF_MAYAPPLE,
+		TF_OAK_SAPLING,
+		TF_CANOPY_SAPLING,
+		TF_MANGROVE_SAPLING,
+		TF_DARKWOOD_SAPLING,
+		TF_HOLLOW_OAK_SAPLING,
+		TF_TIME_SAPLING,
+		TF_TRANSFORMATION_SAPLING,
+		TF_MINING_SAPLING,
+		TF_SORTING_SAPLING,
+		TF_RAINBOW_SAPLING,
+		TF_MUSHGLOOM(3),
 		;
 
-		final boolean hasLight;
+		final int light;
 		final EnumDyeColor color;
 
-		AllPlants(boolean hasLight, EnumDyeColor color) {
-			this.hasLight = hasLight;
+		FlowerpotPlants(int light, EnumDyeColor color) {
+			this.light = light;
 			this.color = color;
 			NAME_TO_ENUM.put(getName(), this);
 		}
 
-		AllPlants(EnumDyeColor color) {
-			this(false, color);
+		FlowerpotPlants(EnumDyeColor color) {
+			this(0, color);
 		}
 
-		AllPlants(boolean hasLight) {
-			this(hasLight, EnumDyeColor.WHITE);
+		FlowerpotPlants(int light) {
+			this(light, EnumDyeColor.WHITE);
 		}
 
-		AllPlants() {
-			this(false);
+		FlowerpotPlants() {
+			this(0);
 		}
 
 		@Override
@@ -545,8 +556,8 @@ public class TheBigBookOfEnums {
 			return color;
 		}
 
-		public boolean hasLight() {
-			return hasLight;
+		public int getLightLevel() {
+			return light;
 		}
 
 		@Override // Unused

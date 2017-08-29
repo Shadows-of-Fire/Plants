@@ -23,6 +23,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Config;
@@ -50,6 +51,10 @@ public class PlantUtil {
 	@SideOnly(Side.CLIENT)
 	public static void sMRL(String statePath, Item k, int meta, String variant) {
 		ModelLoader.setCustomModelResourceLocation(k, meta, new ModelResourceLocation(Constants.MODID + ":" + statePath, variant));
+	}
+	
+	public static boolean isOwnedBy(IForgeRegistryEntry<?> thing, String owner) {
+		return thing.getRegistryName().getResourceDomain().equals(owner);
 	}
 
 	public static Item getItemByName(String regname) {

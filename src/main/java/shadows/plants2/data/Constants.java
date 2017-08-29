@@ -16,5 +16,6 @@ public class Constants {
 	public static final List<IPostInitUpdate> UPDATES = new ArrayList<IPostInitUpdate>();
 	public static final String BOTANIA_ID = "botania";
 	public static final String FORESTRY_ID = "forestry";
+	public static final String TF_ID = "twilightforest";
 
 }
