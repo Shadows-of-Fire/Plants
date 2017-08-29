@@ -47,7 +47,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees implements I
 
 	public boolean canGen(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos.down());
-		return world.getBlockState(pos).getMaterial() != Material.WATER && state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.DOWN, Blocks.TALLGRASS);
+		return world.getBlockState(pos).getMaterial() != Material.WATER && (state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.TALLGRASS) || state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.DEADBUSH));
 	}
 
 	public static class TreeGenerator implements IWorldGenerator {
@@ -56,7 +56,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees implements I
 
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() <= 0.2F)
+			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() >= 0.16F)
 				return;
 			int posX = chunkX * 16;
 			int posZ = chunkZ * 16;

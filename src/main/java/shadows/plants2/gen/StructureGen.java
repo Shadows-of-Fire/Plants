@@ -2,7 +2,6 @@ package shadows.plants2.gen;
 
 import java.util.Random;
 
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -50,8 +49,7 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 
 	@Override
 	public boolean canGen(World world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos.down());
-		if (state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.TALLGRASS) || state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.DEADBUSH)) {
+		if (super.canGen(world, pos)) {
 			Biome b = world.getBiome(pos);
 			for (Type t : allowedBiomes)
 				if ((BiomeDictionary.hasType(b, t)))
