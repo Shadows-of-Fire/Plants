@@ -25,12 +25,11 @@ public class TreeTemplate extends Template {
 
 	public TreeTemplate(Template template) {
 		blocks = ReflectionHelper.getPrivateValue(Template.class, template, "blocks", "field_186270_a");
-		System.out.println(blocks.toString());
 	}
 
 	public boolean isReplaceable(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		boolean flag = state.getBlock().isReplaceable(world, pos);
+		boolean flag = state.getBlock().isReplaceable(world, pos) || state.getBlock().isLeaves(state, world, pos);
 		if (flag && state.getBlock() instanceof BlockDoublePlant)
 			world.setBlockToAir(pos.up());
 		return flag;
@@ -73,7 +72,7 @@ public class TreeTemplate extends Template {
 						}
 					}
 
-					if (world.setBlockState(blockpos, iblockstate1, flags) && template$blockinfo1.tileentityData != null) {
+					if (isReplaceable(world, blockpos) && world.setBlockState(blockpos, iblockstate1, flags) && template$blockinfo1.tileentityData != null) {
 						TileEntity tileentity2 = world.getTileEntity(blockpos);
 
 						if (tileentity2 != null) {

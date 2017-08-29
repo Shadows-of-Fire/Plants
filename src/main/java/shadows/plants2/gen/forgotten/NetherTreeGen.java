@@ -18,28 +18,36 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.data.enums.ITreeEnum;
 
-public class NetherTreeGen extends WorldGenerator implements IPostInitUpdate {
-	IBlockState leaf;
-	IBlockState log;
+public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator implements IPostInitUpdate {
+	protected final IBlockState leaf;
+	protected final IBlockState log;
 	int dir = 0;
-	ITreeEnum k;
+	protected final E assign;
 
-	public NetherTreeGen(IBlockState log, IBlockState leaf, ITreeEnum enumToAssignTo) {
+	public NetherTreeGen(IEnumBlock<E> log, IEnumBlock<E> leaf, E assign) {
 		super(true);
-		this.log = log;
-		this.leaf = leaf;
-		Constants.UPDATES.add(this);
-		k = enumToAssignTo;
+		this.log = log.getStateFor(assign);
+		this.leaf = leaf.getStateFor(assign);
+		this.assign = assign;
 		TreeGenerator.LIST.add(this);
+		Constants.UPDATES.add(this);
+	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent e) {
+		assign.setTreeGen(this);
 	}
 
 	public boolean generate(World world, Random random, BlockPos pos) {
 		if (world.isRemote)
 			return false;
+
+		dir = random.nextInt(9);
 
 		int l = random.nextInt(3) + 2;
 		int i = pos.getX();
@@ -290,11 +298,6 @@ public class NetherTreeGen extends WorldGenerator implements IPostInitUpdate {
 	}
 
 	@Override
-	public void postInit(FMLPostInitializationEvent e) {
-		k.setTreeGen(this);
-	}
-
-	@Override
 	protected void setBlockAndNotifyAdequately(World world, BlockPos pos, IBlockState state) {
 		world.setBlockState(pos, state);
 		world.notifyBlockUpdate(pos, Blocks.AIR.getDefaultState(), state, 3);
@@ -302,7 +305,7 @@ public class NetherTreeGen extends WorldGenerator implements IPostInitUpdate {
 
 	public static class TreeGenerator implements IWorldGenerator {
 
-		public static final List<NetherTreeGen> LIST = new ArrayList<NetherTreeGen>();
+		public static final List<NetherTreeGen<?>> LIST = new ArrayList<>();
 
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

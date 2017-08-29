@@ -23,26 +23,26 @@ import shadows.plants2.data.enums.ITreeEnum;
 
 public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees implements IPostInitUpdate {
 
-	final ITreeEnum k;
+	protected final E assign;
 
-	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E enumToAssignTo) {
-		super(notify, minHeight, log.getStateFor(enumToAssignTo), leaf.getStateFor(enumToAssignTo), false);
-		Constants.UPDATES.add(this);
-		k = enumToAssignTo;
+	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
+		super(notify, minHeight, log.getStateFor(assign), leaf.getStateFor(assign), false);
+		this.assign = assign;
 		TreeGenerator.LIST.add(this);
+		Constants.UPDATES.add(this);
 	}
 
 	//If you extend this class and override generate, use this for super.
-	public EnumTreeGen(ITreeEnum enumToAssignTo) {
+	public EnumTreeGen(E assign) {
 		super(false, 0, null, null, false);
-		Constants.UPDATES.add(this);
-		k = enumToAssignTo;
+		this.assign = assign;
 		TreeGenerator.LIST.add(this);
+		Constants.UPDATES.add(this);
 	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent e) {
-		k.setTreeGen(this);
+		assign.setTreeGen(this);
 	}
 
 	public boolean canGen(World world, BlockPos pos) {
@@ -56,7 +56,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees implements I
 
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-			if (random.nextInt(MathHelper.clamp(chunkZ % 10 + 5 + chunkX % 15, 6, 20)) != 0)
+			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() <= 0.2F)
 				return;
 			int posX = chunkX * 16;
 			int posZ = chunkZ * 16;

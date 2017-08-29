@@ -2,6 +2,8 @@ package shadows.plants2.gen;
 
 import java.util.Random;
 
+import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -11,6 +13,7 @@ import net.minecraft.world.gen.structure.template.BlockRotationProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.ITreeEnum;
 
 public class StructureGen extends EnumTreeGen<ITreeEnum> {
@@ -27,6 +30,10 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 		this.allowedBiomes = allowedBiomes;
 	}
 
+	public StructureGen(BlockPos offset, ITreeEnum assign, Type... allowedBiomes) {
+		this(new ResourceLocation(Constants.MODID, assign.getName() + "_tree"), offset, assign, allowedBiomes);
+	}
+
 	private final PlacementSettings settings = new PlacementSettings();
 
 	@Override
@@ -41,7 +48,7 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 
 	@Override
 	public boolean canGen(World world, BlockPos pos) {
-		if (super.canGen(world, pos)) {
+		if (world.getBlockState(pos.down()).getBlockFaceShape(world, pos, EnumFacing.UP) == BlockFaceShape.SOLID) {
 			Biome b = world.getBiome(pos);
 			for (Type t : allowedBiomes)
 				if ((BiomeDictionary.hasType(b, t)))

@@ -41,6 +41,7 @@ import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.data.enums.TheBigBookOfEnums.AllPlants;
 import shadows.plants2.init.ModRegistry;
+import shadows.plants2.state.FlowerpotBlockState.FlowerpotStateContainer;
 import shadows.plants2.tile.TileFlowerpot;
 import shadows.plants2.util.PlantUtil;
 
@@ -193,7 +194,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, PROP, Constants.INV);
+		return new FlowerpotStateContainer(this, PROP, Constants.INV);
 	}
 
 	@Override

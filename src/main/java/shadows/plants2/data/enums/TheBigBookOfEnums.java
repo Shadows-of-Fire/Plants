@@ -438,8 +438,8 @@ public class TheBigBookOfEnums {
 		JUNGLE_SAPLING(false),
 		ACACIA_SAPLING(false),
 		DARK_OAK_SAPLING(false),
-		RED_MUSHROOM(false),
-		BROWN_MUSHROOM(false),
+		MUSHROOM_RED(false),
+		MUSHROOM_BROWN(false),
 		DEAD_BUSH(false),
 		FERN(false),
 		CACTUS(false),
@@ -465,7 +465,9 @@ public class TheBigBookOfEnums {
 		ASH,
 		BLAZE,
 		BLACK_KAURI,
-		BRAZILLIAN_PINE,;
+		BRAZILLIAN_PINE,
+		INCENSE_CEDAR,
+		MURRAY_PINE;
 
 		EnumDyeColor color;
 		boolean flowers;

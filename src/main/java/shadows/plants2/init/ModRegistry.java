@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -155,12 +154,13 @@ public class ModRegistry {
 
 	public static final Block FLOWERPOT = new BlockFlowerpot();
 
-	public static final WorldGenerator ASH_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.ASH), NETHER_LEAF.getStateFor(NetherLogs.ASH), NetherLogs.ASH);
-	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen(NETHER_LOG.getStateFor(NetherLogs.BLAZE), NETHER_LEAF.getStateFor(NetherLogs.BLAZE), NetherLogs.BLAZE);
-	public static final WorldGenerator KAURI_TREE = new StructureGen(new ResourceLocation(Constants.MODID, "black_kauri_tree"), new BlockPos(-4, 0, -4), Logs.BLACK_KAURI);
-	public static final WorldGenerator PINE_TREE = new StructureGen(new ResourceLocation(Constants.MODID, "brazillian_pine_tree"), new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
-	public static final WorldGenerator INCENSE_TREE = new EnumTreeGen<Logs>(true, 4, LOG_0, LEAF_0, Logs.INCENSE_CEDAR);
-	public static final WorldGenerator MURRAY_TREE = new EnumTreeGen<Logs>(true, 4, LOG_0, LEAF_0, Logs.MURRAY_PINE);
+	public static final WorldGenerator ASH_TREE = new NetherTreeGen<NetherLogs>(NETHER_LOG, NETHER_LEAF, NetherLogs.ASH);
+	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen<NetherLogs>(NETHER_LOG, NETHER_LEAF, NetherLogs.BLAZE);
+
+	public static final WorldGenerator KAURI_TREE = new StructureGen(new BlockPos(-4, 0, -4), Logs.BLACK_KAURI, Type.HOT, Type.SAVANNA, Type.DRY);
+	public static final WorldGenerator PINE_TREE = new StructureGen(new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
+	public static final WorldGenerator INCENSE_TREE = new StructureGen(new BlockPos(-2, 0, -2), Logs.INCENSE_CEDAR, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
+	public static final WorldGenerator MURRAY_TREE = new StructureGen(new BlockPos(-3, 0, -3), Logs.MURRAY_PINE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

@@ -1,0 +1,51 @@
+package shadows.plants2.state;
+
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableMap;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlowerPot.EnumFlowerType;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockStateContainer.StateImplementation;
+import net.minecraftforge.common.property.IUnlistedProperty;
+import shadows.plants2.block.BlockFlowerpot;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
+
+public class FlowerpotBlockState extends StateImplementation {
+
+	public FlowerpotBlockState(Block block, ImmutableMap<IProperty<?>, Comparable<?>> properties) {
+		super(block, properties);
+	}
+
+	@Override
+	public <T extends Comparable<T>, V extends T> IBlockState withProperty(IProperty<T> property, V value) {
+		if(value instanceof EnumFlowerType) return this.withProperty(BlockFlowerpot.PROP, TheBigBookOfEnums.NAME_TO_ENUM.get(((EnumFlowerType) value).getName()));
+		else if(property == BlockFlowerpot.LEGACY_DATA) return this;
+		else return super.withProperty(property, value);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends Comparable<T>> T getValue(IProperty<T> property) {
+		if(property == BlockFlowerpot.CONTENTS) return (T) EnumFlowerType.EMPTY;
+		else if(property == BlockFlowerpot.LEGACY_DATA) return (T) new Integer(0);
+		else return super.getValue(property);
+	}
+
+	public static class FlowerpotStateContainer extends BlockStateContainer {
+
+		public FlowerpotStateContainer(Block block, IProperty<?>... properties) {
+			super(block, properties);
+		}
+
+		@Override
+		protected StateImplementation createState(Block block, ImmutableMap<IProperty<?>, Comparable<?>> properties, @Nullable ImmutableMap<IUnlistedProperty<?>, Optional<?>> unlistedProperties) {
+			return new FlowerpotBlockState(block, properties);
+		}
+	}
+}
