@@ -31,12 +31,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.client.IHasModel;
 import shadows.plants2.client.RenamedStateMapper;
+import shadows.plants2.compat.BotaniaFlowerpot;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.data.enums.TheBigBookOfEnums.AllPlants;
@@ -55,7 +57,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 		setUnlocalizedName(Constants.MODID + ".flowerpot");
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		container = createStateContainer();
-		setDefaultState(container.getBaseState().withProperty(PROP, AllPlants.NONE).withProperty(Constants.INV, false));
+		setDefaultState(container.getBaseState().withProperty(PROP, AllPlants.NONE));
 		ModRegistry.BLOCKS.add(this);
 		ModRegistry.ITEMS.add(createItemBlock().setRegistryName(getRegistryName()));
 	}
@@ -80,8 +82,13 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		PlantUtil.sMRL("flowerpot", this, 0, "inventory=true,type=none");
+		PlantUtil.sMRL("flowerpot", this, 0, "inventory");
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("flowerpot"));
+	}
+
+	@Override
+	public int getLightValue(IBlockState state) {
+		return state.getValue(PROP).hasLight() ? 15 : 0;
 	}
 
 	@Override
@@ -107,7 +114,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 				if (block instanceof BlockEnumBush<?>) {
 					name = ((IEnumBlock<?>) block).getValue(toUse).getName();
 				} else if (block == Blocks.RED_FLOWER || block == Blocks.YELLOW_FLOWER)
-					name = state.getValue(((BlockFlower) block).getTypeProperty()).getName();
+					name = toUse.getValue(((BlockFlower) block).getTypeProperty()).getName();
 				else if (block == Blocks.RED_MUSHROOM)
 					name = "red_mushroom";
 				else if (block == Blocks.BROWN_MUSHROOM)
@@ -120,6 +127,8 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 					name = "cactus";
 				else if (block == Blocks.TALLGRASS && toUse.getValue(BlockTallGrass.TYPE) == BlockTallGrass.EnumType.FERN)
 					name = "fern";
+				else if (Loader.isModLoaded(Constants.BOTANIA_ID))
+					name = BotaniaFlowerpot.handleFlowerpot(toUse);
 
 				plant = TheBigBookOfEnums.NAME_TO_ENUM.get(name);
 
@@ -135,6 +144,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 			if (player.addItemStackToInventory(pot.getFlowerItemStack())) {
 				pot.setFlower(AllPlants.NONE);
 				pot.setItemStack(ItemStack.EMPTY);
+				world.setBlockState(pos, getDefaultState().withProperty(PROP, pot.getFlower()));
 			}
 		}
 		pot.markDirty();
@@ -152,6 +162,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if(Loader.isModLoaded(Constants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_")) BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
 		if (rand.nextFloat() < 0.1F) {
 			AllPlants p = state.getValue(PROP);
 			if (p == AllPlants.ASH || p == AllPlants.BLAZE)
@@ -194,7 +205,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<AllPlan
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new FlowerpotStateContainer(this, PROP, Constants.INV);
+		return new FlowerpotStateContainer(this, PROP);
 	}
 
 	@Override
