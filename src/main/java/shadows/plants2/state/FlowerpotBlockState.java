@@ -16,7 +16,7 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.data.enums.TheBigBookOfEnums;
 
-public class FlowerpotBlockState extends StateImplementation {
+public final class FlowerpotBlockState extends StateImplementation {
 
 	public FlowerpotBlockState(Block block, ImmutableMap<IProperty<?>, Comparable<?>> properties) {
 		super(block, properties);
@@ -37,7 +37,7 @@ public class FlowerpotBlockState extends StateImplementation {
 		else return super.getValue(property);
 	}
 
-	public static class FlowerpotStateContainer extends BlockStateContainer {
+	public static final class FlowerpotStateContainer extends BlockStateContainer {
 
 		public FlowerpotStateContainer(Block block, IProperty<?>... properties) {
 			super(block, properties);
