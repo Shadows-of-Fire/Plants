@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -37,6 +38,7 @@ import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.client.IHasModel;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.compat.AAFlowerpot;
+import shadows.plants2.compat.BinnieIntegration.BotanyFlowerpot;
 import shadows.plants2.compat.BotaniaFlowerpot;
 import shadows.plants2.compat.DefaultFlowerpot;
 import shadows.plants2.compat.ForestryIntegration.ForestryFlowerpot;
@@ -78,6 +80,8 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 			HANDLERS.add(new ForestryFlowerpot());
 		if (Loader.isModLoaded(Constants.AA_ID))
 			HANDLERS.add(new AAFlowerpot());
+		if(Loader.isModLoaded(Constants.BOTANY_ID))
+			HANDLERS.add(new BotanyFlowerpot());
 	}
 
 	@Override
@@ -117,16 +121,16 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 		if (pot == null)
 			return false;
 
-		ItemStack stack = pot.getFlowerItemStack();
+		ItemStack flowerpot = pot.getFlowerItemStack();
 
-		if (stack.isEmpty()) {
+		if (flowerpot.isEmpty()) {
 			IBlockState toUse = Block.getBlockFromItem(held.getItem()).getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
 			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable)
 				toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
 			String name = "none";
 
 			for (IFlowerpotHandler handler : HANDLERS) {
-				if (PlantUtil.isOwnedBy(toUse.getBlock(), handler.getModId()) || PlantUtil.isOwnedBy(held.getItem(), handler.getModId())) {
+				if (canHandle(handler, toUse, held)) {
 					name = handler.getFinalName(toUse, held);
 					break;
 				}
@@ -136,6 +140,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 			if (plant == FlowerpotPlants.NONE || plant == null)
 				return false;
+			
 			pot.setFlower(plant);
 			ItemStack toSet = new ItemStack(held.getItem(), 1, held.getMetadata());
 			if (held.getTagCompound() != null)
@@ -154,6 +159,10 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 		pot.markDirty();
 		world.notifyBlockUpdate(pos, flowerpotState, flowerpotState, 3);
 		return true;
+	}
+	
+	private static boolean canHandle(IFlowerpotHandler handler, IBlockState state, ItemStack stack) {
+		return (state.getBlock() != Blocks.AIR && handler.owns(state.getBlock())) || (stack.getItem() != Items.AIR && handler.owns(stack.getItem()));
 	}
 
 	@Override

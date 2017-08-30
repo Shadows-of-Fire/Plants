@@ -7,9 +7,11 @@ import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Constants;
+import shadows.plants2.util.PlantUtil;
 
 public class DefaultFlowerpot implements IFlowerpotHandler {
 
@@ -44,6 +46,11 @@ public class DefaultFlowerpot implements IFlowerpotHandler {
 	@Override
 	public String getStatePrefix() {
 		return "";
+	}
+	
+	@Override
+	public boolean owns(IForgeRegistryEntry<?> entry) {
+		return PlantUtil.isOwnedBy(entry, getModId()) || PlantUtil.isOwnedBy(entry, "minecraft");
 	}
 
 }
