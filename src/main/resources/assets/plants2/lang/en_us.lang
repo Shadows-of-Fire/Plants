@@ -197,20 +197,24 @@ tile.plants2.log.ash.name=Nether Ash Wood
 tile.plants2.log.blaze.name=Nether Blaze Wood
 tile.plants2.log.black_kauri.name=Black Kauri Wood
 tile.plants2.log.brazillian_pine.name=Brazillian Pine Wood
-
 tile.plants2.sapling.ash.name=Nether Ash Sapling
 tile.plants2.sapling.blaze.name=Nether Blaze Sapling
 tile.plants2.sapling.black_kauri.name=Black Kauri Sapling
 tile.plants2.sapling.brazillian_pine.name=Brazillian Pine Sapling
-
 tile.plants2.leaves.ash.name=Nether Ash Leaves
 tile.plants2.leaves.blaze.name=Nether Blaze Leaves
 tile.plants2.leaves.black_kauri.name=Black Kauri Leaves
 tile.plants2.leaves.brazillian_pine.name=Brazillian Pine Leaves
-
 tile.plants2.planks.ash.name=Nether Ash Wood Planks
 tile.plants2.planks.blaze.name=Nether Blaze Wood Planks
 tile.plants2.planks.black_kauri.name=Black Kauri Wood Planks
 tile.plants2.planks.brazillian_pine.name=Brazillian Pine Wood Planks
-
+tile.plants2.log.murray_pine.name=Murray Pine Wood
+tile.plants2.sapling.murray_pine.name=Murray Pine Sapling
+tile.plants2.leaves.murray_pine.name=Murray Pine Leaves
+tile.plants2.planks.murray_pine.name=Murray Pine Wood Planks
+tile.plants2.log.incense_cedar.name=Incense Cedar Wood
+tile.plants2.sapling.incense_cedar.name=Incense Cedar Sapling
+tile.plants2.leaves.incense_cedar.name=Incense Cedar Leaves
+tile.plants2.planks.incense_cedar.name=Incense Cedar Wood Planks
 
