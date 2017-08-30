@@ -29,9 +29,12 @@ public class ClientProxy implements IProxy {
 
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos, int tint) {
-				if(tint == 140) return world.getBiome(pos).getGrassColorAtPos(pos);
-				else return -1;
-			}}, ModRegistry.FLOWERPOT);
+				if (tint == 140)
+					return world.getBiome(pos).getGrassColorAtPos(pos);
+				else
+					return -1;
+			}
+		}, ModRegistry.FLOWERPOT);
 	}
 
 	@Override

@@ -52,7 +52,7 @@ public class PlantUtil {
 	public static void sMRL(String statePath, Item k, int meta, String variant) {
 		ModelLoader.setCustomModelResourceLocation(k, meta, new ModelResourceLocation(Constants.MODID + ":" + statePath, variant));
 	}
-	
+
 	public static boolean isOwnedBy(IForgeRegistryEntry<?> thing, String owner) {
 		return thing.getRegistryName().getResourceDomain().equals(owner);
 	}

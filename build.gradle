@@ -45,12 +45,16 @@ repositories {
 	maven {
         url 'http://maven.tterrag.com/'
     }
+	maven {
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
 }
 
 dependencies {
 	deobfCompile "mezz.jei:jei_1.12.1:+"
 	deobfCompile "mcp.mobius.waila:Hwyla:+"
 	deobfCompile "net.sengir.forestry:forestry_1.12.1:+"
+	deobfCompile "binnie:binnie-mods-1.12.1:+"
 	compile "team.chisel.ctm:CTM:MC1.12-0.2.2.7"
 }
 

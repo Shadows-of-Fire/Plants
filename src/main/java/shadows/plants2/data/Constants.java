@@ -17,5 +17,6 @@ public class Constants {
 	public static final String BOTANIA_ID = "botania";
 	public static final String FORESTRY_ID = "forestry";
 	public static final String TF_ID = "twilightforest";
+	public static final String AA_ID = "actuallyadditions";
 
 }

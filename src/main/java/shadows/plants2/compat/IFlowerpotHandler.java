@@ -4,7 +4,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 
 public interface IFlowerpotHandler {
-	
+
 	public String handleFlowerpot(IBlockState state, ItemStack stack);
 
 	public String getModId();

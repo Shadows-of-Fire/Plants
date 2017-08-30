@@ -27,17 +27,16 @@ public class BotaniaFlowerpot implements IFlowerpotHandler {
 			return "sflower_" + state.getValue(BotaniaStateProps.COLOR).getName();
 		return "none";
 	}
-	
+
 	@Override
 	public String getModId() {
 		return Constants.BOTANIA_ID;
 	}
-	
+
 	@Override
 	public String getStatePrefix() {
 		return "b_";
 	}
-
 
 	@SideOnly(Side.CLIENT)
 	public static void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
