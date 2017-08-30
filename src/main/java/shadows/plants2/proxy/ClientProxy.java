@@ -1,7 +1,6 @@
 package shadows.plants2.proxy;
 
 import binnie.botany.tile.FlowerRenderInfo;
-import binnie.botany.tile.TileEntityFlower;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
