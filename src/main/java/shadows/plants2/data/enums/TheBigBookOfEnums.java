@@ -639,5 +639,26 @@ public class TheBigBookOfEnums {
 		}
 
 	}
+	
+	public static enum Crystals implements IPropertyEnum {
+		CRYSTAL_SHARD(true),
+		CRYSTAL_BLOCK(false),
+		DARK_CRYSTAL_SHARD(true),
+		DARK_CRYSTAL_BLOCK(false),
+		TITAN_STONE_SHARD(true),
+		TITAN_STONE(false);
+	
+		private boolean isShard;
+		
+		Crystals(boolean isShard) {
+			this.isShard = isShard;
+		}
+	
+		public boolean isShard() {
+			return isShard;
+		}
+	
+	
+	}
 
 }
