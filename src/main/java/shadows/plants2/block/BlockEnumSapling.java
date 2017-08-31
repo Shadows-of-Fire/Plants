@@ -3,6 +3,7 @@ package shadows.plants2.block;
 import java.util.Random;
 
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
@@ -25,10 +26,17 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 
 	public static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.8D, 0.9D);
 
-	public BlockEnumSapling(String name, Class<E> clazz, int predicate) {
+	public BlockEnumSapling(String name, SoundType s, float hard, float res, Class<E> clazz, int predicate) {
 		super(name, EnumPlantType.Plains, clazz, predicate);
 		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(Constants.INV, false));
 		setTickRandomly(true);
+		setSoundType(s);
+		setHardness(hard);
+		setResistance(res);
+	}
+	
+	public BlockEnumSapling(String name, Class<E> clazz, int predicate) {
+		this(name, SoundType.PLANT, 0, 0, clazz, predicate);
 	}
 
 	@Override

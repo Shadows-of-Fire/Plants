@@ -35,13 +35,17 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	private final Block sapling;
 	private int[] surroundings = new int[32768];
 
-	public BlockEnumLeaves(String name, Block sapling, Class<E> clazz, int predicate) {
-		super(name, Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, clazz, "type", (e) -> (e.getPredicateIndex() == predicate));
+	public BlockEnumLeaves(String name, SoundType s, float hard, float res, Block sapling, Class<E> clazz, int predicate) {
+		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> (e.getPredicateIndex() == predicate));
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(BlockLeaves.DECAYABLE, false).withProperty(BlockLeaves.CHECK_DECAY, false));
 		this.sapling = sapling;
 		setTickRandomly(true);
 		if (this.types.size() > 4)
 			throw new IllegalArgumentException("Attempting to create a BlockEnumLeaves with more than 4 values is invalid.");
+	}
+	
+	public BlockEnumLeaves(String name, Block sapling, Class<E> clazz, int predicate) {
+		this(name, SoundType.PLANT, 0.2F, 0F, sapling, clazz, predicate);
 	}
 
 	@Override

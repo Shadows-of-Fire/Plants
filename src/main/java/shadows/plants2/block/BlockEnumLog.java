@@ -26,9 +26,13 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 
 	static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
 
-	public BlockEnumLog(String name, Class<E> enumClass, int predicate) {
-		super(name, Material.WOOD, SoundType.WOOD, 2.0F, 1.0F, enumClass, "type", (e) -> (e.getPredicateIndex() == predicate));
+	public BlockEnumLog(String name, SoundType s, float hard, float res, Class<E> enumClass, int predicate) {
+		super(name, Material.WOOD, s, hard, res, enumClass, "type", (e) -> (e.getPredicateIndex() == predicate));
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(AXIS, Axis.Y));
+	}
+	
+	public BlockEnumLog(String name, Class<E> enumClass, int predicate) {
+		this(name, SoundType.WOOD, 2F, 1F, enumClass, predicate);
 	}
 
 	@Override
