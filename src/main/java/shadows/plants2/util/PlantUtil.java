@@ -29,7 +29,6 @@ import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
-import shadows.plants2.init.ModRegistry;
 
 public class PlantUtil {
 
@@ -167,19 +166,15 @@ public class PlantUtil {
 	public static ItemStack getDyeForEnum(EnumDyeColor c, int size) {
 		switch (c) {
 		case BLUE:
-			return getStackFor(Generic.DYE_BLUE, size);
+			return Generic.DYE_BLUE.get();
 		case WHITE:
-			return getStackFor(Generic.DYE_WHITE, size);
+			return Generic.DYE_WHITE.get();
 		case BLACK:
-			return getStackFor(Generic.DYE_BLACK, size);
+			return Generic.DYE_BLACK.get();
 		case BROWN:
-			return getStackFor(Generic.DYE_BROWN, size);
+			return Generic.DYE_BROWN.get();
 		default:
 			return new ItemStack(Items.DYE, size, c.getDyeDamage());
 		}
-	}
-
-	public static ItemStack getStackFor(Generic g, int size) {
-		return new ItemStack(ModRegistry.GENERIC, size, g.ordinal());
 	}
 }

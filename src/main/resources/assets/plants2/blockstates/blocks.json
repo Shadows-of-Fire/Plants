@@ -34,6 +34,57 @@
 				"textures": {
 					"all": "plants2:blocks/cosmetic/tree/murray_pine_planks"
 				}
+			},
+			"crystal_block": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/c_block"
+				}
+			},
+			"dark_crystal_block": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/dc_block"
+				}
+			},
+			"crystal_brick": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/c_brick"
+				}
+			},
+			"dark_crystal_brick": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/dc_brick"
+				}
+			},
+			"crystal_shard": {
+				"model": "cross",
+				"textures": {
+					"cross": "plants2:blocks/forgotten/crystal/c_shard"
+				}
+			},
+			"dark_crystal_shard": {
+				"model": "cross",
+				"textures": {
+					"cross": "plants2:blocks/forgotten/crystal/dc_shard"
+				}
+			},
+			"crystal_shard_inv": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "plants2:blocks/forgotten/crystal/c_shard"
+				},
+				"transform": "forge:default-item"
+			},
+			"dark_crystal_shard_inv": {
+				"model": "builtin/generated",
+				"textures": {
+					"layer0": "plants2:blocks/forgotten/crystal/dc_shard"
+				},
+				"transform": "forge:default-item"
+			},
+			"titan_stone": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/titan_stone"
+				}
 			}
 		}
 	}

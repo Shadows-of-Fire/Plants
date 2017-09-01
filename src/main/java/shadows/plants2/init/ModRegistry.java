@@ -41,6 +41,7 @@ import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
+import shadows.plants2.block.forgotten.BlockCrystal;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
@@ -50,6 +51,7 @@ import shadows.plants2.data.enums.LaterEnums.Harvestable;
 import shadows.plants2.data.enums.LaterEnums.Planks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
+import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Desert;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Double;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
@@ -161,6 +163,8 @@ public class ModRegistry {
 	public static final WorldGenerator PINE_TREE = new StructureGen(new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
 	public static final WorldGenerator INCENSE_TREE = new StructureGen(new BlockPos(-2, 0, -2), Logs.INCENSE_CEDAR, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 	public static final WorldGenerator MURRAY_TREE = new StructureGen(new BlockPos(-3, 0, -3), Logs.MURRAY_PINE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
+	
+	public static final BlockEnum<Crystals> CRYSTAL = new BlockCrystal();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
@@ -186,14 +190,14 @@ public class ModRegistry {
 	}
 
 	public static void oreDict(FMLInitializationEvent e) {
-		OreDictionary.registerOre("dyeBlue", new ItemStack(GENERIC, 1, Generic.DYE_BLUE.ordinal()));
-		OreDictionary.registerOre("dye", new ItemStack(GENERIC, 1, Generic.DYE_BLUE.ordinal()));
-		OreDictionary.registerOre("dyeBlack", new ItemStack(GENERIC, 1, Generic.DYE_BLACK.ordinal()));
-		OreDictionary.registerOre("dye", new ItemStack(GENERIC, 1, Generic.DYE_BLACK.ordinal()));
-		OreDictionary.registerOre("dyeBrown", new ItemStack(GENERIC, 1, Generic.DYE_BROWN.ordinal()));
-		OreDictionary.registerOre("dye", new ItemStack(GENERIC, 1, Generic.DYE_BROWN.ordinal()));
-		OreDictionary.registerOre("dyeWhite", new ItemStack(GENERIC, 1, Generic.DYE_WHITE.ordinal()));
-		OreDictionary.registerOre("dye", new ItemStack(GENERIC, 1, Generic.DYE_WHITE.ordinal()));
+		OreDictionary.registerOre("dyeBlue", Generic.DYE_BLUE.get());
+		OreDictionary.registerOre("dye", Generic.DYE_BLUE.get());
+		OreDictionary.registerOre("dyeBlack", Generic.DYE_BLACK.get());
+		OreDictionary.registerOre("dye", Generic.DYE_BLACK.get());
+		OreDictionary.registerOre("dyeBrown", Generic.DYE_BROWN.get());
+		OreDictionary.registerOre("dye", Generic.DYE_BROWN.get());
+		OreDictionary.registerOre("dyeWhite", Generic.DYE_WHITE.get());
+		OreDictionary.registerOre("dye", Generic.DYE_WHITE.get());
 		OreDictionary.registerOre("logWood", new ItemStack(NETHER_LOG, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeSapling", new ItemStack(NETHER_SAP, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves", new ItemStack(NETHER_LEAF, 1, OreDictionary.WILDCARD_VALUE));

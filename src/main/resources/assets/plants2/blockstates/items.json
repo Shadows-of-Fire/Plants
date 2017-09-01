@@ -171,6 +171,31 @@
 				"textures": {
 					"layer0": "plants2:items/forgotten/food/huckleberry"
 				}
+			},
+			"crystal_shard": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_shard"
+				}
+			},
+			"dark_crystal_shard": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_shard"
+				}
+			},
+			"crystal_chunk": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_chunk"
+				}
+			},
+			"dark_crystal_chunk": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_chunk"
+				}
+			},
+			"crystal_stick": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_stick"
+				}
 			}
 		}
 	}

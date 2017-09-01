@@ -18,8 +18,10 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.enums.IPropertyEnum;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.itemblock.ItemBlockEnum;
@@ -61,8 +63,9 @@ public abstract class BlockEnum<E extends Enum<E> & IPropertyEnum> extends Block
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL(this, i, property.getName() + "=" + types.get(i).getName());
+			PlantUtil.sMRL("blocks", this, i, "type=" + types.get(i).getName());
 		}
+		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("blocks"));
 	}
 
 	@Override

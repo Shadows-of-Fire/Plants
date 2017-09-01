@@ -2,9 +2,13 @@ package shadows.plants2.data.enums;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+
+import javax.annotation.Nullable;
 
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -13,6 +17,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.data.StackPrimer;
+import shadows.plants2.init.ModRegistry;
 
 public class TheBigBookOfEnums {
 
@@ -265,7 +270,21 @@ public class TheBigBookOfEnums {
 		DYE_BLACK,
 		DYE_BLUE,
 		DYE_BROWN,
-		DYE_WHITE
+		DYE_WHITE,
+		CRYSTAL_SHARD,
+		CRYSTAL_CHUNK,
+		DARK_CRYSTAL_SHARD,
+		DARK_CRYSTAL_CHUNK,
+		CRYSTAL_STICK,
+		;
+		
+		public ItemStack get() {
+			return new ItemStack(ModRegistry.GENERIC, 1, this.ordinal());
+		}
+		
+		public ItemStack get(int size) {
+			return new ItemStack(ModRegistry.GENERIC, size, this.ordinal());
+		}
 	}
 
 	public static enum Vines implements IPropertyEnum {
@@ -641,23 +660,33 @@ public class TheBigBookOfEnums {
 	}
 	
 	public static enum Crystals implements IPropertyEnum {
-		CRYSTAL_SHARD(true),
+		CRYSTAL_SHARD(true, Generic.CRYSTAL_SHARD),
 		CRYSTAL_BLOCK(false),
-		DARK_CRYSTAL_SHARD(true),
+		CRYSTAL_BRICK(false),
+		DARK_CRYSTAL_SHARD(true, Generic.DARK_CRYSTAL_SHARD),
 		DARK_CRYSTAL_BLOCK(false),
-		TITAN_STONE_SHARD(true),
+		DARK_CRYSTAL_BRICK(false),
 		TITAN_STONE(false);
 	
 		private boolean isShard;
+		private Generic drops;
 		
-		Crystals(boolean isShard) {
+		Crystals(boolean isShard, @Nullable Generic drops) {
 			this.isShard = isShard;
+			this.drops = drops;
+		}
+		
+		Crystals(boolean isShard){
+			this(isShard, null);
 		}
 	
 		public boolean isShard() {
 			return isShard;
 		}
 	
+		public ItemStack get() {
+			return drops != null ? drops.get(ThreadLocalRandom.current().nextInt(3) + 1).copy() : ItemStack.EMPTY;
+		}
 	
 	}
 
