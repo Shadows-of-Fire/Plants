@@ -1,3 +1,6 @@
 TODO:
 -Dye Recipes
 -Brewing recipes? (BBoldt) | (or) | Herbology? (Elucent)
+-Cataplant
+-Crystal Forest
+-Fireproof nether trees 
