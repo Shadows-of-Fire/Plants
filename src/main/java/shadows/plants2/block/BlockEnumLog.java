@@ -43,6 +43,17 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 	}
 
 	@Override
+	@Deprecated
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		if (brl != BlockRenderLayer.SOLID) {
+			IBlockState offset = world.getBlockState(pos.offset(side));
+			if (world.isAirBlock(pos.offset(side)))
+				return true;
+		}
+		return super.shouldSideBeRendered(state, world, pos, side);
+	}
+
+	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return brl == BlockRenderLayer.SOLID;
 	}

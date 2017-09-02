@@ -27,7 +27,7 @@ public class ClientProxy implements IProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@Override
 	public void init(FMLInitializationEvent e) {
 		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {

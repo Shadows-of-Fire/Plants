@@ -47,7 +47,7 @@ public class DefaultFlowerpot implements IFlowerpotHandler {
 	public String getStatePrefix() {
 		return "";
 	}
-	
+
 	@Override
 	public boolean owns(IForgeRegistryEntry<?> entry) {
 		return PlantUtil.isOwnedBy(entry, getModId()) || PlantUtil.isOwnedBy(entry, "minecraft");

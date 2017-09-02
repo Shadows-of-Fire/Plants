@@ -28,7 +28,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	public BlockCrystal() {
 		super("crystal", Material.GLASS, SoundType.GLASS, 5F, 20F, Crystals.class);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
@@ -37,53 +37,54 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		}
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("blocks"));
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
-    }
-    
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-    	return false;
-    }
-    
-    @Override
-    public boolean isFullCube(IBlockState state) {
-    	return !state.getValue(property).isShard();
-    }
-    
-    @Override
-    public boolean isNormalCube(IBlockState state) {
-    	return isFullCube(state);
-    }
-    
-    @Override
-    public String getHarvestTool(IBlockState state) {
-    	return state.getValue(property).isShard() ? null : "pickaxe";
-    }
-    
-    @Override
-    public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-    	if(world.getBlockState(pos.offset(side)) != state) return true;
-    	if(world.isAirBlock(pos.offset(side))) return true;
-    	return false;
-    }
+
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.TRANSLUCENT;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return !state.getValue(property).isShard();
+	}
+
+	@Override
+	public boolean isNormalCube(IBlockState state) {
+		return isFullCube(state);
+	}
+
+	@Override
+	public String getHarvestTool(IBlockState state) {
+		return state.getValue(property).isShard() ? null : "pickaxe";
+	}
+
+	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		if (world.getBlockState(pos.offset(side)) != state)
+			return true;
+		if (world.isAirBlock(pos.offset(side)))
+			return true;
+		return false;
+	}
 
 	@Override
 	@Deprecated
 	public float getBlockHardness(IBlockState state, World world, BlockPos pos) {
 		return state.getValue(property).isShard() ? 0.3F : 1.4F;
 	}
-	
+
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		Crystals c = state.getValue(property);
-		if(c.isShard()) {
+		if (c.isShard()) {
 			System.out.println(c.get());
 			drops.add(c.get());
-		}
-		else
+		} else
 			drops.add(new ItemStack(this, 1, c.ordinal()));
 	}
 
@@ -91,12 +92,12 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		return state.getValue(property).isShard();
 	}
-	
+
 	@Override
 	public ItemStack getSilkTouchDrop(IBlockState state) {
 		return new ItemStack(this, 1, state.getValue(property).ordinal());
 	}
-	
+
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
 		//TODO: add recipes for crystal tools etc here.

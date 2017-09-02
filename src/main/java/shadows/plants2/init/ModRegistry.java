@@ -152,7 +152,7 @@ public class ModRegistry {
 	public static final BlockEnum<Logs> LOG_0 = new BlockEnumLog<Logs>("log_0", Logs.class, 0);
 	public static final BlockEnumBush<Logs> SAP_0 = new BlockEnumSapling<Logs>("sapling_0", Logs.class, 0);
 	public static final BlockEnum<Logs> LEAF_0 = new BlockEnumLeaves<Logs>("leaves_0", SAP_0, Logs.class, 0);
-	
+
 	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<CrystalLogs>("crystal_log", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 1.5F, 5F, CrystalLogs.class, 0);
 	public static final BlockEnumBush<CrystalLogs> CRYSTAL_SAP = new BlockEnumSapling<CrystalLogs>("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0);
 	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<CrystalLogs>("crystal_leaves", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
@@ -172,6 +172,9 @@ public class ModRegistry {
 	public static final WorldGenerator INCENSE_TREE = new StructureGen(new BlockPos(-2, 0, -2), Logs.INCENSE_CEDAR, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 	public static final WorldGenerator MURRAY_TREE = new StructureGen(new BlockPos(-3, 0, -3), Logs.MURRAY_PINE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 	
+	public static final WorldGenerator CRYSTAL_TREE = new EnumTreeGen<CrystalLogs>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.CRYSTAL);
+	public static final WorldGenerator DARK_CRYSTAL_TREE = new EnumTreeGen<CrystalLogs>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.DARK_CRYSTAL);
+
 	public static final BlockEnum<Crystals> CRYSTAL = new BlockCrystal();
 
 	@SubscribeEvent

@@ -44,16 +44,16 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 		if (this.types.size() > 4)
 			throw new IllegalArgumentException("Attempting to create a BlockEnumLeaves with more than 4 values is invalid.");
 	}
-	
+
 	public BlockEnumLeaves(String name, Block sapling, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0.2F, 0F, sapling, clazz, predicate);
 	}
-	
+
 	public BlockEnumLeaves(String name, SoundType s, BlockRenderLayer brl, float hard, float res, Block sapling, Class<E> enumClass, int predicate) {
 		this(name, s, hard, res, sapling, enumClass, predicate);
 		this.brl = brl;
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return brl == BlockRenderLayer.SOLID;

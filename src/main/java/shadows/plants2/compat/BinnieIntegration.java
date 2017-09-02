@@ -15,11 +15,11 @@ import shadows.plants2.data.Constants;
 import shadows.plants2.tile.TileFlowerpot;
 
 public class BinnieIntegration {
-	
+
 	private static final TileEntityFlower F = new TileEntityFlower();
-	
+
 	public static int colorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos, int tint) {
-		
+
 		TileFlowerpot pot = (TileFlowerpot) world.getTileEntity(pos);
 
 		FlowerRenderInfo render = new FlowerRenderInfo(new Flower(pot.getFlowerItemStack().getTagCompound()), F);
@@ -29,22 +29,23 @@ public class BinnieIntegration {
 			return render.getPrimary().getColor(render.isWilted());
 		if (tint == 12)
 			return render.getSecondary().getColor(render.isWilted());
-		
+
 		return -1;
 	}
-	
 
-	public static class BotanyFlowerpot implements IFlowerpotHandler{
+	public static class BotanyFlowerpot implements IFlowerpotHandler {
 
 		@Override
 		public String handleFlowerpot(IBlockState state, ItemStack stack) {
-			if(stack.getItem() == ModuleFlowers.flowerItem) { 
-				if(!stack.getTagCompound().getBoolean("Flowered")) return "none";
-				if(stack.getTagCompound().getBoolean("Wilt")) return "none";
+			if (stack.getItem() == ModuleFlowers.flowerItem) {
+				if (!stack.getTagCompound().getBoolean("Flowered"))
+					return "none";
+				if (stack.getTagCompound().getBoolean("Wilt"))
+					return "none";
 				return FlowerGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT);
-			
+
 			}
-			
+
 			return "none";
 		}
 
@@ -57,8 +58,7 @@ public class BinnieIntegration {
 		public String getStatePrefix() {
 			return "bb_";
 		}
-		
+
 	}
-	
-	
+
 }

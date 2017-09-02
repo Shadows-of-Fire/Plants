@@ -275,13 +275,12 @@ public class TheBigBookOfEnums {
 		CRYSTAL_CHUNK,
 		DARK_CRYSTAL_SHARD,
 		DARK_CRYSTAL_CHUNK,
-		CRYSTAL_STICK,
-		;
-		
+		CRYSTAL_STICK,;
+
 		public ItemStack get() {
 			return new ItemStack(ModRegistry.GENERIC, 1, this.ordinal());
 		}
-		
+
 		public ItemStack get(int size) {
 			return new ItemStack(ModRegistry.GENERIC, size, this.ordinal());
 		}
@@ -619,8 +618,7 @@ public class TheBigBookOfEnums {
 		BB_TULIP,
 		BB_VIOLA,
 		BB_YARROW,
-		BB_ZINNIA
-		;
+		BB_ZINNIA;
 
 		final int light;
 		final EnumDyeColor color;
@@ -658,13 +656,13 @@ public class TheBigBookOfEnums {
 		}
 
 	}
-	
+
 	public static enum CrystalLogs implements ITreeEnum {
 		CRYSTAL,
 		DARK_CRYSTAL;
 
 		private WorldGenerator gen;
-		
+
 		@Override
 		public WorldGenerator getTreeGen() {
 			return gen;
@@ -674,9 +672,9 @@ public class TheBigBookOfEnums {
 		public void setTreeGen(WorldGenerator k) {
 			gen = k;
 		}
-		
+
 	}
-	
+
 	public static enum Crystals implements IPropertyEnum {
 		CRYSTAL_SHARD(true, Generic.CRYSTAL_SHARD),
 		CRYSTAL_BLOCK(false),
@@ -685,27 +683,27 @@ public class TheBigBookOfEnums {
 		DARK_CRYSTAL_BLOCK(false),
 		DARK_CRYSTAL_BRICK(false),
 		TITAN_STONE(false);
-	
+
 		private boolean isShard;
 		private Generic drops;
-		
+
 		Crystals(boolean isShard, @Nullable Generic drops) {
 			this.isShard = isShard;
 			this.drops = drops;
 		}
-		
-		Crystals(boolean isShard){
+
+		Crystals(boolean isShard) {
 			this(isShard, null);
 		}
-	
+
 		public boolean isShard() {
 			return isShard;
 		}
-	
+
 		public ItemStack get() {
 			return drops != null ? drops.get(ThreadLocalRandom.current().nextInt(3) + 1).copy() : ItemStack.EMPTY;
 		}
-	
+
 	}
 
 }

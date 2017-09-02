@@ -80,7 +80,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 			HANDLERS.add(new ForestryFlowerpot());
 		if (Loader.isModLoaded(Constants.AA_ID))
 			HANDLERS.add(new AAFlowerpot());
-		if(Loader.isModLoaded(Constants.BOTANY_ID))
+		if (Loader.isModLoaded(Constants.BOTANY_ID))
 			HANDLERS.add(new BotanyFlowerpot());
 	}
 
@@ -140,7 +140,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 			if (plant == FlowerpotPlants.NONE || plant == null)
 				return false;
-			
+
 			pot.setFlower(plant);
 			ItemStack toSet = new ItemStack(held.getItem(), 1, held.getMetadata());
 			if (held.getTagCompound() != null)
@@ -160,7 +160,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 		world.notifyBlockUpdate(pos, flowerpotState, flowerpotState, 3);
 		return true;
 	}
-	
+
 	private static boolean canHandle(IFlowerpotHandler handler, IBlockState state, ItemStack stack) {
 		return (state.getBlock() != Blocks.AIR && handler.owns(state.getBlock())) || (stack.getItem() != Items.AIR && handler.owns(stack.getItem()));
 	}

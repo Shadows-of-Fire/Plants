@@ -16,7 +16,7 @@ public interface IFlowerpotHandler {
 	public default String getFinalName(IBlockState state, ItemStack stack) {
 		return getStatePrefix() + handleFlowerpot(state, stack);
 	}
-	
+
 	public default boolean owns(IForgeRegistryEntry<?> entry) {
 		return PlantUtil.isOwnedBy(entry, getModId());
 	}

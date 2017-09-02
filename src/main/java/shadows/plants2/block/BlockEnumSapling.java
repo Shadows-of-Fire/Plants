@@ -34,7 +34,7 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 		setHardness(hard);
 		setResistance(res);
 	}
-	
+
 	public BlockEnumSapling(String name, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0, 0, clazz, predicate);
 	}
