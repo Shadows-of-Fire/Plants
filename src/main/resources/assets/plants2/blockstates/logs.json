@@ -40,6 +40,18 @@
 					"side": "plants2:blocks/cosmetic/tree/murray_pine_log",
 					"end": "plants2:blocks/cosmetic/tree/murray_pine_log_end"
 				}
+			},
+			"crystal": {
+				"textures": {
+					"side": "plants2:blocks/forgotten/crystal/c_log",
+					"end": "plants2:blocks/forgotten/crystal/c_log_end"
+				}
+			},
+			"dark_crystal": {
+				"textures": {
+					"side": "plants2:blocks/forgotten/crystal/dc_log",
+					"end": "plants2:blocks/forgotten/crystal/dc_log_end"
+				}
 			}
 		},
 		"axis": {

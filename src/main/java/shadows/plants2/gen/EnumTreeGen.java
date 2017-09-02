@@ -15,33 +15,21 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import shadows.plants2.block.base.IEnumBlockAccess;
-import shadows.plants2.data.Constants;
-import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.data.enums.ITreeEnum;
 
-public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees implements IPostInitUpdate {
-
-	protected final E assign;
+public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 
 	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
 		super(notify, minHeight, log.getStateFor(assign), leaf.getStateFor(assign), false);
-		this.assign = assign;
 		TreeGenerator.LIST.add(this);
-		Constants.UPDATES.add(this);
+		assign.setTreeGen(this);
 	}
 
 	//If you extend this class and override generate, use this for super.
 	public EnumTreeGen(E assign) {
 		super(false, 0, null, null, false);
-		this.assign = assign;
 		TreeGenerator.LIST.add(this);
-		Constants.UPDATES.add(this);
-	}
-
-	@Override
-	public void postInit(FMLPostInitializationEvent e) {
 		assign.setTreeGen(this);
 	}
 

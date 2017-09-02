@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -36,6 +38,7 @@ import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
 import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
+import shadows.plants2.block.BlockEnumSapling;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.block.base.BlockEnumBush;
@@ -51,6 +54,7 @@ import shadows.plants2.data.enums.LaterEnums.Harvestable;
 import shadows.plants2.data.enums.LaterEnums.Planks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
+import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Desert;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Double;
@@ -146,8 +150,12 @@ public class ModRegistry {
 	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
 
 	public static final BlockEnum<Logs> LOG_0 = new BlockEnumLog<Logs>("log_0", Logs.class, 0);
-	public static final BlockEnumBush<Logs> SAP_0 = new BlockNetherSapling<Logs>("sapling_0", Logs.class, 0);
+	public static final BlockEnumBush<Logs> SAP_0 = new BlockEnumSapling<Logs>("sapling_0", Logs.class, 0);
 	public static final BlockEnum<Logs> LEAF_0 = new BlockEnumLeaves<Logs>("leaves_0", SAP_0, Logs.class, 0);
+	
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<CrystalLogs>("crystal_log", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 1.5F, 5F, CrystalLogs.class, 0);
+	public static final BlockEnumBush<CrystalLogs> CRYSTAL_SAP = new BlockEnumSapling<CrystalLogs>("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0);
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<CrystalLogs>("crystal_leaves", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
 
 	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<Planks>("planks", Planks.class, 0);
 

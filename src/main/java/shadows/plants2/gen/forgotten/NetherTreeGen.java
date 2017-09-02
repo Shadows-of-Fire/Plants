@@ -17,29 +17,19 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import shadows.plants2.block.base.IEnumBlock;
-import shadows.plants2.data.Constants;
-import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.data.enums.ITreeEnum;
 
-public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator implements IPostInitUpdate {
+public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator {
 	protected final IBlockState leaf;
 	protected final IBlockState log;
 	int dir = 0;
-	protected final E assign;
 
 	public NetherTreeGen(IEnumBlock<E> log, IEnumBlock<E> leaf, E assign) {
 		super(true);
 		this.log = log.getStateFor(assign);
 		this.leaf = leaf.getStateFor(assign);
-		this.assign = assign;
 		TreeGenerator.LIST.add(this);
-		Constants.UPDATES.add(this);
-	}
-
-	@Override
-	public void postInit(FMLPostInitializationEvent e) {
 		assign.setTreeGen(this);
 	}
 

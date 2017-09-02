@@ -34,6 +34,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	private final Block sapling;
 	private int[] surroundings = new int[32768];
+	private BlockRenderLayer brl = Blocks.LEAVES.getBlockLayer();
 
 	public BlockEnumLeaves(String name, SoundType s, float hard, float res, Block sapling, Class<E> clazz, int predicate) {
 		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> (e.getPredicateIndex() == predicate));
@@ -46,6 +47,16 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	
 	public BlockEnumLeaves(String name, Block sapling, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0.2F, 0F, sapling, clazz, predicate);
+	}
+	
+	public BlockEnumLeaves(String name, SoundType s, BlockRenderLayer brl, float hard, float res, Block sapling, Class<E> enumClass, int predicate) {
+		this(name, s, hard, res, sapling, enumClass, predicate);
+		this.brl = brl;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return brl == BlockRenderLayer.SOLID;
 	}
 
 	@Override
@@ -78,13 +89,8 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
-
-	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return Blocks.LEAVES.getBlockLayer();
+		return brl;
 	}
 
 	@Override

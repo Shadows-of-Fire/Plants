@@ -659,6 +659,24 @@ public class TheBigBookOfEnums {
 
 	}
 	
+	public static enum CrystalLogs implements ITreeEnum {
+		CRYSTAL,
+		DARK_CRYSTAL;
+
+		private WorldGenerator gen;
+		
+		@Override
+		public WorldGenerator getTreeGen() {
+			return gen;
+		}
+
+		@Override
+		public void setTreeGen(WorldGenerator k) {
+			gen = k;
+		}
+		
+	}
+	
 	public static enum Crystals implements IPropertyEnum {
 		CRYSTAL_SHARD(true, Generic.CRYSTAL_SHARD),
 		CRYSTAL_BLOCK(false),

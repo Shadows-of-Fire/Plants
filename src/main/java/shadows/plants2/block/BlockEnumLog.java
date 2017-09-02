@@ -7,6 +7,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
@@ -24,15 +25,31 @@ import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 
-	static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
+	public static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
+	private BlockRenderLayer brl = BlockRenderLayer.SOLID;
 
 	public BlockEnumLog(String name, SoundType s, float hard, float res, Class<E> enumClass, int predicate) {
 		super(name, Material.WOOD, s, hard, res, enumClass, "type", (e) -> (e.getPredicateIndex() == predicate));
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(AXIS, Axis.Y));
 	}
-	
+
 	public BlockEnumLog(String name, Class<E> enumClass, int predicate) {
 		this(name, SoundType.WOOD, 2F, 1F, enumClass, predicate);
+	}
+
+	public BlockEnumLog(String name, SoundType s, BlockRenderLayer brl, float hard, float res, Class<E> enumClass, int predicate) {
+		this(name, s, hard, res, enumClass, predicate);
+		this.brl = brl;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return brl == BlockRenderLayer.SOLID;
+	}
+
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+		return brl;
 	}
 
 	@Override

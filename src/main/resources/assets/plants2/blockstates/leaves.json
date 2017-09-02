@@ -34,6 +34,16 @@
 				"textures": {
 					"all": "plants2:blocks/cosmetic/tree/murray_pine_leaves"
 				}
+			},
+			"crystal": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/c_leaves"
+				}
+			},
+			"dark_crystal": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/dc_leaves"
+				}
 			}
 		},
 		"decayable": {
