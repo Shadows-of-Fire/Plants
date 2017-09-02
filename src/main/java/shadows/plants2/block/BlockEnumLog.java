@@ -47,8 +47,11 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		if (brl != BlockRenderLayer.SOLID) {
 			IBlockState offset = world.getBlockState(pos.offset(side));
+			if (offset.getBlock() == this && offset.getValue(AXIS) == state.getValue(AXIS))
+				return false;
 			if (world.isAirBlock(pos.offset(side)))
 				return true;
+			return super.shouldSideBeRendered(state, world, pos, side);
 		}
 		return super.shouldSideBeRendered(state, world, pos, side);
 	}
