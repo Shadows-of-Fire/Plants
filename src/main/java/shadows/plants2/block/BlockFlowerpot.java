@@ -60,13 +60,13 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	private final BlockStateContainer container;
 
 	public BlockFlowerpot() {
-		setRegistryName("minecraft", "flower_pot");
+		PlantUtil.setRegNameIllegally(this,"flower_pot");
 		setUnlocalizedName(Constants.MODID + ".flowerpot");
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		container = createStateContainer();
 		setDefaultState(container.getBaseState().withProperty(PROP, FlowerpotPlants.NONE));
 		ModRegistry.BLOCKS.add(this);
-		ModRegistry.ITEMS.add(createItemBlock().setRegistryName(getRegistryName()));
+		ModRegistry.ITEMS.add(createItemBlock());
 		initModHandlers();
 	}
 
@@ -211,7 +211,9 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 	@Override
 	public Item createItemBlock() {
-		return new ItemBlock(this);
+		Item k = new ItemBlock(this);
+		PlantUtil.setRegNameIllegally(k, "flower_pot");
+		return k;
 	}
 
 	@Override

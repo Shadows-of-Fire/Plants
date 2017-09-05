@@ -20,6 +20,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -176,5 +178,13 @@ public class PlantUtil {
 		default:
 			return new ItemStack(Items.DYE, size, c.getDyeDamage());
 		}
+	}
+	
+	public static void setRegNameIllegally(IForgeRegistryEntry<?> entry, String name) {
+		Loader l = Loader.instance();
+		ModContainer k = l.activeModContainer();
+		l.setActiveModContainer(l.getMinecraftModContainer());
+		entry.setRegistryName(new ResourceLocation("minecraft", name));
+		l.setActiveModContainer(k);
 	}
 }

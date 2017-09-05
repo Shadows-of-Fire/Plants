@@ -26,7 +26,8 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		super.readFromNBT(tag);
 		flower = FlowerpotPlants.values()[tag.getInteger("flower")];
 		stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
-		stack.setTagCompound(tag.getCompoundTag("stack_nbt"));
+		NBTTagCompound nTag = tag.getCompoundTag("stack_nbt");
+		if(nTag.getSize() != 0) stack.setTagCompound(nTag);
 	}
 
 	@Override
