@@ -32,11 +32,11 @@ import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> implements IShearable {
 
-	private final Block sapling;
+	private final BlockEnumSapling<E> sapling;
 	private int[] surroundings = new int[32768];
-	private BlockRenderLayer brl = Blocks.LEAVES.getBlockLayer();
+	private BlockRenderLayer brl = null;
 
-	public BlockEnumLeaves(String name, SoundType s, float hard, float res, Block sapling, Class<E> clazz, int predicate) {
+	public BlockEnumLeaves(String name, SoundType s, float hard, float res, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> (e.getPredicateIndex() == predicate));
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(BlockLeaves.DECAYABLE, false).withProperty(BlockLeaves.CHECK_DECAY, false));
 		this.sapling = sapling;
@@ -45,18 +45,18 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 			throw new IllegalArgumentException("Attempting to create a BlockEnumLeaves with more than 4 values is invalid.");
 	}
 
-	public BlockEnumLeaves(String name, Block sapling, Class<E> clazz, int predicate) {
+	public BlockEnumLeaves(String name, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0.2F, 0F, sapling, clazz, predicate);
 	}
 
-	public BlockEnumLeaves(String name, SoundType s, BlockRenderLayer brl, float hard, float res, Block sapling, Class<E> enumClass, int predicate) {
+	public BlockEnumLeaves(String name, SoundType s, BlockRenderLayer brl, float hard, float res, BlockEnumSapling<E> sapling, Class<E> enumClass, int predicate) {
 		this(name, s, hard, res, sapling, enumClass, predicate);
 		this.brl = brl;
 	}
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return brl == BlockRenderLayer.SOLID;
+		return getBlockLayer() == BlockRenderLayer.SOLID;
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return brl;
+		return brl == null ? Blocks.LEAVES.getBlockLayer() : brl;
 	}
 
 	@Override
@@ -242,5 +242,9 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	@Override
 	public BlockStateContainer createStateContainer() {
 		return new BlockStateContainer(this, property, BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE);
+	}
+
+	public BlockEnumSapling<E> getSapling() {
+		return sapling;
 	}
 }

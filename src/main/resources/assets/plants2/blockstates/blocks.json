@@ -85,6 +85,11 @@
 				"textures": {
 					"all": "plants2:blocks/forgotten/crystal/titan_stone"
 				}
+			},
+			"groundcover": {
+				"textures": {
+					"all": "blocks/grass_top"
+				}
 			}
 		}
 	}

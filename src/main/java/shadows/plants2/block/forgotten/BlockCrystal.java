@@ -26,7 +26,7 @@ import shadows.plants2.util.PlantUtil;
 public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	public BlockCrystal() {
-		super("crystal", Material.GLASS, SoundType.GLASS, 5F, 20F, Crystals.class);
+		super("crystal", Material.GLASS, SoundType.GLASS, 1.4F, 20F, Crystals.class);
 	}
 
 	@Override

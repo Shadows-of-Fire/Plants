@@ -1,7 +1,10 @@
 package shadows.plants2.block;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.BlockStateContainer;
@@ -25,18 +28,26 @@ import shadows.plants2.util.PlantUtil;
 public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable {
 
 	public static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.8D, 0.9D);
+	protected final Collection<Block> soils;
 
-	public BlockEnumSapling(String name, SoundType s, float hard, float res, Class<E> clazz, int predicate) {
+	public BlockEnumSapling(String name, SoundType s, float hard, float res, Class<E> clazz, int predicate, Block... otherSoils) {
 		super(name, EnumPlantType.Plains, clazz, predicate);
 		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(Constants.INV, false));
 		setTickRandomly(true);
 		setSoundType(s);
 		setHardness(hard);
 		setResistance(res);
+		this.soils = Arrays.asList(otherSoils);
 	}
 
 	public BlockEnumSapling(String name, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0, 0, clazz, predicate);
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		IBlockState soil = world.getBlockState(pos.down());
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), net.minecraft.util.EnumFacing.UP, this) || soils.contains(soil.getBlock()));
 	}
 
 	@Override

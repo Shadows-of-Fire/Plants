@@ -179,7 +179,7 @@ public class PlantUtil {
 			return new ItemStack(Items.DYE, size, c.getDyeDamage());
 		}
 	}
-	
+
 	public static void setRegNameIllegally(IForgeRegistryEntry<?> entry, String name) {
 		Loader l = Loader.instance();
 		ModContainer k = l.activeModContainer();

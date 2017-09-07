@@ -17,7 +17,7 @@ public abstract class BlockBasic extends Block implements IHasModel {
 
 	public BlockBasic(String name, Material material, float hardness, float resist, boolean customItemBlock, boolean addToList) {
 		super(material);
-		setRegistryName(name);
+		setRegistryName(Constants.MODID, name);
 		setUnlocalizedName(Constants.MODID + "." + name);
 		setHardness(hardness);
 		setResistance(resist);

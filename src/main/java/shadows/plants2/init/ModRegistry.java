@@ -16,6 +16,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
@@ -28,6 +30,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import shadows.plants2.biome.BiomeCrystalForest;
 import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.block.BlockEnumCrop;
 import shadows.plants2.block.BlockEnumDoubleBush;
@@ -45,6 +48,7 @@ import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
+import shadows.plants2.block.forgotten.BlockCrystalGround;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
@@ -76,10 +80,11 @@ import shadows.plants2.tile.TileFlowerpot;
 
 public class ModRegistry {
 
-	public static final List<Block> BLOCKS = new ArrayList<Block>();
-	public static final List<Item> ITEMS = new ArrayList<Item>();
-	public static final List<IRecipe> RECIPES = new ArrayList<IRecipe>();
-	public static final List<Potion> POTIONS = new ArrayList<Potion>();
+	public static final List<Block> BLOCKS = new ArrayList<>();
+	public static final List<Item> ITEMS = new ArrayList<>();
+	public static final List<IRecipe> RECIPES = new ArrayList<>();
+	public static final List<Potion> POTIONS = new ArrayList<>();
+	public static final List<Biome> BIOMES = new ArrayList<>();
 	public static final CreativeTabs TAB = new CreativeTabs("plants") {
 
 		@Override
@@ -89,18 +94,18 @@ public class ModRegistry {
 
 	};
 
-	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumFlower<Plants>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
-	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumFlower<Plants>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
-	public static final BlockEnumBush<Plants> PLANT_2 = new BlockEnumFlower<Plants>("cosmetic_2", EnumPlantType.Plains, Plants.class, 2);
-	public static final BlockEnumBush<Plants> PLANT_3 = new BlockEnumFlower<Plants>("cosmetic_3", EnumPlantType.Plains, Plants.class, 3);
-	public static final BlockEnumBush<Plants> PLANT_4 = new BlockEnumFlower<Plants>("cosmetic_4", EnumPlantType.Plains, Plants.class, 4);
+	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumFlower<>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
+	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumFlower<>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
+	public static final BlockEnumBush<Plants> PLANT_2 = new BlockEnumFlower<>("cosmetic_2", EnumPlantType.Plains, Plants.class, 2);
+	public static final BlockEnumBush<Plants> PLANT_3 = new BlockEnumFlower<>("cosmetic_3", EnumPlantType.Plains, Plants.class, 3);
+	public static final BlockEnumBush<Plants> PLANT_4 = new BlockEnumFlower<>("cosmetic_4", EnumPlantType.Plains, Plants.class, 4);
 
-	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumFlower<Desert>("desert_0", EnumPlantType.Desert, Desert.class, 0);
-	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumFlower<Desert>("desert_1", EnumPlantType.Desert, Desert.class, 1);
+	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumFlower<>("desert_0", EnumPlantType.Desert, Desert.class, 0);
+	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumFlower<>("desert_1", EnumPlantType.Desert, Desert.class, 1);
 
-	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleBush<Double>("double_0", EnumPlantType.Plains, Double.class, 0);
+	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleBush<>("double_0", EnumPlantType.Plains, Double.class, 0);
 
-	public static final ItemBigEnum<Generic> GENERIC = new ItemBigEnum<Generic>("generic", Generic.values());
+	public static final ItemBigEnum<Generic> GENERIC = new ItemBigEnum<>("generic", Generic.values());
 	public static final Item PLANTBALL = new ItemPlantball();
 
 	public static final Item OKRA = new ItemFoodBase("okra", 3, 1.3f);
@@ -127,17 +132,17 @@ public class ModRegistry {
 	public static final Item RASPBERRY = new ItemFoodBase("raspberry", 2, 1.4F);
 	public static final Item HUCKLEBERRY = new ItemFoodBase("huckleberry", 3, 0.5F);
 
-	public static final Item AMARANTHUS_H_SEEDS = new ItemSeed<Crops>("amaranthus_h_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.AMARANTHUS_H);
-	public static final Item OKRA_SEEDS = new ItemSeed<Crops>("okra_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.OKRA);
-	public static final Item PINEAPPLE_SEEDS = new ItemSeed<Crops>("pineapple_seeds", EnumPlantType.Crop, "plants2:crop_1", Crops.PINEAPPLE);
+	public static final Item AMARANTHUS_H_SEEDS = new ItemSeed<>("amaranthus_h_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.AMARANTHUS_H);
+	public static final Item OKRA_SEEDS = new ItemSeed<>("okra_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.OKRA);
+	public static final Item PINEAPPLE_SEEDS = new ItemSeed<>("pineapple_seeds", EnumPlantType.Crop, "plants2:crop_1", Crops.PINEAPPLE);
 
-	public static final BlockEnumBush<Harvestable> HARVEST_0 = new BlockEnumHarvestBush<Harvestable>("harvest_0", EnumPlantType.Plains, Harvestable.class, 0);
-	public static final BlockEnumBush<Harvestable> HARVEST_1 = new BlockEnumHarvestBush<Harvestable>("harvest_1", EnumPlantType.Plains, Harvestable.class, 1);
+	public static final BlockEnumBush<Harvestable> HARVEST_0 = new BlockEnumHarvestBush<>("harvest_0", EnumPlantType.Plains, Harvestable.class, 0);
+	public static final BlockEnumBush<Harvestable> HARVEST_1 = new BlockEnumHarvestBush<>("harvest_1", EnumPlantType.Plains, Harvestable.class, 1);
 
-	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<Crops>("crop_0", Crops.class, 0, new Item[] { AMARANTHUS_H, OKRA }, new Item[] { AMARANTHUS_H_SEEDS, OKRA_SEEDS });
-	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<Crops>("crop_1", Crops.class, 1, new Item[] { PINEAPPLE, null }, new Item[] { PINEAPPLE_SEEDS, null });
+	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<>("crop_0", Crops.class, 0, new Item[] { AMARANTHUS_H, OKRA }, new Item[] { AMARANTHUS_H_SEEDS, OKRA_SEEDS });
+	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<>("crop_1", Crops.class, 1, new Item[] { PINEAPPLE, null }, new Item[] { PINEAPPLE_SEEDS, null });
 
-	public static final BlockEnumBush<DoubleHarvestable> DOUBLE_HARVEST_0 = new BlockEnumDoubleHarvestBush<DoubleHarvestable>("double_harvest_0", EnumPlantType.Plains, DoubleHarvestable.class, 0);
+	public static final BlockEnumBush<DoubleHarvestable> DOUBLE_HARVEST_0 = new BlockEnumDoubleHarvestBush<>("double_harvest_0", EnumPlantType.Plains, DoubleHarvestable.class, 0);
 
 	public static final Block ADLUMIA_F = new BlockCustomVine("adlumia_f", Vines.ADLUMIA_F);
 	public static final Block AFGEKIA_M = new BlockCustomVine("afgekia_m", Vines.AFGEKIA_M);
@@ -145,37 +150,39 @@ public class ModRegistry {
 	public static final Block AKEBIA_Q_VINE = new BlockCustomVine("akebia_q_vine", Vines.AKEBIA_Q, new StackPrimer(AKEBIA_Q));
 	public static final Block AMPELOPSIS_A_VINE = new BlockCustomVine("ampelopsis_a_vine", Vines.AMPELOPSIS_A, new StackPrimer(AMPELOPSIS_A));
 
-	public static final BlockEnum<NetherLogs> NETHER_LOG = new BlockEnumLog<NetherLogs>("nether_log", NetherLogs.class, 0);
-	public static final BlockEnumBush<NetherLogs> NETHER_SAP = new BlockNetherSapling<NetherLogs>("nether_sapling", NetherLogs.class, 0);
-	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<NetherLogs>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
+	public static final BlockEnum<NetherLogs> NETHER_LOG = new BlockEnumLog<>("nether_log", NetherLogs.class, 0);
+	public static final BlockEnumSapling<NetherLogs> NETHER_SAP = new BlockNetherSapling<>("nether_sapling", NetherLogs.class, 0);
+	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
 
-	public static final BlockEnum<Logs> LOG_0 = new BlockEnumLog<Logs>("log_0", Logs.class, 0);
-	public static final BlockEnumBush<Logs> SAP_0 = new BlockEnumSapling<Logs>("sapling_0", Logs.class, 0);
-	public static final BlockEnum<Logs> LEAF_0 = new BlockEnumLeaves<Logs>("leaves_0", SAP_0, Logs.class, 0);
+	public static final BlockEnum<Logs> LOG_0 = new BlockEnumLog<>("log_0", Logs.class, 0);
+	public static final BlockEnumSapling<Logs> SAP_0 = new BlockEnumSapling<>("sapling_0", Logs.class, 0);
+	public static final BlockEnum<Logs> LEAF_0 = new BlockEnumLeaves<>("leaves_0", SAP_0, Logs.class, 0);
 
-	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<CrystalLogs>("crystal_log", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 1.5F, 5F, CrystalLogs.class, 0);
-	public static final BlockEnumBush<CrystalLogs> CRYSTAL_SAP = new BlockEnumSapling<CrystalLogs>("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0);
-	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<CrystalLogs>("crystal_leaves", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
+	public static final BlockEnum<Crystals> CRYSTAL = new BlockCrystal();
+	public static final Block GROUNDCOVER = new BlockCrystalGround();
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<>("crystal_log", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 1.5F, 5F, CrystalLogs.class, 0);
+	public static final BlockEnumSapling<CrystalLogs> CRYSTAL_SAP = new BlockEnumSapling<>("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0, GROUNDCOVER);
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<>("crystal_leaves", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
 
-	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<Planks>("planks", Planks.class, 0);
+	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<>("planks", Planks.class, 0);
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
 
 	public static final Block FLOWERPOT = new BlockFlowerpot();
 
-	public static final WorldGenerator ASH_TREE = new NetherTreeGen<NetherLogs>(NETHER_LOG, NETHER_LEAF, NetherLogs.ASH);
-	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen<NetherLogs>(NETHER_LOG, NETHER_LEAF, NetherLogs.BLAZE);
+	public static final WorldGenerator ASH_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.ASH);
+	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.BLAZE);
 
-	public static final WorldGenerator KAURI_TREE = new StructureGen(new BlockPos(-4, 0, -4), Logs.BLACK_KAURI, Type.HOT, Type.SAVANNA, Type.DRY);
-	public static final WorldGenerator PINE_TREE = new StructureGen(new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
-	public static final WorldGenerator INCENSE_TREE = new StructureGen(new BlockPos(-2, 0, -2), Logs.INCENSE_CEDAR, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
-	public static final WorldGenerator MURRAY_TREE = new StructureGen(new BlockPos(-3, 0, -3), Logs.MURRAY_PINE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
-	
-	public static final WorldGenerator CRYSTAL_TREE = new EnumTreeGen<CrystalLogs>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.CRYSTAL);
-	public static final WorldGenerator DARK_CRYSTAL_TREE = new EnumTreeGen<CrystalLogs>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.DARK_CRYSTAL);
+	public static final WorldGenAbstractTree KAURI_TREE = new StructureGen(new BlockPos(-4, 0, -4), Logs.BLACK_KAURI, Type.HOT, Type.SAVANNA, Type.DRY);
+	public static final WorldGenAbstractTree PINE_TREE = new StructureGen(new BlockPos(-7, 0, -7), Logs.BRAZILLIAN_PINE, Type.JUNGLE, Type.SAVANNA);
+	public static final WorldGenAbstractTree INCENSE_TREE = new StructureGen(new BlockPos(-2, 0, -2), Logs.INCENSE_CEDAR, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
+	public static final WorldGenAbstractTree MURRAY_TREE = new StructureGen(new BlockPos(-3, 0, -3), Logs.MURRAY_PINE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 
-	public static final BlockEnum<Crystals> CRYSTAL = new BlockCrystal();
+	public static final WorldGenAbstractTree CRYSTAL_TREE = new EnumTreeGen<>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.CRYSTAL);
+	public static final WorldGenAbstractTree DARK_CRYSTAL_TREE = new EnumTreeGen<>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.DARK_CRYSTAL);
+
+	public static final Biome CRYSTAL_FOREST = new BiomeCrystalForest();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
@@ -198,6 +205,11 @@ public class ModRegistry {
 	@SubscribeEvent
 	public void onPotionRegister(Register<Potion> event) {
 		event.getRegistry().registerAll(POTIONS.toArray(new Potion[0]));
+	}
+
+	@SubscribeEvent
+	public void onBiomeRegister(Register<Biome> event) {
+		event.getRegistry().registerAll(BIOMES.toArray(new Biome[0]));
 	}
 
 	public static void oreDict(FMLInitializationEvent e) {

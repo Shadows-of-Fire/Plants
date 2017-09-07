@@ -60,7 +60,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	private final BlockStateContainer container;
 
 	public BlockFlowerpot() {
-		PlantUtil.setRegNameIllegally(this,"flower_pot");
+		PlantUtil.setRegNameIllegally(this, "flower_pot");
 		setUnlocalizedName(Constants.MODID + ".flowerpot");
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		container = createStateContainer();
