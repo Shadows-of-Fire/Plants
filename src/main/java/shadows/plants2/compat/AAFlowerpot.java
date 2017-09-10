@@ -9,8 +9,7 @@ public class AAFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String handleFlowerpot(IBlockState state, ItemStack stack) {
-		if (state.getBlock() == InitBlocks.blockBlackLotus)
-			return "black_lotus";
+		if (state.getBlock() == InitBlocks.blockBlackLotus) return "black_lotus";
 
 		return "none";
 	}

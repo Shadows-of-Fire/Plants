@@ -65,10 +65,8 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		if (world.getBlockState(pos.offset(side)) != state)
-			return true;
-		if (world.isAirBlock(pos.offset(side)))
-			return true;
+		if (world.getBlockState(pos.offset(side)) != state) return true;
+		if (world.isAirBlock(pos.offset(side))) return true;
 		return false;
 	}
 
@@ -84,8 +82,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		if (c.isShard()) {
 			System.out.println(c.get());
 			drops.add(c.get());
-		} else
-			drops.add(new ItemStack(this, 1, c.ordinal()));
+		} else drops.add(new ItemStack(this, 1, c.ordinal()));
 	}
 
 	@Override

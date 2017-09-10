@@ -179,8 +179,8 @@ public class ModRegistry {
 	public static final WorldGenAbstractTree INCENSE_TREE = new StructureGen(new BlockPos(-2, 0, -2), Logs.INCENSE_CEDAR, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 	public static final WorldGenAbstractTree MURRAY_TREE = new StructureGen(new BlockPos(-3, 0, -3), Logs.MURRAY_PINE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.FOREST);
 
-	public static final WorldGenAbstractTree CRYSTAL_TREE = new EnumTreeGen<>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.CRYSTAL);
-	public static final WorldGenAbstractTree DARK_CRYSTAL_TREE = new EnumTreeGen<>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.DARK_CRYSTAL);
+	public static final WorldGenAbstractTree CRYSTAL_TREE = new EnumTreeGen<>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.CRYSTAL, false);
+	public static final WorldGenAbstractTree DARK_CRYSTAL_TREE = new EnumTreeGen<>(false, 4, CRYSTAL_LOG, CRYSTAL_LEAF, CrystalLogs.DARK_CRYSTAL, false);
 
 	public static final Biome CRYSTAL_FOREST = new BiomeCrystalForest();
 
@@ -192,8 +192,7 @@ public class ModRegistry {
 	@SubscribeEvent
 	public void onItemRegister(Register<Item> event) {
 		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
-		if (Loader.isModLoaded(Constants.BOTANIA_ID))
-			event.getRegistry().register(new ItemExcalibur());
+		if (Loader.isModLoaded(Constants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
 	}
 
 	@SubscribeEvent
@@ -234,12 +233,10 @@ public class ModRegistry {
 
 	public static void recipes(Register<IRecipe> e) {
 		for (Block block : BLOCKS) {
-			if (block instanceof IHasRecipe)
-				((IHasRecipe) block).initRecipes(e);
+			if (block instanceof IHasRecipe) ((IHasRecipe) block).initRecipes(e);
 		}
 		for (Item item : ITEMS) {
-			if (item instanceof IHasRecipe)
-				((IHasRecipe) item).initRecipes(e);
+			if (item instanceof IHasRecipe) ((IHasRecipe) item).initRecipes(e);
 		}
 	}
 

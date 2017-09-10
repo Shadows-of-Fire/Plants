@@ -65,9 +65,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 			if (state.getValue(FRUIT) && state.getValue(UPPER)) {
 				for (StackPrimer s : drops) {
 					ItemStack i = s.genStack();
-					if (!player.addItemStackToInventory(i))
-						if (!world.isRemote)
-							Block.spawnAsEntity(world, pos, i);
+					if (!player.addItemStackToInventory(i)) if (!world.isRemote) Block.spawnAsEntity(world, pos, i);
 				}
 				world.setBlockState(pos, state.withProperty(UPPER, true).withProperty(FRUIT, false));
 				world.setBlockState(pos.down(), state.withProperty(UPPER, false).withProperty(FRUIT, false));
@@ -75,9 +73,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 			} else if (state.getValue(FRUIT) && !state.getValue(UPPER)) {
 				for (StackPrimer s : drops) {
 					ItemStack i = s.genStack();
-					if (!player.addItemStackToInventory(i))
-						if (!world.isRemote)
-							Block.spawnAsEntity(world, pos, i);
+					if (!player.addItemStackToInventory(i)) if (!world.isRemote) Block.spawnAsEntity(world, pos, i);
 				}
 				world.setBlockState(pos.up(), getDefaultState().withProperty(UPPER, true).withProperty(FRUIT, false));
 				world.setBlockState(pos, getDefaultState().withProperty(UPPER, false).withProperty(FRUIT, false));
@@ -99,8 +95,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
-		if (state.getBlock() != this)
-			return super.canBlockStay(world, pos, state);
+		if (state.getBlock() != this) return super.canBlockStay(world, pos, state);
 		if (state.getValue(UPPER)) {
 			return world.getBlockState(pos.down()).getBlock() == this;
 		} else {
@@ -153,10 +148,8 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	public int getMetaFromState(IBlockState state) {
 		int i = state.getValue(property).ordinal() % 4;
 		i *= 4;
-		if (state.getValue(UPPER))
-			i++;
-		if (state.getValue(FRUIT))
-			i += 2;
+		if (state.getValue(UPPER)) i++;
+		if (state.getValue(FRUIT)) i += 2;
 		return i;
 	}
 
@@ -170,8 +163,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 			state = state.withProperty(FRUIT, true);
 			i -= 0.5F;
 		}
-		if (i - 0.25F >= 0)
-			state = state.withProperty(UPPER, true);
+		if (i - 0.25F >= 0) state = state.withProperty(UPPER, true);
 
 		return state;
 	}
@@ -212,8 +204,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 		world.setBlockState(pos, state.withProperty(FRUIT, true));
 		if (!state.getValue(UPPER))
 			world.setBlockState(pos.up(), state.withProperty(UPPER, true).withProperty(FRUIT, true));
-		else
-			world.setBlockState(pos.down(), state.withProperty(UPPER, false).withProperty(FRUIT, true));
+		else world.setBlockState(pos.down(), state.withProperty(UPPER, false).withProperty(FRUIT, true));
 	}
 
 	@Override

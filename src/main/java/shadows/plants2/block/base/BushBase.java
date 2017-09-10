@@ -37,8 +37,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 		setTickRandomly(false);
 		setSoundType(SoundType.PLANT);
 		ModRegistry.BLOCKS.add(this);
-		if (!hasCustomItemBlock)
-			ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+		if (!hasCustomItemBlock) ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
 		Constants.UPDATES.add(this);
 	}
 
@@ -83,8 +82,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 
 	@Override
 	public void getDrops(NonNullList<ItemStack> list, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		if (!Config.needShears)
-			list.addAll(getActualDrops(world, pos, state, fortune));
+		if (!Config.needShears) list.addAll(getActualDrops(world, pos, state, fortune));
 	}
 
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {

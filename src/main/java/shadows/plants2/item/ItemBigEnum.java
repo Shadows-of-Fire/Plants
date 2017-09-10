@@ -23,9 +23,8 @@ public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		if (this.isInCreativeTab(tab))
-			for (E e : values)
-				items.add(new ItemStack(this, 1, e.ordinal()));
+		if (this.isInCreativeTab(tab)) for (E e : values)
+			items.add(new ItemStack(this, 1, e.ordinal()));
 	}
 
 	@Override

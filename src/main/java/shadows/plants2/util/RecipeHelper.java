@@ -28,18 +28,15 @@ public class RecipeHelper {
 	public static void addRecipe(int j, IRecipe rec) {
 		if (rec.getRegistryName() == null)
 			recipeList.add(rec.setRegistryName(new ResourceLocation(MODID, "recipe" + j)));
-		else
-			recipeList.add(rec);
+		else recipeList.add(rec);
 	}
 
 	/*
 	 * This adds the recipe to the list of crafting recipes.  Cares about names.
 	 */
 	public static void addRecipe(String name, IRecipe rec) {
-		if (rec.getRegistryName() == null)
-			recipeList.add(rec.setRegistryName(new ResourceLocation(MODID, name)));
-		else
-			recipeList.add(rec);
+		if (rec.getRegistryName() == null) recipeList.add(rec.setRegistryName(new ResourceLocation(MODID, name)));
+		else recipeList.add(rec);
 	}
 
 	/*
@@ -105,8 +102,7 @@ public class RecipeHelper {
 	}
 
 	public static ShapedRecipes genShaped(ItemStack output, int l, int w, Object[] input) {
-		if (input[0] instanceof Object[])
-			input = (Object[]) input[0];
+		if (input[0] instanceof Object[]) input = (Object[]) input[0];
 		if (l * w != input.length)
 			throw new UnsupportedOperationException("Attempted to add invalid shaped recipe.  Complain to the author of " + MODNAME);
 		NonNullList<Ingredient> inputL = NonNullList.create();
@@ -129,10 +125,8 @@ public class RecipeHelper {
 	}
 
 	public static ShapedRecipes genShaped(String group, ItemStack output, int l, int w, Object[] input) {
-		if (input[0] instanceof List)
-			input = ((List<?>) input[0]).toArray();
-		else if (input[0] instanceof Object[])
-			input = (Object[]) input[0];
+		if (input[0] instanceof List) input = ((List<?>) input[0]).toArray();
+		else if (input[0] instanceof Object[]) input = (Object[]) input[0];
 		if (l * w != input.length)
 			throw new UnsupportedOperationException("Attempted to add invalid shaped recipe.  Complain to the author of " + MODNAME);
 		NonNullList<Ingredient> inputL = NonNullList.create();
@@ -155,10 +149,8 @@ public class RecipeHelper {
 	}
 
 	public static NonNullList<Ingredient> createInput(Object[] input) {
-		if (input[0] instanceof List)
-			input = ((List<?>) input[0]).toArray();
-		else if (input[0] instanceof Object[])
-			input = (Object[]) input[0];
+		if (input[0] instanceof List) input = ((List<?>) input[0]).toArray();
+		else if (input[0] instanceof Object[]) input = (Object[]) input[0];
 		NonNullList<Ingredient> inputL = NonNullList.create();
 		for (int i = 0; i < input.length; i++) {
 			Object k = input[i];

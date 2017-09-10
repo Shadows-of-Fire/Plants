@@ -38,8 +38,7 @@ public class Config {
 
 		catapultPower = config.getInt("Tool Module", "Catapult Power", 5, 0, 400, "How much strength the Cataplant has.");
 
-		if (config.hasChanged())
-			config.save();
+		if (config.hasChanged()) config.save();
 
 	}
 

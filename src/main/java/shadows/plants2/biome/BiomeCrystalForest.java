@@ -34,8 +34,7 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	@Override
 	public void plantFlower(World world, Random rand, BlockPos pos) {
 		FlowerEntry flower = WeightedRandom.getRandomItem(rand, flowers);
-		if (flower == null)
-			return;
+		if (flower == null) return;
 		world.setBlockState(pos, flower.state, 3);
 	}
 

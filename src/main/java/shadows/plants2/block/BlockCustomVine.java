@@ -60,8 +60,7 @@ public class BlockCustomVine extends BlockVine implements IHasModel {
 	@Override
 	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, @Nullable ItemStack stack) {
 		for (StackPrimer p : drops)
-			if (world.rand.nextInt(4) == 0)
-				spawnAsEntity(world, pos, p.genStack());
+			if (world.rand.nextInt(4) == 0) spawnAsEntity(world, pos, p.genStack());
 		super.harvestBlock(world, player, pos, state, te, stack);
 	}
 

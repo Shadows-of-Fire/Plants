@@ -119,8 +119,7 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		world.setBlockToAir(pos);
-		if (!state.getValue(property).getTreeGen().generate(world, rand, pos))
-			world.setBlockState(pos, state);
+		if (!state.getValue(property).getTreeGen().generate(world, rand, pos)) world.setBlockState(pos, state);
 	}
 
 	@Override

@@ -11,12 +11,9 @@ public class TFFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String handleFlowerpot(IBlockState state, ItemStack stack) {
-		if (state.getBlock() == TFBlocks.plant)
-			return state.getValue(BlockTFPlant.VARIANT).getName();
-		if (state.getBlock() == TFBlocks.sapling)
-			return state.getValue(BlockTFSapling.TF_TYPE).getName() + "_sapling";
-		if (state.getBlock() == TFBlocks.hugeWaterLily)
-			return "waterlily";
+		if (state.getBlock() == TFBlocks.plant) return state.getValue(BlockTFPlant.VARIANT).getName();
+		if (state.getBlock() == TFBlocks.sapling) return state.getValue(BlockTFSapling.TF_TYPE).getName() + "_sapling";
+		if (state.getBlock() == TFBlocks.hugeWaterLily) return "waterlily";
 
 		return "none";
 	}

@@ -21,8 +21,7 @@ public class BotaniaFlowerpot implements IFlowerpotHandler {
 	public String handleFlowerpot(IBlockState state, ItemStack stack) {
 		if (state.getBlock() == ModBlocks.mushroom)
 			return "mushroom_" + state.getValue(BotaniaStateProps.COLOR).getName();
-		if (state.getBlock() == ModBlocks.flower)
-			return "flower_" + state.getValue(BotaniaStateProps.COLOR).getName();
+		if (state.getBlock() == ModBlocks.flower) return "flower_" + state.getValue(BotaniaStateProps.COLOR).getName();
 		if (state.getBlock() == ModBlocks.shinyFlower)
 			return "sflower_" + state.getValue(BotaniaStateProps.COLOR).getName();
 		return "none";

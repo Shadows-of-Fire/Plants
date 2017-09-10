@@ -13,7 +13,7 @@ import shadows.plants2.data.Constants;
 
 @SideOnly(Side.CLIENT)
 public class RenamedStateMapper implements IStateMapper {
-	
+
 	final String path;
 	String append = "";
 	String variant = "";
@@ -38,7 +38,7 @@ public class RenamedStateMapper implements IStateMapper {
 		for (IBlockState state : map.keySet()) {
 			ModelResourceLocation loc = map.get(state);
 			String var = variant.length() == 0 ? loc.getVariant() : variant;
-			
+
 			map.put(state, new ModelResourceLocation(Constants.MODID + ":" + path, var + append));
 		}
 		return map;

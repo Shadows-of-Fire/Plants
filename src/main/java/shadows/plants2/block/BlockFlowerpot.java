@@ -72,16 +72,11 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 	private void initModHandlers() {
 		HANDLERS.add(new DefaultFlowerpot());
-		if (Loader.isModLoaded(Constants.TF_ID))
-			HANDLERS.add(new TFFlowerpot());
-		if (Loader.isModLoaded(Constants.BOTANIA_ID))
-			HANDLERS.add(new BotaniaFlowerpot());
-		if (Loader.isModLoaded(Constants.FORESTRY_ID))
-			HANDLERS.add(new ForestryFlowerpot());
-		if (Loader.isModLoaded(Constants.AA_ID))
-			HANDLERS.add(new AAFlowerpot());
-		if (Loader.isModLoaded(Constants.BOTANY_ID))
-			HANDLERS.add(new BotanyFlowerpot());
+		if (Loader.isModLoaded(Constants.TF_ID)) HANDLERS.add(new TFFlowerpot());
+		if (Loader.isModLoaded(Constants.BOTANIA_ID)) HANDLERS.add(new BotaniaFlowerpot());
+		if (Loader.isModLoaded(Constants.FORESTRY_ID)) HANDLERS.add(new ForestryFlowerpot());
+		if (Loader.isModLoaded(Constants.AA_ID)) HANDLERS.add(new AAFlowerpot());
+		if (Loader.isModLoaded(Constants.BOTANY_ID)) HANDLERS.add(new BotanyFlowerpot());
 	}
 
 	@Override
@@ -118,8 +113,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 		ItemStack held = player.getHeldItem(hand);
 		TileFlowerpot pot = this.getTileEntity(world, pos);
 
-		if (pot == null)
-			return false;
+		if (pot == null) return false;
 
 		ItemStack flowerpot = pot.getFlowerItemStack();
 
@@ -138,17 +132,14 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 			FlowerpotPlants plant = TheBigBookOfEnums.NAME_TO_ENUM.get(name);
 
-			if (plant == FlowerpotPlants.NONE || plant == null)
-				return false;
+			if (plant == FlowerpotPlants.NONE || plant == null) return false;
 
 			pot.setFlower(plant);
 			ItemStack toSet = new ItemStack(held.getItem(), 1, held.getMetadata());
-			if (held.getTagCompound() != null)
-				toSet.setTagCompound(held.getTagCompound());
+			if (held.getTagCompound() != null) toSet.setTagCompound(held.getTagCompound());
 			pot.setItemStack(toSet);
 			world.setBlockState(pos, getDefaultState().withProperty(PROP, pot.getFlower()));
-			if (!player.capabilities.isCreativeMode)
-				held.shrink(1);
+			if (!player.capabilities.isCreativeMode) held.shrink(1);
 		} else {
 			if (player.addItemStackToInventory(pot.getFlowerItemStack())) {
 				pot.setFlower(FlowerpotPlants.NONE);

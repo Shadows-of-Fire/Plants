@@ -23,17 +23,20 @@ import shadows.plants2.util.PlantUtil;
 
 public class TreeTemplate extends Template {
 
-	protected final List<Template.BlockInfo> blocks;
+	protected final List<BlockInfo> blocks;
 
 	public TreeTemplate(Template template) {
 		blocks = ReflectionHelper.getPrivateValue(Template.class, template, "blocks", "field_186270_a");
 	}
 
+	public final List<BlockInfo> getBlocks() {
+		return blocks;
+	}
+
 	public boolean isReplaceable(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
 		boolean flag = state.getBlock().isReplaceable(world, pos) || (state.getBlock().isLeaves(state, world, pos) && PlantUtil.isOwnedBy(state.getBlock(), Constants.MODID));
-		if (flag && state.getBlock() instanceof BlockDoublePlant)
-			world.setBlockToAir(pos.up());
+		if (flag && state.getBlock() instanceof BlockDoublePlant) world.setBlockToAir(pos.up());
 		return flag;
 	}
 
@@ -51,9 +54,9 @@ public class TreeTemplate extends Template {
 				if (!isReplaceable(world, toCheck) && !(world.getBlockState(toCheck) instanceof BlockEnumSapling))
 					return false;
 		}
-		for (Template.BlockInfo template$blockinfo : this.blocks) {
+		for (BlockInfo template$blockinfo : this.blocks) {
 			BlockPos blockpos = transformedBlockPos(placement, template$blockinfo.pos).add(pos);
-			Template.BlockInfo template$blockinfo1 = processor != null ? processor.processBlock(world, blockpos, template$blockinfo) : template$blockinfo;
+			BlockInfo template$blockinfo1 = processor != null ? processor.processBlock(world, blockpos, template$blockinfo) : template$blockinfo;
 
 			if (template$blockinfo1 != null) {
 				Block block1 = template$blockinfo1.blockState.getBlock();
@@ -90,7 +93,7 @@ public class TreeTemplate extends Template {
 			}
 		}
 
-		for (Template.BlockInfo template$blockinfo2 : this.blocks) {
+		for (BlockInfo template$blockinfo2 : this.blocks) {
 			if (block == null || block != template$blockinfo2.blockState.getBlock()) {
 				BlockPos blockpos1 = transformedBlockPos(placement, template$blockinfo2.pos).add(pos);
 

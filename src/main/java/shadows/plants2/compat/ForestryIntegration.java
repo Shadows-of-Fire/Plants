@@ -24,8 +24,7 @@ public class ForestryIntegration {
 
 		for (IBlockState state : PlantUtil.DEFAULT) {
 
-			if (state.getBlock() instanceof BlockEnumDoubleBush)
-				continue;
+			if (state.getBlock() instanceof BlockEnumDoubleBush) continue;
 
 			IPropertyEnum k;
 			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getValue(state)) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {
@@ -35,8 +34,7 @@ public class ForestryIntegration {
 
 		for (IBlockState state : PlantUtil.DESERT) {
 
-			if (state.getBlock() instanceof BlockEnumDoubleBush)
-				continue;
+			if (state.getBlock() instanceof BlockEnumDoubleBush) continue;
 
 			IPropertyEnum k;
 			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getValue(state)) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {

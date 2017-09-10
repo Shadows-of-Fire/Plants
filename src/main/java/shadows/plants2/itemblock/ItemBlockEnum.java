@@ -29,8 +29,7 @@ public class ItemBlockEnum<E extends Enum<E> & IPropertyEnum> extends ItemBlockB
 		Block block = world.getBlockState(pos).getBlock();
 		ItemStack stack = player.getHeldItem(hand);
 
-		if (!block.isReplaceable(world, pos))
-			pos = pos.offset(facing);
+		if (!block.isReplaceable(world, pos)) pos = pos.offset(facing);
 
 		if (!stack.isEmpty() && player.canPlayerEdit(pos, facing, stack) && world.mayPlace(this.block, pos, false, facing, player)) {
 			IBlockState state = this.block.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, stack.getMetadata(), player, hand);
@@ -54,8 +53,7 @@ public class ItemBlockEnum<E extends Enum<E> & IPropertyEnum> extends ItemBlockB
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if (stack.getMetadata() >= enumBlock.getTypes().size())
-			return "invalid";
+		if (stack.getMetadata() >= enumBlock.getTypes().size()) return "invalid";
 		return getUnlocalizedName() + "." + enumBlock.getTypes().get(stack.getMetadata()).getName();
 	}
 }

@@ -23,12 +23,9 @@ public class BinnieIntegration {
 		TileFlowerpot pot = (TileFlowerpot) world.getTileEntity(pos);
 
 		FlowerRenderInfo render = new FlowerRenderInfo(new Flower(pot.getFlowerItemStack().getTagCompound()), F);
-		if (tint == 10)
-			return render.getStem().getColor(render.isWilted());
-		if (tint == 11)
-			return render.getPrimary().getColor(render.isWilted());
-		if (tint == 12)
-			return render.getSecondary().getColor(render.isWilted());
+		if (tint == 10) return render.getStem().getColor(render.isWilted());
+		if (tint == 11) return render.getPrimary().getColor(render.isWilted());
+		if (tint == 12) return render.getSecondary().getColor(render.isWilted());
 
 		return -1;
 	}
@@ -38,10 +35,8 @@ public class BinnieIntegration {
 		@Override
 		public String handleFlowerpot(IBlockState state, ItemStack stack) {
 			if (stack.getItem() == ModuleFlowers.flowerItem) {
-				if (!stack.getTagCompound().getBoolean("Flowered"))
-					return "none";
-				if (stack.getTagCompound().getBoolean("Wilt"))
-					return "none";
+				if (!stack.getTagCompound().getBoolean("Flowered")) return "none";
+				if (stack.getTagCompound().getBoolean("Wilt")) return "none";
 				return FlowerGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT);
 
 			}

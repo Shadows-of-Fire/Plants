@@ -24,8 +24,7 @@ public class BushGen implements IWorldGenerator {
 
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator gen, IChunkProvider prov) {
-		if (rand.nextInt(20) != 0)
-			return;
+		if (rand.nextInt(20) != 0) return;
 		int posX = chunkX * 16;
 		int posZ = chunkZ * 16;
 		BlockPos genPos = new BlockPos(posX + MathHelper.getInt(rand, 2, 14), 0, posZ + MathHelper.getInt(rand, 2, 14));
@@ -63,8 +62,7 @@ public class BushGen implements IWorldGenerator {
 				EnumFacing face2 = EnumFacing.HORIZONTALS[i + 1 == 4 ? 0 : i + 1];
 				for (int k = -1; k < 2; k++) {
 					this.checkAndLeaf(world, pos.offset(face).offset(face2, k));
-					if (k == 0)
-						this.checkAndLeaf(world, pos.offset(face, 2));
+					if (k == 0) this.checkAndLeaf(world, pos.offset(face, 2));
 				}
 				this.checkAndLeaf(world, pos.offset(face).up());
 			}
@@ -81,8 +79,7 @@ public class BushGen implements IWorldGenerator {
 		public boolean isReplaceable(World world, BlockPos pos) {
 			IBlockState state = world.getBlockState(pos);
 			boolean flag = state.getBlock().isReplaceable(world, pos);
-			if (flag && state.getBlock() instanceof BlockDoublePlant)
-				world.setBlockToAir(pos.up());
+			if (flag && state.getBlock() instanceof BlockDoublePlant) world.setBlockToAir(pos.up());
 			return flag;
 		}
 

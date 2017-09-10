@@ -22,10 +22,8 @@ public abstract class BlockBasic extends Block implements IHasModel {
 		setHardness(hardness);
 		setResistance(resist);
 		setCreativeTab(ModRegistry.TAB);
-		if (addToList)
-			ModRegistry.BLOCKS.add(this);
-		if (!customItemBlock)
-			ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+		if (addToList) ModRegistry.BLOCKS.add(this);
+		if (!customItemBlock) ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
 	}
 
 	public BlockBasic(String name, Material material, float hardness, float resist, boolean customItemBlock) {

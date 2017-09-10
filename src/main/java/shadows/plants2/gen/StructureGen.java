@@ -32,6 +32,10 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 		this(new ResourceLocation(Constants.MODID, assign.getName() + "_tree"), offset, assign, allowedBiomes);
 	}
 
+	public StructureGen(BlockPos offset, String name, ITreeEnum assign, Type... allowedBiomes) {
+		this(new ResourceLocation(Constants.MODID, name), offset, assign, allowedBiomes);
+	}
+
 	private final PlacementSettings settings = new PlacementSettings();
 
 	@Override
@@ -49,8 +53,7 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 		if (super.canGen(world, pos)) {
 			Biome b = world.getBiome(pos);
 			for (Type t : allowedBiomes)
-				if ((BiomeDictionary.hasType(b, t)))
-					return true;
+				if ((BiomeDictionary.hasType(b, t))) return true;
 			return allowedBiomes.length == 0;
 		}
 		return false;

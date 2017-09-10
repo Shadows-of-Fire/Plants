@@ -49,13 +49,11 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (hand != EnumHand.MAIN_HAND || state.getValue(getProperty()).getHarvest().isEmpty())
-			return false;
+		if (hand != EnumHand.MAIN_HAND || state.getValue(getProperty()).getHarvest().isEmpty()) return false;
 		else if (state.getValue(BlockEnumHarvestBush.FRUIT)) {
 			StackPrimer s = state.getValue(getProperty()).getHarvest();
 			if (!player.addItemStackToInventory(s.genStack()))
-				if (!world.isRemote)
-					Block.spawnAsEntity(world, pos, s.genStack());
+				if (!world.isRemote) Block.spawnAsEntity(world, pos, s.genStack());
 			world.setBlockState(pos, state.withProperty(BlockEnumHarvestBush.FRUIT, false));
 			return true;
 		}
@@ -74,8 +72,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextFloat() < 0.35F && canGrow(world, pos, state, false))
-			grow(world, rand, pos, state);
+		if (rand.nextFloat() < 0.35F && canGrow(world, pos, state, false)) grow(world, rand, pos, state);
 	}
 
 	@Override
@@ -113,8 +110,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> k = new ArrayList<ItemStack>();
-		if (state.getValue(BlockEnumHarvestBush.FRUIT))
-			k.add(state.getValue(getProperty()).getHarvest().genStack());
+		if (state.getValue(BlockEnumHarvestBush.FRUIT)) k.add(state.getValue(getProperty()).getHarvest().genStack());
 		if (ThreadLocalRandom.current().nextInt(5) == 0)
 			k.add(new ItemStack(ModRegistry.BUSHLING, 1, damageDropped(state)));
 		return k;

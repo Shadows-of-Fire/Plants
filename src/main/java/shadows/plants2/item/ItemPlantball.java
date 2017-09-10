@@ -43,8 +43,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			IBlockState desert = PlantUtil.getDesertFlowerState(world.rand);
 
 			if (worldState.getBlock() == Blocks.MOSSY_COBBLESTONE && facing.getAxis().isHorizontal()) {
-				if (!world.isRemote)
-					PlantUtil.placeVine(world, PlantUtil.getRandomVine(world.rand), pos, facing);
+				if (!world.isRemote) PlantUtil.placeVine(world, PlantUtil.getRandomVine(world.rand), pos, facing);
 
 				world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
 
@@ -55,8 +54,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			else if (desert.getBlock().canPlaceBlockAt(world, pos.up())) {
 				if (!world.isRemote) {
 					genFlowers(world, pos, desert);
-					if (world.rand.nextInt(10) == 0)
-						genFlowers(world, pos, desert);
+					if (world.rand.nextInt(10) == 0) genFlowers(world, pos, desert);
 				}
 
 				world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
@@ -68,8 +66,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			else if (flower.getBlock().canPlaceBlockAt(world, pos.up())) {
 				if (!world.isRemote) {
 					genFlowers(world, pos, flower);
-					if (world.rand.nextInt(10) == 0)
-						genFlowers(world, pos, flower);
+					if (world.rand.nextInt(10) == 0) genFlowers(world, pos, flower);
 				}
 
 				world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
@@ -81,8 +78,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			else if (worldState.getBlock() instanceof BlockBush && !(worldState.getBlock().hasTileEntity(worldState))) {
 				if (worldState.getBlock().getRegistryName().getResourceDomain().equals("plants2") || worldState.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
 
-					if (!world.isRemote)
-						genFlowers(world, pos, worldState);
+					if (!world.isRemote) genFlowers(world, pos, worldState);
 
 					world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
 
@@ -90,8 +86,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 					return EnumActionResult.SUCCESS;
 				} else if (Config.allBushes) {
 
-					if (!world.isRemote)
-						genFlowers(world, pos, worldState);
+					if (!world.isRemote) genFlowers(world, pos, worldState);
 
 					world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
 

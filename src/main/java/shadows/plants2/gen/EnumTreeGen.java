@@ -27,24 +27,32 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 	protected final IBlockState log;
 	protected int minHeight = 0;
 
-	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
+	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign, boolean natural) {
 		super(notify, minHeight, log.getStateFor(assign), leaf.getStateFor(assign), false);
 		this.log = log.getStateFor(assign);
 		this.leaf = leaf.getStateFor(assign);
 		this.minHeight = minHeight;
-		TreeGenerator.LIST.add(this);
+		if (natural) TreeGenerator.LIST.add(this);
 		assign.setTreeGen(this);
 		SAP = ((BlockEnumLeaves<?>) leaf).getSapling();
 	}
 
+	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
+		this(notify, minHeight, log, leaf, assign, true);
+	}
+
 	//If you extend this class and override generate/canGen, use this for super.
-	public EnumTreeGen(E assign) {
+	public EnumTreeGen(E assign, boolean natural) {
 		super(false, 0, null, null, false);
 		TreeGenerator.LIST.add(this);
 		assign.setTreeGen(this);
 		SAP = Blocks.TALLGRASS;
 		leaf = null;
 		log = null;
+	}
+
+	public EnumTreeGen(E assign) {
+		this(assign, true);
 	}
 
 	public boolean canGen(World world, BlockPos pos) {
@@ -138,8 +146,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() >= 0.16F)
-				return;
+			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() >= 0.16F) return;
 			int posX = chunkX * 16;
 			int posZ = chunkZ * 16;
 			BlockPos genPos = new BlockPos(posX + MathHelper.getInt(random, 6, 10), 0, posZ + MathHelper.getInt(random, 6, 10));

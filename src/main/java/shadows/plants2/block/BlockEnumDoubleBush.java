@@ -71,8 +71,7 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 			Block block = flag ? this : world.getBlockState(blockpos).getBlock();
 			Block block1 = flag ? world.getBlockState(blockpos1).getBlock() : this;
 
-			if (!flag)
-				this.dropBlockAsItem(world, pos, state, 0);
+			if (!flag) this.dropBlockAsItem(world, pos, state, 0);
 
 			if (block == this) {
 				world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 2);
@@ -86,8 +85,7 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
-		if (state.getBlock() != this)
-			return super.canBlockStay(world, pos, state);
+		if (state.getBlock() != this) return super.canBlockStay(world, pos, state);
 		if (state.getValue(UPPER)) {
 			return world.getBlockState(pos.down()).getBlock() == this;
 		} else {
@@ -146,19 +144,15 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 			return this.getDefaultState().withProperty(UPPER, true).withProperty(property, types.get(getActualMeta(meta)));
 		if (k == 1)
 			return this.getDefaultState().withProperty(UPPER, false).withProperty(property, types.get(getActualMeta(meta)));
-		else
-			return null;
+		else return null;
 	}
 
 	public static int getActualMeta(int meta) { // evens are upper half, odds are lower half needs to return the Actual (IProperty) meta (0-7) for the block from state meta (0-15)
 		int k = meta % 2; // if == 1 this is a lower
 		float j = ((float) meta) / 2F; // if k = 1 this will have a .5
-		if (k == 0)
-			return (int) j;
-		if (k == 1)
-			return (int) (j - .5);
-		else
-			return 0;
+		if (k == 0) return (int) j;
+		if (k == 1) return (int) (j - .5);
+		else return 0;
 	}
 
 	@Override
@@ -166,12 +160,9 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 		boolean k = state.getValue(UPPER);
 		int j = state.getValue(property).ordinal() % 8;
 
-		if (k)
-			return (j * 2);
-		if (!k)
-			return (1 + j * 2);
-		else
-			return 0;
+		if (k) return (j * 2);
+		if (!k) return (1 + j * 2);
+		else return 0;
 	}
 
 	@Override

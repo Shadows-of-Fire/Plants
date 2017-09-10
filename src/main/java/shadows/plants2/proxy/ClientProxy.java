@@ -34,8 +34,7 @@ public class ClientProxy implements IProxy {
 
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos, int tint) {
-				if (tint == 1)
-					return world.getBiome(pos).getGrassColorAtPos(pos);
+				if (tint == 1) return world.getBiome(pos).getGrassColorAtPos(pos);
 
 				TileEntity t = world.getTileEntity(pos);
 
@@ -55,11 +54,9 @@ public class ClientProxy implements IProxy {
 	@SubscribeEvent
 	public void onModelRegister(ModelRegistryEvent e) {
 		for (Block b : ModRegistry.BLOCKS)
-			if (b instanceof IHasModel)
-				((IHasModel) b).initModels(e);
+			if (b instanceof IHasModel) ((IHasModel) b).initModels(e);
 		for (Item i : ModRegistry.ITEMS)
-			if (i instanceof IHasModel)
-				((IHasModel) i).initModels(e);
+			if (i instanceof IHasModel) ((IHasModel) i).initModels(e);
 	}
 
 }

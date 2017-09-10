@@ -52,8 +52,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 		this.realStateContainer = createStateContainer();
 		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
 		Item k = createItemBlock();
-		if (k != null)
-			ModRegistry.ITEMS.add(k);
+		if (k != null) ModRegistry.ITEMS.add(k);
 	}
 
 	@Override

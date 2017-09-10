@@ -40,8 +40,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(4) == 0)
-			grow(world, rand, pos, state);
+		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(4) == 0) grow(world, rand, pos, state);
 	}
 
 	@Override
@@ -60,12 +59,10 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!state.getValue(FRUIT))
-			return false;
+		if (!state.getValue(FRUIT)) return false;
 		for (StackPrimer s : state.getValue(property).getDrops()) {
 			if (!player.addItemStackToInventory(s.genStack())) {
-				if (!world.isRemote)
-					Block.spawnAsEntity(world, pos, s.genStack());
+				if (!world.isRemote) Block.spawnAsEntity(world, pos, s.genStack());
 			}
 		}
 		world.setBlockState(pos, state.withProperty(FRUIT, false));
@@ -79,19 +76,15 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 			return this.getDefaultState().withProperty(FRUIT, true).withProperty(property, types.get(getActualMeta(meta)));
 		if (k == 1)
 			return this.getDefaultState().withProperty(FRUIT, false).withProperty(property, types.get(getActualMeta(meta)));
-		else
-			return null;
+		else return null;
 	}
 
 	public static int getActualMeta(int meta) {
 		int k = meta % 2;
 		float j = ((float) meta) / 2F;
-		if (k == 0)
-			return (int) j;
-		if (k == 1)
-			return (int) (j - .5);
-		else
-			return 0;
+		if (k == 0) return (int) j;
+		if (k == 1) return (int) (j - .5);
+		else return 0;
 	}
 
 	@Override
@@ -99,12 +92,9 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 		boolean k = state.getValue(FRUIT);
 		int j = state.getValue(property).ordinal() % 8;
 
-		if (k)
-			return (j * 2);
-		if (!k)
-			return (1 + j * 2);
-		else
-			return 0;
+		if (k) return (j * 2);
+		if (!k) return (1 + j * 2);
+		else return 0;
 	}
 
 	@Override
@@ -120,9 +110,8 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@Override
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> drops = super.getActualDrops(world, pos, state, fortune);
-		if (state.getValue(FRUIT))
-			for (StackPrimer s : state.getValue(property).getDrops())
-				drops.add(s.genStack());
+		if (state.getValue(FRUIT)) for (StackPrimer s : state.getValue(property).getDrops())
+			drops.add(s.genStack());
 		return drops;
 	}
 

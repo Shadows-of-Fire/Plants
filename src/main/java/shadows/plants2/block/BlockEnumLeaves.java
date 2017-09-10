@@ -216,10 +216,8 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	public int getMetaFromState(IBlockState state) {
 		int i = state.getValue(property).ordinal() % 4;
 		i *= 4;
-		if (state.getValue(BlockLeaves.CHECK_DECAY))
-			i++;
-		if (state.getValue(BlockLeaves.DECAYABLE))
-			i += 2;
+		if (state.getValue(BlockLeaves.CHECK_DECAY)) i++;
+		if (state.getValue(BlockLeaves.DECAYABLE)) i += 2;
 		return i;
 	}
 
@@ -233,8 +231,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 			state = state.withProperty(BlockLeaves.DECAYABLE, true);
 			i -= 0.5F;
 		}
-		if (i - 0.25F >= 0)
-			state = state.withProperty(BlockLeaves.CHECK_DECAY, true);
+		if (i - 0.25F >= 0) state = state.withProperty(BlockLeaves.CHECK_DECAY, true);
 
 		return state;
 	}

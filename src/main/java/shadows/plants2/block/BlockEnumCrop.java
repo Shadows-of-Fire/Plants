@@ -62,12 +62,10 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!(state.getValue(AGE) == 7) || !(world.getBlockState(pos.down()) instanceof BlockFarmland))
-			return false;
+		if (!(state.getValue(AGE) == 7) || !(world.getBlockState(pos.down()) instanceof BlockFarmland)) return false;
 		for (ItemStack s : getActualDrops(world, pos, state, 1594)) {
 			if (!player.addItemStackToInventory(s)) {
-				if (!world.isRemote)
-					Block.spawnAsEntity(world, pos, s);
+				if (!world.isRemote) Block.spawnAsEntity(world, pos, s);
 			}
 		}
 		world.setBlockState(pos, state.withProperty(AGE, 0));
@@ -102,8 +100,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		int age = state.getValue(AGE);
 		int grow = MathHelper.getInt(rand, 1, 3);
-		if (age < 7)
-			world.setBlockState(pos, state.withProperty(AGE, age + grow <= 7 ? age + grow : 7));
+		if (age < 7) world.setBlockState(pos, state.withProperty(AGE, age + grow <= 7 ? age + grow : 7));
 	}
 
 	@Override
@@ -126,8 +123,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState state = getDefaultState().withProperty(property, types.get(meta / 8));
-		if (meta >= 8)
-			meta -= 8;
+		if (meta >= 8) meta -= 8;
 		state = state.withProperty(AGE, meta);
 		return state;
 	}
@@ -153,12 +149,9 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> k = new ArrayList<ItemStack>();
 		int i = state.getValue(property).ordinal() % 2;
-		if (fortune != 1594)
-			k.add(new ItemStack(seeds[i]));
-		if (state.getValue(AGE) == 7)
-			k.add(new ItemStack(crops[i]));
-		if (state.getValue(AGE) == 7 && RANDOM.nextInt(4) == 0)
-			k.add(new ItemStack(seeds[i]));
+		if (fortune != 1594) k.add(new ItemStack(seeds[i]));
+		if (state.getValue(AGE) == 7) k.add(new ItemStack(crops[i]));
+		if (state.getValue(AGE) == 7 && RANDOM.nextInt(4) == 0) k.add(new ItemStack(seeds[i]));
 		return k;
 	}
 

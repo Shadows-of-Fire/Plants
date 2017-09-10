@@ -209,8 +209,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase,
 
 			@Nonnull EntityLivingBase par3EntityLivingBase) {
-		if (usesMana(par1ItemStack))
-			ToolCommons.damageItem(par1ItemStack, 1, par3EntityLivingBase, getManaPerDamage());
+		if (usesMana(par1ItemStack)) ToolCommons.damageItem(par1ItemStack, 1, par3EntityLivingBase, getManaPerDamage());
 		return true;
 	}
 

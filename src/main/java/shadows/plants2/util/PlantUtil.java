@@ -73,10 +73,8 @@ public class PlantUtil {
 	public static void placeFlower(World world, BlockPos pos, IBlockState state) {
 		Block block = state.getBlock();
 		if ((world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos)) && block.canPlaceBlockAt(world, pos)) {
-			if (block instanceof IEnumBlock<?>)
-				((IEnumBlock<?>) block).placeStateAt(state, world, pos);
-			else
-				world.setBlockState(pos, state, 2);
+			if (block instanceof IEnumBlock<?>) ((IEnumBlock<?>) block).placeStateAt(state, world, pos);
+			else world.setBlockState(pos, state, 2);
 		}
 	}
 

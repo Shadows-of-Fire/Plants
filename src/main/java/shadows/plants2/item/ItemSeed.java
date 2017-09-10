@@ -46,8 +46,7 @@ public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds imple
 			world.setBlockState(pos.up(), getPlant(world, pos));
 			itemstack.shrink(1);
 			return EnumActionResult.SUCCESS;
-		} else
-			return EnumActionResult.FAIL;
+		} else return EnumActionResult.FAIL;
 	}
 
 	@Override

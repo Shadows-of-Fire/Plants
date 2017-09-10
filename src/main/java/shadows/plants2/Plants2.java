@@ -72,7 +72,6 @@ public class Plants2 {
 		Constants.UPDATES.clear();
 		PlantUtil.mergeToDefaultLate();
 
-		if (Loader.isModLoaded(Constants.FORESTRY_ID))
-			ForestryIntegration.registerFlowersToForestry();
+		if (Loader.isModLoaded(Constants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
 	}
 }

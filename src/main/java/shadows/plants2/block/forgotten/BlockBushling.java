@@ -118,8 +118,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextInt(15) == 0 && canGrow(world, pos, state, false))
-			grow(world, rand, pos, state);
+		if (rand.nextInt(15) == 0 && canGrow(world, pos, state, false)) grow(world, rand, pos, state);
 	}
 
 	@Override
