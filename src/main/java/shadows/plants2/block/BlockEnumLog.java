@@ -26,7 +26,6 @@ import shadows.plants2.util.PlantUtil;
 public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 
 	public static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
-	private BlockRenderLayer brl = BlockRenderLayer.SOLID;
 
 	public BlockEnumLog(String name, SoundType s, float hard, float res, Class<E> enumClass, int predicate) {
 		super(name, Material.WOOD, s, hard, res, enumClass, "type", (e) -> (e.getPredicateIndex() == predicate));
@@ -35,33 +34,6 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 
 	public BlockEnumLog(String name, Class<E> enumClass, int predicate) {
 		this(name, SoundType.WOOD, 2F, 1F, enumClass, predicate);
-	}
-
-	public BlockEnumLog(String name, SoundType s, BlockRenderLayer brl, float hard, float res, Class<E> enumClass, int predicate) {
-		this(name, s, hard, res, enumClass, predicate);
-		this.brl = brl;
-	}
-
-	@Override
-	@Deprecated
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		if (brl != BlockRenderLayer.SOLID) {
-			IBlockState offset = world.getBlockState(pos.offset(side));
-			if (offset.getBlock() == this && offset.getValue(AXIS) == state.getValue(AXIS)) return false;
-			if (world.isAirBlock(pos.offset(side))) return true;
-			return super.shouldSideBeRendered(state, world, pos, side);
-		}
-		return super.shouldSideBeRendered(state, world, pos, side);
-	}
-
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return brl == BlockRenderLayer.SOLID;
-	}
-
-	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return brl;
 	}
 
 	@Override

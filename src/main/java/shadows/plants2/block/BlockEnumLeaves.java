@@ -34,7 +34,6 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	private final BlockEnumSapling<E> sapling;
 	private int[] surroundings = new int[32768];
-	private BlockRenderLayer brl = null;
 
 	public BlockEnumLeaves(String name, SoundType s, float hard, float res, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> (e.getPredicateIndex() == predicate));
@@ -47,11 +46,6 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	public BlockEnumLeaves(String name, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0.2F, 0F, sapling, clazz, predicate);
-	}
-
-	public BlockEnumLeaves(String name, SoundType s, BlockRenderLayer brl, float hard, float res, BlockEnumSapling<E> sapling, Class<E> enumClass, int predicate) {
-		this(name, s, hard, res, sapling, enumClass, predicate);
-		this.brl = brl;
 	}
 
 	@Override
@@ -90,7 +84,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return brl == null ? Blocks.LEAVES.getBlockLayer() : brl;
+		return Blocks.LEAVES.getBlockLayer();
 	}
 
 	@Override

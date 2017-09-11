@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
@@ -160,9 +159,9 @@ public class ModRegistry {
 
 	public static final BlockEnum<Crystals> CRYSTAL = new BlockCrystal();
 	public static final Block GROUNDCOVER = new BlockCrystalGround();
-	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<>("crystal_log", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 1.5F, 5F, CrystalLogs.class, 0);
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<>("crystal_log", SoundType.GLASS, 1.5F, 5F, CrystalLogs.class, 0);
 	public static final BlockEnumSapling<CrystalLogs> CRYSTAL_SAP = new BlockEnumSapling<>("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0, GROUNDCOVER);
-	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<>("crystal_leaves", SoundType.GLASS, BlockRenderLayer.TRANSLUCENT, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<>("crystal_leaves", SoundType.GLASS, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
 
 	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<>("planks", Planks.class, 0);
 
