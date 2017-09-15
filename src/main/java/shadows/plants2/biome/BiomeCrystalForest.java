@@ -45,5 +45,10 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	public WorldGenerator getRandomWorldGenForGrass(Random rand) {
 		return CRYSTALS;
 	}
+	
+	@Override
+	protected void register() {
+		//super.register();
+	}
 
 }
