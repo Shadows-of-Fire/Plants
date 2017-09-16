@@ -15,8 +15,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -123,11 +121,6 @@ public abstract class BlockEnum<E extends Enum<E> & IPropertyEnum> extends Block
 	@Override
 	public IBlockState getStateFor(E e) {
 		return this.getDefaultState().withProperty(property, e);
-	}
-
-	@Override
-	public boolean placeStateAt(IBlockState state, World world, BlockPos pos) {
-		return world.setBlockState(pos, state);
 	}
 
 }

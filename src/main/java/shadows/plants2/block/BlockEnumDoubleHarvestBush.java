@@ -24,6 +24,7 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.client.RenamedStateMapper;
+import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.IHarvestableEnum;
@@ -60,6 +61,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!Config.harvests) return false;
 		if (!world.isRemote) {
 			StackPrimer[] drops = types.get(state.getValue(property).ordinal() % 4).getDrops();
 			if (state.getValue(FRUIT) && state.getValue(UPPER)) {

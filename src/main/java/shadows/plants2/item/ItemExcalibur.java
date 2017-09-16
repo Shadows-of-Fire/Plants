@@ -10,6 +10,7 @@
 package shadows.plants2.item;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nonnull;
 
@@ -28,6 +29,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
@@ -44,6 +46,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import shadows.plants2.client.IHasModel;
+import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.init.ModRegistry;
@@ -119,8 +122,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		EntityManaBurst burst = new EntityManaBurst(player);
 
 		float motionModifier = 7F;
-
-		burst.setColor(0xFFFF20);
+		burst.setColor(Config.excaliburParty ? getRandomColor(Item.itemRand) : 0xFFFF20);
 		burst.setMana(1);
 		burst.setStartingMana(1);
 		burst.setMinManaLoss(200);
@@ -144,15 +146,23 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		return dead;
 	}
 
+	private static int getRandomColor(Random rand) {
+		int r = rand.nextInt(256);
+		int g = rand.nextInt(256);
+		int b = rand.nextInt(256);
+		int value = ((255 & 0xFF) << 24) | ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF) << 0);
+		return value;
+	}
+
 	@Override
 	public void updateBurst(IManaBurst iManaBurst, ItemStack stack) {
 		EntityThrowable burst = (EntityThrowable) iManaBurst;
 		AxisAlignedBB axis = new AxisAlignedBB(burst.posX, burst.posY, burst.posZ, burst.lastTickPosX, burst.lastTickPosY, burst.lastTickPosZ).grow(1, 1, 1);
-
+		if(Config.superExcaliburParty) iManaBurst.setColor(getRandomColor(Item.itemRand));
 		String attacker = ItemNBTHelper.getString(iManaBurst.getSourceLens(), TAG_ATTACKER_USERNAME, "");
 		int homeID = ItemNBTHelper.getInt(stack, TAG_HOME_ID, -1);
 		if (homeID == -1) {
-			AxisAlignedBB axis1 = new AxisAlignedBB(burst.posX, burst.posY, burst.posZ, burst.lastTickPosX, burst.lastTickPosY, burst.lastTickPosZ).expand(5, 5, 5);
+			AxisAlignedBB axis1 = new AxisAlignedBB(burst.posX, burst.posY, burst.posZ, burst.lastTickPosX, burst.lastTickPosY, burst.lastTickPosZ).grow(5, 5, 5);
 			List<EntityLivingBase> entities = burst.world.getEntitiesWithinAABB(EntityLivingBase.class, axis1);
 			for (EntityLivingBase living : entities) {
 				if (living instanceof EntityPlayer || living instanceof EntityDragon || living instanceof EntityWither || !(living instanceof IMob) || living.hurtTime != 0)
@@ -206,15 +216,13 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase,
-
-			@Nonnull EntityLivingBase par3EntityLivingBase) {
-		if (usesMana(par1ItemStack)) ToolCommons.damageItem(par1ItemStack, 1, par3EntityLivingBase, getManaPerDamage());
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if (usesMana(stack)) ToolCommons.damageItem(stack, 1, attacker, getManaPerDamage());
 		return true;
 	}
 
 	@Override
-	public boolean onBlockDestroyed(@Nonnull ItemStack stack, @Nonnull World world, IBlockState state,
+	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state,
 
 			@Nonnull BlockPos pos, @Nonnull EntityLivingBase entity) {
 		if (usesMana(stack) && state.getBlockHardness(world, pos) != 0F)
@@ -228,8 +236,8 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, @Nonnull ItemStack par2ItemStack) {
-		return par2ItemStack.getItem() == ModItems.manaResource && par2ItemStack.getItemDamage() == 0 ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+	public boolean getIsRepairable(ItemStack stack, ItemStack repairMat) {
+		return repairMat.getItem() == ModItems.manaResource && repairMat.getItemDamage() == 0 ? true : super.getIsRepairable(stack, repairMat);
 	}
 
 	@Nonnull

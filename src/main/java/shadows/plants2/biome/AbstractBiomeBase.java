@@ -12,11 +12,11 @@ public abstract class AbstractBiomeBase extends Biome {
 	public AbstractBiomeBase(String regname, BiomeProperties properties) {
 		super(properties);
 		setRegistryName(Constants.MODID, regname);
-		ModRegistry.BIOMES.add(this);
 		register();
 	}
 
 	protected void register() {
+		ModRegistry.BIOMES.add(this);
 		BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, 50));
 	}
 

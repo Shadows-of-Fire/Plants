@@ -1,8 +1,8 @@
 {
 	"ambientocclusion": false,
 	"textures": {
-		"atlas": "plants:blocks/tool/cataplant",
-		"particle": "plants:blocks/tool/cp_particle"
+		"atlas": "plants2:blocks/cataplant/atlas",
+		"particle": "plants2:blocks/cataplant/particle"
 	},
 	"elements": [
 		{

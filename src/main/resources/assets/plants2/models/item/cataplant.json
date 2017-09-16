@@ -1,5 +1,5 @@
 {
-	"parent": "plants:block/tool/cataplant",
+	"parent": "plants2:block/cataplant",
 	 "display": {
         "firstperson_lefthand": {
             "rotation": [ 0, 0, 0 ]

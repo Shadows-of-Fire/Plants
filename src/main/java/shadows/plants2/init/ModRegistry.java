@@ -30,6 +30,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants2.biome.BiomeCrystalForest;
+import shadows.plants2.block.BlockCataplant;
 import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.block.BlockEnumCrop;
 import shadows.plants2.block.BlockEnumDoubleBush;
@@ -169,6 +170,8 @@ public class ModRegistry {
 	public static final Block BUSHLING = new BlockBushling();
 
 	public static final Block FLOWERPOT = new BlockFlowerpot();
+	
+	public static final Block CATAPLANT = new BlockCataplant();
 
 	public static final WorldGenerator ASH_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.ASH);
 	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.BLAZE);

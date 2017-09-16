@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.client.RenamedStateMapper;
+import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.IHarvestableEnum;
@@ -59,7 +60,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!state.getValue(FRUIT)) return false;
+		if (!Config.harvests || !state.getValue(FRUIT)) return false;
 		for (StackPrimer s : state.getValue(property).getDrops()) {
 			if (!player.addItemStackToInventory(s.genStack())) {
 				if (!world.isRemote) Block.spawnAsEntity(world, pos, s.genStack());
@@ -110,7 +111,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@Override
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> drops = super.getActualDrops(world, pos, state, fortune);
-		if (state.getValue(FRUIT)) for (StackPrimer s : state.getValue(property).getDrops())
+		if (Config.harvests && state.getValue(FRUIT)) for (StackPrimer s : state.getValue(property).getDrops())
 			drops.add(s.genStack());
 		return drops;
 	}

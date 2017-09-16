@@ -27,7 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.block.BlockCustomVine;
-import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
@@ -73,7 +72,7 @@ public class PlantUtil {
 	public static void placeFlower(World world, BlockPos pos, IBlockState state) {
 		Block block = state.getBlock();
 		if ((world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos)) && block.canPlaceBlockAt(world, pos)) {
-			if (block instanceof IEnumBlock<?>) ((IEnumBlock<?>) block).placeStateAt(state, world, pos);
+			if (block instanceof ISpecialPlacement) ((ISpecialPlacement) block).placeStateAt(state, world, pos);
 			else world.setBlockState(pos, state, 2);
 		}
 	}

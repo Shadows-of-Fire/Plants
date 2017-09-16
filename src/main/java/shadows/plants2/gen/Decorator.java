@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeBeach;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -40,6 +41,7 @@ public class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onDesertDecoration(DecorateBiomeEvent.Decorate event) {
+		if(event.getWorld().getBiome(event.getPos()) instanceof BiomeBeach) return;
 		if (!event.getWorld().isRemote && Config.generation && (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numTries; ih > 0; ih--) {
@@ -49,9 +51,9 @@ public class Decorator {
 						int chance = event.getRand().nextInt(100);
 						if (chance > 10)
 							PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
-						else if (chance <= 10 && chance > 0)
+						else if (chance <= 10 && chance >= 0)
 							PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
-						else if (chance == 0)
+						else if (chance == 0) //Yeah, this can't be fulfilled, this is off for now until genMetaPatch doesn't cause cascading gen.
 							PlantUtil.genMegaPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
 					}
 				}

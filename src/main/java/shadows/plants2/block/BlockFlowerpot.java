@@ -239,11 +239,6 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	}
 
 	@Override
-	public boolean placeStateAt(IBlockState state, World world, BlockPos pos) {
-		return world.setBlockState(pos, state);
-	}
-
-	@Override
 	public int getMetaFromState(IBlockState state) {
 		return 0;
 	}

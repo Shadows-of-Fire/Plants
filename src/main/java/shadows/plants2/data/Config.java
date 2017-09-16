@@ -5,6 +5,8 @@ import net.minecraftforge.common.config.Configuration;
 public class Config {
 
 	public static boolean excalibur = true;
+	public static boolean excaliburParty = false;
+	public static boolean superExcaliburParty = false;
 
 	public static boolean generation = true;
 	public static int patchChance = 1;
@@ -16,27 +18,31 @@ public class Config {
 
 	public static boolean allBushes = true;
 	public static boolean needShears = false;
-
-	public static int catapultPower = 5;
+	public static int catapultPower = 2;
+	public static boolean flowerpot = true;
+	public static boolean harvests = true;
 
 	public static void syncConfig(Configuration config) {
 
 		config.load();
 
-		excalibur = config.getBoolean("Addons", "Botania", true, "Enable the Excalibur.");
+		excalibur = config.getBoolean("Excalibur", "Botania", true, "Enable Excalibur.");
+		excaliburParty = config.getBoolean("Rainbow Excalibur", "Botania", false, "Rainbow mana bursts!");
+		superExcaliburParty = config.getBoolean("Super Rainbow Excalibur", "Botania", false, "(May cause issues) Super rainbow mana bursts!");
 
-		generation = config.getBoolean("Generator Options", "EnableGeneration", true, "Toggle for worldgen.");
-		patchChance = config.getInt("Generator Options", "Chance", 1, 1, Integer.MAX_VALUE, "A (1/n) chance for plants to try to generate on a given occasion. Lower = More plants.");
-		density = config.getInt("Generator Options", "Density", 6, 0, 25, "The number of plants that try to generate on a given occasion. Higher = More plants.");
-		patchSize = config.getInt("Generator Options", "Size", 3, 1, 5, "The spread of plants in a given generation attempt. Higher = More plant spread.");
-		quantity = config.getInt("Generator Options", "Quantity", 1, 0, 5, "The number of plants per generation attempt. Higher = More plants. Use sparingly.");
-		numTries = config.getInt("Generator Options", "Tries", 1, 0, 5, "The number of times we decorate per decoration event. Do not make this very big.");
-		literallyTakeoverFlowerForests = config.getBoolean("Generator Options", "FlowerForests", true, "Whether or not I make flower forests great again.");
+		generation = config.getBoolean("Enable Generation", "Generator Options", true, "Toggle for worldgen.");
+		patchChance = config.getInt("Chance", "Generator Options", 1, 1, Integer.MAX_VALUE, "A (1/n) chance for plants to try to generate on a given occasion. Lower = More plants.");
+		density = config.getInt("Density", "Generator Options", 6, 0, 25, "The number of plants that try to generate on a given occasion. Higher = More plants.");
+		patchSize = config.getInt("Size", "Generator Options", 3, 1, 5, "The spread of plants in a given generation attempt. Higher = More plant spread.");
+		quantity = config.getInt("Quantity", "Generator Options", 1, 0, 5, "The number of plants per generation attempt. Higher = More plants. Use sparingly.");
+		numTries = config.getInt("Tries", "Generator Options", 1, 0, 5, "The number of times we decorate per decoration event. Do not make this very big.");
+		literallyTakeoverFlowerForests = config.getBoolean("Flower Forests", "Generator Options", true, "Whether or not I make flower forests great again.");
 
-		allBushes = config.getBoolean(Configuration.CATEGORY_GENERAL, "AllBushes", true, "Whether or not Coagulated Plant Balls work on every single BlockBush that doesn't have a TileEntity.");
-		needShears = config.getBoolean(Configuration.CATEGORY_GENERAL, "Shears", false, "Whether or not non-crops require shears to harvest.");
-
-		catapultPower = config.getInt("Tool Module", "Catapult Power", 5, 0, 400, "How much strength the Cataplant has.");
+		allBushes = config.getBoolean("All Bushes", "general", true, "Whether or not Coagulated Plant Balls work on every single BlockBush that doesn't have a TileEntity.");
+		needShears = config.getBoolean("Shears", "general", false, "Whether or not non-crops require shears to harvest.");
+		catapultPower = config.getInt("Catapult Power", "general", 2, 0, 400, "How much strength the Cataplant has.");
+		flowerpot = config.getBoolean("Enable Flowerpot", "general", true, "If enabled, the vanilla flowerpot is overridden with a much more versatile flowerpot.");
+		harvests = config.getBoolean("Enable Harvests", "general", true, "If false, all harvestable bushes will not produce anything, and crops will be disabled.");
 
 		if (config.hasChanged()) config.save();
 

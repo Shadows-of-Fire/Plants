@@ -37,7 +37,6 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, BushSet.class);
 		setTickRandomly(true);
 		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(BlockEnumHarvestBush.FRUIT, false));
-		setSoundType(SoundType.PLANT);
 	}
 
 	@Override

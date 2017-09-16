@@ -32,6 +32,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.client.RenamedStateMapper;
+import shadows.plants2.data.Config;
 import shadows.plants2.data.enums.IPropertyEnum;
 import shadows.plants2.init.ModRegistry;
 
@@ -170,6 +171,11 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		IBlockState soil = world.getBlockState(pos.down());
 		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, ModRegistry.PLANT_0);
+	}
+	
+	@Override
+	protected void addStatesToList() {
+		if(Config.harvests) super.addStatesToList();
 	}
 
 }

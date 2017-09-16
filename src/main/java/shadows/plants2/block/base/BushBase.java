@@ -22,9 +22,10 @@ import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.init.ModRegistry;
+import shadows.plants2.util.ISpecialPlacement;
 import shadows.plants2.util.PlantUtil;
 
-public abstract class BushBase extends BlockBush implements IHasModel, IShearable, IPostInitUpdate {
+public abstract class BushBase extends BlockBush implements IHasModel, IShearable, IPostInitUpdate, ISpecialPlacement {
 
 	protected final EnumPlantType type;
 	public static final AxisAlignedBB AABB = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.75D, 0.8D);
