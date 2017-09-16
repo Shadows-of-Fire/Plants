@@ -16,7 +16,7 @@ import shadows.plants2.init.ModRegistry;
 public class BiomeCrystalForest extends AbstractBiomeBase {
 
 	static final WorldGenerator CRYSTALS = new WorldGenCrystals();
-	
+
 	public BiomeCrystalForest() {
 		super("crystal_forest", new BiomeProperties("Crystal Forest"));
 		topBlock = ModRegistry.GROUNDCOVER.getDefaultState();
@@ -37,15 +37,14 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	@Override
 	public void plantFlower(World world, Random rand, BlockPos pos) {
 		FlowerEntry flower = WeightedRandom.getRandomItem(rand, flowers);
-		if (flower != null)
-		world.setBlockState(pos, flower.state, 3);
+		if (flower != null) world.setBlockState(pos, flower.state, 3);
 	}
-	
+
 	@Override
 	public WorldGenerator getRandomWorldGenForGrass(Random rand) {
 		return CRYSTALS;
 	}
-	
+
 	@Override
 	protected void register() {
 		//super.register();

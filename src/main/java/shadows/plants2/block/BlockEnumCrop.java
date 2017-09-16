@@ -172,10 +172,10 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 		IBlockState soil = world.getBlockState(pos.down());
 		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, ModRegistry.PLANT_0);
 	}
-	
+
 	@Override
 	protected void addStatesToList() {
-		if(Config.harvests) super.addStatesToList();
+		if (Config.harvests) super.addStatesToList();
 	}
 
 }

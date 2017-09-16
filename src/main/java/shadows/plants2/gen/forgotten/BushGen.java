@@ -26,7 +26,7 @@ import shadows.plants2.init.ModRegistry;
 public class BushGen implements IWorldGenerator {
 
 	private static final IBlockState LOG = Loader.isModLoaded("extratrees") ? ForgeRegistries.BLOCKS.getValue(new ResourceLocation("extratrees:shrub_log")).getDefaultState() : Blocks.LOG.getDefaultState();
-	
+
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator gen, IChunkProvider prov) {
 		if (rand.nextInt(20) != 0) return;

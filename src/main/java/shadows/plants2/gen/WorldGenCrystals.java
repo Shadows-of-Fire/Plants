@@ -26,10 +26,10 @@ public class WorldGenCrystals extends WorldGenFlowers {
 
 	@Override
 	public boolean generate(World world, Random rand, BlockPos position) {
-			BlockPos blockpos = position.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-			blockpos = world.getTopSolidOrLiquidBlock(blockpos);
-			if (world.isAirBlock(blockpos) && world.getBlockState(blockpos.down()).isSideSolid(world, blockpos.down(), EnumFacing.DOWN))
-				world.setBlockState(blockpos, rand.nextFloat() > 0.8F ? dark_shard : shard, 2);
+		BlockPos blockpos = position.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+		blockpos = world.getTopSolidOrLiquidBlock(blockpos);
+		if (world.isAirBlock(blockpos) && world.getBlockState(blockpos.down()).isSideSolid(world, blockpos.down(), EnumFacing.DOWN))
+			world.setBlockState(blockpos, rand.nextFloat() > 0.8F ? dark_shard : shard, 2);
 
 		return true;
 	}

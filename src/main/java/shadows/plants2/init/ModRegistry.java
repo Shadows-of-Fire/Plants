@@ -170,7 +170,7 @@ public class ModRegistry {
 	public static final Block BUSHLING = new BlockBushling();
 
 	public static final Block FLOWERPOT = new BlockFlowerpot();
-	
+
 	public static final Block CATAPLANT = new BlockCataplant();
 
 	public static final WorldGenerator ASH_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.ASH);

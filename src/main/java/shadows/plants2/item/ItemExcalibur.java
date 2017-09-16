@@ -158,7 +158,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public void updateBurst(IManaBurst iManaBurst, ItemStack stack) {
 		EntityThrowable burst = (EntityThrowable) iManaBurst;
 		AxisAlignedBB axis = new AxisAlignedBB(burst.posX, burst.posY, burst.posZ, burst.lastTickPosX, burst.lastTickPosY, burst.lastTickPosZ).grow(1, 1, 1);
-		if(Config.superExcaliburParty) iManaBurst.setColor(getRandomColor(Item.itemRand));
+		if (Config.superExcaliburParty) iManaBurst.setColor(getRandomColor(Item.itemRand));
 		String attacker = ItemNBTHelper.getString(iManaBurst.getSourceLens(), TAG_ATTACKER_USERNAME, "");
 		int homeID = ItemNBTHelper.getInt(stack, TAG_HOME_ID, -1);
 		if (homeID == -1) {

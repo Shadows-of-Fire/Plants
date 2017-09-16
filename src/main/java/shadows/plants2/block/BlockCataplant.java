@@ -65,7 +65,7 @@ public class BlockCataplant extends BushBase {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, FACING);
 	}
-	
+
 	@Override
 	public boolean placeStateAt(IBlockState state, World world, BlockPos pos) {
 		return world.setBlockState(pos, state.withRotation(Rotation.values()[world.rand.nextInt(4)]));
