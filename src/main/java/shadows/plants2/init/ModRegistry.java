@@ -50,6 +50,7 @@ import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
 import shadows.plants2.block.forgotten.BlockCrystalGround;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
+import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.StackPrimer;
@@ -169,7 +170,7 @@ public class ModRegistry {
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final Block BUSHLING = new BlockBushling();
 
-	public static final Block FLOWERPOT = new BlockFlowerpot();
+	public static final Block FLOWERPOT = Config.flowerpot ? new BlockFlowerpot() : null;
 
 	public static final Block CATAPLANT = new BlockCataplant();
 
@@ -194,7 +195,7 @@ public class ModRegistry {
 	@SubscribeEvent
 	public void onItemRegister(Register<Item> event) {
 		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
-		if (Loader.isModLoaded(Constants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
+		if (Config.excalibur && Loader.isModLoaded(Constants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
 	}
 
 	@SubscribeEvent
@@ -243,6 +244,7 @@ public class ModRegistry {
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
+		if(!Config.generation) return;
 		GameRegistry.registerWorldGenerator(new BushGen(), 25);
 		GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
 		GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
