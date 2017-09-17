@@ -24,17 +24,15 @@ public final class FlowerpotBlockState extends StateImplementation {
 
 	@Override
 	public <T extends Comparable<T>, V extends T> IBlockState withProperty(IProperty<T> property, V value) {
-		if (value instanceof EnumFlowerType)
-			return this.withProperty(BlockFlowerpot.PROP, TheBigBookOfEnums.NAME_TO_ENUM.get(((EnumFlowerType) value).getName()));
+		if (value instanceof EnumFlowerType) return this.withProperty(BlockFlowerpot.PROP, TheBigBookOfEnums.NAME_TO_ENUM.get(((EnumFlowerType) value).getName()));
 		else if (property == BlockFlowerpot.LEGACY_DATA) return this;
 		else return super.withProperty(property, value);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends Comparable<T>> T getValue(IProperty<T> property) {
-		if (property == BlockFlowerpot.CONTENTS) return (T) EnumFlowerType.EMPTY;
-		else if (property == BlockFlowerpot.LEGACY_DATA) return (T) new Integer(0);
+		if (property == BlockFlowerpot.CONTENTS) return property.getValueClass().cast(EnumFlowerType.EMPTY);
+		else if (property == BlockFlowerpot.LEGACY_DATA) return property.getValueClass().cast(0);
 		else return super.getValue(property);
 	}
 

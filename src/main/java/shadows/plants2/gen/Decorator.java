@@ -28,10 +28,8 @@ public class Decorator {
 					IBlockState state = PlantUtil.getFlowerState(event.getRand());
 					if (state != null) {
 						int chance = event.getRand().nextInt(100);
-						if (chance > 10)
-							PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
-						else if (chance <= 10 && chance >= 0)
-							PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+						if (chance > 10) PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+						else if (chance <= 10 && chance >= 0) PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
 						else if (chance == 0) //Yeah, this can't be fulfilled, this is off for now until genMetaPatch doesn't cause cascading gen.
 							PlantUtil.genMegaPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
 					}
@@ -50,10 +48,8 @@ public class Decorator {
 					IBlockState state = PlantUtil.getDesertFlowerState(event.getRand());
 					if (state != null) {
 						int chance = event.getRand().nextInt(100);
-						if (chance > 10)
-							PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
-						else if (chance <= 10 && chance >= 0)
-							PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+						if (chance > 10) PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+						else if (chance <= 10 && chance >= 0) PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
 						else if (chance == 0) //Yeah, this can't be fulfilled, this is off for now until genMetaPatch doesn't cause cascading gen.
 							PlantUtil.genMegaPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
 					}
@@ -79,11 +75,10 @@ public class Decorator {
 			World world = event.getWorld();
 			BlockCustomVine vine = PlantUtil.getRandomVine(world.rand);
 			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getPos().add(8, 0, 8).add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
-			if(!(world.getBlockState(pos).getBlock() instanceof BlockGrass)) return;
+			if (!(world.getBlockState(pos).getBlock() instanceof BlockGrass)) return;
 			for (int i = 0; i < 3; i++) {
 				world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState());
-				if (vine.canPlaceBlockAt(world, pos.offset(facing).up(i)))
-					world.setBlockState(pos.offset(facing).up(i), vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null));
+				if (vine.canPlaceBlockAt(world, pos.offset(facing).up(i))) world.setBlockState(pos.offset(facing).up(i), vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null));
 			}
 		}
 	}

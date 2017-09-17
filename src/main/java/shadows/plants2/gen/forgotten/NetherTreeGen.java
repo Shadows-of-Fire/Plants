@@ -44,9 +44,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 		int k = pos.getZ();
 		BlockPos.MutableBlockPos m = new BlockPos.MutableBlockPos(pos);
 
-		if (j < 1 || j + l + 1 > 256) {
-			return false;
-		}
+		if (j < 1 || j + l + 1 > 256) { return false; }
 
 		j++;
 
@@ -73,8 +71,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 
 		for (int l1 = 0; l1 < l; l1++) {
 			if (dir == 0) {
-				if (world.isAirBlock(m.setPos(i, j + l1, k)) || l1 == 0)
-					setBlockAndNotifyAdequately(world, m.setPos(i, j + l1, k), log);
+				if (world.isAirBlock(m.setPos(i, j + l1, k)) || l1 == 0) setBlockAndNotifyAdequately(world, m.setPos(i, j + l1, k), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i, j + l1, k), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(8) == 0) {
@@ -103,8 +100,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 1) {
-				if (world.isAirBlock(m.setPos(i - 1 * l1, j + l1, k - 1 * l1)) || world.getBlockState(m.setPos(i - 1 * l1, j + l1, k - 1 * l1)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i - 1 * l1, j + l1, k - 1 * l1), log);
+				if (world.isAirBlock(m.setPos(i - 1 * l1, j + l1, k - 1 * l1)) || world.getBlockState(m.setPos(i - 1 * l1, j + l1, k - 1 * l1)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i - 1 * l1, j + l1, k - 1 * l1), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i - 1 * l1, j + l1, k - 1 * l1), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -116,8 +112,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 2) {
-				if (world.isAirBlock(m.setPos(i - 1 * l1, j + l1, k)) || world.getBlockState(m.setPos(i - 1 * l1, j + l1, k)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i - 1 * l1, j + l1, k), log);
+				if (world.isAirBlock(m.setPos(i - 1 * l1, j + l1, k)) || world.getBlockState(m.setPos(i - 1 * l1, j + l1, k)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i - 1 * l1, j + l1, k), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i - 1 * l1, j + l1, k), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -129,8 +124,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 3) {
-				if (world.isAirBlock(m.setPos(i - 1 * l1, j + l1, k + 1 * l1)) || world.getBlockState(m.setPos(i - 1 * l1, j + l1, k + 1 * l1)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i - 1 * l1, j + l1, k + 1 * l1), log);
+				if (world.isAirBlock(m.setPos(i - 1 * l1, j + l1, k + 1 * l1)) || world.getBlockState(m.setPos(i - 1 * l1, j + l1, k + 1 * l1)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i - 1 * l1, j + l1, k + 1 * l1), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i - 1 * l1, j + l1, k + 1 * l1), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -142,8 +136,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 4) {
-				if (world.isAirBlock(m.setPos(i, j + l1, k + 1 * l1)) || world.getBlockState(m.setPos(i, j + l1, k + 1 * l1)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i, j + l1, k + 1 * l1), log);
+				if (world.isAirBlock(m.setPos(i, j + l1, k + 1 * l1)) || world.getBlockState(m.setPos(i, j + l1, k + 1 * l1)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i, j + l1, k + 1 * l1), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i, j + l1, k + 1 * l1), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -155,8 +148,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 5) {
-				if (world.isAirBlock(m.setPos(i + 1 * l1, j + l1, k + 1 * l1)) || world.getBlockState(m.setPos(i + 1 * l1, j + l1, k + 1 * l1)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i + 1 * l1, j + l1, k + 1 * l1), log);
+				if (world.isAirBlock(m.setPos(i + 1 * l1, j + l1, k + 1 * l1)) || world.getBlockState(m.setPos(i + 1 * l1, j + l1, k + 1 * l1)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i + 1 * l1, j + l1, k + 1 * l1), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i + 1 * l1, j + l1, k + 1 * l1), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -168,8 +160,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 6) {
-				if (world.isAirBlock(m.setPos(i + 1 * l1, j + l1, k)) || world.getBlockState(m.setPos(i + 1 * l1, j + l1, k)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i + 1 * l1, j + l1, k), log);
+				if (world.isAirBlock(m.setPos(i + 1 * l1, j + l1, k)) || world.getBlockState(m.setPos(i + 1 * l1, j + l1, k)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i + 1 * l1, j + l1, k), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i + 1 * l1, j + l1, k), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -181,8 +172,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 7) {
-				if (world.isAirBlock(m.setPos(i + 1 * l1, j + l1, k - 1 * l1)) || world.getBlockState(m.setPos(i + 1 * l1, j + l1, k - 1 * l1)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i + 1 * l1, j + l1, k - 1 * l1), log);
+				if (world.isAirBlock(m.setPos(i + 1 * l1, j + l1, k - 1 * l1)) || world.getBlockState(m.setPos(i + 1 * l1, j + l1, k - 1 * l1)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i + 1 * l1, j + l1, k - 1 * l1), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i + 1 * l1, j + l1, k - 1 * l1), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -194,8 +184,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 			} else if (dir == 8) {
-				if (world.isAirBlock(m.setPos(i, j + l1, k - 1 * l1)) || world.getBlockState(m.setPos(i, j + l1, k - 1 * l1)) == leaf)
-					setBlockAndNotifyAdequately(world, m.setPos(i, j + l1, k - 1 * l1), log);
+				if (world.isAirBlock(m.setPos(i, j + l1, k - 1 * l1)) || world.getBlockState(m.setPos(i, j + l1, k - 1 * l1)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(i, j + l1, k - 1 * l1), log);
 				if (l1 == l - 1) genLeaves(world, random, m.setPos(i, j + l1, k - 1 * l1), leaf);
 				for (int j3 = 0; j3 <= 1; j3++) {
 					if (random.nextInt(2) == 0) {
@@ -222,8 +211,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 
 			if (kD == 1 && random.nextInt(2) == 0) kk++;
 
-			if (world.isAirBlock(m.setPos(ii, jj, kk)) || world.getBlockState(m.setPos(ii, jj, kk)) == leaf)
-				setBlockAndNotifyAdequately(world, m.setPos(ii, jj, kk), log);
+			if (world.isAirBlock(m.setPos(ii, jj, kk)) || world.getBlockState(m.setPos(ii, jj, kk)) == leaf) setBlockAndNotifyAdequately(world, m.setPos(ii, jj, kk), log);
 
 			if (br == 3) genLeaves(world, random, m.setPos(ii, jj, kk), leaf);
 
@@ -282,8 +270,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					pos.setPos(pos.getX(), i, pos.getZ());
 					IBlockState state = world.getBlockState(pos);
 					int y = pos.getY();
-					if (isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ())))
-						break;
+					if (isValidSoil(state) && world.isAirBlock(pos.setPos(pos.getX(), y + 7, pos.getZ())) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ()))) break;
 				}
 				if (pos.getY() >= 95) return;
 				LIST.get(random.nextInt(LIST.size())).generate(world, random, pos.toImmutable());

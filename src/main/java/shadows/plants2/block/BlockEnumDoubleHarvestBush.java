@@ -141,8 +141,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
-		if (state.getBlock() == this && !state.getValue(UPPER) && world.getBlockState(pos.up()).getBlock() == this)
-			world.setBlockToAir(pos.up());
+		if (state.getBlock() == this && !state.getValue(UPPER) && world.getBlockState(pos.up()).getBlock() == this) world.setBlockToAir(pos.up());
 		return world.setBlockToAir(pos);
 	}
 
@@ -204,8 +203,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		world.setBlockState(pos, state.withProperty(FRUIT, true));
-		if (!state.getValue(UPPER))
-			world.setBlockState(pos.up(), state.withProperty(UPPER, true).withProperty(FRUIT, true));
+		if (!state.getValue(UPPER)) world.setBlockState(pos.up(), state.withProperty(UPPER, true).withProperty(FRUIT, true));
 		else world.setBlockState(pos.down(), state.withProperty(UPPER, false).withProperty(FRUIT, true));
 	}
 
@@ -217,8 +215,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {
-			if (e.useForRecipes())
-				RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 3), new ItemStack(this, 1, e.getMetadata()));
+			if (e.useForRecipes()) RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 3), new ItemStack(this, 1, e.getMetadata()));
 		}
 	}
 

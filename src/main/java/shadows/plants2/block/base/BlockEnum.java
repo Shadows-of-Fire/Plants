@@ -42,7 +42,10 @@ public abstract class BlockEnum<E extends Enum<E> & IPropertyEnum> extends Block
 		this.realStateContainer = createStateContainer();
 		this.setDefaultState(getBlockState().getBaseState());
 		ModRegistry.BLOCKS.add(this);
-		ModRegistry.ITEMS.add(createItemBlock());
+		ItemBlock k = createItemBlock();
+		if (k != null) ModRegistry.ITEMS.add(k);
+		for (E e : types)
+			e.set(this);
 	}
 
 	public BlockEnum(String name, Material material, SoundType sound, float hardness, float resistance, Class<E> enumClass, String propName) {

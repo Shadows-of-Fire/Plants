@@ -14,10 +14,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.data.StackPrimer;
 import shadows.plants2.init.ModRegistry;
+import shadows.plants2.util.RecipeHelper;
 
 public class TheBigBookOfEnums {
 
@@ -37,6 +39,18 @@ public class TheBigBookOfEnums {
 		@Override
 		public WorldGenerator getTreeGen() {
 			return treeGen;
+		}
+
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
 		}
 
 	}
@@ -65,6 +79,11 @@ public class TheBigBookOfEnums {
 		@Override
 		public EnumParticleTypes getParticle() {
 			return particle;
+		}
+
+		@Override
+		public ItemStack get() {
+			return new ItemStack(ModRegistry.NETHER_LOG, 1, ordinal());
 		}
 
 	}
@@ -174,6 +193,18 @@ public class TheBigBookOfEnums {
 			return flowers;
 		}
 
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
+		}
+
 	}
 
 	public static enum Desert implements IFlowerEnum {
@@ -220,6 +251,18 @@ public class TheBigBookOfEnums {
 			return flowers;
 		}
 
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
+		}
+
 	}
 
 	public static enum Double implements IFlowerEnum {
@@ -263,6 +306,18 @@ public class TheBigBookOfEnums {
 			return flowers;
 		}
 
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
+		}
+
 	}
 
 	public static enum Generic implements IPropertyEnum {
@@ -277,12 +332,9 @@ public class TheBigBookOfEnums {
 		DARK_CRYSTAL_CHUNK,
 		CRYSTAL_STICK,;
 
+		@Override
 		public ItemStack get() {
-			return new ItemStack(ModRegistry.GENERIC, 1, this.ordinal());
-		}
-
-		public ItemStack get(int size) {
-			return new ItemStack(ModRegistry.GENERIC, size, this.ordinal());
+			return new ItemStack(ModRegistry.GENERIC, 1, ordinal());
 		}
 	}
 
@@ -291,7 +343,19 @@ public class TheBigBookOfEnums {
 		AFGEKIA_M,
 		ANDROSACE_A,
 		AKEBIA_Q,
-		AMPELOPSIS_A
+		AMPELOPSIS_A;
+
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing);
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
+		}
 	}
 
 	public static enum Crops implements IPropertyEnum {
@@ -302,6 +366,11 @@ public class TheBigBookOfEnums {
 		@Override
 		public int getPredicateIndex() {
 			return this.ordinal() / 2;
+		}
+
+		@Override
+		public ItemStack get() {
+			return ItemStack.EMPTY;
 		}
 
 	}
@@ -333,6 +402,11 @@ public class TheBigBookOfEnums {
 		@Override
 		public void postInit(FMLPostInitializationEvent e) {
 			this.setItem(ForgeRegistries.ITEMS.getValue(new ResourceLocation(dropName)));
+		}
+
+		@Override
+		public ItemStack get() {
+			return new ItemStack(ModRegistry.BUSH, 1, ordinal());
 		}
 
 	}
@@ -655,6 +729,11 @@ public class TheBigBookOfEnums {
 			return false;
 		}
 
+		@Override
+		public ItemStack get() {
+			return ItemStack.EMPTY;
+		}
+
 	}
 
 	public static enum CrystalLogs implements ITreeEnum {
@@ -671,6 +750,11 @@ public class TheBigBookOfEnums {
 		@Override
 		public void setTreeGen(WorldGenerator k) {
 			gen = k;
+		}
+
+		@Override
+		public ItemStack get() {
+			return new ItemStack(ModRegistry.CRYSTAL_LOG, 1, ordinal());
 		}
 
 	}
@@ -700,8 +784,13 @@ public class TheBigBookOfEnums {
 			return isShard;
 		}
 
-		public ItemStack get() {
+		public ItemStack getDrops() {
 			return drops != null ? drops.get(ThreadLocalRandom.current().nextInt(3) + 1).copy() : ItemStack.EMPTY;
+		}
+
+		@Override
+		public ItemStack get() {
+			return new ItemStack(ModRegistry.CRYSTAL, 1, ordinal());
 		}
 
 	}

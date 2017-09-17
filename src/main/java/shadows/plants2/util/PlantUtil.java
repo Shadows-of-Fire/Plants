@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
@@ -69,12 +70,13 @@ public class PlantUtil {
 		return items;
 	}
 
-	public static void placeFlower(World world, BlockPos pos, IBlockState state) {
+	public static boolean placeFlower(World world, BlockPos pos, IBlockState state) {
 		Block block = state.getBlock();
 		if ((world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos)) && block.canPlaceBlockAt(world, pos)) {
-			if (block instanceof ISpecialPlacement) ((ISpecialPlacement) block).placeStateAt(state, world, pos);
-			else world.setBlockState(pos, state, 2);
+			if (block instanceof ISpecialPlacement) return ((ISpecialPlacement) block).placeStateAt(state, world, pos);
+			return world.setBlockState(pos, state, 2);
 		}
+		return false;
 	}
 
 	public static void genFlowerPatch(World world, BlockPos pos, Random rand, IBlockState state) {
@@ -87,7 +89,7 @@ public class PlantUtil {
 				int z1 = z + MathHelper.getInt(rand, -dist, dist);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
-				placeFlower(world, pos2, state);
+				if (world.getBlockState(pos2).getMaterial() != Material.WATER) placeFlower(world, pos2, state);
 			}
 		}
 	}
@@ -101,7 +103,7 @@ public class PlantUtil {
 				int z1 = z + MathHelper.getInt(rand, -6, 6);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
-				placeFlower(world, pos2, state);
+				if (world.getBlockState(pos2).getMaterial() != Material.WATER) placeFlower(world, pos2, state);
 			}
 		}
 	}
@@ -115,7 +117,7 @@ public class PlantUtil {
 				int z1 = z + MathHelper.getInt(rand, -2, 2);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
 				BlockPos pos2 = new BlockPos(x1, y1, z1);
-				placeFlower(world, pos2, state);
+				if (world.getBlockState(pos2).getMaterial() != Material.WATER) placeFlower(world, pos2, state);
 			}
 		}
 	}

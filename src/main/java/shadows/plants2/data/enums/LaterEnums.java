@@ -1,10 +1,12 @@
 package shadows.plants2.data.enums;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.init.ModRegistry;
+import shadows.plants2.util.RecipeHelper;
 
 public class LaterEnums {
 
@@ -34,6 +36,18 @@ public class LaterEnums {
 		public StackPrimer[] getDrops() {
 			return drops;
 		}
+
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
+		}
 	}
 
 	public static enum DoubleHarvestable implements IHarvestableEnum {
@@ -51,8 +65,25 @@ public class LaterEnums {
 		}
 
 		@Override
+		public int getMetadata() {
+			return this.ordinal() % 4;
+		}
+
+		@Override
 		public StackPrimer[] getDrops() {
 			return drops;
+		}
+
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
 		}
 	}
 
@@ -73,6 +104,18 @@ public class LaterEnums {
 		@Override
 		public ItemStack genLogStack() {
 			return primer.genStack();
+		}
+
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
 		}
 	}
 

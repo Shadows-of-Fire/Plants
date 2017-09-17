@@ -73,10 +73,8 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int k = meta % 2;
-		if (k == 0)
-			return this.getDefaultState().withProperty(FRUIT, true).withProperty(property, types.get(getActualMeta(meta)));
-		if (k == 1)
-			return this.getDefaultState().withProperty(FRUIT, false).withProperty(property, types.get(getActualMeta(meta)));
+		if (k == 0) return this.getDefaultState().withProperty(FRUIT, true).withProperty(property, types.get(getActualMeta(meta)));
+		if (k == 1) return this.getDefaultState().withProperty(FRUIT, false).withProperty(property, types.get(getActualMeta(meta)));
 		else return null;
 	}
 

@@ -57,9 +57,7 @@ public class ForestryIntegration {
 
 		@Override
 		public String handleFlowerpot(IBlockState state, ItemStack stack) {
-			if (stack.getItem() == PluginArboriculture.getItems().sapling) {
-				return "sapling_" + TreeGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT).replaceAll("'", "").replaceAll(" ", "_");
-			}
+			if (stack.getItem() == PluginArboriculture.getItems().sapling) { return "sapling_" + TreeGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT).replaceAll("'", "").replaceAll(" ", "_"); }
 
 			return "none";
 		}

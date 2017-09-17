@@ -50,9 +50,7 @@ public class TreeTemplate extends Template {
 		StructureBoundingBox structureboundingbox = placement.getBoundingBox();
 		for (BlockInfo info : this.blocks) {
 			BlockPos toCheck = transformedBlockPos(placement, info.pos).add(pos);
-			if (!info.blockState.getBlock().isLeaves(info.blockState, world, toCheck))
-				if (!isReplaceable(world, toCheck) && !(world.getBlockState(toCheck) instanceof BlockEnumSapling))
-					return false;
+			if (!info.blockState.getBlock().isLeaves(info.blockState, world, toCheck)) if (!isReplaceable(world, toCheck) && !(world.getBlockState(toCheck) instanceof BlockEnumSapling)) return false;
 		}
 		for (BlockInfo template$blockinfo : this.blocks) {
 			BlockPos blockpos = transformedBlockPos(placement, template$blockinfo.pos).add(pos);

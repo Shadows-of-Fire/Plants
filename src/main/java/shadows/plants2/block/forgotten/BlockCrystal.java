@@ -21,7 +21,9 @@ import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
+import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.util.PlantUtil;
+import shadows.plants2.util.RecipeHelper;
 
 public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
@@ -71,7 +73,6 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	}
 
 	@Override
-	@Deprecated
 	public float getBlockHardness(IBlockState state, World world, BlockPos pos) {
 		return state.getValue(property).isShard() ? 0.3F : 1.4F;
 	}
@@ -79,10 +80,8 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		Crystals c = state.getValue(property);
-		if (c.isShard()) {
-			System.out.println(c.get());
-			drops.add(c.get());
-		} else drops.add(new ItemStack(this, 1, c.ordinal()));
+		if (c.isShard()) drops.add(c.getDrops());
+		else drops.add(new ItemStack(this, 1, c.ordinal()));
 	}
 
 	@Override
@@ -97,7 +96,15 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		//TODO: add recipes for crystal tools etc here.
+		RecipeHelper.addSimpleShapeless(Generic.CRYSTAL_CHUNK.get(), Generic.CRYSTAL_SHARD.get(), 4);
+		RecipeHelper.addSimpleShapeless(Generic.CRYSTAL_CHUNK.get(4), Generic.CRYSTAL_SHARD.get(), 1);
+		RecipeHelper.addSimpleShapeless(Generic.DARK_CRYSTAL_CHUNK.get(), Generic.DARK_CRYSTAL_SHARD.get(), 4);
+		RecipeHelper.addSimpleShapeless(Generic.DARK_CRYSTAL_CHUNK.get(4), Generic.DARK_CRYSTAL_SHARD.get(), 1);
+		RecipeHelper.addShaped(Crystals.CRYSTAL_BRICK.get(4), 2, 2, Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get());
+		RecipeHelper.addSimpleShapeless(Crystals.CRYSTAL_BLOCK.get(), Generic.CRYSTAL_CHUNK.get(), 4);
+		RecipeHelper.addShaped(Crystals.DARK_CRYSTAL_BRICK.get(), 2, 2, Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get());
+		RecipeHelper.addSimpleShapeless(Crystals.DARK_CRYSTAL_BLOCK.get(), Generic.DARK_CRYSTAL_CHUNK.get(), 4);
+		RecipeHelper.addShaped(Generic.CRYSTAL_STICK.get(), 1, 2, Generic.CRYSTAL_CHUNK.get(), Generic.CRYSTAL_CHUNK.get());
 	}
 
 }

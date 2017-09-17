@@ -12,6 +12,7 @@ import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreIngredient;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.Constants;
 import shadows.plants2.init.ModRegistry;
 
@@ -26,8 +27,7 @@ public class RecipeHelper {
 	 * This adds the recipe to the list of crafting recipes.  Since who cares about names, it adds it as recipeX, where X is the current recipe you are adding.
 	 */
 	public static void addRecipe(int j, IRecipe rec) {
-		if (rec.getRegistryName() == null)
-			recipeList.add(rec.setRegistryName(new ResourceLocation(MODID, "recipe" + j)));
+		if (rec.getRegistryName() == null) recipeList.add(rec.setRegistryName(new ResourceLocation(MODID, "recipe" + j)));
 		else recipeList.add(rec);
 	}
 
@@ -40,18 +40,14 @@ public class RecipeHelper {
 	}
 
 	/*
-	 * Adds a shapeless recipe with X output using an array of inputs. Use Strings for OreDictionary support. This array is not ordered.
+	 * Adds a shapeless recipe with X output using an array of inputs. Use Strings for OreDictionary support. This array is not ordered.  Can take a List in place of inputs.
 	 */
 	public static void addShapeless(ItemStack output, Object... inputs) {
 		addRecipe(j++, new ShapelessRecipes(MODID + ":" + j, output, createInput(inputs)));
 	}
 
-	public static void addShapeless(Item output, Object... inputs) {
-		addShapeless(new ItemStack(output), inputs);
-	}
-
-	public static void addShapeless(Block output, Object... inputs) {
-		addShapeless(new ItemStack(output), inputs);
+	public static <T extends IForgeRegistryEntry<?>> void addShapeless(T output, Object... inputs) {
+		addShapeless(makeStack(output), inputs);
 	}
 
 	/*
@@ -61,12 +57,8 @@ public class RecipeHelper {
 		addRecipe(j++, new ShapelessRecipes(MODID + ":" + group, output, createInput(inputs)));
 	}
 
-	public static void addShapeless(String group, Item output, Object... inputs) {
-		addShapeless(group, new ItemStack(output), inputs);
-	}
-
-	public static void addShapeless(String group, Block output, Object... inputs) {
-		addShapeless(group, new ItemStack(output), inputs);
+	public static <T extends IForgeRegistryEntry<?>> void addShapeless(String group, T output, Object... inputs) {
+		addShapeless(group, makeStack(output), inputs);
 	}
 
 	/*
@@ -77,12 +69,8 @@ public class RecipeHelper {
 		addRecipe(j++, genShaped(output, width, height, input));
 	}
 
-	public static void addShaped(Item output, int width, int height, Object... input) {
-		addShaped(new ItemStack(output), width, height, input);
-	}
-
-	public static void addShaped(Block output, int width, int height, Object... input) {
-		addShaped(new ItemStack(output), width, height, input);
+	public static <T extends IForgeRegistryEntry<?>> void addShaped(T output, int width, int height, Object... input) {
+		addShaped(makeStack(output), width, height, input);
 	}
 
 	/*
@@ -93,18 +81,16 @@ public class RecipeHelper {
 		addRecipe(j++, genShaped(MODID + ":" + group, output, width, height, input));
 	}
 
-	public static void addShaped(String group, Item output, int width, int height, Object... input) {
-		addShaped(group, new ItemStack(output), width, height, input);
+	public static <T extends IForgeRegistryEntry<?>> void addShaped(String group, T output, int width, int height, Object... input) {
+		addShaped(group, makeStack(output), width, height, input);
 	}
 
-	public static void addShaped(String group, Block output, int width, int height, Object... input) {
-		addShaped(group, new ItemStack(output), width, height, input);
-	}
-
-	public static ShapedRecipes genShaped(ItemStack output, int l, int w, Object[] input) {
-		if (input[0] instanceof Object[]) input = (Object[]) input[0];
-		if (l * w != input.length)
-			throw new UnsupportedOperationException("Attempted to add invalid shaped recipe.  Complain to the author of " + MODNAME);
+	/*
+	 * Generates a shaped recipe with a specific width and height. The Object[] is the ingredients, in order from left to right, top to bottom.
+	 */
+	public static ShapedRecipes genShaped(ItemStack output, int width, int height, Object[] input) {
+		if (input[0] instanceof List) input = ((List<?>) input[0]).toArray();
+		if (width * height != input.length) throw new UnsupportedOperationException("Attempted to add invalid shaped recipe.  Complain to the author of " + MODNAME);
 		NonNullList<Ingredient> inputL = NonNullList.create();
 		for (int i = 0; i < input.length; i++) {
 			Object k = input[i];
@@ -121,51 +107,70 @@ public class RecipeHelper {
 			}
 		}
 
-		return new ShapedRecipes(MODID + ":" + j, l, w, inputL, output);
+		return new ShapedRecipes(MODID + ":" + j, width, height, inputL, output);
 	}
 
+	/*
+	 * Same thing as genShaped above, but uses a specific group.
+	 */
 	public static ShapedRecipes genShaped(String group, ItemStack output, int l, int w, Object[] input) {
 		if (input[0] instanceof List) input = ((List<?>) input[0]).toArray();
-		else if (input[0] instanceof Object[]) input = (Object[]) input[0];
-		if (l * w != input.length)
-			throw new UnsupportedOperationException("Attempted to add invalid shaped recipe.  Complain to the author of " + MODNAME);
+		if (l * w != input.length) throw new UnsupportedOperationException("Attempted to add invalid shaped recipe.  Complain to the author of " + MODNAME);
 		NonNullList<Ingredient> inputL = NonNullList.create();
 		for (int i = 0; i < input.length; i++) {
 			Object k = input[i];
-			if (k instanceof String) {
-				inputL.add(i, new OreIngredient((String) k));
-			} else if (k instanceof ItemStack && !((ItemStack) k).isEmpty()) {
-				inputL.add(i, Ingredient.fromStacks((ItemStack) k));
-			} else if (k instanceof Item) {
-				inputL.add(i, Ingredient.fromStacks(new ItemStack((Item) k)));
-			} else if (k instanceof Block) {
-				inputL.add(i, Ingredient.fromStacks(new ItemStack((Block) k)));
-			} else {
-				inputL.add(i, Ingredient.EMPTY);
-			}
+			if (k instanceof String) inputL.add(i, new OreIngredient((String) k));
+			else if (k instanceof ItemStack && !((ItemStack) k).isEmpty()) inputL.add(i, Ingredient.fromStacks((ItemStack) k));
+			else if (k instanceof IForgeRegistryEntry) inputL.add(i, Ingredient.fromStacks(makeStack((IForgeRegistryEntry<?>) k)));
+			else inputL.add(i, Ingredient.EMPTY);
 		}
 
 		return new ShapedRecipes(group, l, w, inputL, output);
 	}
 
+	/*
+	 * Creates a list of ingredients based on an Object[].  Valid types are String, ItemStack, Item, and Block.
+	 * Used for shapeless recipes.
+	 */
 	public static NonNullList<Ingredient> createInput(Object[] input) {
 		if (input[0] instanceof List) input = ((List<?>) input[0]).toArray();
 		else if (input[0] instanceof Object[]) input = (Object[]) input[0];
 		NonNullList<Ingredient> inputL = NonNullList.create();
 		for (int i = 0; i < input.length; i++) {
 			Object k = input[i];
-			if (k instanceof String) {
-				inputL.add(i, new OreIngredient((String) k));
-			} else if (k instanceof ItemStack) {
-				inputL.add(i, Ingredient.fromStacks((ItemStack) k));
-			} else if (k instanceof Item) {
-				inputL.add(i, Ingredient.fromStacks(new ItemStack((Item) k)));
-			} else if (k instanceof Block) {
-				inputL.add(i, Ingredient.fromStacks(new ItemStack((Block) k)));
-			} else {
-				throw new UnsupportedOperationException("Attempted to add invalid shapeless recipe.  Complain to the author of " + MODNAME);
-			}
+			if (k instanceof String) inputL.add(i, new OreIngredient((String) k));
+			else if (k instanceof ItemStack && !((ItemStack) k).isEmpty()) inputL.add(i, Ingredient.fromStacks((ItemStack) k));
+			else if (k instanceof IForgeRegistryEntry) inputL.add(i, Ingredient.fromStacks(makeStack((IForgeRegistryEntry<?>) k)));
+			else throw new UnsupportedOperationException("Attempted to add invalid shapeless recipe.  Complain to the author of " + MODNAME);
 		}
 		return inputL;
 	}
+
+	/*
+	 * Adds a shapeless recipe with one output and x inputs, all inputs are the same.
+	 */
+	public static void addSimpleShapeless(ItemStack output, ItemStack input, int numInputs) {
+		addShapeless(output, NonNullList.withSize(numInputs, input));
+	}
+
+	public static <T extends IForgeRegistryEntry<?>> void addSimpleShapeless(T output, T input, int numInputs) {
+		addSimpleShapeless(makeStack(output), makeStack(input), numInputs);
+	}
+
+	/*
+	 * Helper method to make an itemstack from a block or item.
+	 */
+	public static <T extends IForgeRegistryEntry<?>> ItemStack makeStack(T thing, int size, int meta) {
+		if (thing instanceof Item) return new ItemStack((Item) thing, size, meta);
+		return new ItemStack((Block) thing, size, meta);
+	}
+
+	public static <T extends IForgeRegistryEntry<?>> ItemStack makeStack(T thing, int size) {
+		return makeStack(thing, size, 0);
+	}
+
+	public static <T extends IForgeRegistryEntry<?>> ItemStack makeStack(T thing) {
+		return makeStack(thing, 1, 0);
+	}
+
 }

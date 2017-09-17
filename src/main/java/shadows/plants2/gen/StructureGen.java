@@ -41,8 +41,7 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
 		if (!world.isRemote) {
-			if (structure == null)
-				structure = new TreeTemplate(((WorldServer) world).getStructureTemplateManager().get(null, structurePath));
+			if (structure == null) structure = new TreeTemplate(((WorldServer) world).getStructureTemplateManager().get(null, structurePath));
 			return structure.addBlocksToWorld(world, pos.add(offset), new BlockRotationProcessor(pos, settings), settings, 3, false);
 		}
 		return false;

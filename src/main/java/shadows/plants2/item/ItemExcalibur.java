@@ -165,8 +165,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 			AxisAlignedBB axis1 = new AxisAlignedBB(burst.posX, burst.posY, burst.posZ, burst.lastTickPosX, burst.lastTickPosY, burst.lastTickPosZ).grow(5, 5, 5);
 			List<EntityLivingBase> entities = burst.world.getEntitiesWithinAABB(EntityLivingBase.class, axis1);
 			for (EntityLivingBase living : entities) {
-				if (living instanceof EntityPlayer || living instanceof EntityDragon || living instanceof EntityWither || !(living instanceof IMob) || living.hurtTime != 0)
-					continue;
+				if (living instanceof EntityPlayer || living instanceof EntityDragon || living instanceof EntityWither || !(living instanceof IMob) || living.hurtTime != 0) continue;
 
 				homeID = living.getEntityId();
 				ItemNBTHelper.setInt(stack, TAG_HOME_ID, homeID);
@@ -190,8 +189,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		}
 
 		for (EntityLivingBase living : entities) {
-			if (living instanceof EntityPlayer && (((EntityPlayer) living).getCommandSenderEntity().getName().equals(attacker) || living.world.getMinecraftServer() != null && living.world.getMinecraftServer().isPVPEnabled()))
-				continue;
+			if (living instanceof EntityPlayer && (((EntityPlayer) living).getCommandSenderEntity().getName().equals(attacker) || living.world.getMinecraftServer() != null && living.world.getMinecraftServer().isPVPEnabled())) continue;
 
 			if (living.hurtTime == 0) {
 				int cost = 1;
@@ -225,8 +223,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state,
 
 			@Nonnull BlockPos pos, @Nonnull EntityLivingBase entity) {
-		if (usesMana(stack) && state.getBlockHardness(world, pos) != 0F)
-			ToolCommons.damageItem(stack, 1, entity, getManaPerDamage());
+		if (usesMana(stack) && state.getBlockHardness(world, pos) != 0F) ToolCommons.damageItem(stack, 1, entity, getManaPerDamage());
 
 		return true;
 	}

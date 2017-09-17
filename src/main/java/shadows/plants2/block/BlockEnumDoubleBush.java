@@ -140,10 +140,8 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int k = meta % 2;
-		if (k == 0)
-			return this.getDefaultState().withProperty(UPPER, true).withProperty(property, types.get(getActualMeta(meta)));
-		if (k == 1)
-			return this.getDefaultState().withProperty(UPPER, false).withProperty(property, types.get(getActualMeta(meta)));
+		if (k == 0) return this.getDefaultState().withProperty(UPPER, true).withProperty(property, types.get(getActualMeta(meta)));
+		if (k == 1) return this.getDefaultState().withProperty(UPPER, false).withProperty(property, types.get(getActualMeta(meta)));
 		else return null;
 	}
 
@@ -172,8 +170,7 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 
 	@Override
 	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
-		if (state.getBlock() == this && !state.getValue(UPPER) && world.getBlockState(pos.up()).getBlock() == this)
-			world.setBlockToAir(pos.up());
+		if (state.getBlock() == this && !state.getValue(UPPER) && world.getBlockState(pos.up()).getBlock() == this) world.setBlockToAir(pos.up());
 		return world.setBlockToAir(pos);
 	}
 

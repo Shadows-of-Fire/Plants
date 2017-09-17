@@ -76,8 +76,7 @@ public class BushGen implements IWorldGenerator {
 		}
 
 		private void checkAndLeaf(World world, BlockPos pos) {
-			if (this.isReplaceable(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID)
-				this.setBlockAndNotifyAdequately(world, pos, leaf);
+			if (this.isReplaceable(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID) this.setBlockAndNotifyAdequately(world, pos, leaf);
 		}
 
 		@Override

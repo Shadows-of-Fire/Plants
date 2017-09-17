@@ -3,7 +3,9 @@ package shadows.plants2.data.enums;
 import java.util.Locale;
 
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public interface IPropertyEnum extends IStringSerializable {
 
@@ -25,6 +27,20 @@ public interface IPropertyEnum extends IStringSerializable {
 
 	default public int getMetadata() {
 		return ((Enum<?>) this).ordinal() % 16;
+	}
+
+	/*
+	 * Returns the value of this Enum constant as an ItemStack, or ItemStack.EMPTY, if invalid.
+	 */
+	public ItemStack get();
+
+	default public ItemStack get(int size) {
+		ItemStack s = get();
+		s.setCount(size);
+		return s;
+	}
+
+	default public void set(IForgeRegistryEntry<?> thing) {
 	}
 
 }

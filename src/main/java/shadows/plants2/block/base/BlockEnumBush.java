@@ -47,12 +47,13 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 		this.valueFilter = (e) -> (e.getPredicateIndex() == predicate);
 		this.property = PropertyEnum.create("type", enumClass, valueFilter);
 		types.addAll(property.getAllowedValues());
-		if (types.size() > getMaxEnumValues())
-			throw new IllegalArgumentException("Trying to create a " + this.getClass().getSimpleName() + " with " + types.size() + " enum constants is invalid");
+		if (types.size() > getMaxEnumValues()) throw new IllegalArgumentException("Trying to create a " + this.getClass().getSimpleName() + " with " + types.size() + " enum constants is invalid");
 		this.realStateContainer = createStateContainer();
 		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
 		Item k = createItemBlock();
 		if (k != null) ModRegistry.ITEMS.add(k);
+		for (E e : types)
+			e.set(this);
 	}
 
 	@Override
@@ -155,8 +156,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {
-			if (e.useForRecipes())
-				RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 1, e.getMetadata()));
+			if (e.useForRecipes()) RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 1, e.getMetadata()));
 		}
 	}
 

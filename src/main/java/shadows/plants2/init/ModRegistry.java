@@ -244,7 +244,7 @@ public class ModRegistry {
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
-		if(!Config.generation) return;
+		if (!Config.generation) return;
 		GameRegistry.registerWorldGenerator(new BushGen(), 25);
 		GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
 		GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);

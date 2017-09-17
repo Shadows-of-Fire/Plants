@@ -19,11 +19,9 @@ public class BotaniaFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String handleFlowerpot(IBlockState state, ItemStack stack) {
-		if (state.getBlock() == ModBlocks.mushroom)
-			return "mushroom_" + state.getValue(BotaniaStateProps.COLOR).getName();
+		if (state.getBlock() == ModBlocks.mushroom) return "mushroom_" + state.getValue(BotaniaStateProps.COLOR).getName();
 		if (state.getBlock() == ModBlocks.flower) return "flower_" + state.getValue(BotaniaStateProps.COLOR).getName();
-		if (state.getBlock() == ModBlocks.shinyFlower)
-			return "sflower_" + state.getValue(BotaniaStateProps.COLOR).getName();
+		if (state.getBlock() == ModBlocks.shinyFlower) return "sflower_" + state.getValue(BotaniaStateProps.COLOR).getName();
 		return "none";
 	}
 
@@ -44,7 +42,6 @@ public class BotaniaFlowerpot implements IFlowerpotHandler {
 		int g = (hex & 0xFF00) >> 8;
 		int b = hex & 0xFF;
 
-		if (rand.nextDouble() < ConfigHandler.flowerParticleFrequency)
-			Botania.proxy.sparkleFX(pos.getX() + 0.3 + rand.nextFloat() * 0.5, pos.getY() + 0.5 + rand.nextFloat() * 0.5, pos.getZ() + 0.3 + rand.nextFloat() * 0.5, r / 255F, g / 255F, b / 255F, rand.nextFloat(), 5);
+		if (rand.nextDouble() < ConfigHandler.flowerParticleFrequency) Botania.proxy.sparkleFX(pos.getX() + 0.3 + rand.nextFloat() * 0.5, pos.getY() + 0.5 + rand.nextFloat() * 0.5, pos.getZ() + 0.3 + rand.nextFloat() * 0.5, r / 255F, g / 255F, b / 255F, rand.nextFloat(), 5);
 	}
 }

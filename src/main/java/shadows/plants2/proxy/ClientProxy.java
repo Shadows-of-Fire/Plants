@@ -27,17 +27,14 @@ public class ClientProxy implements IProxy {
 
 	@Override
 	public void init(FMLInitializationEvent e) {
-		if (Config.flowerpot)
-			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
-				if (tint == 1) return world.getBiome(pos).getGrassColorAtPos(pos);
+		if (Config.flowerpot) Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
+			if (tint == 1) return world.getBiome(pos).getGrassColorAtPos(pos);
 
-				TileEntity t = world.getTileEntity(pos);
+			TileEntity t = world.getTileEntity(pos);
 
-				if (Loader.isModLoaded(Constants.BOTANY_ID) && tint >= 10 && t instanceof TileFlowerpot) {
-					return BinnieIntegration.colorMultiplier(state, world, pos, tint);
-				}
-				return -1;
-			}, ModRegistry.FLOWERPOT);
+			if (Loader.isModLoaded(Constants.BOTANY_ID) && tint >= 10 && t instanceof TileFlowerpot) { return BinnieIntegration.colorMultiplier(state, world, pos, tint); }
+			return -1;
+		}, ModRegistry.FLOWERPOT);
 	}
 
 	@Override

@@ -84,9 +84,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		int k = state.getValue(getProperty()).ordinal();
-		if (k == 2 | k == 3) {
-			return BIG_BUSH_AABB;
-		}
+		if (k == 2 | k == 3) { return BIG_BUSH_AABB; }
 		return BUSH_AABB;
 	}
 
@@ -94,8 +92,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
 		boolean[] bools = { false, false, false, false };
 		for (int i = 0; i < 4; i++) {
-			if (BushGen.BUSHGENS[state.getValue(getProperty()).ordinal()].isReplaceable(world, pos.offset(EnumFacing.HORIZONTALS[i])))
-				bools[i] = true;
+			if (BushGen.BUSHGENS[state.getValue(getProperty()).ordinal()].isReplaceable(world, pos.offset(EnumFacing.HORIZONTALS[i]))) bools[i] = true;
 		}
 		return bools[0] && bools[1] && bools[2] && bools[3];
 	}

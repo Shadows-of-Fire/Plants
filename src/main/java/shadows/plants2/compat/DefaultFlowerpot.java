@@ -21,15 +21,13 @@ public class DefaultFlowerpot implements IFlowerpotHandler {
 		Block block = state.getBlock();
 		if (block instanceof BlockEnumBush<?>) {
 			name = ((IEnumBlock<?>) block).getValue(state).getName();
-		} else if (block == Blocks.RED_FLOWER || block == Blocks.YELLOW_FLOWER)
-			name = state.getValue(((BlockFlower) block).getTypeProperty()).getName();
+		} else if (block == Blocks.RED_FLOWER || block == Blocks.YELLOW_FLOWER) name = state.getValue(((BlockFlower) block).getTypeProperty()).getName();
 		else if (block == Blocks.RED_MUSHROOM) name = "mushroom_red";
 		else if (block == Blocks.BROWN_MUSHROOM) name = "mushroom_brown";
 		else if (block == Blocks.SAPLING) name = state.getValue(BlockSapling.TYPE).getName() + "_sapling";
 		else if (block == Blocks.DEADBUSH) name = "dead_bush";
 		else if (block == Blocks.CACTUS) name = "cactus";
-		else if (block == Blocks.TALLGRASS && state.getValue(BlockTallGrass.TYPE) == BlockTallGrass.EnumType.FERN)
-			name = "fern";
+		else if (block == Blocks.TALLGRASS && state.getValue(BlockTallGrass.TYPE) == BlockTallGrass.EnumType.FERN) name = "fern";
 		return name;
 	}
 

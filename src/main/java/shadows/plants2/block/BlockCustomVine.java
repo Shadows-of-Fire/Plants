@@ -48,6 +48,7 @@ public class BlockCustomVine extends BlockVine implements IHasModel {
 		ModRegistry.BLOCKS.add(this);
 		ModRegistry.ITEMS.add(new ItemBlockBase(this));
 		PlantUtil.VINES.add(this);
+		vine.set(this);
 	}
 
 	@Override

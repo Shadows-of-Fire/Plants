@@ -14,10 +14,8 @@ public interface IHasModel {
 
 	@SideOnly(Side.CLIENT)
 	default public void initModels(ModelRegistryEvent e) {
-		if (this instanceof Item)
-			PlantUtil.sMRL("items", (Item) this, 0, "item=" + ((Item) this).getRegistryName().getResourcePath());
-		else if (this instanceof Block)
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock((Block) this), 0, new ModelResourceLocation(((IForgeRegistryEntry<?>) this).getRegistryName(), "inventory"));
+		if (this instanceof Item) PlantUtil.sMRL("items", (Item) this, 0, "item=" + ((Item) this).getRegistryName().getResourcePath());
+		else if (this instanceof Block) ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock((Block) this), 0, new ModelResourceLocation(((IForgeRegistryEntry<?>) this).getRegistryName(), "inventory"));
 		else throw new IllegalStateException("wat are u doin");
 	}
 

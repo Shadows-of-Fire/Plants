@@ -119,8 +119,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 		if (flowerpot.isEmpty()) {
 			IBlockState toUse = Block.getBlockFromItem(held.getItem()).getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
-			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable)
-				toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
+			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable) toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
 			String name = "none";
 
 			for (IFlowerpotHandler handler : HANDLERS) {
@@ -167,12 +166,10 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		state = getActualState(state, world, pos);
-		if (Loader.isModLoaded(Constants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_"))
-			BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
+		if (Loader.isModLoaded(Constants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_")) BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
 		if (rand.nextFloat() < 0.1F) {
 			FlowerpotPlants p = state.getValue(PROP);
-			if (p == FlowerpotPlants.ASH || p == FlowerpotPlants.BLAZE)
-				world.spawnParticle(p == FlowerpotPlants.ASH ? EnumParticleTypes.SMOKE_LARGE : EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, getDouble(rand), 0.05, getDouble(rand));
+			if (p == FlowerpotPlants.ASH || p == FlowerpotPlants.BLAZE) world.spawnParticle(p == FlowerpotPlants.ASH ? EnumParticleTypes.SMOKE_LARGE : EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, getDouble(rand), 0.05, getDouble(rand));
 		}
 	}
 
