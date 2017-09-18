@@ -235,7 +235,7 @@ public class ModRegistry {
 		OreDictionary.registerOre("logWood", new ItemStack(LOG_0, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeSapling", new ItemStack(SAP_0, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves", new ItemStack(LEAF_0, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("logWood", new ItemStack(PLANKS, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("plankWood", new ItemStack(PLANKS, 1, OreDictionary.WILDCARD_VALUE));
 
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockBush && Item.getItemFromBlock(block) != Items.AIR) {
