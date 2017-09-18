@@ -21,9 +21,9 @@ public class Config {
 	public static int catapultPower = 2;
 	public static boolean flowerpot = true;
 	public static boolean harvests = true;
+	public static int harvestGrowthChance = 4;
 
 	public static boolean hardNether = false;
-	public static int harvestGrowthChance = 4;
 
 	public static void syncConfig(Configuration config) {
 
@@ -49,7 +49,6 @@ public class Config {
 		harvestGrowthChance = config.getInt("Harvest Growth Chance", "general", 4, 1, 20, "Higher numbers will slow growth of harvestable bushes.");
 
 		hardNether = config.getBoolean("Require Soul Sand", "nether", false, "Enabling this will make all nether harvestables only grow on soul sand");
-
 
 		if (config.hasChanged()) config.save();
 
