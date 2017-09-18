@@ -10,6 +10,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -30,8 +31,8 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	public static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.8D, 0.9D);
 	protected final Collection<Block> soils;
 
-	public BlockEnumSapling(String name, SoundType s, float hard, float res, Class<E> clazz, int predicate, Block... otherSoils) {
-		super(name, EnumPlantType.Plains, clazz, predicate);
+	public BlockEnumSapling(String name, EnumPlantType type, SoundType s, float hard, float res, Class<E> clazz, int predicate, Block... otherSoils) {
+		super(name, type, clazz, predicate);
 		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(Constants.INV, false));
 		setTickRandomly(true);
 		setSoundType(s);
@@ -40,14 +41,22 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 		this.soils = Arrays.asList(otherSoils);
 	}
 
+	public BlockEnumSapling(String name, SoundType s, float hard, float res, Class<E> clazz, int predicate, Block... otherSoils) {
+		this(name, EnumPlantType.Plains, s, hard, res, clazz, predicate, otherSoils);
+	}
+	
+	public BlockEnumSapling(String name, EnumPlantType type, Class<E> clazz, int predicate) {
+		this(name, type, SoundType.PLANT, 0, 0, clazz, predicate);
+	}
+
 	public BlockEnumSapling(String name, Class<E> clazz, int predicate) {
-		this(name, SoundType.PLANT, 0, 0, clazz, predicate);
+		this(name, EnumPlantType.Plains, clazz, predicate);
 	}
 
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), net.minecraft.util.EnumFacing.UP, this) || soils.contains(soil.getBlock()));
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soils.contains(soil.getBlock()));
 	}
 
 	@Override

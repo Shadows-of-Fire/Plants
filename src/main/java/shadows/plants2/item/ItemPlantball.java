@@ -18,6 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProviderHell;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -100,7 +101,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 	}
 
 	private static void genFlowers(World world, BlockPos pos, IBlockState state) {
-		PlantUtil.genSmallFlowerPatchNearby(world, pos.up(), world.rand, state);
+		if (world.provider instanceof WorldProviderHell) PlantUtil.genFlowerPatchForNether(world, pos, world.rand, state);
+		else PlantUtil.genSmallFlowerPatchNearby(world, pos.up(), world.rand, state);
 	}
 
 	@Override

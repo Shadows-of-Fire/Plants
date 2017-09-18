@@ -41,7 +41,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(4) == 0) grow(world, rand, pos, state);
+		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(Config.harvestGrowthChance) == 0) grow(world, rand, pos, state);
 	}
 
 	@Override
@@ -62,8 +62,9 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!Config.harvests || !state.getValue(FRUIT)) return false;
 		for (StackPrimer s : state.getValue(property).getDrops()) {
-			if (!player.addItemStackToInventory(s.genStack())) {
-				if (!world.isRemote) Block.spawnAsEntity(world, pos, s.genStack());
+			ItemStack iS = s.genStack();
+			if (!player.addItemStackToInventory(iS)) {
+				if (!world.isRemote) Block.spawnAsEntity(world, pos, iS);
 			}
 		}
 		world.setBlockState(pos, state.withProperty(FRUIT, false));

@@ -330,7 +330,9 @@ public class TheBigBookOfEnums {
 		CRYSTAL_CHUNK,
 		DARK_CRYSTAL_SHARD,
 		DARK_CRYSTAL_CHUNK,
-		CRYSTAL_STICK,;
+		CRYSTAL_STICK,
+		BLAZE_PETAL,
+		MAGMA_JELLY,;
 
 		@Override
 		public ItemStack get() {

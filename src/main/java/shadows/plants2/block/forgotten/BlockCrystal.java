@@ -97,9 +97,9 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
 		RecipeHelper.addSimpleShapeless(Generic.CRYSTAL_CHUNK.get(), Generic.CRYSTAL_SHARD.get(), 4);
-		RecipeHelper.addSimpleShapeless(Generic.CRYSTAL_CHUNK.get(4), Generic.CRYSTAL_SHARD.get(), 1);
+		RecipeHelper.addSimpleShapeless(Generic.CRYSTAL_SHARD.get(4), Generic.CRYSTAL_CHUNK.get(), 1);
 		RecipeHelper.addSimpleShapeless(Generic.DARK_CRYSTAL_CHUNK.get(), Generic.DARK_CRYSTAL_SHARD.get(), 4);
-		RecipeHelper.addSimpleShapeless(Generic.DARK_CRYSTAL_CHUNK.get(4), Generic.DARK_CRYSTAL_SHARD.get(), 1);
+		RecipeHelper.addSimpleShapeless(Generic.DARK_CRYSTAL_SHARD.get(4), Generic.DARK_CRYSTAL_CHUNK.get(), 1);
 		RecipeHelper.addShaped(Crystals.CRYSTAL_BRICK.get(4), 2, 2, Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get());
 		RecipeHelper.addSimpleShapeless(Crystals.CRYSTAL_BLOCK.get(), Generic.CRYSTAL_CHUNK.get(), 4);
 		RecipeHelper.addShaped(Crystals.DARK_CRYSTAL_BRICK.get(), 2, 2, Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get());

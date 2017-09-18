@@ -40,7 +40,7 @@ public class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onDesertDecoration(DecorateBiomeEvent.Decorate event) {
-		if (event.getWorld().getBiome(event.getPos()) instanceof BiomeBeach) return;
+		if (event.getWorld().getBiome(event.getPos().add(8, 0, 8)) instanceof BiomeBeach) return;
 		if (Config.generation && !event.getWorld().isRemote && (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numTries; ih > 0; ih--) {

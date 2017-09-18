@@ -86,6 +86,30 @@
 					"fruit": "plants2:blocks/cosmetic/harvestable/solanum_n/fruit",
 					"none": "plants2:blocks/cosmetic/harvestable/solanum_n/none"
 				}
+			},
+			"blaze": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/blaze/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/blaze/none"
+				}
+			},
+			"magma": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/magma/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/magma/none"
+				}
+			},
+			"melon": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/melon/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/melon/none"
+				}
+			},
+			"fire_fruit": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/fire_fruit/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/fire_fruit/none"
+				}
 			}
 		},
 		"inventory": {

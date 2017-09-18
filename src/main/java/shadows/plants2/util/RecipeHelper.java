@@ -156,6 +156,14 @@ public class RecipeHelper {
 	public static <T extends IForgeRegistryEntry<?>> void addSimpleShapeless(T output, T input, int numInputs) {
 		addSimpleShapeless(makeStack(output), makeStack(input), numInputs);
 	}
+	
+	public static <T extends IForgeRegistryEntry<?>> void addSimpleShapeless(T output, ItemStack input, int numInputs) {
+		addSimpleShapeless(makeStack(output), input, numInputs);
+	}
+
+	public static <T extends IForgeRegistryEntry<?>> void addSimpleShapeless(ItemStack output, T input, int numInputs) {
+		addSimpleShapeless(output, makeStack(input), numInputs);
+	}
 
 	/*
 	 * Helper method to make an itemstack from a block or item.

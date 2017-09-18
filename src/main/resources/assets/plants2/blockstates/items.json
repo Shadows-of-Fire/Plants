@@ -196,6 +196,26 @@
 				"textures": {
 					"layer0": "plants2:items/forgotten/c_stick"
 				}
+			},
+			"blaze_petal": {
+				"textures": {
+					"layer0": "plants2:items/blaze_petal"
+				}
+			},
+			"magma_jelly": {
+				"textures": {
+					"layer0": "plants2:items/magma_jelly"
+				}
+			},
+			"fire_fruit": {
+				"textures": {
+					"layer0": "plants2:items/fire_fruit"
+				}
+			},
+			"fire_fruit_cold": {
+				"textures": {
+					"layer0": "plants2:items/fire_fruit_cold"
+				}
 			}
 		}
 	}

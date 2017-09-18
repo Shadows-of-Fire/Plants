@@ -39,6 +39,7 @@ import shadows.plants2.block.BlockEnumFlower;
 import shadows.plants2.block.BlockEnumHarvestBush;
 import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
+import shadows.plants2.block.BlockEnumNetherHarvest;
 import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.BlockEnumSapling;
@@ -56,6 +57,7 @@ import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.LaterEnums.DoubleHarvestable;
 import shadows.plants2.data.enums.LaterEnums.Harvestable;
+import shadows.plants2.data.enums.LaterEnums.NetherHarvests;
 import shadows.plants2.data.enums.LaterEnums.Planks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
@@ -69,11 +71,13 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
 import shadows.plants2.gen.EnumTreeGen;
+import shadows.plants2.gen.NetherGen;
 import shadows.plants2.gen.StructureGen;
 import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.gen.forgotten.NetherTreeGen;
 import shadows.plants2.item.ItemBigEnum;
 import shadows.plants2.item.ItemExcalibur;
+import shadows.plants2.item.ItemFireFruit;
 import shadows.plants2.item.ItemFoodBase;
 import shadows.plants2.item.ItemPlantball;
 import shadows.plants2.item.ItemSeed;
@@ -132,6 +136,7 @@ public class ModRegistry {
 	public static final Item BLUEBERRY = new ItemFoodBase("blueberry", 2, 0.9F);
 	public static final Item RASPBERRY = new ItemFoodBase("raspberry", 2, 1.4F);
 	public static final Item HUCKLEBERRY = new ItemFoodBase("huckleberry", 3, 0.5F);
+	public static final Item FIRE_FRUIT = new ItemFireFruit();
 
 	public static final Item AMARANTHUS_H_SEEDS = new ItemSeed<>("amaranthus_h_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.AMARANTHUS_H);
 	public static final Item OKRA_SEEDS = new ItemSeed<>("okra_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.OKRA);
@@ -139,6 +144,7 @@ public class ModRegistry {
 
 	public static final BlockEnumBush<Harvestable> HARVEST_0 = new BlockEnumHarvestBush<>("harvest_0", EnumPlantType.Plains, Harvestable.class, 0);
 	public static final BlockEnumBush<Harvestable> HARVEST_1 = new BlockEnumHarvestBush<>("harvest_1", EnumPlantType.Plains, Harvestable.class, 1);
+	public static final BlockEnumBush<NetherHarvests> NETHER_HARVEST = new BlockEnumNetherHarvest<>("nether_harvest", NetherHarvests.class, 0);
 
 	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<>("crop_0", Crops.class, 0, new Item[] { AMARANTHUS_H, OKRA }, new Item[] { AMARANTHUS_H_SEEDS, OKRA_SEEDS });
 	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<>("crop_1", Crops.class, 1, new Item[] { PINEAPPLE, null }, new Item[] { PINEAPPLE_SEEDS, null });
@@ -226,6 +232,10 @@ public class ModRegistry {
 		OreDictionary.registerOre("logWood", new ItemStack(NETHER_LOG, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeSapling", new ItemStack(NETHER_SAP, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves", new ItemStack(NETHER_LEAF, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(LOG_0, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeSapling", new ItemStack(SAP_0, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(LEAF_0, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(PLANKS, 1, OreDictionary.WILDCARD_VALUE));
 
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockBush && Item.getItemFromBlock(block) != Items.AIR) {
@@ -248,6 +258,7 @@ public class ModRegistry {
 		GameRegistry.registerWorldGenerator(new BushGen(), 25);
 		GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
 		GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
+		GameRegistry.registerWorldGenerator(new NetherGen(), 30);
 	}
 
 	public static void tiles(FMLPreInitializationEvent e) {

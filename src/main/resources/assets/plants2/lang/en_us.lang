@@ -236,4 +236,11 @@ tile.plants2.sapling.crystal.name=Crystal Sapling
 tile.plants2.sapling.dark_crystal.name=Dark Crystal Sapling
 tile.plants2.leaves.crystal.name=Crystal Leaves
 tile.plants2.leaves.dark_crystal.name=Dark Crystal Leaves
-
+item.plants2.blaze_petal.name=Blaze Petal
+item.plants2.magma_jelly.name=Magma Jelly
+item.plants2.fire_fruit.name=Flameberry
+item.plants2.fire_fruit_cold.name=Chilled Flameberry
+tile.plants2.fire_fruit.name=Flameberry Bush
+tile.plants2.magma.name=Flowering Magma
+tile.plants2.blaze.name=Blazing Orchid
+tile.plants2.melon.name=Golden Flame

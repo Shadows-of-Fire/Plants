@@ -1,8 +1,10 @@
 package shadows.plants2.data.enums;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.StackPrimer;
+import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.init.ModRegistry;
@@ -48,6 +50,37 @@ public class LaterEnums {
 		public void set(IForgeRegistryEntry<?> ifre) {
 			thing = ifre;
 		}
+	}
+	
+	public static enum NetherHarvests implements IHarvestableEnum {
+		BLAZE(new StackPrimer(ModRegistry.GENERIC, 1, Generic.BLAZE_PETAL.ordinal())),
+		MAGMA(new StackPrimer(ModRegistry.GENERIC, 1, Generic.MAGMA_JELLY.ordinal())),
+		MELON(new StackPrimer(Items.SPECKLED_MELON)),
+		FIRE_FRUIT(new StackPrimer(ModRegistry.FIRE_FRUIT));
+
+		private StackPrimer[] drops;
+		
+		NetherHarvests(StackPrimer... inputs){
+			drops = inputs;
+		}
+		
+		@Override
+		public StackPrimer[] getDrops() {
+			return drops;
+		}
+		
+		IForgeRegistryEntry<?> thing = null;
+
+		@Override
+		public ItemStack get() {
+			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		}
+
+		@Override
+		public void set(IForgeRegistryEntry<?> ifre) {
+			thing = ifre;
+		}
+		
 	}
 
 	public static enum DoubleHarvestable implements IHarvestableEnum {

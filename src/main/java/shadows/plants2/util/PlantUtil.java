@@ -93,6 +93,21 @@ public class PlantUtil {
 			}
 		}
 	}
+	
+	public static void genFlowerPatchForNether(World world, BlockPos pos, Random rand, IBlockState state) {
+		int dist = Config.patchSize;
+		for (int i = 0; i < Config.quantity; i++) {
+			int x = pos.getX() + MathHelper.getInt(rand, -dist, dist);
+			int z = pos.getZ() + MathHelper.getInt(rand, -dist, dist);
+			for (int j = 0; j < Config.density; j++) {
+				int x1 = x + MathHelper.getInt(rand, -dist, dist);
+				int z1 = z + MathHelper.getInt(rand, -dist, dist);
+				int y1 = pos.getY();
+				BlockPos pos2 = new BlockPos(x1, y1, z1);
+				placeFlower(world, pos2, state);
+			}
+		}
+	}
 
 	public static void genMegaPatch(World world, BlockPos pos, Random rand, IBlockState state) {
 		for (int i = 0; i < 5; i++) {
@@ -134,16 +149,18 @@ public class PlantUtil {
 		}
 	}
 
-	public static final List<IBlockState> PLAINS = new ArrayList<IBlockState>();
-	public static final List<IBlockState> DESERT = new ArrayList<IBlockState>();
-	public static final List<IBlockState> CROP = new ArrayList<IBlockState>();
-	public static final List<IBlockState> DEFAULT = new ArrayList<IBlockState>();
-	public static final Map<EnumPlantType, List<IBlockState>> TYPE_TO_STATES = new HashMap<EnumPlantType, List<IBlockState>>();
+	public static final List<IBlockState> PLAINS = new ArrayList<>();
+	public static final List<IBlockState> DESERT = new ArrayList<>();
+	public static final List<IBlockState> CROP = new ArrayList<>();
+	public static final List<IBlockState> DEFAULT = new ArrayList<>();
+	public static final List<IBlockState> NETHER = new ArrayList<>();
+	public static final Map<EnumPlantType, List<IBlockState>> TYPE_TO_STATES = new HashMap<>();
 
 	static {
 		TYPE_TO_STATES.put(EnumPlantType.Plains, PLAINS);
 		TYPE_TO_STATES.put(EnumPlantType.Desert, DESERT);
 		TYPE_TO_STATES.put(EnumPlantType.Crop, CROP);
+		TYPE_TO_STATES.put(EnumPlantType.Nether, NETHER);
 	}
 
 	public static void mergeToDefaultLate() {
