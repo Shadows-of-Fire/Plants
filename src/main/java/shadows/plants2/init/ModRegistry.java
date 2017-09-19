@@ -9,17 +9,21 @@ import net.minecraft.block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -251,6 +255,10 @@ public class ModRegistry {
 		for (Item item : ITEMS) {
 			if (item instanceof IHasRecipe) ((IHasRecipe) item).initRecipes(e);
 		}
+		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD, Generic.SMOLDERBERRY.get(), new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE);
+		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE, Generic.SMOLDERBERRY.get(), new ItemStack(Items.POTIONITEM), PotionTypes.LONG_FIRE_RESISTANCE);
+		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE);
+		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.LONG_FIRE_RESISTANCE);
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
@@ -263,5 +271,9 @@ public class ModRegistry {
 
 	public static void tiles(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
+	}
+	
+	public static void addPotionRecipe(ItemStack input, PotionType inputPot, ItemStack reagent, ItemStack output, PotionType ontputPot) {
+		BrewingRecipeRegistry.addRecipe(PotionUtils.addPotionToItemStack(input, inputPot), reagent, PotionUtils.addPotionToItemStack(output, ontputPot));
 	}
 }

@@ -244,3 +244,7 @@ tile.plants2.fire_fruit.name=Flameberry Bush
 tile.plants2.magma.name=Flowering Magma
 tile.plants2.blaze.name=Blazing Orchid
 tile.plants2.melon.name=Golden Flame
+tile.plants2.smolderberry.name=Smoldering Berry Bush
+item.plants2.smolderberry.name=Smoldering Berry
+tile.plants2.emberroot.name=Emberian
+item.plants2.emberroot.name=Ember Root

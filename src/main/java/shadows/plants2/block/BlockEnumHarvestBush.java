@@ -99,7 +99,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		return state.getValue(property).ordinal() % 8;
+		return state.getValue(property).getMetadata();
 	}
 
 	@Override

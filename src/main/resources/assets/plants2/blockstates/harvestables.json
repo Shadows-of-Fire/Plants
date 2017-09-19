@@ -110,6 +110,18 @@
 					"fruit": "plants2:blocks/cosmetic/harvestable/fire_fruit/fruit",
 					"none": "plants2:blocks/cosmetic/harvestable/fire_fruit/none"
 				}
+			},
+			"emberroot": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/emberroot/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/emberroot/none"
+				}
+			},
+			"smolderberry": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/smolderberry/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/smolderberry/none"
+				}
 			}
 		},
 		"inventory": {

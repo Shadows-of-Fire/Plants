@@ -51,24 +51,26 @@ public class LaterEnums {
 			thing = ifre;
 		}
 	}
-	
+
 	public static enum NetherHarvests implements IHarvestableEnum {
 		BLAZE(new StackPrimer(ModRegistry.GENERIC, 1, Generic.BLAZE_PETAL.ordinal())),
 		MAGMA(new StackPrimer(ModRegistry.GENERIC, 1, Generic.MAGMA_JELLY.ordinal())),
 		MELON(new StackPrimer(Items.SPECKLED_MELON)),
-		FIRE_FRUIT(new StackPrimer(ModRegistry.FIRE_FRUIT));
+		FIRE_FRUIT(new StackPrimer(ModRegistry.FIRE_FRUIT)),
+		EMBERROOT(new StackPrimer(ModRegistry.GENERIC, 1, Generic.EMBERROOT.ordinal())),
+		SMOLDERBERRY(new StackPrimer(ModRegistry.GENERIC, 1, Generic.SMOLDERBERRY.ordinal())),;
 
 		private StackPrimer[] drops;
-		
-		NetherHarvests(StackPrimer... inputs){
+
+		NetherHarvests(StackPrimer... inputs) {
 			drops = inputs;
 		}
-		
+
 		@Override
 		public StackPrimer[] getDrops() {
 			return drops;
 		}
-		
+
 		IForgeRegistryEntry<?> thing = null;
 
 		@Override
@@ -80,7 +82,7 @@ public class LaterEnums {
 		public void set(IForgeRegistryEntry<?> ifre) {
 			thing = ifre;
 		}
-		
+
 	}
 
 	public static enum DoubleHarvestable implements IHarvestableEnum {

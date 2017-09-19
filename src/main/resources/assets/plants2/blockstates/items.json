@@ -216,6 +216,16 @@
 				"textures": {
 					"layer0": "plants2:items/fire_fruit_cold"
 				}
+			},
+			"emberroot": {
+				"textures": {
+					"layer0": "plants2:items/emberroot"
+				}
+			},
+			"smolderberry": {
+				"textures": {
+					"layer0": "plants2:items/smolderberry"
+				}
 			}
 		}
 	}
