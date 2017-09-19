@@ -32,7 +32,8 @@ public class NetherGen implements IWorldGenerator {
 				if (isValidSoil(state, world, pos, ModRegistry.NETHER_HARVEST) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ()))) break;
 			}
 			if (pos.getY() >= 95) return;
-			for(int r = 0; r < Config.numTries; r++) PlantUtil.genFlowerPatchForNether(world, pos, random, PlantUtil.NETHER.get(random.nextInt(PlantUtil.NETHER.size())));
+			for (int r = 0; r < Config.numTries; r++)
+				PlantUtil.genFlowerPatchForNether(world, pos, random, PlantUtil.NETHER.get(random.nextInt(PlantUtil.NETHER.size())));
 		}
 	}
 

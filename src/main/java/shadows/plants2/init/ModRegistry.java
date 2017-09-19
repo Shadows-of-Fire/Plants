@@ -272,7 +272,7 @@ public class ModRegistry {
 	public static void tiles(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
 	}
-	
+
 	public static void addPotionRecipe(ItemStack input, PotionType inputPot, ItemStack reagent, ItemStack output, PotionType ontputPot) {
 		BrewingRecipeRegistry.addRecipe(PotionUtils.addPotionToItemStack(input, inputPot), reagent, PotionUtils.addPotionToItemStack(output, ontputPot));
 	}

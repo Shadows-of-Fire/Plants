@@ -11,9 +11,9 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.crafting.IShapedRecipe;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreIngredient;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.Constants;
 import shadows.plants2.init.ModRegistry;
@@ -158,7 +158,7 @@ public class RecipeHelper {
 	public static <T extends IForgeRegistryEntry<?>> void addSimpleShapeless(T output, T input, int numInputs) {
 		addSimpleShapeless(makeStack(output), makeStack(input), numInputs);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addSimpleShapeless(T output, ItemStack input, int numInputs) {
 		addSimpleShapeless(makeStack(output), input, numInputs);
 	}
@@ -190,17 +190,16 @@ public class RecipeHelper {
 	 */
 	public static void replaceInAllRecipes(ItemStack old, Ingredient newThing) {
 		for (IRecipe rec : ForgeRegistries.RECIPES) {
-			if (rec instanceof ShapedRecipes || rec instanceof ShapedOreRecipe) {
+			if (rec instanceof IShapedRecipe) {
 				NonNullList<Ingredient> list = NonNullList.create();
 				for (Ingredient ing : rec.getIngredients()) {
-					if(ing.getMatchingStacks().length == 1 && ing.getMatchingStacks()[0].isItemEqual(old)) {
+					if (ing.getMatchingStacks().length == 1 && ing.getMatchingStacks()[0].isItemEqual(old)) {
 						list.add(newThing);
-					}
-					else list.add(ing);
+					} else list.add(ing);
 				}
 				ResourceLocation regname = rec.getRegistryName();
-				int width = rec instanceof ShapedRecipes ? ((ShapedRecipes) rec).getWidth() : ((ShapedOreRecipe) rec).getWidth();
-				int height = rec instanceof ShapedRecipes ? ((ShapedRecipes) rec).getHeight() : ((ShapedOreRecipe) rec).getHeight();
+				int width = ((IShapedRecipe) rec).getRecipeWidth();
+				int height = ((IShapedRecipe) rec).getRecipeHeight();
 				ForgeRegistries.RECIPES.register(new ShapedRecipes(rec.getGroup(), width, height, list, rec.getRecipeOutput()).setRegistryName(regname));
 			}
 		}

@@ -93,7 +93,7 @@ public class PlantUtil {
 			}
 		}
 	}
-	
+
 	public static void genFlowerPatchForNether(World world, BlockPos pos, Random rand, IBlockState state) {
 		int dist = Config.patchSize;
 		for (int i = 0; i < Config.quantity; i++) {

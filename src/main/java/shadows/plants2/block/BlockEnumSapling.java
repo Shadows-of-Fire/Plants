@@ -44,7 +44,7 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	public BlockEnumSapling(String name, SoundType s, float hard, float res, Class<E> clazz, int predicate, Block... otherSoils) {
 		this(name, EnumPlantType.Plains, s, hard, res, clazz, predicate, otherSoils);
 	}
-	
+
 	public BlockEnumSapling(String name, EnumPlantType type, Class<E> clazz, int predicate) {
 		this(name, type, SoundType.PLANT, 0, 0, clazz, predicate);
 	}

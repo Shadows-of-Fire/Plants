@@ -334,8 +334,7 @@ public class TheBigBookOfEnums {
 		BLAZE_PETAL,
 		MAGMA_JELLY,
 		SMOLDERBERRY,
-		EMBERROOT,
-		;
+		EMBERROOT,;
 
 		@Override
 		public ItemStack get() {

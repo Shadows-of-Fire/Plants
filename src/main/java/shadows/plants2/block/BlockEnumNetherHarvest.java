@@ -63,7 +63,7 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 		if (harvesters.get() == null) return;
 		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 	}
-	
+
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (rand.nextFloat() < 0.03F) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, MathHelper.nextDouble(rand, -0.05, 0.05), 0.06, MathHelper.nextDouble(rand, -0.05, 0.05));

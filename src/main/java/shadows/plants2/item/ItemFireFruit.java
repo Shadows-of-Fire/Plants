@@ -24,25 +24,25 @@ public class ItemFireFruit extends ItemFoodBase implements IHasRecipe {
 	public int getMetadata(int damage) {
 		return damage;
 	}
-	
+
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
 		RecipeHelper.addShapeless(new ItemStack(this, 1, 1), Items.SNOWBALL, this);
 	}
-	
+
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-		if(stack.getMetadata() == 0) player.setFire(6);
+		if (stack.getMetadata() == 0) player.setFire(6);
 		super.onFoodEaten(stack, world, player);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlantUtil.sMRL("items", this, 0, "item=" + getRegistryName().getResourcePath());
 		PlantUtil.sMRL("items", this, 1, "item=" + getRegistryName().getResourcePath() + "_cold");
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return super.getUnlocalizedName() + (stack.getMetadata() == 1 ? "_cold" : "");
