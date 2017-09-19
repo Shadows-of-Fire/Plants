@@ -11,7 +11,9 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreIngredient;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.Constants;
 import shadows.plants2.init.ModRegistry;
@@ -179,6 +181,29 @@ public class RecipeHelper {
 
 	public static <T extends IForgeRegistryEntry<?>> ItemStack makeStack(T thing) {
 		return makeStack(thing, 1, 0);
+	}
+
+	/**
+	 * Goes through all recipes and replaces anything that matches with just the provided itemstack and replaces it with another {@link Ingredient}.
+	 * @param old The itemstack to replace.
+	 * @param newThing The ingredient to replace the stack with.
+	 */
+	public static void replaceInAllRecipes(ItemStack old, Ingredient newThing) {
+		for (IRecipe rec : ForgeRegistries.RECIPES) {
+			if (rec instanceof ShapedRecipes || rec instanceof ShapedOreRecipe) {
+				NonNullList<Ingredient> list = NonNullList.create();
+				for (Ingredient ing : rec.getIngredients()) {
+					if(ing.getMatchingStacks().length == 1 && ing.getMatchingStacks()[0].isItemEqual(old)) {
+						list.add(newThing);
+					}
+					else list.add(ing);
+				}
+				ResourceLocation regname = rec.getRegistryName();
+				int width = rec instanceof ShapedRecipes ? ((ShapedRecipes) rec).getWidth() : ((ShapedOreRecipe) rec).getWidth();
+				int height = rec instanceof ShapedRecipes ? ((ShapedRecipes) rec).getHeight() : ((ShapedOreRecipe) rec).getHeight();
+				ForgeRegistries.RECIPES.register(new ShapedRecipes(rec.getGroup(), width, height, list, rec.getRecipeOutput()).setRegistryName(regname));
+			}
+		}
 	}
 
 }
