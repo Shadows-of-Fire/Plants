@@ -13,6 +13,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.IShapedRecipe;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.plants2.data.Constants;
@@ -193,7 +194,7 @@ public class RecipeHelper {
 			if (rec instanceof IShapedRecipe) {
 				NonNullList<Ingredient> list = NonNullList.create();
 				for (Ingredient ing : rec.getIngredients()) {
-					if (ing.getMatchingStacks().length == 1 && ing.getMatchingStacks()[0].isItemEqual(old)) {
+					if (ing.getMatchingStacks().length == 1 && OreDictionary.itemMatches(ing.getMatchingStacks()[0], old, false)) {
 						list.add(newThing);
 					} else list.add(ing);
 				}
@@ -201,6 +202,16 @@ public class RecipeHelper {
 				int width = ((IShapedRecipe) rec).getRecipeWidth();
 				int height = ((IShapedRecipe) rec).getRecipeHeight();
 				ForgeRegistries.RECIPES.register(new ShapedRecipes(rec.getGroup(), width, height, list, rec.getRecipeOutput()).setRegistryName(regname));
+			}
+			else {
+				NonNullList<Ingredient> list = NonNullList.create();
+				for (Ingredient ing : rec.getIngredients()) {
+					if (ing.getMatchingStacks().length == 1 && OreDictionary.itemMatches(ing.getMatchingStacks()[0], old, false)) {
+						list.add(newThing);
+					} else list.add(ing);
+				}
+				ResourceLocation regname = rec.getRegistryName();
+				ForgeRegistries.RECIPES.register(new ShapelessRecipes(rec.getGroup(), rec.getRecipeOutput(), list).setRegistryName(regname));
 			}
 		}
 	}
