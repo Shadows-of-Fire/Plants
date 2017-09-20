@@ -26,11 +26,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
+import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, IPlantable {
+public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, IPlantable, IHasRecipe {
 
 	public static final AxisAlignedBB BUSH_AABB = new AxisAlignedBB(.25, 0, .25, .75, 0.5625, .75);
 	public static final AxisAlignedBB BIG_BUSH_AABB = new AxisAlignedBB(.125, 0, .125, .875, 0.625, .875);

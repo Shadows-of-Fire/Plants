@@ -10,7 +10,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -20,7 +19,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.client.RenamedStateMapper;
@@ -29,7 +27,6 @@ import shadows.plants2.data.Constants;
 import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.IHarvestableEnum;
 import shadows.plants2.util.PlantUtil;
-import shadows.plants2.util.RecipeHelper;
 
 public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> {
 
@@ -210,13 +207,6 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	@Override
 	protected int getMaxEnumValues() {
 		return 4;
-	}
-
-	@Override
-	public void initRecipes(Register<IRecipe> event) {
-		for (E e : getTypes()) {
-			if (e.useForRecipes()) RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 3), new ItemStack(this, 1, e.getMetadata()));
-		}
 	}
 
 }

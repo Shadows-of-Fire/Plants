@@ -14,7 +14,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
@@ -23,19 +22,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.IPropertyEnum;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
-import shadows.plants2.util.RecipeHelper;
 
-public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E>, IHasRecipe {
+public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E> {
 
 	protected final List<E> types = new ArrayList<E>();
 	protected final Predicate<E> valueFilter;
@@ -151,13 +147,6 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 
 	protected int getMaxEnumValues() {
 		return 16;
-	}
-
-	@Override
-	public void initRecipes(Register<IRecipe> event) {
-		for (E e : getTypes()) {
-			if (e.useForRecipes()) RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 1, e.getMetadata()));
-		}
 	}
 
 }

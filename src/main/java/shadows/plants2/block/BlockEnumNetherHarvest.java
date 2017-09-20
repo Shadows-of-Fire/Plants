@@ -16,12 +16,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.plants2.data.Config;
+import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.IHarvestableEnum;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.gen.NetherGen;
 import shadows.plants2.util.RecipeHelper;
 
-public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> {
+public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> implements IHasRecipe {
 
 	public BlockEnumNetherHarvest(String name, Class<E> enumClass, int predicate) {
 		super(name, EnumPlantType.Nether, enumClass, predicate);
