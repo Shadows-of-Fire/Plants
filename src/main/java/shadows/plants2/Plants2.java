@@ -25,7 +25,7 @@ import shadows.plants2.init.ModRegistry;
 import shadows.plants2.proxy.IProxy;
 import shadows.plants2.util.PlantUtil;
 
-@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, dependencies = Constants.DEPS, acceptedMinecraftVersions = "[1.12, 1.13]")
+@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, dependencies = Constants.DEPS, acceptedMinecraftVersions = "[1.12, 1.13)")
 public class Plants2 {
 
 	@Instance
@@ -49,7 +49,6 @@ public class Plants2 {
 
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
-		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new Decorator());
 		ModRegistry.oreDict(e);
 		proxy.init(e);
