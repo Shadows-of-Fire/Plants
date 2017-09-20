@@ -43,12 +43,12 @@ public class BlockCataplant extends BushBase {
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(FACING, EnumFacing.getFront(meta));
+		return getDefaultState().withProperty(FACING, EnumFacing.HORIZONTALS[meta]);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(FACING).getIndex();
+		return state.getValue(FACING).getHorizontalIndex();
 	}
 
 	@Override
