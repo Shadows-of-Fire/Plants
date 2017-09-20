@@ -258,7 +258,7 @@ public class ModRegistry {
 		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD, Generic.SMOLDERBERRY.get(), new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE);
 		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE, Generic.SMOLDERBERRY.get(), new ItemStack(Items.POTIONITEM), PotionTypes.LONG_FIRE_RESISTANCE);
 		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE);
-		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.LONG_FIRE_RESISTANCE);
+		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.STRENGTH, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.STRENGTH);
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
