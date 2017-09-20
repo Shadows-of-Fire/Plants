@@ -1,9 +1,5 @@
 TODO:
--Dye Recipes
--Brewing recipes? (BBoldt) | (or) | Herbology? (Elucent)
--Cataplant
 -Crystal Forest
--Fireproof nether trees
--More nether things
--Nether foods
 -Extra crystal plants?
+-Add brewing system for otherwise useless dye plants.
+Would be based upon using a combination of 6 plants in a cauldron, (custom cauldron block needed) and using their colors, generate a potion.
