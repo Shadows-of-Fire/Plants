@@ -13,17 +13,14 @@ import net.minecraft.init.PotionTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -85,14 +82,16 @@ import shadows.plants2.item.ItemFireFruit;
 import shadows.plants2.item.ItemFoodBase;
 import shadows.plants2.item.ItemPlantball;
 import shadows.plants2.item.ItemSeed;
+import shadows.plants2.potion.PotionTypeBase;
 import shadows.plants2.tile.TileFlowerpot;
+import shadows.plants2.util.RecipeHelper;
 
 public class ModRegistry {
 
 	public static final List<Block> BLOCKS = new ArrayList<>();
 	public static final List<Item> ITEMS = new ArrayList<>();
 	public static final List<IRecipe> RECIPES = new ArrayList<>();
-	public static final List<Potion> POTIONS = new ArrayList<>();
+	public static final List<PotionType> POTIONS = new ArrayList<>();
 	public static final List<Biome> BIOMES = new ArrayList<>();
 	public static final CreativeTabs TAB = new CreativeTabs("plants") {
 
@@ -197,6 +196,9 @@ public class ModRegistry {
 
 	public static final Biome CRYSTAL_FOREST = new BiomeCrystalForest();
 
+	public static final PotionType WITHER = new PotionTypeBase("wither", new PotionEffect(MobEffects.WITHER, 3600));
+	public static final PotionType REGEN_HEAL = new PotionTypeBase("regen_heal", new PotionEffect(MobEffects.REGENERATION, 1600), new PotionEffect(MobEffects.INSTANT_HEALTH));
+
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
 		event.getRegistry().registerAll(BLOCKS.toArray(new Block[0]));
@@ -215,8 +217,8 @@ public class ModRegistry {
 	}
 
 	@SubscribeEvent
-	public void onPotionRegister(Register<Potion> event) {
-		event.getRegistry().registerAll(POTIONS.toArray(new Potion[0]));
+	public void onPotionRegister(Register<PotionType> event) {
+		event.getRegistry().registerAll(POTIONS.toArray(new PotionType[0]));
 	}
 
 	@SubscribeEvent
@@ -255,10 +257,11 @@ public class ModRegistry {
 		for (Item item : ITEMS) {
 			if (item instanceof IHasRecipe) ((IHasRecipe) item).initRecipes(e);
 		}
-		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD, Generic.SMOLDERBERRY.get(), new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE);
-		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE, Generic.SMOLDERBERRY.get(), new ItemStack(Items.POTIONITEM), PotionTypes.LONG_FIRE_RESISTANCE);
-		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.FIRE_RESISTANCE);
-		addPotionRecipe(new ItemStack(Items.POTIONITEM), PotionTypes.STRENGTH, Generic.EMBERROOT.get(), new ItemStack(Items.POTIONITEM), PotionTypes.STRENGTH);
+		RecipeHelper.addSimpleShapeless(new ItemStack(Items.STRING, 2), Generic.COTTON.get(), 5);
+		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.SMOLDERBERRY.get(), PotionTypes.FIRE_RESISTANCE);
+		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.EMBERROOT.get(), PotionTypes.STRENGTH);
+		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, PHYTOLACCA_A, WITHER);
+		RecipeHelper.addPotionRecipe(PotionTypes.HEALING, AMBROSIA_A, REGEN_HEAL);
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
@@ -271,9 +274,5 @@ public class ModRegistry {
 
 	public static void tiles(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
-	}
-
-	public static void addPotionRecipe(ItemStack input, PotionType inputPot, ItemStack reagent, ItemStack output, PotionType ontputPot) {
-		BrewingRecipeRegistry.addRecipe(PotionUtils.addPotionToItemStack(input, inputPot), reagent, PotionUtils.addPotionToItemStack(output, ontputPot));
 	}
 }

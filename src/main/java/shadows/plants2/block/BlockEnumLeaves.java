@@ -49,7 +49,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return getBlockLayer() == BlockRenderLayer.SOLID;
+		return Blocks.LEAVES.isOpaqueCube(Blocks.LEAVES.getDefaultState());
 	}
 
 	@Override
