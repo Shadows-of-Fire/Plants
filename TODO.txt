@@ -2,4 +2,5 @@ TODO:
 -Crystal Forest
 -Extra crystal plants?
 -Add brewing system for otherwise useless dye plants.
-Would be based upon using a combination of 6 plants in a cauldron, (custom cauldron block needed) and using their colors, generate a potion.
+	-Would be based upon using a combination of 6 plants in a cauldron, (custom cauldron block needed) and using their colors, generate a potion.
+-Add a plant bag that autocollects items on our domain.
