@@ -34,7 +34,7 @@ public class ColorToPotionUtil {
 		MAP.put(EnumDyeColor.PINK, MobEffects.REGENERATION);
 		MAP.put(EnumDyeColor.GRAY, MobEffects.SPEED);
 		MAP.put(EnumDyeColor.SILVER, MobEffects.RESISTANCE);
-		MAP.put(EnumDyeColor.CYAN, MobEffects.UNLUCK);
+		MAP.put(EnumDyeColor.CYAN, MobEffects.STRENGTH);
 		MAP.put(EnumDyeColor.PURPLE, MobEffects.NIGHT_VISION);
 		MAP.put(EnumDyeColor.BLUE, MobEffects.WATER_BREATHING);
 		MAP.put(EnumDyeColor.BROWN, MobEffects.SATURATION);
