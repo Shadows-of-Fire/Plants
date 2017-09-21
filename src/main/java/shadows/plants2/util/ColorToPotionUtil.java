@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.google.common.collect.ImmutableList;
+
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumDyeColor;
@@ -23,6 +25,10 @@ public class ColorToPotionUtil {
 	public static final Map<EnumDyeColor, Potion> MAP = new HashMap<>();
 
 	public static final Random RAND = new Random(ThreadLocalRandom.current().nextLong());
+
+	public static final EnumDyeColor[] SPICY = new EnumDyeColor[] { EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)] };
+	//Woo, random array every startup that will magically be the one that gives off the super potion.  Keep people guessing, right?
+	public static final ImmutableList<PotionEffect> SPICE = ImmutableList.of(new PotionEffect(MobEffects.STRENGTH, 8000, 4), new PotionEffect(MobEffects.REGENERATION, 8000, 4), new PotionEffect(MobEffects.SPEED, 8000, 4));
 
 	static {
 		MAP.put(EnumDyeColor.WHITE, MobEffects.GLOWING);
@@ -87,13 +93,15 @@ public class ColorToPotionUtil {
 			int duration = (ent.getValue() % 3 + 1) * (720 * (RAND.nextInt(3) + 1));
 			int multiplier = (ent.getValue() % 2) * ((RAND.nextInt(2) + 1));
 			if (ent.getKey().isInstant()) duration = 0;
-			if(cauldron.getPotionItem() == Items.LINGERING_POTION) duration /= 6;
+			if (cauldron.getPotionItem() == Items.LINGERING_POTION) duration /= 6;
+
 			potEffs[i++] = new PotionEffect(ent.getKey(), duration, multiplier);
 		}
 
 		if (potEffs[2] == null) potEffs = new PotionEffect[] { potEffs[0], potEffs[1] };
 		if (potEffs[1] == null) potEffs = new PotionEffect[] { potEffs[0] };
 
+		if (areEqual(cauldron.getColors(), SPICY)) PotionUtils.appendEffects(stack, SPICE);
 		PotionUtils.appendEffects(stack, Arrays.asList(potEffs));
 		return stack;
 	}
@@ -126,6 +134,13 @@ public class ColorToPotionUtil {
 
 		Color newC = new Color(r, g, b);
 		return newC.getRGB();
+	}
+
+	public static boolean areEqual(EnumDyeColor[] one, EnumDyeColor[] two) {
+		for (int i = 0; i < 6; i++)
+			if (!one[i].equals(two[i])) return false;
+
+		return true;
 	}
 
 }

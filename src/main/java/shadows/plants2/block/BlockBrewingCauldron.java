@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumDyeColor;
@@ -53,6 +54,7 @@ import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.network.ParticleMessage;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.util.ColorToPotionUtil;
+import shadows.plants2.util.RecipeHelper;
 
 public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel {
 
@@ -257,7 +259,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-
+		RecipeHelper.addShaped(this, 3, 3, "plant", "plant", "plant", Items.BLAZE_POWDER, Items.CAULDRON, Items.BLAZE_POWDER, Blocks.STONE_SLAB, Blocks.STONE_SLAB, Blocks.STONE_SLAB);
 	}
 
 	@SideOnly(Side.CLIENT)

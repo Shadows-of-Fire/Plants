@@ -1,6 +1,6 @@
 [{
 	"modid": "plants2",
-	"name": "Plants 2",
+	"name": "Plants",
 	"description": "Every plant known to man.  Well, almost.",
 	"version": "${version}",
 	"mcversion": "${mcversion}",
