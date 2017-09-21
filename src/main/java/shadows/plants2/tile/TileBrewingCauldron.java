@@ -2,6 +2,7 @@ package shadows.plants2.tile;
 
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,6 +23,8 @@ public class TileBrewingCauldron extends TileEntity {
 	public static final String W2 = "wart2";
 	public static final String WL = "water_level";
 	public static final String BE = "being_extracted";
+	public static final String G = "gunpowder";
+	public static final String DB = "dragon_breath";
 
 	public static final ItemStack EMPTYNBT = new ItemStack((Item) null);
 	static {
@@ -33,6 +36,8 @@ public class TileBrewingCauldron extends TileEntity {
 	protected boolean hasSecondWart = false;
 	protected int waterLevel = 0;
 	protected boolean beingExtracted = false;
+	protected boolean gunpowder = false;
+	protected boolean dragBreath = false;
 
 	protected ItemStack generatedPotion = EMPTYNBT;
 
@@ -44,6 +49,8 @@ public class TileBrewingCauldron extends TileEntity {
 		hasSecondWart = tag.getBoolean(W2);
 		waterLevel = tag.getInteger(WL);
 		beingExtracted = tag.getBoolean(BE);
+		gunpowder = tag.getBoolean(G);
+		dragBreath = tag.getBoolean(DB);
 		generatedPotion = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
 		generatedPotion.setTagCompound(tag.getCompoundTag("stack_nbt"));
 	}
@@ -59,6 +66,8 @@ public class TileBrewingCauldron extends TileEntity {
 		tag.setString("item", generatedPotion.getItem().getRegistryName().toString());
 		tag.setInteger("meta", generatedPotion.getMetadata());
 		tag.setTag("stack_nbt", generatedPotion.getTagCompound());
+		tag.setBoolean(G, gunpowder);
+		tag.setBoolean(DB, dragBreath);
 		return tag;
 	}
 
@@ -83,7 +92,7 @@ public class TileBrewingCauldron extends TileEntity {
 	}
 
 	public void setColor(int index, EnumDyeColor color) {
-		if (index < 0 || index > 5) throw new IllegalArgumentException("This array has a size of 6");
+		if (index < 0 || index > 5) throw new ArrayIndexOutOfBoundsException("The colors array has a size of 6");
 		colors[index] = color;
 		markDirty();
 	}
@@ -105,6 +114,16 @@ public class TileBrewingCauldron extends TileEntity {
 
 	public void setExtracting(boolean set) {
 		beingExtracted = set;
+		markDirty();
+	}
+
+	public void setDragBreath(boolean set) {
+		dragBreath = set;
+		markDirty();
+	}
+
+	public void setGunpowder(boolean set) {
+		gunpowder = set;
 		markDirty();
 	}
 
@@ -137,6 +156,12 @@ public class TileBrewingCauldron extends TileEntity {
 		return hasFirstWart && hasSecondWart;
 	}
 
+	public Item getPotionItem() {
+		if (gunpowder) return Items.SPLASH_POTION;
+		if (dragBreath) return Items.LINGERING_POTION;
+		else return Items.POTIONITEM;
+	}
+
 	public ItemStack getPotion() {
 		return generatedPotion.copy();
 	}
@@ -148,6 +173,8 @@ public class TileBrewingCauldron extends TileEntity {
 		waterLevel = 0;
 		beingExtracted = false;
 		generatedPotion = EMPTYNBT;
+		gunpowder = false;
+		dragBreath = false;
 		markDirty();
 	}
 

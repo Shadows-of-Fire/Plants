@@ -3,6 +3,7 @@ package shadows.plants2.block;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -39,13 +40,16 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.plants2.Plants2;
 import shadows.plants2.client.IHasModel;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.itemblock.ItemBlockEnum;
+import shadows.plants2.network.ParticleMessage;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.util.ColorToPotionUtil;
 
@@ -150,12 +154,14 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 					world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
 					stack.shrink(1);
 					world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
+					Plants2.NETWORK.sendToAllAround(new ParticleMessage(pos), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 150));
 					return;
 				} else {
 					cauldron.setSecondWart(true);
 					world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
 					stack.shrink(1);
 					world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
+					Plants2.NETWORK.sendToAllAround(new ParticleMessage(pos), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 150));
 					return;
 				}
 
@@ -172,12 +178,22 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 							world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
 							stack.shrink(1);
 							world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
+							Plants2.NETWORK.sendToAllAround(new ParticleMessage(pos), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 150));
 							return;
 						}
 					}
 				}
+			} else if (cauldron.hasNetherWart() && ColorToPotionUtil.isDyeArrayValid(cauldron.getColors()) && cauldron.getPotionItem() == Items.POTIONITEM) {
+				if (stack.getItem() == Items.GUNPOWDER) cauldron.setGunpowder(true);
+				else if (stack.getItem() == Items.DRAGON_BREATH) cauldron.setDragBreath(true);
+				world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
+				stack.shrink(1);
+				world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
+				Plants2.NETWORK.sendToAllAround(new ParticleMessage(pos), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 150));
+				return;
 			}
 		}
+
 	}
 
 	@Override
@@ -233,6 +249,12 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
+
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		Plants2.proxy.doCauldronParticles(state, world, pos, rand);
 
 	}
 

@@ -72,7 +72,7 @@ public class ColorToPotionUtil {
 	}
 
 	public static ItemStack genPotionStack(TileBrewingCauldron cauldron) {
-		ItemStack stack = new ItemStack(Items.POTIONITEM);
+		ItemStack stack = new ItemStack(cauldron.getPotionItem());
 		PotionUtils.addPotionToItemStack(stack, ModRegistry.CAULDRON_BREW);
 		Map<Potion, Integer> numPots = new HashMap<>();
 		for (Potion pot : colorsToPotionArray(cauldron.getColors())) {
@@ -87,6 +87,7 @@ public class ColorToPotionUtil {
 			int duration = (ent.getValue() % 3 + 1) * (720 * (RAND.nextInt(3) + 1));
 			int multiplier = (ent.getValue() % 2) * ((RAND.nextInt(2) + 1));
 			if (ent.getKey().isInstant()) duration = 0;
+			if(cauldron.getPotionItem() == Items.LINGERING_POTION) duration /= 6;
 			potEffs[i++] = new PotionEffect(ent.getKey(), duration, multiplier);
 		}
 
@@ -106,7 +107,7 @@ public class ColorToPotionUtil {
 			}
 		}
 
-		if (j == 0 && wart) return Color.PINK.getRGB();
+		if (j == 0 && wart) return Color.RED.getRGB();
 		else if (j == 0 && !wart) return -1;
 
 		int r = 0;

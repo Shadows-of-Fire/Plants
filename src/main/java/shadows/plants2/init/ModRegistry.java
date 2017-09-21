@@ -21,7 +21,6 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -84,7 +83,6 @@ import shadows.plants2.item.ItemFireFruit;
 import shadows.plants2.item.ItemFoodBase;
 import shadows.plants2.item.ItemPlantball;
 import shadows.plants2.item.ItemSeed;
-import shadows.plants2.potion.PlantsBrewingRecipe;
 import shadows.plants2.potion.PotionTypeBase;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
@@ -269,8 +267,6 @@ public class ModRegistry {
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.EMBERROOT.get(), PotionTypes.STRENGTH);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, PHYTOLACCA_A, WITHER);
 		RecipeHelper.addPotionRecipe(PotionTypes.HEALING, AMBROSIA_A, REGEN_HEAL);
-		BrewingRecipeRegistry.addRecipe(new PlantsBrewingRecipe(Items.POTIONITEM, Items.GUNPOWDER, Items.SPLASH_POTION));
-		BrewingRecipeRegistry.addRecipe(new PlantsBrewingRecipe(Items.SPLASH_POTION, Items.DRAGON_BREATH, Items.LINGERING_POTION));
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {

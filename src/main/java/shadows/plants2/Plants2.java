@@ -16,12 +16,17 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 import shadows.plants2.compat.ForestryIntegration;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.gen.Decorator;
 import shadows.plants2.init.ModRegistry;
+import shadows.plants2.network.ParticleMessage;
+import shadows.plants2.network.ParticleMessage.ParticleMessageHandler;
 import shadows.plants2.proxy.IProxy;
 import shadows.plants2.util.PlantUtil;
 
@@ -38,6 +43,9 @@ public class Plants2 {
 
 	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
+	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Constants.MODID);
+	private static int disc = 0;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
@@ -52,6 +60,7 @@ public class Plants2 {
 		MinecraftForge.TERRAIN_GEN_BUS.register(new Decorator());
 		ModRegistry.oreDict(e);
 		proxy.init(e);
+		NETWORK.registerMessage(ParticleMessageHandler.class, ParticleMessage.class, disc++, Side.CLIENT);
 	}
 
 	@EventHandler
