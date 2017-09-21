@@ -32,11 +32,11 @@ import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
 import shadows.plants2.util.RecipeHelper;
 
-public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockEnumFlower<E> {
+public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumFlower<E> {
 
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
 
-	public BlockEnumDoubleBush(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
+	public BlockEnumDoubleFlower(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
 		super(name, type, enumClass, predicate);
 		setDefaultState(getDefaultState().withProperty(property, types.get(0)).withProperty(UPPER, false));
 	}
@@ -190,7 +190,7 @@ public class BlockEnumDoubleBush<E extends Enum<E> & IFlowerEnum> extends BlockE
 	protected int getMaxEnumValues() {
 		return 8;
 	}
-	
+
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {

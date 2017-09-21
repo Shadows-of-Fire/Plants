@@ -9,7 +9,7 @@ import forestry.arboriculture.PluginArboriculture;
 import forestry.arboriculture.genetics.TreeGenome;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import shadows.plants2.block.BlockEnumDoubleBush;
+import shadows.plants2.block.BlockEnumDoubleFlower;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.IFlowerEnum;
@@ -24,7 +24,7 @@ public class ForestryIntegration {
 
 		for (IBlockState state : PlantUtil.DEFAULT) {
 
-			if (state.getBlock() instanceof BlockEnumDoubleBush) continue;
+			if (state.getBlock() instanceof BlockEnumDoubleFlower) continue;
 
 			IPropertyEnum k;
 			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getValue(state)) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {
@@ -34,7 +34,7 @@ public class ForestryIntegration {
 
 		for (IBlockState state : PlantUtil.DESERT) {
 
-			if (state.getBlock() instanceof BlockEnumDoubleBush) continue;
+			if (state.getBlock() instanceof BlockEnumDoubleFlower) continue;
 
 			IPropertyEnum k;
 			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getValue(state)) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {

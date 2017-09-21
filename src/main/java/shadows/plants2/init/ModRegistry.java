@@ -21,6 +21,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -31,10 +32,11 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants2.biome.BiomeCrystalForest;
+import shadows.plants2.block.BlockBrewingCauldron;
 import shadows.plants2.block.BlockCataplant;
 import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.block.BlockEnumCrop;
-import shadows.plants2.block.BlockEnumDoubleBush;
+import shadows.plants2.block.BlockEnumDoubleFlower;
 import shadows.plants2.block.BlockEnumDoubleHarvestBush;
 import shadows.plants2.block.BlockEnumFlower;
 import shadows.plants2.block.BlockEnumHarvestBush;
@@ -82,7 +84,9 @@ import shadows.plants2.item.ItemFireFruit;
 import shadows.plants2.item.ItemFoodBase;
 import shadows.plants2.item.ItemPlantball;
 import shadows.plants2.item.ItemSeed;
+import shadows.plants2.potion.PlantsBrewingRecipe;
 import shadows.plants2.potion.PotionTypeBase;
+import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
 import shadows.plants2.util.RecipeHelper;
 
@@ -111,7 +115,7 @@ public class ModRegistry {
 	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumFlower<>("desert_0", EnumPlantType.Desert, Desert.class, 0);
 	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumFlower<>("desert_1", EnumPlantType.Desert, Desert.class, 1);
 
-	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleBush<>("double_0", EnumPlantType.Plains, Double.class, 0);
+	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleFlower<>("double_0", EnumPlantType.Plains, Double.class, 0);
 
 	public static final ItemBigEnum<Generic> GENERIC = new ItemBigEnum<>("generic", Generic.values());
 	public static final Item PLANTBALL = new ItemPlantball();
@@ -198,6 +202,9 @@ public class ModRegistry {
 
 	public static final PotionType WITHER = new PotionTypeBase("wither", new PotionEffect(MobEffects.WITHER, 3600));
 	public static final PotionType REGEN_HEAL = new PotionTypeBase("regen_heal", new PotionEffect(MobEffects.REGENERATION, 1600), new PotionEffect(MobEffects.INSTANT_HEALTH));
+	public static final PotionType CAULDRON_BREW = new PotionTypeBase("cauldron_brew");
+
+	public static final Block BREWING_CAULDRON = new BlockBrewingCauldron();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
@@ -262,6 +269,8 @@ public class ModRegistry {
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.EMBERROOT.get(), PotionTypes.STRENGTH);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, PHYTOLACCA_A, WITHER);
 		RecipeHelper.addPotionRecipe(PotionTypes.HEALING, AMBROSIA_A, REGEN_HEAL);
+		BrewingRecipeRegistry.addRecipe(new PlantsBrewingRecipe(Items.POTIONITEM, Items.GUNPOWDER, Items.SPLASH_POTION));
+		BrewingRecipeRegistry.addRecipe(new PlantsBrewingRecipe(Items.SPLASH_POTION, Items.DRAGON_BREATH, Items.LINGERING_POTION));
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
@@ -274,5 +283,6 @@ public class ModRegistry {
 
 	public static void tiles(FMLPreInitializationEvent e) {
 		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
+		GameRegistry.registerTileEntity(TileBrewingCauldron.class, Constants.MODID + ":brewing_cauldron");
 	}
 }

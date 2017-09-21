@@ -90,6 +90,18 @@
 				"textures": {
 					"all": "blocks/grass_top"
 				}
+			},
+			"cauldron_0": {
+				"model": "plants2:cauldron/empty"
+			},
+			"cauldron_1": {
+				"model": "plants2:cauldron/level1"
+			},
+			"cauldron_2": {
+				"model": "plants2:cauldron/level2"
+			},
+			"cauldron_3": {
+				"model": "plants2:cauldron/level3"
 			}
 		}
 	}

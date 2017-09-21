@@ -206,8 +206,7 @@ public class RecipeHelper {
 				int width = ((IShapedRecipe) rec).getRecipeWidth();
 				int height = ((IShapedRecipe) rec).getRecipeHeight();
 				ForgeRegistries.RECIPES.register(new ShapedRecipes(rec.getGroup(), width, height, list, rec.getRecipeOutput()).setRegistryName(regname));
-			}
-			else {
+			} else {
 				NonNullList<Ingredient> list = NonNullList.create();
 				for (Ingredient ing : rec.getIngredients()) {
 					if (ing.getMatchingStacks().length == 1 && OreDictionary.itemMatches(ing.getMatchingStacks()[0], old, false)) {
@@ -219,6 +218,7 @@ public class RecipeHelper {
 			}
 		}
 	}
+
 	/**
 	 * Adds a potion recipe
 	 * @param input The ItemStack input, this goes in the potion slot.  Must have a max stack size of 1.
@@ -230,35 +230,35 @@ public class RecipeHelper {
 	public static void addPotionRecipe(ItemStack input, PotionType inputPot, ItemStack reagent, ItemStack output, PotionType ontputPot) {
 		BrewingRecipeRegistry.addRecipe(PotionUtils.addPotionToItemStack(input, inputPot), reagent, PotionUtils.addPotionToItemStack(output, ontputPot));
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(ItemStack input, PotionType inputPot, ItemStack reagent, T output, PotionType outputPot) {
 		addPotionRecipe(input, inputPot, reagent, makeStack(output), outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(ItemStack input, PotionType inputPot, T reagent, T output, PotionType outputPot) {
 		addPotionRecipe(input, inputPot, makeStack(reagent), makeStack(output), outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(T input, PotionType inputPot, ItemStack reagent, ItemStack output, PotionType outputPot) {
 		addPotionRecipe(makeStack(input), inputPot, reagent, output, outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(T input, PotionType inputPot, T reagent, ItemStack output, PotionType outputPot) {
 		addPotionRecipe(makeStack(input), inputPot, makeStack(reagent), output, outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(ItemStack input, PotionType inputPot, T reagent, ItemStack output, PotionType outputPot) {
 		addPotionRecipe(input, inputPot, makeStack(reagent), output, outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(T input, PotionType inputPot, ItemStack reagent, T output, PotionType outputPot) {
 		addPotionRecipe(makeStack(input), inputPot, reagent, makeStack(output), outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(PotionType inputPot, ItemStack reagent, PotionType outputPot) {
 		addPotionRecipe(Items.POTIONITEM, inputPot, reagent, Items.POTIONITEM, outputPot);
 	}
-	
+
 	public static <T extends IForgeRegistryEntry<?>> void addPotionRecipe(PotionType inputPot, T reagent, PotionType outputPot) {
 		addPotionRecipe(Items.POTIONITEM, inputPot, makeStack(reagent), Items.POTIONITEM, outputPot);
 	}

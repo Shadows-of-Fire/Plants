@@ -16,7 +16,9 @@ import shadows.plants2.compat.BinnieIntegration;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.init.ModRegistry;
+import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
+import shadows.plants2.util.ColorToPotionUtil;
 
 public class ClientProxy implements IProxy {
 
@@ -35,6 +37,13 @@ public class ClientProxy implements IProxy {
 			if (Loader.isModLoaded(Constants.BOTANY_ID) && tint >= 10 && t instanceof TileFlowerpot) { return BinnieIntegration.colorMultiplier(state, world, pos, tint); }
 			return -1;
 		}, ModRegistry.FLOWERPOT);
+
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
+			TileEntity t = world.getTileEntity(pos);
+			if (!(t instanceof TileBrewingCauldron) || tint != 1) return -1;
+			TileBrewingCauldron caul = (TileBrewingCauldron) t;
+			return ColorToPotionUtil.getColorMultiplier(caul.getColors(), caul.hasFirstWart());
+		}, ModRegistry.BREWING_CAULDRON);
 	}
 
 	@Override

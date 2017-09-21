@@ -30,7 +30,7 @@ import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> {
 
-	public static final PropertyBool UPPER = BlockEnumDoubleBush.UPPER;
+	public static final PropertyBool UPPER = BlockEnumDoubleFlower.UPPER;
 
 	public BlockEnumDoubleHarvestBush(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
 		super(name, type, enumClass, predicate);

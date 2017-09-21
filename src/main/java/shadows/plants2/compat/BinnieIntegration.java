@@ -21,9 +21,9 @@ public class BinnieIntegration {
 	public static int colorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos, int tint) {
 
 		TileFlowerpot pot = (TileFlowerpot) world.getTileEntity(pos);
-		
-		if(pot == null) return -1;
-		
+
+		if (pot == null) return -1;
+
 		FlowerRenderInfo render = new FlowerRenderInfo(new Flower(pot.getFlowerItemStack().getTagCompound()), F);
 		if (tint == 10) return render.getStem().getColor(render.isWilted());
 		if (tint == 11) return render.getPrimary().getColor(render.isWilted());
