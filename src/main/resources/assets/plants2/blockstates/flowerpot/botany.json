@@ -1,0 +1,294 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "plants2:flowerpot/pot",
+		"transform": "forge:default-item",
+		"textures": {
+			"plant": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"bb_agapanthus": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/agapanthus.0",
+					"petal": "botany:blocks/flowers/agapanthus.1",
+					"variant": "botany:blocks/flowers/agapanthus.2"
+				}
+			},
+			"bb_allium": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/allium.0",
+					"petal": "botany:blocks/flowers/allium.1",
+					"variant": "botany:blocks/flowers/allium.2"
+				}
+			},
+			"bb_anemone": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/anemone.0",
+					"petal": "botany:blocks/flowers/anemone.1",
+					"variant": "botany:blocks/flowers/anemone.2"
+				}
+			},
+			"bb_aquilegia": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/aquilegia.0",
+					"petal": "botany:blocks/flowers/aquilegia.1",
+					"variant": "botany:blocks/flowers/aquilegia.2"
+				}
+			},
+			"bb_aster": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/aster.0",
+					"petal": "botany:blocks/flowers/aster.1",
+					"variant": "botany:blocks/flowers/aster.2"
+				}
+			},
+			"bb_auricula": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/auricula.0",
+					"petal": "botany:blocks/flowers/auricula.1",
+					"variant": "botany:blocks/flowers/auricula.2"
+				}
+			},
+			"bb_azalea": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/azalea.0",
+					"petal": "botany:blocks/flowers/azalea.1",
+					"variant": "botany:blocks/flowers/azalea.2"
+				}
+			},
+			"bb_bluet": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/bluet.0",
+					"petal": "botany:blocks/flowers/bluet.1",
+					"variant": "botany:blocks/flowers/bluet.2"
+				}
+			},
+			"bb_carnation": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/carnation.0",
+					"petal": "botany:blocks/flowers/carnation.1",
+					"variant": "botany:blocks/flowers/carnation.2"
+				}
+			},
+			"bb_coneflower": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/coneflower.0",
+					"petal": "botany:blocks/flowers/coneflower.1",
+					"variant": "botany:blocks/flowers/coneflower.2"
+				}
+			},
+			"bb_cornflower": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/cornflower.0",
+					"petal": "botany:blocks/flowers/cornflower.1",
+					"variant": "botany:blocks/flowers/cornflower.2"
+				}
+			},
+			"bb_daffodil": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/daffodil.0",
+					"petal": "botany:blocks/flowers/daffodil.1",
+					"variant": "botany:blocks/flowers/daffodil.2"
+				}
+			},
+			"bb_dahlia": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/dahlia.0",
+					"petal": "botany:blocks/flowers/dahlia.1",
+					"variant": "botany:blocks/flowers/dahlia.2"
+				}
+			},
+			"bb_daisy": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/daisy.0",
+					"petal": "botany:blocks/flowers/daisy.1",
+					"variant": "botany:blocks/flowers/daisy.2"
+				}
+			},
+			"bb_dandelion": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/dandelion.0",
+					"petal": "botany:blocks/flowers/dandelion.1",
+					"variant": "botany:blocks/flowers/dandelion.2"
+				}
+			},
+			"bb_dianthus": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/dianthus.0",
+					"petal": "botany:blocks/flowers/dianthus.1",
+					"variant": "botany:blocks/flowers/dianthus.2"
+				}
+			},
+			"bb_edelweiss": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/edelweiss.0",
+					"petal": "botany:blocks/flowers/edelweiss.1",
+					"variant": "botany:blocks/flowers/edelweiss.2"
+				}
+			},
+			"bb_forget": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/forget.0",
+					"petal": "botany:blocks/flowers/forget.1",
+					"variant": "botany:blocks/flowers/forget.2"
+				}
+			},
+			"bb_fuchsia": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/fuchsia.0",
+					"petal": "botany:blocks/flowers/fuchsia.1",
+					"variant": "botany:blocks/flowers/fuchsia.2"
+				}
+			},
+			"bb_gaillardia": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/gaillardia.0",
+					"petal": "botany:blocks/flowers/gaillardia.1",
+					"variant": "botany:blocks/flowers/gaillardia.2"
+				}
+			},
+			"bb_geranium": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/geranium.0",
+					"petal": "botany:blocks/flowers/geranium.1",
+					"variant": "botany:blocks/flowers/geranium.2"
+				}
+			},
+			"bb_iris": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/iris.0",
+					"petal": "botany:blocks/flowers/iris.1",
+					"variant": "botany:blocks/flowers/iris.2"
+				}
+			},
+			"bb_lily": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/lily.0",
+					"petal": "botany:blocks/flowers/lily.1",
+					"variant": "botany:blocks/flowers/lily.2"
+				}
+			},
+			"bb_marigold": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/marigold.0",
+					"petal": "botany:blocks/flowers/marigold.1",
+					"variant": "botany:blocks/flowers/marigold.2"
+				}
+			},
+			"bb_mums": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/mums.0",
+					"petal": "botany:blocks/flowers/mums.1",
+					"variant": "botany:blocks/flowers/mums.2"
+				}
+			},
+			"bb_orchid": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/orchid.0",
+					"petal": "botany:blocks/flowers/orchid.1",
+					"variant": "botany:blocks/flowers/orchid.2"
+				}
+			},
+			"bb_pansy": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/pansy.0",
+					"petal": "botany:blocks/flowers/pansy.1",
+					"variant": "botany:blocks/flowers/pansy.2"
+				}
+			},
+			"bb_petunia": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/petunia.0",
+					"petal": "botany:blocks/flowers/petunia.1",
+					"variant": "botany:blocks/flowers/petunia.2"
+				}
+			},
+			"bb_poppy": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/poppy.0",
+					"petal": "botany:blocks/flowers/poppy.1",
+					"variant": "botany:blocks/flowers/poppy.2"
+				}
+			},
+			"bb_primrose": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/primrose.0",
+					"petal": "botany:blocks/flowers/primrose.1",
+					"variant": "botany:blocks/flowers/primrose.2"
+				}
+			},
+			"bb_scabious": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/scabious.0",
+					"petal": "botany:blocks/flowers/scabious.1",
+					"variant": "botany:blocks/flowers/scabious.2"
+				}
+			},
+			"bb_tulip": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/tulip.0",
+					"petal": "botany:blocks/flowers/tulip.1",
+					"variant": "botany:blocks/flowers/tulip.2"
+				}
+			},
+			"bb_viola": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/viola.0",
+					"petal": "botany:blocks/flowers/viola.1",
+					"variant": "botany:blocks/flowers/viola.2"
+				}
+			},
+			"bb_yarrow": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/yarrow.0",
+					"petal": "botany:blocks/flowers/yarrow.1",
+					"variant": "botany:blocks/flowers/yarrow.2"
+				}
+			},
+			"bb_zinnia": {
+				"model": "plants2:flowerpot/binnie_pot",
+				"textures": {
+					"stem": "botany:blocks/flowers/zinnia.0",
+					"petal": "botany:blocks/flowers/zinnia.1",
+					"variant": "botany:blocks/flowers/zinnia.2"
+				}
+			}
+		}
+	}
+}

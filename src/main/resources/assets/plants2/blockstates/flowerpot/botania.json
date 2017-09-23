@@ -1,0 +1,254 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "plants2:flowerpot/pot",
+		"transform": "forge:default-item",
+		"textures": {
+			"plant": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"b_mushroom_white": {
+				"textures": {
+					"plant": "botania:blocks/mushroom0"
+				}
+			},
+			"b_mushroom_orange": {
+				"textures": {
+					"plant": "botania:blocks/mushroom1"
+				}
+			},
+			"b_mushroom_magenta": {
+				"textures": {
+					"plant": "botania:blocks/mushroom2"
+				}
+			},
+			"b_mushroom_light_blue": {
+				"textures": {
+					"plant": "botania:blocks/mushroom3"
+				}
+			},
+			"b_mushroom_yellow": {
+				"textures": {
+					"plant": "botania:blocks/mushroom4"
+				}
+			},
+			"b_mushroom_lime": {
+				"textures": {
+					"plant": "botania:blocks/mushroom5"
+				}
+			},
+			"b_mushroom_pink": {
+				"textures": {
+					"plant": "botania:blocks/mushroom6"
+				}
+			},
+			"b_mushroom_gray": {
+				"textures": {
+					"plant": "botania:blocks/mushroom7"
+				}
+			},
+			"b_mushroom_silver": {
+				"textures": {
+					"plant": "botania:blocks/mushroom8"
+				}
+			},
+			"b_mushroom_cyan": {
+				"textures": {
+					"plant": "botania:blocks/mushroom9"
+				}
+			},
+			"b_mushroom_purple": {
+				"textures": {
+					"plant": "botania:blocks/mushroom10"
+				}
+			},
+			"b_mushroom_blue": {
+				"textures": {
+					"plant": "botania:blocks/mushroom11"
+				}
+			},
+			"b_mushroom_brown": {
+				"textures": {
+					"plant": "botania:blocks/mushroom12"
+				}
+			},
+			"b_mushroom_green": {
+				"textures": {
+					"plant": "botania:blocks/mushroom13"
+				}
+			},
+			"b_mushroom_red": {
+				"textures": {
+					"plant": "botania:blocks/mushroom14"
+				}
+			},
+			"b_mushroom_black": {
+				"textures": {
+					"plant": "botania:blocks/mushroom15"
+				}
+			},
+			"b_flower_white": {
+				"textures": {
+					"plant": "botania:blocks/flower0"
+				}
+			},
+			"b_flower_orange": {
+				"textures": {
+					"plant": "botania:blocks/flower1"
+				}
+			},
+			"b_flower_magenta": {
+				"textures": {
+					"plant": "botania:blocks/flower2"
+				}
+			},
+			"b_flower_light_blue": {
+				"textures": {
+					"plant": "botania:blocks/flower3"
+				}
+			},
+			"b_flower_yellow": {
+				"textures": {
+					"plant": "botania:blocks/flower4"
+				}
+			},
+			"b_flower_lime": {
+				"textures": {
+					"plant": "botania:blocks/flower5"
+				}
+			},
+			"b_flower_pink": {
+				"textures": {
+					"plant": "botania:blocks/flower6"
+				}
+			},
+			"b_flower_gray": {
+				"textures": {
+					"plant": "botania:blocks/flower7"
+				}
+			},
+			"b_flower_silver": {
+				"textures": {
+					"plant": "botania:blocks/flower8"
+				}
+			},
+			"b_flower_cyan": {
+				"textures": {
+					"plant": "botania:blocks/flower9"
+				}
+			},
+			"b_flower_purple": {
+				"textures": {
+					"plant": "botania:blocks/flower10"
+				}
+			},
+			"b_flower_blue": {
+				"textures": {
+					"plant": "botania:blocks/flower11"
+				}
+			},
+			"b_flower_brown": {
+				"textures": {
+					"plant": "botania:blocks/flower12"
+				}
+			},
+			"b_flower_green": {
+				"textures": {
+					"plant": "botania:blocks/flower13"
+				}
+			},
+			"b_flower_red": {
+				"textures": {
+					"plant": "botania:blocks/flower14"
+				}
+			},
+			"b_flower_black": {
+				"textures": {
+					"plant": "botania:blocks/flower15"
+				}
+			},
+			"b_sflower_white": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering0"
+				}
+			},
+			"b_sflower_orange": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering1"
+				}
+			},
+			"b_sflower_magenta": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering2"
+				}
+			},
+			"b_sflower_light_blue": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering3"
+				}
+			},
+			"b_sflower_yellow": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering4"
+				}
+			},
+			"b_sflower_lime": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering5"
+				}
+			},
+			"b_sflower_pink": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering6"
+				}
+			},
+			"b_sflower_gray": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering7"
+				}
+			},
+			"b_sflower_silver": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering8"
+				}
+			},
+			"b_sflower_cyan": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering9"
+				}
+			},
+			"b_sflower_purple": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering10"
+				}
+			},
+			"b_sflower_blue": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering11"
+				}
+			},
+			"b_sflower_brown": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering12"
+				}
+			},
+			"b_sflower_green": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering13"
+				}
+			},
+			"b_sflower_red": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering14"
+				}
+			},
+			"b_sflower_black": {
+				"textures": {
+					"plant": "botania:blocks/flowerglimmering15"
+				}
+			}
+		}
+	}
+}

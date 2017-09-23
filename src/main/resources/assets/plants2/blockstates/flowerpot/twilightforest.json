@@ -1,0 +1,85 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "plants2:flowerpot/pot",
+		"transform": "forge:default-item",
+		"textures": {
+			"plant": "plants2:blocks/cosmetic/nullnull"
+		}
+	},
+	"variants": {
+		"type": {
+			"tf_mayapple": {
+				"model": "plants2:flowerpot/mayapple"
+			},
+			"tf_canopy_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_canopy"
+				}
+			},
+			"tf_mangrove_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_mangrove"
+				}
+			},
+			"tf_darkwood_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_darkwood"
+				}
+			},
+			"tf_hollow_oak_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_hollow_oak"
+				}
+			},
+			"tf_time_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_time"
+				}
+			},
+			"tf_transformation_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_transformation"
+				}
+			},
+			"tf_mining_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_mining"
+				}
+			},
+			"tf_sorting_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_sorting"
+				}
+			},
+			"tf_rainbow_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_rainboak"
+				}
+			},
+			"tf_oak_sapling": {
+				"textures": {
+					"plant": "twilightforest:blocks/sapling_oak"
+				}
+			},
+			"tf_mushgloom": {
+				"model": "plants2:flowerpot/fullbright_pot",
+				"textures": {
+					"plant": "plants2:blocks/integration/tf_mushgloom",
+					"bright": "plants2:blocks/integration/tf_mushgloom_head"
+				}
+			},
+			"tf_fiddlehead": {
+				"model": "plants2:flowerpot/tintindex_pot",
+				"textures": {
+					"plant": "plants2:blocks/integration/tf_fiddlehead"
+				}
+			},
+			"tf_waterlily": {
+				"textures": {
+					"plant": "twilightforest:blocks/huge_waterlily"
+				}
+			}
+		}
+	}
+}

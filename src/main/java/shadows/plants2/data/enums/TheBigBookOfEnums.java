@@ -6,12 +6,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -416,6 +418,7 @@ public class TheBigBookOfEnums {
 	}
 
 	public static final Map<String, FlowerpotPlants> NAME_TO_ENUM = new HashMap<>();
+	public static final String P = "plants2";
 
 	public static enum FlowerpotPlants implements IFlowerEnum {
 		NONE,
@@ -564,147 +567,152 @@ public class TheBigBookOfEnums {
 		BRAZILLIAN_PINE,
 		INCENSE_CEDAR,
 		MURRAY_PINE,
-		B_FLOWER_WHITE(0, EnumDyeColor.WHITE),
-		B_FLOWER_ORANGE(0, EnumDyeColor.ORANGE),
-		B_FLOWER_MAGENTA(0, EnumDyeColor.MAGENTA),
-		B_FLOWER_LIGHT_BLUE(0, EnumDyeColor.LIGHT_BLUE),
-		B_FLOWER_YELLOW(0, EnumDyeColor.YELLOW),
-		B_FLOWER_LIME(0, EnumDyeColor.LIME),
-		B_FLOWER_PINK(0, EnumDyeColor.PINK),
-		B_FLOWER_GRAY(0, EnumDyeColor.GRAY),
-		B_FLOWER_SILVER(0, EnumDyeColor.SILVER),
-		B_FLOWER_CYAN(0, EnumDyeColor.CYAN),
-		B_FLOWER_PURPLE(0, EnumDyeColor.PURPLE),
-		B_FLOWER_BLUE(0, EnumDyeColor.BLUE),
-		B_FLOWER_BROWN(0, EnumDyeColor.BROWN),
-		B_FLOWER_GREEN(0, EnumDyeColor.GREEN),
-		B_FLOWER_RED(0, EnumDyeColor.RED),
-		B_FLOWER_BLACK(0, EnumDyeColor.BLACK),
-		B_MUSHROOM_WHITE(3, EnumDyeColor.WHITE),
-		B_MUSHROOM_ORANGE(3, EnumDyeColor.ORANGE),
-		B_MUSHROOM_MAGENTA(3, EnumDyeColor.MAGENTA),
-		B_MUSHROOM_LIGHT_BLUE(3, EnumDyeColor.LIGHT_BLUE),
-		B_MUSHROOM_YELLOW(3, EnumDyeColor.YELLOW),
-		B_MUSHROOM_LIME(3, EnumDyeColor.LIME),
-		B_MUSHROOM_PINK(3, EnumDyeColor.PINK),
-		B_MUSHROOM_GRAY(3, EnumDyeColor.GRAY),
-		B_MUSHROOM_SILVER(3, EnumDyeColor.SILVER),
-		B_MUSHROOM_CYAN(3, EnumDyeColor.CYAN),
-		B_MUSHROOM_PURPLE(3, EnumDyeColor.PURPLE),
-		B_MUSHROOM_BLUE(3, EnumDyeColor.BLUE),
-		B_MUSHROOM_BROWN(3, EnumDyeColor.BROWN),
-		B_MUSHROOM_GREEN(3, EnumDyeColor.GREEN),
-		B_MUSHROOM_RED(3, EnumDyeColor.RED),
-		B_MUSHROOM_BLACK(3, EnumDyeColor.BLACK),
-		B_SFLOWER_WHITE(15, EnumDyeColor.WHITE),
-		B_SFLOWER_ORANGE(15, EnumDyeColor.ORANGE),
-		B_SFLOWER_MAGENTA(15, EnumDyeColor.MAGENTA),
-		B_SFLOWER_LIGHT_BLUE(15, EnumDyeColor.LIGHT_BLUE),
-		B_SFLOWER_YELLOW(15, EnumDyeColor.YELLOW),
-		B_SFLOWER_LIME(15, EnumDyeColor.LIME),
-		B_SFLOWER_PINK(15, EnumDyeColor.PINK),
-		B_SFLOWER_GRAY(15, EnumDyeColor.GRAY),
-		B_SFLOWER_SILVER(15, EnumDyeColor.SILVER),
-		B_SFLOWER_CYAN(15, EnumDyeColor.CYAN),
-		B_SFLOWER_PURPLE(15, EnumDyeColor.PURPLE),
-		B_SFLOWER_BLUE(15, EnumDyeColor.BLUE),
-		B_SFLOWER_BROWN(15, EnumDyeColor.BROWN),
-		B_SFLOWER_GREEN(15, EnumDyeColor.GREEN),
-		B_SFLOWER_RED(15, EnumDyeColor.RED),
-		B_SFLOWER_BLACK(15, EnumDyeColor.BLACK),
-		TF_MAYAPPLE,
-		TF_OAK_SAPLING,
-		TF_CANOPY_SAPLING,
-		TF_MANGROVE_SAPLING,
-		TF_DARKWOOD_SAPLING,
-		TF_HOLLOW_OAK_SAPLING,
-		TF_TIME_SAPLING,
-		TF_TRANSFORMATION_SAPLING,
-		TF_MINING_SAPLING,
-		TF_SORTING_SAPLING,
-		TF_RAINBOW_SAPLING,
-		TF_MUSHGLOOM(3),
-		TF_FIDDLEHEAD,
-		TF_WATERLILY,
-		F_SAPLING_ACACIA,
-		F_SAPLING_DESERT_ACACIA,
-		F_SAPLING_BALSA,
-		F_SAPLING_GRANDIDIERS_BAOBAB,
-		F_SAPLING_HILL_CHERRY,
-		F_SAPLING_SWEET_CHESTNUT,
-		F_SAPLING_COCOBOLO,
-		F_SAPLING_DATE,
-		F_SAPLING_MYRTLE_EBONY,
-		F_SAPLING_GIGANT,
-		F_SAPLING_IPE,
-		F_SAPLING_KAPOK,
-		F_SAPLING_MUNDANE_LARCH,
-		F_SAPLING_LEMON,
-		F_SAPLING_SILVER_LIME,
-		F_SAPLING_BLUE_MAHOE,
-		F_SAPLING_MAHOGANY,
-		F_SAPLING_SUGAR_MAPLE,
-		F_SAPLING_PADAUK,
-		F_SAPLING_PAPAYA,
-		F_SAPLING_BULL_PINE,
-		F_SAPLING_PLUM,
-		F_SAPLING_WHITE_POPLAR,
-		F_SAPLING_COAST_SEQUOIA,
-		F_SAPLING_SIPIRI,
-		F_SAPLING_TEAK,
-		F_SAPLING_COMMON_WALNUT,
-		F_SAPLING_WENGE,
-		F_SAPLING_WHITE_WILLOW,
-		F_SAPLING_ZEBRAWOOD,
-		F_SAPLING_APPLE_OAK,
-		F_SAPLING_RED_SPRUCE,
-		F_SAPLING_SILVER_BIRCH,
-		F_SAPLING_JUNGLE,
-		F_SAPLING_DARK_OAK,
-		AA_BLACK_LOTUS,
-		BB_AGAPANTHUS,
-		BB_ALLIUM,
-		BB_ANEMONE,
-		BB_AQUILEGIA,
-		BB_ASTER,
-		BB_AURICULA,
-		BB_AZALEA,
-		BB_BLUET,
-		BB_CARNATION,
-		BB_CONEFLOWER,
-		BB_CORNFLOWER,
-		BB_DAFFODIL,
-		BB_DAHLIA,
-		BB_DAISY,
-		BB_DANDELION,
-		BB_DIANTHUS,
-		BB_EDELWEISS,
-		BB_FORGET,
-		BB_FUCHSIA,
-		BB_GAILLARDIA,
-		BB_GERANIUM,
-		BB_IRIS,
-		BB_LILY,
-		BB_MARIGOLD,
-		BB_MUMS,
-		BB_ORCHID,
-		BB_PANSY,
-		BB_PETUNIA,
-		BB_POPPY,
-		BB_PRIMROSE,
-		BB_SCABIOUS,
-		BB_TULIP,
-		BB_VIOLA,
-		BB_YARROW,
-		BB_ZINNIA;
+		B_FLOWER_WHITE(Constants.BOTANIA_ID, 0, EnumDyeColor.WHITE),
+		B_FLOWER_ORANGE(Constants.BOTANIA_ID, 0, EnumDyeColor.ORANGE),
+		B_FLOWER_MAGENTA(Constants.BOTANIA_ID, 0, EnumDyeColor.MAGENTA),
+		B_FLOWER_LIGHT_BLUE(Constants.BOTANIA_ID, 0, EnumDyeColor.LIGHT_BLUE),
+		B_FLOWER_YELLOW(Constants.BOTANIA_ID, 0, EnumDyeColor.YELLOW),
+		B_FLOWER_LIME(Constants.BOTANIA_ID, 0, EnumDyeColor.LIME),
+		B_FLOWER_PINK(Constants.BOTANIA_ID, 0, EnumDyeColor.PINK),
+		B_FLOWER_GRAY(Constants.BOTANIA_ID, 0, EnumDyeColor.GRAY),
+		B_FLOWER_SILVER(Constants.BOTANIA_ID, 0, EnumDyeColor.SILVER),
+		B_FLOWER_CYAN(Constants.BOTANIA_ID, 0, EnumDyeColor.CYAN),
+		B_FLOWER_PURPLE(Constants.BOTANIA_ID, 0, EnumDyeColor.PURPLE),
+		B_FLOWER_BLUE(Constants.BOTANIA_ID, 0, EnumDyeColor.BLUE),
+		B_FLOWER_BROWN(Constants.BOTANIA_ID, 0, EnumDyeColor.BROWN),
+		B_FLOWER_GREEN(Constants.BOTANIA_ID, 0, EnumDyeColor.GREEN),
+		B_FLOWER_RED(Constants.BOTANIA_ID, 0, EnumDyeColor.RED),
+		B_FLOWER_BLACK(Constants.BOTANIA_ID, 0, EnumDyeColor.BLACK),
+		B_MUSHROOM_WHITE(Constants.BOTANIA_ID, 3, EnumDyeColor.WHITE),
+		B_MUSHROOM_ORANGE(Constants.BOTANIA_ID, 3, EnumDyeColor.ORANGE),
+		B_MUSHROOM_MAGENTA(Constants.BOTANIA_ID, 3, EnumDyeColor.MAGENTA),
+		B_MUSHROOM_LIGHT_BLUE(Constants.BOTANIA_ID, 3, EnumDyeColor.LIGHT_BLUE),
+		B_MUSHROOM_YELLOW(Constants.BOTANIA_ID, 3, EnumDyeColor.YELLOW),
+		B_MUSHROOM_LIME(Constants.BOTANIA_ID, 3, EnumDyeColor.LIME),
+		B_MUSHROOM_PINK(Constants.BOTANIA_ID, 3, EnumDyeColor.PINK),
+		B_MUSHROOM_GRAY(Constants.BOTANIA_ID, 3, EnumDyeColor.GRAY),
+		B_MUSHROOM_SILVER(Constants.BOTANIA_ID, 3, EnumDyeColor.SILVER),
+		B_MUSHROOM_CYAN(Constants.BOTANIA_ID, 3, EnumDyeColor.CYAN),
+		B_MUSHROOM_PURPLE(Constants.BOTANIA_ID, 3, EnumDyeColor.PURPLE),
+		B_MUSHROOM_BLUE(Constants.BOTANIA_ID, 3, EnumDyeColor.BLUE),
+		B_MUSHROOM_BROWN(Constants.BOTANIA_ID, 3, EnumDyeColor.BROWN),
+		B_MUSHROOM_GREEN(Constants.BOTANIA_ID, 3, EnumDyeColor.GREEN),
+		B_MUSHROOM_RED(Constants.BOTANIA_ID, 3, EnumDyeColor.RED),
+		B_MUSHROOM_BLACK(Constants.BOTANIA_ID, 3, EnumDyeColor.BLACK),
+		B_SFLOWER_WHITE(Constants.BOTANIA_ID, 15, EnumDyeColor.WHITE),
+		B_SFLOWER_ORANGE(Constants.BOTANIA_ID, 15, EnumDyeColor.ORANGE),
+		B_SFLOWER_MAGENTA(Constants.BOTANIA_ID, 15, EnumDyeColor.MAGENTA),
+		B_SFLOWER_LIGHT_BLUE(Constants.BOTANIA_ID, 15, EnumDyeColor.LIGHT_BLUE),
+		B_SFLOWER_YELLOW(Constants.BOTANIA_ID, 15, EnumDyeColor.YELLOW),
+		B_SFLOWER_LIME(Constants.BOTANIA_ID, 15, EnumDyeColor.LIME),
+		B_SFLOWER_PINK(Constants.BOTANIA_ID, 15, EnumDyeColor.PINK),
+		B_SFLOWER_GRAY(Constants.BOTANIA_ID, 15, EnumDyeColor.GRAY),
+		B_SFLOWER_SILVER(Constants.BOTANIA_ID, 15, EnumDyeColor.SILVER),
+		B_SFLOWER_CYAN(Constants.BOTANIA_ID, 15, EnumDyeColor.CYAN),
+		B_SFLOWER_PURPLE(Constants.BOTANIA_ID, 15, EnumDyeColor.PURPLE),
+		B_SFLOWER_BLUE(Constants.BOTANIA_ID, 15, EnumDyeColor.BLUE),
+		B_SFLOWER_BROWN(Constants.BOTANIA_ID, 15, EnumDyeColor.BROWN),
+		B_SFLOWER_GREEN(Constants.BOTANIA_ID, 15, EnumDyeColor.GREEN),
+		B_SFLOWER_RED(Constants.BOTANIA_ID, 15, EnumDyeColor.RED),
+		B_SFLOWER_BLACK(Constants.BOTANIA_ID, 15, EnumDyeColor.BLACK),
+		TF_MAYAPPLE(Constants.TF_ID),
+		TF_OAK_SAPLING(Constants.TF_ID),
+		TF_CANOPY_SAPLING(Constants.TF_ID),
+		TF_MANGROVE_SAPLING(Constants.TF_ID),
+		TF_DARKWOOD_SAPLING(Constants.TF_ID),
+		TF_HOLLOW_OAK_SAPLING(Constants.TF_ID),
+		TF_TIME_SAPLING(Constants.TF_ID),
+		TF_TRANSFORMATION_SAPLING(Constants.TF_ID),
+		TF_MINING_SAPLING(Constants.TF_ID),
+		TF_SORTING_SAPLING(Constants.TF_ID),
+		TF_RAINBOW_SAPLING(Constants.TF_ID),
+		TF_MUSHGLOOM(Constants.TF_ID, 3),
+		TF_FIDDLEHEAD(Constants.TF_ID),
+		TF_WATERLILY(Constants.TF_ID),
+		F_SAPLING_ACACIA(Constants.FORESTRY_ID),
+		F_SAPLING_DESERT_ACACIA(Constants.FORESTRY_ID),
+		F_SAPLING_BALSA(Constants.FORESTRY_ID),
+		F_SAPLING_GRANDIDIERS_BAOBAB(Constants.FORESTRY_ID),
+		F_SAPLING_HILL_CHERRY(Constants.FORESTRY_ID),
+		F_SAPLING_SWEET_CHESTNUT(Constants.FORESTRY_ID),
+		F_SAPLING_COCOBOLO(Constants.FORESTRY_ID),
+		F_SAPLING_DATE(Constants.FORESTRY_ID),
+		F_SAPLING_MYRTLE_EBONY(Constants.FORESTRY_ID),
+		F_SAPLING_GIGANT(Constants.FORESTRY_ID),
+		F_SAPLING_IPE(Constants.FORESTRY_ID),
+		F_SAPLING_KAPOK(Constants.FORESTRY_ID),
+		F_SAPLING_MUNDANE_LARCH(Constants.FORESTRY_ID),
+		F_SAPLING_LEMON(Constants.FORESTRY_ID),
+		F_SAPLING_SILVER_LIME(Constants.FORESTRY_ID),
+		F_SAPLING_BLUE_MAHOE(Constants.FORESTRY_ID),
+		F_SAPLING_SUGAR_MAPLE(Constants.FORESTRY_ID),
+		F_SAPLING_PADAUK(Constants.FORESTRY_ID),
+		F_SAPLING_PAPAYA(Constants.FORESTRY_ID),
+		F_SAPLING_BULL_PINE(Constants.FORESTRY_ID),
+		F_SAPLING_PLUM(Constants.FORESTRY_ID),
+		F_SAPLING_WHITE_POPLAR(Constants.FORESTRY_ID),
+		F_SAPLING_COAST_SEQUOIA(Constants.FORESTRY_ID),
+		F_SAPLING_SIPIRI(Constants.FORESTRY_ID),
+		F_SAPLING_TEAK(Constants.FORESTRY_ID),
+		F_SAPLING_COMMON_WALNUT(Constants.FORESTRY_ID),
+		F_SAPLING_WENGE(Constants.FORESTRY_ID),
+		F_SAPLING_WHITE_WILLOW(Constants.FORESTRY_ID),
+		F_SAPLING_ZEBRAWOOD(Constants.FORESTRY_ID),
+		F_SAPLING_APPLE_OAK(Constants.FORESTRY_ID),
+		F_SAPLING_RED_SPRUCE(Constants.FORESTRY_ID),
+		F_SAPLING_SILVER_BIRCH(Constants.FORESTRY_ID),
+		F_SAPLING_JUNGLE(Constants.FORESTRY_ID),
+		F_SAPLING_DARK_OAK(Constants.FORESTRY_ID),
+		AA_BLACK_LOTUS(Constants.AA_ID),
+		BB_AGAPANTHUS(Constants.BOTANY_ID),
+		BB_ALLIUM(Constants.BOTANY_ID),
+		BB_ANEMONE(Constants.BOTANY_ID),
+		BB_AQUILEGIA(Constants.BOTANY_ID),
+		BB_ASTER(Constants.BOTANY_ID),
+		BB_AURICULA(Constants.BOTANY_ID),
+		BB_AZALEA(Constants.BOTANY_ID),
+		BB_BLUET(Constants.BOTANY_ID),
+		BB_CARNATION(Constants.BOTANY_ID),
+		BB_CONEFLOWER(Constants.BOTANY_ID),
+		BB_CORNFLOWER(Constants.BOTANY_ID),
+		BB_DAFFODIL(Constants.BOTANY_ID),
+		BB_DAHLIA(Constants.BOTANY_ID),
+		BB_DAISY(Constants.BOTANY_ID),
+		BB_DANDELION(Constants.BOTANY_ID),
+		BB_DIANTHUS(Constants.BOTANY_ID),
+		BB_EDELWEISS(Constants.BOTANY_ID),
+		BB_FORGET(Constants.BOTANY_ID),
+		BB_FUCHSIA(Constants.BOTANY_ID),
+		BB_GAILLARDIA(Constants.BOTANY_ID),
+		BB_GERANIUM(Constants.BOTANY_ID),
+		BB_IRIS(Constants.BOTANY_ID),
+		BB_LILY(Constants.BOTANY_ID),
+		BB_MARIGOLD(Constants.BOTANY_ID),
+		BB_MUMS(Constants.BOTANY_ID),
+		BB_ORCHID(Constants.BOTANY_ID),
+		BB_PANSY(Constants.BOTANY_ID),
+		BB_PETUNIA(Constants.BOTANY_ID),
+		BB_POPPY(Constants.BOTANY_ID),
+		BB_PRIMROSE(Constants.BOTANY_ID),
+		BB_SCABIOUS(Constants.BOTANY_ID),
+		BB_TULIP(Constants.BOTANY_ID),
+		BB_VIOLA(Constants.BOTANY_ID),
+		BB_YARROW(Constants.BOTANY_ID),
+		BB_ZINNIA(Constants.BOTANY_ID);
 
 		final int light;
 		final EnumDyeColor color;
-
-		FlowerpotPlants(int light, EnumDyeColor color) {
+		final String modid;
+		
+		FlowerpotPlants(String modid, int light, EnumDyeColor color){
+			this.modid = modid;
 			this.light = light;
 			this.color = color;
 			NAME_TO_ENUM.put(getName(), this);
+		}
+
+		FlowerpotPlants(int light, EnumDyeColor color) {
+			this(P, light, color);
 		}
 
 		FlowerpotPlants(EnumDyeColor color) {
@@ -713,6 +721,18 @@ public class TheBigBookOfEnums {
 
 		FlowerpotPlants(int light) {
 			this(light, EnumDyeColor.WHITE);
+		}
+		
+		FlowerpotPlants(String modid, EnumDyeColor color) {
+			this(modid, 0, color);
+		}
+
+		FlowerpotPlants(String modid, int light) {
+			this(modid, light, EnumDyeColor.WHITE);
+		}
+		
+		FlowerpotPlants(String modid) {
+			this(modid, 0);
 		}
 
 		FlowerpotPlants() {
@@ -736,6 +756,15 @@ public class TheBigBookOfEnums {
 		@Override
 		public ItemStack get() {
 			return ItemStack.EMPTY;
+		}
+		
+		public boolean isLoaded() {
+			return Loader.isModLoaded(modid);
+		}
+		
+		public ModelResourceLocation genMRL() {
+			if(isLoaded()) return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/" + modid), "type=" + this.getName());
+			return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/plants2"), "type=none");
 		}
 
 	}

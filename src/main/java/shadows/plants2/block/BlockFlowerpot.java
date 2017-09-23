@@ -35,8 +35,8 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.base.IEnumBlock;
+import shadows.plants2.client.FlowerpotStateMapper;
 import shadows.plants2.client.IHasModel;
-import shadows.plants2.client.RenamedStateMapper;
 import shadows.plants2.compat.AAFlowerpot;
 import shadows.plants2.compat.BinnieIntegration.BotanyFlowerpot;
 import shadows.plants2.compat.BotaniaFlowerpot;
@@ -99,8 +99,8 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		PlantUtil.sMRL("flowerpot", this, 0, "inventory");
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("flowerpot"));
+		PlantUtil.sMRL("flowerpot/plants2", this, 0, "inventory");
+		ModelLoader.setCustomStateMapper(this, new FlowerpotStateMapper());
 	}
 
 	@Override
