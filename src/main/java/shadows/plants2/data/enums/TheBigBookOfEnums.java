@@ -703,8 +703,8 @@ public class TheBigBookOfEnums {
 		final int light;
 		final EnumDyeColor color;
 		final String modid;
-		
-		FlowerpotPlants(String modid, int light, EnumDyeColor color){
+
+		FlowerpotPlants(String modid, int light, EnumDyeColor color) {
 			this.modid = modid;
 			this.light = light;
 			this.color = color;
@@ -722,7 +722,7 @@ public class TheBigBookOfEnums {
 		FlowerpotPlants(int light) {
 			this(light, EnumDyeColor.WHITE);
 		}
-		
+
 		FlowerpotPlants(String modid, EnumDyeColor color) {
 			this(modid, 0, color);
 		}
@@ -730,7 +730,7 @@ public class TheBigBookOfEnums {
 		FlowerpotPlants(String modid, int light) {
 			this(modid, light, EnumDyeColor.WHITE);
 		}
-		
+
 		FlowerpotPlants(String modid) {
 			this(modid, 0);
 		}
@@ -757,13 +757,13 @@ public class TheBigBookOfEnums {
 		public ItemStack get() {
 			return ItemStack.EMPTY;
 		}
-		
+
 		public boolean isLoaded() {
 			return Loader.isModLoaded(modid);
 		}
-		
+
 		public ModelResourceLocation genMRL() {
-			if(isLoaded()) return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/" + modid), "type=" + this.getName());
+			if (isLoaded()) return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/" + modid), "type=" + this.getName());
 			return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/plants2"), "type=none");
 		}
 

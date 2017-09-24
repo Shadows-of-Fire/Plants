@@ -175,15 +175,13 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 					EnumDyeColor color = ((BlockEnumFlower<?>) b).getColor(flower);
 					boolean doubled = b instanceof BlockEnumDoubleFlower;
 					for (int i = 0; i < 6; i++) {
-						if(ColorToPotionUtil.isDyeArrayValid(cauldron.getColors())) break;
+						if (ColorToPotionUtil.isDyeArrayValid(cauldron.getColors())) break;
 						if (cauldron.getColors()[i] == null) {
-							if(doubled) {
-								if(cauldron.getColors()[MathHelper.clamp(i + 1, 0, 5)] != null) break;
+							if (doubled) {
+								if (cauldron.getColors()[MathHelper.clamp(i + 1, 0, 5)] != null) break;
 								cauldron.setColor(i, color);
-								cauldron.setColor(i+1, color);
-							}
-							else
-							cauldron.setColor(i, color);
+								cauldron.setColor(i + 1, color);
+							} else cauldron.setColor(i, color);
 							world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
 							stack.shrink(1);
 							world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
@@ -193,7 +191,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 					}
 				}
 			} else if (cauldron.hasNetherWart() && ColorToPotionUtil.isDyeArrayValid(cauldron.getColors()) && cauldron.getPotionItem() == Items.POTIONITEM) {
-				if(stack.getItem() != Items.GUNPOWDER && stack.getItem() != Items.DRAGON_BREATH) return;
+				if (stack.getItem() != Items.GUNPOWDER && stack.getItem() != Items.DRAGON_BREATH) return;
 				if (stack.getItem() == Items.GUNPOWDER) cauldron.setGunpowder(true);
 				else if (stack.getItem() == Items.DRAGON_BREATH) cauldron.setDragBreath(true);
 				world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
