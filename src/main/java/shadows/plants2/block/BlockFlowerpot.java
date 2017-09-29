@@ -1,4 +1,4 @@
-package shadows.plants2.block;
+	package shadows.plants2.block;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,6 +82,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		TileEntity tile = world.getTileEntity(pos);
+		if(!(tile instanceof TileFlowerpot)) return state;
 		return state.withProperty(PROP, ((TileFlowerpot) tile).getFlower());
 	}
 
