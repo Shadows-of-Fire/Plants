@@ -1,4 +1,4 @@
-	package shadows.plants2.block;
+package shadows.plants2.block;
 
 import java.util.ArrayList;
 import java.util.Arrays;
