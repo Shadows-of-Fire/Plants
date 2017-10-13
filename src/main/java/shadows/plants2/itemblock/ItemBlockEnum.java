@@ -10,6 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.enums.IPropertyEnum;
@@ -48,7 +49,7 @@ public class ItemBlockEnum<E extends Enum<E> & IPropertyEnum> extends ItemBlockB
 
 	@Override
 	public int getMetadata(int damage) {
-		return damage;
+		return MathHelper.clamp(damage, 0, enumBlock.getTypes().size() - 1);
 	}
 
 	@Override

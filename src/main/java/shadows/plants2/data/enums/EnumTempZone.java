@@ -30,7 +30,7 @@ public enum EnumTempZone {
 	}
 
 	public boolean isBiomeValid(Biome b) {
-		float k = b.getTemperature();
+		float k = b.getDefaultTemperature();
 		return k <= tempmax && k >= tempmin;
 	}
 }

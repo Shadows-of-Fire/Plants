@@ -80,7 +80,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		return state.getValue(property).ordinal() % 4;
+		return state.getValue(property).getMetadata();
 	}
 
 	@Override

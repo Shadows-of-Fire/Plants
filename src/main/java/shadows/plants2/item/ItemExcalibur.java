@@ -196,7 +196,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 				int mana = iManaBurst.getMana();
 				if (mana >= cost) {
 					iManaBurst.setMana(mana - cost);
-					float damage = 4F + toolMaterial.getDamageVsEntity();
+					float damage = 4F + toolMaterial.getAttackDamage();
 					if (!iManaBurst.isFake() && !burst.world.isRemote) {
 						EntityPlayer player = living.world.getPlayerEntityByName(attacker);
 						living.attackEntityFrom(player == null ? DamageSource.MAGIC : DamageSource.causePlayerDamage(player), damage);
