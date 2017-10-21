@@ -16,7 +16,7 @@ public class Config {
 	public static boolean tree_gen = true;
 	public static boolean vine_gen = true;
 	public static boolean desert_gen = true;
-	
+
 	public static int patchChance = 1;
 	public static int density = 6;
 	public static int patchSize = 3;
@@ -37,7 +37,7 @@ public class Config {
 	public static void syncConfig(Configuration config) {
 
 		config.load();
-		
+
 		String g = "Generator Options";
 		String f = "Generator Options - Flowers";
 
@@ -53,7 +53,7 @@ public class Config {
 		tree_gen = config.getBoolean("Tree Generation", g, true, "Toggle for trees.");
 		vine_gen = config.getBoolean("Vine Generation", g, true, "Toggle for vines.");
 		desert_gen = config.getBoolean("Desert Generation", g, true, "Toggle for desert plants.");
-		
+
 		patchChance = config.getInt("Chance", f, 1, 1, Integer.MAX_VALUE, "A (1/n) chance for plants to try to generate on a given occasion. Lower = More plants.");
 		density = config.getInt("Density", f, 6, 0, 25, "The number of plants that try to generate on a given occasion. Higher = More plants.");
 		patchSize = config.getInt("Size", f, 3, 1, 5, "The spread of plants in a given generation attempt. Higher = More plant spread.");

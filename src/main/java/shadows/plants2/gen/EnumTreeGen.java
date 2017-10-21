@@ -146,7 +146,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-			if(!world.provider.hasSkyLight()) return;
+			if (!world.provider.hasSkyLight()) return;
 			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() >= 0.16F) return;
 			int posX = chunkX * 16;
 			int posZ = chunkZ * 16;

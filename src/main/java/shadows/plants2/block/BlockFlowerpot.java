@@ -82,7 +82,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		TileEntity tile = world.getTileEntity(pos);
-		if(!(tile instanceof TileFlowerpot)) return state;
+		if (!(tile instanceof TileFlowerpot)) return state;
 		return state.withProperty(PROP, ((TileFlowerpot) tile).getFlower());
 	}
 
