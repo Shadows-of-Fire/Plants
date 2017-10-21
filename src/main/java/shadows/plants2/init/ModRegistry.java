@@ -270,11 +270,11 @@ public class ModRegistry {
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
-		if (!Config.generation) return;
-		GameRegistry.registerWorldGenerator(new BushGen(), 25);
-		GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
-		GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
-		GameRegistry.registerWorldGenerator(new NetherGen(), 30);
+		if (!Config.all_generation) return;
+		if (Config.bush_gen) GameRegistry.registerWorldGenerator(new BushGen(), 25);
+		if (Config.nether_tree_gen) GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
+		if (Config.tree_gen) GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
+		if (Config.nether_flower_gen) GameRegistry.registerWorldGenerator(new NetherGen(), 30);
 	}
 
 	public static void tiles(FMLPreInitializationEvent e) {

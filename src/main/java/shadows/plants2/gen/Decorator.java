@@ -20,8 +20,9 @@ import shadows.plants2.util.PlantUtil;
 public class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
-	public void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
-		if (Config.generation && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS) {
+	public void genFlowers(DecorateBiomeEvent.Decorate event) {
+		if(!Config.all_generation) return;
+		if (Config.flower_gen && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numTries; ih > 0; ih--) {
 				if (event.getRand().nextInt(Config.patchChance) == 0) {
@@ -39,9 +40,10 @@ public class Decorator {
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
-	public void onDesertDecoration(DecorateBiomeEvent.Decorate event) {
+	public void genDesertFlowers(DecorateBiomeEvent.Decorate event) {
+		if(!Config.all_generation) return;
 		if (event.getWorld().getBiome(event.getPos().add(8, 0, 8)) instanceof BiomeBeach) return;
-		if (Config.generation && !event.getWorld().isRemote && (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
+		if (Config.desert_gen && !event.getWorld().isRemote && (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numTries; ih > 0; ih--) {
 				if (event.getRand().nextInt(Config.patchChance * 4) == 0) {
@@ -60,7 +62,8 @@ public class Decorator {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void flowerForestDeco(DecorateBiomeEvent.Decorate event) {
-		if (Config.generation && Config.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == Biome.getBiome(132)) {
+		if(!Config.all_generation) return;
+		if (Config.flower_gen && Config.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == Biome.getBiome(132)) {
 			for (int ih = 8; ih > 0; ih--) {
 				IBlockState state = PlantUtil.getFlowerState(event.getRand());
 				PlantUtil.genFlowerPatch(event.getWorld(), event.getPos(), event.getRand(), state);
@@ -69,8 +72,9 @@ public class Decorator {
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void vineDecorator(DecorateBiomeEvent.Decorate event) {
-		if (Config.generation && !event.getWorld().isRemote && event.getRand().nextInt(30) == 0 && event.getType() == EventType.FLOWERS) {
+	public void genVines(DecorateBiomeEvent.Decorate event) {
+		if(!Config.all_generation) return;
+		if (Config.vine_gen && !event.getWorld().isRemote && event.getRand().nextInt(30) == 0 && event.getType() == EventType.FLOWERS) {
 			EnumFacing facing = EnumFacing.HORIZONTALS[event.getRand().nextInt(4)];
 			World world = event.getWorld();
 			BlockCustomVine vine = PlantUtil.getRandomVine(world.rand);

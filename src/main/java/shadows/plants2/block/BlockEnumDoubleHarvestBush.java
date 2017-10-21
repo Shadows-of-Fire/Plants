@@ -181,7 +181,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 		super.updateTick(world, pos, state, rand);
 
 		if (!world.isRemote && state.getValue(UPPER) && !state.getValue(FRUIT)) {
-			if (rand.nextFloat() <= 0.27F) {
+			if (rand.nextInt(Config.harvestGrowthChance) == 0) {
 				world.setBlockState(pos, state.withProperty(FRUIT, true).withProperty(UPPER, true), 3);
 				world.setBlockState(pos.down(), state.withProperty(FRUIT, true).withProperty(UPPER, false), 3);
 			}
