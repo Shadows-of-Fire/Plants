@@ -47,6 +47,11 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 			return super.removedByPlayer(state, world, pos, player, willHarvest);
 		}
 	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(Config.netherHarvestChance) == 0) grow(world, rand, pos, state);
+	}
 
 	@Override
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
