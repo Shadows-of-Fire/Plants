@@ -40,7 +40,7 @@ public class ArrayGen {
 		for(int y = 0; y < states.length; y++) {
 			for(int x = 0; x < states[y].length; x++) {
 				for(int z = 0; z < states[y][x].length; z++) {
-					if(states[x][y][z] != null) world.setBlockState(pos.add(x, y, z), states[y][x][z]);
+					if(states[y][x][z] != null) world.setBlockState(pos.add(x, y, z), states[y][x][z]);
 				}
 			}
 		}
