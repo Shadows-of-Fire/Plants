@@ -53,6 +53,7 @@ public class Plants2 {
 		Config.syncConfig(config);
 		ModRegistry.tiles(e);
 		proxy.preInit(e);
+		//AdvancementHelper.preInit(e);  Maybe in the future, or maybe delete instead.
 	}
 
 	@EventHandler
