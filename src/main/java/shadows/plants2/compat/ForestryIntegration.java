@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Locale;
 
 import forestry.api.apiculture.FlowerManager;
-import forestry.arboriculture.PluginArboriculture;
 import forestry.arboriculture.genetics.TreeGenome;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import shadows.plants2.block.BlockEnumDoubleFlower;
 import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Constants;
@@ -53,12 +55,14 @@ public class ForestryIntegration {
 		}
 	}
 
+	@ObjectHolder(Constants.FORESTRY_ID + ":sapling")
+	public static final Item SAPLING = Items.AIR;
+
 	public static class ForestryFlowerpot implements IFlowerpotHandler {
 
 		@Override
 		public String handleFlowerpot(IBlockState state, ItemStack stack) {
-			if (stack.getItem() == PluginArboriculture.getItems().sapling) { return "sapling_" + TreeGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT).replaceAll("'", "").replaceAll(" ", "_"); }
-
+			if (stack.getItem() == SAPLING) { return "sapling_" + TreeGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT).replaceAll("'", "").replaceAll(" ", "_"); }
 			return "none";
 		}
 
