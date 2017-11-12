@@ -7,6 +7,9 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
@@ -15,14 +18,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import shadows.plants2.block.base.BlockEnum;
 import shadows.plants2.client.RenamedStateMapper;
+import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.ITreeEnum;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
+public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> implements IHasRecipe {
 
 	public static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
 
@@ -97,6 +104,11 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> {
 			PlantUtil.sMRL("logs", this, i, AXIS.getName() + "=" + EnumAxis.Y.getName() + "," + property.getName() + "=" + types.get(i).getName());
 		}
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("logs"));
+	}
+
+	@Override
+	public void initRecipes(Register<IRecipe> e) {
+		GameRegistry.addSmelting(new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Items.COAL, 1, 1), 2);
 	}
 
 }

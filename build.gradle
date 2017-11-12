@@ -20,9 +20,9 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.0.2512"
+    version = "1.12.2-14.23.0.2536"
     runDir = "run"
-    mappings = "snapshot_20171010"
+    mappings = "snapshot_20171108"
 	useDepAts = true
 }
 
