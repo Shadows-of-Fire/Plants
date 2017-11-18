@@ -1,5 +1,9 @@
 package shadows.plants2.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
 public class Config {
@@ -34,6 +38,9 @@ public class Config {
 	public static int cropGrowthChance = 15;
 
 	public static boolean hardNether = false;
+	
+	public static final Map<ResourceLocation, Boolean> REGNAME_BL = new HashMap<>();
+	public static final Map<String, Boolean> MODID_BL = new HashMap<>();
 
 	public static void syncConfig(Configuration config) {
 
@@ -70,6 +77,14 @@ public class Config {
 		cropGrowthChance = config.getInt("Crop Growth Chance", "general", 15, 1, 500, "Higher numbers will slow growth of crops.");
 
 		hardNether = config.getBoolean("Require Soul Sand", "nether", false, "Enabling this will make all nether harvestables only grow on soul sand");
+	
+		String[] pb = config.getStringList("Plantball Blacklist", "plantball", new String[0], "A list of blacklisted registry names, or modids.  Strings without a \":\" will be treated as modids.");
+		
+		for(String s : pb) {
+			if(s.contains(":")) REGNAME_BL.put(new ResourceLocation(s), true);
+			else MODID_BL.put(s, true);
+		}
+		
 	}
 
 }

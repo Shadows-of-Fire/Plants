@@ -1,6 +1,8 @@
 package shadows.plants2.item;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -53,6 +55,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			}
 
 			else if (desert.getBlock().canPlaceBlockAt(world, pos.up())) {
+				if(isBlacklisted(desert)) return EnumActionResult.FAIL;
+				
 				if (!world.isRemote) {
 					genFlowers(world, pos, desert);
 					if (world.rand.nextInt(10) == 0) genFlowers(world, pos, desert);
@@ -65,6 +69,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			}
 
 			else if (flower.getBlock().canPlaceBlockAt(world, pos.up())) {
+				if(isBlacklisted(flower)) return EnumActionResult.FAIL;
+				
 				if (!world.isRemote) {
 					genFlowers(world, pos, flower);
 					if (world.rand.nextInt(10) == 0) genFlowers(world, pos, flower);
@@ -77,6 +83,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			}
 
 			else if (worldState.getBlock() instanceof BlockBush && !(worldState.getBlock().hasTileEntity(worldState))) {
+				if(isBlacklisted(worldState)) return EnumActionResult.FAIL;
+				
 				if (worldState.getBlock().getRegistryName().getResourceDomain().equals("plants2") || worldState.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
 
 					if (!world.isRemote) genFlowers(world, pos, worldState);
@@ -103,6 +111,16 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 	private static void genFlowers(World world, BlockPos pos, IBlockState state) {
 		if (world.provider instanceof WorldProviderHell) PlantUtil.genFlowerPatchForNether(world, pos, world.rand, state);
 		else PlantUtil.genSmallFlowerPatchNearby(world, pos.up(), world.rand, state);
+	}
+	
+	private static Map<IBlockState, Boolean> CACHE = new HashMap<>();
+	
+	private static boolean isBlacklisted(IBlockState state) {
+		if(CACHE.getOrDefault(state, false)) return false;
+		if(Config.REGNAME_BL.getOrDefault(state.getBlock().getRegistryName(), false)) return true;
+		if(Config.MODID_BL.getOrDefault(state.getBlock().getRegistryName().getResourceDomain(), false)) return true;
+		CACHE.put(state, true);
+		return false;
 	}
 
 	@Override
