@@ -10,6 +10,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -128,7 +129,7 @@ public class ModRegistry {
 	public static final Item PLANTAGO_M = new ItemFoodBase("plantago_m", 3, 0.4f, new PotionEffect(MobEffects.ABSORPTION, 160), 0.45F); //These things are like *really* healthy
 	public static final Item RUBUS_O = new ItemFoodBase("rubus_o", 6, 0.5f);
 	public static final Item RUBUS_P = new ItemFoodBase("rubus_p", 3, 0.5f);
-	public static final Item SAFFRON = new ItemFoodBase("saffron", 1, 0.2f);
+	public static final Item SAFFRON = new ItemFoodBase("saffron", 2, 0.2f);
 	public static final Item SOLANUM_C = new ItemFoodBase("solanum_c", 2, 0.5f);
 	public static final Item SOLANUM_D = new ItemFoodBase("solanum_d", 3, 0.6f);
 	public static final Item SOLANUM_N = new ItemFoodBase("solanum_n", 5, 1.1f);
@@ -267,6 +268,11 @@ public class ModRegistry {
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.EMBERROOT.get(), PotionTypes.STRENGTH);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, PHYTOLACCA_A, WITHER);
 		RecipeHelper.addPotionRecipe(PotionTypes.HEALING, AMBROSIA_A, REGEN_HEAL);
+		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.LIGHT_BLUE.getDyeDamage()), BLUEBERRY);
+		RecipeHelper.addShapeless(Generic.DYE_BLACK.get(), BLACKBERRY);
+		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.ORANGE.getDyeDamage()), SAFFRON);
+		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.PINK.getDyeDamage()), RASPBERRY);
+		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), HUCKLEBERRY);
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
