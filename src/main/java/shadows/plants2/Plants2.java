@@ -48,11 +48,13 @@ public class Plants2 {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
-		MinecraftForge.EVENT_BUS.register(new ModRegistry());
 		config = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
+		config.load();
+		MinecraftForge.EVENT_BUS.register(new ModRegistry());
 		Config.syncConfig(config);
 		ModRegistry.tiles(e);
 		proxy.preInit(e);
+		if (config.hasChanged()) config.save();
 		//AdvancementHelper.preInit(e);  Maybe in the future, or maybe delete instead.
 	}
 

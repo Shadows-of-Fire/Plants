@@ -162,6 +162,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	protected void addStatesToList() {
 	}
 
+	@Override
 	protected int getMaxEnumValues() {
 		return 8;
 	}

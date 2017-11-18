@@ -150,7 +150,7 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 
 	public static int getActualMeta(int meta) { // evens are upper half, odds are lower half needs to return the Actual (IProperty) meta (0-7) for the block from state meta (0-15)
 		int k = meta % 2; // if == 1 this is a lower
-		float j = ((float) meta) / 2F; // if k = 1 this will have a .5
+		float j = (meta) / 2F; // if k = 1 this will have a .5
 		if (k == 0) return (int) j;
 		if (k == 1) return (int) (j - .5);
 		else return 0;

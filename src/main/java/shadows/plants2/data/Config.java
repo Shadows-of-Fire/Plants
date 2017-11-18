@@ -37,8 +37,6 @@ public class Config {
 
 	public static void syncConfig(Configuration config) {
 
-		config.load();
-
 		String g = "Generator Options";
 		String f = "Generator Options - Flowers";
 
@@ -70,11 +68,8 @@ public class Config {
 		harvestGrowthChance = config.getInt("Harvest Growth Chance", "general", 10, 1, 500, "Higher numbers will slow growth of harvestable bushes.");
 		netherHarvestChance = config.getInt("Nether Growth Chance", "general", 20, 1, 500, "Higher numbers will slow growth of nether bushes.");
 		cropGrowthChance = config.getInt("Crop Growth Chance", "general", 15, 1, 500, "Higher numbers will slow growth of crops.");
-		
+
 		hardNether = config.getBoolean("Require Soul Sand", "nether", false, "Enabling this will make all nether harvestables only grow on soul sand");
-
-		if (config.hasChanged()) config.save();
-
 	}
 
 }

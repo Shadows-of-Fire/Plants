@@ -8,6 +8,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public interface IPropertyEnum extends IStringSerializable {
 
+	@Override
 	default public String getName() {
 		return ((Enum<?>) this).name().toLowerCase(Locale.ENGLISH);
 	}

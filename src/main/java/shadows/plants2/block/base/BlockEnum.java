@@ -56,6 +56,7 @@ public abstract class BlockEnum<E extends Enum<E> & IPropertyEnum> extends Block
 		this(name, material, sound, hardness, resistance, enumClass, "type");
 	}
 
+	@Override
 	public ItemBlock createItemBlock() {
 		return new ItemBlockEnum<E>(this);
 	}

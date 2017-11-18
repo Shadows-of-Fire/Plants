@@ -260,6 +260,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 		RecipeHelper.addShaped(this, 3, 3, "plant", "plant", "plant", Items.BLAZE_POWDER, Items.CAULDRON, Items.BLAZE_POWDER, Blocks.STONE_SLAB, Blocks.STONE_SLAB, Blocks.STONE_SLAB);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		Plants2.proxy.doCauldronParticles(state, world, pos, rand);

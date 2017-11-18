@@ -119,7 +119,7 @@ public class ModRegistry {
 	public static final Item PLANTBALL = new ItemPlantball();
 
 	public static final Item OKRA = new ItemFoodBase("okra", 3, 1.3f);
-	public static final Item PINEAPPLE = new ItemFoodBase("pineapple", 7, 0.6f, new PotionEffect(MobEffects.RESISTANCE, 400, 5), 0.01F); //u just ate an entire pineapple maybe u have some luck too and be invulnerable
+	public static final Item PINEAPPLE = new ItemFoodBase("pineapple", 9, 0.6f, new PotionEffect(MobEffects.RESISTANCE, 400, 5), 0.01F); //u just ate an entire pineapple maybe u have some luck too and be invulnerable
 	public static final Item AMARANTHUS_H = new ItemFoodBase("amaranthus_h", 5, 0.3f);
 	public static final Item AMBROSIA_A = new ItemFoodBase("ambrosia_a", 3, 0.5f, new PotionEffect(MobEffects.REGENERATION, 200, 3), 0.06F); //Medicinal to certain native american tribes
 	public static final Item APOCYNUM_C = new ItemFoodBase("apocynum_c", 1, 2.0f);

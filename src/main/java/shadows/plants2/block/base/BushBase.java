@@ -92,6 +92,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 		return k;
 	}
 
+	@Override
 	public boolean placeStateAt(IBlockState state, World world, BlockPos pos) {
 		return world.setBlockState(pos, state);
 	}

@@ -33,6 +33,7 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 		assign.setTreeGen(this);
 	}
 
+	@Override
 	public boolean generate(World world, Random random, BlockPos pos) {
 		if (world.isRemote) return false;
 

@@ -83,6 +83,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 		return new ItemStack(seeds[state.getValue(property).ordinal() % 2]);
 	}
 
+	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return crops[state.getValue(property).ordinal() % 2];
 	}

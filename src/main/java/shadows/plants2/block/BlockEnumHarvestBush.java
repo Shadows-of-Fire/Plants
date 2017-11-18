@@ -81,7 +81,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	public static int getActualMeta(int meta) {
 		int k = meta % 2;
-		float j = ((float) meta) / 2F;
+		float j = (meta) / 2F;
 		if (k == 0) return (int) j;
 		if (k == 1) return (int) (j - .5);
 		else return 0;

@@ -82,6 +82,7 @@ public class TileBrewingCauldron extends TileEntity {
 		return oldState.getBlock() != newState.getBlock();
 	}
 
+	@Override
 	public NBTTagCompound getUpdateTag() {
 		return writeToNBT(new NBTTagCompound());
 	}

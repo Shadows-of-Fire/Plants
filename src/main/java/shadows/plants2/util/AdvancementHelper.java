@@ -39,7 +39,7 @@ import shadows.plants2.data.Constants;
 public class AdvancementHelper {
 
 	//If this class causes absolutely anything bad to happen, go ping @Tamaized#7311 on the Modded Minecraft discord server.  All his fault.
-	
+
 	private static final String MODID = Constants.MODID;
 
 	public static final AdvancementList ADVANCEMENTS = ReflectionHelper.getPrivateValue(AdvancementManager.class, null, "ADVANCEMENT_LIST", "field_192784_c");
@@ -50,24 +50,17 @@ public class AdvancementHelper {
 		reload();
 		MinecraftForge.EVENT_BUS.register(new AdvancementHelper());
 	}
-	
+
 	public static void addAdvancements() {
-		new AdvancementBuilderBuilder("test")
-		.setDisplayInfo(createDisplay("test.title", "test.desc", new ItemStack(Items.APPLE), null, FrameType.TASK, true, true, false))
-		.setRewards(createRewards(50F))
-		.setParent("adventure/root")
-		.addCriteria("test_crit", new KilledTrigger.Instance(CriteriaTriggers.PLAYER_KILLED_ENTITY.getId(), EntityPredicate.ANY, DamageSourcePredicate.ANY))
-		.addConditionGroup("test_crit")
-		.build()
-		.register();
+		new AdvancementBuilderBuilder("test").setDisplayInfo(createDisplay("test.title", "test.desc", new ItemStack(Items.APPLE), null, FrameType.TASK, true, true, false)).setRewards(createRewards(50F)).setParent("adventure/root").addCriteria("test_crit", new KilledTrigger.Instance(CriteriaTriggers.PLAYER_KILLED_ENTITY.getId(), EntityPredicate.ANY, DamageSourcePredicate.ANY)).addConditionGroup("test_crit").build().register();
 	}
-	
+
 	@SubscribeEvent
 	public void worldServerCaps(AttachCapabilitiesEvent<World> e) {
-		World world = (World) e.getObject();
+		World world = e.getObject();
 		ReflectionHelper.setPrivateValue(World.class, world, new HackedAdvancementManager(new File(new File(world.getSaveHandler().getWorldDirectory(), "data"), "advancements")), "advancementManager", "field_191951_C");
 	}
-	
+
 	public static void reload() {
 		TO_REGISTER.clear();
 		addAdvancements();
@@ -135,7 +128,7 @@ public class AdvancementHelper {
 		private AdvancementRewards rewards;
 		private Map<String, Criterion> criteria = new HashMap<>();
 		private ResourceLocation parent;
-		
+
 		private final List<String[]> REQUIRED = new ArrayList<>();
 		private final ResourceLocation name;
 
@@ -179,12 +172,12 @@ public class AdvancementHelper {
 		}
 
 		public BuilderResult build() {
-				
+
 			String[][] reqs = new String[REQUIRED.size()][];
-			
-			for(int i = 0; i < REQUIRED.size(); i++) 
+
+			for (int i = 0; i < REQUIRED.size(); i++)
 				reqs[i] = REQUIRED.get(i);
-			
+
 			return new BuilderResult(name, genBuilder(parent, info, rewards, criteria, reqs));
 		}
 	}
@@ -202,19 +195,19 @@ public class AdvancementHelper {
 			registerAdvancement(name, builder);
 		}
 	}
-	
-	public static class HackedAdvancementManager extends AdvancementManager{
+
+	public static class HackedAdvancementManager extends AdvancementManager {
 
 		public HackedAdvancementManager(File advancementsDirIn) {
 			super(advancementsDirIn);
 		}
-		
-	    public void reload()
-	    {
-	        super.reload();
-	        AdvancementHelper.reload();
-	    }
-		
+
+		@Override
+		public void reload() {
+			super.reload();
+			AdvancementHelper.reload();
+		}
+
 	}
 
 }

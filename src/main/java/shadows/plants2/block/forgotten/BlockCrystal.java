@@ -40,6 +40,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("blocks"));
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
