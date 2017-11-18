@@ -149,11 +149,11 @@ public class PlantUtil {
 		}
 	}
 
-	public static final List<IBlockState> PLAINS = new ArrayList<>();
-	public static final List<IBlockState> DESERT = new ArrayList<>();
-	public static final List<IBlockState> CROP = new ArrayList<>();
-	public static final List<IBlockState> DEFAULT = new ArrayList<>();
-	public static final List<IBlockState> NETHER = new ArrayList<>();
+	public static final List<IBlockState> PLAINS = new ControlledList();
+	public static final List<IBlockState> DESERT = new ControlledList();
+	public static final List<IBlockState> CROP = new ControlledList();
+	public static final List<IBlockState> DEFAULT = new ControlledList();
+	public static final List<IBlockState> NETHER = new ControlledList();
 	public static final Map<EnumPlantType, List<IBlockState>> TYPE_TO_STATES = new HashMap<>();
 
 	static {

@@ -40,6 +40,7 @@ public class Plants2 {
 	public static IProxy proxy;
 
 	public static Configuration config;
+	public static Configuration clutter_cfg;
 
 	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
@@ -49,6 +50,7 @@ public class Plants2 {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		config = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
+		clutter_cfg = new Configuration(new File(e.getModConfigurationDirectory(), "plants_blocks.cfg"));
 		config.load();
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
 		Config.syncConfig(config);
@@ -68,6 +70,7 @@ public class Plants2 {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
+		clutter_cfg.load();
 		ModRegistry.generators(e);
 
 		for (IPostInitUpdate toUpdate : Constants.UPDATES) {
@@ -84,5 +87,6 @@ public class Plants2 {
 		PlantUtil.mergeToDefaultLate();
 
 		if (Loader.isModLoaded(Constants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
+		if(clutter_cfg.hasChanged()) clutter_cfg.save();
 	}
 }

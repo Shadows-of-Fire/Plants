@@ -8,6 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEndRod;
 import net.minecraft.client.particle.ParticleSimpleAnimated;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -115,6 +116,11 @@ public class ClientProxy implements IProxy {
 			}
 		}
 		return j;
+	}
+	
+	@Override
+	public String translate(String lang, Object... args) {
+		return I18n.format(lang, args);
 	}
 
 }
