@@ -180,7 +180,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 							if (doubled) {
 								if (cauldron.getColors()[MathHelper.clamp(i + 1, 0, 5)] != null) break;
 								cauldron.setColor(i, color);
-								cauldron.setColor(i + 1, color);
+								cauldron.setColor(MathHelper.clamp(i + 1, 0, 5), color);
 							} else cauldron.setColor(i, color);
 							world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
 							stack.shrink(1);
