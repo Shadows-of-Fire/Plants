@@ -15,14 +15,13 @@ public class ControlledList extends ArrayList<IBlockState> {
 
 	@Override
 	public boolean add(IBlockState state) {
-		if (Plants2.clutter_cfg.getBoolean("Allow " + translate(state), Configuration.CATEGORY_GENERAL, true, "If this blockstate will generate")) ;
-		return super.add(state);
+		if (Plants2.clutter_cfg.getBoolean("Allow " + translate(state), Configuration.CATEGORY_GENERAL, true, "If this blockstate will generate")) return super.add(state);
+		return false;
 	}
 
 	@Override
 	public void add(int index, IBlockState state) {
-		if (Plants2.clutter_cfg.getBoolean("Allow " + translate(state), Configuration.CATEGORY_GENERAL, true, "If this blockstate will generate")) ;
-		super.add(index, state);
+		if (Plants2.clutter_cfg.getBoolean("Allow " + translate(state), Configuration.CATEGORY_GENERAL, true, "If this blockstate will generate")) super.add(index, state);
 	}
 
 	private String translate(IBlockState state) {
