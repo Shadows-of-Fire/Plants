@@ -418,7 +418,6 @@ public class TheBigBookOfEnums {
 	}
 
 	public static final Map<String, FlowerpotPlants> NAME_TO_ENUM = new HashMap<>();
-	public static final String P = "plants2";
 
 	public static enum FlowerpotPlants implements IFlowerEnum {
 		NONE,
@@ -712,7 +711,7 @@ public class TheBigBookOfEnums {
 		}
 
 		FlowerpotPlants(int light, EnumDyeColor color) {
-			this(P, light, color);
+			this(Constants.MODID, light, color);
 		}
 
 		FlowerpotPlants(EnumDyeColor color) {
@@ -763,8 +762,8 @@ public class TheBigBookOfEnums {
 		}
 
 		public ModelResourceLocation genMRL() {
-			if (isLoaded()) return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/" + modid), "type=" + this.getName());
-			return new ModelResourceLocation(new ResourceLocation("plants2:flowerpot/plants2"), "type=none");
+			if (isLoaded()) return new ModelResourceLocation(new ResourceLocation(Constants.MODID, "flowerpot/" + modid), "type=" + this.getName());
+			return new ModelResourceLocation(new ResourceLocation(Constants.MODID, "flowerpot/" + Constants.MODID), "type=none");
 		}
 
 	}
