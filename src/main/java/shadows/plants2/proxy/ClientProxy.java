@@ -8,6 +8,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEndRod;
 import net.minecraft.client.particle.ParticleSimpleAnimated;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.GlStateManager.DestFactor;
+import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -15,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -121,6 +125,16 @@ public class ClientProxy implements IProxy {
 	@Override
 	public String translate(String lang, Object... args) {
 		return I18n.format(lang, args);
+	}
+	
+	static final Random R = new Random(434235);
+	
+	@SubscribeEvent
+	public void bullshit(RenderGameOverlayEvent.Pre e) {
+		if(R.nextInt(900) == 1) GlStateManager.translate(4, 0, 2);
+		if(R.nextInt(666) == 0) GlStateManager.disableDepth();
+		if(R.nextInt(7050) <= 4) GlStateManager.blendFunc(SourceFactor.ONE, DestFactor.ONE_MINUS_DST_COLOR);
+		if(R.nextInt(4444) <= 54) GlStateManager.rotate(50, 0.4F, 0.2F, 0.1F);
 	}
 
 }
