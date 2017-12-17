@@ -17,19 +17,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BlockEnumBush;
-import shadows.plants2.client.RenamedStateMapper;
+import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.block.BlockEnumBush;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IHasRecipe;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.gen.forgotten.BushGen;
-import shadows.plants2.util.PlantUtil;
 
 public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, IPlantable, IHasRecipe {
 
@@ -44,12 +41,11 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
+			PlaceboUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("plants"));
+		Placebo.PROXY.useRenamedMapper(this, "plants");
 	}
 
 	@Override

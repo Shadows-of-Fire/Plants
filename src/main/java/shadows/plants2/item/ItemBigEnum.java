@@ -6,17 +6,18 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.placebo.interfaces.IPropertyEnum;
+import shadows.placebo.item.base.ItemBase;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.IPropertyEnum;
-import shadows.plants2.item.base.ItemBase;
-import shadows.plants2.util.PlantUtil;
 
 public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 
 	public final E[] values;
 
 	public ItemBigEnum(String name, E[] values) {
-		super(name);
+		super(name, Plants2.INFO);
 		setHasSubtypes(true);
 		this.values = values;
 	}
@@ -31,7 +32,7 @@ public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent ev) {
 		for (E e : values)
-			PlantUtil.sMRL("items", this, e.ordinal(), "item=" + e.getName());
+			PlaceboUtil.sMRL("items", this, e.ordinal(), "item=" + e.getName());
 	}
 
 	@Override

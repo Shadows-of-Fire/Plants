@@ -24,16 +24,16 @@ import net.minecraft.world.WorldProviderHell;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.item.base.ItemBase;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Config;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.item.base.ItemBase;
 import shadows.plants2.util.PlantUtil;
-import shadows.plants2.util.RecipeHelper;
 
 public final class ItemPlantball extends ItemBase implements IHasRecipe {
 
 	public ItemPlantball() {
-		super("plantball");
+		super("plantball", Plants2.INFO);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			}
 
 			else if (desert.getBlock().canPlaceBlockAt(world, pos.up())) {
-				if(isBlacklisted(desert)) return EnumActionResult.FAIL;
-				
+				if (isBlacklisted(desert)) return EnumActionResult.FAIL;
+
 				if (!world.isRemote) {
 					genFlowers(world, pos, desert);
 					if (world.rand.nextInt(10) == 0) genFlowers(world, pos, desert);
@@ -69,8 +69,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			}
 
 			else if (flower.getBlock().canPlaceBlockAt(world, pos.up())) {
-				if(isBlacklisted(flower)) return EnumActionResult.FAIL;
-				
+				if (isBlacklisted(flower)) return EnumActionResult.FAIL;
+
 				if (!world.isRemote) {
 					genFlowers(world, pos, flower);
 					if (world.rand.nextInt(10) == 0) genFlowers(world, pos, flower);
@@ -83,8 +83,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			}
 
 			else if (worldState.getBlock() instanceof BlockBush && !(worldState.getBlock().hasTileEntity(worldState))) {
-				if(isBlacklisted(worldState)) return EnumActionResult.FAIL;
-				
+				if (isBlacklisted(worldState)) return EnumActionResult.FAIL;
+
 				if (worldState.getBlock().getRegistryName().getResourceDomain().equals("plants2") || worldState.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
 
 					if (!world.isRemote) genFlowers(world, pos, worldState);
@@ -112,13 +112,13 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 		if (world.provider instanceof WorldProviderHell) PlantUtil.genFlowerPatchForNether(world, pos, world.rand, state);
 		else PlantUtil.genSmallFlowerPatchNearby(world, pos.up(), world.rand, state);
 	}
-	
+
 	private static Map<IBlockState, Boolean> CACHE = new HashMap<>();
-	
+
 	private static boolean isBlacklisted(IBlockState state) {
-		if(CACHE.getOrDefault(state, false)) return false;
-		if(Config.REGNAME_BL.getOrDefault(state.getBlock().getRegistryName(), false)) return true;
-		if(Config.MODID_BL.getOrDefault(state.getBlock().getRegistryName().getResourceDomain(), false)) return true;
+		if (CACHE.getOrDefault(state, false)) return false;
+		if (Config.REGNAME_BL.contains(state.getBlock().getRegistryName())) return true;
+		if (Config.MODID_BL.contains(state.getBlock().getRegistryName().getResourceDomain())) return true;
 		CACHE.put(state, true);
 		return false;
 	}
@@ -133,8 +133,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		RecipeHelper.addShapeless(new ItemStack(this, 5), "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant");
-		RecipeHelper.addShapeless(new ItemStack(this, 2), "plant", "plant", "plant", "plant");
+		Plants2.HELPER.addShapeless(new ItemStack(this, 5), "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant", "plant");
+		Plants2.HELPER.addShapeless(new ItemStack(this, 2), "plant", "plant", "plant", "plant");
 	}
 
 }

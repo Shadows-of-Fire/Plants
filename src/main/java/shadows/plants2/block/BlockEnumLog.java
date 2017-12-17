@@ -17,24 +17,24 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-import shadows.plants2.block.base.BlockEnum;
-import shadows.plants2.client.RenamedStateMapper;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.data.enums.ITreeEnum;
-import shadows.plants2.util.PlantUtil;
+import shadows.placebo.Placebo;
+import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.interfaces.ITreeEnum;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 
 public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> implements IHasRecipe {
 
 	public static final PropertyEnum<Axis> AXIS = PropertyEnum.create("axis", Axis.class);
 
 	public BlockEnumLog(String name, SoundType s, float hard, float res, Class<E> enumClass, int predicate) {
-		super(name, Material.WOOD, s, hard, res, enumClass, "type", (e) -> (e.getPredicateIndex() == predicate));
+		super(name, Material.WOOD, s, hard, res, enumClass, "type", (e) -> e.getPredicateIndex() == predicate, Plants2.INFO);
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(AXIS, Axis.Y));
 	}
 
@@ -101,9 +101,9 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("logs", this, i, AXIS.getName() + "=" + EnumAxis.Y.getName() + "," + property.getName() + "=" + types.get(i).getName());
+			PlaceboUtil.sMRL("logs", this, i, AXIS.getName() + "=" + EnumAxis.Y.getName() + "," + property.getName() + "=" + types.get(i).getName());
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("logs"));
+		Placebo.PROXY.useRenamedMapper(this, "logs");
 	}
 
 	@Override

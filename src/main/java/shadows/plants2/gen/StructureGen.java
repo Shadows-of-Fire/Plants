@@ -11,8 +11,8 @@ import net.minecraft.world.gen.structure.template.BlockRotationProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import shadows.placebo.interfaces.ITreeEnum;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.ITreeEnum;
 
 public class StructureGen extends EnumTreeGen<ITreeEnum> {
 

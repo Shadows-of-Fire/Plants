@@ -13,34 +13,29 @@ public class ParticleMessage implements IMessage {
 	public ParticleMessage() {
 	}
 
-	private int[] pos;
+	private BlockPos pos;
 
 	public ParticleMessage(BlockPos pos) {
-		this.pos = new int[] { pos.getX(), pos.getY(), pos.getZ() };
+		this.pos = pos;
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		pos = new int[3];
-		for (int i = 0; i < 3; i++)
-			pos[i] = buf.readInt();
+		pos = BlockPos.fromLong(buf.readLong());
 
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		for (int i = 0; i < 3; i++)
-			buf.writeInt(pos[i]);
-
+		buf.writeLong(pos.toLong());
 	}
 
 	public static class ParticleMessageHandler implements IMessageHandler<ParticleMessage, IMessage> {
 
 		@Override
 		public IMessage onMessage(ParticleMessage message, MessageContext ctx) {
-			BlockPos pos = new BlockPos(message.pos[0], message.pos[1], message.pos[2]);
 			Minecraft.getMinecraft().addScheduledTask(() -> {
-				Plants2.proxy.doCauldronInputParticles(pos);
+				Plants2.PROXY.doCauldronInputParticles(message.pos);
 			});
 			return null;
 		}

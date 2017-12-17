@@ -24,17 +24,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IShearable;
+import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.placebo.util.StackPrimer;
+import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockEnumHarvestBush;
-import shadows.plants2.block.base.BlockEnum;
-import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.init.ModRegistry;
-import shadows.plants2.util.PlantUtil;
 
 public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IShearable {
 
 	public BlockBushLeaves() {
-		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, BushSet.class);
+		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, BushSet.class, Plants2.INFO);
 		setTickRandomly(true);
 		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(BlockEnumHarvestBush.FRUIT, false));
 	}
@@ -42,7 +43,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < getProperty().getAllowedValues().size(); i++) {
-			PlantUtil.sMRL(this, i, "fruit=true," + "type=" + BushSet.values()[i].getName());
+			PlaceboUtil.sMRL(this, i, "fruit=true," + "type=" + BushSet.values()[i].getName());
 		}
 	}
 

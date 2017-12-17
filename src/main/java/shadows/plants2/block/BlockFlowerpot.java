@@ -16,7 +16,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -32,11 +31,11 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.IEnumBlock;
+import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.client.IHasModel;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 import shadows.plants2.client.FlowerpotStateMapper;
-import shadows.plants2.client.IHasModel;
 import shadows.plants2.compat.AAFlowerpot;
 import shadows.plants2.compat.BinnieIntegration.BotanyFlowerpot;
 import shadows.plants2.compat.BotaniaFlowerpot;
@@ -44,13 +43,12 @@ import shadows.plants2.compat.DefaultFlowerpot;
 import shadows.plants2.compat.ForestryIntegration.ForestryFlowerpot;
 import shadows.plants2.compat.IFlowerpotHandler;
 import shadows.plants2.compat.TFFlowerpot;
+import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
 import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.data.enums.TheBigBookOfEnums.FlowerpotPlants;
-import shadows.plants2.init.ModRegistry;
 import shadows.plants2.state.FlowerpotBlockState.FlowerpotStateContainer;
 import shadows.plants2.tile.TileFlowerpot;
-import shadows.plants2.util.PlantUtil;
 
 public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<FlowerpotPlants>, IHasModel {
 
@@ -60,14 +58,16 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	private final BlockStateContainer container;
 
 	public BlockFlowerpot() {
-		PlantUtil.setRegNameIllegally(this, "flower_pot");
+		PlaceboUtil.setRegNameIllegally(this, "flower_pot");
 		setUnlocalizedName(Constants.MODID + ".flowerpot");
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		container = createStateContainer();
 		setDefaultState(container.getBaseState().withProperty(PROP, FlowerpotPlants.NONE));
-		ModRegistry.BLOCKS.add(this);
-		ModRegistry.ITEMS.add(createItemBlock());
-		initModHandlers();
+		if (Config.flowerpot) {
+			Plants2.INFO.getBlockList().add(this);
+			Plants2.INFO.getItemList().add(createItemBlock());
+			initModHandlers();
+		}
 	}
 
 	private void initModHandlers() {
@@ -98,9 +98,8 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		PlantUtil.sMRL("flowerpot/plants2", this, 0, "inventory");
+		PlaceboUtil.sMRL(Constants.MODID, "flowerpot/plants2", this, 0, "inventory");
 		ModelLoader.setCustomStateMapper(this, new FlowerpotStateMapper());
 	}
 
@@ -199,9 +198,9 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	}
 
 	@Override
-	public Item createItemBlock() {
-		Item k = new ItemBlock(this);
-		PlantUtil.setRegNameIllegally(k, "flower_pot");
+	public ItemBlock createItemBlock() {
+		ItemBlock k = new ItemBlock(this);
+		PlaceboUtil.setRegNameIllegally(k, "flower_pot");
 		return k;
 	}
 

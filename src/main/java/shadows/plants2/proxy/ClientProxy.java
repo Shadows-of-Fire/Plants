@@ -8,7 +8,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEndRod;
 import net.minecraft.client.particle.ParticleSimpleAnimated;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -21,7 +20,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import shadows.plants2.client.IHasModel;
+import shadows.placebo.client.IHasModel;
+import shadows.plants2.Plants2;
 import shadows.plants2.compat.BinnieIntegration;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
@@ -64,9 +64,9 @@ public class ClientProxy implements IProxy {
 
 	@SubscribeEvent
 	public void onModelRegister(ModelRegistryEvent e) {
-		for (Block b : ModRegistry.BLOCKS)
+		for (Block b : Plants2.INFO.getBlockList())
 			if (b instanceof IHasModel) ((IHasModel) b).initModels(e);
-		for (Item i : ModRegistry.ITEMS)
+		for (Item i : Plants2.INFO.getItemList())
 			if (i instanceof IHasModel) ((IHasModel) i).initModels(e);
 	}
 
@@ -116,10 +116,5 @@ public class ClientProxy implements IProxy {
 			}
 		}
 		return j;
-	}
-
-	@Override
-	public String translate(String lang, Object... args) {
-		return I18n.format(lang, args);
 	}
 }

@@ -1,4 +1,4 @@
-package shadows.plants2.block.base;
+package shadows.plants2.block;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -20,15 +19,15 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.client.RenamedStateMapper;
+import shadows.placebo.Placebo;
+import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.interfaces.IPropertyEnum;
+import shadows.placebo.itemblock.ItemBlockEnum;
+import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.IPropertyEnum;
-import shadows.plants2.init.ModRegistry;
-import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
 
 public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E> {
@@ -39,15 +38,13 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	protected final BlockStateContainer realStateContainer;
 
 	public BlockEnumBush(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
-		super(name, true, type);
+		super(name, type);
 		this.valueFilter = (e) -> (e.getPredicateIndex() == predicate);
 		this.property = PropertyEnum.create("type", enumClass, valueFilter);
 		types.addAll(property.getAllowedValues());
 		if (types.size() > getMaxEnumValues()) throw new IllegalArgumentException("Trying to create a " + this.getClass().getSimpleName() + " with " + types.size() + " enum constants is invalid");
 		this.realStateContainer = createStateContainer();
 		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
-		Item k = createItemBlock();
-		if (k != null) ModRegistry.ITEMS.add(k);
 		for (E e : types)
 			e.set(this);
 	}
@@ -71,9 +68,9 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
+			PlaceboUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("plants"));
+		Placebo.PROXY.useRenamedMapper(this, "plants");
 	}
 
 	@Override

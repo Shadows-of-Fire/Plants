@@ -45,16 +45,14 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import shadows.placebo.client.IHasModel;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.itemblock.ItemBlockEnum;
 import shadows.plants2.Plants2;
-import shadows.plants2.client.IHasModel;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.init.ModRegistry;
-import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.network.ParticleMessage;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.util.ColorToPotionUtil;
-import shadows.plants2.util.RecipeHelper;
 
 public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel {
 
@@ -70,13 +68,13 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 		super(Material.IRON, MapColor.STONE);
 		setRegistryName("brewing_cauldron");
 		setUnlocalizedName(Constants.MODID + ".brewing_cauldron");
-		setCreativeTab(ModRegistry.TAB);
+		setCreativeTab(Constants.TAB);
 		setHardness(3F);
 		setResistance(10F);
 		setSoundType(SoundType.METAL);
 		setDefaultState(blockState.getBaseState().withProperty(LEVEL, 0));
-		ModRegistry.BLOCKS.add(this);
-		ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
+		Plants2.INFO.getBlockList().add(this);
+		Plants2.INFO.getItemList().add(new ItemBlock(this).setRegistryName(getRegistryName()));
 	}
 
 	@Override
@@ -257,13 +255,13 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		RecipeHelper.addShaped(this, 3, 3, "plant", "plant", "plant", Items.BLAZE_POWDER, Items.CAULDRON, Items.BLAZE_POWDER, Blocks.STONE_SLAB, Blocks.STONE_SLAB, Blocks.STONE_SLAB);
+		Plants2.HELPER.addShaped(this, 3, 3, "plant", "plant", "plant", Items.BLAZE_POWDER, Items.CAULDRON, Items.BLAZE_POWDER, Blocks.STONE_SLAB, Blocks.STONE_SLAB, Blocks.STONE_SLAB);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		Plants2.proxy.doCauldronParticles(state, world, pos, rand);
+		Plants2.PROXY.doCauldronParticles(state, world, pos, rand);
 
 	}
 

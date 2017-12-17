@@ -3,12 +3,15 @@ package shadows.plants2.data.enums;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import shadows.plants2.data.StackPrimer;
+import shadows.placebo.interfaces.IHarvestableEnum;
+import shadows.placebo.interfaces.IPlankEnum;
+import shadows.placebo.util.RecipeHelper;
+import shadows.placebo.util.StackPrimer;
+import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.init.ModRegistry;
-import shadows.plants2.util.RecipeHelper;
 
 public class LaterEnums {
 
@@ -128,7 +131,9 @@ public class LaterEnums {
 		BLACK_KAURI(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BLACK_KAURI.getMetadata())),
 		BRAZILLIAN_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BRAZILLIAN_PINE.getMetadata())),
 		INCENSE_CEDAR(new StackPrimer(ModRegistry.LOG_0, 1, Logs.INCENSE_CEDAR.getMetadata())),
-		MURRAY_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.MURRAY_PINE.getMetadata())),;
+		MURRAY_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.MURRAY_PINE.getMetadata())),
+		CRYSTAL(new StackPrimer(ModRegistry.CRYSTAL_LOG, 1, CrystalLogs.CRYSTAL.getMetadata())),
+		DARK_CRYSTAL(new StackPrimer(ModRegistry.CRYSTAL_LOG, 1, CrystalLogs.DARK_CRYSTAL.getMetadata()));
 
 		private StackPrimer primer;
 

@@ -5,8 +5,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import shadows.placebo.interfaces.ITreeEnum;
 import shadows.plants2.block.BlockEnumSapling;
-import shadows.plants2.data.enums.ITreeEnum;
 import shadows.plants2.gen.NetherGen;
 
 public class BlockNetherSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumSapling<E> {

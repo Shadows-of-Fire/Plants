@@ -15,12 +15,12 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
+import shadows.placebo.interfaces.IHarvestableEnum;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Config;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.data.enums.IHarvestableEnum;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.gen.NetherGen;
-import shadows.plants2.util.RecipeHelper;
 
 public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> implements IHasRecipe {
 
@@ -60,8 +60,8 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
-		RecipeHelper.addSimpleShapeless(Items.BLAZE_POWDER, Generic.BLAZE_PETAL.get(), 3);
-		RecipeHelper.addSimpleShapeless(Items.MAGMA_CREAM, Generic.MAGMA_JELLY.get(), 3);
+		Plants2.HELPER.addSimpleShapeless(Items.BLAZE_POWDER, Generic.BLAZE_PETAL.get(), 3);
+		Plants2.HELPER.addSimpleShapeless(Items.MAGMA_CREAM, Generic.MAGMA_JELLY.get(), 3);
 	}
 
 	@Override

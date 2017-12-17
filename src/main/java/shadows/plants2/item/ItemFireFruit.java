@@ -9,9 +9,9 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.util.PlantUtil;
-import shadows.plants2.util.RecipeHelper;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 
 public class ItemFireFruit extends ItemFoodBase implements IHasRecipe {
 
@@ -27,7 +27,7 @@ public class ItemFireFruit extends ItemFoodBase implements IHasRecipe {
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		RecipeHelper.addShapeless(new ItemStack(this, 1, 1), Items.SNOWBALL, this);
+		Plants2.HELPER.addShapeless(new ItemStack(this, 1, 1), Items.SNOWBALL, this);
 	}
 
 	@Override
@@ -39,8 +39,8 @@ public class ItemFireFruit extends ItemFoodBase implements IHasRecipe {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		PlantUtil.sMRL("items", this, 0, "item=" + getRegistryName().getResourcePath());
-		PlantUtil.sMRL("items", this, 1, "item=" + getRegistryName().getResourcePath() + "_cold");
+		PlaceboUtil.sMRL("items", this, 0, "item=" + getRegistryName().getResourcePath());
+		PlaceboUtil.sMRL("items", this, 1, "item=" + getRegistryName().getResourcePath() + "_cold");
 	}
 
 	@Override

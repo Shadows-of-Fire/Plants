@@ -6,11 +6,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
-import shadows.plants2.block.base.BlockEnumBush;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.data.enums.IFlowerEnum;
+import shadows.placebo.interfaces.IFlowerEnum;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.plants2.Plants2;
 import shadows.plants2.util.PlantUtil;
-import shadows.plants2.util.RecipeHelper;
 
 public class BlockEnumFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumBush<E> implements IHasRecipe {
 
@@ -21,7 +20,7 @@ public class BlockEnumFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumB
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {
-			if (e.useForRecipes()) RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 1, e.getMetadata()));
+			if (e.useForRecipes()) Plants2.HELPER.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 1, e.getMetadata()));
 		}
 	}
 

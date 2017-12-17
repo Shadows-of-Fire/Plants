@@ -45,12 +45,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import shadows.plants2.client.IHasModel;
+import shadows.placebo.client.IHasModel;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.init.ModRegistry;
-import shadows.plants2.util.RecipeHelper;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
@@ -72,10 +71,10 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 
 	public ItemExcalibur() {
 		super(toolMaterial);
-		setCreativeTab(ModRegistry.TAB);
+		setCreativeTab(Constants.TAB);
 		setUnlocalizedName(Constants.MODID + ".excalibur");
 		setRegistryName("excalibur");
-		ModRegistry.ITEMS.add(this);
+		Plants2.INFO.getItemList().add(this);
 	}
 
 	@Override
@@ -246,6 +245,6 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		RecipeHelper.addShapeless(this, ForgeRegistries.ITEMS.getValue(new ResourceLocation(Constants.BOTANIA_ID, "kingkey")));
+		Plants2.HELPER.addShapeless(this, ForgeRegistries.ITEMS.getValue(new ResourceLocation(Constants.BOTANIA_ID, "kingkey")));
 	}
 }

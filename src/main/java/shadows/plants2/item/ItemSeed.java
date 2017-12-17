@@ -14,11 +14,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import shadows.placebo.client.IHasModel;
+import shadows.placebo.interfaces.IPropertyEnum;
+import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockEnumCrop;
-import shadows.plants2.client.IHasModel;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.IPropertyEnum;
-import shadows.plants2.init.ModRegistry;
 
 public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds implements IHasModel {
 
@@ -34,8 +34,8 @@ public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds imple
 		cropVariant = variant;
 		setRegistryName(name);
 		setUnlocalizedName(Constants.MODID + "." + name);
-		setCreativeTab(ModRegistry.TAB);
-		ModRegistry.ITEMS.add(this);
+		setCreativeTab(Constants.TAB);
+		Plants2.INFO.getItemList().add(this);
 	}
 
 	@Override

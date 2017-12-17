@@ -1,12 +1,7 @@
 package shadows.plants2.init;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
-import net.minecraft.block.SoundType;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
@@ -31,10 +26,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.util.RecipeHelper;
+import shadows.placebo.util.StackPrimer;
+import shadows.plants2.Plants2;
 import shadows.plants2.biome.BiomeCrystalForest;
 import shadows.plants2.block.BlockBrewingCauldron;
 import shadows.plants2.block.BlockCataplant;
 import shadows.plants2.block.BlockCustomVine;
+import shadows.plants2.block.BlockEnumBush;
 import shadows.plants2.block.BlockEnumCrop;
 import shadows.plants2.block.BlockEnumDoubleFlower;
 import shadows.plants2.block.BlockEnumDoubleHarvestBush;
@@ -47,8 +48,6 @@ import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.BlockEnumSapling;
 import shadows.plants2.block.BlockFlowerpot;
-import shadows.plants2.block.base.BlockEnum;
-import shadows.plants2.block.base.BlockEnumBush;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
@@ -56,8 +55,6 @@ import shadows.plants2.block.forgotten.BlockCrystalGround;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IHasRecipe;
-import shadows.plants2.data.StackPrimer;
 import shadows.plants2.data.enums.LaterEnums.DoubleHarvestable;
 import shadows.plants2.data.enums.LaterEnums.Harvestable;
 import shadows.plants2.data.enums.LaterEnums.NetherHarvests;
@@ -87,23 +84,8 @@ import shadows.plants2.item.ItemSeed;
 import shadows.plants2.potion.PotionTypeBase;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
-import shadows.plants2.util.RecipeHelper;
 
 public class ModRegistry {
-
-	public static final List<Block> BLOCKS = new ArrayList<>();
-	public static final List<Item> ITEMS = new ArrayList<>();
-	public static final List<IRecipe> RECIPES = new ArrayList<>();
-	public static final List<PotionType> POTIONS = new ArrayList<>();
-	public static final List<Biome> BIOMES = new ArrayList<>();
-	public static final CreativeTabs TAB = new CreativeTabs("plants") {
-
-		@Override
-		public ItemStack getTabIconItem() {
-			return new ItemStack(PLANT_1, 1, Plants.ALLIUM_C.ordinal() % 16);
-		}
-
-	};
 
 	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumFlower<>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
 	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumFlower<>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
@@ -173,16 +155,16 @@ public class ModRegistry {
 
 	public static final BlockEnum<Crystals> CRYSTAL = new BlockCrystal();
 	public static final Block GROUNDCOVER = new BlockCrystalGround();
-	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockEnumLog<>("crystal_log", SoundType.GLASS, 1.5F, 5F, CrystalLogs.class, 0);
-	public static final BlockEnumSapling<CrystalLogs> CRYSTAL_SAP = new BlockEnumSapling<>("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0, GROUNDCOVER);
-	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockEnumLeaves<>("crystal_leaves", SoundType.GLASS, 0.4F, 0, CRYSTAL_SAP, CrystalLogs.class, 0);
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockCrystal.Logs();
+	public static final BlockEnumSapling<CrystalLogs> CRYSTAL_SAP = new BlockCrystal.Sapling();
+	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockCrystal.Leaves();
 
 	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<>("planks", Planks.class, 0);
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
-	public static final Block BUSHLING = new BlockBushling();
+	public static final BlockEnumBush<BushSet> BUSHLING = new BlockBushling();
 
-	public static final Block FLOWERPOT = Config.flowerpot ? new BlockFlowerpot() : null;
+	public static final Block FLOWERPOT = new BlockFlowerpot();
 
 	public static final Block CATAPLANT = new BlockCataplant();
 
@@ -207,29 +189,29 @@ public class ModRegistry {
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
-		event.getRegistry().registerAll(BLOCKS.toArray(new Block[0]));
+		event.getRegistry().registerAll(Plants2.INFO.getBlockList().toArray(new Block[0]));
 	}
 
 	@SubscribeEvent
 	public void onItemRegister(Register<Item> event) {
-		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
+		event.getRegistry().registerAll(Plants2.INFO.getItemList().toArray(new Item[0]));
 		if (Config.excalibur && Loader.isModLoaded(Constants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
 	}
 
 	@SubscribeEvent
 	public void onRecipeRegister(Register<IRecipe> event) {
 		recipes(event);
-		event.getRegistry().registerAll(RECIPES.toArray(new IRecipe[0]));
+		event.getRegistry().registerAll(Plants2.INFO.getRecipeList().toArray(new IRecipe[0]));
 	}
 
 	@SubscribeEvent
 	public void onPotionRegister(Register<PotionType> event) {
-		event.getRegistry().registerAll(POTIONS.toArray(new PotionType[0]));
+		event.getRegistry().registerAll(Plants2.INFO.getPotionTypeList().toArray(new PotionType[0]));
 	}
 
 	@SubscribeEvent
 	public void onBiomeRegister(Register<Biome> event) {
-		event.getRegistry().registerAll(BIOMES.toArray(new Biome[0]));
+		event.getRegistry().registerAll(Plants2.INFO.getBiomeList().toArray(new Biome[0]));
 	}
 
 	public static void oreDict(FMLInitializationEvent e) {
@@ -257,22 +239,22 @@ public class ModRegistry {
 	}
 
 	public static void recipes(Register<IRecipe> e) {
-		for (Block block : BLOCKS) {
+		for (Block block : Plants2.INFO.getBlockList()) {
 			if (block instanceof IHasRecipe) ((IHasRecipe) block).initRecipes(e);
 		}
-		for (Item item : ITEMS) {
+		for (Item item : Plants2.INFO.getItemList()) {
 			if (item instanceof IHasRecipe) ((IHasRecipe) item).initRecipes(e);
 		}
-		RecipeHelper.addSimpleShapeless(new ItemStack(Items.STRING, 2), Generic.COTTON.get(), 5);
+		Plants2.HELPER.addSimpleShapeless(new ItemStack(Items.STRING, 2), Generic.COTTON.get(), 5);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.SMOLDERBERRY.get(), PotionTypes.FIRE_RESISTANCE);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.EMBERROOT.get(), PotionTypes.STRENGTH);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, PHYTOLACCA_A, WITHER);
 		RecipeHelper.addPotionRecipe(PotionTypes.HEALING, AMBROSIA_A, REGEN_HEAL);
-		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.LIGHT_BLUE.getDyeDamage()), BLUEBERRY);
-		RecipeHelper.addShapeless(Generic.DYE_BLACK.get(), BLACKBERRY);
-		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.ORANGE.getDyeDamage()), SAFFRON);
-		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.PINK.getDyeDamage()), RASPBERRY);
-		RecipeHelper.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), HUCKLEBERRY);
+		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.LIGHT_BLUE.getDyeDamage()), BLUEBERRY);
+		Plants2.HELPER.addShapeless(Generic.DYE_BLACK.get(), BLACKBERRY);
+		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.ORANGE.getDyeDamage()), SAFFRON);
+		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.PINK.getDyeDamage()), RASPBERRY);
+		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), HUCKLEBERRY);
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {

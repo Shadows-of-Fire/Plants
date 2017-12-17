@@ -1,4 +1,4 @@
-package shadows.plants2.block.base;
+package shadows.plants2.block;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import shadows.plants2.client.IHasModel;
+import shadows.placebo.Placebo;
+import shadows.placebo.client.IHasModel;
+import shadows.placebo.interfaces.IPostInitUpdate;
+import shadows.placebo.interfaces.ISpecialPlacement;
+import shadows.placebo.itemblock.ItemBlockBase;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
-import shadows.plants2.data.IPostInitUpdate;
-import shadows.plants2.init.ModRegistry;
-import shadows.plants2.util.ISpecialPlacement;
 import shadows.plants2.util.PlantUtil;
 
 public abstract class BushBase extends BlockBush implements IHasModel, IShearable, IPostInitUpdate, ISpecialPlacement {
@@ -30,24 +31,25 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	protected final EnumPlantType type;
 	public static final AxisAlignedBB AABB = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.75D, 0.8D);
 
-	public BushBase(String name, boolean hasCustomItemBlock, EnumPlantType type) {
+	public BushBase(String name, EnumPlantType type) {
 		setRegistryName(name);
-		setUnlocalizedName(Constants.MODID + "." + name);
-		setCreativeTab(ModRegistry.TAB);
+		setUnlocalizedName(Plants2.INFO.getID() + "." + name);
+		setCreativeTab(Plants2.INFO.getDefaultTab());
 		this.type = type;
 		setTickRandomly(false);
 		setSoundType(SoundType.PLANT);
-		ModRegistry.BLOCKS.add(this);
-		if (!hasCustomItemBlock) ModRegistry.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
-		Constants.UPDATES.add(this);
-	}
-
-	public BushBase(String name, EnumPlantType type) {
-		this(name, false, type);
+		Plants2.INFO.getBlockList().add(this);
+		ItemBlock ib = createItemBlock();
+		if(ib != null) Plants2.INFO.getItemList().add(ib);
+		Placebo.UPDATES.add(this);
 	}
 
 	public BushBase(String name) {
-		this(name, false, EnumPlantType.Plains);
+		this(name, EnumPlantType.Plains);
+	}
+
+	public ItemBlock createItemBlock() {
+		return new ItemBlockBase(this);
 	}
 
 	@Override

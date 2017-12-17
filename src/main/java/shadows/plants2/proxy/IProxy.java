@@ -20,7 +20,5 @@ public interface IProxy {
 	void doCauldronParticles(IBlockState state, World world, BlockPos pos, Random rand);
 
 	void doCauldronInputParticles(BlockPos pos);
-	
-	String translate(String lang, Object... args);
 
 }

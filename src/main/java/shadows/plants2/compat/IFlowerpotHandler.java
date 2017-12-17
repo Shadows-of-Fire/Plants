@@ -3,7 +3,7 @@ package shadows.plants2.compat;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import shadows.plants2.util.PlantUtil;
+import shadows.placebo.util.PlaceboUtil;
 
 public interface IFlowerpotHandler {
 
@@ -18,7 +18,7 @@ public interface IFlowerpotHandler {
 	}
 
 	public default boolean owns(IForgeRegistryEntry<?> entry) {
-		return PlantUtil.isOwnedBy(entry, getModId());
+		return PlaceboUtil.isOwnedBy(entry, getModId());
 	}
 
 }

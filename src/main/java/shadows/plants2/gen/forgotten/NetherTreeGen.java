@@ -17,8 +17,8 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import shadows.plants2.block.base.IEnumBlock;
-import shadows.plants2.data.enums.ITreeEnum;
+import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.interfaces.ITreeEnum;
 
 public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator {
 	protected final IBlockState leaf;

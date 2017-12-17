@@ -21,14 +21,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.IShearable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BlockEnum;
-import shadows.plants2.client.RenamedStateMapper;
-import shadows.plants2.data.enums.ITreeEnum;
-import shadows.plants2.util.PlantUtil;
+import shadows.placebo.Placebo;
+import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.interfaces.ITreeEnum;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 
 public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> implements IShearable {
 
@@ -36,7 +34,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	private int[] surroundings = new int[32768];
 
 	public BlockEnumLeaves(String name, SoundType s, float hard, float res, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
-		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> (e.getPredicateIndex() == predicate));
+		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> e.getPredicateIndex() == predicate, Plants2.INFO);
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(BlockLeaves.DECAYABLE, false).withProperty(BlockLeaves.CHECK_DECAY, false));
 		this.sapling = sapling;
 		setTickRandomly(true);
@@ -68,12 +66,11 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("leaves", this, i, "check_decay=false,decayable=false," + property.getName() + "=" + types.get(i).getName());
+			PlaceboUtil.sMRL("leaves", this, i, "check_decay=false,decayable=false," + property.getName() + "=" + types.get(i).getName());
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("leaves"));
+		Placebo.PROXY.useRenamedMapper(this, "leaves");
 	}
 
 	@Override

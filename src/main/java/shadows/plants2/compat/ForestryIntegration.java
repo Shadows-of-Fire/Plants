@@ -11,11 +11,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.interfaces.IFlowerEnum;
+import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.plants2.block.BlockEnumDoubleFlower;
-import shadows.plants2.block.base.IEnumBlock;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.IFlowerEnum;
-import shadows.plants2.data.enums.IPropertyEnum;
 import shadows.plants2.util.PlantUtil;
 
 public class ForestryIntegration {

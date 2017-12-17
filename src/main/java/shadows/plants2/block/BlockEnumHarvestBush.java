@@ -17,16 +17,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BlockEnumBush;
-import shadows.plants2.client.RenamedStateMapper;
+import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.IHarvestableEnum;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.placebo.util.StackPrimer;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.StackPrimer;
-import shadows.plants2.data.enums.IHarvestableEnum;
 import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends BlockEnumBush<E> implements IGrowable {
@@ -48,9 +47,9 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("harvestables", this, i, "fruit=true,inventory=true," + property.getName() + "=" + types.get(i).getName());
+			PlaceboUtil.sMRL("harvestables", this, i, "fruit=true,inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("harvestables"));
+		Placebo.PROXY.useRenamedMapper(this, "harvestables");
 	}
 
 	@Override

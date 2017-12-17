@@ -35,6 +35,16 @@
 					"all": "plants2:blocks/cosmetic/tree/murray_pine_planks"
 				}
 			},
+			"crystal_planks": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/c_plank"
+				}
+			},
+			"dark_crystal_planks": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/dc_plank"
+				}
+			},
 			"crystal_block": {
 				"textures": {
 					"all": "plants2:blocks/forgotten/crystal/c_block"

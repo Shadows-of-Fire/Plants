@@ -17,11 +17,16 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.IFlowerEnum;
+import shadows.placebo.interfaces.IParticleProvider;
+import shadows.placebo.interfaces.IPostInitUpdate;
+import shadows.placebo.interfaces.IPropertyEnum;
+import shadows.placebo.interfaces.ITreeEnum;
+import shadows.placebo.util.RecipeHelper;
+import shadows.placebo.util.StackPrimer;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IPostInitUpdate;
-import shadows.plants2.data.StackPrimer;
 import shadows.plants2.init.ModRegistry;
-import shadows.plants2.util.RecipeHelper;
 
 public class TheBigBookOfEnums {
 
@@ -394,7 +399,7 @@ public class TheBigBookOfEnums {
 
 		BushSet(String dropName) {
 			this.dropName = dropName;
-			Constants.UPDATES.add(this);
+			Placebo.UPDATES.add(this);
 		}
 
 		public StackPrimer getHarvest() {

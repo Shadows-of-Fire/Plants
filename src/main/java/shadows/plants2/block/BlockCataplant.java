@@ -14,7 +14,6 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import shadows.plants2.block.base.BushBase;
 import shadows.plants2.data.Config;
 
 public class BlockCataplant extends BushBase {

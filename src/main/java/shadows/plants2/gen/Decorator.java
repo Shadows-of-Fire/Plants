@@ -22,6 +22,7 @@ public class Decorator {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void genFlowers(DecorateBiomeEvent.Decorate event) {
 		if (!Config.all_generation) return;
+		if (Config.DIM_BL.contains(event.getWorld().provider.getDimension())) return;
 		if (Config.flower_gen && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS) {
 			BlockPos pos = event.getPos();
 			for (int ih = Config.numTries; ih > 0; ih--) {
@@ -42,6 +43,7 @@ public class Decorator {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void genDesertFlowers(DecorateBiomeEvent.Decorate event) {
 		if (!Config.all_generation) return;
+		if (Config.DIM_BL.contains(event.getWorld().provider.getDimension())) return;
 		if (event.getWorld().getBiome(event.getPos().add(8, 0, 8)) instanceof BiomeBeach) return;
 		if (Config.desert_gen && !event.getWorld().isRemote && (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
 			BlockPos pos = event.getPos();
@@ -74,6 +76,7 @@ public class Decorator {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void genVines(DecorateBiomeEvent.Decorate event) {
 		if (!Config.all_generation) return;
+		if (Config.DIM_BL.contains(event.getWorld().provider.getDimension())) return;
 		if (Config.vine_gen && !event.getWorld().isRemote && event.getRand().nextInt(30) == 0 && event.getType() == EventType.FLOWERS) {
 			EnumFacing facing = EnumFacing.HORIZONTALS[event.getRand().nextInt(4)];
 			World world = event.getWorld();

@@ -20,17 +20,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.client.RenamedStateMapper;
+import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.IFlowerEnum;
+import shadows.placebo.itemblock.ItemBlockEnum;
+import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.IFlowerEnum;
-import shadows.plants2.itemblock.ItemBlockEnum;
 import shadows.plants2.util.PlantUtil;
-import shadows.plants2.util.RecipeHelper;
 
 public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumFlower<E> {
 
@@ -50,9 +50,9 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("double_plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName() + ",upper=true");
+			PlaceboUtil.sMRL("double_plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName() + ",upper=true");
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("double_plants"));
+		Placebo.PROXY.useRenamedMapper(this, "double_plants");
 	}
 
 	@Override
@@ -194,7 +194,7 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {
-			if (e.useForRecipes()) RecipeHelper.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 3, e.getMetadata()));
+			if (e.useForRecipes()) Plants2.HELPER.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 3, e.getMetadata()));
 		}
 	}
 

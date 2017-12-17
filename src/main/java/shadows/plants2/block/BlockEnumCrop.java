@@ -26,14 +26,10 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BlockEnumBush;
-import shadows.plants2.client.RenamedStateMapper;
+import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.plants2.data.Config;
-import shadows.plants2.data.enums.IPropertyEnum;
 import shadows.plants2.init.ModRegistry;
 
 public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumBush<E> implements IGrowable {
@@ -116,9 +112,8 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("crops"));
+		Placebo.PROXY.useRenamedMapper(this, "crops");
 	}
 
 	@Override

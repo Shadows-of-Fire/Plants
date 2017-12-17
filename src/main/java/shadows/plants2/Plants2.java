@@ -19,10 +19,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import shadows.placebo.registry.RegistryInformation;
+import shadows.placebo.util.RecipeHelper;
 import shadows.plants2.compat.ForestryIntegration;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.IPostInitUpdate;
 import shadows.plants2.gen.Decorator;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.network.ParticleMessage;
@@ -34,59 +35,54 @@ import shadows.plants2.util.PlantUtil;
 public class Plants2 {
 
 	@Instance
-	public static Plants2 instance;
+	public static Plants2 INSTANCE;
 
 	@SidedProxy(clientSide = "shadows.plants2.proxy.ClientProxy", serverSide = "shadows.plants2.proxy.ServerProxy")
-	public static IProxy proxy;
+	public static IProxy PROXY;
 
-	public static Configuration config;
-	public static Configuration clutter_cfg;
+	public static Configuration CONFIG;
+	public static Configuration ALT_CONFIG;
 
 	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
 	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Constants.MODID);
 	private static int disc = 0;
 
+	public static final RegistryInformation INFO = new RegistryInformation(Constants.MODID, Constants.TAB);
+
+	public static final RecipeHelper HELPER = new RecipeHelper(Constants.MODID, Constants.MODNAME, INFO.getRecipeList());
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
-		config = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
-		clutter_cfg = new Configuration(new File(e.getModConfigurationDirectory(), "plants_blocks.cfg"));
-		config.load();
+		CONFIG = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
+		ALT_CONFIG = new Configuration(new File(e.getModConfigurationDirectory(), "plants_blocks.cfg"));
+		CONFIG.load();
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
-		Config.syncConfig(config);
+		Config.syncConfig(CONFIG);
 		ModRegistry.tiles(e);
-		proxy.preInit(e);
-		if (config.hasChanged()) config.save();
-		//AdvancementHelper.preInit(e);  Maybe in the future, or maybe delete instead.
+		PROXY.preInit(e);
+		if (CONFIG.hasChanged()) CONFIG.save();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
 		MinecraftForge.TERRAIN_GEN_BUS.register(new Decorator());
 		ModRegistry.oreDict(e);
-		proxy.init(e);
+		PROXY.init(e);
 		NETWORK.registerMessage(ParticleMessageHandler.class, ParticleMessage.class, disc++, Side.CLIENT);
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
-		clutter_cfg.load();
+		ALT_CONFIG.load();
 		ModRegistry.generators(e);
 
-		for (IPostInitUpdate toUpdate : Constants.UPDATES) {
-			toUpdate.postInit(e);
-		}
-
-		proxy.postInit(e);
-		LOGGER.log(Level.INFO, String.format("Plants is using %d block ids and %d item ids", ModRegistry.BLOCKS.size(), ModRegistry.ITEMS.size()));
-		ModRegistry.ITEMS.clear();
-		ModRegistry.BLOCKS.clear();
-		ModRegistry.RECIPES.clear();
-		ModRegistry.POTIONS.clear();
-		Constants.UPDATES.clear();
+		PROXY.postInit(e);
+		LOGGER.log(Level.INFO, String.format("Plants is using %d block ids and %d item ids", INFO.getBlockList().size(), INFO.getItemList().size()));
+		INFO.purge();
 		PlantUtil.mergeToDefaultLate();
 
 		if (Loader.isModLoaded(Constants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
-		if(clutter_cfg.hasChanged()) clutter_cfg.save();
+		if (ALT_CONFIG.hasChanged()) ALT_CONFIG.save();
 	}
 }

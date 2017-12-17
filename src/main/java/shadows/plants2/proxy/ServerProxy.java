@@ -33,11 +33,5 @@ public class ServerProxy implements IProxy {
 	@Override
 	public void doCauldronInputParticles(BlockPos pos) {
 	}
-	
-	@Override
-	@Deprecated
-	public String translate(String lang, Object... args) {
-		return net.minecraft.util.text.translation.I18n.translateToLocalFormatted(lang, args);
-	}
 
 }

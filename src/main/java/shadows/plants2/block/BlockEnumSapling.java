@@ -16,15 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import shadows.plants2.block.base.BlockEnumBush;
-import shadows.plants2.client.RenamedStateMapper;
+import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.ITreeEnum;
+import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.data.Constants;
-import shadows.plants2.data.enums.ITreeEnum;
-import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable {
 
@@ -112,12 +108,11 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
-			PlantUtil.sMRL("saplings", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
+			PlaceboUtil.sMRL("saplings", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
-		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper("saplings"));
+		Placebo.PROXY.useRenamedMapper(this, "saplings");
 	}
 
 	@Override

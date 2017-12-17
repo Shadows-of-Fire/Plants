@@ -1,7 +1,7 @@
 package shadows.plants2.data;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
@@ -38,9 +38,13 @@ public class Config {
 	public static int cropGrowthChance = 15;
 
 	public static boolean hardNether = false;
-	
-	public static final Map<ResourceLocation, Boolean> REGNAME_BL = new HashMap<>();
-	public static final Map<String, Boolean> MODID_BL = new HashMap<>();
+
+	public static final List<ResourceLocation> REGNAME_BL = new ArrayList<>();
+	public static final List<String> MODID_BL = new ArrayList<>();
+
+	public static final List<Integer> DIM_BL = new ArrayList<>();
+
+	public static boolean crystalForest = true;
 
 	public static void syncConfig(Configuration config) {
 
@@ -77,13 +81,19 @@ public class Config {
 		cropGrowthChance = config.getInt("Crop Growth Chance", "general", 15, 1, 500, "Higher numbers will slow growth of crops.");
 
 		hardNether = config.getBoolean("Require Soul Sand", "nether", false, "Enabling this will make all nether harvestables only grow on soul sand");
-	
+
 		String[] pb = config.getStringList("Plantball Blacklist", "plantball", new String[0], "A list of blacklisted registry names, or modids.  Strings without a \":\" will be treated as modids.");
-		
-		for(String s : pb) {
-			if(s.contains(":")) REGNAME_BL.put(new ResourceLocation(s), true);
-			else MODID_BL.put(s, true);
+
+		for (String s : pb) {
+			if (s.contains(":")) REGNAME_BL.add(new ResourceLocation(s));
+			else MODID_BL.add(s);
 		}
+
+		String[] dimbl = config.getStringList("Dimension Blacklist", g, new String[0], "A list of dimension IDs that Plants will not try to generate in.");
+		for (String s : dimbl)
+			DIM_BL.add(Integer.parseInt(s));
+
+		crystalForest = config.getBoolean("Crystal Forest", "biomes", true, "Toggle for the Crystal Forest");
 		
 	}
 
