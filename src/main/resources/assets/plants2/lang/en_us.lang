@@ -260,3 +260,14 @@ lingering_potion.effect.plants2.cauldron_brew=Lingering Cauldron Brew
 tipped_arrow.effect.plants2.regen_heal=Arrow of Regenerative Healing
 tipped_arrow.effect.plants2.wither=Arrow of Withering
 tile.plants2.brewing_cauldron.name=Magical Brewing Cauldron
+
+tile.plants2.allium_drumstick.name=Allium Drumstick
+tile.plants2.bachelors_button.name=Bachelor's Button
+tile.plants2.billy_buttons.name=Billy Buttons
+tile.plants2.delphinium_belladonna.name=Delphinium Belladonna
+tile.plants2.fernflower_yarrow.name=Fernflower Yarrow
+tile.plants2.gerbera_daisy.name=Gerbera Daisy
+tile.plants2.hydrangea.name=Hydrangea
+tile.plants2.red_rover.name=Red Rover
+tile.plants2.snapdragon.name=Snapdragon
+tile.plants2.star_of_bethlehem.name=Star of Bethlehem

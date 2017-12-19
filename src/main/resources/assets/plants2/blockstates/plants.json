@@ -533,6 +533,56 @@
 				"textures": {
 					"cross": "plants2:blocks/forgotten/bush/sap_huckleberry"
 				}
+			},
+			"allium_drumstick": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/allium_drumstick"
+				}
+			},
+			"bachelors_button": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/bachelors_button"
+				}
+			},
+			"billy_buttons": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/billy_buttons"
+				}
+			},
+			"delphinium_belladonna": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/delphinium_belladonna"
+				}
+			},
+			"fernflower_yarrow": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/fernflower_yarrow"
+				}
+			},
+			"gerbera_daisy": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/gerbera_daisy"
+				}
+			},
+			"hydrangea": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/hydrangea"
+				}
+			},
+			"red_rover": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/red_rover"
+				}
+			},
+			"snapdragon": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/snapdragon"
+				}
+			},
+			"star_of_bethlehem": {
+				"textures": {
+					"cross": "plants2:blocks/forgotten/flower/star_of_bethlehem"
+				}
 			}
 		},
 		"inventory": {

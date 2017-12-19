@@ -92,6 +92,7 @@ public class ModRegistry {
 	public static final BlockEnumBush<Plants> PLANT_2 = new BlockEnumFlower<>("cosmetic_2", EnumPlantType.Plains, Plants.class, 2);
 	public static final BlockEnumBush<Plants> PLANT_3 = new BlockEnumFlower<>("cosmetic_3", EnumPlantType.Plains, Plants.class, 3);
 	public static final BlockEnumBush<Plants> PLANT_4 = new BlockEnumFlower<>("cosmetic_4", EnumPlantType.Plains, Plants.class, 4);
+	public static final BlockEnumBush<Plants> PLANT_5 = new BlockEnumFlower<>("cosmetic_5", EnumPlantType.Plains, Plants.class, 5);
 
 	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumFlower<>("desert_0", EnumPlantType.Desert, Desert.class, 0);
 	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumFlower<>("desert_1", EnumPlantType.Desert, Desert.class, 1);
@@ -134,8 +135,8 @@ public class ModRegistry {
 	public static final BlockEnumBush<Harvestable> HARVEST_1 = new BlockEnumHarvestBush<>("harvest_1", EnumPlantType.Plains, Harvestable.class, 1);
 	public static final BlockEnumBush<NetherHarvests> NETHER_HARVEST = new BlockEnumNetherHarvest<>("nether_harvest", NetherHarvests.class, 0);
 
-	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<>("crop_0", Crops.class, 0, new Item[] { AMARANTHUS_H, OKRA }, new Item[] { AMARANTHUS_H_SEEDS, OKRA_SEEDS });
-	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<>("crop_1", Crops.class, 1, new Item[] { PINEAPPLE, null }, new Item[] { PINEAPPLE_SEEDS, null });
+	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<>("crop_0", Crops.class, 0, AMARANTHUS_H, OKRA, AMARANTHUS_H_SEEDS, OKRA_SEEDS);
+	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<>("crop_1", Crops.class, 1, PINEAPPLE, null, PINEAPPLE_SEEDS, null );
 
 	public static final BlockEnumBush<DoubleHarvestable> DOUBLE_HARVEST_0 = new BlockEnumDoubleHarvestBush<>("double_harvest_0", EnumPlantType.Plains, DoubleHarvestable.class, 0);
 

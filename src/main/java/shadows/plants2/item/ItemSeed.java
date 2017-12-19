@@ -59,8 +59,8 @@ public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds imple
 		return crop == null ? crop = defineCropState() : crop;
 	}
 
+	@SuppressWarnings("unchecked") //Java u suck
 	private IBlockState defineCropState() {
-		@SuppressWarnings("unchecked") //Java u suck
 		BlockEnumCrop<E> b = (BlockEnumCrop<E>) ForgeRegistries.BLOCKS.getValue(new ResourceLocation(cropName));
 		return b.getStateFor(cropVariant).withProperty(BlockCrops.AGE, 0);
 	}

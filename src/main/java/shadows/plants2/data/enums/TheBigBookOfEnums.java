@@ -175,7 +175,18 @@ public class TheBigBookOfEnums {
 		TRILLIUM(true, EnumDyeColor.WHITE),
 		VERATRUM_V(false, EnumDyeColor.GREEN),
 		VERONICA_A(true, EnumDyeColor.LIGHT_BLUE),
-		VIOLA_C(true, EnumDyeColor.PURPLE),;
+		VIOLA_C(true, EnumDyeColor.PURPLE),
+		ALLIUM_DRUMSTICK(true, EnumDyeColor.PINK),
+		BACHELORS_BUTTON(true, EnumDyeColor.BLUE),
+		BILLY_BUTTONS(true, EnumDyeColor.YELLOW),
+		DELPHINIUM_BELLADONNA(true, EnumDyeColor.BLUE),
+		FERNFLOWER_YARROW(true, EnumDyeColor.YELLOW),
+		GERBERA_DAISY(true, EnumDyeColor.PINK),
+		HYDRANGEA(true, EnumDyeColor.PURPLE),
+		RED_ROVER(true, EnumDyeColor.RED),
+		SNAPDRAGON(true, EnumDyeColor.RED),
+		STAR_OF_BETHLEHEM(true, EnumDyeColor.WHITE),
+		;
 
 		EnumDyeColor color;
 		boolean flowers;
