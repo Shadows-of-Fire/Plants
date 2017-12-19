@@ -120,7 +120,7 @@ public class ClientProxy implements IProxy {
 		}
 		return j;
 	}
-	
+
 	@Override
 	public void potStateMap(BlockFlowerpot flowerpot) {
 		ModelLoader.setCustomStateMapper(flowerpot, new FlowerpotStateMapper());

@@ -94,7 +94,7 @@ public class Config {
 			DIM_BL.add(Integer.parseInt(s));
 
 		crystalForest = config.getBoolean("Crystal Forest", "biomes", true, "Toggle for the Crystal Forest");
-		
+
 	}
 
 }

@@ -127,36 +127,36 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		public Logs() {
 			super("crystal_log", SoundType.GLASS, 1.5F, 5F, CrystalLogs.class, 0);
 		}
-		
+
 		@Override
 		public int getLightValue(IBlockState state) {
 			return 15;
 		}
 	}
-	
+
 	public static class Leaves extends BlockEnumLeaves<CrystalLogs> {
 
 		public Leaves() {
 			super("crystal_leaves", SoundType.GLASS, 0.4F, 0, ModRegistry.CRYSTAL_SAP, CrystalLogs.class, 0);
 		}
-		
+
 		@Override
 		public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 			drops.add(state.getValue(property) == CrystalLogs.CRYSTAL ? Crystals.CRYSTAL_SHARD.get(quantityDropped(RANDOM)) : Crystals.DARK_CRYSTAL_SHARD.get(quantityDropped(RANDOM)));
 		}
-		
+
 		@Override
 		public int getLightValue(IBlockState state) {
 			return 15;
 		}
 	}
-	
+
 	public static class Sapling extends BlockEnumSapling<CrystalLogs> {
 
 		public Sapling() {
 			super("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.class, 0, ModRegistry.GROUNDCOVER);
 		}
-		
+
 		@Override
 		public int getLightValue(IBlockState state) {
 			return 7;

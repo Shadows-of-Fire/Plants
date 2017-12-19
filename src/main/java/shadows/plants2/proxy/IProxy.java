@@ -26,9 +26,9 @@ public interface IProxy {
 
 	default void doCauldronInputParticles(BlockPos pos) {
 	}
-	
+
 	default void potStateMap(BlockFlowerpot flowerpot) {
-		
+
 	}
 
 }

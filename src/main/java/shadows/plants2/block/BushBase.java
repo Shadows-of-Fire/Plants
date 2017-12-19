@@ -40,7 +40,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 		setSoundType(SoundType.PLANT);
 		Plants2.INFO.getBlockList().add(this);
 		ItemBlock ib = createItemBlock();
-		if(ib != null) Plants2.INFO.getItemList().add(ib);
+		if (ib != null) Plants2.INFO.getItemList().add(ib);
 		Placebo.UPDATES.add(this);
 	}
 

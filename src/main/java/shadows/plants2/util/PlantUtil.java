@@ -149,7 +149,7 @@ public class PlantUtil {
 			return new ItemStack(Items.DYE, size, c.getDyeDamage());
 		}
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public static String sneakyConfigTranslate(String lang) {
 		return net.minecraft.util.text.translation.I18n.translateToFallback(lang);
