@@ -164,9 +164,9 @@ public class ModRegistry {
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final BlockEnumBush<BushSet> BUSHLING = new BlockBushling();
 
-	public static final Block FLOWERPOT = new BlockFlowerpot();
+	public static final BlockFlowerpot FLOWERPOT = new BlockFlowerpot();
 
-	public static final Block CATAPLANT = new BlockCataplant();
+	public static final BlockCataplant CATAPLANT = new BlockCataplant();
 
 	public static final WorldGenerator ASH_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.ASH);
 	public static final WorldGenerator BLAZE_TREE = new NetherTreeGen<>(NETHER_LOG, NETHER_LEAF, NetherLogs.BLAZE);

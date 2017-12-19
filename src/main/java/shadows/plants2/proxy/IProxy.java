@@ -8,17 +8,27 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import shadows.plants2.block.BlockFlowerpot;
 
 public interface IProxy {
 
-	void preInit(FMLPreInitializationEvent e);
+	default void preInit(FMLPreInitializationEvent e) {
+	}
 
-	void init(FMLInitializationEvent e);
+	default void init(FMLInitializationEvent e) {
+	}
 
-	void postInit(FMLPostInitializationEvent e);
+	default void postInit(FMLPostInitializationEvent e) {
+	}
 
-	void doCauldronParticles(IBlockState state, World world, BlockPos pos, Random rand);
+	default void doCauldronParticles(IBlockState state, World world, BlockPos pos, Random rand) {
+	}
 
-	void doCauldronInputParticles(BlockPos pos);
+	default void doCauldronInputParticles(BlockPos pos) {
+	}
+	
+	default void potStateMap(BlockFlowerpot flowerpot) {
+		
+	}
 
 }

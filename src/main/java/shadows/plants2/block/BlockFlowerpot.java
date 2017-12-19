@@ -28,14 +28,12 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.Loader;
 import shadows.placebo.block.base.IEnumBlock;
 import shadows.placebo.client.IHasModel;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
-import shadows.plants2.client.FlowerpotStateMapper;
 import shadows.plants2.compat.AAFlowerpot;
 import shadows.plants2.compat.BinnieIntegration.BotanyFlowerpot;
 import shadows.plants2.compat.BotaniaFlowerpot;
@@ -100,7 +98,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL(Constants.MODID, "flowerpot/plants2", this, 0, "inventory");
-		ModelLoader.setCustomStateMapper(this, new FlowerpotStateMapper());
+		Plants2.PROXY.potStateMap(this);
 	}
 
 	@Override

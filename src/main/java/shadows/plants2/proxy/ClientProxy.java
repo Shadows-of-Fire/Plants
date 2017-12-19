@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -22,6 +23,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shadows.placebo.client.IHasModel;
 import shadows.plants2.Plants2;
+import shadows.plants2.block.BlockFlowerpot;
+import shadows.plants2.client.FlowerpotStateMapper;
 import shadows.plants2.compat.BinnieIntegration;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.Constants;
@@ -116,5 +119,10 @@ public class ClientProxy implements IProxy {
 			}
 		}
 		return j;
+	}
+	
+	@Override
+	public void potStateMap(BlockFlowerpot flowerpot) {
+		ModelLoader.setCustomStateMapper(flowerpot, new FlowerpotStateMapper());
 	}
 }
