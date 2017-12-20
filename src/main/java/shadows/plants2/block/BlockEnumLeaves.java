@@ -194,7 +194,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		return state.getValue(property).ordinal() % 4;
+		return state.getValue(property).getMetadata();
 	}
 
 	@Override
@@ -204,7 +204,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		int i = state.getValue(property).ordinal() % 4;
+		int i = state.getValue(property).getMetadata();
 		i *= 4;
 		if (state.getValue(BlockLeaves.CHECK_DECAY)) i++;
 		if (state.getValue(BlockLeaves.DECAYABLE)) i += 2;
