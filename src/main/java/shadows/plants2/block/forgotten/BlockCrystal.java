@@ -147,7 +147,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 		@Override
 		public int getLightValue(IBlockState state) {
-			return 15;
+			return 0;
 		}
 	}
 
@@ -159,7 +159,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 		@Override
 		public int getLightValue(IBlockState state) {
-			return 7;
+			return 5;
 		}
 	}
 

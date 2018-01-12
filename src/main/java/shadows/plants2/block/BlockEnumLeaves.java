@@ -38,6 +38,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(BlockLeaves.DECAYABLE, false).withProperty(BlockLeaves.CHECK_DECAY, false));
 		this.sapling = sapling;
 		setTickRandomly(true);
+		setLightOpacity(1);
 		if (this.types.size() > 4) throw new IllegalArgumentException("Attempting to create a BlockEnumLeaves with more than 4 values is invalid.");
 	}
 
