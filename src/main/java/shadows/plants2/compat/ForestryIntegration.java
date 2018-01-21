@@ -2,20 +2,13 @@ package shadows.plants2.compat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import forestry.api.apiculture.FlowerManager;
-import forestry.arboriculture.genetics.TreeGenome;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import shadows.placebo.block.base.IEnumBlock;
 import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.plants2.block.BlockEnumDoubleFlower;
-import shadows.plants2.data.Constants;
 import shadows.plants2.util.PlantUtil;
 
 public class ForestryIntegration {
@@ -29,7 +22,7 @@ public class ForestryIntegration {
 			if (state.getBlock() instanceof BlockEnumDoubleFlower) continue;
 
 			IPropertyEnum k;
-			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getValue(state)) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {
+			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getType()) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {
 				list.add(state);
 			}
 		}
@@ -39,7 +32,7 @@ public class ForestryIntegration {
 			if (state.getBlock() instanceof BlockEnumDoubleFlower) continue;
 
 			IPropertyEnum k;
-			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getValue(state)) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {
+			if (state.getBlock() instanceof IEnumBlock && (k = ((IEnumBlock<?>) state.getBlock()).getType()) instanceof IFlowerEnum && ((IFlowerEnum) k).hasFlowers()) {
 				desertList.add(state);
 			}
 		}
@@ -54,28 +47,4 @@ public class ForestryIntegration {
 			FlowerManager.flowerRegistry.registerPlantableFlower(state, 0.85D, FlowerManager.FlowerTypeCacti);
 		}
 	}
-
-	@ObjectHolder(Constants.FORESTRY_ID + ":sapling")
-	public static final Item SAPLING = Items.AIR;
-
-	public static class ForestryFlowerpot implements IFlowerpotHandler {
-
-		@Override
-		public String handleFlowerpot(IBlockState state, ItemStack stack) {
-			if (stack.getItem() == SAPLING) { return "sapling_" + TreeGenome.getSpecies(stack).getAlleleName().toLowerCase(Locale.ROOT).replaceAll("'", "").replaceAll(" ", "_"); }
-			return "none";
-		}
-
-		@Override
-		public String getModId() {
-			return Constants.FORESTRY_ID;
-		}
-
-		@Override
-		public String getStatePrefix() {
-			return "f_";
-		}
-
-	}
-
 }

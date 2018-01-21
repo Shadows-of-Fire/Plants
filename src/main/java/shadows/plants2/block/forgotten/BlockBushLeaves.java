@@ -11,14 +11,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -34,35 +32,29 @@ import shadows.plants2.init.ModRegistry;
 
 public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IShearable {
 
-	public BlockBushLeaves() {
-		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, BushSet.class, Plants2.INFO);
+	public BlockBushLeaves(BushSet type) {
+		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, type, Plants2.INFO);
 		setTickRandomly(true);
 		setLightOpacity(1);
-		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(BlockEnumHarvestBush.FRUIT, false));
+		setDefaultState(getDefaultState().withProperty(BlockEnumHarvestBush.FRUIT, false));
 	}
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		for (int i = 0; i < getProperty().getAllowedValues().size(); i++) {
-			PlaceboUtil.sMRL(this, i, "fruit=true," + "type=" + BushSet.values()[i].getName());
-		}
+		PlaceboUtil.sMRL(this, 0, "fruit=true," + "type=" + type.getName());
+
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (hand != EnumHand.MAIN_HAND || state.getValue(getProperty()).getHarvest().isEmpty()) return false;
+		if (hand != EnumHand.MAIN_HAND || type.getHarvest().isEmpty()) return false;
 		else if (state.getValue(BlockEnumHarvestBush.FRUIT)) {
-			StackPrimer s = state.getValue(getProperty()).getHarvest();
+			StackPrimer s = type.getHarvest();
 			if (!player.addItemStackToInventory(s.genStack())) if (!world.isRemote) Block.spawnAsEntity(world, pos, s.genStack());
 			world.setBlockState(pos, state.withProperty(BlockEnumHarvestBush.FRUIT, false));
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public int damageDropped(IBlockState state) {
-		return state.getValue(getProperty()).ordinal();
 	}
 
 	@Override
@@ -86,31 +78,24 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		for (int i = 0; i < BushSet.values().length; i++) {
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-
-	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(getProperty()).ordinal() + (state.getValue(BlockEnumHarvestBush.FRUIT) ? 6 : 0);
+		return state.getValue(BlockEnumHarvestBush.FRUIT) ? 0 : 1;
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(getProperty(), BushSet.values()[meta % 6]).withProperty(BlockEnumHarvestBush.FRUIT, meta >= 6);
+		return getDefaultState().withProperty(BlockEnumHarvestBush.FRUIT, meta == 0);
 	}
 
 	@Override
-	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, getProperty(), BlockEnumHarvestBush.FRUIT);
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, BlockEnumHarvestBush.FRUIT);
 	}
 
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> k = new ArrayList<ItemStack>();
-		if (state.getValue(BlockEnumHarvestBush.FRUIT)) k.add(state.getValue(getProperty()).getHarvest().genStack());
+		if (state.getValue(BlockEnumHarvestBush.FRUIT)) k.add(type.getHarvest().genStack());
 		if (ThreadLocalRandom.current().nextInt(5) == 0) k.add(new ItemStack(ModRegistry.BUSHLING, 1, damageDropped(state)));
 		return k;
 	}
@@ -134,7 +119,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 
 	@Override
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
-		return !state.getValue(getProperty()).getHarvest().isEmpty() && !state.getValue(BlockEnumHarvestBush.FRUIT);
+		return !type.getHarvest().isEmpty() && !state.getValue(BlockEnumHarvestBush.FRUIT);
 	}
 
 	@Override
