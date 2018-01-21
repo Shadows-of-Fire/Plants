@@ -22,8 +22,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.itemblock.ItemBlockEnum;
@@ -36,22 +34,19 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
 
-	public BlockEnumDoubleFlower(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
-		super(name, type, enumClass, predicate);
-		setDefaultState(getDefaultState().withProperty(property, types.get(0)).withProperty(UPPER, false));
+	public BlockEnumDoubleFlower(String name, EnumPlantType plantType, E type) {
+		super(name, plantType, type);
+		setDefaultState(getDefaultState().withProperty(UPPER, false));
 	}
 
 	@Override
 	public ItemBlock createItemBlock() {
-		return new ItemBlockEnum<E>(this);
+		return new ItemBlockEnum<>(this);
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		for (int i = 0; i < types.size(); i++) {
-			PlaceboUtil.sMRL("double_plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName() + ",upper=true");
-		}
+		PlaceboUtil.sMRL("double_plants", this, 0, "inventory=true,type=" + type.getName() + ",upper=true");
 		Placebo.PROXY.useRenamedMapper(this, "double_plants");
 	}
 
@@ -111,11 +106,6 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	}
 
 	@Override
-	public int damageDropped(IBlockState state) {
-		return state.getValue(property).ordinal() % 8;
-	}
-
-	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		world.setBlockState(pos.up(), state.withProperty(UPPER, true), 2);
 	}
@@ -142,33 +132,18 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		int k = meta % 2;
-		if (k == 0) return this.getDefaultState().withProperty(UPPER, true).withProperty(property, types.get(getActualMeta(meta)));
-		if (k == 1) return this.getDefaultState().withProperty(UPPER, false).withProperty(property, types.get(getActualMeta(meta)));
-		else return null;
-	}
-
-	public static int getActualMeta(int meta) { // evens are upper half, odds are lower half needs to return the Actual (IProperty) meta (0-7) for the block from state meta (0-15)
-		int k = meta % 2; // if == 1 this is a lower
-		float j = (meta) / 2F; // if k = 1 this will have a .5
-		if (k == 0) return (int) j;
-		if (k == 1) return (int) (j - .5);
-		else return 0;
+		return getDefaultState().withProperty(UPPER, meta == 0);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		boolean k = state.getValue(UPPER);
-		int j = state.getValue(property).ordinal() % 8;
-
-		if (k) return (j * 2);
-		if (!k) return (1 + j * 2);
-		else return 0;
+		if (state.getValue(UPPER)) return 0;
+		return 1;
 	}
 
 	@Override
-	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, Constants.INV, property, UPPER);
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, Constants.INV, UPPER);
 	}
 
 	@Override
@@ -187,15 +162,8 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	}
 
 	@Override
-	protected int getMaxEnumValues() {
-		return 8;
-	}
-
-	@Override
 	public void initRecipes(Register<IRecipe> event) {
-		for (E e : getTypes()) {
-			if (e.useForRecipes()) Plants2.HELPER.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 3, e.getMetadata()));
-		}
+		if (type.useForRecipes()) Plants2.HELPER.addShapeless(PlantUtil.getDyeForEnum(type.getColor(), 4), new ItemStack(this));
 	}
 
 }

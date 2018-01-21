@@ -26,7 +26,7 @@ public class ControlledList extends ArrayList<IBlockState> {
 
 	private String translate(IBlockState state) {
 		String translate = PlantUtil.sneakyConfigTranslate(Item.getItemFromBlock(state.getBlock()).getUnlocalizedName(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state))) + ".name");
-		if (translate.equals("invalid.name")) return state.getBlock().getRegistryName() + "[type=" + ((IEnumBlock<?>) state.getBlock()).getValue(state).getName() + "]";
+		if (translate.equals("invalid.name")) return state.getBlock().getRegistryName() + "[type=" + ((IEnumBlock<?>) state.getBlock()).getType().getName() + "]";
 		return translate;
 	}
 

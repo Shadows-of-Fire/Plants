@@ -51,8 +51,8 @@ public class TheBigBookOfEnums {
 		IForgeRegistryEntry<?> thing = null;
 
 		@Override
-		public ItemStack get() {
-			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		public ItemStack getAsStack() {
+			return RecipeHelper.makeStack(thing);
 		}
 
 		@Override

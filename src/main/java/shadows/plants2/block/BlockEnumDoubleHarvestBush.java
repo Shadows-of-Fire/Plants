@@ -18,8 +18,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IHarvestableEnum;
 import shadows.placebo.util.PlaceboUtil;
@@ -31,8 +29,8 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	public static final PropertyBool UPPER = BlockEnumDoubleFlower.UPPER;
 
-	public BlockEnumDoubleHarvestBush(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
-		super(name, type, enumClass, predicate);
+	public BlockEnumDoubleHarvestBush(String name, EnumPlantType plantType, E type) {
+		super(name, plantType, type);
 		setDefaultState(getDefaultState().withProperty(UPPER, false));
 	}
 
@@ -47,11 +45,8 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		for (int i = 0; i < types.size(); i++) {
-			PlaceboUtil.sMRL("double_harvest", this, i, "fruit=true," + property.getName() + "=" + types.get(i).getName() + ",upper=true,zinventory=true");
-		}
+		PlaceboUtil.sMRL("double_harvest", this, 0, "fruit=true,type=" + type.getName() + ",upper=true,zinventory=true");
 		Placebo.PROXY.useRenamedMapper(this, "double_harvest");
 	}
 
@@ -59,7 +54,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!Config.harvests) return false;
 		if (!world.isRemote) {
-			StackPrimer[] drops = types.get(state.getValue(property).ordinal() % 4).getDrops();
+			StackPrimer[] drops = type.getDrops();
 			if (state.getValue(FRUIT) && state.getValue(UPPER)) {
 				for (StackPrimer s : drops) {
 					ItemStack i = s.genStack();
@@ -143,8 +138,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		int i = state.getValue(property).ordinal() % 4;
-		i *= 4;
+		int i = 0;
 		if (state.getValue(UPPER)) i++;
 		if (state.getValue(FRUIT)) i += 2;
 		return i;
@@ -152,17 +146,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState state = getDefaultState();
-		float i = meta;
-		i /= 4;
-		state = state.withProperty(property, types.get((int) i));
-		if (i - 0.5F >= 0) {
-			state = state.withProperty(FRUIT, true);
-			i -= 0.5F;
-		}
-		if (i - 0.25F >= 0) state = state.withProperty(UPPER, true);
-
-		return state;
+		return getDefaultState().withProperty(UPPER, meta % 2 == 1).withProperty(FRUIT, meta >= 2);
 	}
 
 	@Override
@@ -171,8 +155,8 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	}
 
 	@Override
-	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, property, FRUIT, UPPER, getInvProperty());
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, FRUIT, UPPER, getInvProperty());
 	}
 
 	@Override
@@ -202,10 +186,4 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 		if (!state.getValue(UPPER)) world.setBlockState(pos.up(), state.withProperty(UPPER, true).withProperty(FRUIT, true));
 		else world.setBlockState(pos.down(), state.withProperty(UPPER, false).withProperty(FRUIT, true));
 	}
-
-	@Override
-	protected int getMaxEnumValues() {
-		return 4;
-	}
-
 }

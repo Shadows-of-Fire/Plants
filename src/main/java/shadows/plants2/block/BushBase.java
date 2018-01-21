@@ -28,14 +28,14 @@ import shadows.plants2.util.PlantUtil;
 
 public abstract class BushBase extends BlockBush implements IHasModel, IShearable, IPostInitUpdate, ISpecialPlacement {
 
-	protected final EnumPlantType type;
+	protected final EnumPlantType plantType;
 	public static final AxisAlignedBB AABB = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.75D, 0.8D);
 
-	public BushBase(String name, EnumPlantType type) {
+	public BushBase(String name, EnumPlantType plantType) {
 		setRegistryName(name);
 		setUnlocalizedName(Plants2.INFO.getID() + "." + name);
 		setCreativeTab(Plants2.INFO.getDefaultTab());
-		this.type = type;
+		this.plantType = plantType;
 		setTickRandomly(false);
 		setSoundType(SoundType.PLANT);
 		Plants2.INFO.getBlockList().add(this);
@@ -70,7 +70,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
-		return type;
+		return plantType;
 	}
 
 	@Override
@@ -100,7 +100,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	}
 
 	protected void addStatesToList() {
-		PlantUtil.TYPE_TO_STATES.get(type).add(this.getDefaultState());
+		PlantUtil.TYPE_TO_STATES.get(plantType).add(this.getDefaultState());
 	}
 
 	@Override

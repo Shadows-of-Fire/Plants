@@ -1,10 +1,12 @@
 package shadows.plants2.data.enums;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.placebo.interfaces.IHarvestableEnum;
-import shadows.placebo.interfaces.IPlankEnum;
+import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
@@ -33,7 +35,8 @@ public class LaterEnums {
 		TAHITIAN_SPINACH(new StackPrimer(ModRegistry.TAHITIAN_SPINACH)),
 		;
 
-		private StackPrimer[] drops;
+		StackPrimer[] drops;
+		Block block;
 
 		Harvestable(StackPrimer... input) {
 			drops = input;
@@ -44,16 +47,19 @@ public class LaterEnums {
 			return drops;
 		}
 
-		IForgeRegistryEntry<?> thing = null;
-
 		@Override
-		public ItemStack get() {
-			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		public ItemStack getAsStack() {
+			return RecipeHelper.makeStack(block);
+		}
+		
+		@Override
+		public IBlockState getAsState() {
+			return block.getDefaultState();
 		}
 
 		@Override
 		public void set(IForgeRegistryEntry<?> ifre) {
-			thing = ifre;
+			block = (Block) ifre;
 		}
 	}
 
@@ -65,7 +71,8 @@ public class LaterEnums {
 		EMBERROOT(new StackPrimer(ModRegistry.GENERIC, 1, Generic.EMBERROOT.ordinal())),
 		SMOLDERBERRY(new StackPrimer(ModRegistry.GENERIC, 1, Generic.SMOLDERBERRY.ordinal())),;
 
-		private StackPrimer[] drops;
+		StackPrimer[] drops;
+		Block block;
 
 		NetherHarvests(StackPrimer... inputs) {
 			drops = inputs;
@@ -76,16 +83,19 @@ public class LaterEnums {
 			return drops;
 		}
 
-		IForgeRegistryEntry<?> thing = null;
-
 		@Override
-		public ItemStack get() {
-			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		public ItemStack getAsStack() {
+			return RecipeHelper.makeStack(block);
+		}
+		
+		@Override
+		public IBlockState getAsState() {
+			return block.getDefaultState();
 		}
 
 		@Override
 		public void set(IForgeRegistryEntry<?> ifre) {
-			thing = ifre;
+			block = (Block) ifre;
 		}
 
 	}
@@ -93,20 +103,11 @@ public class LaterEnums {
 	public static enum DoubleHarvestable implements IHarvestableEnum {
 		ALYXIA_B(new StackPrimer(ModRegistry.ALYXIA_B)),;
 
-		private StackPrimer[] drops;
+		StackPrimer[] drops;
+		Block block;
 
 		DoubleHarvestable(StackPrimer... input) {
 			drops = input;
-		}
-
-		@Override
-		public int getPredicateIndex() {
-			return this.ordinal() / 4;
-		}
-
-		@Override
-		public int getMetadata() {
-			return this.ordinal() % 4;
 		}
 
 		@Override
@@ -114,50 +115,56 @@ public class LaterEnums {
 			return drops;
 		}
 
-		IForgeRegistryEntry<?> thing = null;
-
 		@Override
-		public ItemStack get() {
-			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		public ItemStack getAsStack() {
+			return RecipeHelper.makeStack(block);
+		}
+		
+		@Override
+		public IBlockState getAsState() {
+			return block.getDefaultState();
 		}
 
 		@Override
 		public void set(IForgeRegistryEntry<?> ifre) {
-			thing = ifre;
+			block = (Block) ifre;
 		}
 	}
 
-	public static enum Planks implements IPlankEnum {
-		ASH(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.ASH.getMetadata())),
-		BLAZE(new StackPrimer(ModRegistry.NETHER_LOG, 1, NetherLogs.BLAZE.getMetadata())),
-		BLACK_KAURI(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BLACK_KAURI.getMetadata())),
-		BRAZILLIAN_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.BRAZILLIAN_PINE.getMetadata())),
-		INCENSE_CEDAR(new StackPrimer(ModRegistry.LOG_0, 1, Logs.INCENSE_CEDAR.getMetadata())),
-		MURRAY_PINE(new StackPrimer(ModRegistry.LOG_0, 1, Logs.MURRAY_PINE.getMetadata())),
-		CRYSTAL(new StackPrimer(ModRegistry.CRYSTAL_LOG, 1, CrystalLogs.CRYSTAL.getMetadata())),
-		DARK_CRYSTAL(new StackPrimer(ModRegistry.CRYSTAL_LOG, 1, CrystalLogs.DARK_CRYSTAL.getMetadata()));
+	public static enum Planks implements IPropertyEnum {
+		ASH(new StackPrimer(NetherLogs.ASH)),
+		BLAZE(new StackPrimer(NetherLogs.BLAZE)),
+		BLACK_KAURI(new StackPrimer(Logs.BLACK_KAURI)),
+		BRAZILLIAN_PINE(new StackPrimer(Logs.BRAZILLIAN_PINE)),
+		INCENSE_CEDAR(new StackPrimer(Logs.INCENSE_CEDAR)),
+		MURRAY_PINE(new StackPrimer(Logs.MURRAY_PINE)),
+		CRYSTAL(new StackPrimer(CrystalLogs.CRYSTAL)),
+		DARK_CRYSTAL(new StackPrimer(CrystalLogs.DARK_CRYSTAL));
 
-		private StackPrimer primer;
+		StackPrimer primer;
+		Block block;
 
 		Planks(StackPrimer primer) {
 			this.primer = primer;
 		}
 
-		@Override
 		public ItemStack genLogStack() {
 			return primer.genStack();
 		}
 
-		IForgeRegistryEntry<?> thing = null;
-
 		@Override
-		public ItemStack get() {
-			return RecipeHelper.makeStack(thing, 1, getMetadata());
+		public ItemStack getAsStack() {
+			return RecipeHelper.makeStack(block);
+		}
+		
+		@Override
+		public IBlockState getAsState() {
+			return block.getDefaultState();
 		}
 
 		@Override
 		public void set(IForgeRegistryEntry<?> ifre) {
-			thing = ifre;
+			block = (Block) ifre;
 		}
 	}
 

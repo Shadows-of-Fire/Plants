@@ -29,6 +29,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IPropertyEnum;
+import shadows.placebo.util.StackPrimer;
 import shadows.plants2.data.Config;
 import shadows.plants2.init.ModRegistry;
 
@@ -36,13 +37,13 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	public static final PropertyInteger AGE = BlockCrops.AGE;
 	public static final AxisAlignedBB[] CROPS_AABB = new AxisAlignedBB[] { new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D) };
-	private final Item[] crops;
-	private final Item[] seeds;
+	private final StackPrimer crop;
+	private final StackPrimer seed;
 
-	public BlockEnumCrop(String name, Class<E> enumClass, int predicate, Item crop1, Item crop2, Item seed1, Item seed2) {
-		super(name, EnumPlantType.Crop, enumClass, predicate);
-		this.crops = new Item[] {crop1, crop2};
-		this.seeds = new Item[] {seed1, seed2};
+	public BlockEnumCrop(String name, E type, Item crop, Item seed) {
+		super(name, EnumPlantType.Crop, type);
+		this.crop = new StackPrimer(crop);
+		this.seed = new StackPrimer(seed);
 		setDefaultState(getDefaultState().withProperty(AGE, 0));
 		setTickRandomly(true);
 	}
@@ -76,12 +77,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		return new ItemStack(seeds[state.getValue(property).ordinal() % 2]);
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return crops[state.getValue(property).ordinal() % 2];
+		return seed.genStack();
 	}
 
 	@Override
@@ -107,34 +103,23 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	}
 
 	@Override
-	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, property, getInvProperty(), AGE);
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, getInvProperty(), AGE);
 	}
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		Placebo.PROXY.useRenamedMapper(this, "crops");
+		Placebo.PROXY.useRenamedMapper(this, "crops", "", "type=" + type.getName());
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState state = getDefaultState().withProperty(property, types.get(meta / 8));
-		if (meta >= 8) meta -= 8;
-		state = state.withProperty(AGE, meta);
-		return state;
+		return getDefaultState().withProperty(AGE, meta);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		int i = state.getValue(property).ordinal() % 2;
-		i *= 8;
-		i += state.getValue(AGE);
-		return i;
-	}
-
-	@Override
-	public int damageDropped(IBlockState state) {
-		return state.getValue(property).ordinal() % 2;
+		return state.getValue(AGE);
 	}
 
 	@Override
@@ -144,10 +129,11 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	@Override
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> k = new ArrayList<ItemStack>();
-		int i = state.getValue(property).ordinal() % 2;
-		if (fortune != 1594) k.add(new ItemStack(seeds[i]));
-		if (state.getValue(AGE) == 7) k.add(new ItemStack(crops[i]));
-		if (state.getValue(AGE) == 7 && RANDOM.nextInt(4) == 0) k.add(new ItemStack(seeds[i]));
+		if (fortune != 1594) k.add(seed.genStack());
+		if (state.getValue(AGE) == 7) {
+			k.add(crop.genStack());
+			if (RANDOM.nextInt(4) == 0) k.add(seed.genStack());
+		}
 		return k;
 	}
 
