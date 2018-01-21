@@ -27,20 +27,19 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 
 	public BiomeCrystalForest() {
 		super("crystal_forest", new BiomeProperties("Crystal Forest").setTemperature(0.8F).setRainfall(0.2F).setHeightVariation(0.1F).setBaseHeight(0.3F));
-
 		spawnableCreatureList.clear();
-		this.spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySkeleton.class, 10, 1, 1));
-		this.spawnableCreatureList.add(new Biome.SpawnListEntry(EntityCreeper.class, 10, 1, 1));
-		this.spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySpider.class, 10, 1, 1));
-		this.spawnableCreatureList.add(new Biome.SpawnListEntry(EntityRabbit.class, 4, 2, 3));
-		this.fillerBlock = ModRegistry.GROUNDCOVER.getDefaultState();
-		this.topBlock = ModRegistry.GROUNDCOVER.getDefaultState();
-		this.decorator.treesPerChunk = 4;
-		this.decorator.flowersPerChunk = 0;
-		this.decorator.grassPerChunk = 15;
-		this.flowers.clear();
-		this.flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.CRYSTAL_SHARD), 80));
-		this.flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.DARK_CRYSTAL_SHARD), 20));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySkeleton.class, 10, 1, 1));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntityCreeper.class, 10, 1, 1));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySpider.class, 10, 1, 1));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntityRabbit.class, 4, 2, 3));
+		fillerBlock = ModRegistry.GROUNDCOVER.getDefaultState();
+		topBlock = ModRegistry.GROUNDCOVER.getDefaultState();
+		decorator.treesPerChunk = 4;
+		decorator.flowersPerChunk = 0;
+		decorator.grassPerChunk = 15;
+		flowers.clear();
+		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.CRYSTAL_SHARD), 80));
+		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.DARK_CRYSTAL_SHARD), 20));
 	}
 
 	@Override
@@ -61,9 +60,8 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 
 	@Override
 	protected void register() {
-		if (!Config.crystalForest) return;
 		Plants2.INFO.getBiomeList().add(this);
-		BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, 50));
+		if(Config.crystalForest) BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, 5));
 	}
 
 }

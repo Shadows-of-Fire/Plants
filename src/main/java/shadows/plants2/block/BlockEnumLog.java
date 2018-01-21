@@ -111,4 +111,9 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 		GameRegistry.addSmelting(new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Items.COAL, 1, 1), 2);
 	}
 
+	@Override
+	public String getHarvestTool(IBlockState state) {
+		return "axe";
+	}
+
 }

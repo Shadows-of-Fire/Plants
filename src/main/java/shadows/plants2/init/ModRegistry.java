@@ -7,6 +7,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.PotionEffect;
@@ -17,6 +18,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -28,6 +30,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.block.base.BlockEnum;
 import shadows.placebo.interfaces.IHasRecipe;
+import shadows.placebo.item.base.ItemAxeBase;
+import shadows.placebo.item.base.ItemHoeBase;
+import shadows.placebo.item.base.ItemPickaxeBase;
+import shadows.placebo.item.base.ItemShovelBase;
+import shadows.placebo.item.base.ItemSwordBase;
 import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.Plants2;
@@ -86,6 +93,9 @@ import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
 
 public class ModRegistry {
+	
+	public static final ToolMaterial MAT_CRYSTAL = EnumHelper.addToolMaterial("crystal", 1, 128, 7.0F, 2, 22);
+	public static final ToolMaterial MAT_DARK_CRYSTAL = EnumHelper.addToolMaterial("dark_crystal", 3, 1000, 7.0F, 3, 8);
 
 	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumFlower<>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
 	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumFlower<>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
@@ -93,6 +103,7 @@ public class ModRegistry {
 	public static final BlockEnumBush<Plants> PLANT_3 = new BlockEnumFlower<>("cosmetic_3", EnumPlantType.Plains, Plants.class, 3);
 	public static final BlockEnumBush<Plants> PLANT_4 = new BlockEnumFlower<>("cosmetic_4", EnumPlantType.Plains, Plants.class, 4);
 	public static final BlockEnumBush<Plants> PLANT_5 = new BlockEnumFlower<>("cosmetic_5", EnumPlantType.Plains, Plants.class, 5);
+	public static final BlockEnumBush<Plants> PLANT_6 = new BlockEnumFlower<>("cosmetic_6", EnumPlantType.Plains, Plants.class, 6);
 
 	public static final BlockEnumBush<Desert> DESERT_0 = new BlockEnumFlower<>("desert_0", EnumPlantType.Desert, Desert.class, 0);
 	public static final BlockEnumBush<Desert> DESERT_1 = new BlockEnumFlower<>("desert_1", EnumPlantType.Desert, Desert.class, 1);
@@ -126,6 +137,7 @@ public class ModRegistry {
 	public static final Item RASPBERRY = new ItemFoodBase("raspberry", 2, 1.4F);
 	public static final Item HUCKLEBERRY = new ItemFoodBase("huckleberry", 3, 0.5F);
 	public static final Item FIRE_FRUIT = new ItemFireFruit();
+	public static final Item TAHITIAN_SPINACH = new ItemFoodBase("tahitian_spinach", 4, 0.3F, new PotionEffect(MobEffects.STRENGTH, 590, 2), 0.2F);
 
 	public static final Item AMARANTHUS_H_SEEDS = new ItemSeed<>("amaranthus_h_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.AMARANTHUS_H);
 	public static final Item OKRA_SEEDS = new ItemSeed<>("okra_seeds", EnumPlantType.Crop, "plants2:crop_0", Crops.OKRA);
@@ -187,6 +199,18 @@ public class ModRegistry {
 	public static final PotionType CAULDRON_BREW = new PotionTypeBase("cauldron_brew");
 
 	public static final Block BREWING_CAULDRON = new BlockBrewingCauldron();
+
+	public static final Item CRYSTAL_PICKAXE = new ItemPickaxeBase("crystal_pickaxe", Plants2.INFO, MAT_CRYSTAL);
+	public static final Item CRYSTAL_AXE = new ItemAxeBase("crystal_axe", Plants2.INFO, MAT_CRYSTAL);
+	public static final Item CRYSTAL_SHOVEL = new ItemShovelBase("crystal_shovel", Plants2.INFO, MAT_CRYSTAL);
+	public static final Item CRYSTAL_HOE = new ItemHoeBase("crystal_hoe", Plants2.INFO, MAT_CRYSTAL);
+	public static final Item CRYSTAL_SWORD = new ItemSwordBase("crystal_sword", Plants2.INFO, MAT_CRYSTAL);
+	
+	public static final Item DARK_CRYSTAL_PICKAXE = new ItemPickaxeBase("dark_crystal_pickaxe", Plants2.INFO, MAT_DARK_CRYSTAL);
+	public static final Item DARK_CRYSTAL_AXE = new ItemAxeBase("dark_crystal_axe", Plants2.INFO, MAT_DARK_CRYSTAL);
+	public static final Item DARK_CRYSTAL_SHOVEL = new ItemShovelBase("dark_crystal_shovel", Plants2.INFO, MAT_DARK_CRYSTAL);
+	public static final Item DARK_CRYSTAL_HOE = new ItemHoeBase("dark_crystal_hoe", Plants2.INFO, MAT_DARK_CRYSTAL);
+	public static final Item DARK_CRYSTAL_SWORD = new ItemSwordBase("dark_crystal_sword", Plants2.INFO, MAT_DARK_CRYSTAL);
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

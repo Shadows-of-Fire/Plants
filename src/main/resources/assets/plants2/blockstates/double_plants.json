@@ -44,6 +44,12 @@
 					"lower": "plants2:blocks/cosmetic/doubleplant/alonsoa_m_bot",
 					"upper": "plants2:blocks/cosmetic/doubleplant/alonsoa_m_top"
 				}
+			},
+			"bulbil_buglelily": {
+				"textures": {
+					"lower": "plants2:blocks/cosmetic/doubleplant/bulbil_buglelily_bot",
+					"upper": "plants2:blocks/cosmetic/doubleplant/bulbil_buglelily_top"
+				}
 			}
 		},
 		"inventory": {

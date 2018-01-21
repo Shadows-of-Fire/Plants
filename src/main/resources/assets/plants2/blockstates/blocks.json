@@ -97,9 +97,8 @@
 				}
 			},
 			"groundcover": {
-				"textures": {
-					"all": "blocks/grass_top"
-				}
+				"model": "plants2:groundcover",
+				"transform": "forge:default-block"
 			},
 			"cauldron_0": {
 				"model": "plants2:cauldron/empty"

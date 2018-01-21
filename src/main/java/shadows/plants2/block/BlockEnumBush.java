@@ -3,6 +3,8 @@ package shadows.plants2.block;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.base.Predicate;
 
 import net.minecraft.block.properties.PropertyBool;
@@ -36,6 +38,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	protected final Predicate<E> valueFilter;
 	protected final PropertyEnum<E> property;
 	protected final BlockStateContainer realStateContainer;
+	protected final E value;
 
 	public BlockEnumBush(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
 		super(name, type);
@@ -47,15 +50,30 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
 		for (E e : types)
 			e.set(this);
+		value = null;
+	}
+	
+	//1.13
+	public BlockEnumBush(String name, EnumPlantType type, E enumValue) {
+		super(name, type);
+		this.valueFilter = null;
+		this.property = null;
+		types.add(enumValue);
+		this.realStateContainer = createStateContainer();
+		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
+		enumValue.set(this);
+		value = enumValue;
 	}
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		if(property == null) return getDefaultState();
 		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
 	@Override
 	public IBlockState getStateFor(E e) {
+		if(property == null) return getDefaultState();
 		return this.getDefaultState().withProperty(property, e);
 	}
 
@@ -67,19 +85,22 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		for (int i = 0; i < types.size(); i++) {
+		if(property == null) PlaceboUtil.sMRL("plants", this, 0, "inventory=true,type=" + value.getName());
+		else for (int i = 0; i < types.size(); i++) {
 			PlaceboUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
-		Placebo.PROXY.useRenamedMapper(this, "plants");
+		Placebo.PROXY.useRenamedMapper(this, "plants", property == null ? ",type=" + value.getName() : "");
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
+		if(property == null) return getDefaultState();
 		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
+		if(property == null) return 0;
 		return state.getValue(property).ordinal() % 16;
 	}
 
@@ -116,6 +137,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 
 	@Override
 	public BlockStateContainer createStateContainer() {
+		if(property == null) return new BlockStateContainer(this, getInvProperty());
 		return new BlockStateContainer(this, property, getInvProperty());
 	}
 
@@ -125,6 +147,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	}
 
 	@Override
+	@Nullable
 	public PropertyEnum<E> getProperty() {
 		return property;
 	}

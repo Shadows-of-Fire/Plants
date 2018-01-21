@@ -28,4 +28,9 @@ public class BlockCrystalGround extends BlockBasic implements IHasModel {
 		return 0;
 	}
 
+	@Override
+	public String getHarvestTool(IBlockState state) {
+		return "pickaxe";
+	}
+
 }

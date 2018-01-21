@@ -2,7 +2,6 @@ package shadows.plants2;
 
 import java.io.File;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -78,7 +77,7 @@ public class Plants2 {
 		ModRegistry.generators(e);
 
 		PROXY.postInit(e);
-		LOGGER.log(Level.INFO, String.format("Plants is using %d block ids and %d item ids", INFO.getBlockList().size(), INFO.getItemList().size()));
+		LOGGER.info(String.format("Plants is using %d block ids and %d item ids", INFO.getBlockList().size(), INFO.getItemList().size()));
 		INFO.purge();
 		PlantUtil.mergeToDefaultLate();
 

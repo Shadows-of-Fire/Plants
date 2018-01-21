@@ -122,6 +122,12 @@
 					"fruit": "plants2:blocks/cosmetic/harvestable/smolderberry/fruit",
 					"none": "plants2:blocks/cosmetic/harvestable/smolderberry/none"
 				}
+			},
+			"tahitian_spinach": {
+				"textures": {
+					"fruit": "plants2:blocks/cosmetic/harvestable/tahitian_spinach/fruit",
+					"none": "plants2:blocks/cosmetic/harvestable/tahitian_spinach/none"
+				}
 			}
 		},
 		"inventory": {

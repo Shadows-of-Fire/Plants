@@ -7,7 +7,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -15,6 +14,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.Placebo;
@@ -49,10 +49,38 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 		this(name, EnumPlantType.Plains, clazz, predicate);
 	}
 
+	//1.13
+	public BlockEnumSapling(String name, EnumPlantType type, SoundType s, float hard, float res, E e, Block... otherSoils) {
+		super(name, type, e);
+		setTickRandomly(true);
+		setSoundType(s);
+		setHardness(hard);
+		setResistance(res);
+		this.soils = Arrays.asList(otherSoils);
+	}
+
+	public BlockEnumSapling(String name, SoundType s, float hard, float res, E e, Block... otherSoils) {
+		this(name, EnumPlantType.Plains, s, hard, res, e, otherSoils);
+	}
+
+	public BlockEnumSapling(String name, EnumPlantType type, E e) {
+		this(name, type, SoundType.PLANT, 0, 0, e);
+	}
+
+	public BlockEnumSapling(String name, E e) {
+		this(name, EnumPlantType.Plains, e);
+	}
+
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState soil = world.getBlockState(pos.down());
 		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soils.contains(soil.getBlock()));
+	}
+
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
+		IBlockState soil = world.getBlockState(pos.down());
+		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soils.contains(soil.getBlock());
 	}
 
 	@Override
@@ -83,11 +111,6 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	}
 
 	@Override
-	public int damageDropped(IBlockState state) {
-		return state.getValue(property).ordinal();
-	}
-
-	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
 		return true;
 	}
@@ -109,10 +132,11 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		for (int i = 0; i < types.size(); i++) {
+		if (property == null) PlaceboUtil.sMRL("saplings", this, 0, "inventory=true,type=" + value.getName());
+		else for (int i = 0; i < types.size(); i++) {
 			PlaceboUtil.sMRL("saplings", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
-		Placebo.PROXY.useRenamedMapper(this, "saplings");
+		Placebo.PROXY.useRenamedMapper(this, "saplings", property == null ? ",type=" + value.getName() : "");
 	}
 
 	@Override
@@ -123,12 +147,8 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		world.setBlockToAir(pos);
-		if (!state.getValue(property).getTreeGen().generate(world, rand, pos)) world.setBlockState(pos, state);
-	}
-
-	@Override
-	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, property, Constants.INV);
+		WorldGenerator gen = property == null ? value.getTreeGen() : state.getValue(property).getTreeGen();
+		if (!gen.generate(world, rand, pos)) world.setBlockState(pos, state);
 	}
 
 	@Override

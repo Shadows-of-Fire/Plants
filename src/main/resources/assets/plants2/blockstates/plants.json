@@ -583,6 +583,66 @@
 				"textures": {
 					"cross": "plants2:blocks/forgotten/flower/star_of_bethlehem"
 				}
+			},
+			"barren_strawberry": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/barren_strawberry"
+				}
+			},
+			"beardtongue": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/beardtongue"
+				}
+			},
+			"cambridge_blue": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/cambridge_blue"
+				}
+			},
+			"fairy_lily": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/fairy_lily"
+				}
+			},
+			"royal_bluebell": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/royal_bluebell"
+				}
+			},
+			"sandbog_death_camas": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/sandbog_death_camas"
+				}
+			},
+			"snowy_river_westringia": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/snowy_river_westringia"
+				}
+			},
+			"weldenia_candida": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/weldenia_candida"
+				}
+			},
+			"wild_rice": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/wild_rice"
+				}
+			},
+			"yellowroot": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/yellowroot"
+				}
+			},
+			"zenobia": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/zenobia"
+				}
+			},
+			"san_angelo_yucca": {
+				"textures": {
+					"cross": "plants2:blocks/cosmetic/desert/san_angelo_yucca"
+				}
 			}
 		},
 		"inventory": {

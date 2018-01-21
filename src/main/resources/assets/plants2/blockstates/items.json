@@ -226,6 +226,61 @@
 				"textures": {
 					"layer0": "plants2:items/smolderberry"
 				}
+			},
+			"crystal_pickaxe": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_pickaxe"
+				}
+			},
+			"crystal_axe": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_axe"
+				}
+			},
+			"crystal_shovel": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_shovel"
+				}
+			},
+			"crystal_hoe": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_hoe"
+				}
+			},
+			"crystal_sword": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/c_sword"
+				}
+			},
+			"dark_crystal_pickaxe": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_pickaxe"
+				}
+			},
+			"dark_crystal_axe": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_axe"
+				}
+			},
+			"dark_crystal_shovel": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_shovel"
+				}
+			},
+			"dark_crystal_hoe": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_hoe"
+				}
+			},
+			"dark_crystal_sword": {
+				"textures": {
+					"layer0": "plants2:items/forgotten/dc_sword"
+				}
+			},
+			"tahitian_spinach": {
+				"textures": {
+					"layer0": "plants2:items/tahitian_spinach"
+				}
 			}
 		}
 	}

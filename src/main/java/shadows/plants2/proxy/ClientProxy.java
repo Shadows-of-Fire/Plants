@@ -39,6 +39,8 @@ public class ClientProxy implements IProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
+	
+	public static final int GROUND_COLOR = 0xA3CBF7;
 
 	@Override
 	public void init(FMLInitializationEvent e) {
@@ -58,6 +60,14 @@ public class ClientProxy implements IProxy {
 			int color = ColorToPotionUtil.getColorMultiplier(caul.getColors(), caul.hasFirstWart());
 			return color == -1 ? Color.BLUE.getRGB() : color;
 		}, ModRegistry.BREWING_CAULDRON);
+
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
+			return GROUND_COLOR;
+		}, ModRegistry.GROUNDCOVER);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tint) -> {
+			return GROUND_COLOR;
+		}, ModRegistry.GROUNDCOVER);
+
 	}
 
 	@Override

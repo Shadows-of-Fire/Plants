@@ -41,8 +41,8 @@ public class Config {
 
 	public static final List<ResourceLocation> REGNAME_BL = new ArrayList<>();
 	public static final List<String> MODID_BL = new ArrayList<>();
-
 	public static final List<Integer> DIM_BL = new ArrayList<>();
+	public static final List<ResourceLocation> BIOME_BL = new ArrayList<>();
 
 	public static boolean crystalForest = true;
 
@@ -95,6 +95,9 @@ public class Config {
 
 		crystalForest = config.getBoolean("Crystal Forest", "biomes", true, "Toggle for the Crystal Forest");
 
+		String[] biomebl = config.getStringList("Biome Blacklist", g, new String[] { "minecraft:river" }, "A list of biomes that Plants will not try to generate in.");
+		for (String s : biomebl)
+			BIOME_BL.add(new ResourceLocation(s));
 	}
 
 }

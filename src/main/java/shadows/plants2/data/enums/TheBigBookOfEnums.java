@@ -139,7 +139,7 @@ public class TheBigBookOfEnums {
 		ASCLEPIAS_S(true, EnumDyeColor.MAGENTA),
 		ASCLEPIAS_T(true, EnumDyeColor.ORANGE),
 		ASPALATHUS_V(true, EnumDyeColor.YELLOW),
-		ASTILBE_C(false, EnumDyeColor.CYAN),
+		ASTILBE_C(false, EnumDyeColor.PINK),
 		BARBAREA_V(true, EnumDyeColor.YELLOW),
 		BEGONIA_E(true, EnumDyeColor.PINK),
 		BRACHYSTELMA_S(true, EnumDyeColor.BROWN),
@@ -186,6 +186,17 @@ public class TheBigBookOfEnums {
 		RED_ROVER(true, EnumDyeColor.RED),
 		SNAPDRAGON(true, EnumDyeColor.RED),
 		STAR_OF_BETHLEHEM(true, EnumDyeColor.WHITE),
+		BARREN_STRAWBERRY(true, EnumDyeColor.LIME),
+		BEARDTONGUE(true, EnumDyeColor.MAGENTA),
+		FAIRY_LILY(true, EnumDyeColor.WHITE),
+		ROYAL_BLUEBELL(true, EnumDyeColor.PURPLE),
+		SANDBOG_DEATH_CAMAS(true, EnumDyeColor.SILVER),
+		SNOWY_RIVER_WESTRINGIA(true, EnumDyeColor.GRAY),
+		WELDENIA_CANDIDA(true, EnumDyeColor.WHITE),
+		WILD_RICE(false, EnumDyeColor.LIME),
+		YELLOWROOT(true, EnumDyeColor.MAGENTA),
+		ZENOBIA(true, EnumDyeColor.SILVER),
+		CAMBRIDGE_BLUE(true, EnumDyeColor.CYAN),
 		;
 
 		EnumDyeColor color;
@@ -244,7 +255,9 @@ public class TheBigBookOfEnums {
 		COULTERS_JEWELFLOWER(true, EnumDyeColor.BROWN),
 		DISTANT_SCORPIONWEED(true, EnumDyeColor.PURPLE),
 		NEGLECTED_SCORPIONWEED(true, EnumDyeColor.BROWN),
-		SAGEBRUSH(false, EnumDyeColor.GREEN),;
+		SAGEBRUSH(false, EnumDyeColor.GREEN),
+		SAN_ANGELO_YUCCA(false, EnumDyeColor.GREEN),
+		;
 
 		EnumDyeColor color;
 		boolean flowers;
@@ -289,7 +302,9 @@ public class TheBigBookOfEnums {
 		ACANTHUS_B(true, EnumDyeColor.PINK),
 		ADENOCARPUS_F(true, EnumDyeColor.YELLOW),
 		AGONIS_T(true, EnumDyeColor.WHITE),
-		ALONSOA_M(true, EnumDyeColor.RED),;
+		ALONSOA_M(true, EnumDyeColor.RED),
+		BULBIL_BUGLELILY(true, EnumDyeColor.ORANGE),
+		;
 
 		EnumDyeColor color;
 		boolean flowers;

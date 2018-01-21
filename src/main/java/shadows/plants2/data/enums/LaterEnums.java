@@ -29,7 +29,9 @@ public class LaterEnums {
 		SAFFRON(new StackPrimer(ModRegistry.SAFFRON)),
 		SOLANUM_C(new StackPrimer(ModRegistry.SOLANUM_C)),
 		SOLANUM_D(new StackPrimer(ModRegistry.SOLANUM_D)),
-		SOLANUM_N(new StackPrimer(ModRegistry.SOLANUM_N)),;
+		SOLANUM_N(new StackPrimer(ModRegistry.SOLANUM_N)),
+		TAHITIAN_SPINACH(new StackPrimer(ModRegistry.TAHITIAN_SPINACH)),
+		;
 
 		private StackPrimer[] drops;
 

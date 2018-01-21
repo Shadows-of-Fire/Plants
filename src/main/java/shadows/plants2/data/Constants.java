@@ -11,7 +11,7 @@ public class Constants {
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
 	public static final String VERSION = "2.3.0";
-	public static final String DEPS = "required-after:placebo@[1.1.0,);after:botania;after:forestry;after:twilightforest;after:actuallyadditions;after:botany";
+	public static final String DEPS = "required-after:placebo@[1.1.4,);after:botania;after:forestry;after:twilightforest;after:actuallyadditions;after:botany";
 	public static final PropertyBool INV = PropertyBool.create("inventory");
 	public static final PropertyBool ZINV = PropertyBool.create("zinventory");
 	public static final String BOTANIA_ID = "botania";
