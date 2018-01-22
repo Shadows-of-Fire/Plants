@@ -38,19 +38,24 @@ import shadows.plants2.init.ModRegistry;
 public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	public BlockCrystal(Crystals type) {
-		super("crystal", Material.GLASS, SoundType.GLASS, 1.4F, 20F, type, Plants2.INFO);
+		super(type.getName() + (type.isShard() ? "_block" : ""), Material.GLASS, SoundType.GLASS, 1.4F, 20F, type, Plants2.INFO);
 	}
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("blocks", this, 0, "type=" + type.getName() + (type.isShard() ? "_inv" : ""));
-		Placebo.PROXY.useRenamedMapper(this, "blocks");
+		Placebo.PROXY.useRenamedMapper(this, "blocks", "", "type=" + type.getName());
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
+	}
+	
+	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.crystal";
 	}
 
 	@Override

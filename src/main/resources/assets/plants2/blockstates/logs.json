@@ -62,6 +62,12 @@
 			},
 			"z": {
 				"x": 90
+			},
+			"none": {
+				"model": "cube_all",
+				"textures": {
+					"all": "#side"
+				}
 			}
 		}
 	}

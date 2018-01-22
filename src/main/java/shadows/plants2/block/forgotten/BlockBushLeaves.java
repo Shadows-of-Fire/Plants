@@ -22,6 +22,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IShearable;
+import shadows.placebo.Placebo;
 import shadows.placebo.block.base.BlockEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.placebo.util.StackPrimer;
@@ -41,8 +42,13 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		PlaceboUtil.sMRL(this, 0, "fruit=true," + "type=" + type.getName());
-
+		PlaceboUtil.sMRL("bush", this, 0, "fruit=true,type=" + type.getName());
+		Placebo.PROXY.useRenamedMapper(this, "bush", ",type=" + type.getName());
+	}
+	
+	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.bush";
 	}
 
 	@Override

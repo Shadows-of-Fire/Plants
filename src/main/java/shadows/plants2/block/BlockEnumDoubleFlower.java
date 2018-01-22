@@ -47,7 +47,7 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("double_plants", this, 0, "inventory=true,type=" + type.getName() + ",upper=true");
-		Placebo.PROXY.useRenamedMapper(this, "double_plants");
+		Placebo.PROXY.useRenamedMapper(this, "double_plants", "", "inventory=false,type=" + type.getName() + ",upper=true");
 	}
 
 	@Override

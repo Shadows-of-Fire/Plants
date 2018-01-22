@@ -17,6 +17,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -48,7 +49,6 @@ import shadows.plants2.block.BlockEnumDoubleHarvestBush;
 import shadows.plants2.block.BlockEnumFlower;
 import shadows.plants2.block.BlockEnumHarvestBush;
 import shadows.plants2.block.BlockEnumNetherHarvest;
-import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
@@ -146,8 +146,8 @@ public class ModRegistry {
 	public static final Block AKEBIA_Q_VINE = new BlockCustomVine("akebia_q_vine", Vines.AKEBIA_Q, new StackPrimer(AKEBIA_Q));
 	public static final Block AMPELOPSIS_A_VINE = new BlockCustomVine("ampelopsis_a_vine", Vines.AMPELOPSIS_A, new StackPrimer(AMPELOPSIS_A));
 
-	public static final Tree<NetherLogs> NETHER_ASH_TREE = new Tree<>(NetherLogs.ASH).makeLog().setSapling(new BlockNetherSapling<>(NetherLogs.ASH)).setLeaf(new BlockEnumParticleLeaves<>(NetherLogs.ASH.getTree().getSap(), NetherLogs.ASH)).makePlanks();
-	public static final Tree<NetherLogs> NETHER_BLAZE_TREE = new Tree<>(NetherLogs.BLAZE).makeLog().setSapling(new BlockNetherSapling<>(NetherLogs.BLAZE)).setLeaf(new BlockEnumParticleLeaves<>(NetherLogs.BLAZE.getTree().getSap(), NetherLogs.BLAZE)).makePlanks();
+	public static final Tree<NetherLogs> NETHER_ASH_TREE = new Tree<>(NetherLogs.ASH).makeLog().setSapling(new BlockNetherSapling<>(NetherLogs.ASH)).makeLeaf().makePlanks();
+	public static final Tree<NetherLogs> NETHER_BLAZE_TREE = new Tree<>(NetherLogs.BLAZE).makeLog().setSapling(new BlockNetherSapling<>(NetherLogs.BLAZE)).makeLeaf().makePlanks();
 
 	public static final EnumTreeFactory<Logs, Tree<Logs>> BASIC_TREES = new EnumTreeFactory<>(e -> Tree.defaultTree(e), Logs.values());
 
@@ -216,6 +216,7 @@ public class ModRegistry {
 	@SubscribeEvent
 	public void onBiomeRegister(Register<Biome> event) {
 		event.getRegistry().registerAll(Plants2.INFO.getBiomeList().toArray(new Biome[0]));
+		BiomeDictionary.addTypes(CRYSTAL_FOREST, Type.FOREST, Type.COLD, Type.MAGICAL, Type.RARE);
 	}
 
 	public static void oreDict(FMLInitializationEvent e) {

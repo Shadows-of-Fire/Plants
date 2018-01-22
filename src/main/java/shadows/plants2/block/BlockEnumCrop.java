@@ -110,7 +110,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		Placebo.PROXY.useRenamedMapper(this, "crops", "", "type=" + type.getName());
+		Placebo.PROXY.useRenamedMapper(this, "crops", ",type=" + type.getName());
 	}
 
 	@Override

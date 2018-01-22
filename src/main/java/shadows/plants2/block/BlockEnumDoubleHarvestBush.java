@@ -47,7 +47,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("double_harvest", this, 0, "fruit=true,type=" + type.getName() + ",upper=true,zinventory=true");
-		Placebo.PROXY.useRenamedMapper(this, "double_harvest");
+		Placebo.PROXY.useRenamedMapper(this, "double_harvest", "", s -> "fruit=true,type=" + type.getName() + ",upper=" + s.getValue(UPPER) + ",zinventory=true");
 	}
 
 	@Override

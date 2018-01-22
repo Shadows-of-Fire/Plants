@@ -64,7 +64,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum<E>> extends BlockEnum
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("leaves", this, 0, "check_decay=false,decayable=false,type=" + type.getName());
-		Placebo.PROXY.useRenamedMapper(this, "leaves");
+		Placebo.PROXY.useRenamedMapper(this, "leaves", ",type=" + type.getName());
 	}
 
 	@Override
@@ -205,5 +205,10 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum<E>> extends BlockEnum
 
 	public BlockEnumSapling<E> getSapling() {
 		return sapling;
+	}
+
+	@Override
+	public String getHarvestTool(IBlockState state) {
+		return "axe";
 	}
 }

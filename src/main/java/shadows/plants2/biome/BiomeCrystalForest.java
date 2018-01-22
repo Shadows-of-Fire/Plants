@@ -61,7 +61,7 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	@Override
 	protected void register() {
 		Plants2.INFO.getBiomeList().add(this);
-		if (Config.crystalForest) BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, 5));
+		if (Config.crystalForest) BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, 4));
 	}
 
 }

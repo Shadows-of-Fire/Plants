@@ -26,7 +26,7 @@ public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 
 	@Override
 	public void initModels(ModelRegistryEvent ev) {
-		PlaceboUtil.sMRL("items", this, type.ordinal(), "item=" + type.getName());
+		PlaceboUtil.sMRL("items", this, 0, "item=" + type.getName());
 	}
 
 	@Override

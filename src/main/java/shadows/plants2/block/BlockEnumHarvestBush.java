@@ -44,7 +44,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("harvestables", this, 0, "fruit=true,inventory=true,type=" + type.getName());
-		Placebo.PROXY.useRenamedMapper(this, "harvestables");
+		Placebo.PROXY.useRenamedMapper(this, "harvestables", ",type=" + type.getName());
 	}
 
 	@Override

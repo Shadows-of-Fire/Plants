@@ -58,6 +58,11 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	}
 
 	@Override
+	public int getMetaFromState(IBlockState state) {
+		return 0;
+	}
+
+	@Override
 	public String getUnlocalizedName() {
 		return "tile.plants2";
 	}

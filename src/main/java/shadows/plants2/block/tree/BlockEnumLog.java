@@ -93,7 +93,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum<E>> extends BlockEnum<E>
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("logs", this, 0, AXIS.getName() + "=" + EnumAxis.Y.getName() + ",type=" + type.getName());
-		Placebo.PROXY.useRenamedMapper(this, "logs");
+		Placebo.PROXY.useRenamedMapper(this, "logs", ",type=" + type.getName());
 	}
 
 	@Override

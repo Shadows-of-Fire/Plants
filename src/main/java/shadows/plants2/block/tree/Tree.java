@@ -4,6 +4,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
+import shadows.placebo.interfaces.IParticleProvider;
+import shadows.plants2.block.BlockEnumParticleLeaves;
 
 public class Tree<E extends Enum<E> & ITreeEnum<E>> {
 
@@ -16,6 +18,7 @@ public class Tree<E extends Enum<E> & ITreeEnum<E>> {
 
 	public Tree(E type) {
 		this.type = type;
+		type.setTree(this);
 	}
 
 	public WorldGenerator getTreeGen() {
@@ -80,8 +83,10 @@ public class Tree<E extends Enum<E> & ITreeEnum<E>> {
 		return setLog(new BlockEnumLog<>(s, hard, res, type));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Tree<E> makeLeaf() {
 		if (this.sapling == null) throw new UnsupportedOperationException("Leaves require a sapling!");
+		if (type instanceof IParticleProvider) return setLeaf(new BlockEnumParticleLeaves(sapling, (Enum<?>) type));
 		return setLeaf(new BlockEnumLeaves<>(sapling, type));
 	}
 
@@ -107,7 +112,7 @@ public class Tree<E extends Enum<E> & ITreeEnum<E>> {
 	}
 
 	public static <E extends Enum<E> & ITreeEnum<E>> Tree<E> defaultTree(E e) {
-		return new Tree<>(e).makeLog().makeLeaf().makeSap(EnumPlantType.Plains).makePlanks();
+		return new Tree<>(e).makeLog().makeSap(EnumPlantType.Plains).makeLeaf().makePlanks();
 	}
 
 }

@@ -36,7 +36,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL("plants", this, 0, "inventory=true,type=" + type.getName());
-		Placebo.PROXY.useRenamedMapper(this, "plants");
+		Placebo.PROXY.useRenamedMapper(this, "plants", "", "inventory=false,type=" + type.getName());
 	}
 
 	@Override
