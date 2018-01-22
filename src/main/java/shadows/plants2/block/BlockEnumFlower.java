@@ -13,8 +13,8 @@ import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumBush<E> implements IHasRecipe {
 
-	public BlockEnumFlower(String name, EnumPlantType plantType, E type) {
-		super(name, plantType, type);
+	public BlockEnumFlower(EnumPlantType plantType, E type) {
+		super(type.getName(), plantType, type);
 	}
 
 	@Override

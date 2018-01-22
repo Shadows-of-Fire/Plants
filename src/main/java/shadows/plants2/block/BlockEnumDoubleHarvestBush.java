@@ -29,8 +29,8 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	public static final PropertyBool UPPER = BlockEnumDoubleFlower.UPPER;
 
-	public BlockEnumDoubleHarvestBush(String name, EnumPlantType plantType, E type) {
-		super(name, plantType, type);
+	public BlockEnumDoubleHarvestBush(EnumPlantType plantType, E type) {
+		super(plantType, type);
 		setDefaultState(getDefaultState().withProperty(UPPER, false));
 	}
 

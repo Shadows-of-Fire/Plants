@@ -138,13 +138,13 @@ public class PlantUtil {
 	public static ItemStack getDyeForEnum(EnumDyeColor c, int size) {
 		switch (c) {
 		case BLUE:
-			return Generic.DYE_BLUE.get();
+			return Generic.DYE_BLUE.getAsStack();
 		case WHITE:
-			return Generic.DYE_WHITE.get();
+			return Generic.DYE_WHITE.getAsStack();
 		case BLACK:
-			return Generic.DYE_BLACK.get();
+			return Generic.DYE_BLACK.getAsStack();
 		case BROWN:
-			return Generic.DYE_BROWN.get();
+			return Generic.DYE_BROWN.getAsStack();
 		default:
 			return new ItemStack(Items.DYE, size, c.getDyeDamage());
 		}

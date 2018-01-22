@@ -14,7 +14,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 
 	public ItemFoodBase(String name, int amount, float saturationMultiplier) {
 		super(amount, saturationMultiplier, false);
-		setUnlocalizedName(Constants.MODID + "." + name);
+		setUnlocalizedName(Plants2.MODID + "." + name);
 		String tName = PlantUtil.sneakyConfigTranslate(getUnlocalizedName() + ".name");
 		heal = Plants2.CONFIG.getInt("Food Value - " + tName, "Food", amount, 1, 20, "The amount of hunger a " + tName + " will restore.");
 		setRegistryName(name);

@@ -33,7 +33,7 @@ import shadows.plants2.init.ModRegistry;
 public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IShearable {
 
 	public BlockBushLeaves(BushSet type) {
-		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, type, Plants2.INFO);
+		super(type.getName() + "_bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, type, Plants2.INFO);
 		setTickRandomly(true);
 		setLightOpacity(1);
 		setDefaultState(getDefaultState().withProperty(BlockEnumHarvestBush.FRUIT, false));
@@ -96,7 +96,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> k = new ArrayList<ItemStack>();
 		if (state.getValue(BlockEnumHarvestBush.FRUIT)) k.add(type.getHarvest().genStack());
-		if (ThreadLocalRandom.current().nextInt(5) == 0) k.add(new ItemStack(ModRegistry.BUSHLING, 1, damageDropped(state)));
+		if (ThreadLocalRandom.current().nextInt(5) == 0) k.add(new ItemStack(ModRegistry.BUSHLING.getBlock(type)));
 		return k;
 	}
 
@@ -107,7 +107,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 		k.add(new ItemStack(state.getBlock(), 1, damageDropped(state)));
 		if (ThreadLocalRandom.current().nextInt(15) == 0) {
 			k.clear();
-			k.add(new ItemStack(ModRegistry.BUSHLING, 1, damageDropped(state)));
+			k.add(new ItemStack(ModRegistry.BUSHLING.getBlock(type)));
 		}
 		return k;
 	}

@@ -9,12 +9,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
-import shadows.plants2.init.ModRegistry;
 
 public class WorldGenCrystals extends WorldGenFlowers {
 
-	private IBlockState dark_shard = ModRegistry.CRYSTAL.getStateFor(Crystals.DARK_CRYSTAL_SHARD);
-	private IBlockState shard = ModRegistry.CRYSTAL.getStateFor(Crystals.CRYSTAL_SHARD);
+	private IBlockState dark_shard = Crystals.DARK_CRYSTAL_SHARD.getAsState();
+	private IBlockState shard = Crystals.CRYSTAL_SHARD.getAsState();
 
 	public WorldGenCrystals() {
 		super(null, null);

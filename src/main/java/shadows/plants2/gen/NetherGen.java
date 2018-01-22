@@ -15,7 +15,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import shadows.plants2.data.Config;
-import shadows.plants2.init.ModRegistry;
+import shadows.plants2.data.enums.LaterEnums.NetherHarvests;
 import shadows.plants2.util.PlantUtil;
 
 public class NetherGen implements IWorldGenerator {
@@ -29,7 +29,7 @@ public class NetherGen implements IWorldGenerator {
 				pos.setPos(pos.getX(), i, pos.getZ());
 				IBlockState state = world.getBlockState(pos);
 				int y = pos.getY();
-				if (isValidSoil(state, world, pos, ModRegistry.NETHER_HARVEST) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ()))) break;
+				if (isValidSoil(state, world, pos, (IPlantable) NetherHarvests.EMBERROOT.getAsState().getBlock()) && world.isAirBlock(pos.setPos(pos.getX(), y + 1, pos.getZ()))) break;
 			}
 			if (pos.getY() >= 95) return;
 			for (int r = 0; r < Config.numTries; r++)

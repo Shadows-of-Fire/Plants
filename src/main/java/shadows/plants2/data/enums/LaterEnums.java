@@ -6,13 +6,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.placebo.interfaces.IHarvestableEnum;
-import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
-import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
-import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
-import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.init.ModRegistry;
 
 public class LaterEnums {
@@ -22,7 +18,7 @@ public class LaterEnums {
 		ACTAEA_P(new StackPrimer(ModRegistry.ACTAEA_P)),
 		ALTERNANTHERA_F(new StackPrimer(ModRegistry.ALTERNANTHERA_F)),
 		AMBROSIA_A(new StackPrimer(ModRegistry.AMBROSIA_A)),
-		APOCYNUM_C(new StackPrimer(ModRegistry.APOCYNUM_C), new StackPrimer(ModRegistry.GENERIC)),
+		APOCYNUM_C(new StackPrimer(ModRegistry.APOCYNUM_C), new StackPrimer(Generic.COTTON)),
 		DAUCUS_C(new StackPrimer(ModRegistry.DAUCUS_C)),
 		PHYTOLACCA_A(new StackPrimer(ModRegistry.PHYTOLACCA_A)),
 		PLANTAGO_M(new StackPrimer(ModRegistry.PLANTAGO_M)),
@@ -32,8 +28,7 @@ public class LaterEnums {
 		SOLANUM_C(new StackPrimer(ModRegistry.SOLANUM_C)),
 		SOLANUM_D(new StackPrimer(ModRegistry.SOLANUM_D)),
 		SOLANUM_N(new StackPrimer(ModRegistry.SOLANUM_N)),
-		TAHITIAN_SPINACH(new StackPrimer(ModRegistry.TAHITIAN_SPINACH)),
-		;
+		TAHITIAN_SPINACH(new StackPrimer(ModRegistry.TAHITIAN_SPINACH)),;
 
 		StackPrimer[] drops;
 		Block block;
@@ -51,7 +46,7 @@ public class LaterEnums {
 		public ItemStack getAsStack() {
 			return RecipeHelper.makeStack(block);
 		}
-		
+
 		@Override
 		public IBlockState getAsState() {
 			return block.getDefaultState();
@@ -64,12 +59,12 @@ public class LaterEnums {
 	}
 
 	public static enum NetherHarvests implements IHarvestableEnum {
-		BLAZE(new StackPrimer(ModRegistry.GENERIC, 1, Generic.BLAZE_PETAL.ordinal())),
-		MAGMA(new StackPrimer(ModRegistry.GENERIC, 1, Generic.MAGMA_JELLY.ordinal())),
+		BLAZE(new StackPrimer(Generic.BLAZE_PETAL)),
+		MAGMA(new StackPrimer(Generic.MAGMA_JELLY)),
 		MELON(new StackPrimer(Items.SPECKLED_MELON)),
 		FIRE_FRUIT(new StackPrimer(ModRegistry.FIRE_FRUIT)),
-		EMBERROOT(new StackPrimer(ModRegistry.GENERIC, 1, Generic.EMBERROOT.ordinal())),
-		SMOLDERBERRY(new StackPrimer(ModRegistry.GENERIC, 1, Generic.SMOLDERBERRY.ordinal())),;
+		EMBERROOT(new StackPrimer(Generic.EMBERROOT)),
+		SMOLDERBERRY(new StackPrimer(Generic.SMOLDERBERRY)),;
 
 		StackPrimer[] drops;
 		Block block;
@@ -87,7 +82,7 @@ public class LaterEnums {
 		public ItemStack getAsStack() {
 			return RecipeHelper.makeStack(block);
 		}
-		
+
 		@Override
 		public IBlockState getAsState() {
 			return block.getDefaultState();
@@ -119,44 +114,7 @@ public class LaterEnums {
 		public ItemStack getAsStack() {
 			return RecipeHelper.makeStack(block);
 		}
-		
-		@Override
-		public IBlockState getAsState() {
-			return block.getDefaultState();
-		}
 
-		@Override
-		public void set(IForgeRegistryEntry<?> ifre) {
-			block = (Block) ifre;
-		}
-	}
-
-	public static enum Planks implements IPropertyEnum {
-		ASH(new StackPrimer(NetherLogs.ASH)),
-		BLAZE(new StackPrimer(NetherLogs.BLAZE)),
-		BLACK_KAURI(new StackPrimer(Logs.BLACK_KAURI)),
-		BRAZILLIAN_PINE(new StackPrimer(Logs.BRAZILLIAN_PINE)),
-		INCENSE_CEDAR(new StackPrimer(Logs.INCENSE_CEDAR)),
-		MURRAY_PINE(new StackPrimer(Logs.MURRAY_PINE)),
-		CRYSTAL(new StackPrimer(CrystalLogs.CRYSTAL)),
-		DARK_CRYSTAL(new StackPrimer(CrystalLogs.DARK_CRYSTAL));
-
-		StackPrimer primer;
-		Block block;
-
-		Planks(StackPrimer primer) {
-			this.primer = primer;
-		}
-
-		public ItemStack genLogStack() {
-			return primer.genStack();
-		}
-
-		@Override
-		public ItemStack getAsStack() {
-			return RecipeHelper.makeStack(block);
-		}
-		
 		@Override
 		public IBlockState getAsState() {
 			return block.getDefaultState();

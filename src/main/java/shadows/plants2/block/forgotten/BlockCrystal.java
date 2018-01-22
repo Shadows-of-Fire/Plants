@@ -17,6 +17,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,9 +26,10 @@ import shadows.placebo.block.base.BlockEnum;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
-import shadows.plants2.block.BlockEnumLeaves;
-import shadows.plants2.block.BlockEnumLog;
-import shadows.plants2.block.BlockEnumSapling;
+import shadows.plants2.block.tree.BlockEnumLeaves;
+import shadows.plants2.block.tree.BlockEnumLog;
+import shadows.plants2.block.tree.BlockEnumSapling;
+import shadows.plants2.block.tree.Tree;
 import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
@@ -35,15 +37,13 @@ import shadows.plants2.init.ModRegistry;
 
 public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
-	public BlockCrystal() {
-		super("crystal", Material.GLASS, SoundType.GLASS, 1.4F, 20F, Crystals.class, Plants2.INFO);
+	public BlockCrystal(Crystals type) {
+		super("crystal", Material.GLASS, SoundType.GLASS, 1.4F, 20F, type, Plants2.INFO);
 	}
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		for (int i = 0; i < types.size(); i++) {
-			PlaceboUtil.sMRL("blocks", this, i, "type=" + types.get(i).getName() + (types.get(i).isShard() ? "_inv" : ""));
-		}
+		PlaceboUtil.sMRL("blocks", this, 0, "type=" + type.getName() + (type.isShard() ? "_inv" : ""));
 		Placebo.PROXY.useRenamedMapper(this, "blocks");
 	}
 
@@ -55,12 +55,12 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public int getLightValue(IBlockState state) {
-		return state.getValue(property).isShard() ? 5 : 8;
+		return type.isShard() ? 5 : 8;
 	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return state.getValue(property).isShard() ? NULL_AABB : FULL_BLOCK_AABB;
+		return type.isShard() ? NULL_AABB : FULL_BLOCK_AABB;
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return !state.getValue(property).isShard();
+		return !type.isShard();
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public String getHarvestTool(IBlockState state) {
-		return state.getValue(property).isShard() ? null : "pickaxe";
+		return type.isShard() ? null : "pickaxe";
 	}
 
 	@Override
@@ -92,58 +92,57 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public float getBlockHardness(IBlockState state, World world, BlockPos pos) {
-		return state.getValue(property).isShard() ? 0.3F : 1.4F;
+		return type.isShard() ? 0.3F : 1.4F;
 	}
 
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		Crystals c = state.getValue(property);
-		if (c.isShard()) drops.add(c.getDrops());
-		else drops.add(new ItemStack(this, 1, c.ordinal()));
+		if (type.isShard()) drops.add(type.getDrops());
+		else drops.add(new ItemStack(this));
 	}
 
 	@Override
 	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-		return state.getValue(property).isShard();
+		return type.isShard();
 	}
 
 	@Override
 	public ItemStack getSilkTouchDrop(IBlockState state) {
-		return new ItemStack(this, 1, state.getValue(property).ordinal());
+		return new ItemStack(this);
 	}
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		Plants2.HELPER.addSimpleShapeless(Generic.CRYSTAL_CHUNK.get(), Generic.CRYSTAL_SHARD.get(), 4);
-		Plants2.HELPER.addSimpleShapeless(Generic.CRYSTAL_SHARD.get(4), Generic.CRYSTAL_CHUNK.get(), 1);
-		Plants2.HELPER.addSimpleShapeless(Generic.DARK_CRYSTAL_CHUNK.get(), Generic.DARK_CRYSTAL_SHARD.get(), 4);
-		Plants2.HELPER.addSimpleShapeless(Generic.DARK_CRYSTAL_SHARD.get(4), Generic.DARK_CRYSTAL_CHUNK.get(), 1);
-		Plants2.HELPER.addShaped(Crystals.CRYSTAL_BRICK.get(4), 2, 2, Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get());
-		Plants2.HELPER.addSimpleShapeless(Crystals.CRYSTAL_BLOCK.get(), Generic.CRYSTAL_CHUNK.get(), 4);
-		Plants2.HELPER.addShaped(Crystals.DARK_CRYSTAL_BRICK.get(), 2, 2, Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get());
-		Plants2.HELPER.addSimpleShapeless(Crystals.DARK_CRYSTAL_BLOCK.get(), Generic.DARK_CRYSTAL_CHUNK.get(), 4);
-		Plants2.HELPER.addShaped(Generic.CRYSTAL_STICK.get(), 1, 2, Generic.CRYSTAL_SHARD.get(), Generic.CRYSTAL_SHARD.get());
-		ItemStack cc = Generic.CRYSTAL_CHUNK.get();
-		ItemStack st = Generic.CRYSTAL_STICK.get();
+		Plants2.HELPER.addSimpleShapeless(Generic.CRYSTAL_CHUNK.getAsStack(), Generic.CRYSTAL_SHARD.getAsStack(), 4);
+		Plants2.HELPER.addSimpleShapeless(Generic.CRYSTAL_SHARD.getAsStack(4), Generic.CRYSTAL_CHUNK.getAsStack(), 1);
+		Plants2.HELPER.addSimpleShapeless(Generic.DARK_CRYSTAL_CHUNK.getAsStack(), Generic.DARK_CRYSTAL_SHARD.getAsStack(), 4);
+		Plants2.HELPER.addSimpleShapeless(Generic.DARK_CRYSTAL_SHARD.getAsStack(4), Generic.DARK_CRYSTAL_CHUNK.getAsStack(), 1);
+		Plants2.HELPER.addShaped(Crystals.CRYSTAL_BRICK.getAsStack(4), 2, 2, Crystals.CRYSTAL_BLOCK.getAsStack(), Crystals.CRYSTAL_BLOCK.getAsStack(), Crystals.CRYSTAL_BLOCK.getAsStack(), Crystals.CRYSTAL_BLOCK.getAsStack());
+		Plants2.HELPER.addSimpleShapeless(Crystals.CRYSTAL_BLOCK.getAsStack(), Generic.CRYSTAL_CHUNK.getAsStack(), 4);
+		Plants2.HELPER.addShaped(Crystals.DARK_CRYSTAL_BRICK.getAsStack(), 2, 2, Crystals.DARK_CRYSTAL_BLOCK.getAsStack(), Crystals.DARK_CRYSTAL_BLOCK.getAsStack(), Crystals.DARK_CRYSTAL_BLOCK.getAsStack(), Crystals.DARK_CRYSTAL_BLOCK.getAsStack());
+		Plants2.HELPER.addSimpleShapeless(Crystals.DARK_CRYSTAL_BLOCK.getAsStack(), Generic.DARK_CRYSTAL_CHUNK.getAsStack(), 4);
+		Plants2.HELPER.addShaped(Generic.CRYSTAL_STICK.getAsStack(), 1, 2, Generic.CRYSTAL_SHARD.getAsStack(), Generic.CRYSTAL_SHARD.getAsStack());
+		ItemStack cc = Generic.CRYSTAL_CHUNK.getAsStack();
+		ItemStack st = Generic.CRYSTAL_STICK.getAsStack();
 		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_PICKAXE, 3, 3, cc, cc, cc, null, st, null, null, st, null);
 		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_SHOVEL, 1, 3, cc, st, st);
 		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_AXE, 2, 3, cc, cc, cc, st, null, st);
 		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_HOE, 2, 3, cc, cc, null, st, null, st);
 		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_SWORD, 1, 3, cc, cc, st);
-		cc = Generic.DARK_CRYSTAL_CHUNK.get();
+		cc = Generic.DARK_CRYSTAL_CHUNK.getAsStack();
 		Plants2.HELPER.addShaped(ModRegistry.DARK_CRYSTAL_PICKAXE, 3, 3, cc, cc, cc, null, st, null, null, st, null);
 		Plants2.HELPER.addShaped(ModRegistry.DARK_CRYSTAL_SHOVEL, 1, 3, cc, st, st);
 		Plants2.HELPER.addShaped(ModRegistry.DARK_CRYSTAL_AXE, 2, 3, cc, cc, cc, st, null, st);
 		Plants2.HELPER.addShaped(ModRegistry.DARK_CRYSTAL_HOE, 2, 3, cc, cc, null, st, null, st);
 		Plants2.HELPER.addShaped(ModRegistry.DARK_CRYSTAL_SWORD, 1, 3, cc, cc, st);
-		cc = Generic.CRYSTAL_SHARD.get();
-		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_SAP, 3, 3, cc, null, cc, null, cc, null, null, Generic.DARK_CRYSTAL_SHARD.get(), null);
+		cc = Generic.CRYSTAL_SHARD.getAsStack();
+		Plants2.HELPER.addShaped(ModRegistry.CRYSTAL_SAP, 3, 3, cc, null, cc, null, cc, null, null, Generic.DARK_CRYSTAL_SHARD.getAsStack(), null);
 	}
 
-	public static class Logs extends BlockEnumLog<CrystalLogs> {
+	private static class Logs extends BlockEnumLog<CrystalLogs> {
 
-		public Logs() {
-			super("crystal_log", SoundType.GLASS, 1.5F, 5F, CrystalLogs.class, 0);
+		private Logs(CrystalLogs type) {
+			super(SoundType.GLASS, 1.5F, 5F, type);
 		}
 
 		@Override
@@ -152,15 +151,15 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		}
 	}
 
-	public static class Leaves extends BlockEnumLeaves<CrystalLogs> {
+	private static class Leaves extends BlockEnumLeaves<CrystalLogs> {
 
-		public Leaves() {
-			super("crystal_leaves", SoundType.GLASS, 0.4F, 0, ModRegistry.CRYSTAL_SAP, CrystalLogs.class, 0);
+		private Leaves(CrystalLogs type) {
+			super(SoundType.GLASS, 0.4F, 0, ModRegistry.CRYSTAL_SAP, type);
 		}
 
 		@Override
 		public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-			drops.add(state.getValue(property) == CrystalLogs.CRYSTAL ? Generic.CRYSTAL_SHARD.get(quantityDropped(RANDOM)) : Generic.DARK_CRYSTAL_SHARD.get(quantityDropped(RANDOM)));
+			drops.add(type == CrystalLogs.CRYSTAL ? Generic.CRYSTAL_SHARD.getAsStack(quantityDropped(RANDOM)) : Generic.DARK_CRYSTAL_SHARD.getAsStack(quantityDropped(RANDOM)));
 		}
 
 		@Override
@@ -172,7 +171,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	public static class Sapling extends BlockEnumSapling<CrystalLogs> {
 
 		public Sapling() {
-			super("crystal_sapling", SoundType.GLASS, 0, 0, CrystalLogs.CRYSTAL, ModRegistry.GROUNDCOVER);
+			super(EnumPlantType.Plains, SoundType.GLASS, 0, 0, CrystalLogs.CRYSTAL, ModRegistry.GROUNDCOVER);
 		}
 
 		@Override
@@ -183,9 +182,21 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		@Override
 		public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 			world.setBlockToAir(pos);
-			WorldGenerator gen = rand.nextFloat() > 0.8F ? ModRegistry.DARK_CRYSTAL_TREE : ModRegistry.CRYSTAL_TREE;
+			WorldGenerator gen = rand.nextFloat() > 0.8F ? ModRegistry.DARK_CRYSTAL_TREE_GEN : ModRegistry.CRYSTAL_TREE_GEN;
 			if (!gen.generate(world, rand, pos)) world.setBlockState(pos, state);
 		}
+	}
+
+	public static class CrystalTree extends Tree<CrystalLogs> {
+
+		public CrystalTree(CrystalLogs type) {
+			super(type);
+			setLog(new Logs(type));
+			setLeaf(new Leaves(type));
+			setSapling(ModRegistry.CRYSTAL_SAP);
+			makePlanks(Material.GLASS, SoundType.GLASS, 1.4F, 20F);
+		}
+
 	}
 
 }

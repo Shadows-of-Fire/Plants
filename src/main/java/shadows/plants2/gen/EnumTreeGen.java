@@ -17,36 +17,41 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import shadows.placebo.block.base.IEnumBlockAccess;
-import shadows.placebo.interfaces.ITreeEnum;
-import shadows.plants2.block.BlockEnumLeaves;
+import shadows.plants2.block.tree.BlockEnumLeaves;
+import shadows.plants2.block.tree.ITreeEnum;
+import shadows.plants2.block.tree.Tree;
 import shadows.plants2.data.Config;
 
-public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
+public class EnumTreeGen<E extends Enum<E> & ITreeEnum<E>> extends WorldGenTrees {
 
 	protected final Block SAP;
 	protected final IBlockState leaf;
 	protected final IBlockState log;
 	protected int minHeight = 0;
 
-	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign, boolean natural) {
+	public EnumTreeGen(boolean notify, boolean natural, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
 		super(notify, minHeight, log.getStateFor(assign), leaf.getStateFor(assign), false);
 		this.log = log.getStateFor(assign);
 		this.leaf = leaf.getStateFor(assign);
 		this.minHeight = minHeight;
 		if (natural) TreeGenerator.LIST.add(this);
-		assign.setTreeGen(this);
+		assign.getTree().setTreeGen(this);
 		SAP = ((BlockEnumLeaves<?>) leaf).getSapling();
 	}
 
 	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
-		this(notify, minHeight, log, leaf, assign, true);
+		this(notify, true, minHeight, log, leaf, assign);
+	}
+
+	public EnumTreeGen(boolean notify, boolean natural, int minHeight, Tree<E> tree) {
+		this(notify, natural, minHeight, tree.getLog(), tree.getLeaf(), tree.getType());
 	}
 
 	//If you extend this class and override generate/canGen, use this for super.
 	public EnumTreeGen(E assign, boolean natural) {
 		super(false, 0, null, null, false);
 		TreeGenerator.LIST.add(this);
-		assign.setTreeGen(this);
+		assign.getTree().setTreeGen(this);
 		SAP = Blocks.TALLGRASS;
 		leaf = null;
 		log = null;

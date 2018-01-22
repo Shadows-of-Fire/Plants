@@ -3,10 +3,7 @@ package shadows.plants2.util;
 import java.util.ArrayList;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import shadows.placebo.block.base.IEnumBlock;
 import shadows.plants2.Plants2;
 
 public class ControlledList extends ArrayList<IBlockState> {
@@ -25,9 +22,7 @@ public class ControlledList extends ArrayList<IBlockState> {
 	}
 
 	private String translate(IBlockState state) {
-		String translate = PlantUtil.sneakyConfigTranslate(Item.getItemFromBlock(state.getBlock()).getUnlocalizedName(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state))) + ".name");
-		if (translate.equals("invalid.name")) return state.getBlock().getRegistryName() + "[type=" + ((IEnumBlock<?>) state.getBlock()).getType().getName() + "]";
-		return translate;
+		return state.getBlock().getRegistryName().getResourcePath();
 	}
 
 }

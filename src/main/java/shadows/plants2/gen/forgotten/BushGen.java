@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import shadows.plants2.data.Config;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
-import shadows.plants2.init.ModRegistry;
 
 public class BushGen implements IWorldGenerator {
 
@@ -42,12 +41,12 @@ public class BushGen implements IWorldGenerator {
 		}
 	}
 
-	public static final Bush BLACKBERRY_BUSH = new Bush(LOG, ModRegistry.BUSH.getStateFor(BushSet.BLACKBERRY), false);
-	public static final Bush BLUEBERRY_BUSH = new Bush(LOG, ModRegistry.BUSH.getStateFor(BushSet.BLUEBERRY), false);
-	public static final Bush DECIDUOUS_BUSH = new Bush(LOG, ModRegistry.BUSH.getStateFor(BushSet.DECIDUOUS), false);
-	public static final Bush EVERGREEN_BUSH = new Bush(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, EnumType.SPRUCE), ModRegistry.BUSH.getStateFor(BushSet.EVERGREEN), false);
-	public static final Bush HUCKLEBERRY_BUSH = new Bush(LOG, ModRegistry.BUSH.getStateFor(BushSet.HUCKLEBERRY), false);
-	public static final Bush RASPBERRY_BUSH = new Bush(LOG, ModRegistry.BUSH.getStateFor(BushSet.RASPBERRY), false);
+	public static final Bush BLACKBERRY_BUSH = new Bush(LOG, BushSet.BLACKBERRY.getAsState(), false);
+	public static final Bush BLUEBERRY_BUSH = new Bush(LOG, BushSet.BLUEBERRY.getAsState(), false);
+	public static final Bush DECIDUOUS_BUSH = new Bush(LOG, BushSet.DECIDUOUS.getAsState(), false);
+	public static final Bush EVERGREEN_BUSH = new Bush(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, EnumType.SPRUCE), BushSet.EVERGREEN.getAsState(), false);
+	public static final Bush HUCKLEBERRY_BUSH = new Bush(LOG, BushSet.HUCKLEBERRY.getAsState(), false);
+	public static final Bush RASPBERRY_BUSH = new Bush(LOG, BushSet.RASPBERRY.getAsState(), false);
 	public static final Bush[] BUSHGENS = { BLACKBERRY_BUSH, BLUEBERRY_BUSH, DECIDUOUS_BUSH, EVERGREEN_BUSH, HUCKLEBERRY_BUSH, RASPBERRY_BUSH };
 
 	public static class Bush extends WorldGenAbstractTree {

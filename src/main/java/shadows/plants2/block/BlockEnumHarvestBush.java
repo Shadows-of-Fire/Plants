@@ -30,8 +30,8 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	public static final PropertyBool FRUIT = PropertyBool.create("fruit");
 
-	public BlockEnumHarvestBush(String name, EnumPlantType plantType, E type) {
-		super(name, plantType, type);
+	public BlockEnumHarvestBush(EnumPlantType plantType, E type) {
+		super(type.getName() + "_bush", plantType, type);
 		setTickRandomly(true);
 		setDefaultState(getDefaultState().withProperty(FRUIT, false));
 	}

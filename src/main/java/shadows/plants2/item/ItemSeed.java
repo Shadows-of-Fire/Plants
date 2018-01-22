@@ -27,13 +27,13 @@ public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds imple
 	private String cropName;
 	private E cropVariant;
 
-	public ItemSeed(String name, EnumPlantType type, String blockName, E variant) {
+	public ItemSeed(String name, EnumPlantType type, String cropName, E variant) {
 		super(null, null);
 		this.type = type;
-		cropName = blockName;
+		this.cropName = cropName;
 		cropVariant = variant;
 		setRegistryName(name);
-		setUnlocalizedName(Constants.MODID + "." + name);
+		setUnlocalizedName(Plants2.MODID + "." + name);
 		setCreativeTab(Constants.TAB);
 		Plants2.INFO.getItemList().add(this);
 	}

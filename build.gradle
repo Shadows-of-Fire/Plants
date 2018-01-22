@@ -30,31 +30,18 @@ repositories {
     maven {
         url "http://dvs1.progwml6.com/files/maven"
     }
-    maven {
-        url "http://maven.epoxide.xyz"
-    }
-    maven {
-        url "http://maven.amadornes.com/"
-    }
 	maven {
 		url "http://tehnut.info/maven"
 	}
 	maven {
 		url "http://maven.ic2.player.to"
 	}
-	maven {
-        url 'http://maven.tterrag.com/'
-    }
 }
 
 dependencies {
 	deobfCompile "mezz.jei:jei_1.12.2:+"
 	deobfCompile "mcp.mobius.waila:Hwyla:+"
 	deobfCompile "net.sengir.forestry:forestry_1.12.2:+"
-	deobfCompile("binnie:binnie-mods-1.12.2:+") {
-	exclude group: 'jei-bees'
-	}
-	compile "team.chisel.ctm:CTM:+"
 	compileOnly fileTree(dir: 'placebo', include: '*.jar')
 }
 

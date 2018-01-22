@@ -11,29 +11,29 @@ import net.minecraft.world.gen.structure.template.BlockRotationProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import shadows.placebo.interfaces.ITreeEnum;
-import shadows.plants2.data.Constants;
+import shadows.plants2.Plants2;
+import shadows.plants2.block.tree.ITreeEnum;
 
-public class StructureGen extends EnumTreeGen<ITreeEnum> {
+public class StructureGen<E extends Enum<E> & ITreeEnum<E>> extends EnumTreeGen<E> {
 
 	protected TreeTemplate structure = null;
 	protected final ResourceLocation structurePath;
 	protected BlockPos offset;
 	protected Type[] allowedBiomes;
 
-	public StructureGen(ResourceLocation structurePath, BlockPos offset, ITreeEnum assign, Type... allowedBiomes) {
+	public StructureGen(ResourceLocation structurePath, BlockPos offset, E assign, Type... allowedBiomes) {
 		super(assign);
 		this.structurePath = structurePath;
 		this.offset = offset;
 		this.allowedBiomes = allowedBiomes;
 	}
 
-	public StructureGen(BlockPos offset, ITreeEnum assign, Type... allowedBiomes) {
-		this(new ResourceLocation(Constants.MODID, assign.getName() + "_tree"), offset, assign, allowedBiomes);
+	public StructureGen(BlockPos offset, E assign, Type... allowedBiomes) {
+		this(new ResourceLocation(Plants2.MODID, assign.getName() + "_tree"), offset, assign, allowedBiomes);
 	}
 
-	public StructureGen(BlockPos offset, String name, ITreeEnum assign, Type... allowedBiomes) {
-		this(new ResourceLocation(Constants.MODID, name), offset, assign, allowedBiomes);
+	public StructureGen(BlockPos offset, String name, E assign, Type... allowedBiomes) {
+		this(new ResourceLocation(Plants2.MODID, name), offset, assign, allowedBiomes);
 	}
 
 	private final PlacementSettings settings = new PlacementSettings();

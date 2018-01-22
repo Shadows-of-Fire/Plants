@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import shadows.plants2.block.BlockFlowerpot;
 
 public interface IProxy {
 
@@ -26,9 +25,4 @@ public interface IProxy {
 
 	default void doCauldronInputParticles(BlockPos pos) {
 	}
-
-	default void potStateMap(BlockFlowerpot flowerpot) {
-
-	}
-
 }

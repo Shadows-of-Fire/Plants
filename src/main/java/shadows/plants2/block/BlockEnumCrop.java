@@ -13,6 +13,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -27,11 +28,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.data.Config;
-import shadows.plants2.init.ModRegistry;
 
 public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumBush<E> implements IGrowable {
 
@@ -40,8 +41,8 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	private final StackPrimer crop;
 	private final StackPrimer seed;
 
-	public BlockEnumCrop(String name, E type, Item crop, Item seed) {
-		super(name, EnumPlantType.Crop, type);
+	public BlockEnumCrop(E type, Item crop, Item seed) {
+		super(type.getName() + "_crop", EnumPlantType.Crop, type);
 		this.crop = new StackPrimer(crop);
 		this.seed = new StackPrimer(seed);
 		setDefaultState(getDefaultState().withProperty(AGE, 0));
@@ -145,13 +146,13 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return super.canPlaceBlockAt(world, pos) && soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, ModRegistry.PLANT_0);
+		return super.canPlaceBlockAt(world, pos) && soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, (IPlantable) Blocks.WHEAT);
 	}
 
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, ModRegistry.PLANT_0);
+		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, (IPlantable) Blocks.WHEAT);
 	}
 
 	@Override

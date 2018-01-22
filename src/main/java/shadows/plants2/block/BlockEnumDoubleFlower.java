@@ -34,8 +34,8 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
 
-	public BlockEnumDoubleFlower(String name, EnumPlantType plantType, E type) {
-		super(name, plantType, type);
+	public BlockEnumDoubleFlower(EnumPlantType plantType, E type) {
+		super(plantType, type);
 		setDefaultState(getDefaultState().withProperty(UPPER, false));
 	}
 

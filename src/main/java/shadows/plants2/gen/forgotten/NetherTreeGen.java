@@ -18,9 +18,10 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import shadows.placebo.block.base.IEnumBlock;
-import shadows.placebo.interfaces.ITreeEnum;
+import shadows.plants2.block.tree.ITreeEnum;
+import shadows.plants2.block.tree.Tree;
 
-public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator {
+public class NetherTreeGen<E extends Enum<E> & ITreeEnum<E>> extends WorldGenerator {
 	protected final IBlockState leaf;
 	protected final IBlockState log;
 	int dir = 0;
@@ -30,7 +31,11 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 		this.log = log.getStateFor(assign);
 		this.leaf = leaf.getStateFor(assign);
 		TreeGenerator.LIST.add(this);
-		assign.setTreeGen(this);
+		assign.getTree().setTreeGen(this);
+	}
+
+	public NetherTreeGen(Tree<E> tree) {
+		this(tree.getLog(), tree.getLeaf(), tree.getType());
 	}
 
 	@Override

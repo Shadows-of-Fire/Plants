@@ -18,8 +18,8 @@ import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import shadows.placebo.util.PlaceboUtil;
-import shadows.plants2.block.BlockEnumSapling;
-import shadows.plants2.data.Constants;
+import shadows.plants2.Plants2;
+import shadows.plants2.block.tree.BlockEnumSapling;
 
 public class TreeTemplate extends Template {
 
@@ -35,7 +35,7 @@ public class TreeTemplate extends Template {
 
 	public boolean isReplaceable(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		boolean flag = state.getBlock().isReplaceable(world, pos) || (state.getBlock().isLeaves(state, world, pos) && PlaceboUtil.isOwnedBy(state.getBlock(), Constants.MODID));
+		boolean flag = state.getBlock().isReplaceable(world, pos) || (state.getBlock().isLeaves(state, world, pos) && PlaceboUtil.isOwnedBy(state.getBlock(), Plants2.MODID));
 		if (flag && state.getBlock() instanceof BlockDoublePlant) world.setBlockToAir(pos.up());
 		return flag;
 	}

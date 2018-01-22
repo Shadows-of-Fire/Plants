@@ -4,40 +4,34 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.item.base.ItemBase;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Constants;
 
 public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 
-	public final E[] values;
+	public final E type;
 
-	public ItemBigEnum(String name, E[] values) {
-		super(name, Plants2.INFO);
-		setHasSubtypes(true);
-		this.values = values;
+	public ItemBigEnum(E value) {
+		super(value.getName(), Plants2.INFO);
+		this.type = value;
+		value.set(this);
 	}
 
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		if (this.isInCreativeTab(tab)) for (E e : values)
-			items.add(new ItemStack(this, 1, e.ordinal()));
+		if (this.isInCreativeTab(tab)) items.add(new ItemStack(this));
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent ev) {
-		for (E e : values)
-			PlaceboUtil.sMRL("items", this, e.ordinal(), "item=" + e.getName());
+		PlaceboUtil.sMRL("items", this, type.ordinal(), "item=" + type.getName());
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Constants.MODID + "." + values[stack.getMetadata()].getName();
+		return "item." + Plants2.MODID + "." + type.getName();
 	}
 
 }

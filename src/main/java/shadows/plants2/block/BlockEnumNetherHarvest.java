@@ -24,8 +24,8 @@ import shadows.plants2.gen.NetherGen;
 
 public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> implements IHasRecipe {
 
-	public BlockEnumNetherHarvest(String name, Class<E> enumClass, int predicate) {
-		super(name, EnumPlantType.Nether, enumClass, predicate);
+	public BlockEnumNetherHarvest(E type) {
+		super(EnumPlantType.Nether, type);
 	}
 
 	@Override
@@ -60,8 +60,8 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
-		Plants2.HELPER.addSimpleShapeless(Items.BLAZE_POWDER, Generic.BLAZE_PETAL.get(), 3);
-		Plants2.HELPER.addSimpleShapeless(Items.MAGMA_CREAM, Generic.MAGMA_JELLY.get(), 3);
+		Plants2.HELPER.addSimpleShapeless(Items.BLAZE_POWDER, Generic.BLAZE_PETAL.getAsStack(), 3);
+		Plants2.HELPER.addSimpleShapeless(Items.MAGMA_CREAM, Generic.MAGMA_JELLY.getAsStack(), 3);
 	}
 
 	@Override
