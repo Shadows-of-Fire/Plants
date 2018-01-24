@@ -21,6 +21,9 @@ import shadows.plants2.util.PlantUtil;
 public class ForestryIntegration {
 
 	public static void registerFlowersToForestry() {
+
+		if (FlowerManager.flowerRegistry == null) return;
+
 		List<IBlockState> list = new ArrayList<IBlockState>();
 		List<IBlockState> desertList = new ArrayList<IBlockState>();
 

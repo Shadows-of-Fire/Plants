@@ -15,7 +15,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -88,7 +87,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		super.onBlockHarvested(world, pos, state, player);
 		if (player.capabilities.isCreativeMode) {
-			TileFlowerpot pot = this.getTileEntity(world, pos);
+			TileFlowerpot pot = getTileEntity(world, pos);
 			if (pot != null) {
 				pot.setFlower(FlowerpotPlants.NONE);
 			}
@@ -109,7 +108,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState flowerpotState, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack held = player.getHeldItem(hand);
-		TileFlowerpot pot = this.getTileEntity(world, pos);
+		TileFlowerpot pot = getTileEntity(world, pos);
 
 		if (pot == null) return false;
 
@@ -150,7 +149,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	}
 
 	private static boolean canHandle(IFlowerpotHandler handler, IBlockState state, ItemStack stack) {
-		return (state.getBlock() != Blocks.AIR && handler.owns(state.getBlock())) || (stack.getItem() != Items.AIR && handler.owns(stack.getItem()));
+		return (state.getBlock() != Blocks.AIR && handler.owns(state.getBlock())) || (!stack.isEmpty() && handler.owns(stack.getItem()));
 	}
 
 	@Override
@@ -223,7 +222,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	}
 
 	@Nullable
-	private TileFlowerpot getTileEntity(IBlockAccess world, BlockPos pos) {
+	private static TileFlowerpot getTileEntity(IBlockAccess world, BlockPos pos) {
 		TileEntity tileentity = world.getTileEntity(pos);
 		return tileentity instanceof TileFlowerpot ? (TileFlowerpot) tileentity : null;
 	}
