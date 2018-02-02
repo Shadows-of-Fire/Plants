@@ -27,13 +27,13 @@ import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -81,7 +81,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
-			PotionEffect haste = player.getActivePotionEffect(Potion.getPotionById(3));
+			PotionEffect haste = player.getActivePotionEffect(MobEffects.HASTE);
 			float check = haste == null ? 0.16666667F : haste.getAmplifier() == 1 ? 0.5F : 0.4F;
 
 			if (player.getHeldItemMainhand() == stack && player.swingProgress == check && !world.isRemote) {
