@@ -55,7 +55,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	public int getLightValue(IBlockState state) {
-		return state.getValue(property).isShard() ? 5 : 8;
+		return state.getValue(property).isShard() ? 8 : 15;
 	}
 
 	@Override
