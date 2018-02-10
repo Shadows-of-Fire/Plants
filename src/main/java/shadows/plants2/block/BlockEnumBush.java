@@ -52,7 +52,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 			e.set(this);
 		value = null;
 	}
-	
+
 	//1.13
 	public BlockEnumBush(String name, EnumPlantType type, E enumValue) {
 		super(name, type);
@@ -67,13 +67,13 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		if(property == null) return getDefaultState();
+		if (property == null) return getDefaultState();
 		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
 	@Override
 	public IBlockState getStateFor(E e) {
-		if(property == null) return getDefaultState();
+		if (property == null) return getDefaultState();
 		return this.getDefaultState().withProperty(property, e);
 	}
 
@@ -85,7 +85,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
-		if(property == null) PlaceboUtil.sMRL("plants", this, 0, "inventory=true,type=" + value.getName());
+		if (property == null) PlaceboUtil.sMRL("plants", this, 0, "inventory=true,type=" + value.getName());
 		else for (int i = 0; i < types.size(); i++) {
 			PlaceboUtil.sMRL("plants", this, i, "inventory=true," + property.getName() + "=" + types.get(i).getName());
 		}
@@ -94,13 +94,13 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		if(property == null) return getDefaultState();
+		if (property == null) return getDefaultState();
 		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		if(property == null) return 0;
+		if (property == null) return 0;
 		return state.getValue(property).ordinal() % 16;
 	}
 
@@ -137,7 +137,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		if(property == null) return new BlockStateContainer(this, getInvProperty());
+		if (property == null) return new BlockStateContainer(this, getInvProperty());
 		return new BlockStateContainer(this, property, getInvProperty());
 	}
 

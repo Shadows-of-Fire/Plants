@@ -39,7 +39,7 @@ public class ClientProxy implements IProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	public static final int GROUND_COLOR = 0xA3CBF7;
 
 	@Override

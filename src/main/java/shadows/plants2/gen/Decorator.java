@@ -68,7 +68,7 @@ public class Decorator {
 	}
 
 	public static final Biome FLOWER_FOREST = Biome.getBiome(132);
-	
+
 	public static void flowerForestDeco(DecorateBiomeEvent.Decorate event) {
 		if (Config.flower_gen && Config.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == FLOWER_FOREST) {
 			for (int ih = 8; ih > 0; ih--) {

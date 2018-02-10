@@ -93,7 +93,7 @@ import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
 
 public class ModRegistry {
-	
+
 	public static final ToolMaterial MAT_CRYSTAL = EnumHelper.addToolMaterial("crystal", 1, 128, 7.0F, 2, 22);
 	public static final ToolMaterial MAT_DARK_CRYSTAL = EnumHelper.addToolMaterial("dark_crystal", 3, 1000, 7.0F, 3, 8);
 
@@ -148,7 +148,7 @@ public class ModRegistry {
 	public static final BlockEnumBush<NetherHarvests> NETHER_HARVEST = new BlockEnumNetherHarvest<>("nether_harvest", NetherHarvests.class, 0);
 
 	public static final BlockEnumBush<Crops> CROP_0 = new BlockEnumCrop<>("crop_0", Crops.class, 0, AMARANTHUS_H, OKRA, AMARANTHUS_H_SEEDS, OKRA_SEEDS);
-	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<>("crop_1", Crops.class, 1, PINEAPPLE, null, PINEAPPLE_SEEDS, null );
+	public static final BlockEnumBush<Crops> CROP_1 = new BlockEnumCrop<>("crop_1", Crops.class, 1, PINEAPPLE, null, PINEAPPLE_SEEDS, null);
 
 	public static final BlockEnumBush<DoubleHarvestable> DOUBLE_HARVEST_0 = new BlockEnumDoubleHarvestBush<>("double_harvest_0", EnumPlantType.Plains, DoubleHarvestable.class, 0);
 
@@ -205,7 +205,7 @@ public class ModRegistry {
 	public static final Item CRYSTAL_SHOVEL = new ItemShovelBase("crystal_shovel", Plants2.INFO, MAT_CRYSTAL);
 	public static final Item CRYSTAL_HOE = new ItemHoeBase("crystal_hoe", Plants2.INFO, MAT_CRYSTAL);
 	public static final Item CRYSTAL_SWORD = new ItemSwordBase("crystal_sword", Plants2.INFO, MAT_CRYSTAL);
-	
+
 	public static final Item DARK_CRYSTAL_PICKAXE = new ItemPickaxeBase("dark_crystal_pickaxe", Plants2.INFO, MAT_DARK_CRYSTAL);
 	public static final Item DARK_CRYSTAL_AXE = new ItemAxeBase("dark_crystal_axe", Plants2.INFO, MAT_DARK_CRYSTAL);
 	public static final Item DARK_CRYSTAL_SHOVEL = new ItemShovelBase("dark_crystal_shovel", Plants2.INFO, MAT_DARK_CRYSTAL);

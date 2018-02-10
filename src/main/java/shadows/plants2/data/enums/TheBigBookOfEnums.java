@@ -196,8 +196,7 @@ public class TheBigBookOfEnums {
 		WILD_RICE(false, EnumDyeColor.LIME),
 		YELLOWROOT(true, EnumDyeColor.MAGENTA),
 		ZENOBIA(true, EnumDyeColor.SILVER),
-		CAMBRIDGE_BLUE(true, EnumDyeColor.CYAN),
-		;
+		CAMBRIDGE_BLUE(true, EnumDyeColor.CYAN),;
 
 		EnumDyeColor color;
 		boolean flowers;
@@ -256,8 +255,7 @@ public class TheBigBookOfEnums {
 		DISTANT_SCORPIONWEED(true, EnumDyeColor.PURPLE),
 		NEGLECTED_SCORPIONWEED(true, EnumDyeColor.BROWN),
 		SAGEBRUSH(false, EnumDyeColor.GREEN),
-		SAN_ANGELO_YUCCA(false, EnumDyeColor.GREEN),
-		;
+		SAN_ANGELO_YUCCA(false, EnumDyeColor.GREEN),;
 
 		EnumDyeColor color;
 		boolean flowers;
@@ -303,8 +301,7 @@ public class TheBigBookOfEnums {
 		ADENOCARPUS_F(true, EnumDyeColor.YELLOW),
 		AGONIS_T(true, EnumDyeColor.WHITE),
 		ALONSOA_M(true, EnumDyeColor.RED),
-		BULBIL_BUGLELILY(true, EnumDyeColor.ORANGE),
-		;
+		BULBIL_BUGLELILY(true, EnumDyeColor.ORANGE),;
 
 		EnumDyeColor color;
 		boolean flowers;

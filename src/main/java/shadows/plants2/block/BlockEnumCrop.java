@@ -41,8 +41,8 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	public BlockEnumCrop(String name, Class<E> enumClass, int predicate, Item crop1, Item crop2, Item seed1, Item seed2) {
 		super(name, EnumPlantType.Crop, enumClass, predicate);
-		this.crops = new Item[] {crop1, crop2};
-		this.seeds = new Item[] {seed1, seed2};
+		this.crops = new Item[] { crop1, crop2 };
+		this.seeds = new Item[] { seed1, seed2 };
 		setDefaultState(getDefaultState().withProperty(AGE, 0));
 		setTickRandomly(true);
 	}
