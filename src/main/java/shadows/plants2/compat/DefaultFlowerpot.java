@@ -8,7 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.block.BlockEnumBush;
 import shadows.plants2.data.Constants;

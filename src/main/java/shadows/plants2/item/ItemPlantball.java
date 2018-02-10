@@ -25,7 +25,7 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.interfaces.IHasRecipe;
-import shadows.placebo.item.base.ItemBase;
+import shadows.placebo.item.ItemBase;
 import shadows.plants2.Plants2;
 import shadows.plants2.data.Config;
 import shadows.plants2.util.PlantUtil;

@@ -17,7 +17,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.interfaces.ITreeEnum;
 
 public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator {

@@ -7,7 +7,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.interfaces.IPropertyEnum;
-import shadows.placebo.item.base.ItemBase;
+import shadows.placebo.item.ItemBase;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
 import shadows.plants2.data.Constants;

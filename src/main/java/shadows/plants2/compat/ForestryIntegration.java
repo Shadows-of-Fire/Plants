@@ -11,7 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
-import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.plants2.block.BlockEnumDoubleFlower;

@@ -25,7 +25,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.Placebo;
-import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.itemblock.ItemBlockEnum;
 import shadows.placebo.util.PlaceboUtil;

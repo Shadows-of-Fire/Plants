@@ -67,11 +67,13 @@ public class Decorator {
 		}
 	}
 
+	public static final Biome FLOWER_FOREST = Biome.getBiome(132);
+	
 	public static void flowerForestDeco(DecorateBiomeEvent.Decorate event) {
-		if (Config.flower_gen && Config.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == Biome.getBiome(132)) {
+		if (Config.flower_gen && Config.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == FLOWER_FOREST) {
 			for (int ih = 8; ih > 0; ih--) {
 				IBlockState state = PlantUtil.getFlowerState(event.getRand());
-				PlantUtil.genFlowerPatch(event.getWorld(), event.getPos(), event.getRand(), state);
+				PlantUtil.genFlowerPatch(event.getWorld(), event.getPos().add(8, 0, 8), event.getRand(), state);
 			}
 		}
 	}

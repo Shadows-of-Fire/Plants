@@ -55,7 +55,6 @@ dependencies {
 	exclude group: 'jei-bees'
 	}
 	compile "team.chisel.ctm:CTM:+"
-	compileOnly fileTree(dir: 'placebo', include: '*.jar')
 }
 
 

@@ -16,7 +16,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import shadows.placebo.block.base.IEnumBlockAccess;
+import shadows.placebo.block.IEnumBlockAccess;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.data.Config;

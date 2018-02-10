@@ -6,7 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.block.IEnumBlock;
 import shadows.plants2.Plants2;
 
 public class ControlledList extends ArrayList<IBlockState> {

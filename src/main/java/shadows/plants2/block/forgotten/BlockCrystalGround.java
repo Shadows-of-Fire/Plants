@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import shadows.placebo.Placebo;
-import shadows.placebo.block.base.BlockBasic;
+import shadows.placebo.block.BlockBasic;
 import shadows.placebo.client.IHasModel;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;

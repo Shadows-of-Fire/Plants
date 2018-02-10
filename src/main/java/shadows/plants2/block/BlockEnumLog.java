@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
-import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.block.BlockEnum;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.placebo.util.PlaceboUtil;

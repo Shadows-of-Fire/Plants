@@ -7,7 +7,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.placebo.Placebo;
-import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.block.BlockEnum;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.interfaces.IPlankEnum;
 import shadows.placebo.util.PlaceboUtil;

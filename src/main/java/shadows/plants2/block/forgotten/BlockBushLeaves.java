@@ -24,7 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IShearable;
-import shadows.placebo.block.base.BlockEnum;
+import shadows.placebo.block.BlockEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.Plants2;

@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.Loader;
-import shadows.placebo.block.base.IEnumBlock;
+import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.client.IHasModel;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
