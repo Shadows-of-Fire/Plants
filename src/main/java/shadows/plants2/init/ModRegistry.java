@@ -35,6 +35,7 @@ import shadows.placebo.item.ItemHoeBase;
 import shadows.placebo.item.ItemPickaxeBase;
 import shadows.placebo.item.ItemShovelBase;
 import shadows.placebo.item.ItemSwordBase;
+import shadows.placebo.util.EnumBlockFactory;
 import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.Plants2;
@@ -54,6 +55,8 @@ import shadows.plants2.block.BlockEnumNetherHarvest;
 import shadows.plants2.block.BlockEnumParticleLeaves;
 import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.BlockEnumSapling;
+import shadows.plants2.block.BlockEnumSlab;
+import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
@@ -69,6 +72,7 @@ import shadows.plants2.data.enums.LaterEnums.Planks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crops;
 import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
+import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalPlanks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Desert;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Double;
@@ -171,8 +175,13 @@ public class ModRegistry {
 	public static final BlockEnum<CrystalLogs> CRYSTAL_LOG = new BlockCrystal.Logs();
 	public static final BlockEnumSapling<CrystalLogs> CRYSTAL_SAP = new BlockCrystal.Sapling();
 	public static final BlockEnum<CrystalLogs> CRYSTAL_LEAF = new BlockCrystal.Leaves();
+	public static final BlockEnum<CrystalPlanks> CRYSTAL_PLANKS = new BlockCrystal.Planks();
+	public static final EnumBlockFactory<CrystalPlanks, BlockEnumStairs> CRYSTAL_STAIRS = new EnumBlockFactory<>(e -> new BlockCrystal.Stairs(e), CrystalPlanks.values());
+	public static final EnumBlockFactory<CrystalPlanks, BlockEnumSlab> CRYSTAL_SLABS = new EnumBlockFactory<>(e -> new BlockCrystal.Slabs(e), CrystalPlanks.values());
 
 	public static final BlockEnum<Planks> PLANKS = new BlockEnumPlanks<>("planks", Planks.class, 0);
+	public static final EnumBlockFactory<Planks, BlockEnumStairs> STAIRS = new EnumBlockFactory<>(e -> new BlockEnumStairs(e, PLANKS), Planks.values());
+	public static final EnumBlockFactory<Planks, BlockEnumSlab> SLABS = new EnumBlockFactory<>(e -> new BlockEnumSlab(e, PLANKS), Planks.values());
 
 	public static final BlockEnum<BushSet> BUSH = new BlockBushLeaves();
 	public static final BlockEnumBush<BushSet> BUSHLING = new BlockBushling();
@@ -255,6 +264,10 @@ public class ModRegistry {
 		OreDictionary.registerOre("treeSapling", new ItemStack(SAP_0, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves", new ItemStack(LEAF_0, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("plankWood", new ItemStack(PLANKS, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(CRYSTAL_LOG, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeSapling", new ItemStack(CRYSTAL_SAP, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(CRYSTAL_LEAF, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("plankWood", new ItemStack(CRYSTAL_PLANKS, 1, OreDictionary.WILDCARD_VALUE));
 
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockBush && Item.getItemFromBlock(block) != Items.AIR) {

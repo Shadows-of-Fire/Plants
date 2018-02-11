@@ -27,8 +27,12 @@ import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
+import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.BlockEnumSapling;
+import shadows.plants2.block.BlockEnumSlab;
+import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalLogs;
+import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalPlanks;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.init.ModRegistry;
@@ -149,6 +153,48 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		@Override
 		public int getLightValue(IBlockState state) {
 			return 15;
+		}
+	}
+
+	public static class Planks extends BlockEnumPlanks<CrystalPlanks> {
+
+		public Planks() {
+			super("crystal_planks", CrystalPlanks.class, 0);
+			setSoundType(SoundType.GLASS);
+			setResistance(5F);
+		}
+
+		@Override
+		public int getLightValue(IBlockState state) {
+			return 12;
+		}
+	}
+
+	public static class Stairs extends BlockEnumStairs {
+
+		public Stairs(CrystalPlanks e) {
+			super(e, ModRegistry.CRYSTAL_PLANKS);
+			setSoundType(SoundType.GLASS);
+			setResistance(5F);
+		}
+
+		@Override
+		public int getLightValue(IBlockState state) {
+			return 9;
+		}
+	}
+	
+	public static class Slabs extends BlockEnumSlab {
+
+		public Slabs(CrystalPlanks e) {
+			super(e, ModRegistry.CRYSTAL_PLANKS);
+			setSoundType(SoundType.GLASS);
+			setResistance(5F);
+		}
+
+		@Override
+		public int getLightValue(IBlockState state) {
+			return 9;
 		}
 	}
 

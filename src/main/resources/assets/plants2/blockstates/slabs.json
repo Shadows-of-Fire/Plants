@@ -1,0 +1,61 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all"
+	},
+	"variants": {
+		"slab_variant": {
+			"upper": {
+				"model": "plants2:slab_upper"
+			},
+			"lower": {
+				"model": "plants2:slab_lower"
+			},
+			"double": {
+				"model": "cube_all"
+			}
+		},
+		"type": {
+			"ash": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/nether/ash_planks"
+				}
+			},
+			"blaze": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/nether/blaze_planks"
+				}
+			},
+			"black_kauri": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/black_kauri_planks"
+				}
+			},
+			"brazillian_pine": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/brazillian_pine_planks"
+				}
+			},
+			"incense_cedar": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/incense_cedar_planks"
+				}
+			},
+			"murray_pine": {
+				"textures": {
+					"all": "plants2:blocks/cosmetic/tree/murray_pine_planks"
+				}
+			},
+			"crystal": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/c_plank"
+				}
+			},
+			"dark_crystal": {
+				"textures": {
+					"all": "plants2:blocks/forgotten/crystal/dc_plank"
+				}
+			}
+		}
+	}
+}

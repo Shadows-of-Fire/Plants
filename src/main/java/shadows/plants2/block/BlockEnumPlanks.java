@@ -2,6 +2,7 @@ package shadows.plants2.block;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -12,6 +13,8 @@ import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.interfaces.IPlankEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
+import shadows.plants2.data.enums.TheBigBookOfEnums.CrystalPlanks;
+import shadows.plants2.init.ModRegistry;
 
 public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E> implements IHasRecipe {
 
@@ -31,6 +34,17 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 	public void initRecipes(Register<IRecipe> ev) {
 		for (E e : getTypes())
 			Plants2.HELPER.addShapeless(new ItemStack(this, 4, e.getMetadata()), e.genLogStack());
+
+		//TODO remove, datafix for crystal planks
+		Plants2.HELPER.addShapeless(CrystalPlanks.CRYSTAL.get(), new ItemStack(this, 1, 6));
+		Plants2.HELPER.addShapeless(CrystalPlanks.DARK_CRYSTAL.get(), new ItemStack(this, 1, 7));
+	}
+
+	//TODO remove, datafix for crystal planks
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		if (this == ModRegistry.PLANKS && meta > 5) return ModRegistry.CRYSTAL_PLANKS.getStateFor(CrystalPlanks.values()[meta % 6]);
+		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
 }

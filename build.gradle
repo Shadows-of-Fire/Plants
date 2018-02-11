@@ -57,8 +57,11 @@ dependencies {
 	compile "team.chisel.ctm:CTM:+"
 }
 
-
-
+jar {
+    manifest {
+        attributes 'FMLAT': 'plants_at.cfg'
+    }
+}
 
 processResources
 {

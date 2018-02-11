@@ -20,6 +20,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.interfaces.IParticleProvider;
+import shadows.placebo.interfaces.IPlankEnum;
 import shadows.placebo.interfaces.IPostInitUpdate;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.interfaces.ITreeEnum;
@@ -814,6 +815,22 @@ public class TheBigBookOfEnums {
 
 		@Override
 		public ItemStack get() {
+			return new ItemStack(ModRegistry.CRYSTAL_LOG, 1, ordinal());
+		}
+
+	}
+
+	public static enum CrystalPlanks implements IPlankEnum {
+		CRYSTAL,
+		DARK_CRYSTAL;
+
+		@Override
+		public ItemStack get() {
+			return new ItemStack(ModRegistry.CRYSTAL_PLANKS, 1, ordinal());
+		}
+
+		@Override
+		public ItemStack genLogStack() {
 			return new ItemStack(ModRegistry.CRYSTAL_LOG, 1, ordinal());
 		}
 
