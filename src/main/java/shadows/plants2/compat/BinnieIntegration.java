@@ -11,7 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.tile.TileFlowerpot;
 
 public class BinnieIntegration {
@@ -48,7 +48,7 @@ public class BinnieIntegration {
 
 		@Override
 		public String getModId() {
-			return Constants.BOTANY_ID;
+			return PlantConstants.BOTANY_ID;
 		}
 
 		@Override

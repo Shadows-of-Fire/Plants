@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import shadows.placebo.client.IHasModel;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 
 public class ItemFoodBase extends ItemFood implements IHasModel {
 
@@ -16,7 +16,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 		setUnlocalizedName(Plants2.MODID + "." + name);
 		heal = Plants2.CONFIG.getInt("Food Value - " + name, "Food", amount, 1, 20, "The amount of hunger a " + name + " will restore.");
 		setRegistryName(name);
-		setCreativeTab(Constants.TAB);
+		setCreativeTab(PlantConstants.TAB);
 		Plants2.INFO.getItemList().add(this);
 	}
 

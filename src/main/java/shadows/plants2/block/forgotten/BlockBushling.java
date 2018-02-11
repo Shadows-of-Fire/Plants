@@ -24,7 +24,7 @@ import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.block.BlockEnumBush;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.gen.forgotten.BushGen;
 
@@ -37,7 +37,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 		super("bushling", EnumPlantType.Plains, BushSet.class, 0);
 		setSoundType(SoundType.PLANT);
 		setTickRandomly(true);
-		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(Constants.INV, false));
+		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(PlantConstants.INV, false));
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, property, Constants.INV);
+		return new BlockStateContainer(this, property, PlantConstants.INV);
 	}
 
 	@Override

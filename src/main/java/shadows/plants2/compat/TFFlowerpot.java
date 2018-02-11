@@ -2,7 +2,7 @@ package shadows.plants2.compat;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import twilightforest.block.BlockTFPlant;
 import twilightforest.block.BlockTFSapling;
 import twilightforest.block.TFBlocks;
@@ -20,7 +20,7 @@ public class TFFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String getModId() {
-		return Constants.TF_ID;
+		return PlantConstants.TF_ID;
 	}
 
 	@Override

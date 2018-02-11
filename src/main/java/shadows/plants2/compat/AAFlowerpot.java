@@ -3,7 +3,7 @@ package shadows.plants2.compat;
 import de.ellpeck.actuallyadditions.mod.blocks.InitBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 
 public class AAFlowerpot implements IFlowerpotHandler {
 
@@ -16,7 +16,7 @@ public class AAFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String getModId() {
-		return Constants.AA_ID;
+		return PlantConstants.AA_ID;
 	}
 
 	@Override

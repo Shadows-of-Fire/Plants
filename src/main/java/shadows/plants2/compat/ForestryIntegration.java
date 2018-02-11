@@ -15,7 +15,7 @@ import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.plants2.block.BlockEnumDoubleFlower;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.util.PlantUtil;
 
 public class ForestryIntegration {
@@ -58,7 +58,7 @@ public class ForestryIntegration {
 		}
 	}
 
-	@ObjectHolder(Constants.FORESTRY_ID + ":sapling")
+	@ObjectHolder(PlantConstants.FORESTRY_ID + ":sapling")
 	public static final Item SAPLING = Items.AIR;
 
 	public static class ForestryFlowerpot implements IFlowerpotHandler {
@@ -71,7 +71,7 @@ public class ForestryIntegration {
 
 		@Override
 		public String getModId() {
-			return Constants.FORESTRY_ID;
+			return PlantConstants.FORESTRY_ID;
 		}
 
 		@Override

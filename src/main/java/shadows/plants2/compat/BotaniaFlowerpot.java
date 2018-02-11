@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.plants2.block.BlockFlowerpot;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import vazkii.botania.api.state.BotaniaStateProps;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
@@ -27,7 +27,7 @@ public class BotaniaFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String getModId() {
-		return Constants.BOTANIA_ID;
+		return PlantConstants.BOTANIA_ID;
 	}
 
 	@Override

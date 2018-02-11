@@ -18,7 +18,7 @@ import shadows.placebo.client.IHasModel;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockEnumCrop;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 
 public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds implements IHasModel {
 
@@ -34,7 +34,7 @@ public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds imple
 		cropVariant = variant;
 		setRegistryName(name);
 		setUnlocalizedName(Plants2.MODID + "." + name);
-		setCreativeTab(Constants.TAB);
+		setCreativeTab(PlantConstants.TAB);
 		Plants2.INFO.getItemList().add(this);
 	}
 
