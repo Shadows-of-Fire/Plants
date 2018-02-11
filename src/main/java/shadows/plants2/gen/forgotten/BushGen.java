@@ -20,7 +20,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.init.ModRegistry;
 
@@ -31,7 +31,7 @@ public class BushGen implements IWorldGenerator {
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator gen, IChunkProvider prov) {
 		if (rand.nextInt(20) != 0) return;
-		if (Config.DIM_BL.contains(world.provider.getDimension())) return;
+		if (PlantConfig.DIM_BL.contains(world.provider.getDimension())) return;
 		int posX = chunkX * 16;
 		int posZ = chunkZ * 16;
 		BlockPos genPos = new BlockPos(posX + MathHelper.getInt(rand, 2, 14), 0, posZ + MathHelper.getInt(rand, 2, 14));

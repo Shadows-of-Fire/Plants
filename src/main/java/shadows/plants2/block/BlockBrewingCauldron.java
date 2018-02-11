@@ -49,7 +49,7 @@ import shadows.placebo.client.IHasModel;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.itemblock.ItemBlockEnum;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.network.ParticleMessage;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.util.ColorToPotionUtil;
@@ -68,7 +68,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 		super(Material.IRON, MapColor.STONE);
 		setRegistryName("brewing_cauldron");
 		setUnlocalizedName(Plants2.MODID + ".brewing_cauldron");
-		setCreativeTab(Constants.TAB);
+		setCreativeTab(PlantConstants.TAB);
 		setHardness(3F);
 		setResistance(10F);
 		setSoundType(SoundType.METAL);

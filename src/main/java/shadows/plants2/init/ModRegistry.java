@@ -63,8 +63,8 @@ import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
 import shadows.plants2.block.forgotten.BlockCrystalGround;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.data.enums.LaterEnums.DoubleHarvestable;
 import shadows.plants2.data.enums.LaterEnums.Harvestable;
 import shadows.plants2.data.enums.LaterEnums.NetherHarvests;
@@ -229,7 +229,7 @@ public class ModRegistry {
 	@SubscribeEvent
 	public void onItemRegister(Register<Item> event) {
 		event.getRegistry().registerAll(Plants2.INFO.getItemList().toArray(new Item[0]));
-		if (Config.excalibur && Loader.isModLoaded(Constants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
+		if (PlantConfig.excalibur && Loader.isModLoaded(PlantConstants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
 	}
 
 	@SubscribeEvent
@@ -296,11 +296,11 @@ public class ModRegistry {
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
-		if (!Config.all_generation) return;
-		if (Config.bush_gen) GameRegistry.registerWorldGenerator(new BushGen(), 25);
-		if (Config.nether_tree_gen) GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
-		if (Config.tree_gen) GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
-		if (Config.nether_flower_gen) GameRegistry.registerWorldGenerator(new NetherGen(), 30);
+		if (!PlantConfig.all_generation) return;
+		if (PlantConfig.bush_gen) GameRegistry.registerWorldGenerator(new BushGen(), 25);
+		if (PlantConfig.nether_tree_gen) GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
+		if (PlantConfig.tree_gen) GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
+		if (PlantConfig.nether_flower_gen) GameRegistry.registerWorldGenerator(new NetherGen(), 30);
 	}
 
 	public static void tiles(FMLPreInitializationEvent e) {

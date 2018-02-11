@@ -24,8 +24,8 @@ import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IHarvestableEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.placebo.util.StackPrimer;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends BlockEnumBush<E> implements IGrowable {
@@ -40,7 +40,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(Config.harvestGrowthChance) == 0) grow(world, rand, pos, state);
+		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(PlantConfig.harvestGrowthChance) == 0) grow(world, rand, pos, state);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!Config.harvests || !state.getValue(FRUIT)) return false;
+		if (!PlantConfig.harvests || !state.getValue(FRUIT)) return false;
 		for (StackPrimer s : state.getValue(property).getDrops()) {
 			ItemStack iS = s.genStack();
 			if (!player.addItemStackToInventory(iS)) {
@@ -103,13 +103,13 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, Constants.INV, property, FRUIT);
+		return new BlockStateContainer(this, PlantConstants.INV, property, FRUIT);
 	}
 
 	@Override
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> drops = super.getActualDrops(world, pos, state, fortune);
-		if (Config.harvests && state.getValue(FRUIT)) for (StackPrimer s : state.getValue(property).getDrops())
+		if (PlantConfig.harvests && state.getValue(FRUIT)) for (StackPrimer s : state.getValue(property).getDrops())
 			drops.add(s.genStack());
 		return drops;
 	}

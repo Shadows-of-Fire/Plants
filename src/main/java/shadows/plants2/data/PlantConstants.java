@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.init.ModRegistry;
 
-public class Constants {
+public class PlantConstants {
 
 	public static final PropertyBool INV = PropertyBool.create("inventory");
 	public static final PropertyBool ZINV = PropertyBool.create("zinventory");

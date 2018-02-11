@@ -24,7 +24,7 @@ import shadows.placebo.itemblock.ItemBlockBase;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
 import shadows.plants2.util.PlantUtil;
 
@@ -37,7 +37,7 @@ public class BlockCustomVine extends BlockVine implements IHasModel {
 	public BlockCustomVine(String name, Vines vine, StackPrimer... drops) {
 		setRegistryName(name);
 		setUnlocalizedName(Plants2.MODID + "." + name);
-		setCreativeTab(Constants.TAB);
+		setCreativeTab(PlantConstants.TAB);
 		setSoundType(SoundType.PLANT);
 		setHardness(0.2F);
 		this.drops = drops;

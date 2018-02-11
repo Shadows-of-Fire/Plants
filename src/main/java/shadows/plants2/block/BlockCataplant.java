@@ -14,7 +14,7 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 
 public class BlockCataplant extends BushBase {
 
@@ -31,7 +31,7 @@ public class BlockCataplant extends BushBase {
 		EnumFacing face = state.getValue(FACING);
 		int x = face.getDirectionVec().getX();
 		int z = face.getDirectionVec().getZ();
-		entity.addVelocity(x * Config.catapultPower, 0.08 * Config.catapultPower, z * Config.catapultPower);
+		entity.addVelocity(x * PlantConfig.catapultPower, 0.08 * PlantConfig.catapultPower, z * PlantConfig.catapultPower);
 		entity.velocityChanged = true;
 	}
 

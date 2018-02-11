@@ -48,8 +48,8 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import shadows.placebo.client.IHasModel;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
@@ -71,7 +71,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 
 	public ItemExcalibur() {
 		super(toolMaterial);
-		setCreativeTab(Constants.TAB);
+		setCreativeTab(PlantConstants.TAB);
 		setUnlocalizedName(Plants2.MODID + ".excalibur");
 		setRegistryName("excalibur");
 		Plants2.INFO.getItemList().add(this);
@@ -121,7 +121,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		EntityManaBurst burst = new EntityManaBurst(player);
 
 		float motionModifier = 7F;
-		burst.setColor(Config.excaliburParty ? getRandomColor(Item.itemRand) : 0xFFFF20);
+		burst.setColor(PlantConfig.excaliburParty ? getRandomColor(Item.itemRand) : 0xFFFF20);
 		burst.setMana(1);
 		burst.setStartingMana(1);
 		burst.setMinManaLoss(200);
@@ -157,7 +157,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	public void updateBurst(IManaBurst iManaBurst, ItemStack stack) {
 		EntityThrowable burst = (EntityThrowable) iManaBurst;
 		AxisAlignedBB axis = new AxisAlignedBB(burst.posX, burst.posY, burst.posZ, burst.lastTickPosX, burst.lastTickPosY, burst.lastTickPosZ).grow(1, 1, 1);
-		if (Config.superExcaliburParty) iManaBurst.setColor(getRandomColor(Item.itemRand));
+		if (PlantConfig.superExcaliburParty) iManaBurst.setColor(getRandomColor(Item.itemRand));
 		String attacker = ItemNBTHelper.getString(iManaBurst.getSourceLens(), TAG_ATTACKER_USERNAME, "");
 		int homeID = ItemNBTHelper.getInt(stack, TAG_HOME_ID, -1);
 		if (homeID == -1) {
@@ -245,6 +245,6 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		Plants2.HELPER.addShapeless(this, ForgeRegistries.ITEMS.getValue(new ResourceLocation(Constants.BOTANIA_ID, "kingkey")));
+		Plants2.HELPER.addShapeless(this, ForgeRegistries.ITEMS.getValue(new ResourceLocation(PlantConstants.BOTANIA_ID, "kingkey")));
 	}
 }

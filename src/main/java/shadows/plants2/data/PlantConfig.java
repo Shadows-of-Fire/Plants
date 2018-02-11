@@ -6,7 +6,7 @@ import java.util.List;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 
-public class Config {
+public class PlantConfig {
 
 	public static boolean excalibur = true;
 	public static boolean excaliburParty = false;

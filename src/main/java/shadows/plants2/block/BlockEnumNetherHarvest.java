@@ -18,7 +18,7 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.placebo.interfaces.IHarvestableEnum;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 import shadows.plants2.gen.NetherGen;
 
@@ -50,12 +50,12 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(Config.netherHarvestChance) == 0) grow(world, rand, pos, state);
+		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(PlantConfig.netherHarvestChance) == 0) grow(world, rand, pos, state);
 	}
 
 	@Override
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
-		return super.canGrow(world, pos, state, isClient) && Config.hardNether ? world.getBlockState(pos.down()).getBlock().canSustainPlant(world.getBlockState(pos.down()), world, pos.down(), EnumFacing.UP, this) : true;
+		return super.canGrow(world, pos, state, isClient) && PlantConfig.hardNether ? world.getBlockState(pos.down()).getBlock().canSustainPlant(world.getBlockState(pos.down()), world, pos.down(), EnumFacing.UP, this) : true;
 	}
 
 	@Override

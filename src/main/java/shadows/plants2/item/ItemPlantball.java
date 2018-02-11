@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.item.ItemBase;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 import shadows.plants2.util.PlantUtil;
 
 public final class ItemPlantball extends ItemBase implements IHasRecipe {
@@ -93,7 +93,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 
 					stack.shrink(1);
 					return EnumActionResult.SUCCESS;
-				} else if (Config.allBushes) {
+				} else if (PlantConfig.allBushes) {
 
 					if (!world.isRemote) genFlowers(world, pos, worldState);
 
@@ -117,8 +117,8 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 
 	private static boolean isBlacklisted(IBlockState state) {
 		if (CACHE.getOrDefault(state, false)) return false;
-		if (Config.REGNAME_BL.contains(state.getBlock().getRegistryName())) return true;
-		if (Config.MODID_BL.contains(state.getBlock().getRegistryName().getResourceDomain())) return true;
+		if (PlantConfig.REGNAME_BL.contains(state.getBlock().getRegistryName())) return true;
+		if (PlantConfig.MODID_BL.contains(state.getBlock().getRegistryName().getResourceDomain())) return true;
 		CACHE.put(state, true);
 		return false;
 	}

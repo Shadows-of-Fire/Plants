@@ -20,7 +20,7 @@ import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.placebo.util.PlaceboUtil;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 
 public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable {
 
@@ -29,7 +29,7 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 
 	public BlockEnumSapling(String name, EnumPlantType type, SoundType s, float hard, float res, Class<E> clazz, int predicate, Block... otherSoils) {
 		super(name, type, clazz, predicate);
-		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(Constants.INV, false));
+		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(PlantConstants.INV, false));
 		setTickRandomly(true);
 		setSoundType(s);
 		setHardness(hard);

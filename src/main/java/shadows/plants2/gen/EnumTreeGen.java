@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import shadows.placebo.block.IEnumBlockAccess;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.plants2.block.BlockEnumLeaves;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 
 public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 
@@ -148,7 +148,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 			if (!world.provider.hasSkyLight()) return;
-			if (Config.DIM_BL.contains(world.provider.getDimension())) return;
+			if (PlantConfig.DIM_BL.contains(world.provider.getDimension())) return;
 			if (new Random(chunkZ ^ 3 + 5 + chunkX ^ 3 + random.nextInt(15060)).nextFloat() >= 0.16F) return;
 			int posX = chunkX * 16;
 			int posZ = chunkZ * 16;

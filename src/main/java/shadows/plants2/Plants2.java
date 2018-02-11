@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import shadows.placebo.registry.RegistryInformation;
 import shadows.placebo.util.RecipeHelper;
 import shadows.plants2.compat.ForestryIntegration;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.gen.Decorator;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.network.ParticleMessage;
@@ -52,7 +52,7 @@ public class Plants2 {
 	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 	private static int disc = 0;
 
-	public static final RegistryInformation INFO = new RegistryInformation(MODID, Constants.TAB);
+	public static final RegistryInformation INFO = new RegistryInformation(MODID, PlantConstants.TAB);
 
 	public static final RecipeHelper HELPER = new RecipeHelper(MODID, MODNAME, INFO.getRecipeList());
 
@@ -62,7 +62,7 @@ public class Plants2 {
 		ALT_CONFIG = new Configuration(new File(e.getModConfigurationDirectory(), "plants_blocks.cfg"));
 		CONFIG.load();
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
-		Config.syncConfig(CONFIG);
+		PlantConfig.syncConfig(CONFIG);
 		ModRegistry.tiles(e);
 		PROXY.preInit(e);
 		if (CONFIG.hasChanged()) CONFIG.save();
@@ -86,7 +86,7 @@ public class Plants2 {
 		INFO.purge();
 		PlantUtil.mergeToDefaultLate();
 
-		if (Loader.isModLoaded(Constants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
+		if (Loader.isModLoaded(PlantConstants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
 		if (ALT_CONFIG.hasChanged()) ALT_CONFIG.save();
 	}
 }

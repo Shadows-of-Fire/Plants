@@ -26,8 +26,8 @@ import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.client.FlowerpotStateMapper;
 import shadows.plants2.compat.BinnieIntegration;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.tile.TileFlowerpot;
@@ -44,12 +44,12 @@ public class ClientProxy implements IProxy {
 
 	@Override
 	public void init(FMLInitializationEvent e) {
-		if (Config.flowerpot) Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
+		if (PlantConfig.flowerpot) Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
 			if (tint == 1) return world.getBiome(pos).getGrassColorAtPos(pos);
 
 			TileEntity t = world.getTileEntity(pos);
 
-			if (Loader.isModLoaded(Constants.BOTANY_ID) && tint >= 10 && t instanceof TileFlowerpot) { return BinnieIntegration.colorMultiplier(state, world, pos, tint); }
+			if (Loader.isModLoaded(PlantConstants.BOTANY_ID) && tint >= 10 && t instanceof TileFlowerpot) { return BinnieIntegration.colorMultiplier(state, world, pos, tint); }
 			return -1;
 		}, ModRegistry.FLOWERPOT);
 

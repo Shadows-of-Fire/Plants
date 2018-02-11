@@ -40,8 +40,8 @@ import shadows.plants2.compat.DefaultFlowerpot;
 import shadows.plants2.compat.ForestryIntegration.ForestryFlowerpot;
 import shadows.plants2.compat.IFlowerpotHandler;
 import shadows.plants2.compat.TFFlowerpot;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.data.enums.TheBigBookOfEnums.FlowerpotPlants;
 import shadows.plants2.state.FlowerpotBlockState.FlowerpotStateContainer;
@@ -60,7 +60,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		container = createStateContainer();
 		setDefaultState(container.getBaseState().withProperty(PROP, FlowerpotPlants.NONE));
-		if (Config.flowerpot) {
+		if (PlantConfig.flowerpot) {
 			Plants2.INFO.getBlockList().add(this);
 			Plants2.INFO.getItemList().add(createItemBlock());
 			initModHandlers();
@@ -69,11 +69,11 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 	private void initModHandlers() {
 		HANDLERS.add(new DefaultFlowerpot());
-		if (Loader.isModLoaded(Constants.TF_ID)) HANDLERS.add(new TFFlowerpot());
-		if (Loader.isModLoaded(Constants.BOTANIA_ID)) HANDLERS.add(new BotaniaFlowerpot());
-		if (Loader.isModLoaded(Constants.FORESTRY_ID)) HANDLERS.add(new ForestryFlowerpot());
-		if (Loader.isModLoaded(Constants.AA_ID)) HANDLERS.add(new AAFlowerpot());
-		if (Loader.isModLoaded(Constants.BOTANY_ID)) HANDLERS.add(new BotanyFlowerpot());
+		if (Loader.isModLoaded(PlantConstants.TF_ID)) HANDLERS.add(new TFFlowerpot());
+		if (Loader.isModLoaded(PlantConstants.BOTANIA_ID)) HANDLERS.add(new BotaniaFlowerpot());
+		if (Loader.isModLoaded(PlantConstants.FORESTRY_ID)) HANDLERS.add(new ForestryFlowerpot());
+		if (Loader.isModLoaded(PlantConstants.AA_ID)) HANDLERS.add(new AAFlowerpot());
+		if (Loader.isModLoaded(PlantConstants.BOTANY_ID)) HANDLERS.add(new BotanyFlowerpot());
 	}
 
 	@Override
@@ -163,7 +163,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		state = getActualState(state, world, pos);
-		if (Loader.isModLoaded(Constants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_")) BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
+		if (Loader.isModLoaded(PlantConstants.BOTANIA_ID) && state.getValue(PROP).getName().startsWith("b_")) BotaniaFlowerpot.randomDisplayTick(state, world, pos, rand);
 		if (rand.nextFloat() < 0.1F) {
 			FlowerpotPlants p = state.getValue(PROP);
 			if (p == FlowerpotPlants.ASH || p == FlowerpotPlants.BLAZE) world.spawnParticle(p == FlowerpotPlants.ASH ? EnumParticleTypes.SMOKE_LARGE : EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, getDouble(rand), 0.05, getDouble(rand));

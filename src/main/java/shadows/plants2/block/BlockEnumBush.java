@@ -29,7 +29,7 @@ import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.itemblock.ItemBlockEnum;
 import shadows.placebo.util.PlaceboUtil;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.util.PlantUtil;
 
 public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E> {
@@ -132,7 +132,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	}
 
 	public PropertyBool getInvProperty() {
-		return Constants.INV;
+		return PlantConstants.INV;
 	}
 
 	@Override

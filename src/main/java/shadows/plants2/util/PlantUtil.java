@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.interfaces.ISpecialPlacement;
 import shadows.plants2.block.BlockCustomVine;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
 
 public class PlantUtil {
@@ -34,11 +34,11 @@ public class PlantUtil {
 	}
 
 	public static void genFlowerPatch(World world, BlockPos pos, Random rand, IBlockState state) {
-		int dist = Config.patchSize;
-		for (int i = 0; i < Config.quantity; i++) {
+		int dist = PlantConfig.patchSize;
+		for (int i = 0; i < PlantConfig.quantity; i++) {
 			int x = pos.getX() + MathHelper.getInt(rand, -dist, dist);
 			int z = pos.getZ() + MathHelper.getInt(rand, -dist, dist);
-			for (int j = 0; j < Config.density; j++) {
+			for (int j = 0; j < PlantConfig.density; j++) {
 				int x1 = x + MathHelper.getInt(rand, -dist, dist);
 				int z1 = z + MathHelper.getInt(rand, -dist, dist);
 				int y1 = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
@@ -49,11 +49,11 @@ public class PlantUtil {
 	}
 
 	public static void genFlowerPatchForNether(World world, BlockPos pos, Random rand, IBlockState state) {
-		int dist = Config.patchSize;
-		for (int i = 0; i < Config.quantity; i++) {
+		int dist = PlantConfig.patchSize;
+		for (int i = 0; i < PlantConfig.quantity; i++) {
 			int x = pos.getX() + MathHelper.getInt(rand, -dist, dist);
 			int z = pos.getZ() + MathHelper.getInt(rand, -dist, dist);
-			for (int j = 0; j < Config.density; j++) {
+			for (int j = 0; j < PlantConfig.density; j++) {
 				int x1 = x + MathHelper.getInt(rand, -dist, dist);
 				int z1 = z + MathHelper.getInt(rand, -dist, dist);
 				int y1 = pos.getY();

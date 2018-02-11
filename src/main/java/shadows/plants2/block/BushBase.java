@@ -23,7 +23,7 @@ import shadows.placebo.interfaces.IPostInitUpdate;
 import shadows.placebo.interfaces.ISpecialPlacement;
 import shadows.placebo.itemblock.ItemBlockBase;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 import shadows.plants2.util.PlantUtil;
 
 public abstract class BushBase extends BlockBush implements IHasModel, IShearable, IPostInitUpdate, ISpecialPlacement {
@@ -75,7 +75,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 
 	@Override
 	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos) {
-		return Config.needShears;
+		return PlantConfig.needShears;
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 
 	@Override
 	public void getDrops(NonNullList<ItemStack> list, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		if (!Config.needShears) list.addAll(getActualDrops(world, pos, state, fortune));
+		if (!PlantConfig.needShears) list.addAll(getActualDrops(world, pos, state, fortune));
 	}
 
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {

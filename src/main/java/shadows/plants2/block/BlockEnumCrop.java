@@ -29,7 +29,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IPropertyEnum;
-import shadows.plants2.data.Config;
+import shadows.plants2.data.PlantConfig;
 import shadows.plants2.init.ModRegistry;
 
 public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumBush<E> implements IGrowable {
@@ -103,7 +103,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(Config.cropGrowthChance) == 0) grow(world, rand, pos, state);
+		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(PlantConfig.cropGrowthChance) == 0) grow(world, rand, pos, state);
 	}
 
 	@Override
@@ -170,7 +170,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	protected void addStatesToList() {
-		if (Config.harvests) super.addStatesToList();
+		if (PlantConfig.harvests) super.addStatesToList();
 	}
 
 }

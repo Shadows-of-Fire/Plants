@@ -29,7 +29,7 @@ import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.itemblock.ItemBlockEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConstants;
 import shadows.plants2.util.PlantUtil;
 
 public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumFlower<E> {
@@ -168,7 +168,7 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 
 	@Override
 	public BlockStateContainer createStateContainer() {
-		return new BlockStateContainer(this, Constants.INV, property, UPPER);
+		return new BlockStateContainer(this, PlantConstants.INV, property, UPPER);
 	}
 
 	@Override

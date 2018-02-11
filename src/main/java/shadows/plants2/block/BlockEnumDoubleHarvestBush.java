@@ -24,8 +24,8 @@ import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IHarvestableEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.placebo.util.StackPrimer;
-import shadows.plants2.data.Config;
-import shadows.plants2.data.Constants;
+import shadows.plants2.data.PlantConfig;
+import shadows.plants2.data.PlantConstants;
 
 public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> {
 
@@ -57,7 +57,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!Config.harvests) return false;
+		if (!PlantConfig.harvests) return false;
 		if (!world.isRemote) {
 			StackPrimer[] drops = types.get(state.getValue(property).ordinal() % 4).getDrops();
 			if (state.getValue(FRUIT) && state.getValue(UPPER)) {
@@ -167,7 +167,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public PropertyBool getInvProperty() {
-		return Constants.ZINV;
+		return PlantConstants.ZINV;
 	}
 
 	@Override
@@ -180,7 +180,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 		super.updateTick(world, pos, state, rand);
 
 		if (!world.isRemote && state.getValue(UPPER) && !state.getValue(FRUIT)) {
-			if (rand.nextInt(Config.harvestGrowthChance) == 0) {
+			if (rand.nextInt(PlantConfig.harvestGrowthChance) == 0) {
 				world.setBlockState(pos, state.withProperty(FRUIT, true).withProperty(UPPER, true), 3);
 				world.setBlockState(pos.down(), state.withProperty(FRUIT, true).withProperty(UPPER, false), 3);
 			}
