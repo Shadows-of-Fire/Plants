@@ -36,8 +36,8 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 			Plants2.HELPER.addShapeless(new ItemStack(this, 4, e.getMetadata()), e.genLogStack());
 
 		//TODO remove, datafix for crystal planks
-		Plants2.HELPER.addShapeless(CrystalPlanks.CRYSTAL.get(), new ItemStack(this, 1, 6));
-		Plants2.HELPER.addShapeless(CrystalPlanks.DARK_CRYSTAL.get(), new ItemStack(this, 1, 7));
+		Plants2.HELPER.addShapeless(CrystalPlanks.CRYSTAL.get(3), new ItemStack(this, 1, 6), new ItemStack(this, 1, 6), new ItemStack(this, 1, 6));
+		Plants2.HELPER.addShapeless(CrystalPlanks.DARK_CRYSTAL.get(3), new ItemStack(this, 1, 7), new ItemStack(this, 1, 7), new ItemStack(this, 1, 7));
 	}
 
 	//TODO remove, datafix for crystal planks
@@ -45,6 +45,11 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 	public IBlockState getStateFromMeta(int meta) {
 		if (this == ModRegistry.PLANKS && meta > 5) return ModRegistry.CRYSTAL_PLANKS.getStateFor(CrystalPlanks.values()[meta % 6]);
 		return getDefaultState().withProperty(property, types.get(meta));
+	}
+	
+	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.planks";
 	}
 
 }

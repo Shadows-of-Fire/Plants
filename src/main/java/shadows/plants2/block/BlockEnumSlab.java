@@ -97,6 +97,11 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 		return true;
 	}
 
+	@Override
+	public String getUnlocalizedName() {
+		return "tile.plants2.slab." + e.getName();
+	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing facing) {

@@ -229,7 +229,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		@Override
 		public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 			world.setBlockToAir(pos);
-			WorldGenerator gen = rand.nextFloat() > 0.8F ? ModRegistry.DARK_CRYSTAL_TREE : ModRegistry.CRYSTAL_TREE;
+			WorldGenerator gen = rand.nextFloat() >= 0.7F ? ModRegistry.DARK_CRYSTAL_TREE : ModRegistry.CRYSTAL_TREE;
 			if (!gen.generate(world, rand, pos)) world.setBlockState(pos, state);
 		}
 	}

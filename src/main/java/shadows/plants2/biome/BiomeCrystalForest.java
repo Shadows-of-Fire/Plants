@@ -38,13 +38,13 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 		decorator.flowersPerChunk = 0;
 		decorator.grassPerChunk = 15;
 		flowers.clear();
-		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.CRYSTAL_SHARD), 80));
-		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.DARK_CRYSTAL_SHARD), 20));
+		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.CRYSTAL_SHARD), 60));
+		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.DARK_CRYSTAL_SHARD), 40));
 	}
 
 	@Override
 	public WorldGenAbstractTree getRandomTreeFeature(Random rand) {
-		return rand.nextFloat() >= 0.9F ? ModRegistry.DARK_CRYSTAL_TREE : ModRegistry.CRYSTAL_TREE;
+		return rand.nextFloat() >= 0.73F ? ModRegistry.DARK_CRYSTAL_TREE : ModRegistry.CRYSTAL_TREE;
 	}
 
 	@Override
