@@ -56,7 +56,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 	public BlockFlowerpot() {
 		PlaceboUtil.setRegNameIllegally(this, "flower_pot");
-		setUnlocalizedName(Constants.MODID + ".flowerpot");
+		setUnlocalizedName(Plants2.MODID + ".flowerpot");
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		container = createStateContainer();
 		setDefaultState(container.getBaseState().withProperty(PROP, FlowerpotPlants.NONE));
@@ -96,7 +96,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IEnumBlock<Flowerp
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		PlaceboUtil.sMRL(Constants.MODID, "flowerpot/plants2", this, 0, "inventory");
+		PlaceboUtil.sMRL(Plants2.MODID, "flowerpot/plants2", this, 0, "inventory");
 		Plants2.PROXY.potStateMap(this);
 	}
 

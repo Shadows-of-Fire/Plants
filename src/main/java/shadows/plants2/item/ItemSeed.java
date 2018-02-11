@@ -33,7 +33,7 @@ public class ItemSeed<E extends Enum<E> & IPropertyEnum> extends ItemSeeds imple
 		cropName = blockName;
 		cropVariant = variant;
 		setRegistryName(name);
-		setUnlocalizedName(Constants.MODID + "." + name);
+		setUnlocalizedName(Plants2.MODID + "." + name);
 		setCreativeTab(Constants.TAB);
 		Plants2.INFO.getItemList().add(this);
 	}

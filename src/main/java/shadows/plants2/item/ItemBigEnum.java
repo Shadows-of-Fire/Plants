@@ -10,7 +10,6 @@ import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.item.ItemBase;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
-import shadows.plants2.data.Constants;
 
 public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 
@@ -37,7 +36,7 @@ public class ItemBigEnum<E extends Enum<E> & IPropertyEnum> extends ItemBase {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Constants.MODID + "." + values[stack.getMetadata()].getName();
+		return "item." + Plants2.MODID + "." + values[stack.getMetadata()].getName();
 	}
 
 }

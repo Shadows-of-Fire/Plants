@@ -46,7 +46,7 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 		if (this == ModRegistry.PLANKS && meta > 5) return ModRegistry.CRYSTAL_PLANKS.getStateFor(CrystalPlanks.values()[meta % 6]);
 		return getDefaultState().withProperty(property, types.get(meta));
 	}
-	
+
 	@Override
 	public String getUnlocalizedName() {
 		return "tile.plants2.planks";

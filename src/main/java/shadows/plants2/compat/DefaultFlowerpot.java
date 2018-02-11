@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import shadows.placebo.block.IEnumBlock;
 import shadows.placebo.util.PlaceboUtil;
+import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockEnumBush;
-import shadows.plants2.data.Constants;
 
 public class DefaultFlowerpot implements IFlowerpotHandler {
 
@@ -33,7 +33,7 @@ public class DefaultFlowerpot implements IFlowerpotHandler {
 
 	@Override
 	public String getModId() {
-		return Constants.MODID;
+		return Plants2.MODID;
 	}
 
 	@Override

@@ -304,7 +304,7 @@ public class ModRegistry {
 	}
 
 	public static void tiles(FMLPreInitializationEvent e) {
-		GameRegistry.registerTileEntity(TileFlowerpot.class, Constants.MODID + ":flowerpot");
-		GameRegistry.registerTileEntity(TileBrewingCauldron.class, Constants.MODID + ":brewing_cauldron");
+		GameRegistry.registerTileEntity(TileFlowerpot.class, Plants2.MODID + ":flowerpot");
+		GameRegistry.registerTileEntity(TileBrewingCauldron.class, Plants2.MODID + ":brewing_cauldron");
 	}
 }

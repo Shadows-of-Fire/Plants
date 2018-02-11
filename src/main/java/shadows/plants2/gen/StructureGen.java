@@ -12,7 +12,7 @@ import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import shadows.placebo.interfaces.ITreeEnum;
-import shadows.plants2.data.Constants;
+import shadows.plants2.Plants2;
 
 public class StructureGen extends EnumTreeGen<ITreeEnum> {
 
@@ -29,11 +29,11 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 	}
 
 	public StructureGen(BlockPos offset, ITreeEnum assign, Type... allowedBiomes) {
-		this(new ResourceLocation(Constants.MODID, assign.getName() + "_tree"), offset, assign, allowedBiomes);
+		this(new ResourceLocation(Plants2.MODID, assign.getName() + "_tree"), offset, assign, allowedBiomes);
 	}
 
 	public StructureGen(BlockPos offset, String name, ITreeEnum assign, Type... allowedBiomes) {
-		this(new ResourceLocation(Constants.MODID, name), offset, assign, allowedBiomes);
+		this(new ResourceLocation(Plants2.MODID, name), offset, assign, allowedBiomes);
 	}
 
 	private final PlacementSettings settings = new PlacementSettings();

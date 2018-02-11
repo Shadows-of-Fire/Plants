@@ -67,7 +67,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 	public BlockBrewingCauldron() {
 		super(Material.IRON, MapColor.STONE);
 		setRegistryName("brewing_cauldron");
-		setUnlocalizedName(Constants.MODID + ".brewing_cauldron");
+		setUnlocalizedName(Plants2.MODID + ".brewing_cauldron");
 		setCreativeTab(Constants.TAB);
 		setHardness(3F);
 		setResistance(10F);
@@ -246,7 +246,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 			public Map<IBlockState, ModelResourceLocation> putStateModelLocations(Block block) {
 				Map<IBlockState, ModelResourceLocation> map = new HashMap<>();
 				for (int i = 0; i < 4; i++)
-					map.put(block.getDefaultState().withProperty(BlockCauldron.LEVEL, i), new ModelResourceLocation(Constants.MODID + ":blocks", "type=cauldron_" + i));
+					map.put(block.getDefaultState().withProperty(BlockCauldron.LEVEL, i), new ModelResourceLocation(Plants2.MODID + ":blocks", "type=cauldron_" + i));
 				return map;
 			}
 

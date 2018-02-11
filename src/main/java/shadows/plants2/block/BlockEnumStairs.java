@@ -48,7 +48,7 @@ public class BlockEnumStairs extends BlockStairs implements IHasModel, IHasRecip
 		PlaceboUtil.sMRL("stairs/" + getRegistryName().getResourcePath(), this, 0, "facing=south,half=bottom,shape=straight");
 		Placebo.PROXY.useRenamedMapper(this, "stairs/" + getRegistryName().getResourcePath());
 	}
-	
+
 	@Override
 	public String getUnlocalizedName() {
 		return "tile.plants2.stairs." + e.getName();

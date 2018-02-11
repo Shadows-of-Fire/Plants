@@ -183,7 +183,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 			return 9;
 		}
 	}
-	
+
 	public static class Slabs extends BlockEnumSlab {
 
 		public Slabs(CrystalPlanks e) {

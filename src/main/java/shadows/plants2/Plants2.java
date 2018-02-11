@@ -30,8 +30,13 @@ import shadows.plants2.network.ParticleMessage.ParticleMessageHandler;
 import shadows.plants2.proxy.IProxy;
 import shadows.plants2.util.PlantUtil;
 
-@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, dependencies = Constants.DEPS, acceptedMinecraftVersions = "[1.12, 1.13)")
+@Mod(modid = Plants2.MODID, name = Plants2.MODNAME, version = Plants2.VERSION, dependencies = Plants2.DEPS, acceptedMinecraftVersions = "[1.12, 1.13)")
 public class Plants2 {
+
+	public static final String MODID = "plants2";
+	public static final String MODNAME = "Plants";
+	public static final String VERSION = "2.4.0";
+	public static final String DEPS = "required-after:placebo@[1.2.0,);after:botania;after:forestry;after:twilightforest;after:actuallyadditions;after:botany";
 
 	@Instance
 	public static Plants2 INSTANCE;
@@ -44,12 +49,12 @@ public class Plants2 {
 
 	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
-	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Constants.MODID);
+	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 	private static int disc = 0;
 
-	public static final RegistryInformation INFO = new RegistryInformation(Constants.MODID, Constants.TAB);
+	public static final RegistryInformation INFO = new RegistryInformation(MODID, Constants.TAB);
 
-	public static final RecipeHelper HELPER = new RecipeHelper(Constants.MODID, Constants.MODNAME, INFO.getRecipeList());
+	public static final RecipeHelper HELPER = new RecipeHelper(MODID, MODNAME, INFO.getRecipeList());
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {

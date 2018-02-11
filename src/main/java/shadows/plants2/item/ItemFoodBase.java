@@ -13,7 +13,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 
 	public ItemFoodBase(String name, int amount, float saturationMultiplier) {
 		super(amount, saturationMultiplier, false);
-		setUnlocalizedName(Constants.MODID + "." + name);
+		setUnlocalizedName(Plants2.MODID + "." + name);
 		heal = Plants2.CONFIG.getInt("Food Value - " + name, "Food", amount, 1, 20, "The amount of hunger a " + name + " will restore.");
 		setRegistryName(name);
 		setCreativeTab(Constants.TAB);

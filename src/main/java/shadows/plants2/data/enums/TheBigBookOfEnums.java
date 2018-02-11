@@ -26,6 +26,7 @@ import shadows.placebo.interfaces.IPropertyEnum;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
+import shadows.plants2.Plants2;
 import shadows.plants2.data.Constants;
 import shadows.plants2.init.ModRegistry;
 
@@ -740,7 +741,7 @@ public class TheBigBookOfEnums {
 		}
 
 		FlowerpotPlants(int light, EnumDyeColor color) {
-			this(Constants.MODID, light, color);
+			this(Plants2.MODID, light, color);
 		}
 
 		FlowerpotPlants(EnumDyeColor color) {
@@ -791,8 +792,8 @@ public class TheBigBookOfEnums {
 		}
 
 		public ModelResourceLocation genMRL() {
-			if (isLoaded()) return new ModelResourceLocation(new ResourceLocation(Constants.MODID, "flowerpot/" + modid), "type=" + this.getName());
-			return new ModelResourceLocation(new ResourceLocation(Constants.MODID, "flowerpot/" + Constants.MODID), "type=none");
+			if (isLoaded()) return new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot/" + modid), "type=" + this.getName());
+			return new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot/" + Plants2.MODID), "type=none");
 		}
 
 	}
