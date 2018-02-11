@@ -43,7 +43,7 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 	//TODO remove, datafix for crystal planks
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		if (this == ModRegistry.PLANKS && meta > 5) return ModRegistry.CRYSTAL_PLANKS.getStateFor(CrystalPlanks.values()[meta % 6]);
+		if (meta > 5) return ModRegistry.CRYSTAL_PLANKS.getStateFor(CrystalPlanks.values()[meta % 6]);
 		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
