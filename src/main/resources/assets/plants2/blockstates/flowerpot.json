@@ -8,6 +8,9 @@
 		"normal": {
 			"model": "flower_pot"
 		},
+		"cactus": {
+			"model": "flower_pot_cactus"
+		},
 		"inventory": {
 			"model": "builtin/generated",
 			"textures": {

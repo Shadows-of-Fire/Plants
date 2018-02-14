@@ -64,6 +64,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL(Plants2.MODID, "flowerpot", this, 0, "inventory");
+		PlaceboUtil.sMRL(Plants2.MODID, "flowerpot", this, 5444, "cactus");
 		ModelLoader.setCustomStateMapper(this, new RenamedStateMapper(Plants2.MODID, "flowerpot", "", "normal"));
 	}
 
