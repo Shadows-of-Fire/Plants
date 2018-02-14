@@ -1,0 +1,18 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "flower_pot",
+		"transform": "forge:default-item"
+	},
+	"variants": {
+		"normal": {
+			"model": "flower_pot"
+		},
+		"inventory": {
+			"model": "builtin/generated",
+			"textures": {
+				"layer0": "items/flower_pot"
+			}
+		}
+	}
+}

@@ -14,8 +14,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.BlockStateContainer.StateImplementation;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
-import shadows.plants2.block.BlockFlowerpot;
-import shadows.plants2.data.enums.TheBigBookOfEnums;
 
 public final class FlowerpotBlockState extends StateImplementation {
 
@@ -25,8 +23,7 @@ public final class FlowerpotBlockState extends StateImplementation {
 
 	@Override
 	public <T extends Comparable<T>, V extends T> IBlockState withProperty(IProperty<T> property, V value) {
-		if (value instanceof EnumFlowerType) return this.withProperty(BlockFlowerpot.PROP, TheBigBookOfEnums.NAME_TO_ENUM.get(((EnumFlowerType) value).getName()));
-		else if (property == BlockFlowerPot.LEGACY_DATA) return this;
+		if (value instanceof EnumFlowerType || property == BlockFlowerPot.LEGACY_DATA) return this;
 		else return super.withProperty(property, value);
 	}
 

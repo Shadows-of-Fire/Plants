@@ -1,56 +1,41 @@
 package shadows.plants2.tile;
 
-import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFlowerPot;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import shadows.plants2.data.enums.TheBigBookOfEnums.FlowerpotPlants;
 
 public class TileFlowerpot extends TileEntityFlowerPot {
 
-	public static final PropertyEnum<FlowerpotPlants> PROPERTY = PropertyEnum.create("type", FlowerpotPlants.class);
-
-	private FlowerpotPlants flower = FlowerpotPlants.NONE;
-	private ItemStack stack = ItemStack.EMPTY;
+	protected IBlockState state = Blocks.AIR.getDefaultState();
+	protected ItemStack stack = ItemStack.EMPTY;
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		flower = FlowerpotPlants.values()[tag.getInteger("flower")];
-		stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
-		NBTTagCompound nTag = tag.getCompoundTag("stack_nbt");
-		if (nTag.getSize() != 0) stack.setTagCompound(nTag);
+		state = NBTUtil.readBlockState(tag.getCompoundTag("state"));
+		stack = new ItemStack(tag.getCompoundTag("stack"));
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		tag.setInteger("flower", flower.ordinal());
-		tag.setString("item", stack.getItem().getRegistryName().toString());
-		tag.setInteger("meta", stack.getMetadata());
-		tag.setTag("stack_nbt", stack.getTagCompound() == null ? new NBTTagCompound() : stack.getTagCompound());
+		tag.setTag("state", NBTUtil.writeBlockState(new NBTTagCompound(), state));
+		tag.setTag("stack", stack.writeToNBT(new NBTTagCompound()));
 		return tag;
-	}
-
-	public FlowerpotPlants getFlower() {
-		return flower;
-	}
-
-	public void setFlower(FlowerpotPlants flower) {
-		this.flower = flower;
 	}
 
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		readFromNBT(pkt.getNbtCompound());
+		state = Block.getStateById(pkt.getNbtCompound().getInteger("stateid"));
 	}
 
 	@Override
@@ -77,10 +62,29 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	public void setItemStack(ItemStack stack) {
 		this.stack = stack.copy();
 	}
+	
+	public void setState(IBlockState state) {
+		this.state = state;
+	}
+	
+	public IBlockState getState() {
+		return state;
+	}
+	
+	public ItemStack getStack() {
+		return stack;
+	}
 
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
-		return new SPacketUpdateTileEntity(this.pos, 150, this.getUpdateTag());
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("stateid", Block.getStateId(state));
+		return new SPacketUpdateTileEntity(this.pos, 150, tag);
+	}
+	
+	@Override
+	public boolean hasFastRenderer() {
+		return true;
 	}
 
 }
