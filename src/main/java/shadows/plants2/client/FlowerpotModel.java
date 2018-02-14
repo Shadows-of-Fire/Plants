@@ -14,6 +14,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
@@ -33,8 +34,8 @@ public class FlowerpotModel implements IBakedModel {
 	private final ImmutableList<BakedQuad> general;
 	private final ImmutableMap<EnumFacing, ImmutableList<BakedQuad>> faces;
 
-	public FlowerpotModel(IBlockState flowerState, IBakedModel flower) {
-		this.flower = flower;
+	public FlowerpotModel(IBlockState flowerState) {
+		this.flower = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(flowerState);
 
 		ImmutableList.Builder<BakedQuad> builder;
 		EnumMap<EnumFacing, ImmutableList<BakedQuad>> faces = new EnumMap<>(EnumFacing.class);
@@ -42,11 +43,12 @@ public class FlowerpotModel implements IBakedModel {
 		for (EnumFacing face : EnumFacing.values()) {
 			builder = ImmutableList.builder();
 			if (!flower.isBuiltInRenderer()) {
-				for (BakedQuad quad : flower.getQuads(null, face, 0)) {
+				for (BakedQuad quad : flower.getQuads(flowerState, face, 0)) {
 					Transformer transformer = new Transformer(TRANSFORM, quad.getFormat());
 					quad.pipe(transformer);
 					builder.add(transformer.build());
 				}
+				builder.addAll(flowerpot.getQuads(null, face, 0));
 			}
 			faces.put(face, builder.build());
 		}
@@ -58,10 +60,9 @@ public class FlowerpotModel implements IBakedModel {
 				quad.pipe(transformer);
 				builder.add(transformer.build());
 			}
+			builder.addAll(flowerpot.getQuads(null, null, 0));
 			this.general = builder.build();
-		} else 
-		
-		general = ImmutableList.of();
+		} else general = ImmutableList.of();
 
 		this.faces = Maps.immutableEnumMap(faces);
 	}

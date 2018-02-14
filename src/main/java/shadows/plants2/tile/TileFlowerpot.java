@@ -84,7 +84,7 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	
 	@Override
 	public boolean hasFastRenderer() {
-		return true;
+		return false;
 	}
 
 }

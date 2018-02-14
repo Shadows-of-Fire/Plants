@@ -18,18 +18,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shadows.placebo.client.IHasModel;
 import shadows.plants2.Plants2;
+import shadows.plants2.client.ActualFlowerpotModel;
 import shadows.plants2.client.FlowerpotModel;
-import shadows.plants2.client.RenderFlowerpot;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.tile.TileBrewingCauldron;
-import shadows.plants2.tile.TileFlowerpot;
 import shadows.plants2.util.ColorToPotionUtil;
 
 public class ClientProxy implements IProxy {
@@ -37,7 +35,6 @@ public class ClientProxy implements IProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileFlowerpot.class, new RenderFlowerpot());
 	}
 
 	public static final int GROUND_COLOR = 0xA3CBF7;
@@ -76,7 +73,9 @@ public class ClientProxy implements IProxy {
 	
 	@SubscribeEvent
 	public void onModelBake(ModelBakeEvent e) {
-		FlowerpotModel.flowerpot = e.getModelRegistry().getObject(new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot"), "normal"));
+		ModelResourceLocation mrl = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot"), "normal");
+		FlowerpotModel.flowerpot = e.getModelRegistry().getObject(mrl);
+		e.getModelRegistry().putObject(mrl, new ActualFlowerpotModel());
 	}
 
 	public static final Color WATER = new Color(48, 69, 244);

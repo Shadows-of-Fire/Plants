@@ -6,6 +6,8 @@ import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlowerPot;
+import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,6 +26,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.property.IExtendedBlockState;
+import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.client.IHasModel;
@@ -32,7 +36,7 @@ import shadows.placebo.interfaces.IItemBlock;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
 import shadows.plants2.data.PlantConfig;
-import shadows.plants2.state.FlowerpotBlockState.FlowerpotStateContainer;
+import shadows.plants2.state.FlowerpotBlockState;
 import shadows.plants2.tile.TileFlowerpot;
 
 public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBlock {
@@ -75,7 +79,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		if (flowerpot.isEmpty()) {
 			IBlockState toUse = Block.getBlockFromItem(held.getItem()).getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
 			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable) toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
-			if (toUse.getBlock() == Blocks.AIR) return false;
+			if (toUse.getBlock() == Blocks.AIR || toUse.getBlock() instanceof ITileEntityProvider || toUse.getBlock().hasTileEntity(toUse)) return false;
 			pot.setState(toUse);
 			ItemStack copy = held.copy();
 			copy.setCount(1);
@@ -129,7 +133,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 
 	@Override
 	public BlockStateContainer createBlockState() {
-		return new FlowerpotStateContainer(this);
+		return new FlowerpotBlockState(this, new IProperty[0], new IUnlistedProperty[] { UnlistedStateProperty.UNLISTED_STATE });
 	}
 
 	@Nullable
@@ -146,6 +150,44 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState();
+	}
+
+	@Override
+	public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		TileFlowerpot t = getTileEntity(world, pos);
+		if (t != null && state instanceof IExtendedBlockState) return ((IExtendedBlockState) state).withProperty(UnlistedStateProperty.UNLISTED_STATE, t.getState());
+		return state;
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		return state;
+	}
+
+	public static class UnlistedStateProperty implements IUnlistedProperty<IBlockState> {
+
+		public static final UnlistedStateProperty UNLISTED_STATE = new UnlistedStateProperty();
+
+		@Override
+		public String getName() {
+			return "pot_state";
+		}
+
+		@Override
+		public boolean isValid(IBlockState value) {
+			return true;
+		}
+
+		@Override
+		public Class<IBlockState> getType() {
+			return IBlockState.class;
+		}
+
+		@Override
+		public String valueToString(IBlockState value) {
+			return value.toString();
+		}
+
 	}
 
 }
