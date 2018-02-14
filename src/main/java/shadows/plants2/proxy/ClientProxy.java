@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEndRod;
 import net.minecraft.client.particle.ParticleSimpleAnimated;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -60,7 +61,8 @@ public class ClientProxy implements IProxy {
 
 	@Override
 	public void postInit(FMLPostInitializationEvent e) {
-
+		ModelResourceLocation mrl2 = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot"), "cactus");
+		ActualFlowerpotModel.MODELS.put(Blocks.CACTUS.getDefaultState(), Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getModel(mrl2));
 	}
 
 	@SubscribeEvent
@@ -70,7 +72,7 @@ public class ClientProxy implements IProxy {
 		for (Item i : Plants2.INFO.getItemList())
 			if (i instanceof IHasModel) ((IHasModel) i).initModels(e);
 	}
-	
+
 	@SubscribeEvent
 	public void onModelBake(ModelBakeEvent e) {
 		ModelResourceLocation mrl = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot"), "normal");

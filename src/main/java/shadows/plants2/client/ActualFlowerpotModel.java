@@ -16,14 +16,14 @@ import shadows.plants2.block.BlockFlowerpot.UnlistedStateProperty;
 
 public class ActualFlowerpotModel implements IBakedModel {
 
-	public static final Map<IBlockState, FlowerpotModel> MODELS = new HashMap<>();
+	public static final Map<IBlockState, IBakedModel> MODELS = new HashMap<>();
 
 	@Override
 	public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
 		if (state instanceof IExtendedBlockState) {
 			IBlockState flower = ((IExtendedBlockState) state).getValue(UnlistedStateProperty.UNLISTED_STATE);
 			if (flower == null || flower == Blocks.AIR.getDefaultState()) return FlowerpotModel.flowerpot.getQuads(state, side, rand);
-			FlowerpotModel model = MODELS.get(flower);
+			IBakedModel model = MODELS.get(flower);
 			if (model == null) {
 				model = new FlowerpotModel(flower);
 				MODELS.put(flower, model);
