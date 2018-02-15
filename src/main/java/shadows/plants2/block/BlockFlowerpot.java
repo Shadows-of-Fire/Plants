@@ -51,6 +51,14 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		}
 	}
 
+	BlockFlowerpot(String name) {
+		setRegistryName(Plants2.MODID, name);
+		setUnlocalizedName(Plants2.MODID + "." + name);
+		setCreativeTab(Plants2.INFO.getDefaultTab());
+		Plants2.INFO.getBlockList().add(this);
+		Plants2.INFO.getItemList().add(createItemBlock());
+	}
+
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		super.onBlockHarvested(world, pos, state, player);
@@ -80,7 +88,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		if (flowerpot.isEmpty()) {
 			IBlockState toUse = Block.getBlockFromItem(held.getItem()).getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
 			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable) toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
-			if (toUse.getBlock() == Blocks.AIR || toUse.getBlock() instanceof ITileEntityProvider || toUse.getBlock().hasTileEntity(toUse)) return false;
+			if (toUse.getBlock() != this && (toUse.getBlock() == Blocks.AIR || toUse.getBlock() instanceof ITileEntityProvider || toUse.getBlock().hasTileEntity(toUse))) return false;
 			pot.setState(toUse);
 			ItemStack copy = held.copy();
 			copy.setCount(1);
@@ -159,10 +167,17 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		if (t != null && state instanceof IExtendedBlockState) return ((IExtendedBlockState) state).withProperty(UnlistedStateProperty.UNLISTED_STATE, t.getState());
 		return state;
 	}
-	
+
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		return state;
+	}
+	
+	@Override
+	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
+		TileFlowerpot t = getTileEntity(world, pos);
+		if(t != null && !t.getStack().isEmpty()) return t.getStack();
+		return new ItemStack(this);
 	}
 
 	public static class UnlistedStateProperty implements IUnlistedProperty<IBlockState> {

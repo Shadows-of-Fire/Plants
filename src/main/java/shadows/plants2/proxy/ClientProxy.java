@@ -1,6 +1,7 @@
 package shadows.plants2.proxy;
 
 import java.awt.Color;
+import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -9,6 +10,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEndRod;
 import net.minecraft.client.particle.ParticleSimpleAnimated;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -23,10 +26,15 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.registries.IRegistryDelegate;
 import shadows.placebo.client.IHasModel;
 import shadows.plants2.Plants2;
 import shadows.plants2.client.ActualFlowerpotModel;
+import shadows.plants2.client.ActualJarModel;
 import shadows.plants2.client.FlowerpotModel;
+import shadows.plants2.client.JarItemModel;
+import shadows.plants2.client.JarModel;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.tile.TileBrewingCauldron;
 import shadows.plants2.util.ColorToPotionUtil;
@@ -56,7 +64,9 @@ public class ClientProxy implements IProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tint) -> {
 			return GROUND_COLOR;
 		}, ModRegistry.GROUNDCOVER);
-
+		
+		Map<IRegistryDelegate<Block>, IBlockColor> blockBois = ReflectionHelper.getPrivateValue(BlockColors.class, Minecraft.getMinecraft().getBlockColors(), "blockColorMap");
+		blockBois.put(ModRegistry.JAR.delegate, blockBois.get(Blocks.FLOWER_POT.delegate));
 	}
 
 	@Override
@@ -78,6 +88,14 @@ public class ClientProxy implements IProxy {
 		ModelResourceLocation mrl = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot"), "normal");
 		FlowerpotModel.flowerpot = e.getModelRegistry().getObject(mrl);
 		e.getModelRegistry().putObject(mrl, new ActualFlowerpotModel());
+		
+		ModelResourceLocation normal = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "jar"), "normal");
+		ModelResourceLocation glass = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "jar"), "glass");
+		ModelResourceLocation inv = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "jar"), "inventory");
+		JarModel.jarSolid = e.getModelRegistry().getObject(normal);
+		JarModel.jarGlass = e.getModelRegistry().getObject(glass);
+		e.getModelRegistry().putObject(normal, new ActualJarModel());
+		e.getModelRegistry().putObject(inv, new JarItemModel());
 	}
 
 	public static final Color WATER = new Color(48, 69, 244);

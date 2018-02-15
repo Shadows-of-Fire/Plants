@@ -1,0 +1,13 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"normal": {
+			"model": "plants2:jar_solid",
+			"transform": "forge:default-block"
+		},
+		"glass": {
+			"model": "plants2:jar",
+			"transform": "forge:default-block"
+		}
+	}
+}

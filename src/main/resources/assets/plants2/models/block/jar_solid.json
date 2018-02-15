@@ -1,0 +1,38 @@
+{
+	"__comment": "Designed by Shadows_of_Fire with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"0": "plants2:blocks/jar/glass",
+		"1": "plants2:blocks/jar/lid",
+		"2": "plants2:blocks/jar/glass2",
+		"3": "blocks/dirt",
+		"particle": "plants2:blocks/jar/glass"
+	},
+	"elements": [
+		{
+			"__comment": "Lid",
+			"from": [ 5, 14, 5 ],
+			"to": [ 11, 16, 11 ],
+			"faces": {
+				"down": { "uv": [ 0, 0, 6, 6 ], "texture": "#1" },
+				"up": { "uv": [ 0, 0, 6, 6 ], "texture": "#1" },
+				"north": { "uv": [ 0, 0, 6, 2 ], "texture": "#1" },
+				"south": { "uv": [ 0, 0, 6, 2 ], "texture": "#1" },
+				"west": { "uv": [ 0, 0, 6, 2 ], "texture": "#1" },
+				"east": { "uv": [ 0, 0, 6, 2 ], "texture": "#1" }
+			}
+		},
+		{
+			"__comment": "Dirt",
+			"from": [ 4, 1, 4 ],
+			"to": [ 12, 2, 12 ],
+			"faces": {
+				"down": { "uv": [ 4, 4, 12, 12 ], "texture": "#3" },
+				"up": { "uv": [ 4, 4, 12, 12 ], "texture": "#3" },
+				"north": { "uv": [ 4, 14, 12, 15 ], "texture": "#3" },
+				"south": { "uv": [ 4, 14, 12, 15 ], "texture": "#3" },
+				"west": { "uv": [ 4, 14, 12, 15 ], "texture": "#3" },
+				"east": { "uv": [ 4, 14, 12, 15 ], "texture": "#3" }
+			}
+		}
+	]
+}

@@ -16,18 +16,21 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.model.TRSRTransformation;
 
-public class FlowerpotModel implements IBakedModel {
+public class JarModel implements IBakedModel {
 
-	public static final TRSRTransformation TRANSFORM = TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0, 0.2F, 0), null, new Vector3f(0.8F, 0.8F, 0.8F), null));
-	public static IBakedModel flowerpot;
+	public static final TRSRTransformation TRANSFORM = TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0, -0.17F, 0), null, new Vector3f(0.4F, 0.4F, 0.4F), null));
+	public static IBakedModel jarSolid;
+	public static IBakedModel jarGlass;
 	private final IBakedModel flower;
 	private final ImmutableList<BakedQuad> general;
 	private final ImmutableMap<EnumFacing, ImmutableList<BakedQuad>> faces;
 
-	public FlowerpotModel(IBlockState flowerState) {
+	public JarModel(IBlockState flowerState) {
 		this.flower = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(flowerState);
 
 		ImmutableList.Builder<BakedQuad> builder;
@@ -41,7 +44,7 @@ public class FlowerpotModel implements IBakedModel {
 					quad.pipe(transformer);
 					builder.add(transformer.build());
 				}
-				builder.addAll(flowerpot.getQuads(null, face, 0));
+				builder.addAll(jarSolid.getQuads(null, face, 0));
 			}
 			faces.put(face, builder.build());
 		}
@@ -53,7 +56,7 @@ public class FlowerpotModel implements IBakedModel {
 				quad.pipe(transformer);
 				builder.add(transformer.build());
 			}
-			builder.addAll(flowerpot.getQuads(null, null, 0));
+			builder.addAll(jarSolid.getQuads(null, null, 0));
 			this.general = builder.build();
 		} else general = ImmutableList.of();
 
@@ -61,12 +64,16 @@ public class FlowerpotModel implements IBakedModel {
 	}
 
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
-		if (side == null) return general;
-		return faces.get(side);
+		if (MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.TRANSLUCENT) { return jarGlass.getQuads(state, side, rand); }
+		if (MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.CUTOUT) {
+			if (side == null) return general;
+			return faces.get(side);
+		}
+		return ImmutableList.of();
 	}
 
 	public boolean isAmbientOcclusion() {
-		return flowerpot.isAmbientOcclusion() && flower.isAmbientOcclusion();
+		return jarSolid.isAmbientOcclusion() && flower.isAmbientOcclusion();
 	}
 
 	public boolean isGui3d() {
@@ -78,7 +85,7 @@ public class FlowerpotModel implements IBakedModel {
 	}
 
 	public TextureAtlasSprite getParticleTexture() {
-		return flowerpot.getParticleTexture();
+		return jarSolid.getParticleTexture();
 	}
 
 	public ItemOverrideList getOverrides() {

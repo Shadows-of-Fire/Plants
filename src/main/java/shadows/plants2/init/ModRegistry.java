@@ -58,6 +58,7 @@ import shadows.plants2.block.BlockEnumSapling;
 import shadows.plants2.block.BlockEnumSlab;
 import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.block.BlockFlowerpot;
+import shadows.plants2.block.BlockJar;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
@@ -187,6 +188,7 @@ public class ModRegistry {
 	public static final BlockEnumBush<BushSet> BUSHLING = new BlockBushling();
 
 	public static final BlockFlowerpot FLOWERPOT = new BlockFlowerpot();
+	public static final BlockJar JAR = new BlockJar();
 
 	public static final BlockCataplant CATAPLANT = new BlockCataplant();
 
