@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.client.RenamedStateMapper;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.itemblock.ItemBlockBase;
@@ -30,6 +32,7 @@ public class BlockJar extends BlockFlowerpot implements IHasRecipe {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		PlaceboUtil.sMRL(Plants2.MODID, "jar", this, 0, "inventory");
 		PlaceboUtil.sMRL(Plants2.MODID, "jar", this, 5444, "glass");
