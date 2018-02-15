@@ -39,12 +39,13 @@ import shadows.plants2.client.JarItemModel;
 import shadows.plants2.client.JarModel;
 import shadows.plants2.init.ModRegistry;
 import shadows.plants2.tile.TileBrewingCauldron;
+import shadows.plants2.tile.TileFlowerpot;
 import shadows.plants2.util.ColorToPotionUtil;
 
 public class ClientProxy implements IProxy {
 
 	public static boolean aoConstant = true;
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -69,9 +70,26 @@ public class ClientProxy implements IProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tint) -> {
 			return GROUND_COLOR;
 		}, ModRegistry.GROUNDCOVER);
-		
+
+		//Vanilla Copy :: Added line to avoid crash with nested pot
+		IBlockColor color = (state, world, pos, tint) -> {
+			if (world != null && pos != null) {
+				TileEntity tileentity = world.getTileEntity(pos);
+				if (tileentity instanceof TileFlowerpot && ((TileFlowerpot) tileentity).getState().getBlock() != state.getBlock()) {
+					Item item = ((TileFlowerpot) tileentity).getFlowerPotItem();
+					IBlockState iblockstate = Block.getBlockFromItem(item).getDefaultState();
+					return Minecraft.getMinecraft().getBlockColors().colorMultiplier(iblockstate, world, pos, tint);
+				} else {
+					return -1;
+				}
+			} else {
+				return -1;
+			}
+		};
+
 		Map<IRegistryDelegate<Block>, IBlockColor> blockBois = ReflectionHelper.getPrivateValue(BlockColors.class, Minecraft.getMinecraft().getBlockColors(), "blockColorMap");
-		blockBois.put(ModRegistry.JAR.delegate, blockBois.get(Blocks.FLOWER_POT.delegate));
+		blockBois.put(Blocks.FLOWER_POT.delegate, color);
+		blockBois.put(ModRegistry.JAR.delegate, color);
 	}
 
 	@Override
@@ -93,7 +111,7 @@ public class ClientProxy implements IProxy {
 		ModelResourceLocation mrl = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "flowerpot"), "normal");
 		FlowerpotModel.flowerpot = e.getModelRegistry().getObject(mrl);
 		e.getModelRegistry().putObject(mrl, new ActualFlowerpotModel());
-		
+
 		ModelResourceLocation normal = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "jar"), "normal");
 		ModelResourceLocation glass = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "jar"), "glass");
 		ModelResourceLocation inv = new ModelResourceLocation(new ResourceLocation(Plants2.MODID, "jar"), "inventory");
