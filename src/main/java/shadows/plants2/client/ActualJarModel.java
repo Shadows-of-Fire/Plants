@@ -15,6 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import shadows.plants2.block.BlockFlowerpot.UnlistedStateProperty;
+import shadows.plants2.proxy.ClientProxy;
 
 public class ActualJarModel implements IBakedModel {
 
@@ -44,7 +45,7 @@ public class ActualJarModel implements IBakedModel {
 
 	@Override
 	public boolean isAmbientOcclusion() {
-		return JarModel.jarSolid.isAmbientOcclusion();
+		return ClientProxy.aoConstant;
 	}
 
 	@Override

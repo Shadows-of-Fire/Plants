@@ -184,7 +184,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		TileFlowerpot t = getTileEntity(world, pos);
-		if(t == null) return;
+		if(t == null || t.getState().getBlock() == this) return;
 		t.getState().getBlock().randomDisplayTick(t.getState(), world, pos, rand);
 	}
 

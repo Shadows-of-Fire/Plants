@@ -21,7 +21,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -41,9 +43,12 @@ import shadows.plants2.util.ColorToPotionUtil;
 
 public class ClientProxy implements IProxy {
 
+	public static boolean aoConstant = true;
+	
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		MinecraftForge.EVENT_BUS.register(this);
+		aoConstant = ForgeModContainer.forgeLightPipelineEnabled && !Loader.isModLoaded("optifine");
 	}
 
 	public static final int GROUND_COLOR = 0xA3CBF7;

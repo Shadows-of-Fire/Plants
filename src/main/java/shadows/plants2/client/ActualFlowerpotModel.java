@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import shadows.plants2.block.BlockFlowerpot.UnlistedStateProperty;
+import shadows.plants2.proxy.ClientProxy;
 
 public class ActualFlowerpotModel implements IBakedModel {
 
@@ -35,7 +36,7 @@ public class ActualFlowerpotModel implements IBakedModel {
 
 	@Override
 	public boolean isAmbientOcclusion() {
-		return FlowerpotModel.flowerpot.isAmbientOcclusion();
+		return ClientProxy.aoConstant;
 	}
 
 	@Override
