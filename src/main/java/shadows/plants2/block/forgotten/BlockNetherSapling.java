@@ -7,7 +7,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.plants2.block.BlockEnumSapling;
-import shadows.plants2.gen.NetherGen;
 
 public class BlockNetherSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumSapling<E> {
 
@@ -22,8 +21,8 @@ public class BlockNetherSapling<E extends Enum<E> & ITreeEnum> extends BlockEnum
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
-		return NetherGen.isValidSoil(world.getBlockState(pos.down()), world, pos.down(), this);
+	public boolean isValidSoil(World world, BlockPos pos, IBlockState state, IBlockState soil) {
+		return soil.getBlock() instanceof BlockNetherrack;
 	}
 
 }

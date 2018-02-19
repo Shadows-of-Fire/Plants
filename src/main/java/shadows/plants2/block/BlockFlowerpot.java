@@ -89,7 +89,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 			IBlockState toUse = Block.getBlockFromItem(held.getItem()).getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
 			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable) toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
 			if (toUse.getBlock() != this && (toUse.getBlock() == Blocks.AIR || toUse.getBlock() instanceof ITileEntityProvider || toUse.getBlock().hasTileEntity(toUse))) return false;
-			if(BlockEnumHarvestBush.FRUIT.equals(toUse.getBlock().getBlockState().getProperty("fruit"))) toUse = toUse.withProperty(BlockEnumHarvestBush.FRUIT, true);
+			if (BlockEnumHarvestBush.FRUIT.equals(toUse.getBlock().getBlockState().getProperty("fruit"))) toUse = toUse.withProperty(BlockEnumHarvestBush.FRUIT, true);
 			pot.setState(toUse);
 			ItemStack copy = held.copy();
 			copy.setCount(1);
@@ -173,18 +173,18 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		return state;
 	}
-	
+
 	@Override
 	public ItemStack getItem(World world, BlockPos pos, IBlockState state) {
 		TileFlowerpot t = getTileEntity(world, pos);
-		if(t != null && !t.getStack().isEmpty()) return t.getStack();
+		if (t != null && !t.getStack().isEmpty()) return t.getStack();
 		return new ItemStack(this);
 	}
-	
+
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		TileFlowerpot t = getTileEntity(world, pos);
-		if(t == null || t.getState().getBlock() == this) return;
+		if (t == null || t.getState().getBlock() == this) return;
 		t.getState().getBlock().randomDisplayTick(t.getState(), world, pos, rand);
 	}
 

@@ -26,7 +26,7 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		state = NBTUtil.readBlockState(tag.getCompoundTag("state"));
 		stack = new ItemStack(tag.getCompoundTag("stack"));
 		//TODO remove, legacy data fix
-		if(stack.isEmpty()) {
+		if (stack.isEmpty()) {
 			stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
 			NBTTagCompound nTag = tag.getCompoundTag("stack_nbt");
 			if (nTag.getSize() != 0) stack.setTagCompound(nTag);
@@ -70,15 +70,15 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	public void setItemStack(ItemStack stack) {
 		this.stack = stack.copy();
 	}
-	
+
 	public void setState(IBlockState state) {
 		this.state = state;
 	}
-	
+
 	public IBlockState getState() {
 		return state;
 	}
-	
+
 	public ItemStack getStack() {
 		return stack;
 	}
@@ -89,7 +89,7 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		tag.setInteger("stateid", Block.getStateId(state));
 		return new SPacketUpdateTileEntity(this.pos, 150, tag);
 	}
-	
+
 	@Override
 	public boolean hasFastRenderer() {
 		return false;

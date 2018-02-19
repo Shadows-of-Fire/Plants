@@ -108,6 +108,7 @@ public class PlantUtil {
 	public static final List<IBlockState> CROP = new ControlledList();
 	public static final List<IBlockState> DEFAULT = new ControlledList();
 	public static final List<IBlockState> NETHER = new ControlledList();
+	public static final List<IBlockState> END = new ControlledList();
 	public static final Map<EnumPlantType, List<IBlockState>> TYPE_TO_STATES = new HashMap<>();
 
 	static {

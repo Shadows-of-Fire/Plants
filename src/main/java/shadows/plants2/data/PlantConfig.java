@@ -12,14 +12,15 @@ public class PlantConfig {
 	public static boolean excaliburParty = false;
 	public static boolean superExcaliburParty = false;
 
-	public static boolean all_generation = true;
-	public static boolean nether_flower_gen = true;
-	public static boolean nether_tree_gen = true;
-	public static boolean flower_gen = true;
-	public static boolean bush_gen = true;
-	public static boolean tree_gen = true;
-	public static boolean vine_gen = true;
-	public static boolean desert_gen = true;
+	public static boolean gen = true;
+	public static boolean netherFlowerGen = true;
+	public static boolean netherTreeGen = true;
+	public static boolean flowerGen = true;
+	public static boolean bushGen = true;
+	public static boolean treeGen = true;
+	public static boolean vineGen = true;
+	public static boolean desertGen = true;
+	public static boolean endGen = true;
 
 	public static int patchChance = 1;
 	public static int density = 6;
@@ -55,14 +56,15 @@ public class PlantConfig {
 		excaliburParty = config.getBoolean("Rainbow Excalibur", "Botania", false, "Rainbow mana bursts!");
 		superExcaliburParty = config.getBoolean("Super Rainbow Excalibur", "Botania", false, "(May cause issues) Super rainbow mana bursts!");
 
-		all_generation = config.getBoolean("Enable Generation", g, true, "Toggle for worldgen.");
-		nether_flower_gen = config.getBoolean("Nether Flower Generation", g, true, "Toggle for nether plants.");
-		nether_tree_gen = config.getBoolean("Nether Tree Generation", g, true, "Toggle for nether trees.");
-		flower_gen = config.getBoolean("Flower Generation", g, true, "Toggle for plants.");
-		bush_gen = config.getBoolean("Bush Generation", g, true, "Toggle for bushes.");
-		tree_gen = config.getBoolean("Tree Generation", g, true, "Toggle for trees.");
-		vine_gen = config.getBoolean("Vine Generation", g, true, "Toggle for vines.");
-		desert_gen = config.getBoolean("Desert Generation", g, true, "Toggle for desert plants.");
+		gen = config.getBoolean("Enable Generation", g, true, "Toggle for worldgen.");
+		netherFlowerGen = config.getBoolean("Nether Flower Generation", g, true, "Toggle for nether plants.");
+		netherTreeGen = config.getBoolean("Nether Tree Generation", g, true, "Toggle for nether trees.");
+		flowerGen = config.getBoolean("Flower Generation", g, true, "Toggle for plants.");
+		bushGen = config.getBoolean("Bush Generation", g, true, "Toggle for bushes.");
+		treeGen = config.getBoolean("Tree Generation", g, true, "Toggle for trees.");
+		vineGen = config.getBoolean("Vine Generation", g, true, "Toggle for vines.");
+		desertGen = config.getBoolean("Desert Generation", g, true, "Toggle for desert plants.");
+		endGen = config.getBoolean("End Generation", g, true, "Toggle for end plants.");
 
 		patchChance = config.getInt("Chance", f, 1, 1, Integer.MAX_VALUE, "A (1/n) chance for plants to try to generate on a given occasion. Lower = More plants.");
 		density = config.getInt("Density", f, 6, 0, 25, "The number of plants that try to generate on a given occasion. Higher = More plants.");

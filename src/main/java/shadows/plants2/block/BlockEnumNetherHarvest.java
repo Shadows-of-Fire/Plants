@@ -20,7 +20,6 @@ import shadows.placebo.interfaces.IHasRecipe;
 import shadows.plants2.Plants2;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
-import shadows.plants2.gen.NetherGen;
 
 public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extends BlockEnumHarvestBush<E> implements IHasRecipe {
 
@@ -35,8 +34,8 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
-		return NetherGen.isValidSoil(world.getBlockState(pos.down()), world, pos.down(), this);
+	public boolean isValidSoil(World world, BlockPos pos, IBlockState state, IBlockState soil) {
+		return soil.getBlock() instanceof BlockNetherrack;
 	}
 
 	@Override

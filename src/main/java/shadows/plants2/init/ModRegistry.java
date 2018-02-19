@@ -59,6 +59,8 @@ import shadows.plants2.block.BlockEnumSlab;
 import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.BlockJar;
+import shadows.plants2.block.BushBase;
+import shadows.plants2.block.end.BlockAphrireroot;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
@@ -82,6 +84,7 @@ import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.NetherLogs;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Plants;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Vines;
+import shadows.plants2.gen.EndGen;
 import shadows.plants2.gen.EnumTreeGen;
 import shadows.plants2.gen.NetherGen;
 import shadows.plants2.gen.StructureGen;
@@ -223,6 +226,8 @@ public class ModRegistry {
 	public static final Item DARK_CRYSTAL_HOE = new ItemHoeBase("dark_crystal_hoe", Plants2.INFO, MAT_DARK_CRYSTAL);
 	public static final Item DARK_CRYSTAL_SWORD = new ItemSwordBase("dark_crystal_sword", Plants2.INFO, MAT_DARK_CRYSTAL);
 
+	public static final BushBase APHRIREROOT = new BlockAphrireroot();
+
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
 		event.getRegistry().registerAll(Plants2.INFO.getBlockList().toArray(new Block[0]));
@@ -298,11 +303,12 @@ public class ModRegistry {
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
-		if (!PlantConfig.all_generation) return;
-		if (PlantConfig.bush_gen) GameRegistry.registerWorldGenerator(new BushGen(), 25);
-		if (PlantConfig.nether_tree_gen) GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
-		if (PlantConfig.tree_gen) GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
-		if (PlantConfig.nether_flower_gen) GameRegistry.registerWorldGenerator(new NetherGen(), 30);
+		if (!PlantConfig.gen) return;
+		if (PlantConfig.bushGen) GameRegistry.registerWorldGenerator(new BushGen(), 25);
+		if (PlantConfig.netherTreeGen) GameRegistry.registerWorldGenerator(new NetherTreeGen.TreeGenerator(), 20);
+		if (PlantConfig.treeGen) GameRegistry.registerWorldGenerator(new EnumTreeGen.TreeGenerator(), 15);
+		if (PlantConfig.netherFlowerGen) GameRegistry.registerWorldGenerator(new NetherGen(), 30);
+		if (PlantConfig.endGen) GameRegistry.registerWorldGenerator(new EndGen(), 30);
 	}
 
 	public static void tiles(FMLPreInitializationEvent e) {

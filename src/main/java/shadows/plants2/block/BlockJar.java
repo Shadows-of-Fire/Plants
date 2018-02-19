@@ -43,7 +43,7 @@ public class BlockJar extends BlockFlowerpot implements IHasRecipe {
 	public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
 		return layer == BlockRenderLayer.TRANSLUCENT || layer == BlockRenderLayer.CUTOUT;
 	}
-	
+
 	@Override
 	public ItemBlock createItemBlock() {
 		return new ItemBlockBase(this);

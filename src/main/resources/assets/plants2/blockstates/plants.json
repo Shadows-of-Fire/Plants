@@ -643,6 +643,31 @@
 				"textures": {
 					"cross": "plants2:blocks/cosmetic/desert/san_angelo_yucca"
 				}
+			},
+			"aakore": {
+				"textures": {
+					"cross": "plants2:blocks/end/aakore"
+				}
+			},
+			"aphrireroot": {
+				"textures": {
+					"cross": "plants2:blocks/end/aphrireroot"
+				}
+			},
+			"briblebum": {
+				"textures": {
+					"cross": "plants2:blocks/end/briblebum"
+				}
+			},
+			"saimbaire": {
+				"textures": {
+					"cross": "plants2:blocks/end/saimbaire"
+				}
+			},
+			"small_flower_aithotus": {
+				"textures": {
+					"cross": "plants2:blocks/end/small_flower_aithotus"
+				}
 			}
 		},
 		"inventory": {

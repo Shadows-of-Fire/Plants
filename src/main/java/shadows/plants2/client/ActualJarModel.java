@@ -35,11 +35,9 @@ public class ActualJarModel implements IBakedModel {
 		}
 		return defaultQuads(state, side, rand);
 	}
-	
-	public static List<BakedQuad> defaultQuads(IBlockState state, EnumFacing side, long rand){
-		if(MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.TRANSLUCENT) {
-			return JarModel.jarGlass.getQuads(state, side, rand);
-		}
+
+	public static List<BakedQuad> defaultQuads(IBlockState state, EnumFacing side, long rand) {
+		if (MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.TRANSLUCENT) { return JarModel.jarGlass.getQuads(state, side, rand); }
 		return JarModel.jarSolid.getQuads(state, side, rand);
 	}
 

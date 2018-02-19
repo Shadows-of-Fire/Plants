@@ -58,9 +58,22 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	}
 
 	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && canBlockStay(world, pos, getDefaultState());
+	}
+
+	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this);
+		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || isValidSoil(world, pos, state, soil);
+	}
+
+	/**
+	 * Method used for checking additional soils.  If this returns false, placement falls back to EnumPlantType checks.
+	 * @return If this soil state is acceptable.
+	 */
+	public boolean isValidSoil(World world, BlockPos pos, IBlockState state, IBlockState soil) {
+		return false;
 	}
 
 	@Override

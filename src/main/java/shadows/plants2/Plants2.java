@@ -5,7 +5,9 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -88,5 +90,7 @@ public class Plants2 {
 
 		if (Loader.isModLoaded(PlantConstants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
 		if (ALT_CONFIG.hasChanged()) ALT_CONFIG.save();
+
+		if (PlantConfig.crystalForest) BiomeDictionary.addTypes(ModRegistry.CRYSTAL_FOREST, Type.MAGICAL, Type.FOREST, Type.COLD);
 	}
 }
