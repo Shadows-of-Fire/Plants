@@ -24,6 +24,7 @@ minecraft {
     runDir = "run"
     mappings = "snapshot_20180119"
 	useDepAts = true
+	makeObfSourceJar = false
 }
 
 repositories {
