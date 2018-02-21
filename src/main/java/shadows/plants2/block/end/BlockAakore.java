@@ -12,6 +12,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -24,23 +25,30 @@ public class BlockAakore extends BlockEndBush {
 		super("aakore");
 	}
 
+	static final AxisAlignedBB largeboi = new AxisAlignedBB(-5, -5, -5, 5, 5, 5);
+
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		// TODO Auto-generated method stub
-		super.updateTick(worldIn, pos, state, rand);
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		for (Entity e : world.getEntitiesWithinAABB(Entity.class, largeboi.offset(pos))) {
+			double x = (pos.getX() + 0.5 - e.posX) / 3.2;
+			double y = (pos.getY() + 0.5 - e.posY) * 1.23;
+			double z = (pos.getZ() + 0.5 - e.posZ) / 3.2;
+			e.addVelocity(x, y, z);
+			e.velocityChanged = true;
+		}
 	}
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (RANDOM.nextInt(13) == 0 && entity instanceof EntityLivingBase) {
-			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 200, 1));
+		if (RANDOM.nextInt(13) == 0 && !world.isRemote && entity instanceof EntityLivingBase && !((EntityLivingBase) entity).isPotionActive(MobEffects.LEVITATION)) {
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 40, 1));
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean addDestroyEffects(World world, BlockPos pos, ParticleManager manager) {
-		ParticleEndRod p = new ParticleEndRod(world, pos.getX() + get(), pos.getY() + get(), pos.getZ() + get(), get(), get(), get());
+		ParticleEndRod p = new ParticleEndRod(world, pos.getX() + get(), pos.getY() + 0.5, pos.getZ() + get(), get(), get(), get());
 		p.setColor(0x00FFAA);
 		p.setColorFade(0xAA00FF);
 		manager.addEffect(p);
