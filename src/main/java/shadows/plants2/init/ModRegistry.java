@@ -60,6 +60,7 @@ import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.BlockJar;
 import shadows.plants2.block.BushBase;
+import shadows.plants2.block.end.BlockAakore;
 import shadows.plants2.block.end.BlockAphrireroot;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
@@ -227,6 +228,7 @@ public class ModRegistry {
 	public static final Item DARK_CRYSTAL_SWORD = new ItemSwordBase("dark_crystal_sword", Plants2.INFO, MAT_DARK_CRYSTAL);
 
 	public static final BushBase APHRIREROOT = new BlockAphrireroot();
+	public static final BushBase AAKORE = new BlockAakore();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
