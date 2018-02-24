@@ -49,6 +49,11 @@ public class ForestryIntegration {
 			FlowerManager.flowerRegistry.registerAcceptableFlower(state, FlowerManager.FlowerTypeCacti);
 			FlowerManager.flowerRegistry.registerPlantableFlower(state, 0.85D, FlowerManager.FlowerTypeCacti);
 		}
+		
+		for(IBlockState state : PlantUtil.END) {
+			FlowerManager.flowerRegistry.registerAcceptableFlower(state, FlowerManager.FlowerTypeEnd);
+			FlowerManager.flowerRegistry.registerPlantableFlower(state, 0.85D, FlowerManager.FlowerTypeEnd);
+		}
 	}
 
 }

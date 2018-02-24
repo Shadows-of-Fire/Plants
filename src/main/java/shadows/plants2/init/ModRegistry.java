@@ -59,9 +59,9 @@ import shadows.plants2.block.BlockEnumSlab;
 import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.BlockJar;
-import shadows.plants2.block.BushBase;
 import shadows.plants2.block.end.BlockAakore;
 import shadows.plants2.block.end.BlockAphrireroot;
+import shadows.plants2.block.end.BlockBriblebum;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
@@ -105,6 +105,7 @@ public class ModRegistry {
 
 	public static final ToolMaterial MAT_CRYSTAL = EnumHelper.addToolMaterial("crystal", 1, 128, 7.0F, 2, 22);
 	public static final ToolMaterial MAT_DARK_CRYSTAL = EnumHelper.addToolMaterial("dark_crystal", 3, 1000, 7.0F, 3, 8);
+	public static final EnumPlantType END = EnumPlantType.getPlantType("end");
 
 	public static final BlockEnumBush<Plants> PLANT_0 = new BlockEnumFlower<>("cosmetic_0", EnumPlantType.Plains, Plants.class, 0);
 	public static final BlockEnumBush<Plants> PLANT_1 = new BlockEnumFlower<>("cosmetic_1", EnumPlantType.Plains, Plants.class, 1);
@@ -212,6 +213,7 @@ public class ModRegistry {
 	public static final PotionType WITHER = new PotionTypeBase("wither", new PotionEffect(MobEffects.WITHER, 3600));
 	public static final PotionType REGEN_HEAL = new PotionTypeBase("regen_heal", new PotionEffect(MobEffects.REGENERATION, 1600), new PotionEffect(MobEffects.INSTANT_HEALTH));
 	public static final PotionType CAULDRON_BREW = new PotionTypeBase("cauldron_brew");
+	public static final PotionType LEV = new PotionTypeBase("levitation", new PotionEffect(MobEffects.LEVITATION, 400));
 
 	public static final Block BREWING_CAULDRON = new BlockBrewingCauldron();
 
@@ -227,8 +229,9 @@ public class ModRegistry {
 	public static final Item DARK_CRYSTAL_HOE = new ItemHoeBase("dark_crystal_hoe", Plants2.INFO, MAT_DARK_CRYSTAL);
 	public static final Item DARK_CRYSTAL_SWORD = new ItemSwordBase("dark_crystal_sword", Plants2.INFO, MAT_DARK_CRYSTAL);
 
-	public static final BushBase APHRIREROOT = new BlockAphrireroot();
-	public static final BushBase AAKORE = new BlockAakore();
+	public static final BlockAphrireroot APHRIREROOT = new BlockAphrireroot();
+	public static final BlockAakore AAKORE = new BlockAakore();
+	public static final BlockBriblebum BRIBLEBUM = new BlockBriblebum();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {
