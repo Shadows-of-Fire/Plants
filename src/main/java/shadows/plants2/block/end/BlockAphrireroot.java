@@ -23,12 +23,12 @@ public class BlockAphrireroot extends BlockEndBush {
 			world.spawnEntity(i);
 		}
 	}
-	
+
 	@Override
 	int getColor() {
 		return 0x00FFAA;
 	}
-	
+
 	@Override
 	int getColorFade() {
 		return 0x060663;

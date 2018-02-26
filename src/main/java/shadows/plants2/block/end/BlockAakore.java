@@ -49,7 +49,7 @@ public class BlockAakore extends BlockEndBush {
 	int getColor() {
 		return 0x00FFAA;
 	}
-	
+
 	@Override
 	int getColorFade() {
 		return 0xAA00FF;

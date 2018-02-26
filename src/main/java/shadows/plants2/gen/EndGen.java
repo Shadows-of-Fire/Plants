@@ -25,8 +25,10 @@ public class EndGen implements IWorldGenerator {
 				if (ModRegistry.APHRIREROOT.canBlockStay(world, pos, ModRegistry.APHRIREROOT.getDefaultState()) && world.isAirBlock(pos)) break;
 			}
 			if (pos.getY() >= 75) return;
-			for (int r = 0; r < PlantConfig.numTries; r++)
-				PlantUtil.genFlowerPatchForEnd(world, pos, random, PlantUtil.END.get(random.nextInt(PlantUtil.END.size())));
+			for (int r = 0; r < PlantConfig.numTries; r++) {
+				if (Math.abs(pos.getX()) >= 300 && Math.abs(pos.getZ()) >= 300) PlantUtil.genFlowerPatchForNether(world, pos, random, PlantUtil.END.get(random.nextInt(PlantUtil.END.size())));
+				else PlantUtil.genFlowerPatchForEnd(world, pos, random, PlantUtil.END.get(random.nextInt(PlantUtil.END.size())));
+			}
 		}
 	}
 }
