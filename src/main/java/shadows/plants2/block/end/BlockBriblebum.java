@@ -29,7 +29,7 @@ public class BlockBriblebum extends BlockEndBush {
 		if (!world.isRemote && rand.nextInt(4) == 0) {
 			EntityTippedArrow a = new EntityTippedArrow(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
 			a.setPotionEffect(arrow);
-			a.shoot(MathHelper.nextDouble(rand, -1, 1), MathHelper.nextDouble(rand, 0.3, 0.8), MathHelper.nextDouble(rand, -1, 1), MathHelper.nextFloat(rand, 0.8F, 1.5F), rand.nextFloat());
+			a.shoot(MathHelper.nextDouble(rand, -1, 1), MathHelper.nextDouble(rand, 0.15, 0.3), MathHelper.nextDouble(rand, -1, 1), MathHelper.nextFloat(rand, 0.8F, 1.5F), rand.nextFloat());
 			world.spawnEntity(a);
 		}
 	}

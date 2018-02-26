@@ -60,8 +60,10 @@ import shadows.plants2.block.BlockEnumStairs;
 import shadows.plants2.block.BlockFlowerpot;
 import shadows.plants2.block.BlockJar;
 import shadows.plants2.block.end.BlockAakore;
+import shadows.plants2.block.end.BlockAithotus;
 import shadows.plants2.block.end.BlockAphrireroot;
 import shadows.plants2.block.end.BlockBriblebum;
+import shadows.plants2.block.end.BlockSaimbaire;
 import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
@@ -232,6 +234,8 @@ public class ModRegistry {
 	public static final BlockAphrireroot APHRIREROOT = new BlockAphrireroot();
 	public static final BlockAakore AAKORE = new BlockAakore();
 	public static final BlockBriblebum BRIBLEBUM = new BlockBriblebum();
+	public static final BlockSaimbaire SAIMBAIRE = new BlockSaimbaire();
+	public static final BlockAithotus AITHOTUS = new BlockAithotus();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> event) {

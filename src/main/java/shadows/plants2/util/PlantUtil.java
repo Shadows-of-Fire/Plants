@@ -63,6 +63,14 @@ public class PlantUtil {
 		}
 	}
 
+	public static void genFlowerPatchForEnd(World world, BlockPos pos, Random rand, IBlockState state) {
+		int dist = PlantConfig.patchSize;
+		int x = pos.getX() + MathHelper.getInt(rand, -dist, dist);
+		int z = pos.getZ() + MathHelper.getInt(rand, -dist, dist);
+		BlockPos pos2 = new BlockPos(x, pos.getY(), z);
+		placeFlower(world, pos2, state);
+	}
+
 	public static void genMegaPatch(World world, BlockPos pos, Random rand, IBlockState state) {
 		for (int i = 0; i < 5; i++) {
 			int x = pos.getX() + MathHelper.getInt(rand, -2, 2);

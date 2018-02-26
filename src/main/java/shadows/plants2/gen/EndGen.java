@@ -17,7 +17,7 @@ public class EndGen implements IWorldGenerator {
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		if (world.provider instanceof WorldProviderEnd && random.nextInt(PlantConfig.patchChance + 8) == 0) {
+		if (world.provider instanceof WorldProviderEnd && random.nextInt(PlantConfig.patchChance) == 0) {
 			int dist = PlantConfig.patchSize - 1;
 			BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(chunkX * 16 + MathHelper.getInt(random, -dist, dist) + 8, 0, chunkZ * 16 + MathHelper.getInt(random, -dist, dist) + 8);
 			for (int i = 50; i <= 75; i++) {
@@ -26,7 +26,7 @@ public class EndGen implements IWorldGenerator {
 			}
 			if (pos.getY() >= 75) return;
 			for (int r = 0; r < PlantConfig.numTries; r++)
-				PlantUtil.genFlowerPatchForNether(world, pos, random, PlantUtil.END.get(random.nextInt(PlantUtil.END.size())));
+				PlantUtil.genFlowerPatchForEnd(world, pos, random, PlantUtil.END.get(random.nextInt(PlantUtil.END.size())));
 		}
 	}
 }
