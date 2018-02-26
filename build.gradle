@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-2.5.2"
+version = "1.12.2-2.6.0"
 group= "shadows.plants" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Plants"
 
