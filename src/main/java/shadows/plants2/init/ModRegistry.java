@@ -290,6 +290,9 @@ public class ModRegistry {
 				OreDictionary.registerOre("plant", new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE));
 			}
 		}
+
+		MAT_CRYSTAL.setRepairItem(Generic.CRYSTAL_CHUNK.get());
+		MAT_DARK_CRYSTAL.setRepairItem(Generic.DARK_CRYSTAL_CHUNK.get());
 	}
 
 	public static void recipes(Register<IRecipe> e) {
