@@ -2,6 +2,7 @@ package shadows.plants2.block;
 
 import java.util.List;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemBlock;
@@ -29,6 +30,7 @@ public class BlockJar extends BlockFlowerpot implements IHasRecipe {
 
 	public BlockJar() {
 		super("jar");
+		setSoundType(SoundType.GLASS);
 	}
 
 	@Override

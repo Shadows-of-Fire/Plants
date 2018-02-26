@@ -2,6 +2,8 @@ package shadows.plants2.gen.forgotten;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks.EnumType;
@@ -20,6 +22,8 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import shadows.plants2.block.BlockEnumDoubleFlower;
+import shadows.plants2.block.BlockEnumDoubleHarvestBush;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.init.ModRegistry;
@@ -36,8 +40,9 @@ public class BushGen implements IWorldGenerator {
 		int posZ = chunkZ * 16;
 		BlockPos genPos = new BlockPos(posX + MathHelper.getInt(rand, 2, 14), 0, posZ + MathHelper.getInt(rand, 2, 14));
 		genPos = world.getTopSolidOrLiquidBlock(genPos);
-		IBlockState state = world.getBlockState(genPos.down());
-		if (world.getBlockState(genPos).getMaterial() != Material.WATER && state.getBlock().canSustainPlant(state, world, genPos.down(), EnumFacing.DOWN, Blocks.TALLGRASS)) {
+		IBlockState soil = world.getBlockState(genPos.down());
+		IBlockState state = world.getBlockState(genPos);
+		if (state.getBlock().isReplaceable(world, genPos) && state.getMaterial() != Material.WATER && soil.getBlock().canSustainPlant(soil, world, genPos.down(), EnumFacing.DOWN, Blocks.TALLGRASS)) {
 			BUSHGENS[rand.nextInt(6)].generate(world, rand, genPos);
 		}
 	}
@@ -83,9 +88,9 @@ public class BushGen implements IWorldGenerator {
 
 		@Override
 		public boolean isReplaceable(World world, BlockPos pos) {
-			IBlockState state = world.getBlockState(pos);
-			boolean flag = state.getBlock().isReplaceable(world, pos);
-			if (flag && state.getBlock() instanceof BlockDoublePlant) world.setBlockToAir(pos.up());
+			Block block = world.getBlockState(pos).getBlock();
+			boolean flag = block.isReplaceable(world, pos) || block instanceof BlockBush;
+			if (flag && (block instanceof BlockDoublePlant || block instanceof BlockEnumDoubleFlower || block instanceof BlockEnumDoubleHarvestBush)) world.setBlockToAir(pos.up());
 			return flag;
 		}
 
