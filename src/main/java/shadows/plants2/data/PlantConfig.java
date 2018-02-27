@@ -46,6 +46,7 @@ public class PlantConfig {
 	public static final List<ResourceLocation> BIOME_BL = new ArrayList<>();
 
 	public static boolean crystalForest = true;
+	public static int crystalForestWeight = 2;
 
 	public static void syncConfig(Configuration config) {
 
@@ -96,6 +97,7 @@ public class PlantConfig {
 			DIM_BL.add(Integer.parseInt(s));
 
 		crystalForest = config.getBoolean("Crystal Forest", "biomes", true, "Toggle for the Crystal Forest");
+		crystalForestWeight = config.getInt("Crystal Forest Weight", "biomes", 2, 1, 2000, "The weight of the Crystal Forest.  Higher is more common.");
 
 		String[] biomebl = config.getStringList("Biome Blacklist", g, new String[] { "minecraft:river" }, "A list of biomes that Plants will not try to generate in.");
 		for (String s : biomebl)
