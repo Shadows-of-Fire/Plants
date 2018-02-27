@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import shadows.plants2.data.PlantConfig;
 
 public class BlockAphrireroot extends BlockEndBush {
 
@@ -17,7 +18,7 @@ public class BlockAphrireroot extends BlockEndBush {
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextInt(5) == 0 && !world.isRemote) {
+		if (rand.nextInt(PlantConfig.aphrirerootChance) == 0 && !world.isRemote) {
 			EntityItem i = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, new ItemStack(Items.ENDER_PEARL));
 			i.setAgeToCreativeDespawnTime();
 			world.spawnEntity(i);
