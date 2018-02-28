@@ -15,6 +15,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.BiomeManager.BiomeType;
+import net.minecraftforge.registries.IForgeRegistry;
 import shadows.plants2.Plants2;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Crystals;
@@ -40,6 +41,7 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 		flowers.clear();
 		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.CRYSTAL_SHARD), 60));
 		flowers.add(new FlowerEntry(ModRegistry.CRYSTAL.getStateFor(Crystals.DARK_CRYSTAL_SHARD), 40));
+		Plants2.INFO.getBiomeList().add(this);
 	}
 
 	@Override
@@ -59,9 +61,9 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	}
 
 	@Override
-	protected void register() {
+	public void register(IForgeRegistry<Biome> reg) {
 		if (PlantConfig.crystalForest) {
-			Plants2.INFO.getBiomeList().add(this);
+			reg.register(this);
 			BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, PlantConfig.crystalForestWeight));
 			BiomeManager.addSpawnBiome(this);
 		}

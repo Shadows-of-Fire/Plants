@@ -39,6 +39,7 @@ import shadows.placebo.util.EnumBlockFactory;
 import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.Plants2;
+import shadows.plants2.biome.AbstractBiomeBase;
 import shadows.plants2.biome.BiomeCrystalForest;
 import shadows.plants2.block.BlockBrewingCauldron;
 import shadows.plants2.block.BlockCataplant;
@@ -261,7 +262,7 @@ public class ModRegistry {
 
 	@SubscribeEvent
 	public void onBiomeRegister(Register<Biome> event) {
-		event.getRegistry().registerAll(Plants2.INFO.getBiomeList().toArray(new Biome[0]));
+		for(Biome b : Plants2.INFO.getBiomeList()) ((AbstractBiomeBase) b).register(event.getRegistry());
 	}
 
 	public static void oreDict(FMLInitializationEvent e) {

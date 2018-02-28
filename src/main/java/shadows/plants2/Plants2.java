@@ -37,7 +37,7 @@ public class Plants2 {
 
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "2.6.0";
+	public static final String VERSION = "2.6.1";
 	public static final String DEPS = "required-after:placebo@[1.2.0,);after:botania;after:forestry;after:twilightforest;after:actuallyadditions;after:botany";
 
 	@Instance
