@@ -47,7 +47,7 @@ public class PlantConfig {
 
 	public static boolean crystalForest = true;
 	public static int crystalForestWeight = 2;
-	
+
 	public static int aphrirerootChance = 5;
 
 	public static void syncConfig(Configuration config) {
@@ -102,7 +102,7 @@ public class PlantConfig {
 		crystalForestWeight = config.getInt("Crystal Forest Weight", "biomes", 2, 1, 2000, "The weight of the Crystal Forest.  Higher is more common.");
 
 		aphrirerootChance = config.getInt("Aphrireroot Pearl Chance", "general", 5, 1, 15, "The (1/n) chance for an Aphrireroot to make a pearl.");
-		
+
 		String[] biomebl = config.getStringList("Biome Blacklist", g, new String[] { "minecraft:river" }, "A list of biomes that Plants will not try to generate in.");
 		for (String s : biomebl)
 			BIOME_BL.add(new ResourceLocation(s));

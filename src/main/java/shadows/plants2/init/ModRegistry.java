@@ -262,7 +262,8 @@ public class ModRegistry {
 
 	@SubscribeEvent
 	public void onBiomeRegister(Register<Biome> event) {
-		for(Biome b : Plants2.INFO.getBiomeList()) ((AbstractBiomeBase) b).register(event.getRegistry());
+		for (Biome b : Plants2.INFO.getBiomeList())
+			((AbstractBiomeBase) b).register(event.getRegistry());
 	}
 
 	public static void oreDict(FMLInitializationEvent e) {

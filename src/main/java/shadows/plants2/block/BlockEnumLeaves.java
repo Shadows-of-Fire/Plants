@@ -10,6 +10,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -105,6 +107,21 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		Blocks.LEAVES.breakBlock(world, pos, state);
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return Blocks.LEAVES.getDefaultState().getCollisionBoundingBox(world, pos);
+	}
+	
+	@Override
+	public boolean isPassable(IBlockAccess world, BlockPos pos) {
+		return Blocks.LEAVES.isPassable(world, pos);
+	}
+	
+	@Override
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+		Blocks.LEAVES.onEntityCollidedWithBlock(world, pos, state, entity);
 	}
 
 	@Override //God this came from BlockLeaves dont even talk to me about it.
