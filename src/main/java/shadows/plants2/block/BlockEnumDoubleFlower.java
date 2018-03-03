@@ -194,7 +194,7 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	@Override
 	public void initRecipes(Register<IRecipe> event) {
 		for (E e : getTypes()) {
-			if (e.useForRecipes()) Plants2.HELPER.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 1), new ItemStack(this, 3, e.getMetadata()));
+			if (e.useForRecipes()) Plants2.HELPER.addShapeless(PlantUtil.getDyeForEnum(e.getColor(), 3), new ItemStack(this, 1, e.getMetadata()));
 		}
 	}
 
