@@ -239,28 +239,28 @@ public class ModRegistry {
 	public static final BlockAithotus AITHOTUS = new BlockAithotus();
 
 	@SubscribeEvent
-	public void onBlockRegister(Register<Block> event) {
-		event.getRegistry().registerAll(Plants2.INFO.getBlockList().toArray(new Block[0]));
+	public void onBlockRegister(Register<Block> e) {
+		Plants2.INFO.getBlockList().register(e.getRegistry());
 	}
 
 	@SubscribeEvent
-	public void onItemRegister(Register<Item> event) {
-		event.getRegistry().registerAll(Plants2.INFO.getItemList().toArray(new Item[0]));
-		if (PlantConfig.excalibur && Loader.isModLoaded(PlantConstants.BOTANIA_ID)) event.getRegistry().register(new ItemExcalibur());
+	public void onItemRegister(Register<Item> e) {
+		Plants2.INFO.getItemList().register(e.getRegistry());
+		if (PlantConfig.excalibur && Loader.isModLoaded(PlantConstants.BOTANIA_ID)) e.getRegistry().register(new ItemExcalibur());
 	}
 
 	@SubscribeEvent
-	public void onRecipeRegister(Register<IRecipe> event) {
-		recipes(event);
-		event.getRegistry().registerAll(Plants2.INFO.getRecipeList().toArray(new IRecipe[0]));
+	public void onRecipeRegister(Register<IRecipe> e) {
+		recipes(e);
+		Plants2.INFO.getRecipeList().register(e.getRegistry());
 	}
 
 	@SubscribeEvent
-	public void onPotionRegister(Register<PotionType> event) {
-		event.getRegistry().registerAll(Plants2.INFO.getPotionTypeList().toArray(new PotionType[0]));
+	public void onPotionRegister(Register<PotionType> e) {
+		Plants2.INFO.getPotionTypeList().register(e.getRegistry());
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent//TODO: Placebo: Implement IRegistryCallback so lists can return <T extends IForgeRegistryEntry<T> & IRegistryCallback>
 	public void onBiomeRegister(Register<Biome> event) {
 		for (Biome b : Plants2.INFO.getBiomeList())
 			((AbstractBiomeBase) b).register(event.getRegistry());

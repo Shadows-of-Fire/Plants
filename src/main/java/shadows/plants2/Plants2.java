@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import shadows.placebo.registry.RegistryInformation;
+import shadows.placebo.registry.RegistryInformationV2;
 import shadows.placebo.util.RecipeHelper;
 import shadows.plants2.compat.ForestryIntegration;
 import shadows.plants2.data.PlantConfig;
@@ -37,8 +37,8 @@ public class Plants2 {
 
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "2.6.2";
-	public static final String DEPS = "required-after:placebo@[1.2.0,);after:botania;after:forestry;after:twilightforest;after:actuallyadditions;after:botany";
+	public static final String VERSION = "2.6.3";
+	public static final String DEPS = "required-after:placebo@[1.3.0,);after:botania;after:forestry;after:twilightforest;after:actuallyadditions;after:botany";
 
 	@Instance
 	public static Plants2 INSTANCE;
@@ -54,7 +54,7 @@ public class Plants2 {
 	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 	private static int disc = 0;
 
-	public static final RegistryInformation INFO = new RegistryInformation(MODID, PlantConstants.TAB);
+	public static final RegistryInformationV2 INFO = new RegistryInformationV2(MODID, PlantConstants.TAB);
 
 	public static final RecipeHelper HELPER = new RecipeHelper(MODID, MODNAME, INFO.getRecipeList());
 
