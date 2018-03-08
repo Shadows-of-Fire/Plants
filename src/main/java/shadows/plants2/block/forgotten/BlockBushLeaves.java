@@ -15,6 +15,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -24,7 +25,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.block.BlockEnum;
+import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.placebo.util.StackPrimer;
 import shadows.plants2.Plants2;
@@ -32,13 +36,18 @@ import shadows.plants2.block.BlockEnumHarvestBush;
 import shadows.plants2.data.enums.TheBigBookOfEnums.BushSet;
 import shadows.plants2.init.ModRegistry;
 
-public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IShearable {
+public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IShearable, IHasRecipe {
 
 	public BlockBushLeaves() {
 		super("bush", Material.LEAVES, SoundType.PLANT, 0.2F, 0.0F, BushSet.class, Plants2.INFO);
 		setTickRandomly(true);
 		setLightOpacity(1);
 		setDefaultState(getDefaultState().withProperty(getProperty(), BushSet.BLACKBERRY).withProperty(BlockEnumHarvestBush.FRUIT, false));
+	}
+
+	@Override
+	public void initRecipes(Register<IRecipe> e) {
+		OreDictionary.registerOre("treeLeaves", new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	@Override
