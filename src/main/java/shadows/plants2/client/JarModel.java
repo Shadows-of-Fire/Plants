@@ -63,6 +63,7 @@ public class JarModel implements IBakedModel {
 		this.faces = Maps.immutableEnumMap(faces);
 	}
 
+	@Override
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
 		if (MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.TRANSLUCENT) { return jarGlass.getQuads(state, side, rand); }
 		if (MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.CUTOUT) {
@@ -72,22 +73,27 @@ public class JarModel implements IBakedModel {
 		return ImmutableList.of();
 	}
 
+	@Override
 	public boolean isAmbientOcclusion() {
 		return jarSolid.isAmbientOcclusion() && flower.isAmbientOcclusion();
 	}
 
+	@Override
 	public boolean isGui3d() {
 		return false;
 	}
 
+	@Override
 	public boolean isBuiltInRenderer() {
 		return false;
 	}
 
+	@Override
 	public TextureAtlasSprite getParticleTexture() {
 		return jarSolid.getParticleTexture();
 	}
 
+	@Override
 	public ItemOverrideList getOverrides() {
 		return ItemOverrideList.NONE;
 	}

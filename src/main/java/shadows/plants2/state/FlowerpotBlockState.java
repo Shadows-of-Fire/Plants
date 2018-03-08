@@ -42,6 +42,8 @@ public final class FlowerpotBlockState extends ExtendedBlockState {
 		public <T extends Comparable<T>> T getValue(IProperty<T> property) {
 			if (property == BlockFlowerPot.CONTENTS) return property.getValueClass().cast(EnumFlowerType.EMPTY);
 			else if (property == BlockFlowerPot.LEGACY_DATA) return property.getValueClass().cast(0);
+			//Inspirations
+			else if (property.getName().equals("extra")) return property.getValueClass().cast(false);
 			else return super.getValue(property);
 		}
 	}

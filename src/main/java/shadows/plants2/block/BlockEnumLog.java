@@ -108,6 +108,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
+		OreDictionary.registerOre("logWood", new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE));
 		GameRegistry.addSmelting(new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Items.COAL, 1, 1), 2);
 	}
 

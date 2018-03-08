@@ -60,27 +60,33 @@ public class FlowerpotModel implements IBakedModel {
 		this.faces = Maps.immutableEnumMap(faces);
 	}
 
+	@Override
 	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand) {
 		if (side == null) return general;
 		return faces.get(side);
 	}
 
+	@Override
 	public boolean isAmbientOcclusion() {
 		return flowerpot.isAmbientOcclusion() && flower.isAmbientOcclusion();
 	}
 
+	@Override
 	public boolean isGui3d() {
 		return false;
 	}
 
+	@Override
 	public boolean isBuiltInRenderer() {
 		return false;
 	}
 
+	@Override
 	public TextureAtlasSprite getParticleTexture() {
 		return flowerpot.getParticleTexture();
 	}
 
+	@Override
 	public ItemOverrideList getOverrides() {
 		return ItemOverrideList.NONE;
 	}

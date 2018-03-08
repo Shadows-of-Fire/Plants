@@ -26,6 +26,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
 import shadows.placebo.block.BlockBasic;
 import shadows.placebo.block.IEnumBlockAccess;
@@ -57,6 +58,7 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 
 	@Override
 	public void initRecipes(Register<IRecipe> ev) {
+		OreDictionary.registerOre("slabWood", this);
 		Ingredient i = Ingredient.fromStacks(e.get());
 		Plants2.HELPER.addShaped(new ItemStack(this, 6), 3, 1, i, i, i);
 		Plants2.HELPER.addShaped(e.get(), 1, 2, this, this);

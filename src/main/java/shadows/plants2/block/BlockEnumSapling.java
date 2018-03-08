@@ -8,6 +8,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -17,12 +19,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
+import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.data.PlantConstants;
 
-public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable {
+public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable, IHasRecipe {
 
 	public static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.1D, 0.0D, 0.1D, 0.9D, 0.8D, 0.9D);
 	protected final Collection<Block> soils;
@@ -69,6 +74,11 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 
 	public BlockEnumSapling(String name, E e) {
 		this(name, EnumPlantType.Plains, e);
+	}
+
+	@Override
+	public void initRecipes(Register<IRecipe> e) {
+		OreDictionary.registerOre("treeSapling", new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
 import shadows.placebo.block.BlockEnum;
 import shadows.placebo.interfaces.IHasRecipe;
@@ -32,6 +33,8 @@ public class BlockEnumPlanks<E extends Enum<E> & IPlankEnum> extends BlockEnum<E
 
 	@Override
 	public void initRecipes(Register<IRecipe> ev) {
+		OreDictionary.registerOre("plankWood", new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE));
+		
 		for (E e : getTypes())
 			Plants2.HELPER.addShapeless(new ItemStack(this, 4, e.getMetadata()), e.genLogStack());
 

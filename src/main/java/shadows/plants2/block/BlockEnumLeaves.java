@@ -14,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -24,13 +25,16 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
 import shadows.placebo.block.BlockEnum;
+import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.Plants2;
 
-public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> implements IShearable {
+public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> implements IShearable, IHasRecipe {
 
 	private final BlockEnumSapling<E> sapling;
 	private int[] surroundings = new int[32768];
@@ -46,6 +50,11 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	public BlockEnumLeaves(String name, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		this(name, SoundType.PLANT, 0.2F, 0F, sapling, clazz, predicate);
+	}
+
+	@Override
+	public void initRecipes(Register<IRecipe> e) {
+		OreDictionary.registerOre("treeLeaves", new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	@Override
@@ -113,12 +122,12 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return Blocks.LEAVES.getDefaultState().getCollisionBoundingBox(world, pos);
 	}
-	
+
 	@Override
 	public boolean isPassable(IBlockAccess world, BlockPos pos) {
 		return Blocks.LEAVES.isPassable(world, pos);
 	}
-	
+
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
 		Blocks.LEAVES.onEntityCollidedWithBlock(world, pos, state, entity);

@@ -260,7 +260,7 @@ public class ModRegistry {
 		Plants2.INFO.getPotionTypeList().register(e.getRegistry());
 	}
 
-	@SubscribeEvent//TODO: Placebo: Implement IRegistryCallback so lists can return <T extends IForgeRegistryEntry<T> & IRegistryCallback>
+	@SubscribeEvent //TODO: Placebo: Implement IRegistryCallback so lists can return <T extends IForgeRegistryEntry<T> & IRegistryCallback>
 	public void onBiomeRegister(Register<Biome> event) {
 		for (Biome b : Plants2.INFO.getBiomeList())
 			((AbstractBiomeBase) b).register(event.getRegistry());
@@ -275,17 +275,6 @@ public class ModRegistry {
 		OreDictionary.registerOre("dye", Generic.DYE_BROWN.get());
 		OreDictionary.registerOre("dyeWhite", Generic.DYE_WHITE.get());
 		OreDictionary.registerOre("dye", Generic.DYE_WHITE.get());
-		OreDictionary.registerOre("logWood", new ItemStack(NETHER_LOG, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeSapling", new ItemStack(NETHER_SAP, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(NETHER_LEAF, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("logWood", new ItemStack(LOG_0, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeSapling", new ItemStack(SAP_0, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(LEAF_0, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("plankWood", new ItemStack(PLANKS, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("logWood", new ItemStack(CRYSTAL_LOG, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeSapling", new ItemStack(CRYSTAL_SAP, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(CRYSTAL_LEAF, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("plankWood", new ItemStack(CRYSTAL_PLANKS, 1, OreDictionary.WILDCARD_VALUE));
 
 		for (Block block : ForgeRegistries.BLOCKS) {
 			if (block instanceof BlockBush && Item.getItemFromBlock(block) != Items.AIR) {

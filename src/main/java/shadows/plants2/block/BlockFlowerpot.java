@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlowerPot;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -88,7 +87,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		if (flowerpot.isEmpty()) {
 			IBlockState toUse = Block.getBlockFromItem(held.getItem()).getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, held.getMetadata(), player, hand);
 			if (toUse.getBlock() == Blocks.AIR && held.getItem() instanceof IPlantable) toUse = ((IPlantable) held.getItem()).getPlant(world, pos);
-			if (toUse.getBlock() != this && (toUse.getBlock() == Blocks.AIR || toUse.getBlock() instanceof ITileEntityProvider || toUse.getBlock().hasTileEntity(toUse))) return false;
+			if (toUse.getBlock() != this && (toUse.getBlock() == Blocks.AIR || toUse.getBlock().hasTileEntity(toUse))) return false;
 			if (BlockEnumHarvestBush.FRUIT.equals(toUse.getBlock().getBlockState().getProperty("fruit"))) toUse = toUse.withProperty(BlockEnumHarvestBush.FRUIT, true);
 			pot.setState(toUse);
 			ItemStack copy = held.copy();
