@@ -61,8 +61,8 @@ public class BlockEnumDoubleFlower<E extends Enum<E> & IFlowerEnum> extends Bloc
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		return super.canPlaceBlockAt(worldIn, pos) && worldIn.isAirBlock(pos.up());
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && super.canBlockStay(world, pos, getDefaultState()) && world.isAirBlock(pos.up());
 	}
 
 	@Override
