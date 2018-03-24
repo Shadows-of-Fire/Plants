@@ -53,15 +53,18 @@ public class ClientProxy implements IProxy {
 	}
 
 	public static final int GROUND_COLOR = 0xA3CBF7;
+	public static final int BLUE = 0x4749FF;
 
 	@Override
 	public void init(FMLInitializationEvent e) {
 		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
+			if (tint != 1) return -1;
+
 			TileEntity t = world.getTileEntity(pos);
-			if (!(t instanceof TileBrewingCauldron) || tint != 1) return -1;
+			if (!(t instanceof TileBrewingCauldron)) return -1;
 			TileBrewingCauldron caul = (TileBrewingCauldron) t;
 			int color = ColorToPotionUtil.getColorMultiplier(caul.getColors(), caul.hasFirstWart());
-			return color == -1 ? Color.BLUE.getRGB() : color;
+			return color == -1 ? BLUE : color;
 		}, ModRegistry.BREWING_CAULDRON);
 
 		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, world, pos, tint) -> {
@@ -79,12 +82,9 @@ public class ClientProxy implements IProxy {
 					Item item = ((TileFlowerpot) tileentity).getFlowerPotItem();
 					IBlockState iblockstate = Block.getBlockFromItem(item).getDefaultState();
 					return Minecraft.getMinecraft().getBlockColors().colorMultiplier(iblockstate, world, pos, tint);
-				} else {
-					return -1;
 				}
-			} else {
-				return -1;
 			}
+			return -1;
 		};
 
 		Map<IRegistryDelegate<Block>, IBlockColor> blockBois = ReflectionHelper.getPrivateValue(BlockColors.class, Minecraft.getMinecraft().getBlockColors(), "blockColorMap");

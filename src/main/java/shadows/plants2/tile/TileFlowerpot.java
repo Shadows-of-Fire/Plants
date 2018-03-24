@@ -10,10 +10,8 @@ import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFlowerPot;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class TileFlowerpot extends TileEntityFlowerPot {
 
@@ -25,12 +23,6 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		super.readFromNBT(tag);
 		state = NBTUtil.readBlockState(tag.getCompoundTag("state"));
 		stack = new ItemStack(tag.getCompoundTag("stack"));
-		//TODO remove, legacy data fix
-		if (stack.isEmpty()) {
-			stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("item"))), 1, tag.getInteger("meta"));
-			NBTTagCompound nTag = tag.getCompoundTag("stack_nbt");
-			if (nTag.getSize() != 0) stack.setTagCompound(nTag);
-		}
 	}
 
 	@Override
@@ -88,11 +80,6 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("stateid", Block.getStateId(state));
 		return new SPacketUpdateTileEntity(this.pos, 150, tag);
-	}
-
-	@Override
-	public boolean hasFastRenderer() {
-		return false;
 	}
 
 }

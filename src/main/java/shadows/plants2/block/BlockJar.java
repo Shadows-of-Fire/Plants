@@ -31,6 +31,7 @@ public class BlockJar extends BlockFlowerpot implements IHasRecipe {
 	public BlockJar() {
 		super("jar");
 		setSoundType(SoundType.GLASS);
+		setHardness(0.2F);
 	}
 
 	@Override

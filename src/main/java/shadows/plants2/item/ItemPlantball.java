@@ -85,15 +85,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			else if (worldState.getBlock() instanceof BlockBush && !(worldState.getBlock().hasTileEntity(worldState))) {
 				if (isBlacklisted(worldState)) return EnumActionResult.FAIL;
 
-				if (worldState.getBlock().getRegistryName().getResourceDomain().equals("plants2") || worldState.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
-
-					if (!world.isRemote) genFlowers(world, pos, worldState);
-
-					world.playSound(player, pos.up(), soundtype.getPlaceSound(), SoundCategory.BLOCKS, 1, 1);
-
-					stack.shrink(1);
-					return EnumActionResult.SUCCESS;
-				} else if (PlantConfig.allBushes) {
+				if (PlantConfig.allBushes || worldState.getBlock().getRegistryName().getResourceDomain().equals(Plants2.MODID) || worldState.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
 
 					if (!world.isRemote) genFlowers(world, pos, worldState);
 
