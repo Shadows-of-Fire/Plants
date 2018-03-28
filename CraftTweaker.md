@@ -20,3 +20,5 @@ There are three methods in total.  `addWeightedPotion(String, IPotion, int)`, `c
 `removeWeightedPotion` will try to remove only a single potion from a color list.  Not exactly useful currently since each list only contains one color by default, and you could just use `clearWeightedList` to the same effect.
 
 All scripts are run during the FMLInitializationEvent.  Clears are processed first, then removals, then finally additions.
+
+The default color -> potion map may be found [here](https://github.com/Shadows-of-Fire/Plants/blob/master/src/main/java/shadows/plants2/util/ColorToPotionWeightedMap.java#L60).  All default entries have a weight of 10.
