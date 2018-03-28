@@ -22,32 +22,12 @@ import shadows.plants2.tile.TileBrewingCauldron;
 
 public class ColorToPotionUtil {
 
-	public static final Map<EnumDyeColor, Potion> MAP = new HashMap<>();
+	public static final ColorToPotionWeightedMap MAP = new ColorToPotionWeightedMap();
 
 	public static final Random RAND = new Random(ThreadLocalRandom.current().nextLong());
 
 	public static final EnumDyeColor[] SPICY = new EnumDyeColor[] { EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)], EnumDyeColor.values()[RAND.nextInt(16)] };
-	//Woo, random array every startup that will magically be the one that gives off the super potion.  Keep people guessing, right?
 	public static final ImmutableList<PotionEffect> SPICE = ImmutableList.of(new PotionEffect(MobEffects.STRENGTH, 8000, 4), new PotionEffect(MobEffects.REGENERATION, 8000, 4), new PotionEffect(MobEffects.SPEED, 8000, 4));
-
-	static {
-		MAP.put(EnumDyeColor.WHITE, MobEffects.GLOWING);
-		MAP.put(EnumDyeColor.ORANGE, MobEffects.FIRE_RESISTANCE);
-		MAP.put(EnumDyeColor.MAGENTA, MobEffects.SLOWNESS);
-		MAP.put(EnumDyeColor.LIGHT_BLUE, MobEffects.JUMP_BOOST);
-		MAP.put(EnumDyeColor.YELLOW, MobEffects.NAUSEA);
-		MAP.put(EnumDyeColor.LIME, MobEffects.MINING_FATIGUE);
-		MAP.put(EnumDyeColor.PINK, MobEffects.REGENERATION);
-		MAP.put(EnumDyeColor.GRAY, MobEffects.SPEED);
-		MAP.put(EnumDyeColor.SILVER, MobEffects.RESISTANCE);
-		MAP.put(EnumDyeColor.CYAN, MobEffects.STRENGTH);
-		MAP.put(EnumDyeColor.PURPLE, MobEffects.NIGHT_VISION);
-		MAP.put(EnumDyeColor.BLUE, MobEffects.WATER_BREATHING);
-		MAP.put(EnumDyeColor.BROWN, MobEffects.SATURATION);
-		MAP.put(EnumDyeColor.GREEN, MobEffects.LUCK);
-		MAP.put(EnumDyeColor.RED, MobEffects.INSTANT_HEALTH);
-		MAP.put(EnumDyeColor.BLACK, MobEffects.INSTANT_DAMAGE);
-	}
 
 	public static int[] colorsToIntArray(EnumDyeColor[] colors) {
 		int[] ret = new int[6];
@@ -73,7 +53,7 @@ public class ColorToPotionUtil {
 	public static Potion[] colorsToPotionArray(EnumDyeColor[] colors) {
 		Potion[] pots = new Potion[6];
 		for (int i = 0; i < 6; i++)
-			pots[i] = MAP.get(colors[i]);
+			pots[i] = MAP.getRandomPotion(colors[i]);
 		return pots;
 	}
 

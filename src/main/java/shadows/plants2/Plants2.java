@@ -5,6 +5,7 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,9 +20,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import shadows.placebo.registry.RegistryInformationV2;
 import shadows.placebo.util.RecipeHelper;
+import shadows.plants2.compat.CrafttweakerIntegration;
 import shadows.plants2.compat.ForestryIntegration;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.PlantConstants;
@@ -76,6 +79,9 @@ public class Plants2 {
 		ModRegistry.oreDict(e);
 		PROXY.init(e);
 		NETWORK.registerMessage(ParticleMessageHandler.class, ParticleMessage.class, disc++, Side.CLIENT);
+		if (Loader.isModLoaded("crafttweaker")) CrafttweakerIntegration.processCauldronChanges();
+		for (Potion p : ForgeRegistries.POTIONS)
+			LOGGER.info("Potion: " + p.getRegistryName());
 	}
 
 	@EventHandler

@@ -46,16 +46,16 @@ repositories {
 	maven {
         url 'http://maven.tterrag.com/'
     }
+    maven {
+		url 'http://maven.blamejared.com'
+	}
 }
 
 dependencies {
 	deobfCompile "mezz.jei:jei_1.12.2:+"
 	deobfCompile "mcp.mobius.waila:Hwyla:+"
 	deobfCompile "net.sengir.forestry:forestry_1.12.2:+"
-	deobfCompile("binnie:binnie-mods-1.12.2:+") {
-	exclude group: 'jei-bees'
-	}
-	compile "team.chisel.ctm:CTM:+"
+	deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.0.+"
 }
 
 jar {

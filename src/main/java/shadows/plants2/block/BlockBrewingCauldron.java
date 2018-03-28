@@ -47,8 +47,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.client.IHasModel;
 import shadows.placebo.interfaces.IHasRecipe;
-import shadows.placebo.itemblock.ItemBlockEnum;
 import shadows.plants2.Plants2;
+import shadows.plants2.data.IColorProvider;
 import shadows.plants2.data.PlantConstants;
 import shadows.plants2.network.ParticleMessage;
 import shadows.plants2.tile.TileBrewingCauldron;
@@ -166,26 +166,31 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 					return;
 				}
 
-			} else if (cauldron.hasNetherWart() && stack.getItem() instanceof ItemBlockEnum && !ColorToPotionUtil.isDyeArrayValid(cauldron.getColors())) {
-				Block b = ((ItemBlock) stack.getItem()).getBlock();
-				if (b instanceof BlockEnumFlower) {
+			} else if (cauldron.hasNetherWart() && !ColorToPotionUtil.isDyeArrayValid(cauldron.getColors())) {
+				boolean doubled = false;
+				EnumDyeColor color = null;
+				if (stack.getItem() instanceof IColorProvider) {
+					color = ((IColorProvider) stack.getItem()).getColor(null);
+				}
+				if (stack.getItem() instanceof ItemBlock && ((ItemBlock) stack.getItem()).getBlock() instanceof IColorProvider) {
+					Block b = ((ItemBlock) stack.getItem()).getBlock();
 					IBlockState flower = b.getStateForPlacement(world, pos, EnumFacing.UP, 0, 0, 0, stack.getMetadata(), FakePlayerFactory.getMinecraft((WorldServer) world), EnumHand.MAIN_HAND);
-					EnumDyeColor color = ((BlockEnumFlower<?>) b).getColor(flower);
-					boolean doubled = b instanceof BlockEnumDoubleFlower;
-					for (int i = 0; i < 6; i++) {
-						if (ColorToPotionUtil.isDyeArrayValid(cauldron.getColors())) break;
-						if (cauldron.getColors()[i] == null) {
-							if (doubled) {
-								if (cauldron.getColors()[MathHelper.clamp(i + 1, 0, 5)] != null) break;
-								cauldron.setColor(i, color);
-								cauldron.setColor(MathHelper.clamp(i + 1, 0, 5), color);
-							} else cauldron.setColor(i, color);
-							world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
-							stack.shrink(1);
-							world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
-							Plants2.NETWORK.sendToAllAround(new ParticleMessage(pos), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 150));
-							return;
-						}
+					color = ((IColorProvider) b).getColor(flower);
+					doubled = b instanceof BlockEnumDoubleFlower;
+				}
+				if (color != null) for (int i = 0; i < 6; i++) {
+					if (ColorToPotionUtil.isDyeArrayValid(cauldron.getColors())) break;
+					if (cauldron.getColors()[i] == null) {
+						if (doubled) {
+							if (cauldron.getColors()[MathHelper.clamp(i + 1, 0, 5)] != null) break;
+							cauldron.setColor(i, color);
+							cauldron.setColor(MathHelper.clamp(i + 1, 0, 5), color);
+						} else cauldron.setColor(i, color);
+						world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1, 1);
+						stack.shrink(1);
+						world.notifyBlockUpdate(pos, state, state.withProperty(LEVEL, cauldron.getWaterLevel()), 3);
+						Plants2.NETWORK.sendToAllAround(new ParticleMessage(pos), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 150));
+						return;
 					}
 				}
 			} else if (cauldron.hasNetherWart() && ColorToPotionUtil.isDyeArrayValid(cauldron.getColors()) && cauldron.getPotionItem() == Items.POTIONITEM) {

@@ -9,9 +9,10 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.placebo.interfaces.IFlowerEnum;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.plants2.Plants2;
+import shadows.plants2.data.IColorProvider;
 import shadows.plants2.util.PlantUtil;
 
-public class BlockEnumFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumBush<E> implements IHasRecipe {
+public class BlockEnumFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumBush<E> implements IHasRecipe, IColorProvider {
 
 	public BlockEnumFlower(String name, EnumPlantType type, Class<E> enumClass, int predicate) {
 		super(name, type, enumClass, predicate);

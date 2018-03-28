@@ -143,6 +143,10 @@ public class PlantUtil {
 	public static IBlockState getDesertFlowerState(Random rand) {
 		return DESERT.get(rand.nextInt(DESERT.size()));
 	}
+	
+	public static ItemStack getDyeForEnum(EnumDyeColor c) {
+		return getDyeForEnum(c, 1);
+	}
 
 	public static ItemStack getDyeForEnum(EnumDyeColor c, int size) {
 		switch (c) {

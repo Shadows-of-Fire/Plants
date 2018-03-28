@@ -95,6 +95,7 @@ import shadows.plants2.gen.StructureGen;
 import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.gen.forgotten.NetherTreeGen;
 import shadows.plants2.item.ItemBigEnum;
+import shadows.plants2.item.ItemColorFood;
 import shadows.plants2.item.ItemExcalibur;
 import shadows.plants2.item.ItemFireFruit;
 import shadows.plants2.item.ItemFoodBase;
@@ -135,8 +136,8 @@ public class ModRegistry {
 	public static final Item PHYTOLACCA_A = new ItemFoodBase("phytolacca_a", 5, 1.0f, new PotionEffect(MobEffects.WITHER, 160, 1), 0.89F);
 	public static final Item PLANTAGO_M = new ItemFoodBase("plantago_m", 3, 0.4f, new PotionEffect(MobEffects.ABSORPTION, 160), 0.45F);
 	public static final Item RUBUS_O = new ItemFoodBase("rubus_o", 6, 0.5f);
-	public static final Item RUBUS_P = new ItemFoodBase("rubus_p", 3, 0.5f);
-	public static final Item SAFFRON = new ItemFoodBase("saffron", 2, 0.2f);
+	public static final Item RUBUS_P = new ItemColorFood("rubus_p", 3, 0.5f, EnumDyeColor.RED);
+	public static final Item SAFFRON = new ItemColorFood("saffron", 2, 0.2f, EnumDyeColor.ORANGE);
 	public static final Item SOLANUM_C = new ItemFoodBase("solanum_c", 2, 0.5f, new PotionEffect(MobEffects.WITHER, 900, 1), 0.9F);
 	public static final Item SOLANUM_D = new ItemFoodBase("solanum_d", 3, 0.6f, new PotionEffect(MobEffects.NAUSEA, 200, 2), 0.9F);
 	public static final Item SOLANUM_N = new ItemFoodBase("solanum_n", 5, 1.1f);
@@ -145,10 +146,10 @@ public class ModRegistry {
 	public static final Item ALTERNANTHERA_F = new ItemFoodBase("alternanthera_f", 7, 0.3f);
 	public static final Item AMPELOPSIS_A = new ItemFoodBase("ampelopsis_a", 1, 3.0f);
 	public static final Item AKEBIA_Q = new ItemFoodBase("akebia_q", 4, 1.3f);
-	public static final Item BLACKBERRY = new ItemFoodBase("blackberry", 2, 1.1F);
-	public static final Item BLUEBERRY = new ItemFoodBase("blueberry", 2, 0.9F);
-	public static final Item RASPBERRY = new ItemFoodBase("raspberry", 2, 1.4F);
-	public static final Item HUCKLEBERRY = new ItemFoodBase("huckleberry", 3, 0.5F);
+	public static final Item BLACKBERRY = new ItemColorFood("blackberry", 2, 1.1F, EnumDyeColor.BLACK);
+	public static final Item BLUEBERRY = new ItemColorFood("blueberry", 2, 0.9F, EnumDyeColor.LIGHT_BLUE);
+	public static final Item RASPBERRY = new ItemColorFood("raspberry", 2, 1.4F, EnumDyeColor.PINK);
+	public static final Item HUCKLEBERRY = new ItemColorFood("huckleberry", 3, 0.5F, EnumDyeColor.RED);
 	public static final Item FIRE_FRUIT = new ItemFireFruit();
 	public static final Item TAHITIAN_SPINACH = new ItemFoodBase("tahitian_spinach", 4, 0.3F, new PotionEffect(MobEffects.STRENGTH, 590, 2), 0.2F);
 
@@ -298,11 +299,6 @@ public class ModRegistry {
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, Generic.EMBERROOT.get(), PotionTypes.STRENGTH);
 		RecipeHelper.addPotionRecipe(PotionTypes.AWKWARD, PHYTOLACCA_A, WITHER);
 		RecipeHelper.addPotionRecipe(PotionTypes.HEALING, AMBROSIA_A, REGEN_HEAL);
-		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.LIGHT_BLUE.getDyeDamage()), BLUEBERRY);
-		Plants2.HELPER.addShapeless(Generic.DYE_BLACK.get(), BLACKBERRY);
-		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.ORANGE.getDyeDamage()), SAFFRON);
-		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.PINK.getDyeDamage()), RASPBERRY);
-		Plants2.HELPER.addShapeless(new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), HUCKLEBERRY);
 	}
 
 	public static void generators(FMLPostInitializationEvent e) {
