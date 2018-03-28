@@ -9,6 +9,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumDyeColor;
@@ -26,7 +27,7 @@ public class ColorToPotionWeightedMap {
 			list.add(new WeightedPotion(pair.getRight(), 10));
 			builder.put(pair.getKey(), list);
 		}
-		internal = builder.build();
+		internal = Maps.immutableEnumMap(builder.build());
 	}
 
 	public Potion getRandomPotion(EnumDyeColor color) {

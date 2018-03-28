@@ -3,6 +3,7 @@ package shadows.plants2.biome;
 import java.util.Random;
 
 import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityRabbit;
@@ -29,10 +30,11 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	public BiomeCrystalForest() {
 		super("crystal_forest", new BiomeProperties("Crystal Forest").setTemperature(0.8F).setRainfall(0.2F).setHeightVariation(0.1F).setBaseHeight(0.3F));
 		spawnableCreatureList.clear();
-		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySkeleton.class, 10, 1, 1));
-		spawnableCreatureList.add(new Biome.SpawnListEntry(EntityCreeper.class, 10, 1, 1));
-		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySpider.class, 10, 1, 1));
-		spawnableCreatureList.add(new Biome.SpawnListEntry(EntityRabbit.class, 4, 2, 3));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySkeleton.class, 10, 1, 2));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntityCreeper.class, 3, 1, 1));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySpider.class, 7, 1, 2));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntityRabbit.class, 5, 2, 5));
+		spawnableCreatureList.add(new Biome.SpawnListEntry(EntitySilverfish.class, 1, 1, 1));
 		fillerBlock = ModRegistry.GROUNDCOVER.getDefaultState();
 		topBlock = ModRegistry.GROUNDCOVER.getDefaultState();
 		decorator.treesPerChunk = 4;
