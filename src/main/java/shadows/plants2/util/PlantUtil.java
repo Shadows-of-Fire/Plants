@@ -1,5 +1,7 @@
 package shadows.plants2.util;
 
+import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,15 +11,18 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.translation.LanguageMap;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import shadows.placebo.interfaces.ISpecialPlacement;
+import shadows.plants2.Plants2;
 import shadows.plants2.block.BlockCustomVine;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.enums.TheBigBookOfEnums.Generic;
@@ -133,17 +138,19 @@ public class PlantUtil {
 
 	public static IBlockState getFlowerStateFor(EnumPlantType type, Random rand) {
 		List<IBlockState> list = TYPE_TO_STATES.get(type);
+		if(list.isEmpty()) return Blocks.AIR.getDefaultState();
 		return list.get(rand.nextInt(list.size()));
 	}
 
 	public static IBlockState getFlowerState(Random rand) {
+		if(DEFAULT.isEmpty()) return Blocks.AIR.getDefaultState();
 		return DEFAULT.get(rand.nextInt(DEFAULT.size()));
 	}
 
 	public static IBlockState getDesertFlowerState(Random rand) {
-		return DESERT.get(rand.nextInt(DESERT.size()));
+		return getFlowerStateFor(EnumPlantType.Desert, rand);
 	}
-	
+
 	public static ItemStack getDyeForEnum(EnumDyeColor c) {
 		return getDyeForEnum(c, 1);
 	}
@@ -163,8 +170,25 @@ public class PlantUtil {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
+	//Don't ask at all
+	static LanguageMap cancerino;
+
+	static void setupLangMap() {
+		try {
+			Method m = LanguageMap.class.getDeclaredMethod("inject", LanguageMap.class, InputStream.class);
+			m.setAccessible(true);
+			m.invoke(null, cancerino = new LanguageMap(), Plants2.class.getResourceAsStream("/assets/plants2/lang/en_us.lang"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("Plants failed to access LanguageMap.inject.  Report this!");
+		}
+	}
+
 	public static String sneakyConfigTranslate(String lang) {
-		return net.minecraft.util.text.translation.I18n.translateToFallback(lang);
+		if (cancerino == null) {
+			cancerino = new LanguageMap();
+			setupLangMap();
+		}
+		return cancerino.translateKey(lang);
 	}
 }

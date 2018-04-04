@@ -38,8 +38,8 @@ public class Plants2 {
 
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "2.8.1";
-	public static final String DEPS = "required-before:placebo@[1.3.2,);after:botania;after:forestry;after:inspirations";
+	public static final String VERSION = "2.8.2";
+	public static final String DEPS = "required-after:placebo@[1.3.2,);after:botania;after:forestry;after:inspirations";
 
 	@Instance
 	public static Plants2 INSTANCE;
@@ -48,7 +48,7 @@ public class Plants2 {
 	public static IProxy PROXY;
 
 	public static Configuration CONFIG;
-	public static Configuration ALT_CONFIG;
+	public static Configuration BLOCK_CONFIG;
 
 	public static final Logger LOGGER = LogManager.getLogger("Plants");
 
@@ -62,7 +62,7 @@ public class Plants2 {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		CONFIG = new Configuration(new File(e.getModConfigurationDirectory(), "plants.cfg"));
-		ALT_CONFIG = new Configuration(new File(e.getModConfigurationDirectory(), "plants_blocks.cfg"));
+		BLOCK_CONFIG = new Configuration(new File(e.getModConfigurationDirectory(), "plants_blocks.cfg"));
 		CONFIG.load();
 		MinecraftForge.EVENT_BUS.register(new ModRegistry());
 		PlantConfig.syncConfig(CONFIG);
@@ -82,7 +82,6 @@ public class Plants2 {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
-		ALT_CONFIG.load();
 		ModRegistry.generators(e);
 
 		PROXY.postInit(e);
@@ -91,7 +90,7 @@ public class Plants2 {
 		PlantUtil.mergeToDefaultLate();
 
 		if (Loader.isModLoaded(PlantConstants.FORESTRY_ID)) ForestryIntegration.registerFlowersToForestry();
-		if (ALT_CONFIG.hasChanged()) ALT_CONFIG.save();
+		if (BLOCK_CONFIG.hasChanged()) BLOCK_CONFIG.save();
 
 		if (PlantConfig.crystalForest) BiomeDictionary.addTypes(ModRegistry.CRYSTAL_FOREST, Type.MAGICAL, Type.FOREST, Type.COLD);
 	}
