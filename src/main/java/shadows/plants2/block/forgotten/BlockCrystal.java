@@ -52,6 +52,11 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	}
 
 	@Override
+	public boolean isToolEffective(String type, IBlockState state) {
+		return type.equals("pickaxe");
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;

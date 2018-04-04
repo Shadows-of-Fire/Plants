@@ -228,51 +228,61 @@
 				}
 			},
 			"crystal_pickaxe": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/c_pickaxe"
 				}
 			},
 			"crystal_axe": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/c_axe"
 				}
 			},
 			"crystal_shovel": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/c_shovel"
 				}
 			},
 			"crystal_hoe": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/c_hoe"
 				}
 			},
 			"crystal_sword": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/c_sword"
 				}
 			},
 			"dark_crystal_pickaxe": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/dc_pickaxe"
 				}
 			},
 			"dark_crystal_axe": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/dc_axe"
 				}
 			},
 			"dark_crystal_shovel": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/dc_shovel"
 				}
 			},
 			"dark_crystal_hoe": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/dc_hoe"
 				}
 			},
 			"dark_crystal_sword": {
+				"transform": "forge:default-tool",
 				"textures": {
 					"layer0": "plants2:items/forgotten/dc_sword"
 				}
