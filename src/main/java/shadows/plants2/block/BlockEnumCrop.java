@@ -59,7 +59,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!(state.getValue(AGE) == 7) || !(world.getBlockState(pos.down()) instanceof BlockFarmland)) return false;
+		if ((state.getValue(AGE) != 7) || !(world.getBlockState(pos.down()).getBlock() instanceof BlockFarmland)) return false;
 		for (ItemStack s : getActualDrops(world, pos, state, 1594)) {
 			if (!player.addItemStackToInventory(s)) {
 				if (!world.isRemote) Block.spawnAsEntity(world, pos, s);
