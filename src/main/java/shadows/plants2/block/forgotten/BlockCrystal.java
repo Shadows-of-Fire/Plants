@@ -159,6 +159,16 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		public int getLightValue(IBlockState state) {
 			return 15;
 		}
+
+		@Override
+		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
+
+		@Override
+		public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
 	}
 
 	public static class Planks extends BlockEnumPlanks<CrystalPlanks> {
@@ -172,6 +182,16 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		@Override
 		public int getLightValue(IBlockState state) {
 			return 12;
+		}
+
+		@Override
+		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
+
+		@Override
+		public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
 		}
 	}
 
@@ -187,6 +207,16 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		public int getLightValue(IBlockState state) {
 			return 9;
 		}
+
+		@Override
+		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
+
+		@Override
+		public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
 	}
 
 	public static class Slabs extends BlockEnumSlab {
@@ -200,6 +230,16 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		@Override
 		public int getLightValue(IBlockState state) {
 			return 9;
+		}
+
+		@Override
+		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
+
+		@Override
+		public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
 		}
 	}
 
@@ -217,6 +257,16 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		@Override
 		public int quantityDropped(Random rand) {
 			return rand.nextInt(4) == 0 ? 1 : 0;
+		}
+
+		@Override
+		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
+
+		@Override
+		public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
 		}
 	}
 
@@ -236,6 +286,16 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 			world.setBlockToAir(pos);
 			WorldGenerator gen = rand.nextFloat() >= 0.7F ? ModRegistry.DARK_CRYSTAL_TREE : ModRegistry.CRYSTAL_TREE;
 			if (!gen.generate(world, rand, pos)) world.setBlockState(pos, state);
+		}
+
+		@Override
+		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
+		}
+
+		@Override
+		public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+			return 0;
 		}
 	}
 

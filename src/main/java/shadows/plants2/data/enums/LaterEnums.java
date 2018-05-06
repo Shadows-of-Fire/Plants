@@ -155,6 +155,11 @@ public class LaterEnums {
 		public void set(IForgeRegistryEntry<?> ifre) {
 			thing = ifre;
 		}
+
+		@Override
+		public boolean isNether() {
+			return primer.getBlock() == ModRegistry.NETHER_LOG;
+		}
 	}
 
 }

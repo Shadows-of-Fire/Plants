@@ -12,6 +12,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -72,6 +73,16 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (rand.nextFloat() < 0.03F) world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, MathHelper.nextDouble(rand, -0.05, 0.05), 0.06, MathHelper.nextDouble(rand, -0.05, 0.05));
+	}
+	
+	@Override
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 0;
+	}
+	
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 0;
 	}
 
 }

@@ -5,6 +5,9 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.placebo.Placebo;
@@ -52,6 +55,16 @@ public class BlockEnumStairs extends BlockStairs implements IHasModel, IHasRecip
 	@Override
 	public String getUnlocalizedName() {
 		return "tile.plants2.stairs." + e.getName();
+	}
+	
+	@Override
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return e.isNether() ? 0 : 20;
+	}
+	
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return e.isNether() ? 0 : 5;
 	}
 
 }

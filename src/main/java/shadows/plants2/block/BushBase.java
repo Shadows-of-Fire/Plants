@@ -120,5 +120,15 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	public void postInit(FMLPostInitializationEvent e) {
 		addStatesToList();
 	}
+	
+	@Override
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 100;
+	}
+	
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 60;
+	}
 
 }

@@ -478,6 +478,11 @@ public class TheBigBookOfEnums {
 			return new ItemStack(ModRegistry.CRYSTAL_LOG, 1, ordinal());
 		}
 
+		@Override
+		public boolean isNether() {
+			return false;
+		}
+
 	}
 
 	public static enum Crystals implements IPropertyEnum {

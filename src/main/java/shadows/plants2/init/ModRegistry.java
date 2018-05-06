@@ -53,7 +53,8 @@ import shadows.plants2.block.BlockEnumHarvestBush;
 import shadows.plants2.block.BlockEnumLeaves;
 import shadows.plants2.block.BlockEnumLog;
 import shadows.plants2.block.BlockEnumNetherHarvest;
-import shadows.plants2.block.BlockEnumParticleLeaves;
+import shadows.plants2.block.BlockEnumNetherLeaves;
+import shadows.plants2.block.BlockEnumNetherLog;
 import shadows.plants2.block.BlockEnumPlanks;
 import shadows.plants2.block.BlockEnumSapling;
 import shadows.plants2.block.BlockEnumSlab;
@@ -172,9 +173,9 @@ public class ModRegistry {
 	public static final Block AKEBIA_Q_VINE = new BlockCustomVine("akebia_q_vine", Vines.AKEBIA_Q, new StackPrimer(AKEBIA_Q));
 	public static final Block AMPELOPSIS_A_VINE = new BlockCustomVine("ampelopsis_a_vine", Vines.AMPELOPSIS_A, new StackPrimer(AMPELOPSIS_A));
 
-	public static final BlockEnum<NetherLogs> NETHER_LOG = new BlockEnumLog<>("nether_log", NetherLogs.class, 0);
+	public static final BlockEnum<NetherLogs> NETHER_LOG = new BlockEnumNetherLog<>("nether_log", NetherLogs.class, 0);
 	public static final BlockEnumSapling<NetherLogs> NETHER_SAP = new BlockNetherSapling<>("nether_sapling", NetherLogs.class, 0);
-	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumParticleLeaves<>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
+	public static final BlockEnum<NetherLogs> NETHER_LEAF = new BlockEnumNetherLeaves<>("nether_leaves", NETHER_SAP, NetherLogs.class, 0);
 
 	public static final BlockEnum<Logs> LOG_0 = new BlockEnumLog<>("log_0", Logs.class, 0);
 	public static final BlockEnumSapling<Logs> SAP_0 = new BlockEnumSapling<>("sapling_0", Logs.class, 0);

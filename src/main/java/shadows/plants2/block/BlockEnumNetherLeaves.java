@@ -3,15 +3,17 @@ package shadows.plants2.block;
 import java.util.Random;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shadows.placebo.interfaces.IParticleProvider;
 import shadows.placebo.interfaces.ITreeEnum;
 
-public class BlockEnumParticleLeaves<E extends Enum<E> & ITreeEnum & IParticleProvider> extends BlockEnumLeaves<E> {
+public class BlockEnumNetherLeaves<E extends Enum<E> & ITreeEnum & IParticleProvider> extends BlockEnumLeaves<E> {
 
-	public BlockEnumParticleLeaves(String name, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
+	public BlockEnumNetherLeaves(String name, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		super(name, sapling, clazz, predicate);
 	}
 
@@ -22,6 +24,16 @@ public class BlockEnumParticleLeaves<E extends Enum<E> & ITreeEnum & IParticlePr
 
 	public static double getDouble(Random rand) {
 		return MathHelper.nextDouble(rand, -0.05, 0.05);
+	}
+	
+	@Override
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 0;
+	}
+	
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 0;
 	}
 
 }
