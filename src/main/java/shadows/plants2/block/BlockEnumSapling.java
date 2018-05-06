@@ -177,7 +177,7 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 
 	@Override
 	public boolean isValidSoil(World world, BlockPos pos, IBlockState state, IBlockState soil) {
-		if (state.getValue(property) == Logs.BLACK_KAURI) return soil.getBlock().canSustainPlant(soil, world, pos, EnumFacing.UP, Blocks.DEADBUSH);
+		if (property != null && state.getValue(property) == Logs.BLACK_KAURI) return soil.getBlock().canSustainPlant(soil, world, pos, EnumFacing.UP, Blocks.DEADBUSH);
 		return soils.contains(soil.getBlock());
 	}
 }
