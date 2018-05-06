@@ -25,6 +25,7 @@ public class BlockEnumFlower<E extends Enum<E> & IFlowerEnum> extends BlockEnumB
 		}
 	}
 
+	@Override
 	public EnumDyeColor getColor(IBlockState state) {
 		return state.getValue(getProperty()).getColor();
 	}

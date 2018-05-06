@@ -65,7 +65,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || isValidSoil(world, pos, state, soil);
+		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || isValidSoil(world, pos.down(), state, soil);
 	}
 
 	/**

@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.BlockRenderLayer;
@@ -26,6 +27,7 @@ import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.placebo.util.PlaceboUtil;
 import shadows.plants2.data.PlantConstants;
+import shadows.plants2.data.enums.TheBigBookOfEnums.Logs;
 
 public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBush<E> implements IGrowable, IHasRecipe {
 
@@ -82,15 +84,22 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	}
 
 	@Override
+	@Deprecated
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soils.contains(soil.getBlock()));
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || isValidSoil(world, pos, getDefaultState(), soil));
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(IBlockState state, World world, BlockPos pos, EnumFacing side) {
+		IBlockState soil = world.getBlockState(pos.down());
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && (soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || isValidSoil(world, pos, state, soil));
 	}
 
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || soils.contains(soil.getBlock());
+		return soil.getBlock().canSustainPlant(soil, world, pos.down(), EnumFacing.UP, this) || isValidSoil(world, pos, state, soil);
 	}
 
 	@Override
@@ -164,5 +173,11 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 	@Override
 	protected void addStatesToList() {
 
+	}
+
+	@Override
+	public boolean isValidSoil(World world, BlockPos pos, IBlockState state, IBlockState soil) {
+		if (state.getValue(property) == Logs.BLACK_KAURI) return soil.getBlock().canSustainPlant(soil, world, pos, EnumFacing.UP, Blocks.DEADBUSH);
+		return soils.contains(soil.getBlock());
 	}
 }

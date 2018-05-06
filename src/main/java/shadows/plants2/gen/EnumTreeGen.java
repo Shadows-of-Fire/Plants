@@ -23,7 +23,7 @@ import shadows.plants2.data.PlantConfig;
 
 public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 
-	protected final Block SAP;
+	protected final Block sapling;
 	protected final IBlockState leaf;
 	protected final IBlockState log;
 	protected int minHeight = 0;
@@ -35,7 +35,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 		this.minHeight = minHeight;
 		if (natural) TreeGenerator.LIST.add(this);
 		assign.setTreeGen(this);
-		SAP = ((BlockEnumLeaves<?>) leaf).getSapling();
+		sapling = ((BlockEnumLeaves<?>) leaf).getSapling();
 	}
 
 	public EnumTreeGen(boolean notify, int minHeight, IEnumBlockAccess<E> log, IEnumBlockAccess<E> leaf, E assign) {
@@ -47,7 +47,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 		super(false, 0, null, null, false);
 		TreeGenerator.LIST.add(this);
 		assign.setTreeGen(this);
-		SAP = Blocks.TALLGRASS;
+		sapling = Blocks.TALLGRASS;
 		leaf = null;
 		log = null;
 	}
@@ -58,7 +58,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 
 	public boolean canGen(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos.down());
-		return world.getBlockState(pos).getMaterial() != Material.WATER && (SAP.canPlaceBlockAt(world, pos) || state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.DEADBUSH));
+		return world.getBlockState(pos).getMaterial() != Material.WATER && (sapling.canPlaceBlockAt(world, pos) || state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.DEADBUSH));
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 			} else {
 				IBlockState state = worldIn.getBlockState(position.down());
 
-				if (SAP.canPlaceBlockAt(worldIn, position) && position.getY() < worldIn.getHeight() - i - 1) {
+				if (sapling.canPlaceBlockAt(worldIn, position) && position.getY() < worldIn.getHeight() - i - 1) {
 					state.getBlock().onPlantGrow(state, worldIn, position.down(), position);
 
 					for (int i3 = position.getY() - 3 + i; i3 <= position.getY() + i; ++i3) {
