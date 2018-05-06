@@ -25,12 +25,12 @@ public class BlockEnumNetherLeaves<E extends Enum<E> & ITreeEnum & IParticleProv
 	public static double getDouble(Random rand) {
 		return MathHelper.nextDouble(rand, -0.05, 0.05);
 	}
-	
+
 	@Override
 	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return 0;
 	}
-	
+
 	@Override
 	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return 0;

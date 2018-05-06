@@ -164,12 +164,12 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 		if (hitY >= 0.5) return this.getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
 		return this.getDefaultState();
 	}
-	
+
 	@Override
 	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return e.isNether() ? 0 : 20;
 	}
-	
+
 	@Override
 	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return e.isNether() ? 0 : 5;

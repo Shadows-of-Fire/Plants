@@ -138,12 +138,12 @@ public class PlantUtil {
 
 	public static IBlockState getFlowerStateFor(EnumPlantType type, Random rand) {
 		List<IBlockState> list = TYPE_TO_STATES.get(type);
-		if(list.isEmpty()) return Blocks.AIR.getDefaultState();
+		if (list.isEmpty()) return Blocks.AIR.getDefaultState();
 		return list.get(rand.nextInt(list.size()));
 	}
 
 	public static IBlockState getFlowerState(Random rand) {
-		if(DEFAULT.isEmpty()) return Blocks.AIR.getDefaultState();
+		if (DEFAULT.isEmpty()) return Blocks.AIR.getDefaultState();
 		return DEFAULT.get(rand.nextInt(DEFAULT.size()));
 	}
 

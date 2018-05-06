@@ -156,4 +156,14 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 		world.setBlockState(pos, state.withProperty(BlockEnumHarvestBush.FRUIT, true));
 	}
 
+	@Override
+	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 60;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+		return 30;
+	}
+
 }

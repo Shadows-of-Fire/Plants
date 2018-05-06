@@ -56,12 +56,12 @@ public class BlockEnumStairs extends BlockStairs implements IHasModel, IHasRecip
 	public String getUnlocalizedName() {
 		return "tile.plants2.stairs." + e.getName();
 	}
-	
+
 	@Override
 	public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return e.isNether() ? 0 : 20;
 	}
-	
+
 	@Override
 	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return e.isNether() ? 0 : 5;
