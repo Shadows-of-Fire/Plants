@@ -36,6 +36,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -85,7 +86,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 			float check = haste == null ? 0.16666667F : haste.getAmplifier() == 1 ? 0.5F : 0.4F;
 
 			if (player.getHeldItemMainhand() == stack && player.swingProgress == check && !world.isRemote) {
-				EntityManaBurst burst = getBurst(player, stack);
+				EntityManaBurst burst = getBurst(player, stack, EnumHand.MAIN_HAND);
 				world.spawnEntity(burst);
 				world.playSound(null, player.posX, player.posY, player.posZ, ModSounds.terraBlade, SoundCategory.PLAYERS, 0.4F, 1.4F);
 			}
@@ -117,8 +118,8 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		return multimap;
 	}
 
-	public EntityManaBurst getBurst(EntityPlayer player, ItemStack stack) {
-		EntityManaBurst burst = new EntityManaBurst(player);
+	public EntityManaBurst getBurst(EntityPlayer player, ItemStack stack, EnumHand hand) {
+		EntityManaBurst burst = new EntityManaBurst(player, hand);
 
 		float motionModifier = 7F;
 		burst.setColor(PlantConfig.excaliburParty ? getRandomColor(Item.itemRand) : 0xFFFF20);
