@@ -39,6 +39,7 @@ public class BushGen implements IWorldGenerator {
 		int posX = chunkX * 16;
 		int posZ = chunkZ * 16;
 		BlockPos genPos = new BlockPos(posX + MathHelper.getInt(rand, 2, 14), 0, posZ + MathHelper.getInt(rand, 2, 14));
+		if (PlantConfig.COMPUTED_BIOME_BL.contains(world.getBiome(genPos))) return;
 		genPos = world.getTopSolidOrLiquidBlock(genPos);
 		IBlockState soil = world.getBlockState(genPos.down());
 		IBlockState state = world.getBlockState(genPos);

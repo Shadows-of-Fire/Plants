@@ -13,6 +13,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import shadows.placebo.interfaces.ITreeEnum;
 import shadows.plants2.Plants2;
+import shadows.plants2.data.PlantConfig;
 
 public class StructureGen extends EnumTreeGen<ITreeEnum> {
 
@@ -51,6 +52,7 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 	public boolean canGen(World world, BlockPos pos) {
 		if (super.canGen(world, pos)) {
 			Biome b = world.getBiome(pos);
+			if (PlantConfig.COMPUTED_BIOME_BL.contains(b)) return false;
 			for (Type t : allowedBiomes)
 				if ((BiomeDictionary.hasType(b, t))) return true;
 			return allowedBiomes.length == 0;

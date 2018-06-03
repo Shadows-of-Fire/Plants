@@ -23,7 +23,7 @@ public class Decorator {
 	public void recieveGenEvent(DecorateBiomeEvent.Decorate event) {
 		if (!PlantConfig.gen) return;
 		if (PlantConfig.DIM_BL.contains(event.getWorld().provider.getDimension())) return;
-		if (PlantConfig.BIOME_BL.contains(event.getWorld().getBiome(event.getPos()).getRegistryName())) return;
+		if (PlantConfig.COMPUTED_BIOME_BL.contains(event.getWorld().getBiome(event.getPos()))) return;
 		genFlowers(event);
 		genDesertFlowers(event);
 		flowerForestDeco(event);

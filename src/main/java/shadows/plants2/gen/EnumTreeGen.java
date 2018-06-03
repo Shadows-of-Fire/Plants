@@ -57,6 +57,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 	}
 
 	public boolean canGen(World world, BlockPos pos) {
+		if (PlantConfig.COMPUTED_BIOME_BL.contains(world.getBiome(pos))) return false;
 		IBlockState state = world.getBlockState(pos.down());
 		return world.getBlockState(pos).getMaterial() != Material.WATER && (sapling.canPlaceBlockAt(world, pos) || state.getBlock().canSustainPlant(state, world, pos.down(), EnumFacing.UP, Blocks.DEADBUSH));
 	}

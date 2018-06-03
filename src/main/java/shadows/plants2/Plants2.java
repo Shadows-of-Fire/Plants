@@ -5,6 +5,8 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import shadows.placebo.registry.RegistryInformationV2;
 import shadows.placebo.util.RecipeHelper;
@@ -38,7 +41,7 @@ public class Plants2 {
 
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "2.8.5";
+	public static final String VERSION = "2.8.6";
 	public static final String DEPS = "required-after:placebo@[1.3.4,);after:botania@[r1.10-354,);after:forestry;after:inspirations";
 
 	@Instance
@@ -78,6 +81,11 @@ public class Plants2 {
 		PROXY.init(e);
 		NETWORK.registerMessage(ParticleMessageHandler.class, ParticleMessage.class, disc++, Side.CLIENT);
 		if (Loader.isModLoaded("crafttweaker")) CrafttweakerIntegration.processCauldronChanges();
+		for(ResourceLocation rl : PlantConfig.BIOME_BL) {
+			Biome b = ForgeRegistries.BIOMES.getValue(rl);
+			if(b == null) LOGGER.error("Invalid biome entry detected in the Plants biome blacklist, " + rl);
+			else PlantConfig.COMPUTED_BIOME_BL.add(b);
+		}
 	}
 
 	@EventHandler

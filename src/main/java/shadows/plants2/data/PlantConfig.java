@@ -1,9 +1,9 @@
 package shadows.plants2.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.config.Configuration;
 
 public class PlantConfig {
@@ -40,10 +40,11 @@ public class PlantConfig {
 
 	public static boolean hardNether = false;
 
-	public static final List<ResourceLocation> REGNAME_BL = new ArrayList<>();
-	public static final List<String> MODID_BL = new ArrayList<>();
-	public static final List<Integer> DIM_BL = new ArrayList<>();
-	public static final List<ResourceLocation> BIOME_BL = new ArrayList<>();
+	public static final ObjectList<ResourceLocation> REGNAME_BL = new ObjectArrayList<>();
+	public static final ObjectList<String> MODID_BL = new ObjectArrayList<>();
+	public static final ObjectList<Integer> DIM_BL = new ObjectArrayList<>();
+	public static final ObjectList<ResourceLocation> BIOME_BL = new ObjectArrayList<>();
+	public static final ObjectList<Biome> COMPUTED_BIOME_BL = new ObjectArrayList<>();
 
 	public static boolean crystalForest = true;
 	public static int crystalForestWeight = 2;
