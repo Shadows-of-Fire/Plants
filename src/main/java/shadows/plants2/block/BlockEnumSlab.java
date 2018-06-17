@@ -112,6 +112,7 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 		else if (facing == EnumFacing.DOWN && state2 == getDouble()) return !(state == getLower() || state == state2);
 		else if (facing == EnumFacing.UP && state2 == getDouble()) return !(state.getBlock() == this);
 		else if (facing == EnumFacing.UP && state == getDouble()) return !(state2 == getLower());
+		else if (facing == EnumFacing.DOWN && state2.getBlock() == this) return state2 == state;
 		return !(state2.getBlock() == this && state2 == getOpposite(state));
 	}
 
