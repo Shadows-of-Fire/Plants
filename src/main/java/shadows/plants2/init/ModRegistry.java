@@ -70,6 +70,7 @@ import shadows.plants2.block.forgotten.BlockBushLeaves;
 import shadows.plants2.block.forgotten.BlockBushling;
 import shadows.plants2.block.forgotten.BlockCrystal;
 import shadows.plants2.block.forgotten.BlockCrystalGround;
+import shadows.plants2.block.forgotten.BlockCrystalTorch;
 import shadows.plants2.block.forgotten.BlockNetherSapling;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.data.PlantConstants;
@@ -239,6 +240,7 @@ public class ModRegistry {
 	public static final BlockBriblebum BRIBLEBUM = new BlockBriblebum();
 	public static final BlockSaimbaire SAIMBAIRE = new BlockSaimbaire();
 	public static final BlockAithotus AITHOTUS = new BlockAithotus();
+	public static final BlockCrystalTorch CRYSTAL_TORCH = new BlockCrystalTorch();
 
 	@SubscribeEvent
 	public void onBlockRegister(Register<Block> e) {

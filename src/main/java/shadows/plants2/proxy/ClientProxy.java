@@ -12,6 +12,7 @@ import net.minecraft.client.particle.ParticleSimpleAnimated;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -21,6 +22,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -120,6 +122,13 @@ public class ClientProxy implements IProxy {
 		e.getModelRegistry().putObject(normal, new ActualJarModel());
 		e.getModelRegistry().putObject(inv, new JarItemModel());
 	}
+	
+	@SubscribeEvent
+	public void onTexStitch(TextureStitchEvent e) {
+		whiteFlame = e.getMap().registerSprite(new ResourceLocation(Plants2.MODID, "particles/white_flame"));
+	}
+	
+	public static TextureAtlasSprite whiteFlame;
 
 	public static final Color WATER = new Color(48, 69, 244);
 

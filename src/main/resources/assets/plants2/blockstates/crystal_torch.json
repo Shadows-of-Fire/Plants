@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"torch": "plants2:blocks/forgotten/crystal/c_torch"
+		}
+	},
+	"variants": {
+		"facing": {
+			"up": {
+				"model": "torch"
+			},
+			"east": {
+				"model": "torch_wall"
+			},
+			"south": {
+				"model": "torch_wall",
+				"y": 90
+			},
+			"west": {
+				"model": "torch_wall",
+				"y": 180
+			},
+			"north": {
+				"model": "torch_wall",
+				"y": 270
+			}
+		}
+	}
+}

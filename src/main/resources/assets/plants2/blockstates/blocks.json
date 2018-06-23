@@ -96,6 +96,13 @@
 					"all": "plants2:blocks/forgotten/crystal/titan_stone"
 				}
 			},
+			"crystal_torch": {
+				"model": "builtin/generated",
+				"transform": "forge:default-item",
+				"textures": {
+					"layer0": "plants2:blocks/forgotten/crystal/c_torch"
+				}
+			},
 			"groundcover": {
 				"model": "plants2:groundcover",
 				"transform": "forge:default-block"
