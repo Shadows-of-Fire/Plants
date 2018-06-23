@@ -15,6 +15,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.placebo.interfaces.IHarvestableEnum;
 import shadows.placebo.interfaces.IHasRecipe;
@@ -50,7 +51,16 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false) && rand.nextInt(PlantConfig.netherHarvestChance) == 0) grow(world, rand, pos, state);
+		if (!world.isRemote && canGrow(world, pos, state, false))
+		{
+			boolean couldGrow = (rand.nextInt(PlantConfig.netherHarvestChance) == 0);
+			
+			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow))
+			{
+				grow(world, rand, pos, state);
+				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
+			}
+		}
 	}
 
 	@Override
