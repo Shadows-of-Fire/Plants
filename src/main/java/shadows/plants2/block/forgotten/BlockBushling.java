@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.RegistryEvent.Register;
 import shadows.placebo.Placebo;
@@ -112,7 +113,15 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextInt(15) == 0 && canGrow(world, pos, state, false)) grow(world, rand, pos, state);
+		if (canGrow(world, pos, state, false))
+		{
+			boolean couldGrow = (rand.nextInt(15) == 0);
+			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow))
+			{
+				grow(world, rand, pos, state);
+				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
+			}
+		}
 	}
 
 	@Override

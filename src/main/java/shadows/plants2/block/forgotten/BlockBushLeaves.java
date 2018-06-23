@@ -24,6 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.oredict.OreDictionary;
@@ -81,7 +82,15 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (rand.nextFloat() < 0.35F && canGrow(world, pos, state, false)) grow(world, rand, pos, state);
+		if (canGrow(world, pos, state, false)) 
+		{
+			boolean couldGrow = (rand.nextFloat() < 0.35F);
+			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow))
+			{
+				grow(world, rand, pos, state);
+				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
+			}
+		}
 	}
 
 	@Override
