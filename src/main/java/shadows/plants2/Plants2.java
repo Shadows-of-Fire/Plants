@@ -81,9 +81,9 @@ public class Plants2 {
 		PROXY.init(e);
 		NETWORK.registerMessage(ParticleMessageHandler.class, ParticleMessage.class, disc++, Side.CLIENT);
 		if (Loader.isModLoaded("crafttweaker")) CrafttweakerIntegration.processCauldronChanges();
-		for(ResourceLocation rl : PlantConfig.BIOME_BL) {
+		for (ResourceLocation rl : PlantConfig.BIOME_BL) {
 			Biome b = ForgeRegistries.BIOMES.getValue(rl);
-			if(b == null) LOGGER.error("Invalid biome entry detected in the Plants biome blacklist, " + rl);
+			if (b == null) LOGGER.error("Invalid biome entry detected in the Plants biome blacklist, " + rl);
 			else PlantConfig.COMPUTED_BIOME_BL.add(b);
 		}
 	}

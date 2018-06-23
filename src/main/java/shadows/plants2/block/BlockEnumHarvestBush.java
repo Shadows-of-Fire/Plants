@@ -41,12 +41,10 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false))
-		{
+		if (!world.isRemote && canGrow(world, pos, state, false)) {
 			boolean couldGrow = (rand.nextInt(PlantConfig.harvestGrowthChance) == 0);
-			
-			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow))
-			{
+
+			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);
 				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
 			}

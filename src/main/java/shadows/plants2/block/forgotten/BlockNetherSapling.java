@@ -14,7 +14,7 @@ public class BlockNetherSapling<E extends Enum<E> & ITreeEnum> extends BlockEnum
 	public BlockNetherSapling(String name, Class<E> clazz, int predicate) {
 		super(name, EnumPlantType.Nether, clazz, predicate);
 	}
-	
+
 	@Override
 	@Deprecated
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {

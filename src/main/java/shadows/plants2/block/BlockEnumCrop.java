@@ -104,11 +104,9 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		if (!world.isRemote && canGrow(world, pos, state, false))
-		{
+		if (!world.isRemote && canGrow(world, pos, state, false)) {
 			boolean couldGrow = (rand.nextInt(PlantConfig.cropGrowthChance) == 0);
-			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow))
-			{
+			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);
 				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
 			}
