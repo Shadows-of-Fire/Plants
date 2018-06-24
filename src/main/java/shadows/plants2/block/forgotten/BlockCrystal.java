@@ -107,8 +107,11 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		Crystals c = state.getValue(property);
-		if (c.isShard()) drops.add(c.getDrops());
-		else drops.add(new ItemStack(this, 1, c.ordinal()));
+		if (c.isShard()) {
+			ItemStack s = c.getDrops();
+			s.grow(Math.min(fortune, 10));
+			drops.add(s);
+		} else drops.add(new ItemStack(this, 1, c.ordinal()));
 	}
 
 	@Override
@@ -129,7 +132,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 		Plants2.HELPER.addSimpleShapeless(Generic.DARK_CRYSTAL_SHARD.get(4), Generic.DARK_CRYSTAL_CHUNK.get(), 1);
 		Plants2.HELPER.addShaped(Crystals.CRYSTAL_BRICK.get(4), 2, 2, Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get(), Crystals.CRYSTAL_BLOCK.get());
 		Plants2.HELPER.addSimpleShapeless(Crystals.CRYSTAL_BLOCK.get(), Generic.CRYSTAL_CHUNK.get(), 4);
-		Plants2.HELPER.addShaped(Crystals.DARK_CRYSTAL_BRICK.get(), 2, 2, Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get());
+		Plants2.HELPER.addShaped(Crystals.DARK_CRYSTAL_BRICK.get(4), 2, 2, Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get(), Crystals.DARK_CRYSTAL_BLOCK.get());
 		Plants2.HELPER.addSimpleShapeless(Crystals.DARK_CRYSTAL_BLOCK.get(), Generic.DARK_CRYSTAL_CHUNK.get(), 4);
 		Plants2.HELPER.addShaped(Generic.CRYSTAL_STICK.get(), 1, 2, Generic.CRYSTAL_SHARD.get(), Generic.CRYSTAL_SHARD.get());
 		ItemStack cc = Generic.CRYSTAL_CHUNK.get();
