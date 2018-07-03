@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import shadows.placebo.block.IEnumBlock;
 import shadows.plants2.Plants2;
@@ -27,8 +26,8 @@ public class ControlledList extends ArrayList<IBlockState> {
 
 	private String translate(IBlockState state) {
 		Item i = Item.getItemFromBlock(state.getBlock());
-		String translate = PlantUtil.sneakyConfigTranslate(i.getUnlocalizedName(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state))) + ".name");
-		if (i == Items.AIR || translate.equals("invalid.name")) return state.getBlock().getRegistryName() + "[type=" + ((IEnumBlock<?>) state.getBlock()).getValue(state).getName() + "]";
+		String translate = PlantUtil.sneakyConfigTranslate(state.getBlock().getPickBlock(state, null, null, null, null).getUnlocalizedName() + ".name");
+		if (i == Items.AIR || "invalid.name".equals(translate)) return state.getBlock().getRegistryName() + "[type=" + ((IEnumBlock<?>) state.getBlock()).getValue(state).getName() + "]";
 		return translate;
 	}
 
