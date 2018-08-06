@@ -42,7 +42,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 
 	public BlockFlowerpot() {
 		PlaceboUtil.setRegNameIllegally(this, "flower_pot");
-		setUnlocalizedName(Plants2.MODID + ".flowerpot");
+		setTranslationKey(Plants2.MODID + ".flowerpot");
 		setCreativeTab(CreativeTabs.DECORATIONS);
 		if (PlantConfig.flowerpot) {
 			Plants2.INFO.getBlockList().add(this);
@@ -52,7 +52,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 
 	BlockFlowerpot(String name) {
 		setRegistryName(Plants2.MODID, name);
-		setUnlocalizedName(Plants2.MODID + "." + name);
+		setTranslationKey(Plants2.MODID + "." + name);
 		setCreativeTab(Plants2.INFO.getDefaultTab());
 		Plants2.INFO.getBlockList().add(this);
 		Plants2.INFO.getItemList().add(createItemBlock());

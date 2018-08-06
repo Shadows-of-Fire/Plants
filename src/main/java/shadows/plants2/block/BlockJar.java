@@ -58,6 +58,7 @@ public class BlockJar extends BlockFlowerpot implements IHasRecipe {
 	}
 
 	@Override
+	@Deprecated
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_MAIN);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_KNOB);

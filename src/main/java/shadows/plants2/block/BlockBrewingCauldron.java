@@ -67,7 +67,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 	public BlockBrewingCauldron() {
 		super(Material.IRON, MapColor.STONE);
 		setRegistryName("brewing_cauldron");
-		setUnlocalizedName(Plants2.MODID + ".brewing_cauldron");
+		setTranslationKey(Plants2.MODID + ".brewing_cauldron");
 		setCreativeTab(PlantConstants.TAB);
 		setHardness(3F);
 		setResistance(10F);
@@ -78,6 +78,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 	}
 
 	@Override
+	@Deprecated
 	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_LEGS);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_WALL_WEST);
@@ -138,7 +139,7 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (world.isRemote) return;
 		TileEntity t = world.getTileEntity(pos);
 		if (!(t instanceof TileBrewingCauldron)) return;

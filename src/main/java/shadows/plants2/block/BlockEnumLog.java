@@ -59,7 +59,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "tile.plants2.log";
 	}
 

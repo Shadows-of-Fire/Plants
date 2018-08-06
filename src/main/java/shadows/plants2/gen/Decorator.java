@@ -23,7 +23,7 @@ public class Decorator {
 	public void recieveGenEvent(DecorateBiomeEvent.Decorate event) {
 		if (!PlantConfig.gen) return;
 		if (PlantConfig.DIM_BL.contains(event.getWorld().provider.getDimension())) return;
-		if (PlantConfig.COMPUTED_BIOME_BL.contains(event.getWorld().getBiome(event.getPos()))) return;
+		if (PlantConfig.COMPUTED_BIOME_BL.contains(event.getWorld().getBiome(event.getChunkPos().getBlock(0, 0, 0)))) return;
 		genFlowers(event);
 		genDesertFlowers(event);
 		flowerForestDeco(event);
@@ -32,16 +32,16 @@ public class Decorator {
 
 	public static void genFlowers(DecorateBiomeEvent.Decorate event) {
 		if (PlantConfig.flowerGen && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS) {
-			BlockPos pos = event.getPos();
+			BlockPos pos = event.getChunkPos().getBlock(8, 0, 8);
 			for (int ih = PlantConfig.numTries; ih > 0; ih--) {
 				if (event.getRand().nextInt(PlantConfig.patchChance) == 0) {
 					IBlockState state = PlantUtil.getFlowerState(event.getRand());
 					if (state != null) {
 						int chance = event.getRand().nextInt(100);
-						if (chance > 10) PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
-						else if (chance <= 10 && chance >= 0) PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+						if (chance > 10) PlantUtil.genFlowerPatch(event.getWorld(), pos, event.getRand(), state);
+						else if (chance <= 10 && chance >= 0) PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos, event.getRand(), state);
 						else if (chance == 0) //Yeah, this can't be fulfilled, this is off for now until genMetaPatch doesn't cause cascading gen.
-							PlantUtil.genMegaPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+							PlantUtil.genMegaPatch(event.getWorld(), pos, event.getRand(), state);
 					}
 				}
 			}
@@ -49,18 +49,18 @@ public class Decorator {
 	}
 
 	public static void genDesertFlowers(DecorateBiomeEvent.Decorate event) {
-		if (event.getWorld().getBiome(event.getPos().add(8, 0, 8)) instanceof BiomeBeach) return;
+		if (event.getWorld().getBiome(event.getChunkPos().getBlock(8, 0, 8)) instanceof BiomeBeach) return;
 		if (PlantConfig.desertGen && !event.getWorld().isRemote && (event.getType() == EventType.DEAD_BUSH || event.getType() == EventType.CACTUS)) {
-			BlockPos pos = event.getPos();
+			BlockPos pos = event.getChunkPos().getBlock(8, 0, 8);
 			for (int ih = PlantConfig.numTries; ih > 0; ih--) {
 				if (event.getRand().nextInt(PlantConfig.patchChance * 4) == 0) {
 					IBlockState state = PlantUtil.getDesertFlowerState(event.getRand());
 					if (state != null) {
 						int chance = event.getRand().nextInt(100);
-						if (chance > 10) PlantUtil.genFlowerPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
-						else if (chance <= 10 && chance >= 0) PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+						if (chance > 10) PlantUtil.genFlowerPatch(event.getWorld(), pos, event.getRand(), state);
+						else if (chance <= 10 && chance >= 0) PlantUtil.genSmallFlowerPatchNearby(event.getWorld(), pos, event.getRand(), state);
 						else if (chance == 0) //Yeah, this can't be fulfilled, this is off for now until genMetaPatch doesn't cause cascading gen.
-							PlantUtil.genMegaPatch(event.getWorld(), pos.add(8, 0, 8), event.getRand(), state);
+							PlantUtil.genMegaPatch(event.getWorld(), pos, event.getRand(), state);
 					}
 				}
 			}
@@ -70,10 +70,10 @@ public class Decorator {
 	public static final Biome FLOWER_FOREST = Biome.getBiome(132);
 
 	public static void flowerForestDeco(DecorateBiomeEvent.Decorate event) {
-		if (PlantConfig.flowerGen && PlantConfig.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getPos()) == FLOWER_FOREST) {
+		if (PlantConfig.flowerGen && PlantConfig.literallyTakeoverFlowerForests && !event.getWorld().isRemote && event.getType() == EventType.FLOWERS && event.getWorld().getBiome(event.getChunkPos().getBlock(0, 0, 0)) == FLOWER_FOREST) {
 			for (int ih = 8; ih > 0; ih--) {
 				IBlockState state = PlantUtil.getFlowerState(event.getRand());
-				PlantUtil.genFlowerPatch(event.getWorld(), event.getPos().add(8, 0, 8), event.getRand(), state);
+				PlantUtil.genFlowerPatch(event.getWorld(), event.getChunkPos().getBlock(8, 0, 8), event.getRand(), state);
 			}
 		}
 	}
@@ -83,7 +83,7 @@ public class Decorator {
 			EnumFacing facing = EnumFacing.HORIZONTALS[event.getRand().nextInt(4)];
 			World world = event.getWorld();
 			BlockCustomVine vine = PlantUtil.getRandomVine(world.rand);
-			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getPos().add(8, 0, 8).add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
+			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getChunkPos().getBlock(8, 0, 8).add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
 			if (!(world.getBlockState(pos).getBlock() instanceof BlockGrass)) return;
 			for (int i = 0; i < 3; i++) {
 				world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState());

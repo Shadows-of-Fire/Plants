@@ -100,7 +100,7 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "tile.plants2.slab." + e.getName();
 	}
 

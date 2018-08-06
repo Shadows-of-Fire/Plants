@@ -26,7 +26,7 @@ public class BlockCataplant extends BushBase {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_WATERLILY_PLACE, SoundCategory.BLOCKS, 1, 1, false);
 		EnumFacing face = state.getValue(FACING);
 		int x = face.getDirectionVec().getX();

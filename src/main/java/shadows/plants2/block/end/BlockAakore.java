@@ -34,7 +34,7 @@ public class BlockAakore extends BlockEndBush {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (RANDOM.nextInt(13) == 0 && !world.isRemote && entity instanceof EntityLivingBase && !((EntityLivingBase) entity).isPotionActive(MobEffects.LEVITATION)) {
 			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 40, 1));
 		}

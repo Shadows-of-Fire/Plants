@@ -26,7 +26,7 @@ public class ControlledList extends ArrayList<IBlockState> {
 
 	private String translate(IBlockState state) {
 		Item i = Item.getItemFromBlock(state.getBlock());
-		String translate = PlantUtil.sneakyConfigTranslate(state.getBlock().getPickBlock(state, null, null, null, null).getUnlocalizedName() + ".name");
+		String translate = PlantUtil.sneakyConfigTranslate(state.getBlock().getPickBlock(state, null, null, null, null).getTranslationKey() + ".name");
 		if (i == Items.AIR || "invalid.name".equals(translate)) return state.getBlock().getRegistryName() + "[type=" + ((IEnumBlock<?>) state.getBlock()).getValue(state).getName() + "]";
 		return translate;
 	}

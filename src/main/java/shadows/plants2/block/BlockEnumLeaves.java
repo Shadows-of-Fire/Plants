@@ -59,7 +59,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return Blocks.LEAVES.isOpaqueCube(Blocks.LEAVES.getDefaultState());
+		return Blocks.LEAVES.getDefaultState().isOpaqueCube();
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "tile.plants2.leaves";
 	}
 
@@ -91,8 +91,8 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return Blocks.LEAVES.getBlockLayer();
+	public BlockRenderLayer getRenderLayer() {
+		return Blocks.LEAVES.getRenderLayer();
 	}
 
 	@Override
@@ -129,8 +129,8 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		Blocks.LEAVES.onEntityCollidedWithBlock(world, pos, state, entity);
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+		Blocks.LEAVES.onEntityCollision(world, pos, state, entity);
 	}
 
 	@Override //God this came from BlockLeaves dont even talk to me about it.

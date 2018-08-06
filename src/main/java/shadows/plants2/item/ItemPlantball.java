@@ -85,7 +85,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 			else if (worldState.getBlock() instanceof BlockBush && !(worldState.getBlock().hasTileEntity(worldState))) {
 				if (isBlacklisted(worldState)) return EnumActionResult.FAIL;
 
-				if (PlantConfig.allBushes || worldState.getBlock().getRegistryName().getResourceDomain().equals(Plants2.MODID) || worldState.getBlock().getRegistryName().getResourceDomain().equals("minecraft")) {
+				if (PlantConfig.allBushes || worldState.getBlock().getRegistryName().getNamespace().equals(Plants2.MODID) || worldState.getBlock().getRegistryName().getNamespace().equals("minecraft")) {
 
 					if (!world.isRemote) genFlowers(world, pos, worldState);
 
@@ -110,7 +110,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 	private static boolean isBlacklisted(IBlockState state) {
 		if (CACHE.getOrDefault(state, false)) return false;
 		if (PlantConfig.REGNAME_BL.contains(state.getBlock().getRegistryName())) return true;
-		if (PlantConfig.MODID_BL.contains(state.getBlock().getRegistryName().getResourceDomain())) return true;
+		if (PlantConfig.MODID_BL.contains(state.getBlock().getRegistryName().getNamespace())) return true;
 		CACHE.put(state, true);
 		return false;
 	}

@@ -36,7 +36,7 @@ public class BlockCustomVine extends BlockVine implements IHasModel {
 
 	public BlockCustomVine(String name, Vines vine, StackPrimer... drops) {
 		setRegistryName(name);
-		setUnlocalizedName(Plants2.MODID + "." + name);
+		setTranslationKey(Plants2.MODID + "." + name);
 		setCreativeTab(PlantConstants.TAB);
 		setSoundType(SoundType.PLANT);
 		setHardness(0.2F);

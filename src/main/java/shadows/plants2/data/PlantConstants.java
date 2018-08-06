@@ -19,7 +19,7 @@ public class PlantConstants {
 	public static final CreativeTabs TAB = new CreativeTabs("plants") {
 
 		@Override
-		public ItemStack getTabIconItem() {
+		public ItemStack createIcon() {
 			return new ItemStack(ModRegistry.PLANT_1, 1, Plants.ALLIUM_C.ordinal() % 16);
 		}
 

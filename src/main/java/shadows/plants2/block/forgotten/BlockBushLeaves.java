@@ -97,8 +97,8 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return Blocks.LEAVES.getBlockLayer();
+	public BlockRenderLayer getRenderLayer() {
+		return Blocks.LEAVES.getRenderLayer();
 	}
 
 	@Override

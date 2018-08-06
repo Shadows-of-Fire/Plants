@@ -55,7 +55,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "tile.plants2.bushling";
 	}
 
@@ -123,7 +123,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 

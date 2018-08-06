@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
@@ -31,6 +32,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.block.BlockEnum;
 import shadows.placebo.interfaces.IHasRecipe;
 import shadows.placebo.item.ItemAxeBase;
+import shadows.placebo.item.ItemBigEnum;
 import shadows.placebo.item.ItemHoeBase;
 import shadows.placebo.item.ItemPickaxeBase;
 import shadows.placebo.item.ItemShovelBase;
@@ -96,7 +98,6 @@ import shadows.plants2.gen.NetherGen;
 import shadows.plants2.gen.StructureGen;
 import shadows.plants2.gen.forgotten.BushGen;
 import shadows.plants2.gen.forgotten.NetherTreeGen;
-import shadows.plants2.item.ItemBigEnum;
 import shadows.plants2.item.ItemColorFood;
 import shadows.plants2.item.ItemExcalibur;
 import shadows.plants2.item.ItemFireFruit;
@@ -126,7 +127,7 @@ public class ModRegistry {
 
 	public static final BlockEnumBush<Double> DOUBLE_0 = new BlockEnumDoubleFlower<>("double_0", EnumPlantType.Plains, Double.class, 0);
 
-	public static final ItemBigEnum<Generic> GENERIC = new ItemBigEnum<>("generic", Generic.values());
+	public static final ItemBigEnum<Generic> GENERIC = new ItemBigEnum<>("generic", Generic.values(), Plants2.INFO);
 	public static final Item PLANTBALL = new ItemPlantball();
 
 	public static final Item OKRA = new ItemFoodBase("okra", 3, 1.3f);
@@ -314,7 +315,7 @@ public class ModRegistry {
 	}
 
 	public static void tiles(FMLPreInitializationEvent e) {
-		GameRegistry.registerTileEntity(TileFlowerpot.class, Plants2.MODID + ":flowerpot");
-		GameRegistry.registerTileEntity(TileBrewingCauldron.class, Plants2.MODID + ":brewing_cauldron");
+		GameRegistry.registerTileEntity(TileFlowerpot.class, new ResourceLocation(Plants2.MODID, "flowerpot"));
+		GameRegistry.registerTileEntity(TileBrewingCauldron.class, new ResourceLocation(Plants2.MODID, "brewing_cauldron"));
 	}
 }

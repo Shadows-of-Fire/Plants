@@ -39,13 +39,13 @@ public class ItemFireFruit extends ItemFoodBase implements IHasRecipe {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		PlaceboUtil.sMRL("items", this, 0, "item=" + getRegistryName().getResourcePath());
-		PlaceboUtil.sMRL("items", this, 1, "item=" + getRegistryName().getResourcePath() + "_cold");
+		PlaceboUtil.sMRL("items", this, 0, "item=" + getRegistryName().getPath());
+		PlaceboUtil.sMRL("items", this, 1, "item=" + getRegistryName().getPath() + "_cold");
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + (stack.getMetadata() == 1 ? "_cold" : "");
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey() + (stack.getMetadata() == 1 ? "_cold" : "");
 	}
 
 }

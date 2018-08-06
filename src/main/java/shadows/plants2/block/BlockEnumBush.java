@@ -153,7 +153,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "tile.plants2";
 	}
 

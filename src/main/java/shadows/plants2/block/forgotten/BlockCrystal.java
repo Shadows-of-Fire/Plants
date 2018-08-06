@@ -58,7 +58,7 @@ public class BlockCrystal extends BlockEnum<Crystals> implements IHasRecipe {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 

@@ -23,7 +23,7 @@ public class BlockAithotus extends BlockEndBush {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (world.isRemote) return;
 		int x = MathHelper.getInt(world.rand, -4, 4);
 		int z = MathHelper.getInt(world.rand, -4, 4);

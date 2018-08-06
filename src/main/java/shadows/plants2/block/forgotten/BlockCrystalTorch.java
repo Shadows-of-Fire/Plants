@@ -27,7 +27,7 @@ public class BlockCrystalTorch extends BlockTorch implements IHasModel, IHasReci
 
 	public BlockCrystalTorch() {
 		setRegistryName("crystal_torch");
-		setUnlocalizedName(Plants2.MODID + ".crystal_torch");
+		setTranslationKey(Plants2.MODID + ".crystal_torch");
 		Plants2.INFO.getBlockList().add(this);
 		Plants2.INFO.getItemList().add(new ItemBlockBase(this));
 		setHardness(0);
@@ -37,7 +37,7 @@ public class BlockCrystalTorch extends BlockTorch implements IHasModel, IHasReci
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		PlaceboUtil.sMRL("blocks", this, 0, "type=" + getRegistryName().getResourcePath());
+		PlaceboUtil.sMRL("blocks", this, 0, "type=" + getRegistryName().getPath());
 	}
 
 	@Override
@@ -57,14 +57,14 @@ public class BlockCrystalTorch extends BlockTorch implements IHasModel, IHasReci
 
 		if (enumfacing.getAxis().isHorizontal()) {
 			EnumFacing enumfacing1 = enumfacing.getOpposite();
-			p = new ParticleWhiteFlame(world, d0 + 0.27D * enumfacing1.getFrontOffsetX(), d1 + 0.22D, d2 + 0.27D * enumfacing1.getFrontOffsetZ(), 0.0D, 0.0D, 0.0D);
+			p = new ParticleWhiteFlame(world, d0 + 0.27D * enumfacing1.getXOffset(), d1 + 0.22D, d2 + 0.27D * enumfacing1.getZOffset(), 0.0D, 0.0D, 0.0D);
 		} else p = new ParticleWhiteFlame(world, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 
 		Minecraft.getMinecraft().effectRenderer.addEffect(p);
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 

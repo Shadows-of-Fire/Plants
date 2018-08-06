@@ -42,7 +42,7 @@ public abstract class BlockEndBush extends BushBase {
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		String name = getRegistryName().getResourcePath();
+		String name = getRegistryName().getPath();
 		PlaceboUtil.sMRL("plants", this, 0, "inventory=true,type=" + name);
 		Placebo.PROXY.useRenamedMapper(this, "plants", "", "inventory=false,type=" + name);
 	}
@@ -74,7 +74,7 @@ public abstract class BlockEndBush extends BushBase {
 
 	@Override
 	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(Placebo.PROXY.translate("plants2." + getRegistryName().getResourcePath() + ".tooltip"));
+		tooltip.add(Placebo.PROXY.translate("plants2." + getRegistryName().getPath() + ".tooltip"));
 	}
 
 }

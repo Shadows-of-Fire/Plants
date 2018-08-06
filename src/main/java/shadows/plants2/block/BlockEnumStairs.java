@@ -27,7 +27,7 @@ public class BlockEnumStairs extends BlockStairs implements IHasModel, IHasRecip
 	public <T extends IPlankEnum> BlockEnumStairs(T e, IEnumBlockAccess<T> block) {
 		super(block.getStateFor(e));
 		setRegistryName(e.getName() + "_stairs");
-		setUnlocalizedName(Plants2.INFO.getID() + "." + e.getName() + "_stairs");
+		setTranslationKey(Plants2.INFO.getID() + "." + e.getName() + "_stairs");
 		setCreativeTab(Plants2.INFO.getDefaultTab());
 		Plants2.INFO.getBlockList().add(this);
 		ItemBlock ib = createItemBlock();
@@ -48,12 +48,12 @@ public class BlockEnumStairs extends BlockStairs implements IHasModel, IHasRecip
 
 	@Override
 	public void initModels(ModelRegistryEvent e) {
-		PlaceboUtil.sMRL("stairs/" + getRegistryName().getResourcePath(), this, 0, "facing=south,half=bottom,shape=straight");
-		Placebo.PROXY.useRenamedMapper(this, "stairs/" + getRegistryName().getResourcePath());
+		PlaceboUtil.sMRL("stairs/" + getRegistryName().getPath(), this, 0, "facing=south,half=bottom,shape=straight");
+		Placebo.PROXY.useRenamedMapper(this, "stairs/" + getRegistryName().getPath());
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "tile.plants2.stairs." + e.getName();
 	}
 

@@ -33,7 +33,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 
 	public BushBase(String name, EnumPlantType type) {
 		setRegistryName(name);
-		setUnlocalizedName(Plants2.INFO.getID() + "." + name);
+		setTranslationKey(Plants2.INFO.getID() + "." + name);
 		setCreativeTab(Plants2.INFO.getDefaultTab());
 		this.type = type;
 		setTickRandomly(false);
