@@ -1,4 +1,4 @@
-# Plants
+# Plants [![](http://cf.way2muchnoise.eu/257229.svg)](https://minecraft.curseforge.com/projects/plants) [![](http://cf.way2muchnoise.eu/versions/257229.svg)](https://minecraft.curseforge.com/projects/plants)
 
 Plants is a mod aiming to add all kinds of plants to Minecraft.  See, Minecraft can be rather dull at times; perhaps all that green just isn't what you're looking for, and you want something extra.  Maybe you're just here for the Excalibur, or the flowerpot, or the Magical Brewing Cauldron. Either way, Plants adds ~180 new plants to Minecraft, and is continually increasing. There are a few extra features of note, however.  Plants overrides the vanilla flowerpot with its own. This flowerpot has support for everything without a tile entity.  It also includes the old Excalibur, if you have Botania installed.  In newer versions, you may also see content from an older mod called Forgotten Nature, such as the Crystal Forest, or the nether trees.
 
