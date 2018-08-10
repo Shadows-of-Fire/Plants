@@ -44,7 +44,7 @@ public class BlockEnumDoubleHarvestBush<E extends Enum<E> & IHarvestableEnum> ex
 
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && world.getBlockState(pos).getBlock().isReplaceable(world, pos.up()) && super.canBlockStay(world, pos, getDefaultState());
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up()) && super.canBlockStay(world, pos, getDefaultState());
 	}
 
 	@Override
