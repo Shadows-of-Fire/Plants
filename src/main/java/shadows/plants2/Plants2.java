@@ -25,6 +25,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import shadows.placebo.registry.RegistryInformationV2;
 import shadows.placebo.util.RecipeHelper;
+import shadows.plants2.compat.AAIntegration;
 import shadows.plants2.compat.CrafttweakerIntegration;
 import shadows.plants2.compat.ForestryIntegration;
 import shadows.plants2.data.PlantConfig;
@@ -41,7 +42,7 @@ public class Plants2 {
 
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "2.9.3";
+	public static final String VERSION = "2.10.0";
 	public static final String DEPS = "required-after:placebo@[1.4.1,);after:botania@[r1.10-354,);after:forestry;after:inspirations";
 
 	@Instance
@@ -86,6 +87,7 @@ public class Plants2 {
 			if (b == null) LOGGER.error("Invalid biome entry detected in the Plants biome blacklist, " + rl);
 			else PlantConfig.COMPUTED_BIOME_BL.add(b);
 		}
+		if (Loader.isModLoaded("actuallyadditions")) AAIntegration.registerFarmerBehavior();
 	}
 
 	@EventHandler

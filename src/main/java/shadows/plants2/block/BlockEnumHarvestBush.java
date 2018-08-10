@@ -19,8 +19,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IHarvestableEnum;
 import shadows.placebo.util.PlaceboUtil;
@@ -52,7 +50,6 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void initModels(ModelRegistryEvent e) {
 		for (int i = 0; i < types.size(); i++) {
 			PlaceboUtil.sMRL("harvestables", this, i, "fruit=true,inventory=true," + property.getName() + "=" + types.get(i).getName());
@@ -148,6 +145,10 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 		for (E e : types) {
 			list.add(getStateFor(e).withProperty(FRUIT, true));
 		}
+	}
+
+	public StackPrimer[] getFruit(IBlockState state) {
+		return state.getValue(property).getDrops();
 	}
 
 }

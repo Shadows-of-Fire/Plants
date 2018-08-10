@@ -14,7 +14,8 @@
 					"fruit_top": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/fruit_top",
 					"fruit_bot": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/fruit_bot",
 					"none_top": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/none_top",
-					"none_bot": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/none_bot"
+					"none_bot": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/none_bot",
+					"particle": "plants2:blocks/cosmetic/doubleharvest/alyxia_b/fruit_bot"
 				}
 			}
 		},
