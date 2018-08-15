@@ -66,8 +66,10 @@ public class BiomeCrystalForest extends AbstractBiomeBase {
 	public void register(IForgeRegistry<Biome> reg) {
 		if (PlantConfig.crystalForest) {
 			reg.register(this);
-			BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, PlantConfig.crystalForestWeight));
-			BiomeManager.addSpawnBiome(this);
+			if (PlantConfig.crystalForestWeight > 0) {
+				BiomeManager.addBiome(BiomeType.COOL, new BiomeEntry(this, PlantConfig.crystalForestWeight));
+				BiomeManager.addSpawnBiome(this);
+			}
 		}
 	}
 

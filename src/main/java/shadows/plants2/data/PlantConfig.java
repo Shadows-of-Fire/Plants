@@ -99,8 +99,8 @@ public class PlantConfig {
 		for (String s : dimbl)
 			DIM_BL.add(Integer.parseInt(s));
 
-		crystalForest = config.getBoolean("Crystal Forest", "biomes", true, "Toggle for the Crystal Forest");
-		crystalForestWeight = config.getInt("Crystal Forest Weight", "biomes", 2, 1, 2000, "The weight of the Crystal Forest.  Higher is more common.");
+		crystalForest = config.getBoolean("Crystal Forest", "biomes", true, "Toggle for the Crystal Forest.  This controls registration.");
+		crystalForestWeight = config.getInt("Crystal Forest Weight", "biomes", 2, 0, 2000, "The weight of the Crystal Forest.  Higher is more common.  Setting it to 0 will cause it to not spawn by default.");
 
 		aphrirerootChance = config.getInt("Aphrireroot Pearl Chance", "general", 5, 1, 15, "The (1/n) chance for an Aphrireroot to make a pearl.");
 
