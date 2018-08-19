@@ -10,6 +10,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -26,6 +27,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
 import shadows.placebo.block.BlockEnum;
@@ -270,5 +273,17 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	@Override
 	public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return 30;
+	}
+
+	@Override
+	public boolean causesSuffocation(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	@Deprecated
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		return !Minecraft.getMinecraft().gameSettings.fancyGraphics && blockAccess.getBlockState(pos.offset(side)).getBlock() == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
 	}
 }
