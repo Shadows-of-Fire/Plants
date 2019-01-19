@@ -78,6 +78,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState flowerpotState, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (world.isRemote) return true;
 		ItemStack held = player.getHeldItem(hand);
 		TileFlowerpot pot = getTileEntity(world, pos);
 
@@ -103,7 +104,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		}
 
 		pot.markDirty();
-		if (!world.isRemote) VanillaPacketDispatcher.dispatchTEToNearbyPlayers(pot);
+		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(pot);
 		return true;
 	}
 

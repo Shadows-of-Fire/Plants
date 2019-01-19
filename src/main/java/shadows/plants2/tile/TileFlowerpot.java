@@ -36,6 +36,7 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 		state = Block.getStateById(pkt.getNbtCompound().getInteger("stateid"));
+		world.markBlockRangeForRenderUpdate(pos, pos);
 	}
 
 	@Override
