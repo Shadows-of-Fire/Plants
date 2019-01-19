@@ -33,6 +33,7 @@ import shadows.placebo.client.IHasModel;
 import shadows.placebo.client.RenamedStateMapper;
 import shadows.placebo.interfaces.IItemBlock;
 import shadows.placebo.util.PlaceboUtil;
+import shadows.placebo.util.VanillaPacketDispatcher;
 import shadows.plants2.Plants2;
 import shadows.plants2.data.PlantConfig;
 import shadows.plants2.state.FlowerpotBlockState;
@@ -102,7 +103,7 @@ public class BlockFlowerpot extends BlockFlowerPot implements IHasModel, IItemBl
 		}
 
 		pot.markDirty();
-		world.notifyBlockUpdate(pos, flowerpotState, flowerpotState, 3);
+		if (!world.isRemote) VanillaPacketDispatcher.dispatchTEToNearbyPlayers(pot);
 		return true;
 	}
 
