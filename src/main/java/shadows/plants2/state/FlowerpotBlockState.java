@@ -44,6 +44,8 @@ public final class FlowerpotBlockState extends ExtendedBlockState {
 			else if (property == BlockFlowerPot.LEGACY_DATA) return property.getValueClass().cast(0);
 			//Inspirations
 			else if (property.getName().equals("extra")) return property.getValueClass().cast(false);
+			//Quark
+			else if (property.getName().equals("custom")) return property.getValueClass().cast(false);
 			else return super.getValue(property);
 		}
 	}
