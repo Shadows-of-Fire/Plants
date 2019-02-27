@@ -16,7 +16,6 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -246,16 +245,11 @@ public class BlockBrewingCauldron extends Block implements IHasRecipe, IHasModel
 	@Override
 	public void initModels(ModelRegistryEvent e) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(Items.CAULDRON.getRegistryName(), "inventory"));
-		ModelLoader.setCustomStateMapper(this, new IStateMapper() {
-
-			@Override
-			public Map<IBlockState, ModelResourceLocation> putStateModelLocations(Block block) {
-				Map<IBlockState, ModelResourceLocation> map = new HashMap<>();
-				for (int i = 0; i < 4; i++)
-					map.put(block.getDefaultState().withProperty(BlockCauldron.LEVEL, i), new ModelResourceLocation(Plants2.MODID + ":blocks", "type=cauldron_" + i));
-				return map;
-			}
-
+		ModelLoader.setCustomStateMapper(this, block -> {
+			Map<IBlockState, ModelResourceLocation> map = new HashMap<>();
+			for (int i = 0; i < 4; i++)
+				map.put(block.getDefaultState().withProperty(BlockCauldron.LEVEL, i), new ModelResourceLocation(Plants2.MODID + ":blocks", "type=cauldron_" + i));
+			return map;
 		});
 	}
 

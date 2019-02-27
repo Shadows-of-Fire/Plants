@@ -34,7 +34,7 @@ import shadows.plants2.util.PlantUtil;
 
 public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends BushBase implements IEnumBlock<E> {
 
-	protected final List<E> types = new ArrayList<E>();
+	protected final List<E> types = new ArrayList<>();
 	protected final Predicate<E> valueFilter;
 	protected final PropertyEnum<E> property;
 	protected final BlockStateContainer realStateContainer;
@@ -47,7 +47,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 		types.addAll(property.getAllowedValues());
 		if (types.size() > getMaxEnumValues()) throw new IllegalArgumentException("Trying to create a " + this.getClass().getSimpleName() + " with " + types.size() + " enum constants is invalid");
 		this.realStateContainer = createStateContainer();
-		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
+		setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
 		for (E e : types)
 			e.set(this);
 		value = null;
@@ -60,7 +60,7 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 		this.property = null;
 		types.add(enumValue);
 		this.realStateContainer = createStateContainer();
-		this.setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
+		setDefaultState(getBlockState().getBaseState().withProperty(getInvProperty(), false));
 		enumValue.set(this);
 		value = enumValue;
 	}
@@ -74,12 +74,12 @@ public abstract class BlockEnumBush<E extends Enum<E> & IPropertyEnum> extends B
 	@Override
 	public IBlockState getStateFor(E e) {
 		if (property == null) return getDefaultState();
-		return this.getDefaultState().withProperty(property, e);
+		return getDefaultState().withProperty(property, e);
 	}
 
 	@Override
 	public ItemBlock createItemBlock() {
-		return new ItemBlockEnum<E>(this);
+		return new ItemBlockEnum<>(this);
 	}
 
 	@Override

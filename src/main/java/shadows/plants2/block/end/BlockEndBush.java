@@ -37,7 +37,7 @@ public abstract class BlockEndBush extends BushBase {
 
 	@Override
 	protected void addStatesToList() {
-		PlantUtil.END.add(this.getDefaultState());
+		PlantUtil.END.add(getDefaultState());
 	}
 
 	@Override

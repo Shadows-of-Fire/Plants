@@ -99,12 +99,12 @@ public class LaterEnums {
 
 		@Override
 		public int getPredicateIndex() {
-			return this.ordinal() / 4;
+			return ordinal() / 4;
 		}
 
 		@Override
 		public int getMetadata() {
-			return this.ordinal() % 4;
+			return ordinal() % 4;
 		}
 
 		@Override

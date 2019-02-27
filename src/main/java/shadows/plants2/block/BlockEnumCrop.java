@@ -60,7 +60,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if ((state.getValue(AGE) != 7) || !(world.getBlockState(pos.down()).getBlock() instanceof BlockFarmland)) return false;
+		if (state.getValue(AGE) != 7 || !(world.getBlockState(pos.down()).getBlock() instanceof BlockFarmland)) return false;
 		for (ItemStack s : getActualDrops(world, pos, state, 1594)) {
 			if (!player.addItemStackToInventory(s)) {
 				if (!world.isRemote) Block.spawnAsEntity(world, pos, s);
@@ -105,7 +105,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (!world.isRemote && canGrow(world, pos, state, false)) {
-			boolean couldGrow = (rand.nextInt(PlantConfig.cropGrowthChance) == 0);
+			boolean couldGrow = rand.nextInt(PlantConfig.cropGrowthChance) == 0;
 			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);
 				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
@@ -150,7 +150,7 @@ public class BlockEnumCrop<E extends Enum<E> & IPropertyEnum> extends BlockEnumB
 
 	@Override
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> k = new ArrayList<ItemStack>();
+		List<ItemStack> k = new ArrayList<>();
 		int i = state.getValue(property).ordinal() % 2;
 		if (fortune != 1594) k.add(new ItemStack(seeds[i]));
 		if (state.getValue(AGE) == 7) k.add(new ItemStack(crops[i]));

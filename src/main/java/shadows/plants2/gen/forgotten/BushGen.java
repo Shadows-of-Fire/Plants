@@ -69,22 +69,22 @@ public class BushGen implements IWorldGenerator {
 
 		@Override
 		public boolean generate(World world, Random rand, BlockPos pos) {
-			this.setBlockAndNotifyAdequately(world, pos, log);
+			setBlockAndNotifyAdequately(world, pos, log);
 			for (int i = 0; i < 4; i++) {
 				EnumFacing face = EnumFacing.HORIZONTALS[i];
 				EnumFacing face2 = EnumFacing.HORIZONTALS[i + 1 == 4 ? 0 : i + 1];
 				for (int k = -1; k < 2; k++) {
-					this.checkAndLeaf(world, pos.offset(face).offset(face2, k));
-					if (k == 0) this.checkAndLeaf(world, pos.offset(face, 2));
+					checkAndLeaf(world, pos.offset(face).offset(face2, k));
+					if (k == 0) checkAndLeaf(world, pos.offset(face, 2));
 				}
-				this.checkAndLeaf(world, pos.offset(face).up());
+				checkAndLeaf(world, pos.offset(face).up());
 			}
-			this.checkAndLeaf(world, pos.up());
+			checkAndLeaf(world, pos.up());
 			return true;
 		}
 
 		private void checkAndLeaf(World world, BlockPos pos) {
-			if (this.isReplaceable(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID) this.setBlockAndNotifyAdequately(world, pos, leaf);
+			if (isReplaceable(world, pos) && world.getBlockState(pos.down()).getBlockFaceShape(world, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID) setBlockAndNotifyAdequately(world, pos, leaf);
 		}
 
 		@Override

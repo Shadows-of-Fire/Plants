@@ -40,7 +40,7 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (!world.isRemote && canGrow(world, pos, state, false)) {
-			boolean couldGrow = (rand.nextInt(PlantConfig.harvestGrowthChance) == 0);
+			boolean couldGrow = rand.nextInt(PlantConfig.harvestGrowthChance) == 0;
 
 			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);
@@ -78,14 +78,14 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int k = meta % 2;
-		if (k == 0) return this.getDefaultState().withProperty(FRUIT, true).withProperty(property, types.get(getActualMeta(meta)));
-		if (k == 1) return this.getDefaultState().withProperty(FRUIT, false).withProperty(property, types.get(getActualMeta(meta)));
+		if (k == 0) return getDefaultState().withProperty(FRUIT, true).withProperty(property, types.get(getActualMeta(meta)));
+		if (k == 1) return getDefaultState().withProperty(FRUIT, false).withProperty(property, types.get(getActualMeta(meta)));
 		else return null;
 	}
 
 	public static int getActualMeta(int meta) {
 		int k = meta % 2;
-		float j = (meta) / 2F;
+		float j = meta / 2F;
 		if (k == 0) return (int) j;
 		if (k == 1) return (int) (j - .5);
 		else return 0;
@@ -96,8 +96,8 @@ public class BlockEnumHarvestBush<E extends Enum<E> & IHarvestableEnum> extends 
 		boolean k = state.getValue(FRUIT);
 		int j = state.getValue(property).ordinal() % 8;
 
-		if (k) return (j * 2);
-		if (!k) return (1 + j * 2);
+		if (k) return j * 2;
+		if (!k) return 1 + j * 2;
 		else return 0;
 	}
 

@@ -70,7 +70,7 @@ public class BlockCustomVine extends BlockVine implements IHasModel {
 	@Override
 	public boolean canAttachTo(World world, BlockPos pos, EnumFacing facing) {
 		Block block = world.getBlockState(pos.up()).getBlock();
-		return this.isAcceptableNeighbor(world, pos.offset(facing.getOpposite()), facing) && (block == Blocks.AIR || block == this || this.isAcceptableNeighbor(world, pos.up(), EnumFacing.UP));
+		return isAcceptableNeighbor(world, pos.offset(facing.getOpposite()), facing) && (block == Blocks.AIR || block == this || isAcceptableNeighbor(world, pos.up(), EnumFacing.UP));
 	}
 
 	protected boolean isAcceptableNeighbor(World world, BlockPos pos, EnumFacing facing) {

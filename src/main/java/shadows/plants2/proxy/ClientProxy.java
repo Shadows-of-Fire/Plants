@@ -122,12 +122,12 @@ public class ClientProxy implements IProxy {
 		e.getModelRegistry().putObject(normal, new ActualJarModel());
 		e.getModelRegistry().putObject(inv, new JarItemModel());
 	}
-	
+
 	@SubscribeEvent
 	public void onTexStitch(TextureStitchEvent e) {
 		whiteFlame = e.getMap().registerSprite(new ResourceLocation(Plants2.MODID, "particles/white_flame"));
 	}
-	
+
 	public static TextureAtlasSprite whiteFlame;
 
 	public static final Color WATER = new Color(48, 69, 244);

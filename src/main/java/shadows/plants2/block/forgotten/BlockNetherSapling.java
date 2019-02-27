@@ -19,13 +19,13 @@ public class BlockNetherSapling<E extends Enum<E> & ITreeEnum> extends BlockEnum
 	@Deprecated
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return (world.getBlockState(pos).getBlock().isReplaceable(world, pos) && soil.getBlock() instanceof BlockNetherrack) || super.canPlaceBlockAt(world, pos);
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && soil.getBlock() instanceof BlockNetherrack || super.canPlaceBlockAt(world, pos);
 	}
 
 	@Override
 	public boolean canPlaceBlockAt(IBlockState state, World world, BlockPos pos, EnumFacing side) {
 		IBlockState soil = world.getBlockState(pos.down());
-		return (world.getBlockState(pos).getBlock().isReplaceable(world, pos) && soil.getBlock() instanceof BlockNetherrack) || super.canPlaceBlockAt(state, world, pos, side);
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && soil.getBlock() instanceof BlockNetherrack || super.canPlaceBlockAt(state, world, pos, side);
 	}
 
 	@Override

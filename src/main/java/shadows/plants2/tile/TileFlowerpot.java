@@ -80,7 +80,7 @@ public class TileFlowerpot extends TileEntityFlowerPot {
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("stateid", Block.getStateId(state));
-		return new SPacketUpdateTileEntity(this.pos, 150, tag);
+		return new SPacketUpdateTileEntity(pos, 150, tag);
 	}
 
 }

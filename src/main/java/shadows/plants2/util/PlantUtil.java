@@ -104,7 +104,7 @@ public class PlantUtil {
 		}
 	}
 
-	public static final List<BlockCustomVine> VINES = new ArrayList<BlockCustomVine>();
+	public static final List<BlockCustomVine> VINES = new ArrayList<>();
 
 	public static BlockCustomVine getRandomVine(Random rand) {
 		return VINES.get(rand.nextInt(VINES.size()));

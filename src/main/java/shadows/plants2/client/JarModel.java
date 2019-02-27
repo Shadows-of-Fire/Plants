@@ -31,7 +31,7 @@ public class JarModel implements IBakedModel {
 	private final ImmutableMap<EnumFacing, ImmutableList<BakedQuad>> faces;
 
 	public JarModel(IBlockState flowerState) {
-		this.flower = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(flowerState);
+		flower = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(flowerState);
 
 		ImmutableList.Builder<BakedQuad> builder;
 		EnumMap<EnumFacing, ImmutableList<BakedQuad>> faces = new EnumMap<>(EnumFacing.class);
@@ -57,7 +57,7 @@ public class JarModel implements IBakedModel {
 				builder.add(transformer.build());
 			}
 			builder.addAll(jarSolid.getQuads(null, null, 0));
-			this.general = builder.build();
+			general = builder.build();
 		} else general = ImmutableList.of();
 
 		this.faces = Maps.immutableEnumMap(faces);

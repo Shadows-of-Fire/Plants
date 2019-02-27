@@ -83,7 +83,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (canGrow(world, pos, state, false)) {
-			boolean couldGrow = (rand.nextFloat() < 0.35F);
+			boolean couldGrow = rand.nextFloat() < 0.35F;
 			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);
 				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));
@@ -125,7 +125,7 @@ public class BlockBushLeaves extends BlockEnum<BushSet> implements IGrowable, IS
 
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> k = new ArrayList<ItemStack>();
+		List<ItemStack> k = new ArrayList<>();
 		if (state.getValue(BlockEnumHarvestBush.FRUIT)) k.add(state.getValue(getProperty()).getHarvest().genStack());
 		if (ThreadLocalRandom.current().nextInt(5) == 0) k.add(new ItemStack(ModRegistry.BUSHLING, 1, damageDropped(state)));
 		return k;

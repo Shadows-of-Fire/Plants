@@ -17,8 +17,8 @@ public class ForestryIntegration {
 
 		if (FlowerManager.flowerRegistry == null) return;
 
-		List<IBlockState> list = new ArrayList<IBlockState>();
-		List<IBlockState> desertList = new ArrayList<IBlockState>();
+		List<IBlockState> list = new ArrayList<>();
+		List<IBlockState> desertList = new ArrayList<>();
 
 		for (IBlockState state : PlantUtil.DEFAULT) {
 

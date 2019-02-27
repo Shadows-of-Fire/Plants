@@ -45,8 +45,8 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 
 	public <T extends IPlankEnum, B extends Block & IEnumBlockAccess<T>> BlockEnumSlab(T e, B block) {
 		super(e.getName() + "_slab", block.getStateFor(e).getMaterial(), block.blockHardness, block.blockResistance, Plants2.INFO);
-		this.setSoundType(block.blockSoundType);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, SlabVariant.LOWER));
+		setSoundType(block.blockSoundType);
+		setDefaultState(blockState.getBaseState().withProperty(VARIANT, SlabVariant.LOWER));
 		this.e = e;
 	}
 
@@ -144,15 +144,15 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 	}
 
 	public IBlockState getUpper() {
-		return this.getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
+		return getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
 	}
 
 	public IBlockState getLower() {
-		return this.getDefaultState();
+		return getDefaultState();
 	}
 
 	public IBlockState getDouble() {
-		return this.getDefaultState().withProperty(VARIANT, SlabVariant.DOUBLE);
+		return getDefaultState().withProperty(VARIANT, SlabVariant.DOUBLE);
 	}
 
 	public IBlockState getOpposite(IBlockState state) {
@@ -162,8 +162,8 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		if (hitY >= 0.5) return this.getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
-		return this.getDefaultState();
+		if (hitY >= 0.5) return getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
+		return getDefaultState();
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 		private AxisAlignedBB aabb;
 
 		private SlabVariant(AxisAlignedBB AABB) {
-			this.aabb = AABB;
+			aabb = AABB;
 		}
 
 		public AxisAlignedBB getAABB() {
@@ -259,9 +259,9 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 		}
 
 		private boolean canPlaceOnSide(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-			IBlockState state = this.block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, player.getHeldItem(hand).getMetadata(), player, hand);
+			IBlockState state = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, player.getHeldItem(hand).getMetadata(), player, hand);
 			IBlockState current = world.getBlockState(pos);
-			if (current.getBlock() == this.block && current != this.slab.getDouble()) return world.checkNoEntityCollision(state.getValue(VARIANT).getAABB().offset(pos), null);
+			if (current.getBlock() == block && current != slab.getDouble()) return world.checkNoEntityCollision(state.getValue(VARIANT).getAABB().offset(pos), null);
 			return world.checkNoEntityCollision(state.getValue(VARIANT).getAABB().offset(pos.offset(side)), null);
 		}
 
@@ -273,8 +273,8 @@ public class BlockEnumSlab extends BlockBasic implements IHasRecipe {
 		}
 
 		private IBlockState getByHitY(double hitY) {
-			if (hitY >= 0.5) return this.block.getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
-			return this.block.getDefaultState();
+			if (hitY >= 0.5) return block.getDefaultState().withProperty(VARIANT, SlabVariant.UPPER);
+			return block.getDefaultState();
 		}
 
 		private boolean doubleSlab(World world, BlockPos pos) {

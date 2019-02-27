@@ -28,7 +28,7 @@ public class FlowerpotModel implements IBakedModel {
 	private final ImmutableMap<EnumFacing, ImmutableList<BakedQuad>> faces;
 
 	public FlowerpotModel(IBlockState flowerState) {
-		this.flower = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(flowerState);
+		flower = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(flowerState);
 
 		ImmutableList.Builder<BakedQuad> builder;
 		EnumMap<EnumFacing, ImmutableList<BakedQuad>> faces = new EnumMap<>(EnumFacing.class);
@@ -54,7 +54,7 @@ public class FlowerpotModel implements IBakedModel {
 				builder.add(transformer.build());
 			}
 			builder.addAll(flowerpot.getQuads(null, null, 0));
-			this.general = builder.build();
+			general = builder.build();
 		} else general = ImmutableList.of();
 
 		this.faces = Maps.immutableEnumMap(faces);

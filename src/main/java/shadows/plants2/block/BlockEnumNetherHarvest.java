@@ -32,7 +32,7 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos.down());
-		return (world.getBlockState(pos).getBlock().isReplaceable(world, pos) && state.getBlock() instanceof BlockNetherrack) || super.canPlaceBlockAt(world, pos);
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos) && state.getBlock() instanceof BlockNetherrack || super.canPlaceBlockAt(world, pos);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class BlockEnumNetherHarvest<E extends Enum<E> & IHarvestableEnum> extend
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (!world.isRemote && canGrow(world, pos, state, false)) {
-			boolean couldGrow = (rand.nextInt(PlantConfig.netherHarvestChance) == 0);
+			boolean couldGrow = rand.nextInt(PlantConfig.netherHarvestChance) == 0;
 
 			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);

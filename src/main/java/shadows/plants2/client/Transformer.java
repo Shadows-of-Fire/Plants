@@ -21,10 +21,10 @@ public class Transformer extends VertexTransformer {
 		// position transform
 		this.transformation = transformation.getMatrix();
 		// normal transform
-		this.normalTransformation = new Matrix3f();
-		this.transformation.getRotationScale(this.normalTransformation);
-		this.normalTransformation.invert();
-		this.normalTransformation.transpose();
+		normalTransformation = new Matrix3f();
+		this.transformation.getRotationScale(normalTransformation);
+		normalTransformation.invert();
+		normalTransformation.transpose();
 	}
 
 	@Override

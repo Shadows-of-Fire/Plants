@@ -233,13 +233,13 @@ public class NetherTreeGen<E extends Enum<E> & ITreeEnum> extends WorldGenerator
 					}
 				}
 
-				if ((Math.abs(x) < 2 && Math.abs(y) < 2) && (Math.abs(x) != 1 || Math.abs(y) != 1)) {
+				if (Math.abs(x) < 2 && Math.abs(y) < 2 && (Math.abs(x) != 1 || Math.abs(y) != 1)) {
 					if (world.isAirBlock(pos.setPos(jX + x, jY + 1, jZ + y))) {
 						setBlockAndNotifyAdequately(world, pos, leaf);
 					}
 				}
 
-				if ((Math.abs(x) < 2 && Math.abs(y) < 2) && (Math.abs(x) != 1 || Math.abs(y) != 1)) {
+				if (Math.abs(x) < 2 && Math.abs(y) < 2 && (Math.abs(x) != 1 || Math.abs(y) != 1)) {
 					if (world.isAirBlock(pos.setPos(jX + x, jY - 1, jZ + y))) {
 						setBlockAndNotifyAdequately(world, pos, leaf);
 					}

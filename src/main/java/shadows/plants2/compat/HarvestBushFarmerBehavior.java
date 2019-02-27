@@ -32,7 +32,7 @@ public class HarvestBushFarmerBehavior implements IFarmerBehavior {
 	@Override
 	public FarmerResult tryPlantSeed(ItemStack seed, World world, BlockPos pos, IFarmer farmer) {
 		Block b;
-		if ((farmer.getEnergy() >= 700) && ((b = Block.getBlockFromItem(seed.getItem())) instanceof BlockEnumHarvestBush)) {
+		if (farmer.getEnergy() >= 700 && (b = Block.getBlockFromItem(seed.getItem())) instanceof BlockEnumHarvestBush) {
 			if (plant(world, pos, b.getStateForPlacement(world, pos, null, 0, 0, 0, seed.getMetadata(), null, null), farmer)) return FarmerResult.SUCCESS;
 		}
 		return FarmerResult.FAIL;

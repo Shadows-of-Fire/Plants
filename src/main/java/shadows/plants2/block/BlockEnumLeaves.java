@@ -44,11 +44,11 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	public BlockEnumLeaves(String name, SoundType s, float hard, float res, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
 		super(name, Material.LEAVES, s, hard, res, clazz, "type", (e) -> e.getPredicateIndex() == predicate, Plants2.INFO);
-		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(BlockLeaves.DECAYABLE, false).withProperty(BlockLeaves.CHECK_DECAY, false));
+		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(BlockLeaves.DECAYABLE, false).withProperty(BlockLeaves.CHECK_DECAY, false));
 		this.sapling = sapling;
 		setTickRandomly(true);
 		setLightOpacity(1);
-		if (this.types.size() > 4) throw new IllegalArgumentException("Attempting to create a BlockEnumLeaves with more than 4 values is invalid.");
+		if (types.size() > 4) throw new IllegalArgumentException("Attempting to create a BlockEnumLeaves with more than 4 values is invalid.");
 	}
 
 	public BlockEnumLeaves(String name, BlockEnumSapling<E> sapling, Class<E> clazz, int predicate) {
@@ -77,7 +77,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public IBlockState getStateFor(E e) {
-		return this.getDefaultState().withProperty(BlockLeaves.DECAYABLE, true).withProperty(property, e);
+		return getDefaultState().withProperty(BlockLeaves.DECAYABLE, true).withProperty(property, e);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return this.getDefaultState().withProperty(property, types.get(meta));
+		return getDefaultState().withProperty(property, types.get(meta));
 	}
 
 	@Override
@@ -111,7 +111,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		IBlockState state = world.getBlockState(pos);
-		List<ItemStack> k = new ArrayList<ItemStack>();
+		List<ItemStack> k = new ArrayList<>();
 		k.add(new ItemStack(this, 1, damageDropped(state)));
 		return k;
 	}
@@ -187,8 +187,8 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 											this.surroundings[(j3 + 16) * 1024 + (k3 + 16 + 1) * 32 + l3 + 16] = i3;
 										}
 
-										if (this.surroundings[(j3 + 16) * 1024 + (k3 + 16) * 32 + (l3 + 16 - 1)] == -2) {
-											this.surroundings[(j3 + 16) * 1024 + (k3 + 16) * 32 + (l3 + 16 - 1)] = i3;
+										if (this.surroundings[(j3 + 16) * 1024 + (k3 + 16) * 32 + l3 + 16 - 1] == -2) {
+											this.surroundings[(j3 + 16) * 1024 + (k3 + 16) * 32 + l3 + 16 - 1] = i3;
 										}
 
 										if (this.surroundings[(j3 + 16) * 1024 + (k3 + 16) * 32 + l3 + 16 + 1] == -2) {
@@ -213,7 +213,7 @@ public class BlockEnumLeaves<E extends Enum<E> & ITreeEnum> extends BlockEnum<E>
 	}
 
 	private void destroy(World world, BlockPos pos) {
-		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+		dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 		world.setBlockToAir(pos);
 	}
 

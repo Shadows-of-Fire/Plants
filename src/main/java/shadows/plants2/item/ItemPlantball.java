@@ -82,7 +82,7 @@ public final class ItemPlantball extends ItemBase implements IHasRecipe {
 				return EnumActionResult.SUCCESS;
 			}
 
-			else if (worldState.getBlock() instanceof BlockBush && !(worldState.getBlock().hasTileEntity(worldState))) {
+			else if (worldState.getBlock() instanceof BlockBush && !worldState.getBlock().hasTileEntity(worldState)) {
 				if (isBlacklisted(worldState)) return EnumActionResult.FAIL;
 
 				if (PlantConfig.allBushes || worldState.getBlock().getRegistryName().getNamespace().equals(Plants2.MODID) || worldState.getBlock().getRegistryName().getNamespace().equals("minecraft")) {

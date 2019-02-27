@@ -35,7 +35,7 @@ public class TreeTemplate extends Template {
 
 	public boolean isReplaceable(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		boolean flag = state.getBlock().isReplaceable(world, pos) || (state.getBlock().isLeaves(state, world, pos) && PlaceboUtil.isOwnedBy(state.getBlock(), Plants2.MODID));
+		boolean flag = state.getBlock().isReplaceable(world, pos) || state.getBlock().isLeaves(state, world, pos) && PlaceboUtil.isOwnedBy(state.getBlock(), Plants2.MODID);
 		if (flag && state.getBlock() instanceof BlockDoublePlant) world.setBlockToAir(pos.up());
 		return flag;
 	}
@@ -48,11 +48,11 @@ public class TreeTemplate extends Template {
 	public boolean addBlocksToWorld(World world, BlockPos pos, @Nullable ITemplateProcessor processor, PlacementSettings placement, int flags, boolean unused) {
 		Block block = placement.getReplacedBlock();
 		StructureBoundingBox structureboundingbox = placement.getBoundingBox();
-		for (BlockInfo info : this.blocks) {
+		for (BlockInfo info : blocks) {
 			BlockPos toCheck = transformedBlockPos(placement, info.pos).add(pos);
 			if (!info.blockState.getBlock().isLeaves(info.blockState, world, toCheck)) if (!isReplaceable(world, toCheck) && !(world.getBlockState(toCheck) instanceof BlockEnumSapling)) return false;
 		}
-		for (BlockInfo template$blockinfo : this.blocks) {
+		for (BlockInfo template$blockinfo : blocks) {
 			BlockPos blockpos = transformedBlockPos(placement, template$blockinfo.pos).add(pos);
 			BlockInfo template$blockinfo1 = processor != null ? processor.processBlock(world, blockpos, template$blockinfo) : template$blockinfo;
 
@@ -91,7 +91,7 @@ public class TreeTemplate extends Template {
 			}
 		}
 
-		for (BlockInfo template$blockinfo2 : this.blocks) {
+		for (BlockInfo template$blockinfo2 : blocks) {
 			if (block == null || block != template$blockinfo2.blockState.getBlock()) {
 				BlockPos blockpos1 = transformedBlockPos(placement, template$blockinfo2.pos).add(pos);
 

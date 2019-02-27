@@ -1,10 +1,10 @@
 /**
  * This class was created by <Vazkii>. It's distributed as part of the Botania
  * Mod. Get the Source Code in github: https://github.com/Vazkii/Botania
- * 
+ *
  * Botania is Open Source and distributed under the Botania License:
  * http://botaniamod.net/license.php
- * 
+ *
  * File Created @ [Mar 29, 2015, 10:12:50 PM (GMT)]
  */
 package shadows.plants2.item;
@@ -137,7 +137,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 	}
 
 	@Override
-	public void apply(ItemStack stack, BurstProperties props) { // NO-OP 
+	public void apply(ItemStack stack, BurstProperties props) { // NO-OP
 
 	}
 
@@ -150,7 +150,7 @@ public class ItemExcalibur extends ItemSword implements ILensEffect, IManaUsingI
 		int r = rand.nextInt(256);
 		int g = rand.nextInt(256);
 		int b = rand.nextInt(256);
-		int value = ((255 & 0xFF) << 24) | ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF) << 0);
+		int value = (255 & 0xFF) << 24 | (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF) << 0;
 		return value;
 	}
 

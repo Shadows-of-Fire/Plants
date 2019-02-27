@@ -70,8 +70,8 @@ public class ColorToPotionUtil {
 
 		for (Entry<Potion, Integer> ent : numPots.entrySet()) {
 			if (i >= 3) break;
-			int duration = (ent.getValue() % 3 + 1) * (720 * (RAND.nextInt(3) + 1));
-			int multiplier = (ent.getValue() % 2) * ((RAND.nextInt(2) + 1));
+			int duration = (ent.getValue() % 3 + 1) * 720 * (RAND.nextInt(3) + 1);
+			int multiplier = ent.getValue() % 2 * (RAND.nextInt(2) + 1);
 			if (ent.getKey().isInstant()) duration = 0;
 			if (cauldron.getPotionItem() == Items.LINGERING_POTION) duration /= 6;
 

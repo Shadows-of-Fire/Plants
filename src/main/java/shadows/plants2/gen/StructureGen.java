@@ -54,7 +54,7 @@ public class StructureGen extends EnumTreeGen<ITreeEnum> {
 			Biome b = world.getBiome(pos);
 			if (PlantConfig.COMPUTED_BIOME_BL.contains(b)) return false;
 			for (Type t : allowedBiomes)
-				if ((BiomeDictionary.hasType(b, t))) return true;
+				if (BiomeDictionary.hasType(b, t)) return true;
 			return allowedBiomes.length == 0;
 		}
 		return false;

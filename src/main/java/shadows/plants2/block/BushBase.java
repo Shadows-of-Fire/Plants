@@ -102,7 +102,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	}
 
 	public List<ItemStack> getActualDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> k = new ArrayList<ItemStack>();
+		List<ItemStack> k = new ArrayList<>();
 		k.add(new ItemStack(getItemDropped(state, RANDOM, fortune), quantityDropped(RANDOM), damageDropped(state)));
 		return k;
 	}
@@ -113,7 +113,7 @@ public abstract class BushBase extends BlockBush implements IHasModel, IShearabl
 	}
 
 	protected void addStatesToList() {
-		PlantUtil.TYPE_TO_STATES.get(type).add(this.getDefaultState());
+		PlantUtil.TYPE_TO_STATES.get(type).add(getDefaultState());
 	}
 
 	@Override

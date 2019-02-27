@@ -114,7 +114,7 @@ public class BlockBushling extends BlockEnumBush<BushSet> implements IGrowable, 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (canGrow(world, pos, state, false)) {
-			boolean couldGrow = (rand.nextInt(15) == 0);
+			boolean couldGrow = rand.nextInt(15) == 0;
 			if (ForgeHooks.onCropsGrowPre(world, pos, state, couldGrow)) {
 				grow(world, rand, pos, state);
 				ForgeHooks.onCropsGrowPost(world, pos, state, world.getBlockState(pos));

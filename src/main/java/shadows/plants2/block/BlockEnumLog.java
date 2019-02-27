@@ -33,7 +33,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 
 	public BlockEnumLog(String name, SoundType s, float hard, float res, Class<E> enumClass, int predicate) {
 		super(name, Material.WOOD, s, hard, res, enumClass, "type", (e) -> e.getPredicateIndex() == predicate, Plants2.INFO);
-		this.setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(AXIS, Axis.Y));
+		setDefaultState(getBlockState().getBaseState().withProperty(property, types.get(0)).withProperty(AXIS, Axis.Y));
 	}
 
 	public BlockEnumLog(String name, Class<E> enumClass, int predicate) {
@@ -80,7 +80,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return this.getDefaultState().withProperty(property, types.get(meta)).withProperty(AXIS, facing.getAxis());
+		return getDefaultState().withProperty(property, types.get(meta)).withProperty(AXIS, facing.getAxis());
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class BlockEnumLog<E extends Enum<E> & ITreeEnum> extends BlockEnum<E> im
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = state.getValue(property).ordinal() % 5; // 0-4
-		i += (state.getValue(AXIS).ordinal() * 5); // 0-14
+		i += state.getValue(AXIS).ordinal() * 5; // 0-14
 		return i;
 	}
 

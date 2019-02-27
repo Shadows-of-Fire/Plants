@@ -314,7 +314,7 @@ public class TheBigBookOfEnums {
 
 		@Override
 		public int getPredicateIndex() {
-			return this.ordinal() / 8;
+			return ordinal() / 8;
 		}
 
 		@Override
@@ -324,7 +324,7 @@ public class TheBigBookOfEnums {
 
 		@Override
 		public int getMetadata() {
-			return this.ordinal() % 8;
+			return ordinal() % 8;
 		}
 
 		@Override
@@ -395,7 +395,7 @@ public class TheBigBookOfEnums {
 
 		@Override
 		public int getPredicateIndex() {
-			return this.ordinal() / 2;
+			return ordinal() / 2;
 		}
 
 		@Override
@@ -431,7 +431,7 @@ public class TheBigBookOfEnums {
 
 		@Override
 		public void postInit(FMLPostInitializationEvent e) {
-			this.setItem(ForgeRegistries.ITEMS.getValue(new ResourceLocation(dropName)));
+			setItem(ForgeRegistries.ITEMS.getValue(new ResourceLocation(dropName)));
 		}
 
 		@Override

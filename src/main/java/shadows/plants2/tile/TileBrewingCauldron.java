@@ -89,7 +89,7 @@ public class TileBrewingCauldron extends TileEntity {
 
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
-		return new SPacketUpdateTileEntity(this.pos, 150, this.getUpdateTag());
+		return new SPacketUpdateTileEntity(pos, 150, getUpdateTag());
 	}
 
 	public void setColor(int index, EnumDyeColor color) {

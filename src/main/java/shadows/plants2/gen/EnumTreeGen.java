@@ -84,7 +84,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 				for (int l = position.getX() - k; l <= position.getX() + k && flag; ++l) {
 					for (int i1 = position.getZ() - k; i1 <= position.getZ() + k && flag; ++i1) {
 						if (j >= 0 && j < worldIn.getHeight()) {
-							if (!this.isReplaceable(worldIn, blockpos$mutableblockpos.setPos(l, j, i1))) {
+							if (!isReplaceable(worldIn, blockpos$mutableblockpos.setPos(l, j, i1))) {
 								flag = false;
 							}
 						} else {
@@ -117,7 +117,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 									state = worldIn.getBlockState(blockpos);
 
 									if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos) || state.getMaterial() == Material.VINE) {
-										this.setBlockAndNotifyAdequately(worldIn, blockpos, this.leaf);
+										setBlockAndNotifyAdequately(worldIn, blockpos, this.leaf);
 									}
 								}
 							}
@@ -129,7 +129,7 @@ public class EnumTreeGen<E extends ITreeEnum> extends WorldGenTrees {
 						state = worldIn.getBlockState(upN);
 
 						if (state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE) {
-							this.setBlockAndNotifyAdequately(worldIn, position.up(j3), this.log);
+							setBlockAndNotifyAdequately(worldIn, position.up(j3), this.log);
 						}
 					}
 					return true;

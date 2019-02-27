@@ -30,7 +30,7 @@ public class BlockAithotus extends BlockEndBush {
 		if (x == 0) x = 2;
 		if (z == 0) z = 2;
 		BlockPos pos2 = world.getTopSolidOrLiquidBlock(pos.add(x, 0, z));
-		if (this.canPlaceBlockAt(world, pos2)) {
+		if (canPlaceBlockAt(world, pos2)) {
 			world.setBlockToAir(pos);
 			world.playSound(null, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1, 0.8F);
 			world.setBlockState(pos2, state);
