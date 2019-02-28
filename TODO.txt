@@ -1,4 +1,0 @@
-TODO:
--Crystal Forest
--Extra crystal plants?
--Add a plant bag that autocollects items on our domain.
