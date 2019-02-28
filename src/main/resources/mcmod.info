@@ -1,7 +1,7 @@
 [{
-	"modid": "plants2",
-	"name": "Plants",
-	"description": "Every plant known to man.  Well, almost.",
+	"modid": "naturalis",
+	"name": "Naturalis",
+	"description": "The natural world.",
 	"version": "${version}",
 	"mcversion": "${mcversion}",
 	"url": "",
