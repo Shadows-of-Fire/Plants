@@ -86,8 +86,8 @@ public class Decorator {
 			BlockPos pos = world.getTopSolidOrLiquidBlock(event.getChunkPos().getBlock(8, 0, 8).add(MathHelper.getInt(event.getRand(), -4, 4), 0, MathHelper.getInt(event.getRand(), -4, 4)));
 			if (!(world.getBlockState(pos).getBlock() instanceof BlockGrass)) return;
 			for (int i = 0; i < 3; i++) {
-				world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState());
-				if (vine.canPlaceBlockAt(world, pos.offset(facing).up(i))) world.setBlockState(pos.offset(facing).up(i), vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null));
+				world.setBlockState(pos.up(i), Blocks.MOSSY_COBBLESTONE.getDefaultState(), 2);
+				if (vine.canPlaceBlockAt(world, pos.offset(facing).up(i))) world.setBlockState(pos.offset(facing).up(i), vine.getStateForPlacement(world, pos.offset(facing).up(i), facing, 0, 0, 0, 0, null), 2);
 			}
 		}
 	}

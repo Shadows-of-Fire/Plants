@@ -36,9 +36,9 @@ public class BushGen implements IWorldGenerator {
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator gen, IChunkProvider prov) {
 		if (rand.nextInt(20) != 0) return;
 		if (PlantConfig.DIM_BL.contains(world.provider.getDimension())) return;
-		int posX = chunkX * 16;
-		int posZ = chunkZ * 16;
-		BlockPos genPos = new BlockPos(posX + MathHelper.getInt(rand, 2, 14), 0, posZ + MathHelper.getInt(rand, 2, 14));
+		int posX = chunkX * 16 + MathHelper.getInt(rand, 4, 12);
+		int posZ = chunkZ * 16 + MathHelper.getInt(rand, 4, 12);
+		BlockPos genPos = new BlockPos(posX, 0, posZ);
 		if (PlantConfig.COMPUTED_BIOME_BL.contains(world.getBiome(genPos))) return;
 		genPos = world.getTopSolidOrLiquidBlock(genPos);
 		IBlockState soil = world.getBlockState(genPos.down());

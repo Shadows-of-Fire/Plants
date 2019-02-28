@@ -42,8 +42,8 @@ public class Plants2 {
 
 	public static final String MODID = "plants2";
 	public static final String MODNAME = "Plants";
-	public static final String VERSION = "2.10.5";
-	public static final String DEPS = "required-after:placebo@[1.5.1,);after:botania@[r1.10-354,);after:forestry;after:inspirations";
+	public static final String VERSION = "2.10.6";
+	public static final String DEPS = "required-after:placebo@[1.5.1,2.0.0);after:botania@[r1.10-354,);after:forestry;after:inspirations";
 
 	@Instance
 	public static Plants2 INSTANCE;
