@@ -3,7 +3,7 @@
 	"defaults": {
 		"model": "cross",
 		"textures": {
-			"cross": "naturalis:blocks/bushes/<X>"
+			"cross": "naturalis:blocks/bushes/blazing_star"
 		}
 	},
 	"variants": {

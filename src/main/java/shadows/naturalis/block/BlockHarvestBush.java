@@ -16,6 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+import shadows.placebo.util.RecipeHelper;
 import shadows.placebo.util.StackPrimer;
 
 public class BlockHarvestBush extends BlockNaturalBush implements IGrowable {
@@ -24,7 +25,7 @@ public class BlockHarvestBush extends BlockNaturalBush implements IGrowable {
 	protected final StackPrimer[] drops;
 
 	public BlockHarvestBush(String name, StackPrimer... drops) {
-		super(name);
+		super(name, null);
 		setTickRandomly(true);
 		setDefaultState(getDefaultState().withProperty(FRUIT, false));
 		this.drops = drops;
@@ -89,6 +90,10 @@ public class BlockHarvestBush extends BlockNaturalBush implements IGrowable {
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		world.setBlockState(pos, state.withProperty(FRUIT, true));
+	}
+
+	@Override
+	public void addRecipes(RecipeHelper helper) {
 	}
 
 }

@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shadows.naturalis.Naturalis;
+import shadows.placebo.data.IHasRecipe;
 import shadows.placebo.util.RecipeHelper;
 
 /**
@@ -26,6 +27,8 @@ public class RegHandler extends RecipeHelper {
 
 	@Override
 	public void addRecipes() {
+		BLOCKS.forEach(this::checkForRecipe);
+		ITEMS.forEach(this::checkForRecipe);
 	}
 
 	@SubscribeEvent
@@ -38,6 +41,10 @@ public class RegHandler extends RecipeHelper {
 	public void items(Register<Item> e) {
 		NaturalItems.load();
 		ITEMS.forEach(e.getRegistry()::register);
+	}
+
+	void checkForRecipe(Object o) {
+		if (o instanceof IHasRecipe) ((IHasRecipe) o).addRecipes(this);
 	}
 
 }

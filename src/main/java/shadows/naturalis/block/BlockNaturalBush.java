@@ -18,18 +18,24 @@ import net.minecraftforge.common.IShearable;
 import shadows.naturalis.Naturalis;
 import shadows.naturalis.registry.NaturalConfig;
 import shadows.naturalis.registry.RegHandler;
+import shadows.naturalis.util.Color;
 import shadows.naturalis.util.EnumGenType;
 import shadows.placebo.client.IHasModel;
+import shadows.placebo.data.IHasRecipe;
 import shadows.placebo.item.ItemBlockBase;
 import shadows.placebo.util.PlaceboUtil;
+import shadows.placebo.util.RecipeHelper;
 
-public class BlockNaturalBush extends BlockBush implements IHasModel, IShearable {
+public class BlockNaturalBush extends BlockBush implements IHasModel, IShearable, IHasRecipe {
 
 	public static final AxisAlignedBB BUSH_AABB = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.75D, 0.8D);
 
-	public BlockNaturalBush(String name) {
+	protected Color color;
+
+	public BlockNaturalBush(String name, Color color) {
 		setTickRandomly(false);
 		setSoundType(SoundType.PLANT);
+		this.color = color;
 		init(Naturalis.MODID, name);
 	}
 
@@ -38,6 +44,7 @@ public class BlockNaturalBush extends BlockBush implements IHasModel, IShearable
 		RegHandler.BLOCKS.add(this);
 		RegHandler.ITEMS.add(createItemBlock());
 		getGenType().getStates().add(getGenState());
+		setCreativeTab(Naturalis.TAB);
 	}
 
 	public ItemBlock createItemBlock() {
@@ -124,6 +131,11 @@ public class BlockNaturalBush extends BlockBush implements IHasModel, IShearable
 	 */
 	public IBlockState getGenState() {
 		return getDefaultState();
+	}
+
+	@Override
+	public void addRecipes(RecipeHelper helper) {
+		helper.addShapeless(color.get(), this);
 	}
 
 }

@@ -10,9 +10,9 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-2.10.6"
-group= "shadows.plants" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Plants"
+version = "1.12.2-1.0.0"
+group= "shadows.naturalis"
+archivesBaseName = "Naturalis"
 
 sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
@@ -23,7 +23,6 @@ minecraft {
     version = "1.12.2-14.23.5.2768"
     runDir = "run"
     mappings = "stable_39"
-	useDepAts = true
 	makeObfSourceJar = false
 }
 
@@ -31,37 +30,14 @@ repositories {
     maven {
         url "http://dvs1.progwml6.com/files/maven"
     }
-    maven {
-        url "http://maven.epoxide.xyz"
-    }
-    maven {
-        url "http://maven.amadornes.com/"
-    }
 	maven {
 		url "http://tehnut.info/maven"
-	}
-	maven {
-		url "http://maven.ic2.player.to"
-	}
-	maven {
-        url 'http://maven.tterrag.com/'
-    }
-    maven {
-		url 'http://maven.blamejared.com'
 	}
 }
 
 dependencies {
 	deobfCompile "mezz.jei:jei_1.12.2:+"
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8+"
-	deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.0.285"
-	deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.0.+"
-}
-
-jar {
-    manifest {
-        attributes 'FMLAT': 'plants_at.cfg'
-    }
 }
 
 processResources

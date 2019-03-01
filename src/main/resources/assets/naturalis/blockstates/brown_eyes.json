@@ -3,7 +3,7 @@
 	"defaults": {
 		"model": "cross",
 		"textures": {
-			"cross": "naturalis:blocks/bushes/<X>"
+			"cross": "naturalis:blocks/bushes/brown_eyes"
 		}
 	},
 	"variants": {

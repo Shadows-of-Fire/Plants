@@ -14,7 +14,7 @@ import shadows.placebo.client.IHasModel;
 public class ClientHandler {
 
 	@SubscribeEvent
-	public void models(ModelRegistryEvent e) {
+	public static void models(ModelRegistryEvent e) {
 		for (Item i : RegHandler.ITEMS)
 			if (i instanceof IHasModel) ((IHasModel) i).onModelRegister(e);
 		for (Block b : RegHandler.BLOCKS)
