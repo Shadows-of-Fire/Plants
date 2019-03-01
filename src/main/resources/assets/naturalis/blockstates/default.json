@@ -1,0 +1,19 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"textures": {
+			"cross": "naturalis:blocks/bushes/<X>"
+		}
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": {
+			"model": "builtin/generated",
+			"textures": {
+				"layer0": "#cross"
+			},
+			"transforms": "forge:default-item"
+		}
+	}
+}

@@ -18,6 +18,7 @@ import net.minecraftforge.common.IShearable;
 import shadows.naturalis.Naturalis;
 import shadows.naturalis.registry.NaturalConfig;
 import shadows.naturalis.registry.RegHandler;
+import shadows.naturalis.util.EnumGenType;
 import shadows.placebo.client.IHasModel;
 import shadows.placebo.item.ItemBlockBase;
 import shadows.placebo.util.PlaceboUtil;
@@ -36,6 +37,7 @@ public class BlockNaturalBush extends BlockBush implements IHasModel, IShearable
 		PlaceboUtil.initBlock(this, modid, name, 0, 0);
 		RegHandler.BLOCKS.add(this);
 		RegHandler.ITEMS.add(createItemBlock());
+		getGenType().getStates().add(getGenState());
 	}
 
 	public ItemBlock createItemBlock() {
@@ -108,6 +110,20 @@ public class BlockNaturalBush extends BlockBush implements IHasModel, IShearable
 	 */
 	public boolean isValidSoil(World world, BlockPos pos, IBlockState state, IBlockState soil) {
 		return false;
+	}
+
+	/**
+	 * This controls where this block will be generated in the world. See {@link EnumGenType} for types.
+	 */
+	public EnumGenType getGenType() {
+		return EnumGenType.GRASS;
+	}
+
+	/**
+	 * This controls what state from this block is considered to be the "natural" state that will be placed during worldgen.
+	 */
+	public IBlockState getGenState() {
+		return getDefaultState();
 	}
 
 }

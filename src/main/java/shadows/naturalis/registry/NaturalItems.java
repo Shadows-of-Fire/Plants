@@ -6,4 +6,6 @@ import shadows.naturalis.Naturalis;
 @ObjectHolder(Naturalis.MODID)
 public class NaturalItems {
 
+	static void load() {
+	}
 }

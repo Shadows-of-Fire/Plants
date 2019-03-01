@@ -13,4 +13,6 @@ public class NaturalBlocks {
 	public static final BlockNaturalBush BANDED_TRINITY = new BlockNaturalBush("banded_trinity");
 	public static final BlockNaturalBush YELLOW_ROCKETCRESS = new BlockNaturalBush("yellow_rocketcress");
 
+	static void load() {
+	}
 }

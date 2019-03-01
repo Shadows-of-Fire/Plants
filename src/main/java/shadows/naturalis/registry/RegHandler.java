@@ -30,12 +30,14 @@ public class RegHandler extends RecipeHelper {
 
 	@SubscribeEvent
 	public void blocks(Register<Block> e) {
-
+		NaturalBlocks.load();
+		BLOCKS.forEach(e.getRegistry()::register);
 	}
 
 	@SubscribeEvent
 	public void items(Register<Item> e) {
-
+		NaturalItems.load();
+		ITEMS.forEach(e.getRegistry()::register);
 	}
 
 }
