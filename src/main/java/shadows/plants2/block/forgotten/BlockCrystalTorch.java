@@ -6,6 +6,7 @@ import net.minecraft.block.BlockTorch;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -42,7 +43,7 @@ public class BlockCrystalTorch extends BlockTorch implements IHasModel, IHasReci
 
 	@Override
 	public void initRecipes(Register<IRecipe> e) {
-		Plants2.HELPER.addShaped(this, 1, 2, Generic.CRYSTAL_CHUNK.get(), Generic.CRYSTAL_STICK.get());
+		Plants2.HELPER.addShaped(new ItemStack(this, 4), 1, 2, Generic.CRYSTAL_CHUNK.get(), Generic.CRYSTAL_STICK.get());
 	}
 
 	@SideOnly(Side.CLIENT)

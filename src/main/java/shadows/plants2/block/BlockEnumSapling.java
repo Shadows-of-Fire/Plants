@@ -21,6 +21,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.oredict.OreDictionary;
 import shadows.placebo.Placebo;
 import shadows.placebo.interfaces.IHasRecipe;
@@ -165,6 +166,7 @@ public class BlockEnumSapling<E extends Enum<E> & ITreeEnum> extends BlockEnumBu
 
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
+		if (!TerrainGen.saplingGrowTree(world, rand, pos)) return;
 		world.setBlockToAir(pos);
 		WorldGenerator gen = property == null ? value.getTreeGen() : state.getValue(property).getTreeGen();
 		if (!gen.generate(world, rand, pos)) world.setBlockState(pos, state);
